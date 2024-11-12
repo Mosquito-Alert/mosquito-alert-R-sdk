@@ -1,0 +1,351 @@
+#' Create a new Location
+#'
+#' @description
+#' Location Class
+#'
+#' @docType class
+#' @title Location
+#' @description Location Class
+#' @format An \code{R6Class} generator object
+#' @field type Did user indicate that report relates to current location of phone ('current') or to a location selected manually on the map ('selected')? Or is the choice missing ('missing') character
+#' @field point  \link{LocationPoint}
+#' @field timezone  character
+#' @field country_id  integer
+#' @field nuts_2  character
+#' @field nuts_3  character
+#' @importFrom R6 R6Class
+#' @importFrom jsonlite fromJSON toJSON
+#' @export
+Location <- R6::R6Class(
+  "Location",
+  public = list(
+    `type` = NULL,
+    `point` = NULL,
+    `timezone` = NULL,
+    `country_id` = NULL,
+    `nuts_2` = NULL,
+    `nuts_3` = NULL,
+
+    #' @description
+    #' Initialize a new Location class.
+    #'
+    #' @param type Did user indicate that report relates to current location of phone ('current') or to a location selected manually on the map ('selected')? Or is the choice missing ('missing')
+    #' @param point point
+    #' @param timezone timezone
+    #' @param country_id country_id
+    #' @param nuts_2 nuts_2
+    #' @param nuts_3 nuts_3
+    #' @param ... Other optional arguments.
+    initialize = function(`type`, `point`, `timezone`, `country_id`, `nuts_2`, `nuts_3`, ...) {
+      if (!missing(`type`)) {
+        if (!(`type` %in% c("current", "selected", "missing"))) {
+          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"current\", \"selected\", \"missing\".", sep = ""))
+        }
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
+        self$`type` <- `type`
+      }
+      if (!missing(`point`)) {
+        stopifnot(R6::is.R6(`point`))
+        self$`point` <- `point`
+      }
+      if (!missing(`timezone`)) {
+        if (!(`timezone` %in% c("Africa/Abidjan", "Africa/Accra", "Africa/Addis_Ababa", "Africa/Algiers", "Africa/Asmara", "Africa/Bamako", "Africa/Bangui", "Africa/Banjul", "Africa/Bissau", "Africa/Blantyre", "Africa/Brazzaville", "Africa/Bujumbura", "Africa/Cairo", "Africa/Casablanca", "Africa/Ceuta", "Africa/Conakry", "Africa/Dakar", "Africa/Dar_es_Salaam", "Africa/Djibouti", "Africa/Douala", "Africa/El_Aaiun", "Africa/Freetown", "Africa/Gaborone", "Africa/Harare", "Africa/Johannesburg", "Africa/Juba", "Africa/Kampala", "Africa/Khartoum", "Africa/Kigali", "Africa/Kinshasa", "Africa/Lagos", "Africa/Libreville", "Africa/Lome", "Africa/Luanda", "Africa/Lubumbashi", "Africa/Lusaka", "Africa/Malabo", "Africa/Maputo", "Africa/Maseru", "Africa/Mbabane", "Africa/Mogadishu", "Africa/Monrovia", "Africa/Nairobi", "Africa/Ndjamena", "Africa/Niamey", "Africa/Nouakchott", "Africa/Ouagadougou", "Africa/Porto-Novo", "Africa/Sao_Tome", "Africa/Tripoli", "Africa/Tunis", "Africa/Windhoek", "America/Adak", "America/Anchorage", "America/Anguilla", "America/Antigua", "America/Araguaina", "America/Argentina/Buenos_Aires", "America/Argentina/Catamarca", "America/Argentina/Cordoba", "America/Argentina/Jujuy", "America/Argentina/La_Rioja", "America/Argentina/Mendoza", "America/Argentina/Rio_Gallegos", "America/Argentina/Salta", "America/Argentina/San_Juan", "America/Argentina/San_Luis", "America/Argentina/Tucuman", "America/Argentina/Ushuaia", "America/Aruba", "America/Asuncion", "America/Atikokan", "America/Bahia", "America/Bahia_Banderas", "America/Barbados", "America/Belem", "America/Belize", "America/Blanc-Sablon", "America/Boa_Vista", "America/Bogota", "America/Boise", "America/Cambridge_Bay", "America/Campo_Grande", "America/Cancun", "America/Caracas", "America/Cayenne", "America/Cayman", "America/Chicago", "America/Chihuahua", "America/Ciudad_Juarez", "America/Costa_Rica", "America/Creston", "America/Cuiaba", "America/Curacao", "America/Danmarkshavn", "America/Dawson", "America/Dawson_Creek", "America/Denver", "America/Detroit", "America/Dominica", "America/Edmonton", "America/Eirunepe", "America/El_Salvador", "America/Fort_Nelson", "America/Fortaleza", "America/Glace_Bay", "America/Goose_Bay", "America/Grand_Turk", "America/Grenada", "America/Guadeloupe", "America/Guatemala", "America/Guayaquil", "America/Guyana", "America/Halifax", "America/Havana", "America/Hermosillo", "America/Indiana/Indianapolis", "America/Indiana/Knox", "America/Indiana/Marengo", "America/Indiana/Petersburg", "America/Indiana/Tell_City", "America/Indiana/Vevay", "America/Indiana/Vincennes", "America/Indiana/Winamac", "America/Inuvik", "America/Iqaluit", "America/Jamaica", "America/Juneau", "America/Kentucky/Louisville", "America/Kentucky/Monticello", "America/Kralendijk", "America/La_Paz", "America/Lima", "America/Los_Angeles", "America/Lower_Princes", "America/Maceio", "America/Managua", "America/Manaus", "America/Marigot", "America/Martinique", "America/Matamoros", "America/Mazatlan", "America/Menominee", "America/Merida", "America/Metlakatla", "America/Mexico_City", "America/Miquelon", "America/Moncton", "America/Monterrey", "America/Montevideo", "America/Montserrat", "America/Nassau", "America/New_York", "America/Nome", "America/Noronha", "America/North_Dakota/Beulah", "America/North_Dakota/Center", "America/North_Dakota/New_Salem", "America/Nuuk", "America/Ojinaga", "America/Panama", "America/Paramaribo", "America/Phoenix", "America/Port-au-Prince", "America/Port_of_Spain", "America/Porto_Velho", "America/Puerto_Rico", "America/Punta_Arenas", "America/Rankin_Inlet", "America/Recife", "America/Regina", "America/Resolute", "America/Rio_Branco", "America/Santarem", "America/Santiago", "America/Santo_Domingo", "America/Sao_Paulo", "America/Scoresbysund", "America/Sitka", "America/St_Barthelemy", "America/St_Johns", "America/St_Kitts", "America/St_Lucia", "America/St_Thomas", "America/St_Vincent", "America/Swift_Current", "America/Tegucigalpa", "America/Thule", "America/Tijuana", "America/Toronto", "America/Tortola", "America/Vancouver", "America/Whitehorse", "America/Winnipeg", "America/Yakutat", "Antarctica/Casey", "Antarctica/Davis", "Antarctica/DumontDUrville", "Antarctica/Macquarie", "Antarctica/Mawson", "Antarctica/McMurdo", "Antarctica/Palmer", "Antarctica/Rothera", "Antarctica/Syowa", "Antarctica/Troll", "Antarctica/Vostok", "Arctic/Longyearbyen", "Asia/Aden", "Asia/Almaty", "Asia/Amman", "Asia/Anadyr", "Asia/Aqtau", "Asia/Aqtobe", "Asia/Ashgabat", "Asia/Atyrau", "Asia/Baghdad", "Asia/Bahrain", "Asia/Baku", "Asia/Bangkok", "Asia/Barnaul", "Asia/Beirut", "Asia/Bishkek", "Asia/Brunei", "Asia/Chita", "Asia/Colombo", "Asia/Damascus", "Asia/Dhaka", "Asia/Dili", "Asia/Dubai", "Asia/Dushanbe", "Asia/Famagusta", "Asia/Gaza", "Asia/Hebron", "Asia/Ho_Chi_Minh", "Asia/Hong_Kong", "Asia/Hovd", "Asia/Irkutsk", "Asia/Jakarta", "Asia/Jayapura", "Asia/Jerusalem", "Asia/Kabul", "Asia/Kamchatka", "Asia/Karachi", "Asia/Kathmandu", "Asia/Khandyga", "Asia/Kolkata", "Asia/Krasnoyarsk", "Asia/Kuala_Lumpur", "Asia/Kuching", "Asia/Kuwait", "Asia/Macau", "Asia/Magadan", "Asia/Makassar", "Asia/Manila", "Asia/Muscat", "Asia/Nicosia", "Asia/Novokuznetsk", "Asia/Novosibirsk", "Asia/Omsk", "Asia/Oral", "Asia/Phnom_Penh", "Asia/Pontianak", "Asia/Pyongyang", "Asia/Qatar", "Asia/Qostanay", "Asia/Qyzylorda", "Asia/Riyadh", "Asia/Sakhalin", "Asia/Samarkand", "Asia/Seoul", "Asia/Shanghai", "Asia/Singapore", "Asia/Srednekolymsk", "Asia/Taipei", "Asia/Tashkent", "Asia/Tbilisi", "Asia/Tehran", "Asia/Thimphu", "Asia/Tokyo", "Asia/Tomsk", "Asia/Ulaanbaatar", "Asia/Urumqi", "Asia/Ust-Nera", "Asia/Vientiane", "Asia/Vladivostok", "Asia/Yakutsk", "Asia/Yangon", "Asia/Yekaterinburg", "Asia/Yerevan", "Atlantic/Azores", "Atlantic/Bermuda", "Atlantic/Canary", "Atlantic/Cape_Verde", "Atlantic/Faroe", "Atlantic/Madeira", "Atlantic/Reykjavik", "Atlantic/South_Georgia", "Atlantic/St_Helena", "Atlantic/Stanley", "Australia/Adelaide", "Australia/Brisbane", "Australia/Broken_Hill", "Australia/Darwin", "Australia/Eucla", "Australia/Hobart", "Australia/Lindeman", "Australia/Lord_Howe", "Australia/Melbourne", "Australia/Perth", "Australia/Sydney", "Canada/Atlantic", "Canada/Central", "Canada/Eastern", "Canada/Mountain", "Canada/Newfoundland", "Canada/Pacific", "Europe/Amsterdam", "Europe/Andorra", "Europe/Astrakhan", "Europe/Athens", "Europe/Belgrade", "Europe/Berlin", "Europe/Bratislava", "Europe/Brussels", "Europe/Bucharest", "Europe/Budapest", "Europe/Busingen", "Europe/Chisinau", "Europe/Copenhagen", "Europe/Dublin", "Europe/Gibraltar", "Europe/Guernsey", "Europe/Helsinki", "Europe/Isle_of_Man", "Europe/Istanbul", "Europe/Jersey", "Europe/Kaliningrad", "Europe/Kirov", "Europe/Kyiv", "Europe/Lisbon", "Europe/Ljubljana", "Europe/London", "Europe/Luxembourg", "Europe/Madrid", "Europe/Malta", "Europe/Mariehamn", "Europe/Minsk", "Europe/Monaco", "Europe/Moscow", "Europe/Oslo", "Europe/Paris", "Europe/Podgorica", "Europe/Prague", "Europe/Riga", "Europe/Rome", "Europe/Samara", "Europe/San_Marino", "Europe/Sarajevo", "Europe/Saratov", "Europe/Simferopol", "Europe/Skopje", "Europe/Sofia", "Europe/Stockholm", "Europe/Tallinn", "Europe/Tirane", "Europe/Ulyanovsk", "Europe/Vaduz", "Europe/Vatican", "Europe/Vienna", "Europe/Vilnius", "Europe/Volgograd", "Europe/Warsaw", "Europe/Zagreb", "Europe/Zurich", "GMT", "Indian/Antananarivo", "Indian/Chagos", "Indian/Christmas", "Indian/Cocos", "Indian/Comoro", "Indian/Kerguelen", "Indian/Mahe", "Indian/Maldives", "Indian/Mauritius", "Indian/Mayotte", "Indian/Reunion", "Pacific/Apia", "Pacific/Auckland", "Pacific/Bougainville", "Pacific/Chatham", "Pacific/Chuuk", "Pacific/Easter", "Pacific/Efate", "Pacific/Fakaofo", "Pacific/Fiji", "Pacific/Funafuti", "Pacific/Galapagos", "Pacific/Gambier", "Pacific/Guadalcanal", "Pacific/Guam", "Pacific/Honolulu", "Pacific/Kanton", "Pacific/Kiritimati", "Pacific/Kosrae", "Pacific/Kwajalein", "Pacific/Majuro", "Pacific/Marquesas", "Pacific/Midway", "Pacific/Nauru", "Pacific/Niue", "Pacific/Norfolk", "Pacific/Noumea", "Pacific/Pago_Pago", "Pacific/Palau", "Pacific/Pitcairn", "Pacific/Pohnpei", "Pacific/Port_Moresby", "Pacific/Rarotonga", "Pacific/Saipan", "Pacific/Tahiti", "Pacific/Tarawa", "Pacific/Tongatapu", "Pacific/Wake", "Pacific/Wallis", "US/Alaska", "US/Arizona", "US/Central", "US/Eastern", "US/Hawaii", "US/Mountain", "US/Pacific", "UTC"))) {
+          stop(paste("Error! \"", `timezone`, "\" cannot be assigned to `timezone`. Must be \"Africa/Abidjan\", \"Africa/Accra\", \"Africa/Addis_Ababa\", \"Africa/Algiers\", \"Africa/Asmara\", \"Africa/Bamako\", \"Africa/Bangui\", \"Africa/Banjul\", \"Africa/Bissau\", \"Africa/Blantyre\", \"Africa/Brazzaville\", \"Africa/Bujumbura\", \"Africa/Cairo\", \"Africa/Casablanca\", \"Africa/Ceuta\", \"Africa/Conakry\", \"Africa/Dakar\", \"Africa/Dar_es_Salaam\", \"Africa/Djibouti\", \"Africa/Douala\", \"Africa/El_Aaiun\", \"Africa/Freetown\", \"Africa/Gaborone\", \"Africa/Harare\", \"Africa/Johannesburg\", \"Africa/Juba\", \"Africa/Kampala\", \"Africa/Khartoum\", \"Africa/Kigali\", \"Africa/Kinshasa\", \"Africa/Lagos\", \"Africa/Libreville\", \"Africa/Lome\", \"Africa/Luanda\", \"Africa/Lubumbashi\", \"Africa/Lusaka\", \"Africa/Malabo\", \"Africa/Maputo\", \"Africa/Maseru\", \"Africa/Mbabane\", \"Africa/Mogadishu\", \"Africa/Monrovia\", \"Africa/Nairobi\", \"Africa/Ndjamena\", \"Africa/Niamey\", \"Africa/Nouakchott\", \"Africa/Ouagadougou\", \"Africa/Porto-Novo\", \"Africa/Sao_Tome\", \"Africa/Tripoli\", \"Africa/Tunis\", \"Africa/Windhoek\", \"America/Adak\", \"America/Anchorage\", \"America/Anguilla\", \"America/Antigua\", \"America/Araguaina\", \"America/Argentina/Buenos_Aires\", \"America/Argentina/Catamarca\", \"America/Argentina/Cordoba\", \"America/Argentina/Jujuy\", \"America/Argentina/La_Rioja\", \"America/Argentina/Mendoza\", \"America/Argentina/Rio_Gallegos\", \"America/Argentina/Salta\", \"America/Argentina/San_Juan\", \"America/Argentina/San_Luis\", \"America/Argentina/Tucuman\", \"America/Argentina/Ushuaia\", \"America/Aruba\", \"America/Asuncion\", \"America/Atikokan\", \"America/Bahia\", \"America/Bahia_Banderas\", \"America/Barbados\", \"America/Belem\", \"America/Belize\", \"America/Blanc-Sablon\", \"America/Boa_Vista\", \"America/Bogota\", \"America/Boise\", \"America/Cambridge_Bay\", \"America/Campo_Grande\", \"America/Cancun\", \"America/Caracas\", \"America/Cayenne\", \"America/Cayman\", \"America/Chicago\", \"America/Chihuahua\", \"America/Ciudad_Juarez\", \"America/Costa_Rica\", \"America/Creston\", \"America/Cuiaba\", \"America/Curacao\", \"America/Danmarkshavn\", \"America/Dawson\", \"America/Dawson_Creek\", \"America/Denver\", \"America/Detroit\", \"America/Dominica\", \"America/Edmonton\", \"America/Eirunepe\", \"America/El_Salvador\", \"America/Fort_Nelson\", \"America/Fortaleza\", \"America/Glace_Bay\", \"America/Goose_Bay\", \"America/Grand_Turk\", \"America/Grenada\", \"America/Guadeloupe\", \"America/Guatemala\", \"America/Guayaquil\", \"America/Guyana\", \"America/Halifax\", \"America/Havana\", \"America/Hermosillo\", \"America/Indiana/Indianapolis\", \"America/Indiana/Knox\", \"America/Indiana/Marengo\", \"America/Indiana/Petersburg\", \"America/Indiana/Tell_City\", \"America/Indiana/Vevay\", \"America/Indiana/Vincennes\", \"America/Indiana/Winamac\", \"America/Inuvik\", \"America/Iqaluit\", \"America/Jamaica\", \"America/Juneau\", \"America/Kentucky/Louisville\", \"America/Kentucky/Monticello\", \"America/Kralendijk\", \"America/La_Paz\", \"America/Lima\", \"America/Los_Angeles\", \"America/Lower_Princes\", \"America/Maceio\", \"America/Managua\", \"America/Manaus\", \"America/Marigot\", \"America/Martinique\", \"America/Matamoros\", \"America/Mazatlan\", \"America/Menominee\", \"America/Merida\", \"America/Metlakatla\", \"America/Mexico_City\", \"America/Miquelon\", \"America/Moncton\", \"America/Monterrey\", \"America/Montevideo\", \"America/Montserrat\", \"America/Nassau\", \"America/New_York\", \"America/Nome\", \"America/Noronha\", \"America/North_Dakota/Beulah\", \"America/North_Dakota/Center\", \"America/North_Dakota/New_Salem\", \"America/Nuuk\", \"America/Ojinaga\", \"America/Panama\", \"America/Paramaribo\", \"America/Phoenix\", \"America/Port-au-Prince\", \"America/Port_of_Spain\", \"America/Porto_Velho\", \"America/Puerto_Rico\", \"America/Punta_Arenas\", \"America/Rankin_Inlet\", \"America/Recife\", \"America/Regina\", \"America/Resolute\", \"America/Rio_Branco\", \"America/Santarem\", \"America/Santiago\", \"America/Santo_Domingo\", \"America/Sao_Paulo\", \"America/Scoresbysund\", \"America/Sitka\", \"America/St_Barthelemy\", \"America/St_Johns\", \"America/St_Kitts\", \"America/St_Lucia\", \"America/St_Thomas\", \"America/St_Vincent\", \"America/Swift_Current\", \"America/Tegucigalpa\", \"America/Thule\", \"America/Tijuana\", \"America/Toronto\", \"America/Tortola\", \"America/Vancouver\", \"America/Whitehorse\", \"America/Winnipeg\", \"America/Yakutat\", \"Antarctica/Casey\", \"Antarctica/Davis\", \"Antarctica/DumontDUrville\", \"Antarctica/Macquarie\", \"Antarctica/Mawson\", \"Antarctica/McMurdo\", \"Antarctica/Palmer\", \"Antarctica/Rothera\", \"Antarctica/Syowa\", \"Antarctica/Troll\", \"Antarctica/Vostok\", \"Arctic/Longyearbyen\", \"Asia/Aden\", \"Asia/Almaty\", \"Asia/Amman\", \"Asia/Anadyr\", \"Asia/Aqtau\", \"Asia/Aqtobe\", \"Asia/Ashgabat\", \"Asia/Atyrau\", \"Asia/Baghdad\", \"Asia/Bahrain\", \"Asia/Baku\", \"Asia/Bangkok\", \"Asia/Barnaul\", \"Asia/Beirut\", \"Asia/Bishkek\", \"Asia/Brunei\", \"Asia/Chita\", \"Asia/Colombo\", \"Asia/Damascus\", \"Asia/Dhaka\", \"Asia/Dili\", \"Asia/Dubai\", \"Asia/Dushanbe\", \"Asia/Famagusta\", \"Asia/Gaza\", \"Asia/Hebron\", \"Asia/Ho_Chi_Minh\", \"Asia/Hong_Kong\", \"Asia/Hovd\", \"Asia/Irkutsk\", \"Asia/Jakarta\", \"Asia/Jayapura\", \"Asia/Jerusalem\", \"Asia/Kabul\", \"Asia/Kamchatka\", \"Asia/Karachi\", \"Asia/Kathmandu\", \"Asia/Khandyga\", \"Asia/Kolkata\", \"Asia/Krasnoyarsk\", \"Asia/Kuala_Lumpur\", \"Asia/Kuching\", \"Asia/Kuwait\", \"Asia/Macau\", \"Asia/Magadan\", \"Asia/Makassar\", \"Asia/Manila\", \"Asia/Muscat\", \"Asia/Nicosia\", \"Asia/Novokuznetsk\", \"Asia/Novosibirsk\", \"Asia/Omsk\", \"Asia/Oral\", \"Asia/Phnom_Penh\", \"Asia/Pontianak\", \"Asia/Pyongyang\", \"Asia/Qatar\", \"Asia/Qostanay\", \"Asia/Qyzylorda\", \"Asia/Riyadh\", \"Asia/Sakhalin\", \"Asia/Samarkand\", \"Asia/Seoul\", \"Asia/Shanghai\", \"Asia/Singapore\", \"Asia/Srednekolymsk\", \"Asia/Taipei\", \"Asia/Tashkent\", \"Asia/Tbilisi\", \"Asia/Tehran\", \"Asia/Thimphu\", \"Asia/Tokyo\", \"Asia/Tomsk\", \"Asia/Ulaanbaatar\", \"Asia/Urumqi\", \"Asia/Ust-Nera\", \"Asia/Vientiane\", \"Asia/Vladivostok\", \"Asia/Yakutsk\", \"Asia/Yangon\", \"Asia/Yekaterinburg\", \"Asia/Yerevan\", \"Atlantic/Azores\", \"Atlantic/Bermuda\", \"Atlantic/Canary\", \"Atlantic/Cape_Verde\", \"Atlantic/Faroe\", \"Atlantic/Madeira\", \"Atlantic/Reykjavik\", \"Atlantic/South_Georgia\", \"Atlantic/St_Helena\", \"Atlantic/Stanley\", \"Australia/Adelaide\", \"Australia/Brisbane\", \"Australia/Broken_Hill\", \"Australia/Darwin\", \"Australia/Eucla\", \"Australia/Hobart\", \"Australia/Lindeman\", \"Australia/Lord_Howe\", \"Australia/Melbourne\", \"Australia/Perth\", \"Australia/Sydney\", \"Canada/Atlantic\", \"Canada/Central\", \"Canada/Eastern\", \"Canada/Mountain\", \"Canada/Newfoundland\", \"Canada/Pacific\", \"Europe/Amsterdam\", \"Europe/Andorra\", \"Europe/Astrakhan\", \"Europe/Athens\", \"Europe/Belgrade\", \"Europe/Berlin\", \"Europe/Bratislava\", \"Europe/Brussels\", \"Europe/Bucharest\", \"Europe/Budapest\", \"Europe/Busingen\", \"Europe/Chisinau\", \"Europe/Copenhagen\", \"Europe/Dublin\", \"Europe/Gibraltar\", \"Europe/Guernsey\", \"Europe/Helsinki\", \"Europe/Isle_of_Man\", \"Europe/Istanbul\", \"Europe/Jersey\", \"Europe/Kaliningrad\", \"Europe/Kirov\", \"Europe/Kyiv\", \"Europe/Lisbon\", \"Europe/Ljubljana\", \"Europe/London\", \"Europe/Luxembourg\", \"Europe/Madrid\", \"Europe/Malta\", \"Europe/Mariehamn\", \"Europe/Minsk\", \"Europe/Monaco\", \"Europe/Moscow\", \"Europe/Oslo\", \"Europe/Paris\", \"Europe/Podgorica\", \"Europe/Prague\", \"Europe/Riga\", \"Europe/Rome\", \"Europe/Samara\", \"Europe/San_Marino\", \"Europe/Sarajevo\", \"Europe/Saratov\", \"Europe/Simferopol\", \"Europe/Skopje\", \"Europe/Sofia\", \"Europe/Stockholm\", \"Europe/Tallinn\", \"Europe/Tirane\", \"Europe/Ulyanovsk\", \"Europe/Vaduz\", \"Europe/Vatican\", \"Europe/Vienna\", \"Europe/Vilnius\", \"Europe/Volgograd\", \"Europe/Warsaw\", \"Europe/Zagreb\", \"Europe/Zurich\", \"GMT\", \"Indian/Antananarivo\", \"Indian/Chagos\", \"Indian/Christmas\", \"Indian/Cocos\", \"Indian/Comoro\", \"Indian/Kerguelen\", \"Indian/Mahe\", \"Indian/Maldives\", \"Indian/Mauritius\", \"Indian/Mayotte\", \"Indian/Reunion\", \"Pacific/Apia\", \"Pacific/Auckland\", \"Pacific/Bougainville\", \"Pacific/Chatham\", \"Pacific/Chuuk\", \"Pacific/Easter\", \"Pacific/Efate\", \"Pacific/Fakaofo\", \"Pacific/Fiji\", \"Pacific/Funafuti\", \"Pacific/Galapagos\", \"Pacific/Gambier\", \"Pacific/Guadalcanal\", \"Pacific/Guam\", \"Pacific/Honolulu\", \"Pacific/Kanton\", \"Pacific/Kiritimati\", \"Pacific/Kosrae\", \"Pacific/Kwajalein\", \"Pacific/Majuro\", \"Pacific/Marquesas\", \"Pacific/Midway\", \"Pacific/Nauru\", \"Pacific/Niue\", \"Pacific/Norfolk\", \"Pacific/Noumea\", \"Pacific/Pago_Pago\", \"Pacific/Palau\", \"Pacific/Pitcairn\", \"Pacific/Pohnpei\", \"Pacific/Port_Moresby\", \"Pacific/Rarotonga\", \"Pacific/Saipan\", \"Pacific/Tahiti\", \"Pacific/Tarawa\", \"Pacific/Tongatapu\", \"Pacific/Wake\", \"Pacific/Wallis\", \"US/Alaska\", \"US/Arizona\", \"US/Central\", \"US/Eastern\", \"US/Hawaii\", \"US/Mountain\", \"US/Pacific\", \"UTC\".", sep = ""))
+        }
+        if (!(is.character(`timezone`) && length(`timezone`) == 1)) {
+          stop(paste("Error! Invalid data for `timezone`. Must be a string:", `timezone`))
+        }
+        self$`timezone` <- `timezone`
+      }
+      if (!missing(`country_id`)) {
+        if (!(is.numeric(`country_id`) && length(`country_id`) == 1)) {
+          stop(paste("Error! Invalid data for `country_id`. Must be an integer:", `country_id`))
+        }
+        self$`country_id` <- `country_id`
+      }
+      if (!missing(`nuts_2`)) {
+        if (!(is.character(`nuts_2`) && length(`nuts_2`) == 1)) {
+          stop(paste("Error! Invalid data for `nuts_2`. Must be a string:", `nuts_2`))
+        }
+        self$`nuts_2` <- `nuts_2`
+      }
+      if (!missing(`nuts_3`)) {
+        if (!(is.character(`nuts_3`) && length(`nuts_3`) == 1)) {
+          stop(paste("Error! Invalid data for `nuts_3`. Must be a string:", `nuts_3`))
+        }
+        self$`nuts_3` <- `nuts_3`
+      }
+    },
+
+    #' @description
+    #' To JSON String
+    #'
+    #' @return Location in JSON format
+    toJSON = function() {
+      LocationObject <- list()
+      if (!is.null(self$`type`)) {
+        LocationObject[["type"]] <-
+          self$`type`
+      }
+      if (!is.null(self$`point`)) {
+        LocationObject[["point"]] <-
+          self$`point`$toJSON()
+      }
+      if (!is.null(self$`timezone`)) {
+        LocationObject[["timezone"]] <-
+          self$`timezone`
+      }
+      if (!is.null(self$`country_id`)) {
+        LocationObject[["country_id"]] <-
+          self$`country_id`
+      }
+      if (!is.null(self$`nuts_2`)) {
+        LocationObject[["nuts_2"]] <-
+          self$`nuts_2`
+      }
+      if (!is.null(self$`nuts_3`)) {
+        LocationObject[["nuts_3"]] <-
+          self$`nuts_3`
+      }
+      LocationObject
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of Location
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of Location
+    fromJSON = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`type`)) {
+        if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("current", "selected", "missing"))) {
+          stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"current\", \"selected\", \"missing\".", sep = ""))
+        }
+        self$`type` <- this_object$`type`
+      }
+      if (!is.null(this_object$`point`)) {
+        `point_object` <- LocationPoint$new()
+        `point_object`$fromJSON(jsonlite::toJSON(this_object$`point`, auto_unbox = TRUE, digits = NA))
+        self$`point` <- `point_object`
+      }
+      if (!is.null(this_object$`timezone`)) {
+        if (!is.null(this_object$`timezone`) && !(this_object$`timezone` %in% c("Africa/Abidjan", "Africa/Accra", "Africa/Addis_Ababa", "Africa/Algiers", "Africa/Asmara", "Africa/Bamako", "Africa/Bangui", "Africa/Banjul", "Africa/Bissau", "Africa/Blantyre", "Africa/Brazzaville", "Africa/Bujumbura", "Africa/Cairo", "Africa/Casablanca", "Africa/Ceuta", "Africa/Conakry", "Africa/Dakar", "Africa/Dar_es_Salaam", "Africa/Djibouti", "Africa/Douala", "Africa/El_Aaiun", "Africa/Freetown", "Africa/Gaborone", "Africa/Harare", "Africa/Johannesburg", "Africa/Juba", "Africa/Kampala", "Africa/Khartoum", "Africa/Kigali", "Africa/Kinshasa", "Africa/Lagos", "Africa/Libreville", "Africa/Lome", "Africa/Luanda", "Africa/Lubumbashi", "Africa/Lusaka", "Africa/Malabo", "Africa/Maputo", "Africa/Maseru", "Africa/Mbabane", "Africa/Mogadishu", "Africa/Monrovia", "Africa/Nairobi", "Africa/Ndjamena", "Africa/Niamey", "Africa/Nouakchott", "Africa/Ouagadougou", "Africa/Porto-Novo", "Africa/Sao_Tome", "Africa/Tripoli", "Africa/Tunis", "Africa/Windhoek", "America/Adak", "America/Anchorage", "America/Anguilla", "America/Antigua", "America/Araguaina", "America/Argentina/Buenos_Aires", "America/Argentina/Catamarca", "America/Argentina/Cordoba", "America/Argentina/Jujuy", "America/Argentina/La_Rioja", "America/Argentina/Mendoza", "America/Argentina/Rio_Gallegos", "America/Argentina/Salta", "America/Argentina/San_Juan", "America/Argentina/San_Luis", "America/Argentina/Tucuman", "America/Argentina/Ushuaia", "America/Aruba", "America/Asuncion", "America/Atikokan", "America/Bahia", "America/Bahia_Banderas", "America/Barbados", "America/Belem", "America/Belize", "America/Blanc-Sablon", "America/Boa_Vista", "America/Bogota", "America/Boise", "America/Cambridge_Bay", "America/Campo_Grande", "America/Cancun", "America/Caracas", "America/Cayenne", "America/Cayman", "America/Chicago", "America/Chihuahua", "America/Ciudad_Juarez", "America/Costa_Rica", "America/Creston", "America/Cuiaba", "America/Curacao", "America/Danmarkshavn", "America/Dawson", "America/Dawson_Creek", "America/Denver", "America/Detroit", "America/Dominica", "America/Edmonton", "America/Eirunepe", "America/El_Salvador", "America/Fort_Nelson", "America/Fortaleza", "America/Glace_Bay", "America/Goose_Bay", "America/Grand_Turk", "America/Grenada", "America/Guadeloupe", "America/Guatemala", "America/Guayaquil", "America/Guyana", "America/Halifax", "America/Havana", "America/Hermosillo", "America/Indiana/Indianapolis", "America/Indiana/Knox", "America/Indiana/Marengo", "America/Indiana/Petersburg", "America/Indiana/Tell_City", "America/Indiana/Vevay", "America/Indiana/Vincennes", "America/Indiana/Winamac", "America/Inuvik", "America/Iqaluit", "America/Jamaica", "America/Juneau", "America/Kentucky/Louisville", "America/Kentucky/Monticello", "America/Kralendijk", "America/La_Paz", "America/Lima", "America/Los_Angeles", "America/Lower_Princes", "America/Maceio", "America/Managua", "America/Manaus", "America/Marigot", "America/Martinique", "America/Matamoros", "America/Mazatlan", "America/Menominee", "America/Merida", "America/Metlakatla", "America/Mexico_City", "America/Miquelon", "America/Moncton", "America/Monterrey", "America/Montevideo", "America/Montserrat", "America/Nassau", "America/New_York", "America/Nome", "America/Noronha", "America/North_Dakota/Beulah", "America/North_Dakota/Center", "America/North_Dakota/New_Salem", "America/Nuuk", "America/Ojinaga", "America/Panama", "America/Paramaribo", "America/Phoenix", "America/Port-au-Prince", "America/Port_of_Spain", "America/Porto_Velho", "America/Puerto_Rico", "America/Punta_Arenas", "America/Rankin_Inlet", "America/Recife", "America/Regina", "America/Resolute", "America/Rio_Branco", "America/Santarem", "America/Santiago", "America/Santo_Domingo", "America/Sao_Paulo", "America/Scoresbysund", "America/Sitka", "America/St_Barthelemy", "America/St_Johns", "America/St_Kitts", "America/St_Lucia", "America/St_Thomas", "America/St_Vincent", "America/Swift_Current", "America/Tegucigalpa", "America/Thule", "America/Tijuana", "America/Toronto", "America/Tortola", "America/Vancouver", "America/Whitehorse", "America/Winnipeg", "America/Yakutat", "Antarctica/Casey", "Antarctica/Davis", "Antarctica/DumontDUrville", "Antarctica/Macquarie", "Antarctica/Mawson", "Antarctica/McMurdo", "Antarctica/Palmer", "Antarctica/Rothera", "Antarctica/Syowa", "Antarctica/Troll", "Antarctica/Vostok", "Arctic/Longyearbyen", "Asia/Aden", "Asia/Almaty", "Asia/Amman", "Asia/Anadyr", "Asia/Aqtau", "Asia/Aqtobe", "Asia/Ashgabat", "Asia/Atyrau", "Asia/Baghdad", "Asia/Bahrain", "Asia/Baku", "Asia/Bangkok", "Asia/Barnaul", "Asia/Beirut", "Asia/Bishkek", "Asia/Brunei", "Asia/Chita", "Asia/Colombo", "Asia/Damascus", "Asia/Dhaka", "Asia/Dili", "Asia/Dubai", "Asia/Dushanbe", "Asia/Famagusta", "Asia/Gaza", "Asia/Hebron", "Asia/Ho_Chi_Minh", "Asia/Hong_Kong", "Asia/Hovd", "Asia/Irkutsk", "Asia/Jakarta", "Asia/Jayapura", "Asia/Jerusalem", "Asia/Kabul", "Asia/Kamchatka", "Asia/Karachi", "Asia/Kathmandu", "Asia/Khandyga", "Asia/Kolkata", "Asia/Krasnoyarsk", "Asia/Kuala_Lumpur", "Asia/Kuching", "Asia/Kuwait", "Asia/Macau", "Asia/Magadan", "Asia/Makassar", "Asia/Manila", "Asia/Muscat", "Asia/Nicosia", "Asia/Novokuznetsk", "Asia/Novosibirsk", "Asia/Omsk", "Asia/Oral", "Asia/Phnom_Penh", "Asia/Pontianak", "Asia/Pyongyang", "Asia/Qatar", "Asia/Qostanay", "Asia/Qyzylorda", "Asia/Riyadh", "Asia/Sakhalin", "Asia/Samarkand", "Asia/Seoul", "Asia/Shanghai", "Asia/Singapore", "Asia/Srednekolymsk", "Asia/Taipei", "Asia/Tashkent", "Asia/Tbilisi", "Asia/Tehran", "Asia/Thimphu", "Asia/Tokyo", "Asia/Tomsk", "Asia/Ulaanbaatar", "Asia/Urumqi", "Asia/Ust-Nera", "Asia/Vientiane", "Asia/Vladivostok", "Asia/Yakutsk", "Asia/Yangon", "Asia/Yekaterinburg", "Asia/Yerevan", "Atlantic/Azores", "Atlantic/Bermuda", "Atlantic/Canary", "Atlantic/Cape_Verde", "Atlantic/Faroe", "Atlantic/Madeira", "Atlantic/Reykjavik", "Atlantic/South_Georgia", "Atlantic/St_Helena", "Atlantic/Stanley", "Australia/Adelaide", "Australia/Brisbane", "Australia/Broken_Hill", "Australia/Darwin", "Australia/Eucla", "Australia/Hobart", "Australia/Lindeman", "Australia/Lord_Howe", "Australia/Melbourne", "Australia/Perth", "Australia/Sydney", "Canada/Atlantic", "Canada/Central", "Canada/Eastern", "Canada/Mountain", "Canada/Newfoundland", "Canada/Pacific", "Europe/Amsterdam", "Europe/Andorra", "Europe/Astrakhan", "Europe/Athens", "Europe/Belgrade", "Europe/Berlin", "Europe/Bratislava", "Europe/Brussels", "Europe/Bucharest", "Europe/Budapest", "Europe/Busingen", "Europe/Chisinau", "Europe/Copenhagen", "Europe/Dublin", "Europe/Gibraltar", "Europe/Guernsey", "Europe/Helsinki", "Europe/Isle_of_Man", "Europe/Istanbul", "Europe/Jersey", "Europe/Kaliningrad", "Europe/Kirov", "Europe/Kyiv", "Europe/Lisbon", "Europe/Ljubljana", "Europe/London", "Europe/Luxembourg", "Europe/Madrid", "Europe/Malta", "Europe/Mariehamn", "Europe/Minsk", "Europe/Monaco", "Europe/Moscow", "Europe/Oslo", "Europe/Paris", "Europe/Podgorica", "Europe/Prague", "Europe/Riga", "Europe/Rome", "Europe/Samara", "Europe/San_Marino", "Europe/Sarajevo", "Europe/Saratov", "Europe/Simferopol", "Europe/Skopje", "Europe/Sofia", "Europe/Stockholm", "Europe/Tallinn", "Europe/Tirane", "Europe/Ulyanovsk", "Europe/Vaduz", "Europe/Vatican", "Europe/Vienna", "Europe/Vilnius", "Europe/Volgograd", "Europe/Warsaw", "Europe/Zagreb", "Europe/Zurich", "GMT", "Indian/Antananarivo", "Indian/Chagos", "Indian/Christmas", "Indian/Cocos", "Indian/Comoro", "Indian/Kerguelen", "Indian/Mahe", "Indian/Maldives", "Indian/Mauritius", "Indian/Mayotte", "Indian/Reunion", "Pacific/Apia", "Pacific/Auckland", "Pacific/Bougainville", "Pacific/Chatham", "Pacific/Chuuk", "Pacific/Easter", "Pacific/Efate", "Pacific/Fakaofo", "Pacific/Fiji", "Pacific/Funafuti", "Pacific/Galapagos", "Pacific/Gambier", "Pacific/Guadalcanal", "Pacific/Guam", "Pacific/Honolulu", "Pacific/Kanton", "Pacific/Kiritimati", "Pacific/Kosrae", "Pacific/Kwajalein", "Pacific/Majuro", "Pacific/Marquesas", "Pacific/Midway", "Pacific/Nauru", "Pacific/Niue", "Pacific/Norfolk", "Pacific/Noumea", "Pacific/Pago_Pago", "Pacific/Palau", "Pacific/Pitcairn", "Pacific/Pohnpei", "Pacific/Port_Moresby", "Pacific/Rarotonga", "Pacific/Saipan", "Pacific/Tahiti", "Pacific/Tarawa", "Pacific/Tongatapu", "Pacific/Wake", "Pacific/Wallis", "US/Alaska", "US/Arizona", "US/Central", "US/Eastern", "US/Hawaii", "US/Mountain", "US/Pacific", "UTC"))) {
+          stop(paste("Error! \"", this_object$`timezone`, "\" cannot be assigned to `timezone`. Must be \"Africa/Abidjan\", \"Africa/Accra\", \"Africa/Addis_Ababa\", \"Africa/Algiers\", \"Africa/Asmara\", \"Africa/Bamako\", \"Africa/Bangui\", \"Africa/Banjul\", \"Africa/Bissau\", \"Africa/Blantyre\", \"Africa/Brazzaville\", \"Africa/Bujumbura\", \"Africa/Cairo\", \"Africa/Casablanca\", \"Africa/Ceuta\", \"Africa/Conakry\", \"Africa/Dakar\", \"Africa/Dar_es_Salaam\", \"Africa/Djibouti\", \"Africa/Douala\", \"Africa/El_Aaiun\", \"Africa/Freetown\", \"Africa/Gaborone\", \"Africa/Harare\", \"Africa/Johannesburg\", \"Africa/Juba\", \"Africa/Kampala\", \"Africa/Khartoum\", \"Africa/Kigali\", \"Africa/Kinshasa\", \"Africa/Lagos\", \"Africa/Libreville\", \"Africa/Lome\", \"Africa/Luanda\", \"Africa/Lubumbashi\", \"Africa/Lusaka\", \"Africa/Malabo\", \"Africa/Maputo\", \"Africa/Maseru\", \"Africa/Mbabane\", \"Africa/Mogadishu\", \"Africa/Monrovia\", \"Africa/Nairobi\", \"Africa/Ndjamena\", \"Africa/Niamey\", \"Africa/Nouakchott\", \"Africa/Ouagadougou\", \"Africa/Porto-Novo\", \"Africa/Sao_Tome\", \"Africa/Tripoli\", \"Africa/Tunis\", \"Africa/Windhoek\", \"America/Adak\", \"America/Anchorage\", \"America/Anguilla\", \"America/Antigua\", \"America/Araguaina\", \"America/Argentina/Buenos_Aires\", \"America/Argentina/Catamarca\", \"America/Argentina/Cordoba\", \"America/Argentina/Jujuy\", \"America/Argentina/La_Rioja\", \"America/Argentina/Mendoza\", \"America/Argentina/Rio_Gallegos\", \"America/Argentina/Salta\", \"America/Argentina/San_Juan\", \"America/Argentina/San_Luis\", \"America/Argentina/Tucuman\", \"America/Argentina/Ushuaia\", \"America/Aruba\", \"America/Asuncion\", \"America/Atikokan\", \"America/Bahia\", \"America/Bahia_Banderas\", \"America/Barbados\", \"America/Belem\", \"America/Belize\", \"America/Blanc-Sablon\", \"America/Boa_Vista\", \"America/Bogota\", \"America/Boise\", \"America/Cambridge_Bay\", \"America/Campo_Grande\", \"America/Cancun\", \"America/Caracas\", \"America/Cayenne\", \"America/Cayman\", \"America/Chicago\", \"America/Chihuahua\", \"America/Ciudad_Juarez\", \"America/Costa_Rica\", \"America/Creston\", \"America/Cuiaba\", \"America/Curacao\", \"America/Danmarkshavn\", \"America/Dawson\", \"America/Dawson_Creek\", \"America/Denver\", \"America/Detroit\", \"America/Dominica\", \"America/Edmonton\", \"America/Eirunepe\", \"America/El_Salvador\", \"America/Fort_Nelson\", \"America/Fortaleza\", \"America/Glace_Bay\", \"America/Goose_Bay\", \"America/Grand_Turk\", \"America/Grenada\", \"America/Guadeloupe\", \"America/Guatemala\", \"America/Guayaquil\", \"America/Guyana\", \"America/Halifax\", \"America/Havana\", \"America/Hermosillo\", \"America/Indiana/Indianapolis\", \"America/Indiana/Knox\", \"America/Indiana/Marengo\", \"America/Indiana/Petersburg\", \"America/Indiana/Tell_City\", \"America/Indiana/Vevay\", \"America/Indiana/Vincennes\", \"America/Indiana/Winamac\", \"America/Inuvik\", \"America/Iqaluit\", \"America/Jamaica\", \"America/Juneau\", \"America/Kentucky/Louisville\", \"America/Kentucky/Monticello\", \"America/Kralendijk\", \"America/La_Paz\", \"America/Lima\", \"America/Los_Angeles\", \"America/Lower_Princes\", \"America/Maceio\", \"America/Managua\", \"America/Manaus\", \"America/Marigot\", \"America/Martinique\", \"America/Matamoros\", \"America/Mazatlan\", \"America/Menominee\", \"America/Merida\", \"America/Metlakatla\", \"America/Mexico_City\", \"America/Miquelon\", \"America/Moncton\", \"America/Monterrey\", \"America/Montevideo\", \"America/Montserrat\", \"America/Nassau\", \"America/New_York\", \"America/Nome\", \"America/Noronha\", \"America/North_Dakota/Beulah\", \"America/North_Dakota/Center\", \"America/North_Dakota/New_Salem\", \"America/Nuuk\", \"America/Ojinaga\", \"America/Panama\", \"America/Paramaribo\", \"America/Phoenix\", \"America/Port-au-Prince\", \"America/Port_of_Spain\", \"America/Porto_Velho\", \"America/Puerto_Rico\", \"America/Punta_Arenas\", \"America/Rankin_Inlet\", \"America/Recife\", \"America/Regina\", \"America/Resolute\", \"America/Rio_Branco\", \"America/Santarem\", \"America/Santiago\", \"America/Santo_Domingo\", \"America/Sao_Paulo\", \"America/Scoresbysund\", \"America/Sitka\", \"America/St_Barthelemy\", \"America/St_Johns\", \"America/St_Kitts\", \"America/St_Lucia\", \"America/St_Thomas\", \"America/St_Vincent\", \"America/Swift_Current\", \"America/Tegucigalpa\", \"America/Thule\", \"America/Tijuana\", \"America/Toronto\", \"America/Tortola\", \"America/Vancouver\", \"America/Whitehorse\", \"America/Winnipeg\", \"America/Yakutat\", \"Antarctica/Casey\", \"Antarctica/Davis\", \"Antarctica/DumontDUrville\", \"Antarctica/Macquarie\", \"Antarctica/Mawson\", \"Antarctica/McMurdo\", \"Antarctica/Palmer\", \"Antarctica/Rothera\", \"Antarctica/Syowa\", \"Antarctica/Troll\", \"Antarctica/Vostok\", \"Arctic/Longyearbyen\", \"Asia/Aden\", \"Asia/Almaty\", \"Asia/Amman\", \"Asia/Anadyr\", \"Asia/Aqtau\", \"Asia/Aqtobe\", \"Asia/Ashgabat\", \"Asia/Atyrau\", \"Asia/Baghdad\", \"Asia/Bahrain\", \"Asia/Baku\", \"Asia/Bangkok\", \"Asia/Barnaul\", \"Asia/Beirut\", \"Asia/Bishkek\", \"Asia/Brunei\", \"Asia/Chita\", \"Asia/Colombo\", \"Asia/Damascus\", \"Asia/Dhaka\", \"Asia/Dili\", \"Asia/Dubai\", \"Asia/Dushanbe\", \"Asia/Famagusta\", \"Asia/Gaza\", \"Asia/Hebron\", \"Asia/Ho_Chi_Minh\", \"Asia/Hong_Kong\", \"Asia/Hovd\", \"Asia/Irkutsk\", \"Asia/Jakarta\", \"Asia/Jayapura\", \"Asia/Jerusalem\", \"Asia/Kabul\", \"Asia/Kamchatka\", \"Asia/Karachi\", \"Asia/Kathmandu\", \"Asia/Khandyga\", \"Asia/Kolkata\", \"Asia/Krasnoyarsk\", \"Asia/Kuala_Lumpur\", \"Asia/Kuching\", \"Asia/Kuwait\", \"Asia/Macau\", \"Asia/Magadan\", \"Asia/Makassar\", \"Asia/Manila\", \"Asia/Muscat\", \"Asia/Nicosia\", \"Asia/Novokuznetsk\", \"Asia/Novosibirsk\", \"Asia/Omsk\", \"Asia/Oral\", \"Asia/Phnom_Penh\", \"Asia/Pontianak\", \"Asia/Pyongyang\", \"Asia/Qatar\", \"Asia/Qostanay\", \"Asia/Qyzylorda\", \"Asia/Riyadh\", \"Asia/Sakhalin\", \"Asia/Samarkand\", \"Asia/Seoul\", \"Asia/Shanghai\", \"Asia/Singapore\", \"Asia/Srednekolymsk\", \"Asia/Taipei\", \"Asia/Tashkent\", \"Asia/Tbilisi\", \"Asia/Tehran\", \"Asia/Thimphu\", \"Asia/Tokyo\", \"Asia/Tomsk\", \"Asia/Ulaanbaatar\", \"Asia/Urumqi\", \"Asia/Ust-Nera\", \"Asia/Vientiane\", \"Asia/Vladivostok\", \"Asia/Yakutsk\", \"Asia/Yangon\", \"Asia/Yekaterinburg\", \"Asia/Yerevan\", \"Atlantic/Azores\", \"Atlantic/Bermuda\", \"Atlantic/Canary\", \"Atlantic/Cape_Verde\", \"Atlantic/Faroe\", \"Atlantic/Madeira\", \"Atlantic/Reykjavik\", \"Atlantic/South_Georgia\", \"Atlantic/St_Helena\", \"Atlantic/Stanley\", \"Australia/Adelaide\", \"Australia/Brisbane\", \"Australia/Broken_Hill\", \"Australia/Darwin\", \"Australia/Eucla\", \"Australia/Hobart\", \"Australia/Lindeman\", \"Australia/Lord_Howe\", \"Australia/Melbourne\", \"Australia/Perth\", \"Australia/Sydney\", \"Canada/Atlantic\", \"Canada/Central\", \"Canada/Eastern\", \"Canada/Mountain\", \"Canada/Newfoundland\", \"Canada/Pacific\", \"Europe/Amsterdam\", \"Europe/Andorra\", \"Europe/Astrakhan\", \"Europe/Athens\", \"Europe/Belgrade\", \"Europe/Berlin\", \"Europe/Bratislava\", \"Europe/Brussels\", \"Europe/Bucharest\", \"Europe/Budapest\", \"Europe/Busingen\", \"Europe/Chisinau\", \"Europe/Copenhagen\", \"Europe/Dublin\", \"Europe/Gibraltar\", \"Europe/Guernsey\", \"Europe/Helsinki\", \"Europe/Isle_of_Man\", \"Europe/Istanbul\", \"Europe/Jersey\", \"Europe/Kaliningrad\", \"Europe/Kirov\", \"Europe/Kyiv\", \"Europe/Lisbon\", \"Europe/Ljubljana\", \"Europe/London\", \"Europe/Luxembourg\", \"Europe/Madrid\", \"Europe/Malta\", \"Europe/Mariehamn\", \"Europe/Minsk\", \"Europe/Monaco\", \"Europe/Moscow\", \"Europe/Oslo\", \"Europe/Paris\", \"Europe/Podgorica\", \"Europe/Prague\", \"Europe/Riga\", \"Europe/Rome\", \"Europe/Samara\", \"Europe/San_Marino\", \"Europe/Sarajevo\", \"Europe/Saratov\", \"Europe/Simferopol\", \"Europe/Skopje\", \"Europe/Sofia\", \"Europe/Stockholm\", \"Europe/Tallinn\", \"Europe/Tirane\", \"Europe/Ulyanovsk\", \"Europe/Vaduz\", \"Europe/Vatican\", \"Europe/Vienna\", \"Europe/Vilnius\", \"Europe/Volgograd\", \"Europe/Warsaw\", \"Europe/Zagreb\", \"Europe/Zurich\", \"GMT\", \"Indian/Antananarivo\", \"Indian/Chagos\", \"Indian/Christmas\", \"Indian/Cocos\", \"Indian/Comoro\", \"Indian/Kerguelen\", \"Indian/Mahe\", \"Indian/Maldives\", \"Indian/Mauritius\", \"Indian/Mayotte\", \"Indian/Reunion\", \"Pacific/Apia\", \"Pacific/Auckland\", \"Pacific/Bougainville\", \"Pacific/Chatham\", \"Pacific/Chuuk\", \"Pacific/Easter\", \"Pacific/Efate\", \"Pacific/Fakaofo\", \"Pacific/Fiji\", \"Pacific/Funafuti\", \"Pacific/Galapagos\", \"Pacific/Gambier\", \"Pacific/Guadalcanal\", \"Pacific/Guam\", \"Pacific/Honolulu\", \"Pacific/Kanton\", \"Pacific/Kiritimati\", \"Pacific/Kosrae\", \"Pacific/Kwajalein\", \"Pacific/Majuro\", \"Pacific/Marquesas\", \"Pacific/Midway\", \"Pacific/Nauru\", \"Pacific/Niue\", \"Pacific/Norfolk\", \"Pacific/Noumea\", \"Pacific/Pago_Pago\", \"Pacific/Palau\", \"Pacific/Pitcairn\", \"Pacific/Pohnpei\", \"Pacific/Port_Moresby\", \"Pacific/Rarotonga\", \"Pacific/Saipan\", \"Pacific/Tahiti\", \"Pacific/Tarawa\", \"Pacific/Tongatapu\", \"Pacific/Wake\", \"Pacific/Wallis\", \"US/Alaska\", \"US/Arizona\", \"US/Central\", \"US/Eastern\", \"US/Hawaii\", \"US/Mountain\", \"US/Pacific\", \"UTC\".", sep = ""))
+        }
+        self$`timezone` <- this_object$`timezone`
+      }
+      if (!is.null(this_object$`country_id`)) {
+        self$`country_id` <- this_object$`country_id`
+      }
+      if (!is.null(this_object$`nuts_2`)) {
+        self$`nuts_2` <- this_object$`nuts_2`
+      }
+      if (!is.null(this_object$`nuts_3`)) {
+        self$`nuts_3` <- this_object$`nuts_3`
+      }
+      self
+    },
+
+    #' @description
+    #' To JSON String
+    #'
+    #' @return Location in JSON format
+    toJSONString = function() {
+      jsoncontent <- c(
+        if (!is.null(self$`type`)) {
+          sprintf(
+          '"type":
+            "%s"
+                    ',
+          self$`type`
+          )
+        },
+        if (!is.null(self$`point`)) {
+          sprintf(
+          '"point":
+          %s
+          ',
+          jsonlite::toJSON(self$`point`$toJSON(), auto_unbox = TRUE, digits = NA)
+          )
+        },
+        if (!is.null(self$`timezone`)) {
+          sprintf(
+          '"timezone":
+            "%s"
+                    ',
+          self$`timezone`
+          )
+        },
+        if (!is.null(self$`country_id`)) {
+          sprintf(
+          '"country_id":
+            %d
+                    ',
+          self$`country_id`
+          )
+        },
+        if (!is.null(self$`nuts_2`)) {
+          sprintf(
+          '"nuts_2":
+            "%s"
+                    ',
+          self$`nuts_2`
+          )
+        },
+        if (!is.null(self$`nuts_3`)) {
+          sprintf(
+          '"nuts_3":
+            "%s"
+                    ',
+          self$`nuts_3`
+          )
+        }
+      )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of Location
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of Location
+    fromJSONString = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("current", "selected", "missing"))) {
+        stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"current\", \"selected\", \"missing\".", sep = ""))
+      }
+      self$`type` <- this_object$`type`
+      self$`point` <- LocationPoint$new()$fromJSON(jsonlite::toJSON(this_object$`point`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`timezone`) && !(this_object$`timezone` %in% c("Africa/Abidjan", "Africa/Accra", "Africa/Addis_Ababa", "Africa/Algiers", "Africa/Asmara", "Africa/Bamako", "Africa/Bangui", "Africa/Banjul", "Africa/Bissau", "Africa/Blantyre", "Africa/Brazzaville", "Africa/Bujumbura", "Africa/Cairo", "Africa/Casablanca", "Africa/Ceuta", "Africa/Conakry", "Africa/Dakar", "Africa/Dar_es_Salaam", "Africa/Djibouti", "Africa/Douala", "Africa/El_Aaiun", "Africa/Freetown", "Africa/Gaborone", "Africa/Harare", "Africa/Johannesburg", "Africa/Juba", "Africa/Kampala", "Africa/Khartoum", "Africa/Kigali", "Africa/Kinshasa", "Africa/Lagos", "Africa/Libreville", "Africa/Lome", "Africa/Luanda", "Africa/Lubumbashi", "Africa/Lusaka", "Africa/Malabo", "Africa/Maputo", "Africa/Maseru", "Africa/Mbabane", "Africa/Mogadishu", "Africa/Monrovia", "Africa/Nairobi", "Africa/Ndjamena", "Africa/Niamey", "Africa/Nouakchott", "Africa/Ouagadougou", "Africa/Porto-Novo", "Africa/Sao_Tome", "Africa/Tripoli", "Africa/Tunis", "Africa/Windhoek", "America/Adak", "America/Anchorage", "America/Anguilla", "America/Antigua", "America/Araguaina", "America/Argentina/Buenos_Aires", "America/Argentina/Catamarca", "America/Argentina/Cordoba", "America/Argentina/Jujuy", "America/Argentina/La_Rioja", "America/Argentina/Mendoza", "America/Argentina/Rio_Gallegos", "America/Argentina/Salta", "America/Argentina/San_Juan", "America/Argentina/San_Luis", "America/Argentina/Tucuman", "America/Argentina/Ushuaia", "America/Aruba", "America/Asuncion", "America/Atikokan", "America/Bahia", "America/Bahia_Banderas", "America/Barbados", "America/Belem", "America/Belize", "America/Blanc-Sablon", "America/Boa_Vista", "America/Bogota", "America/Boise", "America/Cambridge_Bay", "America/Campo_Grande", "America/Cancun", "America/Caracas", "America/Cayenne", "America/Cayman", "America/Chicago", "America/Chihuahua", "America/Ciudad_Juarez", "America/Costa_Rica", "America/Creston", "America/Cuiaba", "America/Curacao", "America/Danmarkshavn", "America/Dawson", "America/Dawson_Creek", "America/Denver", "America/Detroit", "America/Dominica", "America/Edmonton", "America/Eirunepe", "America/El_Salvador", "America/Fort_Nelson", "America/Fortaleza", "America/Glace_Bay", "America/Goose_Bay", "America/Grand_Turk", "America/Grenada", "America/Guadeloupe", "America/Guatemala", "America/Guayaquil", "America/Guyana", "America/Halifax", "America/Havana", "America/Hermosillo", "America/Indiana/Indianapolis", "America/Indiana/Knox", "America/Indiana/Marengo", "America/Indiana/Petersburg", "America/Indiana/Tell_City", "America/Indiana/Vevay", "America/Indiana/Vincennes", "America/Indiana/Winamac", "America/Inuvik", "America/Iqaluit", "America/Jamaica", "America/Juneau", "America/Kentucky/Louisville", "America/Kentucky/Monticello", "America/Kralendijk", "America/La_Paz", "America/Lima", "America/Los_Angeles", "America/Lower_Princes", "America/Maceio", "America/Managua", "America/Manaus", "America/Marigot", "America/Martinique", "America/Matamoros", "America/Mazatlan", "America/Menominee", "America/Merida", "America/Metlakatla", "America/Mexico_City", "America/Miquelon", "America/Moncton", "America/Monterrey", "America/Montevideo", "America/Montserrat", "America/Nassau", "America/New_York", "America/Nome", "America/Noronha", "America/North_Dakota/Beulah", "America/North_Dakota/Center", "America/North_Dakota/New_Salem", "America/Nuuk", "America/Ojinaga", "America/Panama", "America/Paramaribo", "America/Phoenix", "America/Port-au-Prince", "America/Port_of_Spain", "America/Porto_Velho", "America/Puerto_Rico", "America/Punta_Arenas", "America/Rankin_Inlet", "America/Recife", "America/Regina", "America/Resolute", "America/Rio_Branco", "America/Santarem", "America/Santiago", "America/Santo_Domingo", "America/Sao_Paulo", "America/Scoresbysund", "America/Sitka", "America/St_Barthelemy", "America/St_Johns", "America/St_Kitts", "America/St_Lucia", "America/St_Thomas", "America/St_Vincent", "America/Swift_Current", "America/Tegucigalpa", "America/Thule", "America/Tijuana", "America/Toronto", "America/Tortola", "America/Vancouver", "America/Whitehorse", "America/Winnipeg", "America/Yakutat", "Antarctica/Casey", "Antarctica/Davis", "Antarctica/DumontDUrville", "Antarctica/Macquarie", "Antarctica/Mawson", "Antarctica/McMurdo", "Antarctica/Palmer", "Antarctica/Rothera", "Antarctica/Syowa", "Antarctica/Troll", "Antarctica/Vostok", "Arctic/Longyearbyen", "Asia/Aden", "Asia/Almaty", "Asia/Amman", "Asia/Anadyr", "Asia/Aqtau", "Asia/Aqtobe", "Asia/Ashgabat", "Asia/Atyrau", "Asia/Baghdad", "Asia/Bahrain", "Asia/Baku", "Asia/Bangkok", "Asia/Barnaul", "Asia/Beirut", "Asia/Bishkek", "Asia/Brunei", "Asia/Chita", "Asia/Colombo", "Asia/Damascus", "Asia/Dhaka", "Asia/Dili", "Asia/Dubai", "Asia/Dushanbe", "Asia/Famagusta", "Asia/Gaza", "Asia/Hebron", "Asia/Ho_Chi_Minh", "Asia/Hong_Kong", "Asia/Hovd", "Asia/Irkutsk", "Asia/Jakarta", "Asia/Jayapura", "Asia/Jerusalem", "Asia/Kabul", "Asia/Kamchatka", "Asia/Karachi", "Asia/Kathmandu", "Asia/Khandyga", "Asia/Kolkata", "Asia/Krasnoyarsk", "Asia/Kuala_Lumpur", "Asia/Kuching", "Asia/Kuwait", "Asia/Macau", "Asia/Magadan", "Asia/Makassar", "Asia/Manila", "Asia/Muscat", "Asia/Nicosia", "Asia/Novokuznetsk", "Asia/Novosibirsk", "Asia/Omsk", "Asia/Oral", "Asia/Phnom_Penh", "Asia/Pontianak", "Asia/Pyongyang", "Asia/Qatar", "Asia/Qostanay", "Asia/Qyzylorda", "Asia/Riyadh", "Asia/Sakhalin", "Asia/Samarkand", "Asia/Seoul", "Asia/Shanghai", "Asia/Singapore", "Asia/Srednekolymsk", "Asia/Taipei", "Asia/Tashkent", "Asia/Tbilisi", "Asia/Tehran", "Asia/Thimphu", "Asia/Tokyo", "Asia/Tomsk", "Asia/Ulaanbaatar", "Asia/Urumqi", "Asia/Ust-Nera", "Asia/Vientiane", "Asia/Vladivostok", "Asia/Yakutsk", "Asia/Yangon", "Asia/Yekaterinburg", "Asia/Yerevan", "Atlantic/Azores", "Atlantic/Bermuda", "Atlantic/Canary", "Atlantic/Cape_Verde", "Atlantic/Faroe", "Atlantic/Madeira", "Atlantic/Reykjavik", "Atlantic/South_Georgia", "Atlantic/St_Helena", "Atlantic/Stanley", "Australia/Adelaide", "Australia/Brisbane", "Australia/Broken_Hill", "Australia/Darwin", "Australia/Eucla", "Australia/Hobart", "Australia/Lindeman", "Australia/Lord_Howe", "Australia/Melbourne", "Australia/Perth", "Australia/Sydney", "Canada/Atlantic", "Canada/Central", "Canada/Eastern", "Canada/Mountain", "Canada/Newfoundland", "Canada/Pacific", "Europe/Amsterdam", "Europe/Andorra", "Europe/Astrakhan", "Europe/Athens", "Europe/Belgrade", "Europe/Berlin", "Europe/Bratislava", "Europe/Brussels", "Europe/Bucharest", "Europe/Budapest", "Europe/Busingen", "Europe/Chisinau", "Europe/Copenhagen", "Europe/Dublin", "Europe/Gibraltar", "Europe/Guernsey", "Europe/Helsinki", "Europe/Isle_of_Man", "Europe/Istanbul", "Europe/Jersey", "Europe/Kaliningrad", "Europe/Kirov", "Europe/Kyiv", "Europe/Lisbon", "Europe/Ljubljana", "Europe/London", "Europe/Luxembourg", "Europe/Madrid", "Europe/Malta", "Europe/Mariehamn", "Europe/Minsk", "Europe/Monaco", "Europe/Moscow", "Europe/Oslo", "Europe/Paris", "Europe/Podgorica", "Europe/Prague", "Europe/Riga", "Europe/Rome", "Europe/Samara", "Europe/San_Marino", "Europe/Sarajevo", "Europe/Saratov", "Europe/Simferopol", "Europe/Skopje", "Europe/Sofia", "Europe/Stockholm", "Europe/Tallinn", "Europe/Tirane", "Europe/Ulyanovsk", "Europe/Vaduz", "Europe/Vatican", "Europe/Vienna", "Europe/Vilnius", "Europe/Volgograd", "Europe/Warsaw", "Europe/Zagreb", "Europe/Zurich", "GMT", "Indian/Antananarivo", "Indian/Chagos", "Indian/Christmas", "Indian/Cocos", "Indian/Comoro", "Indian/Kerguelen", "Indian/Mahe", "Indian/Maldives", "Indian/Mauritius", "Indian/Mayotte", "Indian/Reunion", "Pacific/Apia", "Pacific/Auckland", "Pacific/Bougainville", "Pacific/Chatham", "Pacific/Chuuk", "Pacific/Easter", "Pacific/Efate", "Pacific/Fakaofo", "Pacific/Fiji", "Pacific/Funafuti", "Pacific/Galapagos", "Pacific/Gambier", "Pacific/Guadalcanal", "Pacific/Guam", "Pacific/Honolulu", "Pacific/Kanton", "Pacific/Kiritimati", "Pacific/Kosrae", "Pacific/Kwajalein", "Pacific/Majuro", "Pacific/Marquesas", "Pacific/Midway", "Pacific/Nauru", "Pacific/Niue", "Pacific/Norfolk", "Pacific/Noumea", "Pacific/Pago_Pago", "Pacific/Palau", "Pacific/Pitcairn", "Pacific/Pohnpei", "Pacific/Port_Moresby", "Pacific/Rarotonga", "Pacific/Saipan", "Pacific/Tahiti", "Pacific/Tarawa", "Pacific/Tongatapu", "Pacific/Wake", "Pacific/Wallis", "US/Alaska", "US/Arizona", "US/Central", "US/Eastern", "US/Hawaii", "US/Mountain", "US/Pacific", "UTC"))) {
+        stop(paste("Error! \"", this_object$`timezone`, "\" cannot be assigned to `timezone`. Must be \"Africa/Abidjan\", \"Africa/Accra\", \"Africa/Addis_Ababa\", \"Africa/Algiers\", \"Africa/Asmara\", \"Africa/Bamako\", \"Africa/Bangui\", \"Africa/Banjul\", \"Africa/Bissau\", \"Africa/Blantyre\", \"Africa/Brazzaville\", \"Africa/Bujumbura\", \"Africa/Cairo\", \"Africa/Casablanca\", \"Africa/Ceuta\", \"Africa/Conakry\", \"Africa/Dakar\", \"Africa/Dar_es_Salaam\", \"Africa/Djibouti\", \"Africa/Douala\", \"Africa/El_Aaiun\", \"Africa/Freetown\", \"Africa/Gaborone\", \"Africa/Harare\", \"Africa/Johannesburg\", \"Africa/Juba\", \"Africa/Kampala\", \"Africa/Khartoum\", \"Africa/Kigali\", \"Africa/Kinshasa\", \"Africa/Lagos\", \"Africa/Libreville\", \"Africa/Lome\", \"Africa/Luanda\", \"Africa/Lubumbashi\", \"Africa/Lusaka\", \"Africa/Malabo\", \"Africa/Maputo\", \"Africa/Maseru\", \"Africa/Mbabane\", \"Africa/Mogadishu\", \"Africa/Monrovia\", \"Africa/Nairobi\", \"Africa/Ndjamena\", \"Africa/Niamey\", \"Africa/Nouakchott\", \"Africa/Ouagadougou\", \"Africa/Porto-Novo\", \"Africa/Sao_Tome\", \"Africa/Tripoli\", \"Africa/Tunis\", \"Africa/Windhoek\", \"America/Adak\", \"America/Anchorage\", \"America/Anguilla\", \"America/Antigua\", \"America/Araguaina\", \"America/Argentina/Buenos_Aires\", \"America/Argentina/Catamarca\", \"America/Argentina/Cordoba\", \"America/Argentina/Jujuy\", \"America/Argentina/La_Rioja\", \"America/Argentina/Mendoza\", \"America/Argentina/Rio_Gallegos\", \"America/Argentina/Salta\", \"America/Argentina/San_Juan\", \"America/Argentina/San_Luis\", \"America/Argentina/Tucuman\", \"America/Argentina/Ushuaia\", \"America/Aruba\", \"America/Asuncion\", \"America/Atikokan\", \"America/Bahia\", \"America/Bahia_Banderas\", \"America/Barbados\", \"America/Belem\", \"America/Belize\", \"America/Blanc-Sablon\", \"America/Boa_Vista\", \"America/Bogota\", \"America/Boise\", \"America/Cambridge_Bay\", \"America/Campo_Grande\", \"America/Cancun\", \"America/Caracas\", \"America/Cayenne\", \"America/Cayman\", \"America/Chicago\", \"America/Chihuahua\", \"America/Ciudad_Juarez\", \"America/Costa_Rica\", \"America/Creston\", \"America/Cuiaba\", \"America/Curacao\", \"America/Danmarkshavn\", \"America/Dawson\", \"America/Dawson_Creek\", \"America/Denver\", \"America/Detroit\", \"America/Dominica\", \"America/Edmonton\", \"America/Eirunepe\", \"America/El_Salvador\", \"America/Fort_Nelson\", \"America/Fortaleza\", \"America/Glace_Bay\", \"America/Goose_Bay\", \"America/Grand_Turk\", \"America/Grenada\", \"America/Guadeloupe\", \"America/Guatemala\", \"America/Guayaquil\", \"America/Guyana\", \"America/Halifax\", \"America/Havana\", \"America/Hermosillo\", \"America/Indiana/Indianapolis\", \"America/Indiana/Knox\", \"America/Indiana/Marengo\", \"America/Indiana/Petersburg\", \"America/Indiana/Tell_City\", \"America/Indiana/Vevay\", \"America/Indiana/Vincennes\", \"America/Indiana/Winamac\", \"America/Inuvik\", \"America/Iqaluit\", \"America/Jamaica\", \"America/Juneau\", \"America/Kentucky/Louisville\", \"America/Kentucky/Monticello\", \"America/Kralendijk\", \"America/La_Paz\", \"America/Lima\", \"America/Los_Angeles\", \"America/Lower_Princes\", \"America/Maceio\", \"America/Managua\", \"America/Manaus\", \"America/Marigot\", \"America/Martinique\", \"America/Matamoros\", \"America/Mazatlan\", \"America/Menominee\", \"America/Merida\", \"America/Metlakatla\", \"America/Mexico_City\", \"America/Miquelon\", \"America/Moncton\", \"America/Monterrey\", \"America/Montevideo\", \"America/Montserrat\", \"America/Nassau\", \"America/New_York\", \"America/Nome\", \"America/Noronha\", \"America/North_Dakota/Beulah\", \"America/North_Dakota/Center\", \"America/North_Dakota/New_Salem\", \"America/Nuuk\", \"America/Ojinaga\", \"America/Panama\", \"America/Paramaribo\", \"America/Phoenix\", \"America/Port-au-Prince\", \"America/Port_of_Spain\", \"America/Porto_Velho\", \"America/Puerto_Rico\", \"America/Punta_Arenas\", \"America/Rankin_Inlet\", \"America/Recife\", \"America/Regina\", \"America/Resolute\", \"America/Rio_Branco\", \"America/Santarem\", \"America/Santiago\", \"America/Santo_Domingo\", \"America/Sao_Paulo\", \"America/Scoresbysund\", \"America/Sitka\", \"America/St_Barthelemy\", \"America/St_Johns\", \"America/St_Kitts\", \"America/St_Lucia\", \"America/St_Thomas\", \"America/St_Vincent\", \"America/Swift_Current\", \"America/Tegucigalpa\", \"America/Thule\", \"America/Tijuana\", \"America/Toronto\", \"America/Tortola\", \"America/Vancouver\", \"America/Whitehorse\", \"America/Winnipeg\", \"America/Yakutat\", \"Antarctica/Casey\", \"Antarctica/Davis\", \"Antarctica/DumontDUrville\", \"Antarctica/Macquarie\", \"Antarctica/Mawson\", \"Antarctica/McMurdo\", \"Antarctica/Palmer\", \"Antarctica/Rothera\", \"Antarctica/Syowa\", \"Antarctica/Troll\", \"Antarctica/Vostok\", \"Arctic/Longyearbyen\", \"Asia/Aden\", \"Asia/Almaty\", \"Asia/Amman\", \"Asia/Anadyr\", \"Asia/Aqtau\", \"Asia/Aqtobe\", \"Asia/Ashgabat\", \"Asia/Atyrau\", \"Asia/Baghdad\", \"Asia/Bahrain\", \"Asia/Baku\", \"Asia/Bangkok\", \"Asia/Barnaul\", \"Asia/Beirut\", \"Asia/Bishkek\", \"Asia/Brunei\", \"Asia/Chita\", \"Asia/Colombo\", \"Asia/Damascus\", \"Asia/Dhaka\", \"Asia/Dili\", \"Asia/Dubai\", \"Asia/Dushanbe\", \"Asia/Famagusta\", \"Asia/Gaza\", \"Asia/Hebron\", \"Asia/Ho_Chi_Minh\", \"Asia/Hong_Kong\", \"Asia/Hovd\", \"Asia/Irkutsk\", \"Asia/Jakarta\", \"Asia/Jayapura\", \"Asia/Jerusalem\", \"Asia/Kabul\", \"Asia/Kamchatka\", \"Asia/Karachi\", \"Asia/Kathmandu\", \"Asia/Khandyga\", \"Asia/Kolkata\", \"Asia/Krasnoyarsk\", \"Asia/Kuala_Lumpur\", \"Asia/Kuching\", \"Asia/Kuwait\", \"Asia/Macau\", \"Asia/Magadan\", \"Asia/Makassar\", \"Asia/Manila\", \"Asia/Muscat\", \"Asia/Nicosia\", \"Asia/Novokuznetsk\", \"Asia/Novosibirsk\", \"Asia/Omsk\", \"Asia/Oral\", \"Asia/Phnom_Penh\", \"Asia/Pontianak\", \"Asia/Pyongyang\", \"Asia/Qatar\", \"Asia/Qostanay\", \"Asia/Qyzylorda\", \"Asia/Riyadh\", \"Asia/Sakhalin\", \"Asia/Samarkand\", \"Asia/Seoul\", \"Asia/Shanghai\", \"Asia/Singapore\", \"Asia/Srednekolymsk\", \"Asia/Taipei\", \"Asia/Tashkent\", \"Asia/Tbilisi\", \"Asia/Tehran\", \"Asia/Thimphu\", \"Asia/Tokyo\", \"Asia/Tomsk\", \"Asia/Ulaanbaatar\", \"Asia/Urumqi\", \"Asia/Ust-Nera\", \"Asia/Vientiane\", \"Asia/Vladivostok\", \"Asia/Yakutsk\", \"Asia/Yangon\", \"Asia/Yekaterinburg\", \"Asia/Yerevan\", \"Atlantic/Azores\", \"Atlantic/Bermuda\", \"Atlantic/Canary\", \"Atlantic/Cape_Verde\", \"Atlantic/Faroe\", \"Atlantic/Madeira\", \"Atlantic/Reykjavik\", \"Atlantic/South_Georgia\", \"Atlantic/St_Helena\", \"Atlantic/Stanley\", \"Australia/Adelaide\", \"Australia/Brisbane\", \"Australia/Broken_Hill\", \"Australia/Darwin\", \"Australia/Eucla\", \"Australia/Hobart\", \"Australia/Lindeman\", \"Australia/Lord_Howe\", \"Australia/Melbourne\", \"Australia/Perth\", \"Australia/Sydney\", \"Canada/Atlantic\", \"Canada/Central\", \"Canada/Eastern\", \"Canada/Mountain\", \"Canada/Newfoundland\", \"Canada/Pacific\", \"Europe/Amsterdam\", \"Europe/Andorra\", \"Europe/Astrakhan\", \"Europe/Athens\", \"Europe/Belgrade\", \"Europe/Berlin\", \"Europe/Bratislava\", \"Europe/Brussels\", \"Europe/Bucharest\", \"Europe/Budapest\", \"Europe/Busingen\", \"Europe/Chisinau\", \"Europe/Copenhagen\", \"Europe/Dublin\", \"Europe/Gibraltar\", \"Europe/Guernsey\", \"Europe/Helsinki\", \"Europe/Isle_of_Man\", \"Europe/Istanbul\", \"Europe/Jersey\", \"Europe/Kaliningrad\", \"Europe/Kirov\", \"Europe/Kyiv\", \"Europe/Lisbon\", \"Europe/Ljubljana\", \"Europe/London\", \"Europe/Luxembourg\", \"Europe/Madrid\", \"Europe/Malta\", \"Europe/Mariehamn\", \"Europe/Minsk\", \"Europe/Monaco\", \"Europe/Moscow\", \"Europe/Oslo\", \"Europe/Paris\", \"Europe/Podgorica\", \"Europe/Prague\", \"Europe/Riga\", \"Europe/Rome\", \"Europe/Samara\", \"Europe/San_Marino\", \"Europe/Sarajevo\", \"Europe/Saratov\", \"Europe/Simferopol\", \"Europe/Skopje\", \"Europe/Sofia\", \"Europe/Stockholm\", \"Europe/Tallinn\", \"Europe/Tirane\", \"Europe/Ulyanovsk\", \"Europe/Vaduz\", \"Europe/Vatican\", \"Europe/Vienna\", \"Europe/Vilnius\", \"Europe/Volgograd\", \"Europe/Warsaw\", \"Europe/Zagreb\", \"Europe/Zurich\", \"GMT\", \"Indian/Antananarivo\", \"Indian/Chagos\", \"Indian/Christmas\", \"Indian/Cocos\", \"Indian/Comoro\", \"Indian/Kerguelen\", \"Indian/Mahe\", \"Indian/Maldives\", \"Indian/Mauritius\", \"Indian/Mayotte\", \"Indian/Reunion\", \"Pacific/Apia\", \"Pacific/Auckland\", \"Pacific/Bougainville\", \"Pacific/Chatham\", \"Pacific/Chuuk\", \"Pacific/Easter\", \"Pacific/Efate\", \"Pacific/Fakaofo\", \"Pacific/Fiji\", \"Pacific/Funafuti\", \"Pacific/Galapagos\", \"Pacific/Gambier\", \"Pacific/Guadalcanal\", \"Pacific/Guam\", \"Pacific/Honolulu\", \"Pacific/Kanton\", \"Pacific/Kiritimati\", \"Pacific/Kosrae\", \"Pacific/Kwajalein\", \"Pacific/Majuro\", \"Pacific/Marquesas\", \"Pacific/Midway\", \"Pacific/Nauru\", \"Pacific/Niue\", \"Pacific/Norfolk\", \"Pacific/Noumea\", \"Pacific/Pago_Pago\", \"Pacific/Palau\", \"Pacific/Pitcairn\", \"Pacific/Pohnpei\", \"Pacific/Port_Moresby\", \"Pacific/Rarotonga\", \"Pacific/Saipan\", \"Pacific/Tahiti\", \"Pacific/Tarawa\", \"Pacific/Tongatapu\", \"Pacific/Wake\", \"Pacific/Wallis\", \"US/Alaska\", \"US/Arizona\", \"US/Central\", \"US/Eastern\", \"US/Hawaii\", \"US/Mountain\", \"US/Pacific\", \"UTC\".", sep = ""))
+      }
+      self$`timezone` <- this_object$`timezone`
+      self$`country_id` <- this_object$`country_id`
+      self$`nuts_2` <- this_object$`nuts_2`
+      self$`nuts_3` <- this_object$`nuts_3`
+      self
+    },
+
+    #' @description
+    #' Validate JSON input with respect to Location and throw an exception if invalid
+    #'
+    #' @param input the JSON input
+    validateJSON = function(input) {
+      input_json <- jsonlite::fromJSON(input)
+      # check the required field `type`
+      if (!is.null(input_json$`type`)) {
+        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Location: the required field `type` is missing."))
+      }
+      # check the required field `point`
+      if (!is.null(input_json$`point`)) {
+        stopifnot(R6::is.R6(input_json$`point`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Location: the required field `point` is missing."))
+      }
+      # check the required field `timezone`
+      if (!is.null(input_json$`timezone`)) {
+        if (!(is.character(input_json$`timezone`) && length(input_json$`timezone`) == 1)) {
+          stop(paste("Error! Invalid data for `timezone`. Must be a string:", input_json$`timezone`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Location: the required field `timezone` is missing."))
+      }
+      # check the required field `country_id`
+      if (!is.null(input_json$`country_id`)) {
+        if (!(is.numeric(input_json$`country_id`) && length(input_json$`country_id`) == 1)) {
+          stop(paste("Error! Invalid data for `country_id`. Must be an integer:", input_json$`country_id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Location: the required field `country_id` is missing."))
+      }
+      # check the required field `nuts_2`
+      if (!is.null(input_json$`nuts_2`)) {
+        if (!(is.character(input_json$`nuts_2`) && length(input_json$`nuts_2`) == 1)) {
+          stop(paste("Error! Invalid data for `nuts_2`. Must be a string:", input_json$`nuts_2`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Location: the required field `nuts_2` is missing."))
+      }
+      # check the required field `nuts_3`
+      if (!is.null(input_json$`nuts_3`)) {
+        if (!(is.character(input_json$`nuts_3`) && length(input_json$`nuts_3`) == 1)) {
+          stop(paste("Error! Invalid data for `nuts_3`. Must be a string:", input_json$`nuts_3`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Location: the required field `nuts_3` is missing."))
+      }
+    },
+
+    #' @description
+    #' To string (JSON format)
+    #'
+    #' @return String representation of Location
+    toString = function() {
+      self$toJSONString()
+    },
+
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    isValid = function() {
+      # check if the required `type` is null
+      if (is.null(self$`type`)) {
+        return(FALSE)
+      }
+
+      # check if the required `timezone` is null
+      if (is.null(self$`timezone`)) {
+        return(FALSE)
+      }
+
+      TRUE
+    },
+
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `type` is null
+      if (is.null(self$`type`)) {
+        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
+      }
+
+      # check if the required `timezone` is null
+      if (is.null(self$`timezone`)) {
+        invalid_fields["timezone"] <- "Non-nullable required field `timezone` cannot be null."
+      }
+
+      invalid_fields
+    },
+
+    #' @description
+    #' Print the object
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
+)
+## Uncomment below to unlock the class to allow modifications of the method or field
+# Location$unlock()
+#
+## Below is an example to define the print function
+# Location$set("public", "print", function(...) {
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
+# })
+## Uncomment below to lock the class to prevent modifications to the method or field
+# Location$lock()
+

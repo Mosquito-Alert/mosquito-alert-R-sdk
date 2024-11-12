@@ -1,0 +1,200 @@
+#' Create a new LocationRequest
+#'
+#' @description
+#' LocationRequest Class
+#'
+#' @docType class
+#' @title LocationRequest
+#' @description LocationRequest Class
+#' @format An \code{R6Class} generator object
+#' @field type Did user indicate that report relates to current location of phone ('current') or to a location selected manually on the map ('selected')? Or is the choice missing ('missing') character
+#' @field point  \link{LocationPoint}
+#' @importFrom R6 R6Class
+#' @importFrom jsonlite fromJSON toJSON
+#' @export
+LocationRequest <- R6::R6Class(
+  "LocationRequest",
+  public = list(
+    `type` = NULL,
+    `point` = NULL,
+
+    #' @description
+    #' Initialize a new LocationRequest class.
+    #'
+    #' @param type Did user indicate that report relates to current location of phone ('current') or to a location selected manually on the map ('selected')? Or is the choice missing ('missing')
+    #' @param point point
+    #' @param ... Other optional arguments.
+    initialize = function(`type`, `point`, ...) {
+      if (!missing(`type`)) {
+        if (!(`type` %in% c("current", "selected", "missing"))) {
+          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"current\", \"selected\", \"missing\".", sep = ""))
+        }
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
+        self$`type` <- `type`
+      }
+      if (!missing(`point`)) {
+        stopifnot(R6::is.R6(`point`))
+        self$`point` <- `point`
+      }
+    },
+
+    #' @description
+    #' To JSON String
+    #'
+    #' @return LocationRequest in JSON format
+    toJSON = function() {
+      LocationRequestObject <- list()
+      if (!is.null(self$`type`)) {
+        LocationRequestObject[["type"]] <-
+          self$`type`
+      }
+      if (!is.null(self$`point`)) {
+        LocationRequestObject[["point"]] <-
+          self$`point`$toJSON()
+      }
+      LocationRequestObject
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of LocationRequest
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of LocationRequest
+    fromJSON = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`type`)) {
+        if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("current", "selected", "missing"))) {
+          stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"current\", \"selected\", \"missing\".", sep = ""))
+        }
+        self$`type` <- this_object$`type`
+      }
+      if (!is.null(this_object$`point`)) {
+        `point_object` <- LocationPoint$new()
+        `point_object`$fromJSON(jsonlite::toJSON(this_object$`point`, auto_unbox = TRUE, digits = NA))
+        self$`point` <- `point_object`
+      }
+      self
+    },
+
+    #' @description
+    #' To JSON String
+    #'
+    #' @return LocationRequest in JSON format
+    toJSONString = function() {
+      jsoncontent <- c(
+        if (!is.null(self$`type`)) {
+          sprintf(
+          '"type":
+            "%s"
+                    ',
+          self$`type`
+          )
+        },
+        if (!is.null(self$`point`)) {
+          sprintf(
+          '"point":
+          %s
+          ',
+          jsonlite::toJSON(self$`point`$toJSON(), auto_unbox = TRUE, digits = NA)
+          )
+        }
+      )
+      jsoncontent <- paste(jsoncontent, collapse = ",")
+      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    },
+
+    #' @description
+    #' Deserialize JSON string into an instance of LocationRequest
+    #'
+    #' @param input_json the JSON input
+    #' @return the instance of LocationRequest
+    fromJSONString = function(input_json) {
+      this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("current", "selected", "missing"))) {
+        stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"current\", \"selected\", \"missing\".", sep = ""))
+      }
+      self$`type` <- this_object$`type`
+      self$`point` <- LocationPoint$new()$fromJSON(jsonlite::toJSON(this_object$`point`, auto_unbox = TRUE, digits = NA))
+      self
+    },
+
+    #' @description
+    #' Validate JSON input with respect to LocationRequest and throw an exception if invalid
+    #'
+    #' @param input the JSON input
+    validateJSON = function(input) {
+      input_json <- jsonlite::fromJSON(input)
+      # check the required field `type`
+      if (!is.null(input_json$`type`)) {
+        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for LocationRequest: the required field `type` is missing."))
+      }
+      # check the required field `point`
+      if (!is.null(input_json$`point`)) {
+        stopifnot(R6::is.R6(input_json$`point`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for LocationRequest: the required field `point` is missing."))
+      }
+    },
+
+    #' @description
+    #' To string (JSON format)
+    #'
+    #' @return String representation of LocationRequest
+    toString = function() {
+      self$toJSONString()
+    },
+
+    #' @description
+    #' Return true if the values in all fields are valid.
+    #'
+    #' @return true if the values in all fields are valid.
+    isValid = function() {
+      # check if the required `type` is null
+      if (is.null(self$`type`)) {
+        return(FALSE)
+      }
+
+      TRUE
+    },
+
+    #' @description
+    #' Return a list of invalid fields (if any).
+    #'
+    #' @return A list of invalid fields (if any).
+    getInvalidFields = function() {
+      invalid_fields <- list()
+      # check if the required `type` is null
+      if (is.null(self$`type`)) {
+        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
+      }
+
+      invalid_fields
+    },
+
+    #' @description
+    #' Print the object
+    print = function() {
+      print(jsonlite::prettify(self$toJSONString()))
+      invisible(self)
+    }
+  ),
+  # Lock the class to prevent modifications to the method or field
+  lock_class = TRUE
+)
+## Uncomment below to unlock the class to allow modifications of the method or field
+# LocationRequest$unlock()
+#
+## Below is an example to define the print function
+# LocationRequest$set("public", "print", function(...) {
+#   print(jsonlite::prettify(self$toJSONString()))
+#   invisible(self)
+# })
+## Uncomment below to lock the class to prevent modifications to the method or field
+# LocationRequest$lock()
+
