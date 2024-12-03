@@ -18,3 +18,10 @@ test_that("password", {
   # uncomment below to test the property
   #expect_equal(model.instance$`password`, "EXPECTED_RESULT")
 })
+
+test_that("device_id", {
+  # tests for the property `device_id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`device_id`, "EXPECTED_RESULT")
+})

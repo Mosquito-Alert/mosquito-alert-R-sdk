@@ -20,6 +20,22 @@ test_that("registration_time", {
   #expect_equal(model.instance$`registration_time`, "EXPECTED_RESULT")
 })
 
+test_that("locale", {
+  # tests for the property `locale` (character)
+  # The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in &#39;language&#39; or &#39;language-region&#39; format (e.g., &#39;en&#39; for English, &#39;en-US&#39; for English (United States), &#39;fr&#39; for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code.
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`locale`, "EXPECTED_RESULT")
+})
+
+test_that("language_iso", {
+  # tests for the property `language_iso` (character)
+  # ISO 639-1 code
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`language_iso`, "EXPECTED_RESULT")
+})
+
 test_that("score", {
   # tests for the property `score` (integer)
   # Global XP Score. This field is updated whenever the user asks for the score, and is only stored here. The content must equal score_v2_adult + score_v2_bite + score_v2_site

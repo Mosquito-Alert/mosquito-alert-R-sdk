@@ -9,8 +9,6 @@ Name | Type | Description | Notes
 **location** | [**LocationRequest**](LocationRequest.md) |  | 
 **note** | **character** | Note user attached to report. | [optional] 
 **tags** | **array[character]** |  | [optional] 
-**package** | [**PackageRequest**](PackageRequest.md) |  | [optional] 
-**device** | [**DeviceRequest**](DeviceRequest.md) |  | [optional] 
 **photos** | [**array[SimplePhotoRequest]**](SimplePhotoRequest.md) |  | 
 **site_type** | **character** | Breeding site type. | [optional] [Enum: [basin, bucket, fountain, small_container, storm_drain, well, other, ]] 
 **has_water** | **character** | Either if the user perceived water in the breeding site. | [optional] 

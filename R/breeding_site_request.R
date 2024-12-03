@@ -12,8 +12,6 @@
 #' @field location  \link{LocationRequest}
 #' @field note Note user attached to report. character [optional]
 #' @field tags  list(character) [optional]
-#' @field package  \link{PackageRequest} [optional]
-#' @field device  \link{DeviceRequest} [optional]
 #' @field photos  list(\link{SimplePhotoRequest})
 #' @field site_type Breeding site type. character [optional]
 #' @field has_water Either if the user perceived water in the breeding site. character [optional]
@@ -31,8 +29,6 @@ BreedingSiteRequest <- R6::R6Class(
     `location` = NULL,
     `note` = NULL,
     `tags` = NULL,
-    `package` = NULL,
-    `device` = NULL,
     `photos` = NULL,
     `site_type` = NULL,
     `has_water` = NULL,
@@ -49,15 +45,13 @@ BreedingSiteRequest <- R6::R6Class(
     #' @param photos photos
     #' @param note Note user attached to report.
     #' @param tags tags
-    #' @param package package
-    #' @param device device
     #' @param site_type Breeding site type.
     #' @param has_water Either if the user perceived water in the breeding site.
     #' @param in_public_area Either if the breeding site is found in a public area.
     #' @param has_near_mosquitoes Either if the user perceived mosquitoes near the breeding site (less than 10 meters).
     #' @param has_larvae Either if the user perceived larvaes the breeding site.
     #' @param ... Other optional arguments.
-    initialize = function(`created_at`, `sent_at`, `location`, `photos`, `note` = NULL, `tags` = NULL, `package` = NULL, `device` = NULL, `site_type` = NULL, `has_water` = NULL, `in_public_area` = NULL, `has_near_mosquitoes` = NULL, `has_larvae` = NULL, ...) {
+    initialize = function(`created_at`, `sent_at`, `location`, `photos`, `note` = NULL, `tags` = NULL, `site_type` = NULL, `has_water` = NULL, `in_public_area` = NULL, `has_near_mosquitoes` = NULL, `has_larvae` = NULL, ...) {
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
           stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
@@ -89,14 +83,6 @@ BreedingSiteRequest <- R6::R6Class(
         stopifnot(is.vector(`tags`), length(`tags`) != 0)
         sapply(`tags`, function(x) stopifnot(is.character(x)))
         self$`tags` <- `tags`
-      }
-      if (!is.null(`package`)) {
-        stopifnot(R6::is.R6(`package`))
-        self$`package` <- `package`
-      }
-      if (!is.null(`device`)) {
-        stopifnot(R6::is.R6(`device`))
-        self$`device` <- `device`
       }
       if (!is.null(`site_type`)) {
         if (!(`site_type` %in% c("basin", "bucket", "fountain", "small_container", "storm_drain", "well", "other", ""))) {
@@ -159,14 +145,6 @@ BreedingSiteRequest <- R6::R6Class(
         BreedingSiteRequestObject[["tags"]] <-
           self$`tags`
       }
-      if (!is.null(self$`package`)) {
-        BreedingSiteRequestObject[["package"]] <-
-          self$`package`$toJSON()
-      }
-      if (!is.null(self$`device`)) {
-        BreedingSiteRequestObject[["device"]] <-
-          self$`device`$toJSON()
-      }
       if (!is.null(self$`photos`)) {
         BreedingSiteRequestObject[["photos"]] <-
           lapply(self$`photos`, function(x) x$toJSON())
@@ -217,16 +195,6 @@ BreedingSiteRequest <- R6::R6Class(
       }
       if (!is.null(this_object$`tags`)) {
         self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
-      }
-      if (!is.null(this_object$`package`)) {
-        `package_object` <- PackageRequest$new()
-        `package_object`$fromJSON(jsonlite::toJSON(this_object$`package`, auto_unbox = TRUE, digits = NA))
-        self$`package` <- `package_object`
-      }
-      if (!is.null(this_object$`device`)) {
-        `device_object` <- DeviceRequest$new()
-        `device_object`$fromJSON(jsonlite::toJSON(this_object$`device`, auto_unbox = TRUE, digits = NA))
-        self$`device` <- `device_object`
       }
       if (!is.null(this_object$`photos`)) {
         self$`photos` <- ApiClient$new()$deserializeObj(this_object$`photos`, "array[SimplePhotoRequest]", loadNamespace("MosquitoAlert"))
@@ -298,22 +266,6 @@ BreedingSiteRequest <- R6::R6Class(
           paste(unlist(lapply(self$`tags`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
-        if (!is.null(self$`package`)) {
-          sprintf(
-          '"package":
-          %s
-          ',
-          jsonlite::toJSON(self$`package`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`device`)) {
-          sprintf(
-          '"device":
-          %s
-          ',
-          jsonlite::toJSON(self$`device`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
         if (!is.null(self$`photos`)) {
           sprintf(
           '"photos":
@@ -379,8 +331,6 @@ BreedingSiteRequest <- R6::R6Class(
       self$`location` <- LocationRequest$new()$fromJSON(jsonlite::toJSON(this_object$`location`, auto_unbox = TRUE, digits = NA))
       self$`note` <- this_object$`note`
       self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
-      self$`package` <- PackageRequest$new()$fromJSON(jsonlite::toJSON(this_object$`package`, auto_unbox = TRUE, digits = NA))
-      self$`device` <- DeviceRequest$new()$fromJSON(jsonlite::toJSON(this_object$`device`, auto_unbox = TRUE, digits = NA))
       self$`photos` <- ApiClient$new()$deserializeObj(this_object$`photos`, "array[SimplePhotoRequest]", loadNamespace("MosquitoAlert"))
       if (!is.null(this_object$`site_type`) && !(this_object$`site_type` %in% c("basin", "bucket", "fountain", "small_container", "storm_drain", "well", "other", ""))) {
         stop(paste("Error! \"", this_object$`site_type`, "\" cannot be assigned to `site_type`. Must be \"basin\", \"bucket\", \"fountain\", \"small_container\", \"storm_drain\", \"well\", \"other\", \"\".", sep = ""))

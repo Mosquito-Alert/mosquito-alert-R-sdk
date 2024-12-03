@@ -41,11 +41,19 @@ PaginatedPartnerList <- R6::R6Class(
         if (!(is.character(`next`) && length(`next`) == 1)) {
           stop(paste("Error! Invalid data for `next`. Must be a string:", `next`))
         }
+        # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+        if (!stringr::str_detect(`next`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
+          stop(paste("Error! Invalid data for `next`. Must be a URL:", `next`))
+        }
         self$`next` <- `next`
       }
       if (!is.null(`previous`)) {
         if (!(is.character(`previous`) && length(`previous`) == 1)) {
           stop(paste("Error! Invalid data for `previous`. Must be a string:", `previous`))
+        }
+        # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+        if (!stringr::str_detect(`previous`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
+          stop(paste("Error! Invalid data for `previous`. Must be a URL:", `previous`))
         }
         self$`previous` <- `previous`
       }
@@ -92,9 +100,17 @@ PaginatedPartnerList <- R6::R6Class(
         self$`count` <- this_object$`count`
       }
       if (!is.null(this_object$`next`)) {
+        # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+        if (!stringr::str_detect(this_object$`next`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
+          stop(paste("Error! Invalid data for `next`. Must be a URL:", this_object$`next`))
+        }
         self$`next` <- this_object$`next`
       }
       if (!is.null(this_object$`previous`)) {
+        # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+        if (!stringr::str_detect(this_object$`previous`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
+          stop(paste("Error! Invalid data for `previous`. Must be a URL:", this_object$`previous`))
+        }
         self$`previous` <- this_object$`previous`
       }
       if (!is.null(this_object$`results`)) {
@@ -154,7 +170,15 @@ PaginatedPartnerList <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`count` <- this_object$`count`
+      # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+      if (!stringr::str_detect(this_object$`next`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
+        stop(paste("Error! Invalid data for `next`. Must be a URL:", this_object$`next`))
+      }
       self$`next` <- this_object$`next`
+      # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
+      if (!stringr::str_detect(this_object$`previous`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {
+        stop(paste("Error! Invalid data for `previous`. Must be a URL:", this_object$`previous`))
+      }
       self$`previous` <- this_object$`previous`
       self$`results` <- ApiClient$new()$deserializeObj(this_object$`results`, "array[Partner]", loadNamespace("MosquitoAlert"))
       self

@@ -17,7 +17,7 @@
 #' ####################  token_create  ####################
 #'
 #' library(MosquitoAlert)
-#' var_app_user_token_obtain_pair_request <- AppUserTokenObtainPairRequest$new("uuid_example", "password_example") # AppUserTokenObtainPairRequest | 
+#' var_app_user_token_obtain_pair_request <- AppUserTokenObtainPairRequest$new("uuid_example", "password_example", "device_id_example") # AppUserTokenObtainPairRequest | 
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'

@@ -41,20 +41,6 @@ test_that("tags", {
   #expect_equal(model.instance$`tags`, "EXPECTED_RESULT")
 })
 
-test_that("package", {
-  # tests for the property `package` (PackageRequest)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`package`, "EXPECTED_RESULT")
-})
-
-test_that("device", {
-  # tests for the property `device` (DeviceRequest)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`device`, "EXPECTED_RESULT")
-})
-
 test_that("photos", {
   # tests for the property `photos` (array[SimplePhotoRequest])
 

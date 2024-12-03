@@ -7,7 +7,7 @@
 #' @title CreateUserRequest
 #' @description CreateUserRequest Class
 #' @format An \code{R6Class} generator object
-#' @field device_token Device token, used in messaging. Must be supplied by the client character [optional]
+#' @field locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code. character [optional]
 #' @field password  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -15,27 +15,30 @@
 CreateUserRequest <- R6::R6Class(
   "CreateUserRequest",
   public = list(
-    `device_token` = NULL,
+    `locale` = NULL,
     `password` = NULL,
 
     #' @description
     #' Initialize a new CreateUserRequest class.
     #'
     #' @param password password
-    #' @param device_token Device token, used in messaging. Must be supplied by the client
+    #' @param locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code.
     #' @param ... Other optional arguments.
-    initialize = function(`password`, `device_token` = NULL, ...) {
+    initialize = function(`password`, `locale` = NULL, ...) {
       if (!missing(`password`)) {
         if (!(is.character(`password`) && length(`password`) == 1)) {
           stop(paste("Error! Invalid data for `password`. Must be a string:", `password`))
         }
         self$`password` <- `password`
       }
-      if (!is.null(`device_token`)) {
-        if (!(is.character(`device_token`) && length(`device_token`) == 1)) {
-          stop(paste("Error! Invalid data for `device_token`. Must be a string:", `device_token`))
+      if (!is.null(`locale`)) {
+        if (!(`locale` %in% c("es", "ca", "eu", "bn", "sv", "en", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
+          stop(paste("Error! \"", `locale`, "\" cannot be assigned to `locale`. Must be \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"en\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
         }
-        self$`device_token` <- `device_token`
+        if (!(is.character(`locale`) && length(`locale`) == 1)) {
+          stop(paste("Error! Invalid data for `locale`. Must be a string:", `locale`))
+        }
+        self$`locale` <- `locale`
       }
     },
 
@@ -45,9 +48,9 @@ CreateUserRequest <- R6::R6Class(
     #' @return CreateUserRequest in JSON format
     toJSON = function() {
       CreateUserRequestObject <- list()
-      if (!is.null(self$`device_token`)) {
-        CreateUserRequestObject[["device_token"]] <-
-          self$`device_token`
+      if (!is.null(self$`locale`)) {
+        CreateUserRequestObject[["locale"]] <-
+          self$`locale`
       }
       if (!is.null(self$`password`)) {
         CreateUserRequestObject[["password"]] <-
@@ -63,8 +66,11 @@ CreateUserRequest <- R6::R6Class(
     #' @return the instance of CreateUserRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`device_token`)) {
-        self$`device_token` <- this_object$`device_token`
+      if (!is.null(this_object$`locale`)) {
+        if (!is.null(this_object$`locale`) && !(this_object$`locale` %in% c("es", "ca", "eu", "bn", "sv", "en", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
+          stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"en\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
+        }
+        self$`locale` <- this_object$`locale`
       }
       if (!is.null(this_object$`password`)) {
         self$`password` <- this_object$`password`
@@ -78,12 +84,12 @@ CreateUserRequest <- R6::R6Class(
     #' @return CreateUserRequest in JSON format
     toJSONString = function() {
       jsoncontent <- c(
-        if (!is.null(self$`device_token`)) {
+        if (!is.null(self$`locale`)) {
           sprintf(
-          '"device_token":
+          '"locale":
             "%s"
                     ',
-          self$`device_token`
+          self$`locale`
           )
         },
         if (!is.null(self$`password`)) {
@@ -106,7 +112,10 @@ CreateUserRequest <- R6::R6Class(
     #' @return the instance of CreateUserRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`device_token` <- this_object$`device_token`
+      if (!is.null(this_object$`locale`) && !(this_object$`locale` %in% c("es", "ca", "eu", "bn", "sv", "en", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
+        stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"en\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
+      }
+      self$`locale` <- this_object$`locale`
       self$`password` <- this_object$`password`
       self
     },

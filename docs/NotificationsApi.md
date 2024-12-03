@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 var_seen <- "seen_example" # character |  (Optional)
@@ -92,7 +92,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **order_by** | Enum [-created_at, created_at] | Ordenamiento   | [optional] 
+ **order_by** | Enum [-created_at, created_at] | Ordenado   | [optional] 
  **page** | **integer**| A page number within the paginated result set. | [optional] 
  **page_size** | **integer**| Number of results to return per page. | [optional] 
  **seen** | **character**|  | [optional] 

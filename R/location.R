@@ -301,11 +301,6 @@ Location <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `timezone` is null
-      if (is.null(self$`timezone`)) {
-        return(FALSE)
-      }
-
       TRUE
     },
 
@@ -318,11 +313,6 @@ Location <- R6::R6Class(
       # check if the required `type` is null
       if (is.null(self$`type`)) {
         invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
-      }
-
-      # check if the required `timezone` is null
-      if (is.null(self$`timezone`)) {
-        invalid_fields["timezone"] <- "Non-nullable required field `timezone` cannot be null."
       }
 
       invalid_fields

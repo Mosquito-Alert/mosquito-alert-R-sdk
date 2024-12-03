@@ -9,6 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field uuid  character
 #' @field password  character
+#' @field device_id  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -17,14 +18,16 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
   public = list(
     `uuid` = NULL,
     `password` = NULL,
+    `device_id` = NULL,
 
     #' @description
     #' Initialize a new AppUserTokenObtainPairRequest class.
     #'
     #' @param uuid uuid
     #' @param password password
+    #' @param device_id device_id
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `password`, ...) {
+    initialize = function(`uuid`, `password`, `device_id` = NULL, ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
@@ -36,6 +39,12 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `password`. Must be a string:", `password`))
         }
         self$`password` <- `password`
+      }
+      if (!is.null(`device_id`)) {
+        if (!(is.character(`device_id`) && length(`device_id`) == 1)) {
+          stop(paste("Error! Invalid data for `device_id`. Must be a string:", `device_id`))
+        }
+        self$`device_id` <- `device_id`
       }
     },
 
@@ -53,6 +62,10 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
         AppUserTokenObtainPairRequestObject[["password"]] <-
           self$`password`
       }
+      if (!is.null(self$`device_id`)) {
+        AppUserTokenObtainPairRequestObject[["device_id"]] <-
+          self$`device_id`
+      }
       AppUserTokenObtainPairRequestObject
     },
 
@@ -68,6 +81,9 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
       }
       if (!is.null(this_object$`password`)) {
         self$`password` <- this_object$`password`
+      }
+      if (!is.null(this_object$`device_id`)) {
+        self$`device_id` <- this_object$`device_id`
       }
       self
     },
@@ -93,6 +109,14 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
                     ',
           self$`password`
           )
+        },
+        if (!is.null(self$`device_id`)) {
+          sprintf(
+          '"device_id":
+            "%s"
+                    ',
+          self$`device_id`
+          )
         }
       )
       jsoncontent <- paste(jsoncontent, collapse = ",")
@@ -108,6 +132,7 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`uuid` <- this_object$`uuid`
       self$`password` <- this_object$`password`
+      self$`device_id` <- this_object$`device_id`
       self
     },
 
@@ -162,6 +187,10 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
         return(FALSE)
       }
 
+      if (nchar(self$`device_id`) < 1) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -183,6 +212,10 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
 
       if (nchar(self$`password`) < 1) {
         invalid_fields["password"] <- "Invalid length for `password`, must be bigger than or equal to 1."
+      }
+
+      if (nchar(self$`device_id`) < 1) {
+        invalid_fields["device_id"] <- "Invalid length for `device_id`, must be bigger than or equal to 1."
       }
 
       invalid_fields

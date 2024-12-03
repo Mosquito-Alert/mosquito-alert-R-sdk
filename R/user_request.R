@@ -7,26 +7,29 @@
 #' @title UserRequest
 #' @description UserRequest Class
 #' @format An \code{R6Class} generator object
-#' @field device_token Device token, used in messaging. Must be supplied by the client character [optional]
+#' @field locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 UserRequest <- R6::R6Class(
   "UserRequest",
   public = list(
-    `device_token` = NULL,
+    `locale` = NULL,
 
     #' @description
     #' Initialize a new UserRequest class.
     #'
-    #' @param device_token Device token, used in messaging. Must be supplied by the client
+    #' @param locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code.
     #' @param ... Other optional arguments.
-    initialize = function(`device_token` = NULL, ...) {
-      if (!is.null(`device_token`)) {
-        if (!(is.character(`device_token`) && length(`device_token`) == 1)) {
-          stop(paste("Error! Invalid data for `device_token`. Must be a string:", `device_token`))
+    initialize = function(`locale` = NULL, ...) {
+      if (!is.null(`locale`)) {
+        if (!(`locale` %in% c("es", "ca", "eu", "bn", "sv", "en", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
+          stop(paste("Error! \"", `locale`, "\" cannot be assigned to `locale`. Must be \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"en\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
         }
-        self$`device_token` <- `device_token`
+        if (!(is.character(`locale`) && length(`locale`) == 1)) {
+          stop(paste("Error! Invalid data for `locale`. Must be a string:", `locale`))
+        }
+        self$`locale` <- `locale`
       }
     },
 
@@ -36,9 +39,9 @@ UserRequest <- R6::R6Class(
     #' @return UserRequest in JSON format
     toJSON = function() {
       UserRequestObject <- list()
-      if (!is.null(self$`device_token`)) {
-        UserRequestObject[["device_token"]] <-
-          self$`device_token`
+      if (!is.null(self$`locale`)) {
+        UserRequestObject[["locale"]] <-
+          self$`locale`
       }
       UserRequestObject
     },
@@ -50,8 +53,11 @@ UserRequest <- R6::R6Class(
     #' @return the instance of UserRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`device_token`)) {
-        self$`device_token` <- this_object$`device_token`
+      if (!is.null(this_object$`locale`)) {
+        if (!is.null(this_object$`locale`) && !(this_object$`locale` %in% c("es", "ca", "eu", "bn", "sv", "en", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
+          stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"en\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
+        }
+        self$`locale` <- this_object$`locale`
       }
       self
     },
@@ -62,12 +68,12 @@ UserRequest <- R6::R6Class(
     #' @return UserRequest in JSON format
     toJSONString = function() {
       jsoncontent <- c(
-        if (!is.null(self$`device_token`)) {
+        if (!is.null(self$`locale`)) {
           sprintf(
-          '"device_token":
+          '"locale":
             "%s"
                     ',
-          self$`device_token`
+          self$`locale`
           )
         }
       )
@@ -82,7 +88,10 @@ UserRequest <- R6::R6Class(
     #' @return the instance of UserRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`device_token` <- this_object$`device_token`
+      if (!is.null(this_object$`locale`) && !(this_object$`locale` %in% c("es", "ca", "eu", "bn", "sv", "en", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
+        stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"en\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
+      }
+      self$`locale` <- this_object$`locale`
       self
     },
 

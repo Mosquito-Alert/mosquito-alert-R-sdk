@@ -20,7 +20,7 @@ Takes a set of user credentials and returns an access and refresh JSON web token
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_app_user_token_obtain_pair_request <- AppUserTokenObtainPairRequest$new("uuid_example", "password_example") # AppUserTokenObtainPairRequest | 
+var_app_user_token_obtain_pair_request <- AppUserTokenObtainPairRequest$new("uuid_example", "password_example", "device_id_example") # AppUserTokenObtainPairRequest | 
 
 api_instance <- mosquitoalert_api$new()
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.

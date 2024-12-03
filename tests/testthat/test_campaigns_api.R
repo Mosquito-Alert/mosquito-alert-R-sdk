@@ -10,7 +10,7 @@ test_that("campaigns_list", {
   # base path: https://api.mosquitoalert.com/v1
   # @param country_id integer Country in which the campaign is taking place (optional)
   # @param is_active character  (optional)
-  # @param order_by array[character] Ordenamiento   (optional)
+  # @param order_by array[character] Ordenado   (optional)
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)
   # @return [PaginatedCampaignList]

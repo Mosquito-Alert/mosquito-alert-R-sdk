@@ -5,10 +5,10 @@ context("Test UserRequest")
 
 model_instance <- UserRequest$new()
 
-test_that("device_token", {
-  # tests for the property `device_token` (character)
-  # Device token, used in messaging. Must be supplied by the client
+test_that("locale", {
+  # tests for the property `locale` (character)
+  # The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in &#39;language&#39; or &#39;language-region&#39; format (e.g., &#39;en&#39; for English, &#39;en-US&#39; for English (United States), &#39;fr&#39; for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`device_token`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`locale`, "EXPECTED_RESULT")
 })

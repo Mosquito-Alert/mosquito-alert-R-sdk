@@ -5,9 +5,38 @@ context("Test DeviceRequest")
 
 model_instance <- DeviceRequest$new()
 
+test_that("device_id", {
+  # tests for the property `device_id` (character)
+  # Unique device identifier
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`device_id`, "EXPECTED_RESULT")
+})
+
+test_that("name", {
+  # tests for the property `name` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`name`, "EXPECTED_RESULT")
+})
+
+test_that("fcm_token", {
+  # tests for the property `fcm_token` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`fcm_token`, "EXPECTED_RESULT")
+})
+
+test_that("type", {
+  # tests for the property `type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+})
+
 test_that("manufacturer", {
   # tests for the property `manufacturer` (character)
-  # Manufacturer of device from which this report was submitted.
+  # The manufacturer of the device.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`manufacturer`, "EXPECTED_RESULT")
@@ -15,32 +44,22 @@ test_that("manufacturer", {
 
 test_that("model", {
   # tests for the property `model` (character)
-  # Model of device from which this report was submitted.
+  # The end-user-visible name for the end product.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`model`, "EXPECTED_RESULT")
 })
 
 test_that("os", {
-  # tests for the property `os` (character)
-  # Operating system of device from which this report was submitted.
+  # tests for the property `os` (DeviceOsRequest)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`os`, "EXPECTED_RESULT")
 })
 
-test_that("os_version", {
-  # tests for the property `os_version` (character)
-  # Operating system version of device from which this report was submitted.
+test_that("mobile_app", {
+  # tests for the property `mobile_app` (MobileAppRequest)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`os_version`, "EXPECTED_RESULT")
-})
-
-test_that("os_language", {
-  # tests for the property `os_language` (character)
-  # Language setting of operating system on device from which this report was submitted. 2-digit ISO-639-1 language code.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`os_language`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`mobile_app`, "EXPECTED_RESULT")
 })

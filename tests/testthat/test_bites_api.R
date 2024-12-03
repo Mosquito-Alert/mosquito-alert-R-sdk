@@ -33,7 +33,7 @@ test_that("bites_list", {
   # @param location_country_id integer  (optional)
   # @param location_nuts_2 character  (optional)
   # @param location_nuts_3 character  (optional)
-  # @param order_by array[character] Ordenamiento   (optional)
+  # @param order_by array[character] Ordenado   (optional)
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)
   # @param received_at_after character Received at (optional)

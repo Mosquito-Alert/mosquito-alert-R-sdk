@@ -39,7 +39,7 @@
 #' ####################  notifications_list  ####################
 #'
 #' library(MosquitoAlert)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_seen <- "seen_example" # character |  (Optional)
@@ -255,7 +255,7 @@ NotificationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param order_by (optional) Ordenamiento  
+    #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
     #' @param seen (optional) No description
@@ -279,7 +279,7 @@ NotificationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param order_by (optional) Ordenamiento  
+    #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
     #' @param seen (optional) No description

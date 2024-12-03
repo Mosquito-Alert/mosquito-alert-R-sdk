@@ -12,8 +12,6 @@
 #' @field location  \link{LocationRequest}
 #' @field note Note user attached to report. character [optional]
 #' @field tags  list(character) [optional]
-#' @field package  \link{PackageRequest} [optional]
-#' @field device  \link{DeviceRequest} [optional]
 #' @field event_environment The environment where the event took place. character [optional]
 #' @field event_moment The moment of the day when the event took place. character [optional]
 #' @field head_bite_count Number of bites reported in the head. integer [optional]
@@ -33,8 +31,6 @@ BiteRequest <- R6::R6Class(
     `location` = NULL,
     `note` = NULL,
     `tags` = NULL,
-    `package` = NULL,
-    `device` = NULL,
     `event_environment` = NULL,
     `event_moment` = NULL,
     `head_bite_count` = NULL,
@@ -52,8 +48,6 @@ BiteRequest <- R6::R6Class(
     #' @param location location
     #' @param note Note user attached to report.
     #' @param tags tags
-    #' @param package package
-    #' @param device device
     #' @param event_environment The environment where the event took place.
     #' @param event_moment The moment of the day when the event took place.
     #' @param head_bite_count Number of bites reported in the head.. Default to 0.
@@ -63,7 +57,7 @@ BiteRequest <- R6::R6Class(
     #' @param left_leg_bite_count Number of bites reported in the left leg.. Default to 0.
     #' @param right_leg_bite_count Number of bites reported in the right leg.. Default to 0.
     #' @param ... Other optional arguments.
-    initialize = function(`created_at`, `sent_at`, `location`, `note` = NULL, `tags` = NULL, `package` = NULL, `device` = NULL, `event_environment` = NULL, `event_moment` = NULL, `head_bite_count` = 0, `left_arm_bite_count` = 0, `right_arm_bite_count` = 0, `chest_bite_count` = 0, `left_leg_bite_count` = 0, `right_leg_bite_count` = 0, ...) {
+    initialize = function(`created_at`, `sent_at`, `location`, `note` = NULL, `tags` = NULL, `event_environment` = NULL, `event_moment` = NULL, `head_bite_count` = 0, `left_arm_bite_count` = 0, `right_arm_bite_count` = 0, `chest_bite_count` = 0, `left_leg_bite_count` = 0, `right_leg_bite_count` = 0, ...) {
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
           stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
@@ -90,14 +84,6 @@ BiteRequest <- R6::R6Class(
         stopifnot(is.vector(`tags`), length(`tags`) != 0)
         sapply(`tags`, function(x) stopifnot(is.character(x)))
         self$`tags` <- `tags`
-      }
-      if (!is.null(`package`)) {
-        stopifnot(R6::is.R6(`package`))
-        self$`package` <- `package`
-      }
-      if (!is.null(`device`)) {
-        stopifnot(R6::is.R6(`device`))
-        self$`device` <- `device`
       }
       if (!is.null(`event_environment`)) {
         if (!(`event_environment` %in% c("indoors", "outdoors", "vehicle", ""))) {
@@ -181,14 +167,6 @@ BiteRequest <- R6::R6Class(
         BiteRequestObject[["tags"]] <-
           self$`tags`
       }
-      if (!is.null(self$`package`)) {
-        BiteRequestObject[["package"]] <-
-          self$`package`$toJSON()
-      }
-      if (!is.null(self$`device`)) {
-        BiteRequestObject[["device"]] <-
-          self$`device`$toJSON()
-      }
       if (!is.null(self$`event_environment`)) {
         BiteRequestObject[["event_environment"]] <-
           self$`event_environment`
@@ -247,16 +225,6 @@ BiteRequest <- R6::R6Class(
       }
       if (!is.null(this_object$`tags`)) {
         self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
-      }
-      if (!is.null(this_object$`package`)) {
-        `package_object` <- PackageRequest$new()
-        `package_object`$fromJSON(jsonlite::toJSON(this_object$`package`, auto_unbox = TRUE, digits = NA))
-        self$`package` <- `package_object`
-      }
-      if (!is.null(this_object$`device`)) {
-        `device_object` <- DeviceRequest$new()
-        `device_object`$fromJSON(jsonlite::toJSON(this_object$`device`, auto_unbox = TRUE, digits = NA))
-        self$`device` <- `device_object`
       }
       if (!is.null(this_object$`event_environment`)) {
         if (!is.null(this_object$`event_environment`) && !(this_object$`event_environment` %in% c("indoors", "outdoors", "vehicle", ""))) {
@@ -335,22 +303,6 @@ BiteRequest <- R6::R6Class(
              [%s]
           ',
           paste(unlist(lapply(self$`tags`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`package`)) {
-          sprintf(
-          '"package":
-          %s
-          ',
-          jsonlite::toJSON(self$`package`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`device`)) {
-          sprintf(
-          '"device":
-          %s
-          ',
-          jsonlite::toJSON(self$`device`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
         if (!is.null(self$`event_environment`)) {
@@ -434,8 +386,6 @@ BiteRequest <- R6::R6Class(
       self$`location` <- LocationRequest$new()$fromJSON(jsonlite::toJSON(this_object$`location`, auto_unbox = TRUE, digits = NA))
       self$`note` <- this_object$`note`
       self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
-      self$`package` <- PackageRequest$new()$fromJSON(jsonlite::toJSON(this_object$`package`, auto_unbox = TRUE, digits = NA))
-      self$`device` <- DeviceRequest$new()$fromJSON(jsonlite::toJSON(this_object$`device`, auto_unbox = TRUE, digits = NA))
       if (!is.null(this_object$`event_environment`) && !(this_object$`event_environment` %in% c("indoors", "outdoors", "vehicle", ""))) {
         stop(paste("Error! \"", this_object$`event_environment`, "\" cannot be assigned to `event_environment`. Must be \"indoors\", \"outdoors\", \"vehicle\", \"\".", sep = ""))
       }

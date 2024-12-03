@@ -7,62 +7,115 @@
 #' @title Device
 #' @description Device Class
 #' @format An \code{R6Class} generator object
-#' @field manufacturer Manufacturer of device from which this report was submitted. character [optional]
-#' @field model Model of device from which this report was submitted. character [optional]
-#' @field os Operating system of device from which this report was submitted. character [optional]
-#' @field os_version Operating system version of device from which this report was submitted. character [optional]
-#' @field os_language Language setting of operating system on device from which this report was submitted. 2-digit ISO-639-1 language code. character [optional]
+#' @field device_id Unique device identifier character
+#' @field name  character [optional]
+#' @field type  character
+#' @field manufacturer The manufacturer of the device. character [optional]
+#' @field model The end-user-visible name for the end product. character
+#' @field os  \link{DeviceOs}
+#' @field mobile_app  \link{MobileApp} [optional]
+#' @field user_uuid  character
+#' @field last_login  character
+#' @field created_at  character
+#' @field updated_at  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 Device <- R6::R6Class(
   "Device",
   public = list(
+    `device_id` = NULL,
+    `name` = NULL,
+    `type` = NULL,
     `manufacturer` = NULL,
     `model` = NULL,
     `os` = NULL,
-    `os_version` = NULL,
-    `os_language` = NULL,
+    `mobile_app` = NULL,
+    `user_uuid` = NULL,
+    `last_login` = NULL,
+    `created_at` = NULL,
+    `updated_at` = NULL,
 
     #' @description
     #' Initialize a new Device class.
     #'
-    #' @param manufacturer Manufacturer of device from which this report was submitted.
-    #' @param model Model of device from which this report was submitted.
-    #' @param os Operating system of device from which this report was submitted.
-    #' @param os_version Operating system version of device from which this report was submitted.
-    #' @param os_language Language setting of operating system on device from which this report was submitted. 2-digit ISO-639-1 language code.
+    #' @param device_id Unique device identifier
+    #' @param type type
+    #' @param model The end-user-visible name for the end product.
+    #' @param os os
+    #' @param user_uuid user_uuid
+    #' @param last_login last_login
+    #' @param created_at created_at
+    #' @param updated_at updated_at
+    #' @param name name
+    #' @param manufacturer The manufacturer of the device.
+    #' @param mobile_app mobile_app
     #' @param ... Other optional arguments.
-    initialize = function(`manufacturer` = NULL, `model` = NULL, `os` = NULL, `os_version` = NULL, `os_language` = NULL, ...) {
+    initialize = function(`device_id`, `type`, `model`, `os`, `user_uuid`, `last_login`, `created_at`, `updated_at`, `name` = NULL, `manufacturer` = NULL, `mobile_app` = NULL, ...) {
+      if (!missing(`device_id`)) {
+        if (!(is.character(`device_id`) && length(`device_id`) == 1)) {
+          stop(paste("Error! Invalid data for `device_id`. Must be a string:", `device_id`))
+        }
+        self$`device_id` <- `device_id`
+      }
+      if (!missing(`type`)) {
+        if (!(`type` %in% c("ios", "android", "web"))) {
+          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"ios\", \"android\", \"web\".", sep = ""))
+        }
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
+        self$`type` <- `type`
+      }
+      if (!missing(`model`)) {
+        if (!(is.character(`model`) && length(`model`) == 1)) {
+          stop(paste("Error! Invalid data for `model`. Must be a string:", `model`))
+        }
+        self$`model` <- `model`
+      }
+      if (!missing(`os`)) {
+        stopifnot(R6::is.R6(`os`))
+        self$`os` <- `os`
+      }
+      if (!missing(`user_uuid`)) {
+        if (!(is.character(`user_uuid`) && length(`user_uuid`) == 1)) {
+          stop(paste("Error! Invalid data for `user_uuid`. Must be a string:", `user_uuid`))
+        }
+        self$`user_uuid` <- `user_uuid`
+      }
+      if (!missing(`last_login`)) {
+        if (!(is.character(`last_login`) && length(`last_login`) == 1)) {
+          stop(paste("Error! Invalid data for `last_login`. Must be a string:", `last_login`))
+        }
+        self$`last_login` <- `last_login`
+      }
+      if (!missing(`created_at`)) {
+        if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
+        }
+        self$`created_at` <- `created_at`
+      }
+      if (!missing(`updated_at`)) {
+        if (!(is.character(`updated_at`) && length(`updated_at`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", `updated_at`))
+        }
+        self$`updated_at` <- `updated_at`
+      }
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
+      }
       if (!is.null(`manufacturer`)) {
         if (!(is.character(`manufacturer`) && length(`manufacturer`) == 1)) {
           stop(paste("Error! Invalid data for `manufacturer`. Must be a string:", `manufacturer`))
         }
         self$`manufacturer` <- `manufacturer`
       }
-      if (!is.null(`model`)) {
-        if (!(is.character(`model`) && length(`model`) == 1)) {
-          stop(paste("Error! Invalid data for `model`. Must be a string:", `model`))
-        }
-        self$`model` <- `model`
-      }
-      if (!is.null(`os`)) {
-        if (!(is.character(`os`) && length(`os`) == 1)) {
-          stop(paste("Error! Invalid data for `os`. Must be a string:", `os`))
-        }
-        self$`os` <- `os`
-      }
-      if (!is.null(`os_version`)) {
-        if (!(is.character(`os_version`) && length(`os_version`) == 1)) {
-          stop(paste("Error! Invalid data for `os_version`. Must be a string:", `os_version`))
-        }
-        self$`os_version` <- `os_version`
-      }
-      if (!is.null(`os_language`)) {
-        if (!(is.character(`os_language`) && length(`os_language`) == 1)) {
-          stop(paste("Error! Invalid data for `os_language`. Must be a string:", `os_language`))
-        }
-        self$`os_language` <- `os_language`
+      if (!is.null(`mobile_app`)) {
+        stopifnot(R6::is.R6(`mobile_app`))
+        self$`mobile_app` <- `mobile_app`
       }
     },
 
@@ -72,6 +125,18 @@ Device <- R6::R6Class(
     #' @return Device in JSON format
     toJSON = function() {
       DeviceObject <- list()
+      if (!is.null(self$`device_id`)) {
+        DeviceObject[["device_id"]] <-
+          self$`device_id`
+      }
+      if (!is.null(self$`name`)) {
+        DeviceObject[["name"]] <-
+          self$`name`
+      }
+      if (!is.null(self$`type`)) {
+        DeviceObject[["type"]] <-
+          self$`type`
+      }
       if (!is.null(self$`manufacturer`)) {
         DeviceObject[["manufacturer"]] <-
           self$`manufacturer`
@@ -82,15 +147,27 @@ Device <- R6::R6Class(
       }
       if (!is.null(self$`os`)) {
         DeviceObject[["os"]] <-
-          self$`os`
+          self$`os`$toJSON()
       }
-      if (!is.null(self$`os_version`)) {
-        DeviceObject[["os_version"]] <-
-          self$`os_version`
+      if (!is.null(self$`mobile_app`)) {
+        DeviceObject[["mobile_app"]] <-
+          self$`mobile_app`$toJSON()
       }
-      if (!is.null(self$`os_language`)) {
-        DeviceObject[["os_language"]] <-
-          self$`os_language`
+      if (!is.null(self$`user_uuid`)) {
+        DeviceObject[["user_uuid"]] <-
+          self$`user_uuid`
+      }
+      if (!is.null(self$`last_login`)) {
+        DeviceObject[["last_login"]] <-
+          self$`last_login`
+      }
+      if (!is.null(self$`created_at`)) {
+        DeviceObject[["created_at"]] <-
+          self$`created_at`
+      }
+      if (!is.null(self$`updated_at`)) {
+        DeviceObject[["updated_at"]] <-
+          self$`updated_at`
       }
       DeviceObject
     },
@@ -102,6 +179,18 @@ Device <- R6::R6Class(
     #' @return the instance of Device
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`device_id`)) {
+        self$`device_id` <- this_object$`device_id`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
+      }
+      if (!is.null(this_object$`type`)) {
+        if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("ios", "android", "web"))) {
+          stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"ios\", \"android\", \"web\".", sep = ""))
+        }
+        self$`type` <- this_object$`type`
+      }
       if (!is.null(this_object$`manufacturer`)) {
         self$`manufacturer` <- this_object$`manufacturer`
       }
@@ -109,13 +198,26 @@ Device <- R6::R6Class(
         self$`model` <- this_object$`model`
       }
       if (!is.null(this_object$`os`)) {
-        self$`os` <- this_object$`os`
+        `os_object` <- DeviceOs$new()
+        `os_object`$fromJSON(jsonlite::toJSON(this_object$`os`, auto_unbox = TRUE, digits = NA))
+        self$`os` <- `os_object`
       }
-      if (!is.null(this_object$`os_version`)) {
-        self$`os_version` <- this_object$`os_version`
+      if (!is.null(this_object$`mobile_app`)) {
+        `mobile_app_object` <- MobileApp$new()
+        `mobile_app_object`$fromJSON(jsonlite::toJSON(this_object$`mobile_app`, auto_unbox = TRUE, digits = NA))
+        self$`mobile_app` <- `mobile_app_object`
       }
-      if (!is.null(this_object$`os_language`)) {
-        self$`os_language` <- this_object$`os_language`
+      if (!is.null(this_object$`user_uuid`)) {
+        self$`user_uuid` <- this_object$`user_uuid`
+      }
+      if (!is.null(this_object$`last_login`)) {
+        self$`last_login` <- this_object$`last_login`
+      }
+      if (!is.null(this_object$`created_at`)) {
+        self$`created_at` <- this_object$`created_at`
+      }
+      if (!is.null(this_object$`updated_at`)) {
+        self$`updated_at` <- this_object$`updated_at`
       }
       self
     },
@@ -126,6 +228,30 @@ Device <- R6::R6Class(
     #' @return Device in JSON format
     toJSONString = function() {
       jsoncontent <- c(
+        if (!is.null(self$`device_id`)) {
+          sprintf(
+          '"device_id":
+            "%s"
+                    ',
+          self$`device_id`
+          )
+        },
+        if (!is.null(self$`name`)) {
+          sprintf(
+          '"name":
+            "%s"
+                    ',
+          self$`name`
+          )
+        },
+        if (!is.null(self$`type`)) {
+          sprintf(
+          '"type":
+            "%s"
+                    ',
+          self$`type`
+          )
+        },
         if (!is.null(self$`manufacturer`)) {
           sprintf(
           '"manufacturer":
@@ -145,25 +271,49 @@ Device <- R6::R6Class(
         if (!is.null(self$`os`)) {
           sprintf(
           '"os":
-            "%s"
-                    ',
-          self$`os`
+          %s
+          ',
+          jsonlite::toJSON(self$`os`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
-        if (!is.null(self$`os_version`)) {
+        if (!is.null(self$`mobile_app`)) {
           sprintf(
-          '"os_version":
-            "%s"
-                    ',
-          self$`os_version`
+          '"mobile_app":
+          %s
+          ',
+          jsonlite::toJSON(self$`mobile_app`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
-        if (!is.null(self$`os_language`)) {
+        if (!is.null(self$`user_uuid`)) {
           sprintf(
-          '"os_language":
+          '"user_uuid":
             "%s"
                     ',
-          self$`os_language`
+          self$`user_uuid`
+          )
+        },
+        if (!is.null(self$`last_login`)) {
+          sprintf(
+          '"last_login":
+            "%s"
+                    ',
+          self$`last_login`
+          )
+        },
+        if (!is.null(self$`created_at`)) {
+          sprintf(
+          '"created_at":
+            "%s"
+                    ',
+          self$`created_at`
+          )
+        },
+        if (!is.null(self$`updated_at`)) {
+          sprintf(
+          '"updated_at":
+            "%s"
+                    ',
+          self$`updated_at`
           )
         }
       )
@@ -178,11 +328,20 @@ Device <- R6::R6Class(
     #' @return the instance of Device
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`device_id` <- this_object$`device_id`
+      self$`name` <- this_object$`name`
+      if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("ios", "android", "web"))) {
+        stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"ios\", \"android\", \"web\".", sep = ""))
+      }
+      self$`type` <- this_object$`type`
       self$`manufacturer` <- this_object$`manufacturer`
       self$`model` <- this_object$`model`
-      self$`os` <- this_object$`os`
-      self$`os_version` <- this_object$`os_version`
-      self$`os_language` <- this_object$`os_language`
+      self$`os` <- DeviceOs$new()$fromJSON(jsonlite::toJSON(this_object$`os`, auto_unbox = TRUE, digits = NA))
+      self$`mobile_app` <- MobileApp$new()$fromJSON(jsonlite::toJSON(this_object$`mobile_app`, auto_unbox = TRUE, digits = NA))
+      self$`user_uuid` <- this_object$`user_uuid`
+      self$`last_login` <- this_object$`last_login`
+      self$`created_at` <- this_object$`created_at`
+      self$`updated_at` <- this_object$`updated_at`
       self
     },
 
@@ -192,6 +351,68 @@ Device <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `device_id`
+      if (!is.null(input_json$`device_id`)) {
+        if (!(is.character(input_json$`device_id`) && length(input_json$`device_id`) == 1)) {
+          stop(paste("Error! Invalid data for `device_id`. Must be a string:", input_json$`device_id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Device: the required field `device_id` is missing."))
+      }
+      # check the required field `type`
+      if (!is.null(input_json$`type`)) {
+        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Device: the required field `type` is missing."))
+      }
+      # check the required field `model`
+      if (!is.null(input_json$`model`)) {
+        if (!(is.character(input_json$`model`) && length(input_json$`model`) == 1)) {
+          stop(paste("Error! Invalid data for `model`. Must be a string:", input_json$`model`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Device: the required field `model` is missing."))
+      }
+      # check the required field `os`
+      if (!is.null(input_json$`os`)) {
+        stopifnot(R6::is.R6(input_json$`os`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Device: the required field `os` is missing."))
+      }
+      # check the required field `user_uuid`
+      if (!is.null(input_json$`user_uuid`)) {
+        if (!(is.character(input_json$`user_uuid`) && length(input_json$`user_uuid`) == 1)) {
+          stop(paste("Error! Invalid data for `user_uuid`. Must be a string:", input_json$`user_uuid`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Device: the required field `user_uuid` is missing."))
+      }
+      # check the required field `last_login`
+      if (!is.null(input_json$`last_login`)) {
+        if (!(is.character(input_json$`last_login`) && length(input_json$`last_login`) == 1)) {
+          stop(paste("Error! Invalid data for `last_login`. Must be a string:", input_json$`last_login`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Device: the required field `last_login` is missing."))
+      }
+      # check the required field `created_at`
+      if (!is.null(input_json$`created_at`)) {
+        if (!(is.character(input_json$`created_at`) && length(input_json$`created_at`) == 1)) {
+          stop(paste("Error! Invalid data for `created_at`. Must be a string:", input_json$`created_at`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Device: the required field `created_at` is missing."))
+      }
+      # check the required field `updated_at`
+      if (!is.null(input_json$`updated_at`)) {
+        if (!(is.character(input_json$`updated_at`) && length(input_json$`updated_at`) == 1)) {
+          stop(paste("Error! Invalid data for `updated_at`. Must be a string:", input_json$`updated_at`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Device: the required field `updated_at` is missing."))
+      }
     },
 
     #' @description
@@ -207,23 +428,54 @@ Device <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      if (nchar(self$`manufacturer`) > 200) {
+      # check if the required `device_id` is null
+      if (is.null(self$`device_id`)) {
         return(FALSE)
       }
 
-      if (nchar(self$`model`) > 200) {
+      if (nchar(self$`device_id`) > 255) {
         return(FALSE)
       }
 
-      if (nchar(self$`os`) > 200) {
+      if (nchar(self$`name`) > 255) {
         return(FALSE)
       }
 
-      if (nchar(self$`os_version`) > 200) {
+      # check if the required `type` is null
+      if (is.null(self$`type`)) {
         return(FALSE)
       }
 
-      if (nchar(self$`os_language`) > 10) {
+      if (nchar(self$`manufacturer`) > 128) {
+        return(FALSE)
+      }
+
+      # check if the required `model` is null
+      if (is.null(self$`model`)) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`model`) > 128) {
+        return(FALSE)
+      }
+
+      # check if the required `os` is null
+      if (is.null(self$`os`)) {
+        return(FALSE)
+      }
+
+      # check if the required `user_uuid` is null
+      if (is.null(self$`user_uuid`)) {
+        return(FALSE)
+      }
+
+      # check if the required `created_at` is null
+      if (is.null(self$`created_at`)) {
+        return(FALSE)
+      }
+
+      # check if the required `updated_at` is null
+      if (is.null(self$`updated_at`)) {
         return(FALSE)
       }
 
@@ -236,24 +488,55 @@ Device <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (nchar(self$`manufacturer`) > 200) {
-        invalid_fields["manufacturer"] <- "Invalid length for `manufacturer`, must be smaller than or equal to 200."
+      # check if the required `device_id` is null
+      if (is.null(self$`device_id`)) {
+        invalid_fields["device_id"] <- "Non-nullable required field `device_id` cannot be null."
       }
 
-      if (nchar(self$`model`) > 200) {
-        invalid_fields["model"] <- "Invalid length for `model`, must be smaller than or equal to 200."
+      if (nchar(self$`device_id`) > 255) {
+        invalid_fields["device_id"] <- "Invalid length for `device_id`, must be smaller than or equal to 255."
       }
 
-      if (nchar(self$`os`) > 200) {
-        invalid_fields["os"] <- "Invalid length for `os`, must be smaller than or equal to 200."
+      if (nchar(self$`name`) > 255) {
+        invalid_fields["name"] <- "Invalid length for `name`, must be smaller than or equal to 255."
       }
 
-      if (nchar(self$`os_version`) > 200) {
-        invalid_fields["os_version"] <- "Invalid length for `os_version`, must be smaller than or equal to 200."
+      # check if the required `type` is null
+      if (is.null(self$`type`)) {
+        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
       }
 
-      if (nchar(self$`os_language`) > 10) {
-        invalid_fields["os_language"] <- "Invalid length for `os_language`, must be smaller than or equal to 10."
+      if (nchar(self$`manufacturer`) > 128) {
+        invalid_fields["manufacturer"] <- "Invalid length for `manufacturer`, must be smaller than or equal to 128."
+      }
+
+      # check if the required `model` is null
+      if (is.null(self$`model`)) {
+        invalid_fields["model"] <- "Non-nullable required field `model` cannot be null."
+      }
+
+      if (nchar(self$`model`) > 128) {
+        invalid_fields["model"] <- "Invalid length for `model`, must be smaller than or equal to 128."
+      }
+
+      # check if the required `os` is null
+      if (is.null(self$`os`)) {
+        invalid_fields["os"] <- "Non-nullable required field `os` cannot be null."
+      }
+
+      # check if the required `user_uuid` is null
+      if (is.null(self$`user_uuid`)) {
+        invalid_fields["user_uuid"] <- "Non-nullable required field `user_uuid` cannot be null."
+      }
+
+      # check if the required `created_at` is null
+      if (is.null(self$`created_at`)) {
+        invalid_fields["created_at"] <- "Non-nullable required field `created_at` cannot be null."
+      }
+
+      # check if the required `updated_at` is null
+      if (is.null(self$`updated_at`)) {
+        invalid_fields["updated_at"] <- "Non-nullable required field `updated_at` cannot be null."
       }
 
       invalid_fields

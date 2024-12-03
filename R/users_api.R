@@ -17,7 +17,7 @@
 #' ####################  users_create  ####################
 #'
 #' library(MosquitoAlert)
-#' var_create_user_request <- CreateUserRequest$new("password_example", "device_token_example") # CreateUserRequest | 
+#' var_create_user_request <- CreateUserRequest$new("password_example", "es") # CreateUserRequest | 
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -40,7 +40,7 @@
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
-#' var_patched_user_request <- PatchedUserRequest$new("device_token_example") # PatchedUserRequest |  (Optional)
+#' var_patched_user_request <- PatchedUserRequest$new("es") # PatchedUserRequest |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -85,7 +85,7 @@
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
-#' var_user_request <- UserRequest$new("device_token_example") # UserRequest |  (Optional)
+#' var_user_request <- UserRequest$new("es") # UserRequest |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'

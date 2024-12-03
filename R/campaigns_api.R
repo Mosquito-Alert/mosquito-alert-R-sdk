@@ -19,7 +19,7 @@
 #' library(MosquitoAlert)
 #' var_country_id <- 56 # integer | Country in which the campaign is taking place (Optional)
 #' var_is_active <- "is_active_example" # character |  (Optional)
-#' var_order_by <- c("-end_date") # array[character] | Ordenamiento   (Optional)
+#' var_order_by <- c("-end_date") # array[character] | Ordenado   (Optional)
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #'
@@ -88,7 +88,7 @@ CampaignsApi <- R6::R6Class(
     #'
     #' @param country_id (optional) Country in which the campaign is taking place
     #' @param is_active (optional) No description
-    #' @param order_by (optional) Ordenamiento  
+    #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
     #' @param data_file (optional) name of the data file to save the result
@@ -113,7 +113,7 @@ CampaignsApi <- R6::R6Class(
     #'
     #' @param country_id (optional) Country in which the campaign is taking place
     #' @param is_active (optional) No description
-    #' @param order_by (optional) Ordenamiento  
+    #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
     #' @param data_file (optional) name of the data file to save the result

@@ -7,62 +7,88 @@
 #' @title DeviceRequest
 #' @description DeviceRequest Class
 #' @format An \code{R6Class} generator object
-#' @field manufacturer Manufacturer of device from which this report was submitted. character [optional]
-#' @field model Model of device from which this report was submitted. character [optional]
-#' @field os Operating system of device from which this report was submitted. character [optional]
-#' @field os_version Operating system version of device from which this report was submitted. character [optional]
-#' @field os_language Language setting of operating system on device from which this report was submitted. 2-digit ISO-639-1 language code. character [optional]
+#' @field device_id Unique device identifier character
+#' @field name  character [optional]
+#' @field fcm_token  character
+#' @field type  character
+#' @field manufacturer The manufacturer of the device. character [optional]
+#' @field model The end-user-visible name for the end product. character
+#' @field os  \link{DeviceOsRequest}
+#' @field mobile_app  \link{MobileAppRequest} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 DeviceRequest <- R6::R6Class(
   "DeviceRequest",
   public = list(
+    `device_id` = NULL,
+    `name` = NULL,
+    `fcm_token` = NULL,
+    `type` = NULL,
     `manufacturer` = NULL,
     `model` = NULL,
     `os` = NULL,
-    `os_version` = NULL,
-    `os_language` = NULL,
+    `mobile_app` = NULL,
 
     #' @description
     #' Initialize a new DeviceRequest class.
     #'
-    #' @param manufacturer Manufacturer of device from which this report was submitted.
-    #' @param model Model of device from which this report was submitted.
-    #' @param os Operating system of device from which this report was submitted.
-    #' @param os_version Operating system version of device from which this report was submitted.
-    #' @param os_language Language setting of operating system on device from which this report was submitted. 2-digit ISO-639-1 language code.
+    #' @param device_id Unique device identifier
+    #' @param fcm_token fcm_token
+    #' @param type type
+    #' @param model The end-user-visible name for the end product.
+    #' @param os os
+    #' @param name name
+    #' @param manufacturer The manufacturer of the device.
+    #' @param mobile_app mobile_app
     #' @param ... Other optional arguments.
-    initialize = function(`manufacturer` = NULL, `model` = NULL, `os` = NULL, `os_version` = NULL, `os_language` = NULL, ...) {
+    initialize = function(`device_id`, `fcm_token`, `type`, `model`, `os`, `name` = NULL, `manufacturer` = NULL, `mobile_app` = NULL, ...) {
+      if (!missing(`device_id`)) {
+        if (!(is.character(`device_id`) && length(`device_id`) == 1)) {
+          stop(paste("Error! Invalid data for `device_id`. Must be a string:", `device_id`))
+        }
+        self$`device_id` <- `device_id`
+      }
+      if (!missing(`fcm_token`)) {
+        if (!(is.character(`fcm_token`) && length(`fcm_token`) == 1)) {
+          stop(paste("Error! Invalid data for `fcm_token`. Must be a string:", `fcm_token`))
+        }
+        self$`fcm_token` <- `fcm_token`
+      }
+      if (!missing(`type`)) {
+        if (!(`type` %in% c("ios", "android", "web"))) {
+          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"ios\", \"android\", \"web\".", sep = ""))
+        }
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
+        self$`type` <- `type`
+      }
+      if (!missing(`model`)) {
+        if (!(is.character(`model`) && length(`model`) == 1)) {
+          stop(paste("Error! Invalid data for `model`. Must be a string:", `model`))
+        }
+        self$`model` <- `model`
+      }
+      if (!missing(`os`)) {
+        stopifnot(R6::is.R6(`os`))
+        self$`os` <- `os`
+      }
+      if (!is.null(`name`)) {
+        if (!(is.character(`name`) && length(`name`) == 1)) {
+          stop(paste("Error! Invalid data for `name`. Must be a string:", `name`))
+        }
+        self$`name` <- `name`
+      }
       if (!is.null(`manufacturer`)) {
         if (!(is.character(`manufacturer`) && length(`manufacturer`) == 1)) {
           stop(paste("Error! Invalid data for `manufacturer`. Must be a string:", `manufacturer`))
         }
         self$`manufacturer` <- `manufacturer`
       }
-      if (!is.null(`model`)) {
-        if (!(is.character(`model`) && length(`model`) == 1)) {
-          stop(paste("Error! Invalid data for `model`. Must be a string:", `model`))
-        }
-        self$`model` <- `model`
-      }
-      if (!is.null(`os`)) {
-        if (!(is.character(`os`) && length(`os`) == 1)) {
-          stop(paste("Error! Invalid data for `os`. Must be a string:", `os`))
-        }
-        self$`os` <- `os`
-      }
-      if (!is.null(`os_version`)) {
-        if (!(is.character(`os_version`) && length(`os_version`) == 1)) {
-          stop(paste("Error! Invalid data for `os_version`. Must be a string:", `os_version`))
-        }
-        self$`os_version` <- `os_version`
-      }
-      if (!is.null(`os_language`)) {
-        if (!(is.character(`os_language`) && length(`os_language`) == 1)) {
-          stop(paste("Error! Invalid data for `os_language`. Must be a string:", `os_language`))
-        }
-        self$`os_language` <- `os_language`
+      if (!is.null(`mobile_app`)) {
+        stopifnot(R6::is.R6(`mobile_app`))
+        self$`mobile_app` <- `mobile_app`
       }
     },
 
@@ -72,6 +98,22 @@ DeviceRequest <- R6::R6Class(
     #' @return DeviceRequest in JSON format
     toJSON = function() {
       DeviceRequestObject <- list()
+      if (!is.null(self$`device_id`)) {
+        DeviceRequestObject[["device_id"]] <-
+          self$`device_id`
+      }
+      if (!is.null(self$`name`)) {
+        DeviceRequestObject[["name"]] <-
+          self$`name`
+      }
+      if (!is.null(self$`fcm_token`)) {
+        DeviceRequestObject[["fcm_token"]] <-
+          self$`fcm_token`
+      }
+      if (!is.null(self$`type`)) {
+        DeviceRequestObject[["type"]] <-
+          self$`type`
+      }
       if (!is.null(self$`manufacturer`)) {
         DeviceRequestObject[["manufacturer"]] <-
           self$`manufacturer`
@@ -82,15 +124,11 @@ DeviceRequest <- R6::R6Class(
       }
       if (!is.null(self$`os`)) {
         DeviceRequestObject[["os"]] <-
-          self$`os`
+          self$`os`$toJSON()
       }
-      if (!is.null(self$`os_version`)) {
-        DeviceRequestObject[["os_version"]] <-
-          self$`os_version`
-      }
-      if (!is.null(self$`os_language`)) {
-        DeviceRequestObject[["os_language"]] <-
-          self$`os_language`
+      if (!is.null(self$`mobile_app`)) {
+        DeviceRequestObject[["mobile_app"]] <-
+          self$`mobile_app`$toJSON()
       }
       DeviceRequestObject
     },
@@ -102,6 +140,21 @@ DeviceRequest <- R6::R6Class(
     #' @return the instance of DeviceRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`device_id`)) {
+        self$`device_id` <- this_object$`device_id`
+      }
+      if (!is.null(this_object$`name`)) {
+        self$`name` <- this_object$`name`
+      }
+      if (!is.null(this_object$`fcm_token`)) {
+        self$`fcm_token` <- this_object$`fcm_token`
+      }
+      if (!is.null(this_object$`type`)) {
+        if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("ios", "android", "web"))) {
+          stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"ios\", \"android\", \"web\".", sep = ""))
+        }
+        self$`type` <- this_object$`type`
+      }
       if (!is.null(this_object$`manufacturer`)) {
         self$`manufacturer` <- this_object$`manufacturer`
       }
@@ -109,13 +162,14 @@ DeviceRequest <- R6::R6Class(
         self$`model` <- this_object$`model`
       }
       if (!is.null(this_object$`os`)) {
-        self$`os` <- this_object$`os`
+        `os_object` <- DeviceOsRequest$new()
+        `os_object`$fromJSON(jsonlite::toJSON(this_object$`os`, auto_unbox = TRUE, digits = NA))
+        self$`os` <- `os_object`
       }
-      if (!is.null(this_object$`os_version`)) {
-        self$`os_version` <- this_object$`os_version`
-      }
-      if (!is.null(this_object$`os_language`)) {
-        self$`os_language` <- this_object$`os_language`
+      if (!is.null(this_object$`mobile_app`)) {
+        `mobile_app_object` <- MobileAppRequest$new()
+        `mobile_app_object`$fromJSON(jsonlite::toJSON(this_object$`mobile_app`, auto_unbox = TRUE, digits = NA))
+        self$`mobile_app` <- `mobile_app_object`
       }
       self
     },
@@ -126,6 +180,38 @@ DeviceRequest <- R6::R6Class(
     #' @return DeviceRequest in JSON format
     toJSONString = function() {
       jsoncontent <- c(
+        if (!is.null(self$`device_id`)) {
+          sprintf(
+          '"device_id":
+            "%s"
+                    ',
+          self$`device_id`
+          )
+        },
+        if (!is.null(self$`name`)) {
+          sprintf(
+          '"name":
+            "%s"
+                    ',
+          self$`name`
+          )
+        },
+        if (!is.null(self$`fcm_token`)) {
+          sprintf(
+          '"fcm_token":
+            "%s"
+                    ',
+          self$`fcm_token`
+          )
+        },
+        if (!is.null(self$`type`)) {
+          sprintf(
+          '"type":
+            "%s"
+                    ',
+          self$`type`
+          )
+        },
         if (!is.null(self$`manufacturer`)) {
           sprintf(
           '"manufacturer":
@@ -145,25 +231,17 @@ DeviceRequest <- R6::R6Class(
         if (!is.null(self$`os`)) {
           sprintf(
           '"os":
-            "%s"
-                    ',
-          self$`os`
+          %s
+          ',
+          jsonlite::toJSON(self$`os`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
-        if (!is.null(self$`os_version`)) {
+        if (!is.null(self$`mobile_app`)) {
           sprintf(
-          '"os_version":
-            "%s"
-                    ',
-          self$`os_version`
-          )
-        },
-        if (!is.null(self$`os_language`)) {
-          sprintf(
-          '"os_language":
-            "%s"
-                    ',
-          self$`os_language`
+          '"mobile_app":
+          %s
+          ',
+          jsonlite::toJSON(self$`mobile_app`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         }
       )
@@ -178,11 +256,17 @@ DeviceRequest <- R6::R6Class(
     #' @return the instance of DeviceRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`device_id` <- this_object$`device_id`
+      self$`name` <- this_object$`name`
+      self$`fcm_token` <- this_object$`fcm_token`
+      if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("ios", "android", "web"))) {
+        stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"ios\", \"android\", \"web\".", sep = ""))
+      }
+      self$`type` <- this_object$`type`
       self$`manufacturer` <- this_object$`manufacturer`
       self$`model` <- this_object$`model`
-      self$`os` <- this_object$`os`
-      self$`os_version` <- this_object$`os_version`
-      self$`os_language` <- this_object$`os_language`
+      self$`os` <- DeviceOsRequest$new()$fromJSON(jsonlite::toJSON(this_object$`os`, auto_unbox = TRUE, digits = NA))
+      self$`mobile_app` <- MobileAppRequest$new()$fromJSON(jsonlite::toJSON(this_object$`mobile_app`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -192,6 +276,44 @@ DeviceRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `device_id`
+      if (!is.null(input_json$`device_id`)) {
+        if (!(is.character(input_json$`device_id`) && length(input_json$`device_id`) == 1)) {
+          stop(paste("Error! Invalid data for `device_id`. Must be a string:", input_json$`device_id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for DeviceRequest: the required field `device_id` is missing."))
+      }
+      # check the required field `fcm_token`
+      if (!is.null(input_json$`fcm_token`)) {
+        if (!(is.character(input_json$`fcm_token`) && length(input_json$`fcm_token`) == 1)) {
+          stop(paste("Error! Invalid data for `fcm_token`. Must be a string:", input_json$`fcm_token`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for DeviceRequest: the required field `fcm_token` is missing."))
+      }
+      # check the required field `type`
+      if (!is.null(input_json$`type`)) {
+        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for DeviceRequest: the required field `type` is missing."))
+      }
+      # check the required field `model`
+      if (!is.null(input_json$`model`)) {
+        if (!(is.character(input_json$`model`) && length(input_json$`model`) == 1)) {
+          stop(paste("Error! Invalid data for `model`. Must be a string:", input_json$`model`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for DeviceRequest: the required field `model` is missing."))
+      }
+      # check the required field `os`
+      if (!is.null(input_json$`os`)) {
+        stopifnot(R6::is.R6(input_json$`os`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for DeviceRequest: the required field `os` is missing."))
+      }
     },
 
     #' @description
@@ -207,23 +329,48 @@ DeviceRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      if (nchar(self$`manufacturer`) > 200) {
+      # check if the required `device_id` is null
+      if (is.null(self$`device_id`)) {
         return(FALSE)
       }
 
-      if (nchar(self$`model`) > 200) {
+      if (nchar(self$`device_id`) > 255) {
         return(FALSE)
       }
 
-      if (nchar(self$`os`) > 200) {
+      if (nchar(self$`name`) > 255) {
         return(FALSE)
       }
 
-      if (nchar(self$`os_version`) > 200) {
+      # check if the required `fcm_token` is null
+      if (is.null(self$`fcm_token`)) {
         return(FALSE)
       }
 
-      if (nchar(self$`os_language`) > 10) {
+      if (nchar(self$`fcm_token`) < 1) {
+        return(FALSE)
+      }
+
+      # check if the required `type` is null
+      if (is.null(self$`type`)) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`manufacturer`) > 128) {
+        return(FALSE)
+      }
+
+      # check if the required `model` is null
+      if (is.null(self$`model`)) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`model`) > 128) {
+        return(FALSE)
+      }
+
+      # check if the required `os` is null
+      if (is.null(self$`os`)) {
         return(FALSE)
       }
 
@@ -236,24 +383,49 @@ DeviceRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (nchar(self$`manufacturer`) > 200) {
-        invalid_fields["manufacturer"] <- "Invalid length for `manufacturer`, must be smaller than or equal to 200."
+      # check if the required `device_id` is null
+      if (is.null(self$`device_id`)) {
+        invalid_fields["device_id"] <- "Non-nullable required field `device_id` cannot be null."
       }
 
-      if (nchar(self$`model`) > 200) {
-        invalid_fields["model"] <- "Invalid length for `model`, must be smaller than or equal to 200."
+      if (nchar(self$`device_id`) > 255) {
+        invalid_fields["device_id"] <- "Invalid length for `device_id`, must be smaller than or equal to 255."
       }
 
-      if (nchar(self$`os`) > 200) {
-        invalid_fields["os"] <- "Invalid length for `os`, must be smaller than or equal to 200."
+      if (nchar(self$`name`) > 255) {
+        invalid_fields["name"] <- "Invalid length for `name`, must be smaller than or equal to 255."
       }
 
-      if (nchar(self$`os_version`) > 200) {
-        invalid_fields["os_version"] <- "Invalid length for `os_version`, must be smaller than or equal to 200."
+      # check if the required `fcm_token` is null
+      if (is.null(self$`fcm_token`)) {
+        invalid_fields["fcm_token"] <- "Non-nullable required field `fcm_token` cannot be null."
       }
 
-      if (nchar(self$`os_language`) > 10) {
-        invalid_fields["os_language"] <- "Invalid length for `os_language`, must be smaller than or equal to 10."
+      if (nchar(self$`fcm_token`) < 1) {
+        invalid_fields["fcm_token"] <- "Invalid length for `fcm_token`, must be bigger than or equal to 1."
+      }
+
+      # check if the required `type` is null
+      if (is.null(self$`type`)) {
+        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
+      }
+
+      if (nchar(self$`manufacturer`) > 128) {
+        invalid_fields["manufacturer"] <- "Invalid length for `manufacturer`, must be smaller than or equal to 128."
+      }
+
+      # check if the required `model` is null
+      if (is.null(self$`model`)) {
+        invalid_fields["model"] <- "Non-nullable required field `model` cannot be null."
+      }
+
+      if (nchar(self$`model`) > 128) {
+        invalid_fields["model"] <- "Invalid length for `model`, must be smaller than or equal to 128."
+      }
+
+      # check if the required `os` is null
+      if (is.null(self$`os`)) {
+        invalid_fields["os"] <- "Non-nullable required field `os` cannot be null."
       }
 
       invalid_fields

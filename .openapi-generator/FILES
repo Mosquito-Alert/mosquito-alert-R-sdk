@@ -25,7 +25,12 @@ R/create_notification.R
 R/create_user.R
 R/create_user_request.R
 R/device.R
+R/device_os.R
+R/device_os_request.R
 R/device_request.R
+R/device_update.R
+R/device_update_request.R
+R/devices_api.R
 R/fix.R
 R/fix_location.R
 R/fix_location_request.R
@@ -35,6 +40,8 @@ R/location.R
 R/location_point.R
 R/location_request.R
 R/meta_notification_request.R
+R/mobile_app.R
+R/mobile_app_request.R
 R/mosquitoalert_api.R
 R/notification.R
 R/notification_request.R
@@ -44,8 +51,6 @@ R/observation_prediction.R
 R/observation_prediction_request.R
 R/observation_request.R
 R/observations_api.R
-R/package.R
-R/package_request.R
 R/paginated_bite_list.R
 R/paginated_breeding_site_list.R
 R/paginated_campaign_list.R
@@ -55,6 +60,7 @@ R/paginated_partner_list.R
 R/partner.R
 R/partner_point.R
 R/partners_api.R
+R/patched_device_update_request.R
 R/patched_notification_request.R
 R/patched_user_request.R
 R/photo.R
@@ -92,7 +98,12 @@ docs/CreateNotification.md
 docs/CreateUser.md
 docs/CreateUserRequest.md
 docs/Device.md
+docs/DeviceOs.md
+docs/DeviceOsRequest.md
 docs/DeviceRequest.md
+docs/DeviceUpdate.md
+docs/DeviceUpdateRequest.md
+docs/DevicesApi.md
 docs/Fix.md
 docs/FixLocation.md
 docs/FixLocationRequest.md
@@ -102,6 +113,8 @@ docs/Location.md
 docs/LocationPoint.md
 docs/LocationRequest.md
 docs/MetaNotificationRequest.md
+docs/MobileApp.md
+docs/MobileAppRequest.md
 docs/Notification.md
 docs/NotificationRequest.md
 docs/NotificationsApi.md
@@ -110,8 +123,6 @@ docs/ObservationPrediction.md
 docs/ObservationPredictionRequest.md
 docs/ObservationRequest.md
 docs/ObservationsApi.md
-docs/Package.md
-docs/PackageRequest.md
 docs/PaginatedBiteList.md
 docs/PaginatedBreedingSiteList.md
 docs/PaginatedCampaignList.md
@@ -121,6 +132,7 @@ docs/PaginatedPartnerList.md
 docs/Partner.md
 docs/PartnerPoint.md
 docs/PartnersApi.md
+docs/PatchedDeviceUpdateRequest.md
 docs/PatchedNotificationRequest.md
 docs/PatchedUserRequest.md
 docs/Photo.md
@@ -159,7 +171,12 @@ tests/testthat/test_create_notification.R
 tests/testthat/test_create_user.R
 tests/testthat/test_create_user_request.R
 tests/testthat/test_device.R
+tests/testthat/test_device_os.R
+tests/testthat/test_device_os_request.R
 tests/testthat/test_device_request.R
+tests/testthat/test_device_update.R
+tests/testthat/test_device_update_request.R
+tests/testthat/test_devices_api.R
 tests/testthat/test_fix.R
 tests/testthat/test_fix_location.R
 tests/testthat/test_fix_location_request.R
@@ -169,6 +186,8 @@ tests/testthat/test_location.R
 tests/testthat/test_location_point.R
 tests/testthat/test_location_request.R
 tests/testthat/test_meta_notification_request.R
+tests/testthat/test_mobile_app.R
+tests/testthat/test_mobile_app_request.R
 tests/testthat/test_notification.R
 tests/testthat/test_notification_request.R
 tests/testthat/test_notifications_api.R
@@ -177,8 +196,6 @@ tests/testthat/test_observation_prediction.R
 tests/testthat/test_observation_prediction_request.R
 tests/testthat/test_observation_request.R
 tests/testthat/test_observations_api.R
-tests/testthat/test_package.R
-tests/testthat/test_package_request.R
 tests/testthat/test_paginated_bite_list.R
 tests/testthat/test_paginated_breeding_site_list.R
 tests/testthat/test_paginated_campaign_list.R
@@ -188,6 +205,7 @@ tests/testthat/test_paginated_partner_list.R
 tests/testthat/test_partner.R
 tests/testthat/test_partner_point.R
 tests/testthat/test_partners_api.R
+tests/testthat/test_patched_device_update_request.R
 tests/testthat/test_patched_notification_request.R
 tests/testthat/test_patched_user_request.R
 tests/testthat/test_photo.R

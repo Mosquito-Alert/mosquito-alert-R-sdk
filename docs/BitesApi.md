@@ -20,7 +20,7 @@ Method | HTTP request | Description
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_bite_request <- BiteRequest$new("created_at_example", "sent_at_example", LocationRequest$new("current", Location_point$new(123, 123)), "note_example", c("tags_example"), PackageRequest$new("name_example", 123, "language_example"), DeviceRequest$new("manufacturer_example", "model_example", "os_example", "os_version_example", "os_language_example"), "indoors", "now", 123, 123, 123, 123, 123, 123) # BiteRequest | 
+var_bite_request <- BiteRequest$new("created_at_example", "sent_at_example", LocationRequest$new("current", Location_point$new(123, 123)), "note_example", c("tags_example"), "indoors", "now", 123, 123, 123, 123, 123, 123) # BiteRequest | 
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: cookieAuth
@@ -120,7 +120,7 @@ var_created_at_before <- "created_at_before_example" # character | Created at (O
 var_location_country_id <- 56 # integer |  (Optional)
 var_location_nuts_2 <- "location_nuts_2_example" # character |  (Optional)
 var_location_nuts_3 <- "location_nuts_3_example" # character |  (Optional)
-var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
  **location_country_id** | **integer**|  | [optional] 
  **location_nuts_2** | **character**|  | [optional] 
  **location_nuts_3** | **character**|  | [optional] 
- **order_by** | Enum [-created_at, -received_at, created_at, received_at] | Ordenamiento   | [optional] 
+ **order_by** | Enum [-created_at, -received_at, created_at, received_at] | Ordenado   | [optional] 
  **page** | **integer**| A page number within the paginated result set. | [optional] 
  **page_size** | **integer**| Number of results to return per page. | [optional] 
  **received_at_after** | **character**| Received at | [optional] 

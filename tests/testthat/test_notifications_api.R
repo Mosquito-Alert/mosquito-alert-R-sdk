@@ -18,7 +18,7 @@ test_that("notifications_create", {
 test_that("notifications_list", {
   # tests for notifications_list
   # base path: https://api.mosquitoalert.com/v1
-  # @param order_by array[character] Ordenamiento   (optional)
+  # @param order_by array[character] Ordenado   (optional)
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)
   # @param seen character  (optional)

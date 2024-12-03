@@ -12,8 +12,6 @@
 #' @field location  \link{LocationRequest}
 #' @field note Note user attached to report. character [optional]
 #' @field tags  list(character) [optional]
-#' @field package  \link{PackageRequest} [optional]
-#' @field device  \link{DeviceRequest} [optional]
 #' @field photos  list(\link{SimplePhotoRequest})
 #' @field event_environment The environment where the event took place. character [optional]
 #' @field event_moment The moment of the day when the event took place. character [optional]
@@ -32,8 +30,6 @@ ObservationRequest <- R6::R6Class(
     `location` = NULL,
     `note` = NULL,
     `tags` = NULL,
-    `package` = NULL,
-    `device` = NULL,
     `photos` = NULL,
     `event_environment` = NULL,
     `event_moment` = NULL,
@@ -51,8 +47,6 @@ ObservationRequest <- R6::R6Class(
     #' @param photos photos
     #' @param note Note user attached to report.
     #' @param tags tags
-    #' @param package package
-    #' @param device device
     #' @param event_environment The environment where the event took place.
     #' @param event_moment The moment of the day when the event took place.
     #' @param user_perceived_mosquito_specie The mosquito specie perceived by the user.
@@ -60,7 +54,7 @@ ObservationRequest <- R6::R6Class(
     #' @param user_perceived_mosquito_abdomen The species of mosquito that the abdomen resembles, according to the user.
     #' @param user_perceived_mosquito_legs The species of mosquito that the leg resembles, according to the user.
     #' @param ... Other optional arguments.
-    initialize = function(`created_at`, `sent_at`, `location`, `photos`, `note` = NULL, `tags` = NULL, `package` = NULL, `device` = NULL, `event_environment` = NULL, `event_moment` = NULL, `user_perceived_mosquito_specie` = NULL, `user_perceived_mosquito_thorax` = NULL, `user_perceived_mosquito_abdomen` = NULL, `user_perceived_mosquito_legs` = NULL, ...) {
+    initialize = function(`created_at`, `sent_at`, `location`, `photos`, `note` = NULL, `tags` = NULL, `event_environment` = NULL, `event_moment` = NULL, `user_perceived_mosquito_specie` = NULL, `user_perceived_mosquito_thorax` = NULL, `user_perceived_mosquito_abdomen` = NULL, `user_perceived_mosquito_legs` = NULL, ...) {
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
           stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
@@ -92,14 +86,6 @@ ObservationRequest <- R6::R6Class(
         stopifnot(is.vector(`tags`), length(`tags`) != 0)
         sapply(`tags`, function(x) stopifnot(is.character(x)))
         self$`tags` <- `tags`
-      }
-      if (!is.null(`package`)) {
-        stopifnot(R6::is.R6(`package`))
-        self$`package` <- `package`
-      }
-      if (!is.null(`device`)) {
-        stopifnot(R6::is.R6(`device`))
-        self$`device` <- `device`
       }
       if (!is.null(`event_environment`)) {
         if (!(`event_environment` %in% c("indoors", "outdoors", "vehicle", ""))) {
@@ -183,14 +169,6 @@ ObservationRequest <- R6::R6Class(
         ObservationRequestObject[["tags"]] <-
           self$`tags`
       }
-      if (!is.null(self$`package`)) {
-        ObservationRequestObject[["package"]] <-
-          self$`package`$toJSON()
-      }
-      if (!is.null(self$`device`)) {
-        ObservationRequestObject[["device"]] <-
-          self$`device`$toJSON()
-      }
       if (!is.null(self$`photos`)) {
         ObservationRequestObject[["photos"]] <-
           lapply(self$`photos`, function(x) x$toJSON())
@@ -245,16 +223,6 @@ ObservationRequest <- R6::R6Class(
       }
       if (!is.null(this_object$`tags`)) {
         self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
-      }
-      if (!is.null(this_object$`package`)) {
-        `package_object` <- PackageRequest$new()
-        `package_object`$fromJSON(jsonlite::toJSON(this_object$`package`, auto_unbox = TRUE, digits = NA))
-        self$`package` <- `package_object`
-      }
-      if (!is.null(this_object$`device`)) {
-        `device_object` <- DeviceRequest$new()
-        `device_object`$fromJSON(jsonlite::toJSON(this_object$`device`, auto_unbox = TRUE, digits = NA))
-        self$`device` <- `device_object`
       }
       if (!is.null(this_object$`photos`)) {
         self$`photos` <- ApiClient$new()$deserializeObj(this_object$`photos`, "array[SimplePhotoRequest]", loadNamespace("MosquitoAlert"))
@@ -344,22 +312,6 @@ ObservationRequest <- R6::R6Class(
           paste(unlist(lapply(self$`tags`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         },
-        if (!is.null(self$`package`)) {
-          sprintf(
-          '"package":
-          %s
-          ',
-          jsonlite::toJSON(self$`package`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`device`)) {
-          sprintf(
-          '"device":
-          %s
-          ',
-          jsonlite::toJSON(self$`device`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
         if (!is.null(self$`photos`)) {
           sprintf(
           '"photos":
@@ -433,8 +385,6 @@ ObservationRequest <- R6::R6Class(
       self$`location` <- LocationRequest$new()$fromJSON(jsonlite::toJSON(this_object$`location`, auto_unbox = TRUE, digits = NA))
       self$`note` <- this_object$`note`
       self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
-      self$`package` <- PackageRequest$new()$fromJSON(jsonlite::toJSON(this_object$`package`, auto_unbox = TRUE, digits = NA))
-      self$`device` <- DeviceRequest$new()$fromJSON(jsonlite::toJSON(this_object$`device`, auto_unbox = TRUE, digits = NA))
       self$`photos` <- ApiClient$new()$deserializeObj(this_object$`photos`, "array[SimplePhotoRequest]", loadNamespace("MosquitoAlert"))
       if (!is.null(this_object$`event_environment`) && !(this_object$`event_environment` %in% c("indoors", "outdoors", "vehicle", ""))) {
         stop(paste("Error! \"", this_object$`event_environment`, "\" cannot be assigned to `event_environment`. Must be \"indoors\", \"outdoors\", \"vehicle\", \"\".", sep = ""))

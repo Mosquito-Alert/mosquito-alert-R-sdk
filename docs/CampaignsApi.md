@@ -20,7 +20,7 @@ library(MosquitoAlert)
 # prepare function argument(s)
 var_country_id <- 56 # integer | Country in which the campaign is taking place (Optional)
 var_is_active <- "is_active_example" # character |  (Optional)
-var_order_by <- c("-end_date") # array[character] | Ordenamiento   (Optional)
+var_order_by <- c("-end_date") # array[character] | Ordenado   (Optional)
 var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **country_id** | **integer**| Country in which the campaign is taking place | [optional] 
  **is_active** | **character**|  | [optional] 
- **order_by** | Enum [-end_date, -start_date, end_date, start_date] | Ordenamiento   | [optional] 
+ **order_by** | Enum [-end_date, -start_date, end_date, start_date] | Ordenado   | [optional] 
  **page** | **integer**| A page number within the paginated result set. | [optional] 
  **page_size** | **integer**| Number of results to return per page. | [optional] 
 
