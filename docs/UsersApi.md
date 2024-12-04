@@ -57,6 +57,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **201** |  |  -  |
 
 # **users_partial_update**
@@ -108,6 +115,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **200** |  |  -  |
 
 # **users_retrieve**
@@ -157,6 +172,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **200** |  |  -  |
 
 # **users_update**
@@ -208,5 +231,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **200** |  |  -  |
 

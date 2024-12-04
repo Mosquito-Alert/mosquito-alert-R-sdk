@@ -355,7 +355,7 @@ ObservationsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts <- list()
+      local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
       local_var_content_types <- list()
@@ -740,7 +740,7 @@ ObservationsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts <- list()
+      local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
       local_var_content_types <- list()

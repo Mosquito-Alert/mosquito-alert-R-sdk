@@ -57,6 +57,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **200** |  |  -  |
 
 # **partners_retrieve**
@@ -106,5 +114,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **200** |  |  -  |
 

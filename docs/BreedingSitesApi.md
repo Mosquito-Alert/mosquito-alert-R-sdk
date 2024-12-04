@@ -57,6 +57,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **201** |  |  -  |
 
 # **breeding_sites_destroy**
@@ -98,11 +106,19 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **204** | No response body |  -  |
 
 # **breeding_sites_list**
@@ -180,6 +196,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **200** |  |  -  |
 
 # **breeding_sites_retrieve**
@@ -229,5 +252,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **200** |  |  -  |
 

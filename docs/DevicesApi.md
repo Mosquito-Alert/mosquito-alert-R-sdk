@@ -53,6 +53,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **201** |  |  -  |
 
 # **devices_partial_update**
@@ -100,6 +108,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **200** |  |  -  |
 
 # **devices_retrieve**
@@ -145,6 +161,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **200** |  |  -  |
 
 # **devices_update**
@@ -192,5 +216,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **200** |  |  -  |
 

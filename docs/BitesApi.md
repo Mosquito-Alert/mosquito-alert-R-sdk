@@ -57,6 +57,14 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **201** |  |  -  |
 
 # **bites_destroy**
@@ -98,11 +106,19 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **204** | No response body |  -  |
 
 # **bites_list**
@@ -178,6 +194,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **200** |  |  -  |
 
 # **bites_retrieve**
@@ -227,5 +250,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **404** |  |  -  |
+| **405** |  |  -  |
+| **406** |  |  -  |
+| **415** |  |  -  |
+| **500** |  |  -  |
 | **200** |  |  -  |
 
