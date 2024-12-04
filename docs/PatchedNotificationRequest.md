@@ -4,6 +4,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**seen** | **character** |  | [optional] 
+**is_read** | **character** |  | [optional] 
 
 

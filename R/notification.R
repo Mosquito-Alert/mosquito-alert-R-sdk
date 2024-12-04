@@ -8,11 +8,9 @@
 #' @description Notification Class
 #' @format An \code{R6Class} generator object
 #' @field id  integer
-#' @field expert_id Expert sending the notification integer
+#' @field message  \link{NotificationMessage}
+#' @field is_read  character
 #' @field created_at  character
-#' @field title  character
-#' @field body  character
-#' @field seen  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -20,58 +18,40 @@ Notification <- R6::R6Class(
   "Notification",
   public = list(
     `id` = NULL,
-    `expert_id` = NULL,
+    `message` = NULL,
+    `is_read` = NULL,
     `created_at` = NULL,
-    `title` = NULL,
-    `body` = NULL,
-    `seen` = NULL,
 
     #' @description
     #' Initialize a new Notification class.
     #'
     #' @param id id
-    #' @param expert_id Expert sending the notification
+    #' @param message message
+    #' @param is_read is_read
     #' @param created_at created_at
-    #' @param title title
-    #' @param body body
-    #' @param seen seen
     #' @param ... Other optional arguments.
-    initialize = function(`id`, `expert_id`, `created_at`, `title`, `body`, `seen`, ...) {
+    initialize = function(`id`, `message`, `is_read`, `created_at`, ...) {
       if (!missing(`id`)) {
         if (!(is.numeric(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be an integer:", `id`))
         }
         self$`id` <- `id`
       }
-      if (!missing(`expert_id`)) {
-        if (!(is.numeric(`expert_id`) && length(`expert_id`) == 1)) {
-          stop(paste("Error! Invalid data for `expert_id`. Must be an integer:", `expert_id`))
+      if (!missing(`message`)) {
+        stopifnot(R6::is.R6(`message`))
+        self$`message` <- `message`
+      }
+      if (!missing(`is_read`)) {
+        if (!(is.logical(`is_read`) && length(`is_read`) == 1)) {
+          stop(paste("Error! Invalid data for `is_read`. Must be a boolean:", `is_read`))
         }
-        self$`expert_id` <- `expert_id`
+        self$`is_read` <- `is_read`
       }
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
           stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
         }
         self$`created_at` <- `created_at`
-      }
-      if (!missing(`title`)) {
-        if (!(is.character(`title`) && length(`title`) == 1)) {
-          stop(paste("Error! Invalid data for `title`. Must be a string:", `title`))
-        }
-        self$`title` <- `title`
-      }
-      if (!missing(`body`)) {
-        if (!(is.character(`body`) && length(`body`) == 1)) {
-          stop(paste("Error! Invalid data for `body`. Must be a string:", `body`))
-        }
-        self$`body` <- `body`
-      }
-      if (!missing(`seen`)) {
-        if (!(is.logical(`seen`) && length(`seen`) == 1)) {
-          stop(paste("Error! Invalid data for `seen`. Must be a boolean:", `seen`))
-        }
-        self$`seen` <- `seen`
       }
     },
 
@@ -85,25 +65,17 @@ Notification <- R6::R6Class(
         NotificationObject[["id"]] <-
           self$`id`
       }
-      if (!is.null(self$`expert_id`)) {
-        NotificationObject[["expert_id"]] <-
-          self$`expert_id`
+      if (!is.null(self$`message`)) {
+        NotificationObject[["message"]] <-
+          self$`message`$toJSON()
+      }
+      if (!is.null(self$`is_read`)) {
+        NotificationObject[["is_read"]] <-
+          self$`is_read`
       }
       if (!is.null(self$`created_at`)) {
         NotificationObject[["created_at"]] <-
           self$`created_at`
-      }
-      if (!is.null(self$`title`)) {
-        NotificationObject[["title"]] <-
-          self$`title`
-      }
-      if (!is.null(self$`body`)) {
-        NotificationObject[["body"]] <-
-          self$`body`
-      }
-      if (!is.null(self$`seen`)) {
-        NotificationObject[["seen"]] <-
-          self$`seen`
       }
       NotificationObject
     },
@@ -118,20 +90,16 @@ Notification <- R6::R6Class(
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
       }
-      if (!is.null(this_object$`expert_id`)) {
-        self$`expert_id` <- this_object$`expert_id`
+      if (!is.null(this_object$`message`)) {
+        `message_object` <- NotificationMessage$new()
+        `message_object`$fromJSON(jsonlite::toJSON(this_object$`message`, auto_unbox = TRUE, digits = NA))
+        self$`message` <- `message_object`
+      }
+      if (!is.null(this_object$`is_read`)) {
+        self$`is_read` <- this_object$`is_read`
       }
       if (!is.null(this_object$`created_at`)) {
         self$`created_at` <- this_object$`created_at`
-      }
-      if (!is.null(this_object$`title`)) {
-        self$`title` <- this_object$`title`
-      }
-      if (!is.null(this_object$`body`)) {
-        self$`body` <- this_object$`body`
-      }
-      if (!is.null(this_object$`seen`)) {
-        self$`seen` <- this_object$`seen`
       }
       self
     },
@@ -150,12 +118,20 @@ Notification <- R6::R6Class(
           self$`id`
           )
         },
-        if (!is.null(self$`expert_id`)) {
+        if (!is.null(self$`message`)) {
           sprintf(
-          '"expert_id":
-            %d
+          '"message":
+          %s
+          ',
+          jsonlite::toJSON(self$`message`$toJSON(), auto_unbox = TRUE, digits = NA)
+          )
+        },
+        if (!is.null(self$`is_read`)) {
+          sprintf(
+          '"is_read":
+            %s
                     ',
-          self$`expert_id`
+          tolower(self$`is_read`)
           )
         },
         if (!is.null(self$`created_at`)) {
@@ -164,30 +140,6 @@ Notification <- R6::R6Class(
             "%s"
                     ',
           self$`created_at`
-          )
-        },
-        if (!is.null(self$`title`)) {
-          sprintf(
-          '"title":
-            "%s"
-                    ',
-          self$`title`
-          )
-        },
-        if (!is.null(self$`body`)) {
-          sprintf(
-          '"body":
-            "%s"
-                    ',
-          self$`body`
-          )
-        },
-        if (!is.null(self$`seen`)) {
-          sprintf(
-          '"seen":
-            %s
-                    ',
-          tolower(self$`seen`)
           )
         }
       )
@@ -203,11 +155,9 @@ Notification <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
-      self$`expert_id` <- this_object$`expert_id`
+      self$`message` <- NotificationMessage$new()$fromJSON(jsonlite::toJSON(this_object$`message`, auto_unbox = TRUE, digits = NA))
+      self$`is_read` <- this_object$`is_read`
       self$`created_at` <- this_object$`created_at`
-      self$`title` <- this_object$`title`
-      self$`body` <- this_object$`body`
-      self$`seen` <- this_object$`seen`
       self
     },
 
@@ -225,13 +175,19 @@ Notification <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Notification: the required field `id` is missing."))
       }
-      # check the required field `expert_id`
-      if (!is.null(input_json$`expert_id`)) {
-        if (!(is.numeric(input_json$`expert_id`) && length(input_json$`expert_id`) == 1)) {
-          stop(paste("Error! Invalid data for `expert_id`. Must be an integer:", input_json$`expert_id`))
+      # check the required field `message`
+      if (!is.null(input_json$`message`)) {
+        stopifnot(R6::is.R6(input_json$`message`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Notification: the required field `message` is missing."))
+      }
+      # check the required field `is_read`
+      if (!is.null(input_json$`is_read`)) {
+        if (!(is.logical(input_json$`is_read`) && length(input_json$`is_read`) == 1)) {
+          stop(paste("Error! Invalid data for `is_read`. Must be a boolean:", input_json$`is_read`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for Notification: the required field `expert_id` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for Notification: the required field `is_read` is missing."))
       }
       # check the required field `created_at`
       if (!is.null(input_json$`created_at`)) {
@@ -240,30 +196,6 @@ Notification <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Notification: the required field `created_at` is missing."))
-      }
-      # check the required field `title`
-      if (!is.null(input_json$`title`)) {
-        if (!(is.character(input_json$`title`) && length(input_json$`title`) == 1)) {
-          stop(paste("Error! Invalid data for `title`. Must be a string:", input_json$`title`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for Notification: the required field `title` is missing."))
-      }
-      # check the required field `body`
-      if (!is.null(input_json$`body`)) {
-        if (!(is.character(input_json$`body`) && length(input_json$`body`) == 1)) {
-          stop(paste("Error! Invalid data for `body`. Must be a string:", input_json$`body`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for Notification: the required field `body` is missing."))
-      }
-      # check the required field `seen`
-      if (!is.null(input_json$`seen`)) {
-        if (!(is.logical(input_json$`seen`) && length(input_json$`seen`) == 1)) {
-          stop(paste("Error! Invalid data for `seen`. Must be a boolean:", input_json$`seen`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for Notification: the required field `seen` is missing."))
       }
     },
 
@@ -285,23 +217,18 @@ Notification <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `message` is null
+      if (is.null(self$`message`)) {
+        return(FALSE)
+      }
+
+      # check if the required `is_read` is null
+      if (is.null(self$`is_read`)) {
+        return(FALSE)
+      }
+
       # check if the required `created_at` is null
       if (is.null(self$`created_at`)) {
-        return(FALSE)
-      }
-
-      # check if the required `title` is null
-      if (is.null(self$`title`)) {
-        return(FALSE)
-      }
-
-      # check if the required `body` is null
-      if (is.null(self$`body`)) {
-        return(FALSE)
-      }
-
-      # check if the required `seen` is null
-      if (is.null(self$`seen`)) {
         return(FALSE)
       }
 
@@ -319,24 +246,19 @@ Notification <- R6::R6Class(
         invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
       }
 
+      # check if the required `message` is null
+      if (is.null(self$`message`)) {
+        invalid_fields["message"] <- "Non-nullable required field `message` cannot be null."
+      }
+
+      # check if the required `is_read` is null
+      if (is.null(self$`is_read`)) {
+        invalid_fields["is_read"] <- "Non-nullable required field `is_read` cannot be null."
+      }
+
       # check if the required `created_at` is null
       if (is.null(self$`created_at`)) {
         invalid_fields["created_at"] <- "Non-nullable required field `created_at` cannot be null."
-      }
-
-      # check if the required `title` is null
-      if (is.null(self$`title`)) {
-        invalid_fields["title"] <- "Non-nullable required field `title` cannot be null."
-      }
-
-      # check if the required `body` is null
-      if (is.null(self$`body`)) {
-        invalid_fields["body"] <- "Non-nullable required field `body` cannot be null."
-      }
-
-      # check if the required `seen` is null
-      if (is.null(self$`seen`)) {
-        invalid_fields["seen"] <- "Non-nullable required field `seen` cannot be null."
       }
 
       invalid_fields

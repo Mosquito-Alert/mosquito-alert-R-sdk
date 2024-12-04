@@ -12,12 +12,18 @@ test_that("id", {
   #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
 })
 
-test_that("expert_id", {
-  # tests for the property `expert_id` (integer)
-  # Expert sending the notification
+test_that("message", {
+  # tests for the property `message` (NotificationMessage)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`expert_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
+})
+
+test_that("is_read", {
+  # tests for the property `is_read` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`is_read`, "EXPECTED_RESULT")
 })
 
 test_that("created_at", {
@@ -25,25 +31,4 @@ test_that("created_at", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`created_at`, "EXPECTED_RESULT")
-})
-
-test_that("title", {
-  # tests for the property `title` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`title`, "EXPECTED_RESULT")
-})
-
-test_that("body", {
-  # tests for the property `body` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`body`, "EXPECTED_RESULT")
-})
-
-test_that("seen", {
-  # tests for the property `seen` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`seen`, "EXPECTED_RESULT")
 })

@@ -7,26 +7,26 @@
 #' @title PatchedNotificationRequest
 #' @description PatchedNotificationRequest Class
 #' @format An \code{R6Class} generator object
-#' @field seen  character [optional]
+#' @field is_read  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 PatchedNotificationRequest <- R6::R6Class(
   "PatchedNotificationRequest",
   public = list(
-    `seen` = NULL,
+    `is_read` = NULL,
 
     #' @description
     #' Initialize a new PatchedNotificationRequest class.
     #'
-    #' @param seen seen
+    #' @param is_read is_read
     #' @param ... Other optional arguments.
-    initialize = function(`seen` = NULL, ...) {
-      if (!is.null(`seen`)) {
-        if (!(is.logical(`seen`) && length(`seen`) == 1)) {
-          stop(paste("Error! Invalid data for `seen`. Must be a boolean:", `seen`))
+    initialize = function(`is_read` = NULL, ...) {
+      if (!is.null(`is_read`)) {
+        if (!(is.logical(`is_read`) && length(`is_read`) == 1)) {
+          stop(paste("Error! Invalid data for `is_read`. Must be a boolean:", `is_read`))
         }
-        self$`seen` <- `seen`
+        self$`is_read` <- `is_read`
       }
     },
 
@@ -36,9 +36,9 @@ PatchedNotificationRequest <- R6::R6Class(
     #' @return PatchedNotificationRequest in JSON format
     toJSON = function() {
       PatchedNotificationRequestObject <- list()
-      if (!is.null(self$`seen`)) {
-        PatchedNotificationRequestObject[["seen"]] <-
-          self$`seen`
+      if (!is.null(self$`is_read`)) {
+        PatchedNotificationRequestObject[["is_read"]] <-
+          self$`is_read`
       }
       PatchedNotificationRequestObject
     },
@@ -50,8 +50,8 @@ PatchedNotificationRequest <- R6::R6Class(
     #' @return the instance of PatchedNotificationRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`seen`)) {
-        self$`seen` <- this_object$`seen`
+      if (!is.null(this_object$`is_read`)) {
+        self$`is_read` <- this_object$`is_read`
       }
       self
     },
@@ -62,12 +62,12 @@ PatchedNotificationRequest <- R6::R6Class(
     #' @return PatchedNotificationRequest in JSON format
     toJSONString = function() {
       jsoncontent <- c(
-        if (!is.null(self$`seen`)) {
+        if (!is.null(self$`is_read`)) {
           sprintf(
-          '"seen":
+          '"is_read":
             %s
                     ',
-          tolower(self$`seen`)
+          tolower(self$`is_read`)
           )
         }
       )
@@ -82,7 +82,7 @@ PatchedNotificationRequest <- R6::R6Class(
     #' @return the instance of PatchedNotificationRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`seen` <- this_object$`seen`
+      self$`is_read` <- this_object$`is_read`
       self
     },
 

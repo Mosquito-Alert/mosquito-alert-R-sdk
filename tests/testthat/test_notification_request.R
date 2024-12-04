@@ -5,9 +5,9 @@ context("Test NotificationRequest")
 
 model_instance <- NotificationRequest$new()
 
-test_that("seen", {
-  # tests for the property `seen` (character)
+test_that("is_read", {
+  # tests for the property `is_read` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`seen`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`is_read`, "EXPECTED_RESULT")
 })

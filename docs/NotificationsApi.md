@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **notifications_create**
-> CreateNotification notifications_create(meta_notification_request = var.meta_notification_request)
+> array[CreateNotification] notifications_create(meta_notification_request = var.meta_notification_request)
 
 
 
@@ -21,7 +21,7 @@ Method | HTTP request | Description
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_meta_notification_request <- MetaNotificationRequest$new("user", "title_en_example", "body_en_example", "user_uuid_example", "topic_code_example") # MetaNotificationRequest |  (Optional)
+var_meta_notification_request <- MetaNotificationRequest$new("user", CreateNotificationMessageRequest$new(LocalizedFieldRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-CN_example"), LocalizedFieldRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-CN_example")), c("user_uuids_example"), c("topic_codes_example")) # MetaNotificationRequest |  (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: cookieAuth
@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateNotification**](CreateNotification.md)
+[**array[CreateNotification]**](CreateNotification.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 | **201** |  |  -  |
 
 # **notifications_list**
-> PaginatedNotificationList notifications_list(order_by = var.order_by, page = var.page, page_size = var.page_size, seen = var.seen)
+> PaginatedNotificationList notifications_list(is_read = var.is_read, order_by = var.order_by, page = var.page, page_size = var.page_size)
 
 
 
@@ -70,10 +70,10 @@ Name | Type | Description  | Notes
 library(MosquitoAlert)
 
 # prepare function argument(s)
+var_is_read <- "is_read_example" # character |  (Optional)
 var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
-var_seen <- "seen_example" # character |  (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: cookieAuth
@@ -83,8 +83,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$notifications_list(order_by = var_order_by, page = var_page, page_size = var_page_size, seen = var_seendata_file = "result.txt")
-result <- api_instance$notifications_api$notifications_list(order_by = var_order_by, page = var_page, page_size = var_page_size, seen = var_seen)
+# result <- api_instance$notifications_list(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$notifications_api$notifications_list(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_size)
 dput(result)
 ```
 
@@ -92,10 +92,10 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **is_read** | **character**|  | [optional] 
  **order_by** | Enum [-created_at, created_at] | Ordenado   | [optional] 
  **page** | **integer**| A page number within the paginated result set. | [optional] 
  **page_size** | **integer**| Number of results to return per page. | [optional] 
- **seen** | **character**|  | [optional] 
 
 ### Return type
 
@@ -126,7 +126,7 @@ library(MosquitoAlert)
 
 # prepare function argument(s)
 var_id <- 56 # integer | A unique integer value identifying this notification.
-var_patched_notification_request <- PatchedNotificationRequest$new("seen_example") # PatchedNotificationRequest |  (Optional)
+var_patched_notification_request <- PatchedNotificationRequest$new("is_read_example") # PatchedNotificationRequest |  (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: cookieAuth
@@ -226,7 +226,7 @@ library(MosquitoAlert)
 
 # prepare function argument(s)
 var_id <- 56 # integer | A unique integer value identifying this notification.
-var_notification_request <- NotificationRequest$new("seen_example") # NotificationRequest | 
+var_notification_request <- NotificationRequest$new("is_read_example") # NotificationRequest | 
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: cookieAuth

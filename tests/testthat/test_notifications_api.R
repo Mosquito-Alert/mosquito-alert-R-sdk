@@ -9,7 +9,7 @@ test_that("notifications_create", {
   # tests for notifications_create
   # base path: https://api.mosquitoalert.com/v1
   # @param meta_notification_request MetaNotificationRequest  (optional)
-  # @return [CreateNotification]
+  # @return [array[CreateNotification]]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -18,10 +18,10 @@ test_that("notifications_create", {
 test_that("notifications_list", {
   # tests for notifications_list
   # base path: https://api.mosquitoalert.com/v1
+  # @param is_read character  (optional)
   # @param order_by array[character] Ordenado   (optional)
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)
-  # @param seen character  (optional)
   # @return [PaginatedNotificationList]
 
   # uncomment below to test the operation

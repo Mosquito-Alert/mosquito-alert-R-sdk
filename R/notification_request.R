@@ -7,26 +7,26 @@
 #' @title NotificationRequest
 #' @description NotificationRequest Class
 #' @format An \code{R6Class} generator object
-#' @field seen  character
+#' @field is_read  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 NotificationRequest <- R6::R6Class(
   "NotificationRequest",
   public = list(
-    `seen` = NULL,
+    `is_read` = NULL,
 
     #' @description
     #' Initialize a new NotificationRequest class.
     #'
-    #' @param seen seen
+    #' @param is_read is_read
     #' @param ... Other optional arguments.
-    initialize = function(`seen`, ...) {
-      if (!missing(`seen`)) {
-        if (!(is.logical(`seen`) && length(`seen`) == 1)) {
-          stop(paste("Error! Invalid data for `seen`. Must be a boolean:", `seen`))
+    initialize = function(`is_read`, ...) {
+      if (!missing(`is_read`)) {
+        if (!(is.logical(`is_read`) && length(`is_read`) == 1)) {
+          stop(paste("Error! Invalid data for `is_read`. Must be a boolean:", `is_read`))
         }
-        self$`seen` <- `seen`
+        self$`is_read` <- `is_read`
       }
     },
 
@@ -36,9 +36,9 @@ NotificationRequest <- R6::R6Class(
     #' @return NotificationRequest in JSON format
     toJSON = function() {
       NotificationRequestObject <- list()
-      if (!is.null(self$`seen`)) {
-        NotificationRequestObject[["seen"]] <-
-          self$`seen`
+      if (!is.null(self$`is_read`)) {
+        NotificationRequestObject[["is_read"]] <-
+          self$`is_read`
       }
       NotificationRequestObject
     },
@@ -50,8 +50,8 @@ NotificationRequest <- R6::R6Class(
     #' @return the instance of NotificationRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`seen`)) {
-        self$`seen` <- this_object$`seen`
+      if (!is.null(this_object$`is_read`)) {
+        self$`is_read` <- this_object$`is_read`
       }
       self
     },
@@ -62,12 +62,12 @@ NotificationRequest <- R6::R6Class(
     #' @return NotificationRequest in JSON format
     toJSONString = function() {
       jsoncontent <- c(
-        if (!is.null(self$`seen`)) {
+        if (!is.null(self$`is_read`)) {
           sprintf(
-          '"seen":
+          '"is_read":
             %s
                     ',
-          tolower(self$`seen`)
+          tolower(self$`is_read`)
           )
         }
       )
@@ -82,7 +82,7 @@ NotificationRequest <- R6::R6Class(
     #' @return the instance of NotificationRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`seen` <- this_object$`seen`
+      self$`is_read` <- this_object$`is_read`
       self
     },
 
@@ -92,13 +92,13 @@ NotificationRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `seen`
-      if (!is.null(input_json$`seen`)) {
-        if (!(is.logical(input_json$`seen`) && length(input_json$`seen`) == 1)) {
-          stop(paste("Error! Invalid data for `seen`. Must be a boolean:", input_json$`seen`))
+      # check the required field `is_read`
+      if (!is.null(input_json$`is_read`)) {
+        if (!(is.logical(input_json$`is_read`) && length(input_json$`is_read`) == 1)) {
+          stop(paste("Error! Invalid data for `is_read`. Must be a boolean:", input_json$`is_read`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for NotificationRequest: the required field `seen` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for NotificationRequest: the required field `is_read` is missing."))
       }
     },
 
@@ -115,8 +115,8 @@ NotificationRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `seen` is null
-      if (is.null(self$`seen`)) {
+      # check if the required `is_read` is null
+      if (is.null(self$`is_read`)) {
         return(FALSE)
       }
 
@@ -129,9 +129,9 @@ NotificationRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `seen` is null
-      if (is.null(self$`seen`)) {
-        invalid_fields["seen"] <- "Non-nullable required field `seen` cannot be null."
+      # check if the required `is_read` is null
+      if (is.null(self$`is_read`)) {
+        invalid_fields["is_read"] <- "Non-nullable required field `is_read` cannot be null."
       }
 
       invalid_fields

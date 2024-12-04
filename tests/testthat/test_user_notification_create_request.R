@@ -12,23 +12,17 @@ test_that("receiver_type", {
   #expect_equal(model.instance$`receiver_type`, "EXPECTED_RESULT")
 })
 
-test_that("title_en", {
-  # tests for the property `title_en` (character)
+test_that("message", {
+  # tests for the property `message` (CreateNotificationMessageRequest)
+  # The message of the notification
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`title_en`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
 })
 
-test_that("body_en", {
-  # tests for the property `body_en` (character)
+test_that("user_uuids", {
+  # tests for the property `user_uuids` (array[character])
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`body_en`, "EXPECTED_RESULT")
-})
-
-test_that("user_uuid", {
-  # tests for the property `user_uuid` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`user_uuid`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`user_uuids`, "EXPECTED_RESULT")
 })

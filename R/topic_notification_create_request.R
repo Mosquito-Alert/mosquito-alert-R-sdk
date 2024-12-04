@@ -8,9 +8,8 @@
 #' @description TopicNotificationCreateRequest Class
 #' @format An \code{R6Class} generator object
 #' @field receiver_type  character
-#' @field title_en  character
-#' @field body_en  character
-#' @field topic_code  character
+#' @field message The message of the notification \link{CreateNotificationMessageRequest}
+#' @field topic_codes  list(character)
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -18,19 +17,17 @@ TopicNotificationCreateRequest <- R6::R6Class(
   "TopicNotificationCreateRequest",
   public = list(
     `receiver_type` = NULL,
-    `title_en` = NULL,
-    `body_en` = NULL,
-    `topic_code` = NULL,
+    `message` = NULL,
+    `topic_codes` = NULL,
 
     #' @description
     #' Initialize a new TopicNotificationCreateRequest class.
     #'
     #' @param receiver_type receiver_type
-    #' @param title_en title_en
-    #' @param body_en body_en
-    #' @param topic_code topic_code
+    #' @param message The message of the notification
+    #' @param topic_codes topic_codes
     #' @param ... Other optional arguments.
-    initialize = function(`receiver_type`, `title_en`, `body_en`, `topic_code`, ...) {
+    initialize = function(`receiver_type`, `message`, `topic_codes`, ...) {
       if (!missing(`receiver_type`)) {
         if (!(`receiver_type` %in% c("user", "topic"))) {
           stop(paste("Error! \"", `receiver_type`, "\" cannot be assigned to `receiver_type`. Must be \"user\", \"topic\".", sep = ""))
@@ -40,23 +37,14 @@ TopicNotificationCreateRequest <- R6::R6Class(
         }
         self$`receiver_type` <- `receiver_type`
       }
-      if (!missing(`title_en`)) {
-        if (!(is.character(`title_en`) && length(`title_en`) == 1)) {
-          stop(paste("Error! Invalid data for `title_en`. Must be a string:", `title_en`))
-        }
-        self$`title_en` <- `title_en`
+      if (!missing(`message`)) {
+        stopifnot(R6::is.R6(`message`))
+        self$`message` <- `message`
       }
-      if (!missing(`body_en`)) {
-        if (!(is.character(`body_en`) && length(`body_en`) == 1)) {
-          stop(paste("Error! Invalid data for `body_en`. Must be a string:", `body_en`))
-        }
-        self$`body_en` <- `body_en`
-      }
-      if (!missing(`topic_code`)) {
-        if (!(is.character(`topic_code`) && length(`topic_code`) == 1)) {
-          stop(paste("Error! Invalid data for `topic_code`. Must be a string:", `topic_code`))
-        }
-        self$`topic_code` <- `topic_code`
+      if (!missing(`topic_codes`)) {
+        stopifnot(is.vector(`topic_codes`), length(`topic_codes`) != 0)
+        sapply(`topic_codes`, function(x) stopifnot(is.character(x)))
+        self$`topic_codes` <- `topic_codes`
       }
     },
 
@@ -70,17 +58,13 @@ TopicNotificationCreateRequest <- R6::R6Class(
         TopicNotificationCreateRequestObject[["receiver_type"]] <-
           self$`receiver_type`
       }
-      if (!is.null(self$`title_en`)) {
-        TopicNotificationCreateRequestObject[["title_en"]] <-
-          self$`title_en`
+      if (!is.null(self$`message`)) {
+        TopicNotificationCreateRequestObject[["message"]] <-
+          self$`message`$toJSON()
       }
-      if (!is.null(self$`body_en`)) {
-        TopicNotificationCreateRequestObject[["body_en"]] <-
-          self$`body_en`
-      }
-      if (!is.null(self$`topic_code`)) {
-        TopicNotificationCreateRequestObject[["topic_code"]] <-
-          self$`topic_code`
+      if (!is.null(self$`topic_codes`)) {
+        TopicNotificationCreateRequestObject[["topic_codes"]] <-
+          self$`topic_codes`
       }
       TopicNotificationCreateRequestObject
     },
@@ -98,14 +82,13 @@ TopicNotificationCreateRequest <- R6::R6Class(
         }
         self$`receiver_type` <- this_object$`receiver_type`
       }
-      if (!is.null(this_object$`title_en`)) {
-        self$`title_en` <- this_object$`title_en`
+      if (!is.null(this_object$`message`)) {
+        `message_object` <- CreateNotificationMessageRequest$new()
+        `message_object`$fromJSON(jsonlite::toJSON(this_object$`message`, auto_unbox = TRUE, digits = NA))
+        self$`message` <- `message_object`
       }
-      if (!is.null(this_object$`body_en`)) {
-        self$`body_en` <- this_object$`body_en`
-      }
-      if (!is.null(this_object$`topic_code`)) {
-        self$`topic_code` <- this_object$`topic_code`
+      if (!is.null(this_object$`topic_codes`)) {
+        self$`topic_codes` <- ApiClient$new()$deserializeObj(this_object$`topic_codes`, "array[character]", loadNamespace("MosquitoAlert"))
       }
       self
     },
@@ -124,28 +107,20 @@ TopicNotificationCreateRequest <- R6::R6Class(
           self$`receiver_type`
           )
         },
-        if (!is.null(self$`title_en`)) {
+        if (!is.null(self$`message`)) {
           sprintf(
-          '"title_en":
-            "%s"
-                    ',
-          self$`title_en`
+          '"message":
+          %s
+          ',
+          jsonlite::toJSON(self$`message`$toJSON(), auto_unbox = TRUE, digits = NA)
           )
         },
-        if (!is.null(self$`body_en`)) {
+        if (!is.null(self$`topic_codes`)) {
           sprintf(
-          '"body_en":
-            "%s"
-                    ',
-          self$`body_en`
-          )
-        },
-        if (!is.null(self$`topic_code`)) {
-          sprintf(
-          '"topic_code":
-            "%s"
-                    ',
-          self$`topic_code`
+          '"topic_codes":
+             [%s]
+          ',
+          paste(unlist(lapply(self$`topic_codes`, function(x) paste0('"', x, '"'))), collapse = ",")
           )
         }
       )
@@ -164,9 +139,8 @@ TopicNotificationCreateRequest <- R6::R6Class(
         stop(paste("Error! \"", this_object$`receiver_type`, "\" cannot be assigned to `receiver_type`. Must be \"user\", \"topic\".", sep = ""))
       }
       self$`receiver_type` <- this_object$`receiver_type`
-      self$`title_en` <- this_object$`title_en`
-      self$`body_en` <- this_object$`body_en`
-      self$`topic_code` <- this_object$`topic_code`
+      self$`message` <- CreateNotificationMessageRequest$new()$fromJSON(jsonlite::toJSON(this_object$`message`, auto_unbox = TRUE, digits = NA))
+      self$`topic_codes` <- ApiClient$new()$deserializeObj(this_object$`topic_codes`, "array[character]", loadNamespace("MosquitoAlert"))
       self
     },
 
@@ -184,29 +158,18 @@ TopicNotificationCreateRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for TopicNotificationCreateRequest: the required field `receiver_type` is missing."))
       }
-      # check the required field `title_en`
-      if (!is.null(input_json$`title_en`)) {
-        if (!(is.character(input_json$`title_en`) && length(input_json$`title_en`) == 1)) {
-          stop(paste("Error! Invalid data for `title_en`. Must be a string:", input_json$`title_en`))
-        }
+      # check the required field `message`
+      if (!is.null(input_json$`message`)) {
+        stopifnot(R6::is.R6(input_json$`message`))
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for TopicNotificationCreateRequest: the required field `title_en` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for TopicNotificationCreateRequest: the required field `message` is missing."))
       }
-      # check the required field `body_en`
-      if (!is.null(input_json$`body_en`)) {
-        if (!(is.character(input_json$`body_en`) && length(input_json$`body_en`) == 1)) {
-          stop(paste("Error! Invalid data for `body_en`. Must be a string:", input_json$`body_en`))
-        }
+      # check the required field `topic_codes`
+      if (!is.null(input_json$`topic_codes`)) {
+        stopifnot(is.vector(input_json$`topic_codes`), length(input_json$`topic_codes`) != 0)
+        tmp <- sapply(input_json$`topic_codes`, function(x) stopifnot(is.character(x)))
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for TopicNotificationCreateRequest: the required field `body_en` is missing."))
-      }
-      # check the required field `topic_code`
-      if (!is.null(input_json$`topic_code`)) {
-        if (!(is.character(input_json$`topic_code`) && length(input_json$`topic_code`) == 1)) {
-          stop(paste("Error! Invalid data for `topic_code`. Must be a string:", input_json$`topic_code`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for TopicNotificationCreateRequest: the required field `topic_code` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for TopicNotificationCreateRequest: the required field `topic_codes` is missing."))
       }
     },
 
@@ -228,30 +191,17 @@ TopicNotificationCreateRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `title_en` is null
-      if (is.null(self$`title_en`)) {
+      # check if the required `message` is null
+      if (is.null(self$`message`)) {
         return(FALSE)
       }
 
-      if (nchar(self$`title_en`) < 1) {
+      # check if the required `topic_codes` is null
+      if (is.null(self$`topic_codes`)) {
         return(FALSE)
       }
 
-      # check if the required `body_en` is null
-      if (is.null(self$`body_en`)) {
-        return(FALSE)
-      }
-
-      if (nchar(self$`body_en`) < 1) {
-        return(FALSE)
-      }
-
-      # check if the required `topic_code` is null
-      if (is.null(self$`topic_code`)) {
-        return(FALSE)
-      }
-
-      if (nchar(self$`topic_code`) < 1) {
+      if (length(self$`topic_codes`) < 1) {
         return(FALSE)
       }
 
@@ -269,31 +219,18 @@ TopicNotificationCreateRequest <- R6::R6Class(
         invalid_fields["receiver_type"] <- "Non-nullable required field `receiver_type` cannot be null."
       }
 
-      # check if the required `title_en` is null
-      if (is.null(self$`title_en`)) {
-        invalid_fields["title_en"] <- "Non-nullable required field `title_en` cannot be null."
+      # check if the required `message` is null
+      if (is.null(self$`message`)) {
+        invalid_fields["message"] <- "Non-nullable required field `message` cannot be null."
       }
 
-      if (nchar(self$`title_en`) < 1) {
-        invalid_fields["title_en"] <- "Invalid length for `title_en`, must be bigger than or equal to 1."
+      # check if the required `topic_codes` is null
+      if (is.null(self$`topic_codes`)) {
+        invalid_fields["topic_codes"] <- "Non-nullable required field `topic_codes` cannot be null."
       }
 
-      # check if the required `body_en` is null
-      if (is.null(self$`body_en`)) {
-        invalid_fields["body_en"] <- "Non-nullable required field `body_en` cannot be null."
-      }
-
-      if (nchar(self$`body_en`) < 1) {
-        invalid_fields["body_en"] <- "Invalid length for `body_en`, must be bigger than or equal to 1."
-      }
-
-      # check if the required `topic_code` is null
-      if (is.null(self$`topic_code`)) {
-        invalid_fields["topic_code"] <- "Non-nullable required field `topic_code` cannot be null."
-      }
-
-      if (nchar(self$`topic_code`) < 1) {
-        invalid_fields["topic_code"] <- "Invalid length for `topic_code`, must be bigger than or equal to 1."
+      if (length(self$`topic_codes`) < 1) {
+        invalid_fields["topic_codes"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
       }
 
       invalid_fields

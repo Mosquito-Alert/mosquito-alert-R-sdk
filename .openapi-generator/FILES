@@ -22,6 +22,8 @@ R/campaigns_api.R
 R/countries_api.R
 R/country.R
 R/create_notification.R
+R/create_notification_message.R
+R/create_notification_message_request.R
 R/create_user.R
 R/create_user_request.R
 R/device.R
@@ -36,6 +38,8 @@ R/fix_location.R
 R/fix_location_request.R
 R/fix_request.R
 R/fixes_api.R
+R/localized_field.R
+R/localized_field_request.R
 R/location.R
 R/location_point.R
 R/location_request.R
@@ -44,6 +48,7 @@ R/mobile_app.R
 R/mobile_app_request.R
 R/mosquitoalert_api.R
 R/notification.R
+R/notification_message.R
 R/notification_request.R
 R/notifications_api.R
 R/observation.R
@@ -95,6 +100,8 @@ docs/CampaignsApi.md
 docs/CountriesApi.md
 docs/Country.md
 docs/CreateNotification.md
+docs/CreateNotificationMessage.md
+docs/CreateNotificationMessageRequest.md
 docs/CreateUser.md
 docs/CreateUserRequest.md
 docs/Device.md
@@ -109,6 +116,8 @@ docs/FixLocation.md
 docs/FixLocationRequest.md
 docs/FixRequest.md
 docs/FixesApi.md
+docs/LocalizedField.md
+docs/LocalizedFieldRequest.md
 docs/Location.md
 docs/LocationPoint.md
 docs/LocationRequest.md
@@ -116,6 +125,7 @@ docs/MetaNotificationRequest.md
 docs/MobileApp.md
 docs/MobileAppRequest.md
 docs/Notification.md
+docs/NotificationMessage.md
 docs/NotificationRequest.md
 docs/NotificationsApi.md
 docs/Observation.md
@@ -168,6 +178,8 @@ tests/testthat/test_campaigns_api.R
 tests/testthat/test_countries_api.R
 tests/testthat/test_country.R
 tests/testthat/test_create_notification.R
+tests/testthat/test_create_notification_message.R
+tests/testthat/test_create_notification_message_request.R
 tests/testthat/test_create_user.R
 tests/testthat/test_create_user_request.R
 tests/testthat/test_device.R
@@ -182,6 +194,8 @@ tests/testthat/test_fix_location.R
 tests/testthat/test_fix_location_request.R
 tests/testthat/test_fix_request.R
 tests/testthat/test_fixes_api.R
+tests/testthat/test_localized_field.R
+tests/testthat/test_localized_field_request.R
 tests/testthat/test_location.R
 tests/testthat/test_location_point.R
 tests/testthat/test_location_request.R
@@ -189,6 +203,7 @@ tests/testthat/test_meta_notification_request.R
 tests/testthat/test_mobile_app.R
 tests/testthat/test_mobile_app_request.R
 tests/testthat/test_notification.R
+tests/testthat/test_notification_message.R
 tests/testthat/test_notification_request.R
 tests/testthat/test_notifications_api.R
 tests/testthat/test_observation.R
