@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uuid** | **character** |  | 
+**username** | **character** |  | [Min. length: 1] 
 **password** | **character** |  | [Min. length: 1] 
 **device_id** | **character** |  | [optional] [Min. length: 1] 
 

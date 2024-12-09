@@ -5,8 +5,8 @@ context("Test BreedingSitesApi")
 
 api_instance <- BreedingSitesApi$new()
 
-test_that("breeding_sites_create", {
-  # tests for breeding_sites_create
+test_that("create", {
+  # tests for create
   # base path: https://api.mosquitoalert.com/v1
   # @param breeding_site_request BreedingSiteRequest 
   # @return [BreedingSite]
@@ -15,8 +15,8 @@ test_that("breeding_sites_create", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("breeding_sites_destroy", {
-  # tests for breeding_sites_destroy
+test_that("destroy", {
+  # tests for destroy
   # base path: https://api.mosquitoalert.com/v1
   # @param uuid character 
   # @return [Void]
@@ -25,8 +25,8 @@ test_that("breeding_sites_destroy", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("breeding_sites_list", {
-  # tests for breeding_sites_list
+test_that("list", {
+  # tests for list
   # base path: https://api.mosquitoalert.com/v1
   # @param created_at_after character Created at (optional)
   # @param created_at_before character Created at (optional)
@@ -49,8 +49,33 @@ test_that("breeding_sites_list", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("breeding_sites_retrieve", {
-  # tests for breeding_sites_retrieve
+test_that("list_mine", {
+  # tests for list_mine
+  # base path: https://api.mosquitoalert.com/v1
+  # Get Current User&#39;s Breeding Sites
+  # @param created_at_after character Created at (optional)
+  # @param created_at_before character Created at (optional)
+  # @param has_photos character Has any photo (optional)
+  # @param location_country_id integer  (optional)
+  # @param location_nuts_2 character  (optional)
+  # @param location_nuts_3 character  (optional)
+  # @param order_by array[character] Ordenado   (optional)
+  # @param page integer A page number within the paginated result set. (optional)
+  # @param page_size integer Number of results to return per page. (optional)
+  # @param received_at_after character Received at (optional)
+  # @param received_at_before character Received at (optional)
+  # @param short_id character Short ID (optional)
+  # @param updated_at_after character Update at (optional)
+  # @param updated_at_before character Update at (optional)
+  # @param user_uuid character  (optional)
+  # @return [PaginatedBreedingSiteList]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("retrieve", {
+  # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
   # @param uuid character 
   # @return [BreedingSite]

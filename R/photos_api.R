@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' ####################  photos_prediction_create  ####################
+#' ####################  prediction_create  ####################
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
@@ -29,12 +29,12 @@
 #' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$photos_prediction_create(var_uuid, var_photo_prediction_requestdata_file = "result.txt")
-#' result <- api_instance$photos_api$photos_prediction_create(var_uuid, var_photo_prediction_request)
+#' # result <- api_instance$prediction_create(var_uuid, var_photo_prediction_requestdata_file = "result.txt")
+#' result <- api_instance$photos_api$prediction_create(var_uuid, var_photo_prediction_request)
 #' dput(result)
 #'
 #'
-#' ####################  photos_prediction_destroy  ####################
+#' ####################  prediction_destroy  ####################
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
@@ -47,10 +47,10 @@
 #' # Configure API key authorization: tokenAuth
 #' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
-#' api_instance$photos_api$photos_prediction_destroy(var_uuid)
+#' api_instance$photos_api$prediction_destroy(var_uuid)
 #'
 #'
-#' ####################  photos_prediction_retrieve  ####################
+#' ####################  prediction_retrieve  ####################
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
@@ -64,12 +64,12 @@
 #' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$photos_prediction_retrieve(var_uuiddata_file = "result.txt")
-#' result <- api_instance$photos_api$photos_prediction_retrieve(var_uuid)
+#' # result <- api_instance$prediction_retrieve(var_uuiddata_file = "result.txt")
+#' result <- api_instance$photos_api$prediction_retrieve(var_uuid)
 #' dput(result)
 #'
 #'
-#' ####################  photos_retrieve  ####################
+#' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
@@ -83,8 +83,8 @@
 #' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$photos_retrieve(var_uuiddata_file = "result.txt")
-#' result <- api_instance$photos_api$photos_retrieve(var_uuid)
+#' # result <- api_instance$retrieve(var_uuiddata_file = "result.txt")
+#' result <- api_instance$photos_api$retrieve(var_uuid)
 #' dput(result)
 #'
 #'
@@ -118,8 +118,8 @@ PhotosApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PhotoPrediction
-    photos_prediction_create = function(uuid, photo_prediction_request, data_file = NULL, ...) {
-      local_var_response <- self$photos_prediction_create_with_http_info(uuid, photo_prediction_request, data_file = data_file, ...)
+    prediction_create = function(uuid, photo_prediction_request, data_file = NULL, ...) {
+      local_var_response <- self$prediction_create_with_http_info(uuid, photo_prediction_request, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -140,7 +140,7 @@ PhotosApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PhotoPrediction) with additional information such as HTTP status code, headers
-    photos_prediction_create_with_http_info = function(uuid, photo_prediction_request, data_file = NULL, ...) {
+    prediction_create_with_http_info = function(uuid, photo_prediction_request, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -229,8 +229,8 @@ PhotosApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return void
-    photos_prediction_destroy = function(uuid, ...) {
-      local_var_response <- self$photos_prediction_destroy_with_http_info(uuid, ...)
+    prediction_destroy = function(uuid, ...) {
+      local_var_response <- self$prediction_destroy_with_http_info(uuid, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -249,7 +249,7 @@ PhotosApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (void) with additional information such as HTTP status code, headers
-    photos_prediction_destroy_with_http_info = function(uuid, ...) {
+    prediction_destroy_with_http_info = function(uuid, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -317,8 +317,8 @@ PhotosApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PhotoPrediction
-    photos_prediction_retrieve = function(uuid, data_file = NULL, ...) {
-      local_var_response <- self$photos_prediction_retrieve_with_http_info(uuid, data_file = data_file, ...)
+    prediction_retrieve = function(uuid, data_file = NULL, ...) {
+      local_var_response <- self$prediction_retrieve_with_http_info(uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -338,7 +338,7 @@ PhotosApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PhotoPrediction) with additional information such as HTTP status code, headers
-    photos_prediction_retrieve_with_http_info = function(uuid, data_file = NULL, ...) {
+    prediction_retrieve_with_http_info = function(uuid, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -417,8 +417,8 @@ PhotosApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return Photo
-    photos_retrieve = function(uuid, data_file = NULL, ...) {
-      local_var_response <- self$photos_retrieve_with_http_info(uuid, data_file = data_file, ...)
+    retrieve = function(uuid, data_file = NULL, ...) {
+      local_var_response <- self$retrieve_with_http_info(uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -438,7 +438,7 @@ PhotosApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (Photo) with additional information such as HTTP status code, headers
-    photos_retrieve_with_http_info = function(uuid, data_file = NULL, ...) {
+    retrieve_with_http_info = function(uuid, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()

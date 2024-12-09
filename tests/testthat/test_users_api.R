@@ -5,18 +5,8 @@ context("Test UsersApi")
 
 api_instance <- UsersApi$new()
 
-test_that("users_create", {
-  # tests for users_create
-  # base path: https://api.mosquitoalert.com/v1
-  # @param create_user_request CreateUserRequest 
-  # @return [CreateUser]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("users_partial_update", {
-  # tests for users_partial_update
+test_that("partial_update", {
+  # tests for partial_update
   # base path: https://api.mosquitoalert.com/v1
   # @param uuid character 
   # @param patched_user_request PatchedUserRequest  (optional)
@@ -26,8 +16,8 @@ test_that("users_partial_update", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("users_retrieve", {
-  # tests for users_retrieve
+test_that("retrieve", {
+  # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
   # @param uuid character 
   # @return [User]
@@ -36,8 +26,18 @@ test_that("users_retrieve", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("users_update", {
-  # tests for users_update
+test_that("retrieve_mine", {
+  # tests for retrieve_mine
+  # base path: https://api.mosquitoalert.com/v1
+  # Get Current User&#39;s Profile
+  # @return [User]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("update", {
+  # tests for update
   # base path: https://api.mosquitoalert.com/v1
   # @param uuid character 
   # @param user_request UserRequest  (optional)

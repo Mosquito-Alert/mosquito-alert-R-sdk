@@ -5,8 +5,8 @@ context("Test BitesApi")
 
 api_instance <- BitesApi$new()
 
-test_that("bites_create", {
-  # tests for bites_create
+test_that("create", {
+  # tests for create
   # base path: https://api.mosquitoalert.com/v1
   # @param bite_request BiteRequest 
   # @return [Bite]
@@ -15,8 +15,8 @@ test_that("bites_create", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("bites_destroy", {
-  # tests for bites_destroy
+test_that("destroy", {
+  # tests for destroy
   # base path: https://api.mosquitoalert.com/v1
   # @param uuid character 
   # @return [Void]
@@ -25,8 +25,8 @@ test_that("bites_destroy", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("bites_list", {
-  # tests for bites_list
+test_that("list", {
+  # tests for list
   # base path: https://api.mosquitoalert.com/v1
   # @param created_at_after character Created at (optional)
   # @param created_at_before character Created at (optional)
@@ -48,8 +48,32 @@ test_that("bites_list", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("bites_retrieve", {
-  # tests for bites_retrieve
+test_that("list_mine", {
+  # tests for list_mine
+  # base path: https://api.mosquitoalert.com/v1
+  # Get Current User&#39;s Bites
+  # @param created_at_after character Created at (optional)
+  # @param created_at_before character Created at (optional)
+  # @param location_country_id integer  (optional)
+  # @param location_nuts_2 character  (optional)
+  # @param location_nuts_3 character  (optional)
+  # @param order_by array[character] Ordenado   (optional)
+  # @param page integer A page number within the paginated result set. (optional)
+  # @param page_size integer Number of results to return per page. (optional)
+  # @param received_at_after character Received at (optional)
+  # @param received_at_before character Received at (optional)
+  # @param short_id character Short ID (optional)
+  # @param updated_at_after character Update at (optional)
+  # @param updated_at_before character Update at (optional)
+  # @param user_uuid character  (optional)
+  # @return [PaginatedBiteList]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("retrieve", {
+  # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
   # @param uuid character 
   # @return [Bite]

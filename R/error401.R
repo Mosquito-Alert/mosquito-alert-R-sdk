@@ -29,8 +29,8 @@ Error401 <- R6::R6Class(
     #' @param ... Other optional arguments.
     initialize = function(`code`, `detail`, `attr`, ...) {
       if (!missing(`code`)) {
-        if (!(`code` %in% c("authentication_failed", "not_authenticated"))) {
-          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"authentication_failed\", \"not_authenticated\".", sep = ""))
+        if (!(`code` %in% c("token_not_valid", "authentication_failed", "not_authenticated"))) {
+          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"token_not_valid\", \"authentication_failed\", \"not_authenticated\".", sep = ""))
         }
         if (!(is.character(`code`) && length(`code`) == 1)) {
           stop(paste("Error! Invalid data for `code`. Must be a string:", `code`))
@@ -80,8 +80,8 @@ Error401 <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`code`)) {
-        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("authentication_failed", "not_authenticated"))) {
-          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"authentication_failed\", \"not_authenticated\".", sep = ""))
+        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("token_not_valid", "authentication_failed", "not_authenticated"))) {
+          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"token_not_valid\", \"authentication_failed\", \"not_authenticated\".", sep = ""))
         }
         self$`code` <- this_object$`code`
       }
@@ -136,8 +136,8 @@ Error401 <- R6::R6Class(
     #' @return the instance of Error401
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("authentication_failed", "not_authenticated"))) {
-        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"authentication_failed\", \"not_authenticated\".", sep = ""))
+      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("token_not_valid", "authentication_failed", "not_authenticated"))) {
+        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"token_not_valid\", \"authentication_failed\", \"not_authenticated\".", sep = ""))
       }
       self$`code` <- this_object$`code`
       self$`detail` <- this_object$`detail`

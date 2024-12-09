@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' ####################  devices_create  ####################
+#' ####################  create  ####################
 #'
 #' library(MosquitoAlert)
 #' var_device_request <- DeviceRequest$new("device_id_example", "fcm_token_example", "ios", "model_example", DeviceOsRequest$new("name_example", "version_example", "locale_example"), "name_example", "manufacturer_example", MobileAppRequest$new("package_name_example", "package_version_example")) # DeviceRequest | 
@@ -25,12 +25,12 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$devices_create(var_device_requestdata_file = "result.txt")
-#' result <- api_instance$devices_api$devices_create(var_device_request)
+#' # result <- api_instance$create(var_device_requestdata_file = "result.txt")
+#' result <- api_instance$devices_api$create(var_device_request)
 #' dput(result)
 #'
 #'
-#' ####################  devices_partial_update  ####################
+#' ####################  partial_update  ####################
 #'
 #' library(MosquitoAlert)
 #' var_device_id <- "device_id_example" # character | 
@@ -42,12 +42,12 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$devices_partial_update(var_device_id, patched_device_update_request = var_patched_device_update_requestdata_file = "result.txt")
-#' result <- api_instance$devices_api$devices_partial_update(var_device_id, patched_device_update_request = var_patched_device_update_request)
+#' # result <- api_instance$partial_update(var_device_id, patched_device_update_request = var_patched_device_update_requestdata_file = "result.txt")
+#' result <- api_instance$devices_api$partial_update(var_device_id, patched_device_update_request = var_patched_device_update_request)
 #' dput(result)
 #'
 #'
-#' ####################  devices_retrieve  ####################
+#' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
 #' var_device_id <- "device_id_example" # character | 
@@ -58,12 +58,12 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$devices_retrieve(var_device_iddata_file = "result.txt")
-#' result <- api_instance$devices_api$devices_retrieve(var_device_id)
+#' # result <- api_instance$retrieve(var_device_iddata_file = "result.txt")
+#' result <- api_instance$devices_api$retrieve(var_device_id)
 #' dput(result)
 #'
 #'
-#' ####################  devices_update  ####################
+#' ####################  update  ####################
 #'
 #' library(MosquitoAlert)
 #' var_device_id <- "device_id_example" # character | 
@@ -75,8 +75,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$devices_update(var_device_id, var_device_update_requestdata_file = "result.txt")
-#' result <- api_instance$devices_api$devices_update(var_device_id, var_device_update_request)
+#' # result <- api_instance$update(var_device_id, var_device_update_requestdata_file = "result.txt")
+#' result <- api_instance$devices_api$update(var_device_id, var_device_update_request)
 #' dput(result)
 #'
 #'
@@ -109,8 +109,8 @@ DevicesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return Device
-    devices_create = function(device_request, data_file = NULL, ...) {
-      local_var_response <- self$devices_create_with_http_info(device_request, data_file = data_file, ...)
+    create = function(device_request, data_file = NULL, ...) {
+      local_var_response <- self$create_with_http_info(device_request, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -130,7 +130,7 @@ DevicesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (Device) with additional information such as HTTP status code, headers
-    devices_create_with_http_info = function(device_request, data_file = NULL, ...) {
+    create_with_http_info = function(device_request, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -211,8 +211,8 @@ DevicesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return DeviceUpdate
-    devices_partial_update = function(device_id, patched_device_update_request = NULL, data_file = NULL, ...) {
-      local_var_response <- self$devices_partial_update_with_http_info(device_id, patched_device_update_request, data_file = data_file, ...)
+    partial_update = function(device_id, patched_device_update_request = NULL, data_file = NULL, ...) {
+      local_var_response <- self$partial_update_with_http_info(device_id, patched_device_update_request, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -233,7 +233,7 @@ DevicesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (DeviceUpdate) with additional information such as HTTP status code, headers
-    devices_partial_update_with_http_info = function(device_id, patched_device_update_request = NULL, data_file = NULL, ...) {
+    partial_update_with_http_info = function(device_id, patched_device_update_request = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -318,8 +318,8 @@ DevicesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return Device
-    devices_retrieve = function(device_id, data_file = NULL, ...) {
-      local_var_response <- self$devices_retrieve_with_http_info(device_id, data_file = data_file, ...)
+    retrieve = function(device_id, data_file = NULL, ...) {
+      local_var_response <- self$retrieve_with_http_info(device_id, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -339,7 +339,7 @@ DevicesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (Device) with additional information such as HTTP status code, headers
-    devices_retrieve_with_http_info = function(device_id, data_file = NULL, ...) {
+    retrieve_with_http_info = function(device_id, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -418,8 +418,8 @@ DevicesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return DeviceUpdate
-    devices_update = function(device_id, device_update_request, data_file = NULL, ...) {
-      local_var_response <- self$devices_update_with_http_info(device_id, device_update_request, data_file = data_file, ...)
+    update = function(device_id, device_update_request, data_file = NULL, ...) {
+      local_var_response <- self$update_with_http_info(device_id, device_update_request, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -440,7 +440,7 @@ DevicesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (DeviceUpdate) with additional information such as HTTP status code, headers
-    devices_update_with_http_info = function(device_id, device_update_request, data_file = NULL, ...) {
+    update_with_http_info = function(device_id, device_update_request, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()

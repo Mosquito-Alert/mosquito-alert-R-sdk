@@ -4,11 +4,11 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**countries_retrieve**](CountriesApi.md#countries_retrieve) | **GET** /countries/{id}/ | 
+[**retrieve**](CountriesApi.md#retrieve) | **GET** /countries/{id}/ | 
 
 
-# **countries_retrieve**
-> Country countries_retrieve(id)
+# **retrieve**
+> Country retrieve(id)
 
 
 
@@ -27,8 +27,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$countries_retrieve(var_iddata_file = "result.txt")
-result <- api_instance$countries_api$countries_retrieve(var_id)
+# result <- api_instance$retrieve(var_iddata_file = "result.txt")
+result <- api_instance$countries_api$retrieve(var_id)
 dput(result)
 ```
 
@@ -54,13 +54,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 

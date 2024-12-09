@@ -5,8 +5,8 @@ context("Test PartnersApi")
 
 api_instance <- PartnersApi$new()
 
-test_that("partners_list", {
-  # tests for partners_list
+test_that("list", {
+  # tests for list
   # base path: https://api.mosquitoalert.com/v1
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)
@@ -16,8 +16,8 @@ test_that("partners_list", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("partners_retrieve", {
-  # tests for partners_retrieve
+test_that("retrieve", {
+  # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
   # @param id integer A unique integer value identifying this organization pin.
   # @return [Partner]

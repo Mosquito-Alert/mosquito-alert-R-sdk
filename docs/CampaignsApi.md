@@ -4,12 +4,12 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**campaigns_list**](CampaignsApi.md#campaigns_list) | **GET** /campaigns/ | 
-[**campaigns_retrieve**](CampaignsApi.md#campaigns_retrieve) | **GET** /campaigns/{id}/ | 
+[**list**](CampaignsApi.md#list) | **GET** /campaigns/ | 
+[**retrieve**](CampaignsApi.md#retrieve) | **GET** /campaigns/{id}/ | 
 
 
-# **campaigns_list**
-> PaginatedCampaignList campaigns_list(country_id = var.country_id, is_active = var.is_active, order_by = var.order_by, page = var.page, page_size = var.page_size)
+# **list**
+> PaginatedCampaignList list(country_id = var.country_id, is_active = var.is_active, order_by = var.order_by, page = var.page, page_size = var.page_size)
 
 
 
@@ -32,8 +32,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$campaigns_list(country_id = var_country_id, is_active = var_is_active, order_by = var_order_by, page = var_page, page_size = var_page_sizedata_file = "result.txt")
-result <- api_instance$campaigns_api$campaigns_list(country_id = var_country_id, is_active = var_is_active, order_by = var_order_by, page = var_page, page_size = var_page_size)
+# result <- api_instance$list(country_id = var_country_id, is_active = var_is_active, order_by = var_order_by, page = var_page, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$campaigns_api$list(country_id = var_country_id, is_active = var_is_active, order_by = var_order_by, page = var_page, page_size = var_page_size)
 dput(result)
 ```
 
@@ -67,14 +67,10 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 
-# **campaigns_retrieve**
-> Campaign campaigns_retrieve(id)
+# **retrieve**
+> Campaign retrieve(id)
 
 
 
@@ -93,8 +89,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$campaigns_retrieve(var_iddata_file = "result.txt")
-result <- api_instance$campaigns_api$campaigns_retrieve(var_id)
+# result <- api_instance$retrieve(var_iddata_file = "result.txt")
+result <- api_instance$campaigns_api$retrieve(var_id)
 dput(result)
 ```
 
@@ -120,13 +116,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 

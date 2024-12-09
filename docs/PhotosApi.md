@@ -4,14 +4,14 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**photos_prediction_create**](PhotosApi.md#photos_prediction_create) | **POST** /photos/{uuid}/prediction/ | 
-[**photos_prediction_destroy**](PhotosApi.md#photos_prediction_destroy) | **DELETE** /photos/{uuid}/prediction/ | 
-[**photos_prediction_retrieve**](PhotosApi.md#photos_prediction_retrieve) | **GET** /photos/{uuid}/prediction/ | 
-[**photos_retrieve**](PhotosApi.md#photos_retrieve) | **GET** /photos/{uuid}/ | 
+[**prediction_create**](PhotosApi.md#prediction_create) | **POST** /photos/{uuid}/prediction/ | 
+[**prediction_destroy**](PhotosApi.md#prediction_destroy) | **DELETE** /photos/{uuid}/prediction/ | 
+[**prediction_retrieve**](PhotosApi.md#prediction_retrieve) | **GET** /photos/{uuid}/prediction/ | 
+[**retrieve**](PhotosApi.md#retrieve) | **GET** /photos/{uuid}/ | 
 
 
-# **photos_prediction_create**
-> PhotoPrediction photos_prediction_create(uuid, photo_prediction_request)
+# **prediction_create**
+> PhotoPrediction prediction_create(uuid, photo_prediction_request)
 
 
 
@@ -29,8 +29,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure API key authorization: tokenAuth
 # api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$photos_prediction_create(var_uuid, var_photo_prediction_requestdata_file = "result.txt")
-result <- api_instance$photos_api$photos_prediction_create(var_uuid, var_photo_prediction_request)
+# result <- api_instance$prediction_create(var_uuid, var_photo_prediction_requestdata_file = "result.txt")
+result <- api_instance$photos_api$prediction_create(var_uuid, var_photo_prediction_request)
 dput(result)
 ```
 
@@ -61,14 +61,10 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 
-# **photos_prediction_destroy**
-> photos_prediction_destroy(uuid)
+# **prediction_destroy**
+> prediction_destroy(uuid)
 
 
 
@@ -84,7 +80,7 @@ api_instance <- mosquitoalert_api$new()
 api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure API key authorization: tokenAuth
 # api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-api_instance$photos_api$photos_prediction_destroy(var_uuid)
+api_instance$photos_api$prediction_destroy(var_uuid)
 ```
 
 ### Parameters
@@ -109,18 +105,13 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **204** | No response body |  -  |
 
-# **photos_prediction_retrieve**
-> PhotoPrediction photos_prediction_retrieve(uuid)
+# **prediction_retrieve**
+> PhotoPrediction prediction_retrieve(uuid)
 
 
 
@@ -137,8 +128,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure API key authorization: tokenAuth
 # api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$photos_prediction_retrieve(var_uuiddata_file = "result.txt")
-result <- api_instance$photos_api$photos_prediction_retrieve(var_uuid)
+# result <- api_instance$prediction_retrieve(var_uuiddata_file = "result.txt")
+result <- api_instance$photos_api$prediction_retrieve(var_uuid)
 dput(result)
 ```
 
@@ -164,18 +155,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 
-# **photos_retrieve**
-> Photo photos_retrieve(uuid)
+# **retrieve**
+> Photo retrieve(uuid)
 
 
 
@@ -192,8 +178,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure API key authorization: tokenAuth
 # api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$photos_retrieve(var_uuiddata_file = "result.txt")
-result <- api_instance$photos_api$photos_retrieve(var_uuid)
+# result <- api_instance$retrieve(var_uuiddata_file = "result.txt")
+result <- api_instance$photos_api$retrieve(var_uuid)
 dput(result)
 ```
 
@@ -219,13 +205,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 

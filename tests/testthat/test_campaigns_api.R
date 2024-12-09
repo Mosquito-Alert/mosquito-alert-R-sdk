@@ -5,8 +5,8 @@ context("Test CampaignsApi")
 
 api_instance <- CampaignsApi$new()
 
-test_that("campaigns_list", {
-  # tests for campaigns_list
+test_that("list", {
+  # tests for list
   # base path: https://api.mosquitoalert.com/v1
   # @param country_id integer Country in which the campaign is taking place (optional)
   # @param is_active character  (optional)
@@ -19,8 +19,8 @@ test_that("campaigns_list", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("campaigns_retrieve", {
-  # tests for campaigns_retrieve
+test_that("retrieve", {
+  # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
   # @param id integer A unique integer value identifying this ow campaigns.
   # @return [Campaign]

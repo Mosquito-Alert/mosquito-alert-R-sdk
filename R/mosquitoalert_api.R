@@ -19,6 +19,7 @@
 #' @description ApiClient Class
 #' @format An \code{R6Class} generator object
 #' @field api_client API client
+#' @field auth_api an instance of AuthApi
 #' @field bites_api an instance of BitesApi
 #' @field breeding_sites_api an instance of BreedingSitesApi
 #' @field campaigns_api an instance of CampaignsApi
@@ -29,13 +30,13 @@
 #' @field observations_api an instance of ObservationsApi
 #' @field partners_api an instance of PartnersApi
 #' @field photos_api an instance of PhotosApi
-#' @field token_api an instance of TokenApi
 #' @field users_api an instance of UsersApi
 #' @export
 mosquitoalert_api <- R6::R6Class(
   "mosquitoalert_api",
   public = list(
     api_client = NULL,
+    auth_api = NULL,
     bites_api = NULL,
     breeding_sites_api = NULL,
     campaigns_api = NULL,
@@ -46,7 +47,6 @@ mosquitoalert_api <- R6::R6Class(
     observations_api = NULL,
     partners_api = NULL,
     photos_api = NULL,
-    token_api = NULL,
     users_api = NULL,
     #' Initialize a new MosquitoAlert API Class.
     #'
@@ -61,6 +61,8 @@ mosquitoalert_api <- R6::R6Class(
       } else {
         self$api_client <- api_client
       } 
+
+      self$auth_api <- AuthApi$new(self$api_client)
 
       self$bites_api <- BitesApi$new(self$api_client)
 
@@ -81,8 +83,6 @@ mosquitoalert_api <- R6::R6Class(
       self$partners_api <- PartnersApi$new(self$api_client)
 
       self$photos_api <- PhotosApi$new(self$api_client)
-
-      self$token_api <- TokenApi$new(self$api_client)
 
       self$users_api <- UsersApi$new(self$api_client)
 

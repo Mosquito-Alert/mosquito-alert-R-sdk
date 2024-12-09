@@ -7,7 +7,7 @@
 #' @title AppUserTokenObtainPairRequest
 #' @description AppUserTokenObtainPairRequest Class
 #' @format An \code{R6Class} generator object
-#' @field uuid  character
+#' @field username  character
 #' @field password  character
 #' @field device_id  character [optional]
 #' @importFrom R6 R6Class
@@ -16,23 +16,23 @@
 AppUserTokenObtainPairRequest <- R6::R6Class(
   "AppUserTokenObtainPairRequest",
   public = list(
-    `uuid` = NULL,
+    `username` = NULL,
     `password` = NULL,
     `device_id` = NULL,
 
     #' @description
     #' Initialize a new AppUserTokenObtainPairRequest class.
     #'
-    #' @param uuid uuid
+    #' @param username username
     #' @param password password
     #' @param device_id device_id
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `password`, `device_id` = NULL, ...) {
-      if (!missing(`uuid`)) {
-        if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
-          stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
+    initialize = function(`username`, `password`, `device_id` = NULL, ...) {
+      if (!missing(`username`)) {
+        if (!(is.character(`username`) && length(`username`) == 1)) {
+          stop(paste("Error! Invalid data for `username`. Must be a string:", `username`))
         }
-        self$`uuid` <- `uuid`
+        self$`username` <- `username`
       }
       if (!missing(`password`)) {
         if (!(is.character(`password`) && length(`password`) == 1)) {
@@ -54,9 +54,9 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
     #' @return AppUserTokenObtainPairRequest in JSON format
     toJSON = function() {
       AppUserTokenObtainPairRequestObject <- list()
-      if (!is.null(self$`uuid`)) {
-        AppUserTokenObtainPairRequestObject[["uuid"]] <-
-          self$`uuid`
+      if (!is.null(self$`username`)) {
+        AppUserTokenObtainPairRequestObject[["username"]] <-
+          self$`username`
       }
       if (!is.null(self$`password`)) {
         AppUserTokenObtainPairRequestObject[["password"]] <-
@@ -76,8 +76,8 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
     #' @return the instance of AppUserTokenObtainPairRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`uuid`)) {
-        self$`uuid` <- this_object$`uuid`
+      if (!is.null(this_object$`username`)) {
+        self$`username` <- this_object$`username`
       }
       if (!is.null(this_object$`password`)) {
         self$`password` <- this_object$`password`
@@ -94,12 +94,12 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
     #' @return AppUserTokenObtainPairRequest in JSON format
     toJSONString = function() {
       jsoncontent <- c(
-        if (!is.null(self$`uuid`)) {
+        if (!is.null(self$`username`)) {
           sprintf(
-          '"uuid":
+          '"username":
             "%s"
                     ',
-          self$`uuid`
+          self$`username`
           )
         },
         if (!is.null(self$`password`)) {
@@ -130,7 +130,7 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
     #' @return the instance of AppUserTokenObtainPairRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`uuid` <- this_object$`uuid`
+      self$`username` <- this_object$`username`
       self$`password` <- this_object$`password`
       self$`device_id` <- this_object$`device_id`
       self
@@ -142,13 +142,13 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `uuid`
-      if (!is.null(input_json$`uuid`)) {
-        if (!(is.character(input_json$`uuid`) && length(input_json$`uuid`) == 1)) {
-          stop(paste("Error! Invalid data for `uuid`. Must be a string:", input_json$`uuid`))
+      # check the required field `username`
+      if (!is.null(input_json$`username`)) {
+        if (!(is.character(input_json$`username`) && length(input_json$`username`) == 1)) {
+          stop(paste("Error! Invalid data for `username`. Must be a string:", input_json$`username`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AppUserTokenObtainPairRequest: the required field `uuid` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for AppUserTokenObtainPairRequest: the required field `username` is missing."))
       }
       # check the required field `password`
       if (!is.null(input_json$`password`)) {
@@ -173,8 +173,12 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `uuid` is null
-      if (is.null(self$`uuid`)) {
+      # check if the required `username` is null
+      if (is.null(self$`username`)) {
+        return(FALSE)
+      }
+
+      if (nchar(self$`username`) < 1) {
         return(FALSE)
       }
 
@@ -200,9 +204,13 @@ AppUserTokenObtainPairRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `uuid` is null
-      if (is.null(self$`uuid`)) {
-        invalid_fields["uuid"] <- "Non-nullable required field `uuid` cannot be null."
+      # check if the required `username` is null
+      if (is.null(self$`username`)) {
+        invalid_fields["username"] <- "Non-nullable required field `username` cannot be null."
+      }
+
+      if (nchar(self$`username`) < 1) {
+        invalid_fields["username"] <- "Invalid length for `username`, must be bigger than or equal to 1."
       }
 
       # check if the required `password` is null

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **character** |  | [Enum: [authentication_failed, not_authenticated]] 
+**code** | **character** |  | [Enum: [token_not_valid, authentication_failed, not_authenticated]] 
 **detail** | **character** |  | 
 **attr** | **character** |  | 
 

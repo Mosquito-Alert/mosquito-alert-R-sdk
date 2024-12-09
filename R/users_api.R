@@ -14,29 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' ####################  users_create  ####################
-#'
-#' library(MosquitoAlert)
-#' var_create_user_request <- CreateUserRequest$new("password_example", "es") # CreateUserRequest | 
-#'
-#' api_instance <- mosquitoalert_api$new()
-#'
-#' # Configure API key authorization: cookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: tokenAuth
-#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure HTTP bearer authorization: jwtAuth
-#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$users_create(var_create_user_requestdata_file = "result.txt")
-#' result <- api_instance$users_api$users_create(var_create_user_request)
-#' dput(result)
-#'
-#'
-#' ####################  users_partial_update  ####################
+#' ####################  partial_update  ####################
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
@@ -54,12 +32,12 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$users_partial_update(var_uuid, patched_user_request = var_patched_user_requestdata_file = "result.txt")
-#' result <- api_instance$users_api$users_partial_update(var_uuid, patched_user_request = var_patched_user_request)
+#' # result <- api_instance$partial_update(var_uuid, patched_user_request = var_patched_user_requestdata_file = "result.txt")
+#' result <- api_instance$users_api$partial_update(var_uuid, patched_user_request = var_patched_user_request)
 #' dput(result)
 #'
 #'
-#' ####################  users_retrieve  ####################
+#' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
@@ -76,12 +54,27 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$users_retrieve(var_uuiddata_file = "result.txt")
-#' result <- api_instance$users_api$users_retrieve(var_uuid)
+#' # result <- api_instance$retrieve(var_uuiddata_file = "result.txt")
+#' result <- api_instance$users_api$retrieve(var_uuid)
 #' dput(result)
 #'
 #'
-#' ####################  users_update  ####################
+#' ####################  retrieve_mine  ####################
+#'
+#' library(MosquitoAlert)
+#'
+#' api_instance <- mosquitoalert_api$new()
+#'
+#' # Configure HTTP bearer authorization: jwtAuth
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$retrieve_mine(data_file = "result.txt")
+#' result <- api_instance$users_api$retrieve_mine()
+#' dput(result)
+#'
+#'
+#' ####################  update  ####################
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
@@ -99,8 +92,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$users_update(var_uuid, user_request = var_user_requestdata_file = "result.txt")
-#' result <- api_instance$users_api$users_update(var_uuid, user_request = var_user_request)
+#' # result <- api_instance$update(var_uuid, user_request = var_user_requestdata_file = "result.txt")
+#' result <- api_instance$users_api$update(var_uuid, user_request = var_user_request)
 #' dput(result)
 #'
 #'
@@ -128,120 +121,14 @@ UsersApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param create_user_request 
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #'
-    #' @return CreateUser
-    users_create = function(create_user_request, data_file = NULL, ...) {
-      local_var_response <- self$users_create_with_http_info(create_user_request, data_file = data_file, ...)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        local_var_response$content
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        local_var_response
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        local_var_response
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        local_var_response
-      }
-    },
-
-    #' @description
-    #' 
-    #'
-    #' @param create_user_request 
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #'
-    #' @return API response (CreateUser) with additional information such as HTTP status code, headers
-    users_create_with_http_info = function(create_user_request, data_file = NULL, ...) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (missing(`create_user_request`)) {
-        stop("Missing required parameter `create_user_request`.")
-      }
-
-
-      if (!is.null(`create_user_request`)) {
-        local_var_body <- `create_user_request`$toJSONString()
-      } else {
-        body <- NULL
-      }
-
-      local_var_url_path <- "/users/"
-      # API key authentication
-      # API key authentication
-      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
-        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
-      }
-      # Bearer token
-      if (!is.null(self$api_client$bearer_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list("application/json", "application/x-www-form-urlencoded", "multipart/form-data")
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          write(local_var_resp$response, data_file)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$deserialize(local_var_resp$response_as_text(), "CreateUser", loadNamespace("MosquitoAlert")),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        local_var_resp
-      } else if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(paste("Server returned ", local_var_resp$status_code, " response status code."), local_var_resp)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new("API client error", local_var_resp)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || local_var_resp$response == "") {
-          local_var_resp$response <- "API server error"
-        }
-        local_var_resp
-      }
-    },
-
-    #' @description
-    #' 
-    #'
     #' @param uuid 
     #' @param patched_user_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
     #' @return User
-    users_partial_update = function(uuid, patched_user_request = NULL, data_file = NULL, ...) {
-      local_var_response <- self$users_partial_update_with_http_info(uuid, patched_user_request, data_file = data_file, ...)
+    partial_update = function(uuid, patched_user_request = NULL, data_file = NULL, ...) {
+      local_var_response <- self$partial_update_with_http_info(uuid, patched_user_request, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -262,7 +149,7 @@ UsersApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (User) with additional information such as HTTP status code, headers
-    users_partial_update_with_http_info = function(uuid, patched_user_request = NULL, data_file = NULL, ...) {
+    partial_update_with_http_info = function(uuid, patched_user_request = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -352,8 +239,8 @@ UsersApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return User
-    users_retrieve = function(uuid, data_file = NULL, ...) {
-      local_var_response <- self$users_retrieve_with_http_info(uuid, data_file = data_file, ...)
+    retrieve = function(uuid, data_file = NULL, ...) {
+      local_var_response <- self$retrieve_with_http_info(uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -373,7 +260,7 @@ UsersApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (User) with additional information such as HTTP status code, headers
-    users_retrieve_with_http_info = function(uuid, data_file = NULL, ...) {
+    retrieve_with_http_info = function(uuid, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -451,14 +338,102 @@ UsersApi <- R6::R6Class(
     #' @description
     #' 
     #'
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #'
+    #' @return User
+    retrieve_mine = function(data_file = NULL, ...) {
+      local_var_response <- self$retrieve_mine_with_http_info(data_file = data_file, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        local_var_response$content
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        local_var_response
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        local_var_response
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        local_var_response
+      }
+    },
+
+    #' @description
+    #' 
+    #'
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (User) with additional information such as HTTP status code, headers
+    retrieve_mine_with_http_info = function(data_file = NULL, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      local_var_url_path <- "/me/"
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          write(local_var_resp$response, data_file)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$deserialize(local_var_resp$response_as_text(), "User", loadNamespace("MosquitoAlert")),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        local_var_resp
+      } else if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(paste("Server returned ", local_var_resp$status_code, " response status code."), local_var_resp)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new("API client error", local_var_resp)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || local_var_resp$response == "") {
+          local_var_resp$response <- "API server error"
+        }
+        local_var_resp
+      }
+    },
+
+    #' @description
+    #' 
+    #'
     #' @param uuid 
     #' @param user_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
     #' @return User
-    users_update = function(uuid, user_request = NULL, data_file = NULL, ...) {
-      local_var_response <- self$users_update_with_http_info(uuid, user_request, data_file = data_file, ...)
+    update = function(uuid, user_request = NULL, data_file = NULL, ...) {
+      local_var_response <- self$update_with_http_info(uuid, user_request, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -479,7 +454,7 @@ UsersApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (User) with additional information such as HTTP status code, headers
-    users_update_with_http_info = function(uuid, user_request = NULL, data_file = NULL, ...) {
+    update_with_http_info = function(uuid, user_request = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()

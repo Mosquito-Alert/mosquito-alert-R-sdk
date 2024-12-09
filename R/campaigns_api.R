@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' ####################  campaigns_list  ####################
+#' ####################  list  ####################
 #'
 #' library(MosquitoAlert)
 #' var_country_id <- 56 # integer | Country in which the campaign is taking place (Optional)
@@ -35,12 +35,12 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$campaigns_list(country_id = var_country_id, is_active = var_is_active, order_by = var_order_by, page = var_page, page_size = var_page_sizedata_file = "result.txt")
-#' result <- api_instance$campaigns_api$campaigns_list(country_id = var_country_id, is_active = var_is_active, order_by = var_order_by, page = var_page, page_size = var_page_size)
+#' # result <- api_instance$list(country_id = var_country_id, is_active = var_is_active, order_by = var_order_by, page = var_page, page_size = var_page_sizedata_file = "result.txt")
+#' result <- api_instance$campaigns_api$list(country_id = var_country_id, is_active = var_is_active, order_by = var_order_by, page = var_page, page_size = var_page_size)
 #' dput(result)
 #'
 #'
-#' ####################  campaigns_retrieve  ####################
+#' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
 #' var_id <- 56 # integer | A unique integer value identifying this ow campaigns.
@@ -57,8 +57,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$campaigns_retrieve(var_iddata_file = "result.txt")
-#' result <- api_instance$campaigns_api$campaigns_retrieve(var_id)
+#' # result <- api_instance$retrieve(var_iddata_file = "result.txt")
+#' result <- api_instance$campaigns_api$retrieve(var_id)
 #' dput(result)
 #'
 #'
@@ -95,8 +95,8 @@ CampaignsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedCampaignList
-    campaigns_list = function(country_id = NULL, is_active = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
-      local_var_response <- self$campaigns_list_with_http_info(country_id, is_active, order_by, page, page_size, data_file = data_file, ...)
+    list = function(country_id = NULL, is_active = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_with_http_info(country_id, is_active, order_by, page, page_size, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -120,7 +120,7 @@ CampaignsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedCampaignList) with additional information such as HTTP status code, headers
-    campaigns_list_with_http_info = function(country_id = NULL, is_active = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(country_id = NULL, is_active = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -143,7 +143,7 @@ CampaignsApi <- R6::R6Class(
       # validate enum values
       for (query_item in `order_by`) {
         if (!is.null(query_item) && !(query_item %in% c("-end_date", "-start_date", "end_date", "start_date"))) {
-          stop("Invalid value for order_by when calling CampaignsApi$campaigns_list. Must be [-end_date, -start_date, end_date, start_date].")
+          stop("Invalid value for order_by when calling CampaignsApi$list. Must be [-end_date, -start_date, end_date, start_date].")
         }
       }
       query_params[["order_by"]] <- I(paste(lapply(`order_by`, URLencode, reserved = TRUE), collapse = ","))
@@ -216,8 +216,8 @@ CampaignsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return Campaign
-    campaigns_retrieve = function(id, data_file = NULL, ...) {
-      local_var_response <- self$campaigns_retrieve_with_http_info(id, data_file = data_file, ...)
+    retrieve = function(id, data_file = NULL, ...) {
+      local_var_response <- self$retrieve_with_http_info(id, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -237,7 +237,7 @@ CampaignsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (Campaign) with additional information such as HTTP status code, headers
-    campaigns_retrieve_with_http_info = function(id, data_file = NULL, ...) {
+    retrieve_with_http_info = function(id, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()

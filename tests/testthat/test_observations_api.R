@@ -5,8 +5,8 @@ context("Test ObservationsApi")
 
 api_instance <- ObservationsApi$new()
 
-test_that("observations_create", {
-  # tests for observations_create
+test_that("create", {
+  # tests for create
   # base path: https://api.mosquitoalert.com/v1
   # @param observation_request ObservationRequest 
   # @return [Observation]
@@ -15,8 +15,8 @@ test_that("observations_create", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("observations_destroy", {
-  # tests for observations_destroy
+test_that("destroy", {
+  # tests for destroy
   # base path: https://api.mosquitoalert.com/v1
   # @param uuid character 
   # @return [Void]
@@ -25,8 +25,8 @@ test_that("observations_destroy", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("observations_list", {
-  # tests for observations_list
+test_that("list", {
+  # tests for list
   # base path: https://api.mosquitoalert.com/v1
   # @param created_at_after character Created at (optional)
   # @param created_at_before character Created at (optional)
@@ -51,8 +51,35 @@ test_that("observations_list", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("observations_prediction_create", {
-  # tests for observations_prediction_create
+test_that("list_mine", {
+  # tests for list_mine
+  # base path: https://api.mosquitoalert.com/v1
+  # Get Current User&#39;s Observations
+  # @param created_at_after character Created at (optional)
+  # @param created_at_before character Created at (optional)
+  # @param has_photos character Has any photo (optional)
+  # @param has_prediction character Filter observations that have an associated prediction. An observation is considered to have a prediction if a photo has been selected as reference to use the prediction from. (optional)
+  # @param has_predictions_all_photos character Filters observations based on whether all associated photos have predictions. Set to True to include observations where every photo has a prediction; set to False to include observations where at least one photo is missing a prediction. (optional)
+  # @param location_country_id integer  (optional)
+  # @param location_nuts_2 character  (optional)
+  # @param location_nuts_3 character  (optional)
+  # @param order_by array[character] Ordenado   (optional)
+  # @param page integer A page number within the paginated result set. (optional)
+  # @param page_size integer Number of results to return per page. (optional)
+  # @param received_at_after character Received at (optional)
+  # @param received_at_before character Received at (optional)
+  # @param short_id character Short ID (optional)
+  # @param updated_at_after character Update at (optional)
+  # @param updated_at_before character Update at (optional)
+  # @param user_uuid character  (optional)
+  # @return [PaginatedObservationList]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("prediction_create", {
+  # tests for prediction_create
   # base path: https://api.mosquitoalert.com/v1
   # @param uuid character 
   # @param observation_prediction_request ObservationPredictionRequest 
@@ -62,8 +89,8 @@ test_that("observations_prediction_create", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("observations_prediction_destroy", {
-  # tests for observations_prediction_destroy
+test_that("prediction_destroy", {
+  # tests for prediction_destroy
   # base path: https://api.mosquitoalert.com/v1
   # @param uuid character 
   # @return [Void]
@@ -72,8 +99,8 @@ test_that("observations_prediction_destroy", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("observations_prediction_retrieve", {
-  # tests for observations_prediction_retrieve
+test_that("prediction_retrieve", {
+  # tests for prediction_retrieve
   # base path: https://api.mosquitoalert.com/v1
   # @param uuid character 
   # @return [ObservationPrediction]
@@ -82,8 +109,8 @@ test_that("observations_prediction_retrieve", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("observations_retrieve", {
-  # tests for observations_retrieve
+test_that("retrieve", {
+  # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
   # @param uuid character 
   # @return [Observation]

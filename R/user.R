@@ -8,9 +8,11 @@
 #' @description User Class
 #' @format An \code{R6Class} generator object
 #' @field uuid  character
+#' @field username  character
 #' @field registration_time The date and time when user registered and consented to sharing data. Automatically set by server when user uploads registration. character
 #' @field locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code. character [optional]
 #' @field language_iso ISO 639-1 code character
+#' @field is_guest  character
 #' @field score Global XP Score. This field is updated whenever the user asks for the score, and is only stored here. The content must equal score_v2_adult + score_v2_bite + score_v2_site integer
 #' @field last_score_update Last time score was updated character
 #' @importFrom R6 R6Class
@@ -20,9 +22,11 @@ User <- R6::R6Class(
   "User",
   public = list(
     `uuid` = NULL,
+    `username` = NULL,
     `registration_time` = NULL,
     `locale` = NULL,
     `language_iso` = NULL,
+    `is_guest` = NULL,
     `score` = NULL,
     `last_score_update` = NULL,
 
@@ -30,18 +34,26 @@ User <- R6::R6Class(
     #' Initialize a new User class.
     #'
     #' @param uuid uuid
+    #' @param username username
     #' @param registration_time The date and time when user registered and consented to sharing data. Automatically set by server when user uploads registration.
     #' @param language_iso ISO 639-1 code
+    #' @param is_guest is_guest
     #' @param score Global XP Score. This field is updated whenever the user asks for the score, and is only stored here. The content must equal score_v2_adult + score_v2_bite + score_v2_site
     #' @param last_score_update Last time score was updated
     #' @param locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code.
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `registration_time`, `language_iso`, `score`, `last_score_update`, `locale` = NULL, ...) {
+    initialize = function(`uuid`, `username`, `registration_time`, `language_iso`, `is_guest`, `score`, `last_score_update`, `locale` = NULL, ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
         }
         self$`uuid` <- `uuid`
+      }
+      if (!missing(`username`)) {
+        if (!(is.character(`username`) && length(`username`) == 1)) {
+          stop(paste("Error! Invalid data for `username`. Must be a string:", `username`))
+        }
+        self$`username` <- `username`
       }
       if (!missing(`registration_time`)) {
         if (!(is.character(`registration_time`) && length(`registration_time`) == 1)) {
@@ -54,6 +66,12 @@ User <- R6::R6Class(
           stop(paste("Error! Invalid data for `language_iso`. Must be a string:", `language_iso`))
         }
         self$`language_iso` <- `language_iso`
+      }
+      if (!missing(`is_guest`)) {
+        if (!(is.logical(`is_guest`) && length(`is_guest`) == 1)) {
+          stop(paste("Error! Invalid data for `is_guest`. Must be a boolean:", `is_guest`))
+        }
+        self$`is_guest` <- `is_guest`
       }
       if (!missing(`score`)) {
         if (!(is.numeric(`score`) && length(`score`) == 1)) {
@@ -88,6 +106,10 @@ User <- R6::R6Class(
         UserObject[["uuid"]] <-
           self$`uuid`
       }
+      if (!is.null(self$`username`)) {
+        UserObject[["username"]] <-
+          self$`username`
+      }
       if (!is.null(self$`registration_time`)) {
         UserObject[["registration_time"]] <-
           self$`registration_time`
@@ -99,6 +121,10 @@ User <- R6::R6Class(
       if (!is.null(self$`language_iso`)) {
         UserObject[["language_iso"]] <-
           self$`language_iso`
+      }
+      if (!is.null(self$`is_guest`)) {
+        UserObject[["is_guest"]] <-
+          self$`is_guest`
       }
       if (!is.null(self$`score`)) {
         UserObject[["score"]] <-
@@ -121,6 +147,9 @@ User <- R6::R6Class(
       if (!is.null(this_object$`uuid`)) {
         self$`uuid` <- this_object$`uuid`
       }
+      if (!is.null(this_object$`username`)) {
+        self$`username` <- this_object$`username`
+      }
       if (!is.null(this_object$`registration_time`)) {
         self$`registration_time` <- this_object$`registration_time`
       }
@@ -132,6 +161,9 @@ User <- R6::R6Class(
       }
       if (!is.null(this_object$`language_iso`)) {
         self$`language_iso` <- this_object$`language_iso`
+      }
+      if (!is.null(this_object$`is_guest`)) {
+        self$`is_guest` <- this_object$`is_guest`
       }
       if (!is.null(this_object$`score`)) {
         self$`score` <- this_object$`score`
@@ -156,6 +188,14 @@ User <- R6::R6Class(
           self$`uuid`
           )
         },
+        if (!is.null(self$`username`)) {
+          sprintf(
+          '"username":
+            "%s"
+                    ',
+          self$`username`
+          )
+        },
         if (!is.null(self$`registration_time`)) {
           sprintf(
           '"registration_time":
@@ -178,6 +218,14 @@ User <- R6::R6Class(
             "%s"
                     ',
           self$`language_iso`
+          )
+        },
+        if (!is.null(self$`is_guest`)) {
+          sprintf(
+          '"is_guest":
+            %s
+                    ',
+          tolower(self$`is_guest`)
           )
         },
         if (!is.null(self$`score`)) {
@@ -209,12 +257,14 @@ User <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`uuid` <- this_object$`uuid`
+      self$`username` <- this_object$`username`
       self$`registration_time` <- this_object$`registration_time`
       if (!is.null(this_object$`locale`) && !(this_object$`locale` %in% c("es", "ca", "eu", "bn", "sv", "en", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
         stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"en\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
       }
       self$`locale` <- this_object$`locale`
       self$`language_iso` <- this_object$`language_iso`
+      self$`is_guest` <- this_object$`is_guest`
       self$`score` <- this_object$`score`
       self$`last_score_update` <- this_object$`last_score_update`
       self
@@ -234,6 +284,14 @@ User <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for User: the required field `uuid` is missing."))
       }
+      # check the required field `username`
+      if (!is.null(input_json$`username`)) {
+        if (!(is.character(input_json$`username`) && length(input_json$`username`) == 1)) {
+          stop(paste("Error! Invalid data for `username`. Must be a string:", input_json$`username`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for User: the required field `username` is missing."))
+      }
       # check the required field `registration_time`
       if (!is.null(input_json$`registration_time`)) {
         if (!(is.character(input_json$`registration_time`) && length(input_json$`registration_time`) == 1)) {
@@ -249,6 +307,14 @@ User <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for User: the required field `language_iso` is missing."))
+      }
+      # check the required field `is_guest`
+      if (!is.null(input_json$`is_guest`)) {
+        if (!(is.logical(input_json$`is_guest`) && length(input_json$`is_guest`) == 1)) {
+          stop(paste("Error! Invalid data for `is_guest`. Must be a boolean:", input_json$`is_guest`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for User: the required field `is_guest` is missing."))
       }
       # check the required field `score`
       if (!is.null(input_json$`score`)) {
@@ -286,6 +352,11 @@ User <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `username` is null
+      if (is.null(self$`username`)) {
+        return(FALSE)
+      }
+
       # check if the required `registration_time` is null
       if (is.null(self$`registration_time`)) {
         return(FALSE)
@@ -293,6 +364,11 @@ User <- R6::R6Class(
 
       # check if the required `language_iso` is null
       if (is.null(self$`language_iso`)) {
+        return(FALSE)
+      }
+
+      # check if the required `is_guest` is null
+      if (is.null(self$`is_guest`)) {
         return(FALSE)
       }
 
@@ -320,6 +396,11 @@ User <- R6::R6Class(
         invalid_fields["uuid"] <- "Non-nullable required field `uuid` cannot be null."
       }
 
+      # check if the required `username` is null
+      if (is.null(self$`username`)) {
+        invalid_fields["username"] <- "Non-nullable required field `username` cannot be null."
+      }
+
       # check if the required `registration_time` is null
       if (is.null(self$`registration_time`)) {
         invalid_fields["registration_time"] <- "Non-nullable required field `registration_time` cannot be null."
@@ -328,6 +409,11 @@ User <- R6::R6Class(
       # check if the required `language_iso` is null
       if (is.null(self$`language_iso`)) {
         invalid_fields["language_iso"] <- "Non-nullable required field `language_iso` cannot be null."
+      }
+
+      # check if the required `is_guest` is null
+      if (is.null(self$`is_guest`)) {
+        invalid_fields["is_guest"] <- "Non-nullable required field `is_guest` cannot be null."
       }
 
       # check if the required `score` is null

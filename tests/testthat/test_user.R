@@ -12,6 +12,13 @@ test_that("uuid", {
   #expect_equal(model.instance$`uuid`, "EXPECTED_RESULT")
 })
 
+test_that("username", {
+  # tests for the property `username` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
+})
+
 test_that("registration_time", {
   # tests for the property `registration_time` (character)
   # The date and time when user registered and consented to sharing data. Automatically set by server when user uploads registration.
@@ -34,6 +41,13 @@ test_that("language_iso", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`language_iso`, "EXPECTED_RESULT")
+})
+
+test_that("is_guest", {
+  # tests for the property `is_guest` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`is_guest`, "EXPECTED_RESULT")
 })
 
 test_that("score", {

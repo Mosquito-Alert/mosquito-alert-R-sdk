@@ -4,14 +4,15 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**bites_create**](BitesApi.md#bites_create) | **POST** /bites/ | 
-[**bites_destroy**](BitesApi.md#bites_destroy) | **DELETE** /bites/{uuid}/ | 
-[**bites_list**](BitesApi.md#bites_list) | **GET** /bites/ | 
-[**bites_retrieve**](BitesApi.md#bites_retrieve) | **GET** /bites/{uuid}/ | 
+[**create**](BitesApi.md#create) | **POST** /bites/ | 
+[**destroy**](BitesApi.md#destroy) | **DELETE** /bites/{uuid}/ | 
+[**list**](BitesApi.md#list) | **GET** /bites/ | 
+[**list_mine**](BitesApi.md#list_mine) | **GET** /me/bites/ | 
+[**retrieve**](BitesApi.md#retrieve) | **GET** /bites/{uuid}/ | 
 
 
-# **bites_create**
-> Bite bites_create(bite_request)
+# **create**
+> Bite create(bite_request)
 
 
 
@@ -30,8 +31,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$bites_create(var_bite_requestdata_file = "result.txt")
-result <- api_instance$bites_api$bites_create(var_bite_request)
+# result <- api_instance$create(var_bite_requestdata_file = "result.txt")
+result <- api_instance$bites_api$create(var_bite_request)
 dput(result)
 ```
 
@@ -61,14 +62,10 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **201** |  |  -  |
 
-# **bites_destroy**
-> bites_destroy(uuid)
+# **destroy**
+> destroy(uuid)
 
 
 
@@ -86,7 +83,7 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
-api_instance$bites_api$bites_destroy(var_uuid)
+api_instance$bites_api$destroy(var_uuid)
 ```
 
 ### Parameters
@@ -111,18 +108,13 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **204** | No response body |  -  |
 
-# **bites_list**
-> PaginatedBiteList bites_list(created_at_after = var.created_at_after, created_at_before = var.created_at_before, location_country_id = var.location_country_id, location_nuts_2 = var.location_nuts_2, location_nuts_3 = var.location_nuts_3, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
+# **list**
+> PaginatedBiteList list(created_at_after = var.created_at_after, created_at_before = var.created_at_before, location_country_id = var.location_country_id, location_nuts_2 = var.location_nuts_2, location_nuts_3 = var.location_nuts_3, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
 
 
 
@@ -154,8 +146,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$bites_list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-result <- api_instance$bites_api$bites_list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+# result <- api_instance$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+result <- api_instance$bites_api$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 dput(result)
 ```
 
@@ -197,14 +189,87 @@ Name | Type | Description  | Notes
 | **400** |  |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 
-# **bites_retrieve**
-> Bite bites_retrieve(uuid)
+# **list_mine**
+> PaginatedBiteList list_mine(created_at_after = var.created_at_after, created_at_before = var.created_at_before, location_country_id = var.location_country_id, location_nuts_2 = var.location_nuts_2, location_nuts_3 = var.location_nuts_3, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
+
+
+
+Get Current User's Bites
+
+### Example
+```R
+library(MosquitoAlert)
+
+# prepare function argument(s)
+var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
+var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
+var_location_country_id <- 56 # integer |  (Optional)
+var_location_nuts_2 <- "location_nuts_2_example" # character |  (Optional)
+var_location_nuts_3 <- "location_nuts_3_example" # character |  (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
+var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
+var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
+var_short_id <- "short_id_example" # character | Short ID (Optional)
+var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
+var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
+var_user_uuid <- "user_uuid_example" # character |  (Optional)
+
+api_instance <- mosquitoalert_api$new()
+# Configure HTTP bearer authorization: jwtAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+result <- api_instance$bites_api$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **created_at_after** | **character**| Created at | [optional] 
+ **created_at_before** | **character**| Created at | [optional] 
+ **location_country_id** | **integer**|  | [optional] 
+ **location_nuts_2** | **character**|  | [optional] 
+ **location_nuts_3** | **character**|  | [optional] 
+ **order_by** | Enum [-created_at, -received_at, created_at, received_at] | Ordenado   | [optional] 
+ **page** | **integer**| A page number within the paginated result set. | [optional] 
+ **page_size** | **integer**| Number of results to return per page. | [optional] 
+ **received_at_after** | **character**| Received at | [optional] 
+ **received_at_before** | **character**| Received at | [optional] 
+ **short_id** | **character**| Short ID | [optional] 
+ **updated_at_after** | **character**| Update at | [optional] 
+ **updated_at_before** | **character**| Update at | [optional] 
+ **user_uuid** | **character**|  | [optional] 
+
+### Return type
+
+[**PaginatedBiteList**](PaginatedBiteList.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **200** |  |  -  |
+
+# **retrieve**
+> Bite retrieve(uuid)
 
 
 
@@ -223,8 +288,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$bites_retrieve(var_uuiddata_file = "result.txt")
-result <- api_instance$bites_api$bites_retrieve(var_uuid)
+# result <- api_instance$retrieve(var_uuiddata_file = "result.txt")
+result <- api_instance$bites_api$retrieve(var_uuid)
 dput(result)
 ```
 
@@ -250,12 +315,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 

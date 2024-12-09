@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' ####################  partners_list  ####################
+#' ####################  list  ####################
 #'
 #' library(MosquitoAlert)
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
@@ -32,12 +32,12 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$partners_list(page = var_page, page_size = var_page_sizedata_file = "result.txt")
-#' result <- api_instance$partners_api$partners_list(page = var_page, page_size = var_page_size)
+#' # result <- api_instance$list(page = var_page, page_size = var_page_sizedata_file = "result.txt")
+#' result <- api_instance$partners_api$list(page = var_page, page_size = var_page_size)
 #' dput(result)
 #'
 #'
-#' ####################  partners_retrieve  ####################
+#' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
 #' var_id <- 56 # integer | A unique integer value identifying this organization pin.
@@ -54,8 +54,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$partners_retrieve(var_iddata_file = "result.txt")
-#' result <- api_instance$partners_api$partners_retrieve(var_id)
+#' # result <- api_instance$retrieve(var_iddata_file = "result.txt")
+#' result <- api_instance$partners_api$retrieve(var_id)
 #' dput(result)
 #'
 #'
@@ -89,8 +89,8 @@ PartnersApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedPartnerList
-    partners_list = function(page = NULL, page_size = NULL, data_file = NULL, ...) {
-      local_var_response <- self$partners_list_with_http_info(page, page_size, data_file = data_file, ...)
+    list = function(page = NULL, page_size = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_with_http_info(page, page_size, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -111,7 +111,7 @@ PartnersApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedPartnerList) with additional information such as HTTP status code, headers
-    partners_list_with_http_info = function(page = NULL, page_size = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(page = NULL, page_size = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -191,8 +191,8 @@ PartnersApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return Partner
-    partners_retrieve = function(id, data_file = NULL, ...) {
-      local_var_response <- self$partners_retrieve_with_http_info(id, data_file = data_file, ...)
+    retrieve = function(id, data_file = NULL, ...) {
+      local_var_response <- self$retrieve_with_http_info(id, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -212,7 +212,7 @@ PartnersApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (Partner) with additional information such as HTTP status code, headers
-    partners_retrieve_with_http_info = function(id, data_file = NULL, ...) {
+    retrieve_with_http_info = function(id, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()

@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' ####################  countries_retrieve  ####################
+#' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
 #' var_id <- 56 # integer | A unique integer value identifying this europe country.
@@ -31,8 +31,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$countries_retrieve(var_iddata_file = "result.txt")
-#' result <- api_instance$countries_api$countries_retrieve(var_id)
+#' # result <- api_instance$retrieve(var_iddata_file = "result.txt")
+#' result <- api_instance$countries_api$retrieve(var_id)
 #' dput(result)
 #'
 #'
@@ -65,8 +65,8 @@ CountriesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return Country
-    countries_retrieve = function(id, data_file = NULL, ...) {
-      local_var_response <- self$countries_retrieve_with_http_info(id, data_file = data_file, ...)
+    retrieve = function(id, data_file = NULL, ...) {
+      local_var_response <- self$retrieve_with_http_info(id, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -86,7 +86,7 @@ CountriesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (Country) with additional information such as HTTP status code, headers
-    countries_retrieve_with_http_info = function(id, data_file = NULL, ...) {
+    retrieve_with_http_info = function(id, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()

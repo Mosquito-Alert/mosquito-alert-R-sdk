@@ -5,8 +5,8 @@ context("Test NotificationsApi")
 
 api_instance <- NotificationsApi$new()
 
-test_that("notifications_create", {
-  # tests for notifications_create
+test_that("create", {
+  # tests for create
   # base path: https://api.mosquitoalert.com/v1
   # @param meta_notification_request MetaNotificationRequest  (optional)
   # @return [array[CreateNotification]]
@@ -15,8 +15,8 @@ test_that("notifications_create", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("notifications_list", {
-  # tests for notifications_list
+test_that("list", {
+  # tests for list
   # base path: https://api.mosquitoalert.com/v1
   # @param is_read character  (optional)
   # @param order_by array[character] Ordenado   (optional)
@@ -28,8 +28,22 @@ test_that("notifications_list", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("notifications_partial_update", {
-  # tests for notifications_partial_update
+test_that("list_mine", {
+  # tests for list_mine
+  # base path: https://api.mosquitoalert.com/v1
+  # Get Current User&#39;s Notifications
+  # @param is_read character  (optional)
+  # @param order_by array[character] Ordenado   (optional)
+  # @param page integer A page number within the paginated result set. (optional)
+  # @param page_size integer Number of results to return per page. (optional)
+  # @return [PaginatedNotificationList]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("partial_update", {
+  # tests for partial_update
   # base path: https://api.mosquitoalert.com/v1
   # @param id integer A unique integer value identifying this notification.
   # @param patched_notification_request PatchedNotificationRequest  (optional)
@@ -39,8 +53,8 @@ test_that("notifications_partial_update", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("notifications_retrieve", {
-  # tests for notifications_retrieve
+test_that("retrieve", {
+  # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
   # @param id integer A unique integer value identifying this notification.
   # @return [Notification]
@@ -49,8 +63,8 @@ test_that("notifications_retrieve", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("notifications_update", {
-  # tests for notifications_update
+test_that("update", {
+  # tests for update
   # base path: https://api.mosquitoalert.com/v1
   # @param id integer A unique integer value identifying this notification.
   # @param notification_request NotificationRequest 

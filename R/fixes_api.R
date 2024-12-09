@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' ####################  fixes_create  ####################
+#' ####################  create  ####################
 #'
 #' library(MosquitoAlert)
 #' var_fix_request <- FixRequest$new("coverage_uuid_example", "created_at_example", "sent_at_example", FixLocationRequest$new(123, 123), 123) # FixRequest | 
@@ -31,8 +31,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$fixes_create(var_fix_requestdata_file = "result.txt")
-#' result <- api_instance$fixes_api$fixes_create(var_fix_request)
+#' # result <- api_instance$create(var_fix_requestdata_file = "result.txt")
+#' result <- api_instance$fixes_api$create(var_fix_request)
 #' dput(result)
 #'
 #'
@@ -65,8 +65,8 @@ FixesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return Fix
-    fixes_create = function(fix_request, data_file = NULL, ...) {
-      local_var_response <- self$fixes_create_with_http_info(fix_request, data_file = data_file, ...)
+    create = function(fix_request, data_file = NULL, ...) {
+      local_var_response <- self$create_with_http_info(fix_request, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -86,7 +86,7 @@ FixesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (Fix) with additional information such as HTTP status code, headers
-    fixes_create_with_http_info = function(fix_request, data_file = NULL, ...) {
+    create_with_http_info = function(fix_request, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()

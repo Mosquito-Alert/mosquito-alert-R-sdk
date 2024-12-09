@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' ####################  notifications_create  ####################
+#' ####################  create  ####################
 #'
 #' library(MosquitoAlert)
 #' var_meta_notification_request <- MetaNotificationRequest$new("user", CreateNotificationMessageRequest$new(LocalizedFieldRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-CN_example"), LocalizedFieldRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-CN_example")), c("user_uuids_example"), c("topic_codes_example")) # MetaNotificationRequest |  (Optional)
@@ -31,12 +31,12 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$notifications_create(meta_notification_request = var_meta_notification_requestdata_file = "result.txt")
-#' result <- api_instance$notifications_api$notifications_create(meta_notification_request = var_meta_notification_request)
+#' # result <- api_instance$create(meta_notification_request = var_meta_notification_requestdata_file = "result.txt")
+#' result <- api_instance$notifications_api$create(meta_notification_request = var_meta_notification_request)
 #' dput(result)
 #'
 #'
-#' ####################  notifications_list  ####################
+#' ####################  list  ####################
 #'
 #' library(MosquitoAlert)
 #' var_is_read <- "is_read_example" # character |  (Optional)
@@ -56,12 +56,31 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$notifications_list(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_sizedata_file = "result.txt")
-#' result <- api_instance$notifications_api$notifications_list(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_size)
+#' # result <- api_instance$list(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_sizedata_file = "result.txt")
+#' result <- api_instance$notifications_api$list(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_size)
 #' dput(result)
 #'
 #'
-#' ####################  notifications_partial_update  ####################
+#' ####################  list_mine  ####################
+#'
+#' library(MosquitoAlert)
+#' var_is_read <- "is_read_example" # character |  (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#'
+#' api_instance <- mosquitoalert_api$new()
+#'
+#' # Configure HTTP bearer authorization: jwtAuth
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$list_mine(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_sizedata_file = "result.txt")
+#' result <- api_instance$notifications_api$list_mine(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_size)
+#' dput(result)
+#'
+#'
+#' ####################  partial_update  ####################
 #'
 #' library(MosquitoAlert)
 #' var_id <- 56 # integer | A unique integer value identifying this notification.
@@ -79,12 +98,12 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$notifications_partial_update(var_id, patched_notification_request = var_patched_notification_requestdata_file = "result.txt")
-#' result <- api_instance$notifications_api$notifications_partial_update(var_id, patched_notification_request = var_patched_notification_request)
+#' # result <- api_instance$partial_update(var_id, patched_notification_request = var_patched_notification_requestdata_file = "result.txt")
+#' result <- api_instance$notifications_api$partial_update(var_id, patched_notification_request = var_patched_notification_request)
 #' dput(result)
 #'
 #'
-#' ####################  notifications_retrieve  ####################
+#' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
 #' var_id <- 56 # integer | A unique integer value identifying this notification.
@@ -101,12 +120,12 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$notifications_retrieve(var_iddata_file = "result.txt")
-#' result <- api_instance$notifications_api$notifications_retrieve(var_id)
+#' # result <- api_instance$retrieve(var_iddata_file = "result.txt")
+#' result <- api_instance$notifications_api$retrieve(var_id)
 #' dput(result)
 #'
 #'
-#' ####################  notifications_update  ####################
+#' ####################  update  ####################
 #'
 #' library(MosquitoAlert)
 #' var_id <- 56 # integer | A unique integer value identifying this notification.
@@ -124,8 +143,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$notifications_update(var_id, var_notification_requestdata_file = "result.txt")
-#' result <- api_instance$notifications_api$notifications_update(var_id, var_notification_request)
+#' # result <- api_instance$update(var_id, var_notification_requestdata_file = "result.txt")
+#' result <- api_instance$notifications_api$update(var_id, var_notification_request)
 #' dput(result)
 #'
 #'
@@ -158,8 +177,8 @@ NotificationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return array[CreateNotification]
-    notifications_create = function(meta_notification_request = NULL, data_file = NULL, ...) {
-      local_var_response <- self$notifications_create_with_http_info(meta_notification_request, data_file = data_file, ...)
+    create = function(meta_notification_request = NULL, data_file = NULL, ...) {
+      local_var_response <- self$create_with_http_info(meta_notification_request, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -179,7 +198,7 @@ NotificationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (array[CreateNotification]) with additional information such as HTTP status code, headers
-    notifications_create_with_http_info = function(meta_notification_request = NULL, data_file = NULL, ...) {
+    create_with_http_info = function(meta_notification_request = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -263,8 +282,8 @@ NotificationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedNotificationList
-    notifications_list = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
-      local_var_response <- self$notifications_list_with_http_info(is_read, order_by, page, page_size, data_file = data_file, ...)
+    list = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_with_http_info(is_read, order_by, page, page_size, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -287,7 +306,7 @@ NotificationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedNotificationList) with additional information such as HTTP status code, headers
-    notifications_list_with_http_info = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -307,7 +326,7 @@ NotificationsApi <- R6::R6Class(
       # validate enum values
       for (query_item in `order_by`) {
         if (!is.null(query_item) && !(query_item %in% c("-created_at", "created_at"))) {
-          stop("Invalid value for order_by when calling NotificationsApi$notifications_list. Must be [-created_at, created_at].")
+          stop("Invalid value for order_by when calling NotificationsApi$list. Must be [-created_at, created_at].")
         }
       }
       query_params[["order_by"]] <- I(paste(lapply(`order_by`, URLencode, reserved = TRUE), collapse = ","))
@@ -375,14 +394,129 @@ NotificationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
+    #' @param is_read (optional) No description
+    #' @param order_by (optional) Ordenado  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #'
+    #' @return PaginatedNotificationList
+    list_mine = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_mine_with_http_info(is_read, order_by, page, page_size, data_file = data_file, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        local_var_response$content
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        local_var_response
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        local_var_response
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        local_var_response
+      }
+    },
+
+    #' @description
+    #' 
+    #'
+    #' @param is_read (optional) No description
+    #' @param order_by (optional) Ordenado  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (PaginatedNotificationList) with additional information such as HTTP status code, headers
+    list_mine_with_http_info = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+
+
+
+
+      query_params[["is_read"]] <- `is_read`
+
+      # no explore
+      # validate enum values
+      for (query_item in `order_by`) {
+        if (!is.null(query_item) && !(query_item %in% c("-created_at", "created_at"))) {
+          stop("Invalid value for order_by when calling NotificationsApi$list_mine. Must be [-created_at, created_at].")
+        }
+      }
+      query_params[["order_by"]] <- I(paste(lapply(`order_by`, URLencode, reserved = TRUE), collapse = ","))
+
+      query_params[["page"]] <- `page`
+
+      query_params[["page_size"]] <- `page_size`
+
+      local_var_url_path <- "/me/notifications/"
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          write(local_var_resp$response, data_file)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$deserialize(local_var_resp$response_as_text(), "PaginatedNotificationList", loadNamespace("MosquitoAlert")),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        local_var_resp
+      } else if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(paste("Server returned ", local_var_resp$status_code, " response status code."), local_var_resp)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new("API client error", local_var_resp)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || local_var_resp$response == "") {
+          local_var_resp$response <- "API server error"
+        }
+        local_var_resp
+      }
+    },
+
+    #' @description
+    #' 
+    #'
     #' @param id A unique integer value identifying this notification.
     #' @param patched_notification_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
     #' @return Notification
-    notifications_partial_update = function(id, patched_notification_request = NULL, data_file = NULL, ...) {
-      local_var_response <- self$notifications_partial_update_with_http_info(id, patched_notification_request, data_file = data_file, ...)
+    partial_update = function(id, patched_notification_request = NULL, data_file = NULL, ...) {
+      local_var_response <- self$partial_update_with_http_info(id, patched_notification_request, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -403,7 +537,7 @@ NotificationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (Notification) with additional information such as HTTP status code, headers
-    notifications_partial_update_with_http_info = function(id, patched_notification_request = NULL, data_file = NULL, ...) {
+    partial_update_with_http_info = function(id, patched_notification_request = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -493,8 +627,8 @@ NotificationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return Notification
-    notifications_retrieve = function(id, data_file = NULL, ...) {
-      local_var_response <- self$notifications_retrieve_with_http_info(id, data_file = data_file, ...)
+    retrieve = function(id, data_file = NULL, ...) {
+      local_var_response <- self$retrieve_with_http_info(id, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -514,7 +648,7 @@ NotificationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (Notification) with additional information such as HTTP status code, headers
-    notifications_retrieve_with_http_info = function(id, data_file = NULL, ...) {
+    retrieve_with_http_info = function(id, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -598,8 +732,8 @@ NotificationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return Notification
-    notifications_update = function(id, notification_request, data_file = NULL, ...) {
-      local_var_response <- self$notifications_update_with_http_info(id, notification_request, data_file = data_file, ...)
+    update = function(id, notification_request, data_file = NULL, ...) {
+      local_var_response <- self$update_with_http_info(id, notification_request, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -620,7 +754,7 @@ NotificationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (Notification) with additional information such as HTTP status code, headers
-    notifications_update_with_http_info = function(id, notification_request, data_file = NULL, ...) {
+    update_with_http_info = function(id, notification_request, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()

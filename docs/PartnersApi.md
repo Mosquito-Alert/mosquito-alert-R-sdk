@@ -4,12 +4,12 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**partners_list**](PartnersApi.md#partners_list) | **GET** /partners/ | 
-[**partners_retrieve**](PartnersApi.md#partners_retrieve) | **GET** /partners/{id}/ | 
+[**list**](PartnersApi.md#list) | **GET** /partners/ | 
+[**retrieve**](PartnersApi.md#retrieve) | **GET** /partners/{id}/ | 
 
 
-# **partners_list**
-> PaginatedPartnerList partners_list(page = var.page, page_size = var.page_size)
+# **list**
+> PaginatedPartnerList list(page = var.page, page_size = var.page_size)
 
 
 
@@ -29,8 +29,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$partners_list(page = var_page, page_size = var_page_sizedata_file = "result.txt")
-result <- api_instance$partners_api$partners_list(page = var_page, page_size = var_page_size)
+# result <- api_instance$list(page = var_page, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$partners_api$list(page = var_page, page_size = var_page_size)
 dput(result)
 ```
 
@@ -57,18 +57,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 
-# **partners_retrieve**
-> Partner partners_retrieve(id)
+# **retrieve**
+> Partner retrieve(id)
 
 
 
@@ -87,8 +82,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$partners_retrieve(var_iddata_file = "result.txt")
-result <- api_instance$partners_api$partners_retrieve(var_id)
+# result <- api_instance$retrieve(var_iddata_file = "result.txt")
+result <- api_instance$partners_api$retrieve(var_id)
 dput(result)
 ```
 
@@ -114,13 +109,8 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 

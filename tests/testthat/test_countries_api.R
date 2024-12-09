@@ -5,8 +5,8 @@ context("Test CountriesApi")
 
 api_instance <- CountriesApi$new()
 
-test_that("countries_retrieve", {
-  # tests for countries_retrieve
+test_that("retrieve", {
+  # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
   # @param id integer A unique integer value identifying this europe country.
   # @return [Country]

@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' ####################  observations_create  ####################
+#' ####################  create  ####################
 #'
 #' library(MosquitoAlert)
 #' var_observation_request <- ObservationRequest$new("created_at_example", "sent_at_example", LocationRequest$new("current", Location_point$new(123, 123)), c(SimplePhotoRequest$new(123)), "note_example", c("tags_example"), "indoors", "now", "albopictus", "albopictus", "albopictus", "albopictus") # ObservationRequest | 
@@ -31,12 +31,12 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$observations_create(var_observation_requestdata_file = "result.txt")
-#' result <- api_instance$observations_api$observations_create(var_observation_request)
+#' # result <- api_instance$create(var_observation_requestdata_file = "result.txt")
+#' result <- api_instance$observations_api$create(var_observation_request)
 #' dput(result)
 #'
 #'
-#' ####################  observations_destroy  ####################
+#' ####################  destroy  ####################
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
@@ -52,10 +52,10 @@
 #' # Configure HTTP bearer authorization: jwtAuth
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
-#' api_instance$observations_api$observations_destroy(var_uuid)
+#' api_instance$observations_api$destroy(var_uuid)
 #'
 #'
-#' ####################  observations_list  ####################
+#' ####################  list  ####################
 #'
 #' library(MosquitoAlert)
 #' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
@@ -88,12 +88,44 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$observations_list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, has_prediction = var_has_prediction, has_predictions_all_photos = var_has_predictions_all_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-#' result <- api_instance$observations_api$observations_list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, has_prediction = var_has_prediction, has_predictions_all_photos = var_has_predictions_all_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+#' # result <- api_instance$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, has_prediction = var_has_prediction, has_predictions_all_photos = var_has_predictions_all_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+#' result <- api_instance$observations_api$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, has_prediction = var_has_prediction, has_predictions_all_photos = var_has_predictions_all_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 #' dput(result)
 #'
 #'
-#' ####################  observations_prediction_create  ####################
+#' ####################  list_mine  ####################
+#'
+#' library(MosquitoAlert)
+#' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
+#' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
+#' var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
+#' var_has_prediction <- "has_prediction_example" # character | Filter observations that have an associated prediction. An observation is considered to have a prediction if a photo has been selected as reference to use the prediction from. (Optional)
+#' var_has_predictions_all_photos <- "has_predictions_all_photos_example" # character | Filters observations based on whether all associated photos have predictions. Set to True to include observations where every photo has a prediction; set to False to include observations where at least one photo is missing a prediction. (Optional)
+#' var_location_country_id <- 56 # integer |  (Optional)
+#' var_location_nuts_2 <- "location_nuts_2_example" # character |  (Optional)
+#' var_location_nuts_3 <- "location_nuts_3_example" # character |  (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
+#' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
+#' var_short_id <- "short_id_example" # character | Short ID (Optional)
+#' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
+#' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
+#' var_user_uuid <- "user_uuid_example" # character |  (Optional)
+#'
+#' api_instance <- mosquitoalert_api$new()
+#'
+#' # Configure HTTP bearer authorization: jwtAuth
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, has_prediction = var_has_prediction, has_predictions_all_photos = var_has_predictions_all_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+#' result <- api_instance$observations_api$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, has_prediction = var_has_prediction, has_predictions_all_photos = var_has_predictions_all_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+#' dput(result)
+#'
+#'
+#' ####################  prediction_create  ####################
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
@@ -108,12 +140,12 @@
 #' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$observations_prediction_create(var_uuid, var_observation_prediction_requestdata_file = "result.txt")
-#' result <- api_instance$observations_api$observations_prediction_create(var_uuid, var_observation_prediction_request)
+#' # result <- api_instance$prediction_create(var_uuid, var_observation_prediction_requestdata_file = "result.txt")
+#' result <- api_instance$observations_api$prediction_create(var_uuid, var_observation_prediction_request)
 #' dput(result)
 #'
 #'
-#' ####################  observations_prediction_destroy  ####################
+#' ####################  prediction_destroy  ####################
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
@@ -126,10 +158,10 @@
 #' # Configure API key authorization: tokenAuth
 #' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
-#' api_instance$observations_api$observations_prediction_destroy(var_uuid)
+#' api_instance$observations_api$prediction_destroy(var_uuid)
 #'
 #'
-#' ####################  observations_prediction_retrieve  ####################
+#' ####################  prediction_retrieve  ####################
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
@@ -143,12 +175,12 @@
 #' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$observations_prediction_retrieve(var_uuiddata_file = "result.txt")
-#' result <- api_instance$observations_api$observations_prediction_retrieve(var_uuid)
+#' # result <- api_instance$prediction_retrieve(var_uuiddata_file = "result.txt")
+#' result <- api_instance$observations_api$prediction_retrieve(var_uuid)
 #' dput(result)
 #'
 #'
-#' ####################  observations_retrieve  ####################
+#' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
@@ -165,8 +197,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$observations_retrieve(var_uuiddata_file = "result.txt")
-#' result <- api_instance$observations_api$observations_retrieve(var_uuid)
+#' # result <- api_instance$retrieve(var_uuiddata_file = "result.txt")
+#' result <- api_instance$observations_api$retrieve(var_uuid)
 #' dput(result)
 #'
 #'
@@ -199,8 +231,8 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return Observation
-    observations_create = function(observation_request, data_file = NULL, ...) {
-      local_var_response <- self$observations_create_with_http_info(observation_request, data_file = data_file, ...)
+    create = function(observation_request, data_file = NULL, ...) {
+      local_var_response <- self$create_with_http_info(observation_request, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -220,7 +252,7 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (Observation) with additional information such as HTTP status code, headers
-    observations_create_with_http_info = function(observation_request, data_file = NULL, ...) {
+    create_with_http_info = function(observation_request, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -304,8 +336,8 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return void
-    observations_destroy = function(uuid, ...) {
-      local_var_response <- self$observations_destroy_with_http_info(uuid, ...)
+    destroy = function(uuid, ...) {
+      local_var_response <- self$destroy_with_http_info(uuid, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -324,7 +356,7 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (void) with additional information such as HTTP status code, headers
-    observations_destroy_with_http_info = function(uuid, ...) {
+    destroy_with_http_info = function(uuid, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -412,8 +444,8 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedObservationList
-    observations_list = function(created_at_after = NULL, created_at_before = NULL, has_photos = NULL, has_prediction = NULL, has_predictions_all_photos = NULL, location_country_id = NULL, location_nuts_2 = NULL, location_nuts_3 = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$observations_list_with_http_info(created_at_after, created_at_before, has_photos, has_prediction, has_predictions_all_photos, location_country_id, location_nuts_2, location_nuts_3, order_by, page, page_size, received_at_after, received_at_before, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    list = function(created_at_after = NULL, created_at_before = NULL, has_photos = NULL, has_prediction = NULL, has_predictions_all_photos = NULL, location_country_id = NULL, location_nuts_2 = NULL, location_nuts_3 = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_with_http_info(created_at_after, created_at_before, has_photos, has_prediction, has_predictions_all_photos, location_country_id, location_nuts_2, location_nuts_3, order_by, page, page_size, received_at_after, received_at_before, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -449,7 +481,7 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedObservationList) with additional information such as HTTP status code, headers
-    observations_list_with_http_info = function(created_at_after = NULL, created_at_before = NULL, has_photos = NULL, has_prediction = NULL, has_predictions_all_photos = NULL, location_country_id = NULL, location_nuts_2 = NULL, location_nuts_3 = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(created_at_after = NULL, created_at_before = NULL, has_photos = NULL, has_prediction = NULL, has_predictions_all_photos = NULL, location_country_id = NULL, location_nuts_2 = NULL, location_nuts_3 = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -496,7 +528,7 @@ ObservationsApi <- R6::R6Class(
       # validate enum values
       for (query_item in `order_by`) {
         if (!is.null(query_item) && !(query_item %in% c("-created_at", "-received_at", "created_at", "received_at"))) {
-          stop("Invalid value for order_by when calling ObservationsApi$observations_list. Must be [-created_at, -received_at, created_at, received_at].")
+          stop("Invalid value for order_by when calling ObservationsApi$list. Must be [-created_at, -received_at, created_at, received_at].")
         }
       }
       query_params[["order_by"]] <- I(paste(lapply(`order_by`, URLencode, reserved = TRUE), collapse = ","))
@@ -576,14 +608,194 @@ ObservationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
+    #' @param created_at_after (optional) Created at
+    #' @param created_at_before (optional) Created at
+    #' @param has_photos (optional) Has any photo
+    #' @param has_prediction (optional) Filter observations that have an associated prediction. An observation is considered to have a prediction if a photo has been selected as reference to use the prediction from.
+    #' @param has_predictions_all_photos (optional) Filters observations based on whether all associated photos have predictions. Set to True to include observations where every photo has a prediction; set to False to include observations where at least one photo is missing a prediction.
+    #' @param location_country_id (optional) No description
+    #' @param location_nuts_2 (optional) No description
+    #' @param location_nuts_3 (optional) No description
+    #' @param order_by (optional) Ordenado  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
+    #' @param received_at_after (optional) Received at
+    #' @param received_at_before (optional) Received at
+    #' @param short_id (optional) Short ID
+    #' @param updated_at_after (optional) Update at
+    #' @param updated_at_before (optional) Update at
+    #' @param user_uuid (optional) No description
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #'
+    #' @return PaginatedObservationList
+    list_mine = function(created_at_after = NULL, created_at_before = NULL, has_photos = NULL, has_prediction = NULL, has_predictions_all_photos = NULL, location_country_id = NULL, location_nuts_2 = NULL, location_nuts_3 = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_mine_with_http_info(created_at_after, created_at_before, has_photos, has_prediction, has_predictions_all_photos, location_country_id, location_nuts_2, location_nuts_3, order_by, page, page_size, received_at_after, received_at_before, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        local_var_response$content
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        local_var_response
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        local_var_response
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        local_var_response
+      }
+    },
+
+    #' @description
+    #' 
+    #'
+    #' @param created_at_after (optional) Created at
+    #' @param created_at_before (optional) Created at
+    #' @param has_photos (optional) Has any photo
+    #' @param has_prediction (optional) Filter observations that have an associated prediction. An observation is considered to have a prediction if a photo has been selected as reference to use the prediction from.
+    #' @param has_predictions_all_photos (optional) Filters observations based on whether all associated photos have predictions. Set to True to include observations where every photo has a prediction; set to False to include observations where at least one photo is missing a prediction.
+    #' @param location_country_id (optional) No description
+    #' @param location_nuts_2 (optional) No description
+    #' @param location_nuts_3 (optional) No description
+    #' @param order_by (optional) Ordenado  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
+    #' @param received_at_after (optional) Received at
+    #' @param received_at_before (optional) Received at
+    #' @param short_id (optional) Short ID
+    #' @param updated_at_after (optional) Update at
+    #' @param updated_at_before (optional) Update at
+    #' @param user_uuid (optional) No description
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (PaginatedObservationList) with additional information such as HTTP status code, headers
+    list_mine_with_http_info = function(created_at_after = NULL, created_at_before = NULL, has_photos = NULL, has_prediction = NULL, has_predictions_all_photos = NULL, location_country_id = NULL, location_nuts_2 = NULL, location_nuts_3 = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      query_params[["created_at_after"]] <- `created_at_after`
+
+      query_params[["created_at_before"]] <- `created_at_before`
+
+      query_params[["has_photos"]] <- `has_photos`
+
+      query_params[["has_prediction"]] <- `has_prediction`
+
+      query_params[["has_predictions_all_photos"]] <- `has_predictions_all_photos`
+
+      query_params[["location_country_id"]] <- `location_country_id`
+
+      query_params[["location_nuts_2"]] <- `location_nuts_2`
+
+      query_params[["location_nuts_3"]] <- `location_nuts_3`
+
+      # no explore
+      # validate enum values
+      for (query_item in `order_by`) {
+        if (!is.null(query_item) && !(query_item %in% c("-created_at", "-received_at", "created_at", "received_at"))) {
+          stop("Invalid value for order_by when calling ObservationsApi$list_mine. Must be [-created_at, -received_at, created_at, received_at].")
+        }
+      }
+      query_params[["order_by"]] <- I(paste(lapply(`order_by`, URLencode, reserved = TRUE), collapse = ","))
+
+      query_params[["page"]] <- `page`
+
+      query_params[["page_size"]] <- `page_size`
+
+      query_params[["received_at_after"]] <- `received_at_after`
+
+      query_params[["received_at_before"]] <- `received_at_before`
+
+      query_params[["short_id"]] <- `short_id`
+
+      query_params[["updated_at_after"]] <- `updated_at_after`
+
+      query_params[["updated_at_before"]] <- `updated_at_before`
+
+      query_params[["user_uuid"]] <- `user_uuid`
+
+      local_var_url_path <- "/me/observations/"
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          write(local_var_resp$response, data_file)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$deserialize(local_var_resp$response_as_text(), "PaginatedObservationList", loadNamespace("MosquitoAlert")),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        local_var_resp
+      } else if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(paste("Server returned ", local_var_resp$status_code, " response status code."), local_var_resp)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new("API client error", local_var_resp)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || local_var_resp$response == "") {
+          local_var_resp$response <- "API server error"
+        }
+        local_var_resp
+      }
+    },
+
+    #' @description
+    #' 
+    #'
     #' @param uuid 
     #' @param observation_prediction_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
     #' @return ObservationPrediction
-    observations_prediction_create = function(uuid, observation_prediction_request, data_file = NULL, ...) {
-      local_var_response <- self$observations_prediction_create_with_http_info(uuid, observation_prediction_request, data_file = data_file, ...)
+    prediction_create = function(uuid, observation_prediction_request, data_file = NULL, ...) {
+      local_var_response <- self$prediction_create_with_http_info(uuid, observation_prediction_request, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -604,7 +816,7 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (ObservationPrediction) with additional information such as HTTP status code, headers
-    observations_prediction_create_with_http_info = function(uuid, observation_prediction_request, data_file = NULL, ...) {
+    prediction_create_with_http_info = function(uuid, observation_prediction_request, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -693,8 +905,8 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return void
-    observations_prediction_destroy = function(uuid, ...) {
-      local_var_response <- self$observations_prediction_destroy_with_http_info(uuid, ...)
+    prediction_destroy = function(uuid, ...) {
+      local_var_response <- self$prediction_destroy_with_http_info(uuid, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -713,7 +925,7 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (void) with additional information such as HTTP status code, headers
-    observations_prediction_destroy_with_http_info = function(uuid, ...) {
+    prediction_destroy_with_http_info = function(uuid, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -781,8 +993,8 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return ObservationPrediction
-    observations_prediction_retrieve = function(uuid, data_file = NULL, ...) {
-      local_var_response <- self$observations_prediction_retrieve_with_http_info(uuid, data_file = data_file, ...)
+    prediction_retrieve = function(uuid, data_file = NULL, ...) {
+      local_var_response <- self$prediction_retrieve_with_http_info(uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -802,7 +1014,7 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (ObservationPrediction) with additional information such as HTTP status code, headers
-    observations_prediction_retrieve_with_http_info = function(uuid, data_file = NULL, ...) {
+    prediction_retrieve_with_http_info = function(uuid, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -881,8 +1093,8 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return Observation
-    observations_retrieve = function(uuid, data_file = NULL, ...) {
-      local_var_response <- self$observations_retrieve_with_http_info(uuid, data_file = data_file, ...)
+    retrieve = function(uuid, data_file = NULL, ...) {
+      local_var_response <- self$retrieve_with_http_info(uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         local_var_response$content
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -902,7 +1114,7 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (Observation) with additional information such as HTTP status code, headers
-    observations_retrieve_with_http_info = function(uuid, data_file = NULL, ...) {
+    retrieve_with_http_info = function(uuid, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()

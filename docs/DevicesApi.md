@@ -4,14 +4,14 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**devices_create**](DevicesApi.md#devices_create) | **POST** /devices/ | 
-[**devices_partial_update**](DevicesApi.md#devices_partial_update) | **PATCH** /devices/{device_id}/ | 
-[**devices_retrieve**](DevicesApi.md#devices_retrieve) | **GET** /devices/{device_id}/ | 
-[**devices_update**](DevicesApi.md#devices_update) | **PUT** /devices/{device_id}/ | 
+[**create**](DevicesApi.md#create) | **POST** /devices/ | 
+[**partial_update**](DevicesApi.md#partial_update) | **PATCH** /devices/{device_id}/ | 
+[**retrieve**](DevicesApi.md#retrieve) | **GET** /devices/{device_id}/ | 
+[**update**](DevicesApi.md#update) | **PUT** /devices/{device_id}/ | 
 
 
-# **devices_create**
-> Device devices_create(device_request)
+# **create**
+> Device create(device_request)
 
 
 
@@ -26,8 +26,8 @@ api_instance <- mosquitoalert_api$new()
 # Configure HTTP bearer authorization: jwtAuth
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$devices_create(var_device_requestdata_file = "result.txt")
-result <- api_instance$devices_api$devices_create(var_device_request)
+# result <- api_instance$create(var_device_requestdata_file = "result.txt")
+result <- api_instance$devices_api$create(var_device_request)
 dput(result)
 ```
 
@@ -57,14 +57,10 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **201** |  |  -  |
 
-# **devices_partial_update**
-> DeviceUpdate devices_partial_update(device_id, patched_device_update_request = var.patched_device_update_request)
+# **partial_update**
+> DeviceUpdate partial_update(device_id, patched_device_update_request = var.patched_device_update_request)
 
 
 
@@ -80,8 +76,8 @@ api_instance <- mosquitoalert_api$new()
 # Configure HTTP bearer authorization: jwtAuth
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$devices_partial_update(var_device_id, patched_device_update_request = var_patched_device_update_requestdata_file = "result.txt")
-result <- api_instance$devices_api$devices_partial_update(var_device_id, patched_device_update_request = var_patched_device_update_request)
+# result <- api_instance$partial_update(var_device_id, patched_device_update_request = var_patched_device_update_requestdata_file = "result.txt")
+result <- api_instance$devices_api$partial_update(var_device_id, patched_device_update_request = var_patched_device_update_request)
 dput(result)
 ```
 
@@ -112,14 +108,10 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 
-# **devices_retrieve**
-> Device devices_retrieve(device_id)
+# **retrieve**
+> Device retrieve(device_id)
 
 
 
@@ -134,8 +126,8 @@ api_instance <- mosquitoalert_api$new()
 # Configure HTTP bearer authorization: jwtAuth
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$devices_retrieve(var_device_iddata_file = "result.txt")
-result <- api_instance$devices_api$devices_retrieve(var_device_id)
+# result <- api_instance$retrieve(var_device_iddata_file = "result.txt")
+result <- api_instance$devices_api$retrieve(var_device_id)
 dput(result)
 ```
 
@@ -161,18 +153,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 
-# **devices_update**
-> DeviceUpdate devices_update(device_id, device_update_request)
+# **update**
+> DeviceUpdate update(device_id, device_update_request)
 
 
 
@@ -188,8 +175,8 @@ api_instance <- mosquitoalert_api$new()
 # Configure HTTP bearer authorization: jwtAuth
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$devices_update(var_device_id, var_device_update_requestdata_file = "result.txt")
-result <- api_instance$devices_api$devices_update(var_device_id, var_device_update_request)
+# result <- api_instance$update(var_device_id, var_device_update_requestdata_file = "result.txt")
+result <- api_instance$devices_api$update(var_device_id, var_device_update_request)
 dput(result)
 ```
 
@@ -220,9 +207,5 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 

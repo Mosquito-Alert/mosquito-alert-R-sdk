@@ -4,70 +4,14 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**users_create**](UsersApi.md#users_create) | **POST** /users/ | 
-[**users_partial_update**](UsersApi.md#users_partial_update) | **PATCH** /users/{uuid}/ | 
-[**users_retrieve**](UsersApi.md#users_retrieve) | **GET** /users/{uuid}/ | 
-[**users_update**](UsersApi.md#users_update) | **PUT** /users/{uuid}/ | 
+[**partial_update**](UsersApi.md#partial_update) | **PATCH** /users/{uuid}/ | 
+[**retrieve**](UsersApi.md#retrieve) | **GET** /users/{uuid}/ | 
+[**retrieve_mine**](UsersApi.md#retrieve_mine) | **GET** /me/ | 
+[**update**](UsersApi.md#update) | **PUT** /users/{uuid}/ | 
 
 
-# **users_create**
-> CreateUser users_create(create_user_request)
-
-
-
-### Example
-```R
-library(MosquitoAlert)
-
-# prepare function argument(s)
-var_create_user_request <- CreateUserRequest$new("password_example", "es") # CreateUserRequest | 
-
-api_instance <- mosquitoalert_api$new()
-# Configure API key authorization: cookieAuth
-api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-# Configure API key authorization: tokenAuth
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-# Configure HTTP bearer authorization: jwtAuth
-# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
-# to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$users_create(var_create_user_requestdata_file = "result.txt")
-result <- api_instance$users_api$users_create(var_create_user_request)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **create_user_request** | [**CreateUserRequest**](CreateUserRequest.md)|  | 
-
-### Return type
-
-[**CreateUser**](CreateUser.md)
-
-### Authorization
-
-[cookieAuth](../README.md#cookieAuth), [tokenAuth](../README.md#tokenAuth), [jwtAuth](../README.md#jwtAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **400** |  |  -  |
-| **401** |  |  -  |
-| **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
-| **201** |  |  -  |
-
-# **users_partial_update**
-> User users_partial_update(uuid, patched_user_request = var.patched_user_request)
+# **partial_update**
+> User partial_update(uuid, patched_user_request = var.patched_user_request)
 
 
 
@@ -87,8 +31,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$users_partial_update(var_uuid, patched_user_request = var_patched_user_requestdata_file = "result.txt")
-result <- api_instance$users_api$users_partial_update(var_uuid, patched_user_request = var_patched_user_request)
+# result <- api_instance$partial_update(var_uuid, patched_user_request = var_patched_user_requestdata_file = "result.txt")
+result <- api_instance$users_api$partial_update(var_uuid, patched_user_request = var_patched_user_request)
 dput(result)
 ```
 
@@ -119,14 +63,10 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 
-# **users_retrieve**
-> User users_retrieve(uuid)
+# **retrieve**
+> User retrieve(uuid)
 
 
 
@@ -145,8 +85,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$users_retrieve(var_uuiddata_file = "result.txt")
-result <- api_instance$users_api$users_retrieve(var_uuid)
+# result <- api_instance$retrieve(var_uuiddata_file = "result.txt")
+result <- api_instance$users_api$retrieve(var_uuid)
 dput(result)
 ```
 
@@ -172,18 +112,58 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 
-# **users_update**
-> User users_update(uuid, user_request = var.user_request)
+# **retrieve_mine**
+> User retrieve_mine()
+
+
+
+Get Current User's Profile
+
+### Example
+```R
+library(MosquitoAlert)
+
+
+api_instance <- mosquitoalert_api$new()
+# Configure HTTP bearer authorization: jwtAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$retrieve_mine(data_file = "result.txt")
+result <- api_instance$users_api$retrieve_mine()
+dput(result)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **200** |  |  -  |
+
+# **update**
+> User update(uuid, user_request = var.user_request)
 
 
 
@@ -203,8 +183,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$users_update(var_uuid, user_request = var_user_requestdata_file = "result.txt")
-result <- api_instance$users_api$users_update(var_uuid, user_request = var_user_request)
+# result <- api_instance$update(var_uuid, user_request = var_user_requestdata_file = "result.txt")
+result <- api_instance$users_api$update(var_uuid, user_request = var_user_request)
 dput(result)
 ```
 
@@ -235,9 +215,5 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 

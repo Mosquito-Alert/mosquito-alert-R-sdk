@@ -5,8 +5,8 @@ context("Test FixesApi")
 
 api_instance <- FixesApi$new()
 
-test_that("fixes_create", {
-  # tests for fixes_create
+test_that("create", {
+  # tests for create
   # base path: https://api.mosquitoalert.com/v1
   # @param fix_request FixRequest 
   # @return [Fix]

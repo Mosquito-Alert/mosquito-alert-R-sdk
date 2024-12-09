@@ -5,8 +5,8 @@ context("Test DevicesApi")
 
 api_instance <- DevicesApi$new()
 
-test_that("devices_create", {
-  # tests for devices_create
+test_that("create", {
+  # tests for create
   # base path: https://api.mosquitoalert.com/v1
   # @param device_request DeviceRequest 
   # @return [Device]
@@ -15,8 +15,8 @@ test_that("devices_create", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("devices_partial_update", {
-  # tests for devices_partial_update
+test_that("partial_update", {
+  # tests for partial_update
   # base path: https://api.mosquitoalert.com/v1
   # @param device_id character 
   # @param patched_device_update_request PatchedDeviceUpdateRequest  (optional)
@@ -26,8 +26,8 @@ test_that("devices_partial_update", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("devices_retrieve", {
-  # tests for devices_retrieve
+test_that("retrieve", {
+  # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
   # @param device_id character 
   # @return [Device]
@@ -36,8 +36,8 @@ test_that("devices_retrieve", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("devices_update", {
-  # tests for devices_update
+test_that("update", {
+  # tests for update
   # base path: https://api.mosquitoalert.com/v1
   # @param device_id character 
   # @param device_update_request DeviceUpdateRequest 

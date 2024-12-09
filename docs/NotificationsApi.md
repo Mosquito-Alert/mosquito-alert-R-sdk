@@ -4,15 +4,16 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**notifications_create**](NotificationsApi.md#notifications_create) | **POST** /notifications/ | 
-[**notifications_list**](NotificationsApi.md#notifications_list) | **GET** /notifications/ | 
-[**notifications_partial_update**](NotificationsApi.md#notifications_partial_update) | **PATCH** /notifications/{id}/ | 
-[**notifications_retrieve**](NotificationsApi.md#notifications_retrieve) | **GET** /notifications/{id}/ | 
-[**notifications_update**](NotificationsApi.md#notifications_update) | **PUT** /notifications/{id}/ | 
+[**create**](NotificationsApi.md#create) | **POST** /notifications/ | 
+[**list**](NotificationsApi.md#list) | **GET** /notifications/ | 
+[**list_mine**](NotificationsApi.md#list_mine) | **GET** /me/notifications/ | 
+[**partial_update**](NotificationsApi.md#partial_update) | **PATCH** /notifications/{id}/ | 
+[**retrieve**](NotificationsApi.md#retrieve) | **GET** /notifications/{id}/ | 
+[**update**](NotificationsApi.md#update) | **PUT** /notifications/{id}/ | 
 
 
-# **notifications_create**
-> array[CreateNotification] notifications_create(meta_notification_request = var.meta_notification_request)
+# **create**
+> array[CreateNotification] create(meta_notification_request = var.meta_notification_request)
 
 
 
@@ -31,8 +32,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$notifications_create(meta_notification_request = var_meta_notification_requestdata_file = "result.txt")
-result <- api_instance$notifications_api$notifications_create(meta_notification_request = var_meta_notification_request)
+# result <- api_instance$create(meta_notification_request = var_meta_notification_requestdata_file = "result.txt")
+result <- api_instance$notifications_api$create(meta_notification_request = var_meta_notification_request)
 dput(result)
 ```
 
@@ -62,14 +63,10 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **201** |  |  -  |
 
-# **notifications_list**
-> PaginatedNotificationList notifications_list(is_read = var.is_read, order_by = var.order_by, page = var.page, page_size = var.page_size)
+# **list**
+> PaginatedNotificationList list(is_read = var.is_read, order_by = var.order_by, page = var.page, page_size = var.page_size)
 
 
 
@@ -91,8 +88,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$notifications_list(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_sizedata_file = "result.txt")
-result <- api_instance$notifications_api$notifications_list(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_size)
+# result <- api_instance$list(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$notifications_api$list(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_size)
 dput(result)
 ```
 
@@ -125,14 +122,67 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 
-# **notifications_partial_update**
-> Notification notifications_partial_update(id, patched_notification_request = var.patched_notification_request)
+# **list_mine**
+> PaginatedNotificationList list_mine(is_read = var.is_read, order_by = var.order_by, page = var.page, page_size = var.page_size)
+
+
+
+Get Current User's Notifications
+
+### Example
+```R
+library(MosquitoAlert)
+
+# prepare function argument(s)
+var_is_read <- "is_read_example" # character |  (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
+var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+
+api_instance <- mosquitoalert_api$new()
+# Configure HTTP bearer authorization: jwtAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$list_mine(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$notifications_api$list_mine(is_read = var_is_read, order_by = var_order_by, page = var_page, page_size = var_page_size)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **is_read** | **character**|  | [optional] 
+ **order_by** | Enum [-created_at, created_at] | Ordenado   | [optional] 
+ **page** | **integer**| A page number within the paginated result set. | [optional] 
+ **page_size** | **integer**| Number of results to return per page. | [optional] 
+
+### Return type
+
+[**PaginatedNotificationList**](PaginatedNotificationList.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **200** |  |  -  |
+
+# **partial_update**
+> Notification partial_update(id, patched_notification_request = var.patched_notification_request)
 
 
 
@@ -152,8 +202,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$notifications_partial_update(var_id, patched_notification_request = var_patched_notification_requestdata_file = "result.txt")
-result <- api_instance$notifications_api$notifications_partial_update(var_id, patched_notification_request = var_patched_notification_request)
+# result <- api_instance$partial_update(var_id, patched_notification_request = var_patched_notification_requestdata_file = "result.txt")
+result <- api_instance$notifications_api$partial_update(var_id, patched_notification_request = var_patched_notification_request)
 dput(result)
 ```
 
@@ -184,14 +234,10 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 
-# **notifications_retrieve**
-> Notification notifications_retrieve(id)
+# **retrieve**
+> Notification retrieve(id)
 
 
 
@@ -210,8 +256,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$notifications_retrieve(var_iddata_file = "result.txt")
-result <- api_instance$notifications_api$notifications_retrieve(var_id)
+# result <- api_instance$retrieve(var_iddata_file = "result.txt")
+result <- api_instance$notifications_api$retrieve(var_id)
 dput(result)
 ```
 
@@ -237,18 +283,13 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 
-# **notifications_update**
-> Notification notifications_update(id, notification_request)
+# **update**
+> Notification update(id, notification_request)
 
 
 
@@ -268,8 +309,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$notifications_update(var_id, var_notification_requestdata_file = "result.txt")
-result <- api_instance$notifications_api$notifications_update(var_id, var_notification_request)
+# result <- api_instance$update(var_id, var_notification_requestdata_file = "result.txt")
+result <- api_instance$notifications_api$update(var_id, var_notification_request)
 dput(result)
 ```
 
@@ -300,9 +341,5 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **200** |  |  -  |
 

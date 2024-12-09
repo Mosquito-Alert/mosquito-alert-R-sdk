@@ -5,11 +5,11 @@ context("Test AppUserTokenObtainPairRequest")
 
 model_instance <- AppUserTokenObtainPairRequest$new()
 
-test_that("uuid", {
-  # tests for the property `uuid` (character)
+test_that("username", {
+  # tests for the property `username` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`uuid`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
 })
 
 test_that("password", {

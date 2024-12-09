@@ -4,11 +4,11 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**fixes_create**](FixesApi.md#fixes_create) | **POST** /fixes/ | 
+[**create**](FixesApi.md#create) | **POST** /fixes/ | 
 
 
-# **fixes_create**
-> Fix fixes_create(fix_request)
+# **create**
+> Fix create(fix_request)
 
 
 
@@ -27,8 +27,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$fixes_create(var_fix_requestdata_file = "result.txt")
-result <- api_instance$fixes_api$fixes_create(var_fix_request)
+# result <- api_instance$create(var_fix_requestdata_file = "result.txt")
+result <- api_instance$fixes_api$create(var_fix_request)
 dput(result)
 ```
 
@@ -58,9 +58,5 @@ Name | Type | Description  | Notes
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **405** |  |  -  |
-| **406** |  |  -  |
-| **415** |  |  -  |
-| **500** |  |  -  |
 | **201** |  |  -  |
 
