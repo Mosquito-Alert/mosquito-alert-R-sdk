@@ -39,7 +39,7 @@ ApiClient  <- R6::R6Class(
     # base path of all requests
     base_path = "https://api.mosquitoalert.com/v1",
     # user agent in the HTTP request
-    user_agent = "OpenAPI-Generator/0.1.0/r",
+    user_agent = "OpenAPI-Generator/0.1.2/r",
     # default headers in the HTTP request
     default_headers = NULL,
     # username (HTTP basic authentication)
@@ -71,7 +71,7 @@ ApiClient  <- R6::R6Class(
     #' @param bearer_token Bearer token.
     #' @param timeout Timeout.
     #' @param retry_status_codes Status codes for retry.
-    #' @param max_retry_attempts Maxmium number of retry.
+    #' @param max_retry_attempts Maximum number of retry.
     #' @export
     initialize = function(base_path = NULL, user_agent = NULL,
                           default_headers = NULL,
@@ -381,6 +381,52 @@ ApiClient  <- R6::R6Class(
         # not json mime type, simply return the first one
         return(headers[1])
       }
+    },
+
+    #' @description
+    #' Deserialize the response
+    #' 
+    #' @param local_var_resp The API response
+    #' @param return_type The target return type for the endpoint (e.g., `"object"`). If `NULL` text will be left as-is.
+    #' @return If the raw response is corecable to text, return the text. Otherwise return the raw response.
+    DeserializeResponse = function(local_var_resp, return_type = NULL) {
+      text <- local_var_resp$response_as_text()
+      if (is.na(text)) {
+        return(local_var_resp$response)
+      } else if (is.null(return_type)) {
+        return(text)
+      }
+      return(self$deserialize(text, return_type, loadNamespace("MosquitoAlert")))
+    },
+
+    #' @description
+    #' Write response to a file
+    #' 
+    #' The function will write out data. 
+    #' 
+    #' 1. If binary data is detected it will use `writeBin`
+    #' 2. If the raw response is coercible to text, the text will be written to a file
+    #' 3. If the raw response is not coercible to text, the raw response will be written
+    #' 
+    #' @param local_var_resp The API response
+    #' @param file The name of the data file to save the result
+    WriteFile = function(local_var_resp, file) {
+      if (self$IsBinary(local_var_resp$response)) {
+        writeBin(local_var_resp$response, file)
+      } else {
+        response <- self$DeserializeResponse(local_var_resp)
+        base::write(response, file)
+      }
+    },
+
+    #' @description
+    #' Check response for binary content
+    #' 
+    #' @param local_var_resp The API response
+    IsBinary = function(x) {
+      # ref: https://stackoverflow.com/a/17098690/1785752
+      b <- readBin(x, "int", n = 1000, size=1, signed=FALSE)
+      return(max(b) > 128)
     }
   )
 )

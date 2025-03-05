@@ -120,10 +120,35 @@ BreedingSiteRequest <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return BreedingSiteRequest in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return BreedingSiteRequest as a base R list.
+    #' @examples
+    #' # convert array of BreedingSiteRequest (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert BreedingSiteRequest to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       BreedingSiteRequestObject <- list()
       if (!is.null(self$`created_at`)) {
         BreedingSiteRequestObject[["created_at"]] <-
@@ -135,7 +160,7 @@ BreedingSiteRequest <- R6::R6Class(
       }
       if (!is.null(self$`location`)) {
         BreedingSiteRequestObject[["location"]] <-
-          self$`location`$toJSON()
+          self$`location`$toSimpleType()
       }
       if (!is.null(self$`note`)) {
         BreedingSiteRequestObject[["note"]] <-
@@ -147,7 +172,7 @@ BreedingSiteRequest <- R6::R6Class(
       }
       if (!is.null(self$`photos`)) {
         BreedingSiteRequestObject[["photos"]] <-
-          lapply(self$`photos`, function(x) x$toJSON())
+          lapply(self$`photos`, function(x) x$toSimpleType())
       }
       if (!is.null(self$`site_type`)) {
         BreedingSiteRequestObject[["site_type"]] <-
@@ -169,7 +194,7 @@ BreedingSiteRequest <- R6::R6Class(
         BreedingSiteRequestObject[["has_larvae"]] <-
           self$`has_larvae`
       }
-      BreedingSiteRequestObject
+      return(BreedingSiteRequestObject)
     },
 
     #' @description
@@ -222,101 +247,13 @@ BreedingSiteRequest <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return BreedingSiteRequest in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`created_at`)) {
-          sprintf(
-          '"created_at":
-            "%s"
-                    ',
-          self$`created_at`
-          )
-        },
-        if (!is.null(self$`sent_at`)) {
-          sprintf(
-          '"sent_at":
-            "%s"
-                    ',
-          self$`sent_at`
-          )
-        },
-        if (!is.null(self$`location`)) {
-          sprintf(
-          '"location":
-          %s
-          ',
-          jsonlite::toJSON(self$`location`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`note`)) {
-          sprintf(
-          '"note":
-            "%s"
-                    ',
-          self$`note`
-          )
-        },
-        if (!is.null(self$`tags`)) {
-          sprintf(
-          '"tags":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`tags`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`photos`)) {
-          sprintf(
-          '"photos":
-          [%s]
-',
-          paste(sapply(self$`photos`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox = TRUE, digits = NA)), collapse = ",")
-          )
-        },
-        if (!is.null(self$`site_type`)) {
-          sprintf(
-          '"site_type":
-            "%s"
-                    ',
-          self$`site_type`
-          )
-        },
-        if (!is.null(self$`has_water`)) {
-          sprintf(
-          '"has_water":
-            %s
-                    ',
-          tolower(self$`has_water`)
-          )
-        },
-        if (!is.null(self$`in_public_area`)) {
-          sprintf(
-          '"in_public_area":
-            %s
-                    ',
-          tolower(self$`in_public_area`)
-          )
-        },
-        if (!is.null(self$`has_near_mosquitoes`)) {
-          sprintf(
-          '"has_near_mosquitoes":
-            %s
-                    ',
-          tolower(self$`has_near_mosquitoes`)
-          )
-        },
-        if (!is.null(self$`has_larvae`)) {
-          sprintf(
-          '"has_larvae":
-            %s
-                    ',
-          tolower(self$`has_larvae`)
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

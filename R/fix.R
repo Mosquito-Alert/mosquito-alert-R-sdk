@@ -74,10 +74,35 @@ Fix <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return Fix in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return Fix as a base R list.
+    #' @examples
+    #' # convert array of Fix (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert Fix to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       FixObject <- list()
       if (!is.null(self$`coverage_uuid`)) {
         FixObject[["coverage_uuid"]] <-
@@ -97,13 +122,13 @@ Fix <- R6::R6Class(
       }
       if (!is.null(self$`point`)) {
         FixObject[["point"]] <-
-          self$`point`$toJSON()
+          self$`point`$toSimpleType()
       }
       if (!is.null(self$`power`)) {
         FixObject[["power"]] <-
           self$`power`
       }
-      FixObject
+      return(FixObject)
     },
 
     #' @description
@@ -138,61 +163,13 @@ Fix <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return Fix in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`coverage_uuid`)) {
-          sprintf(
-          '"coverage_uuid":
-            "%s"
-                    ',
-          self$`coverage_uuid`
-          )
-        },
-        if (!is.null(self$`created_at`)) {
-          sprintf(
-          '"created_at":
-            "%s"
-                    ',
-          self$`created_at`
-          )
-        },
-        if (!is.null(self$`sent_at`)) {
-          sprintf(
-          '"sent_at":
-            "%s"
-                    ',
-          self$`sent_at`
-          )
-        },
-        if (!is.null(self$`received_at`)) {
-          sprintf(
-          '"received_at":
-            "%s"
-                    ',
-          self$`received_at`
-          )
-        },
-        if (!is.null(self$`point`)) {
-          sprintf(
-          '"point":
-          %s
-          ',
-          jsonlite::toJSON(self$`point`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`power`)) {
-          sprintf(
-          '"power":
-            %d
-                    ',
-          self$`power`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

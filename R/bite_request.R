@@ -142,10 +142,35 @@ BiteRequest <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return BiteRequest in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return BiteRequest as a base R list.
+    #' @examples
+    #' # convert array of BiteRequest (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert BiteRequest to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       BiteRequestObject <- list()
       if (!is.null(self$`created_at`)) {
         BiteRequestObject[["created_at"]] <-
@@ -157,7 +182,7 @@ BiteRequest <- R6::R6Class(
       }
       if (!is.null(self$`location`)) {
         BiteRequestObject[["location"]] <-
-          self$`location`$toJSON()
+          self$`location`$toSimpleType()
       }
       if (!is.null(self$`note`)) {
         BiteRequestObject[["note"]] <-
@@ -199,7 +224,7 @@ BiteRequest <- R6::R6Class(
         BiteRequestObject[["right_leg_bite_count"]] <-
           self$`right_leg_bite_count`
       }
-      BiteRequestObject
+      return(BiteRequestObject)
     },
 
     #' @description
@@ -261,117 +286,13 @@ BiteRequest <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return BiteRequest in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`created_at`)) {
-          sprintf(
-          '"created_at":
-            "%s"
-                    ',
-          self$`created_at`
-          )
-        },
-        if (!is.null(self$`sent_at`)) {
-          sprintf(
-          '"sent_at":
-            "%s"
-                    ',
-          self$`sent_at`
-          )
-        },
-        if (!is.null(self$`location`)) {
-          sprintf(
-          '"location":
-          %s
-          ',
-          jsonlite::toJSON(self$`location`$toJSON(), auto_unbox = TRUE, digits = NA)
-          )
-        },
-        if (!is.null(self$`note`)) {
-          sprintf(
-          '"note":
-            "%s"
-                    ',
-          self$`note`
-          )
-        },
-        if (!is.null(self$`tags`)) {
-          sprintf(
-          '"tags":
-             [%s]
-          ',
-          paste(unlist(lapply(self$`tags`, function(x) paste0('"', x, '"'))), collapse = ",")
-          )
-        },
-        if (!is.null(self$`event_environment`)) {
-          sprintf(
-          '"event_environment":
-            "%s"
-                    ',
-          self$`event_environment`
-          )
-        },
-        if (!is.null(self$`event_moment`)) {
-          sprintf(
-          '"event_moment":
-            "%s"
-                    ',
-          self$`event_moment`
-          )
-        },
-        if (!is.null(self$`head_bite_count`)) {
-          sprintf(
-          '"head_bite_count":
-            %d
-                    ',
-          self$`head_bite_count`
-          )
-        },
-        if (!is.null(self$`left_arm_bite_count`)) {
-          sprintf(
-          '"left_arm_bite_count":
-            %d
-                    ',
-          self$`left_arm_bite_count`
-          )
-        },
-        if (!is.null(self$`right_arm_bite_count`)) {
-          sprintf(
-          '"right_arm_bite_count":
-            %d
-                    ',
-          self$`right_arm_bite_count`
-          )
-        },
-        if (!is.null(self$`chest_bite_count`)) {
-          sprintf(
-          '"chest_bite_count":
-            %d
-                    ',
-          self$`chest_bite_count`
-          )
-        },
-        if (!is.null(self$`left_leg_bite_count`)) {
-          sprintf(
-          '"left_leg_bite_count":
-            %d
-                    ',
-          self$`left_leg_bite_count`
-          )
-        },
-        if (!is.null(self$`right_leg_bite_count`)) {
-          sprintf(
-          '"right_leg_bite_count":
-            %d
-                    ',
-          self$`right_leg_bite_count`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description

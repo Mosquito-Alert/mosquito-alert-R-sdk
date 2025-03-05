@@ -103,10 +103,35 @@ PredictionScore <- R6::R6Class(
     },
 
     #' @description
-    #' To JSON String
-    #'
-    #' @return PredictionScore in JSON format
+    #' Convert to an R object. This method is deprecated. Use `toSimpleType()` instead.
     toJSON = function() {
+      .Deprecated(new = "toSimpleType", msg = "Use the '$toSimpleType()' method instead since that is more clearly named. Use '$toJSONString()' to get a JSON string")
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert to a List
+    #'
+    #' Convert the R6 object to a list to work more easily with other tooling.
+    #'
+    #' @return PredictionScore as a base R list.
+    #' @examples
+    #' # convert array of PredictionScore (x) to a data frame
+    #' \dontrun{
+    #' library(purrr)
+    #' library(tibble)
+    #' df <- x |> map(\(y)y$toList()) |> map(as_tibble) |> list_rbind()
+    #' df
+    #' }
+    toList = function() {
+      return(self$toSimpleType())
+    },
+
+    #' @description
+    #' Convert PredictionScore to a base R type
+    #'
+    #' @return A base R type, e.g. a list or numeric/character array.
+    toSimpleType = function() {
       PredictionScoreObject <- list()
       if (!is.null(self$`ae_albopictus`)) {
         PredictionScoreObject[["ae_albopictus"]] <-
@@ -144,7 +169,7 @@ PredictionScore <- R6::R6Class(
         PredictionScoreObject[["not_sure"]] <-
           self$`not_sure`
       }
-      PredictionScoreObject
+      return(PredictionScoreObject)
     },
 
     #' @description
@@ -186,85 +211,13 @@ PredictionScore <- R6::R6Class(
 
     #' @description
     #' To JSON String
-    #'
+    #' 
+    #' @param ... Parameters passed to `jsonlite::toJSON`
     #' @return PredictionScore in JSON format
-    toJSONString = function() {
-      jsoncontent <- c(
-        if (!is.null(self$`ae_albopictus`)) {
-          sprintf(
-          '"ae_albopictus":
-            %d
-                    ',
-          self$`ae_albopictus`
-          )
-        },
-        if (!is.null(self$`ae_aegypti`)) {
-          sprintf(
-          '"ae_aegypti":
-            %d
-                    ',
-          self$`ae_aegypti`
-          )
-        },
-        if (!is.null(self$`ae_japonicus`)) {
-          sprintf(
-          '"ae_japonicus":
-            %d
-                    ',
-          self$`ae_japonicus`
-          )
-        },
-        if (!is.null(self$`ae_koreicus`)) {
-          sprintf(
-          '"ae_koreicus":
-            %d
-                    ',
-          self$`ae_koreicus`
-          )
-        },
-        if (!is.null(self$`culex`)) {
-          sprintf(
-          '"culex":
-            %d
-                    ',
-          self$`culex`
-          )
-        },
-        if (!is.null(self$`anopheles`)) {
-          sprintf(
-          '"anopheles":
-            %d
-                    ',
-          self$`anopheles`
-          )
-        },
-        if (!is.null(self$`culiseta`)) {
-          sprintf(
-          '"culiseta":
-            %d
-                    ',
-          self$`culiseta`
-          )
-        },
-        if (!is.null(self$`other_species`)) {
-          sprintf(
-          '"other_species":
-            %d
-                    ',
-          self$`other_species`
-          )
-        },
-        if (!is.null(self$`not_sure`)) {
-          sprintf(
-          '"not_sure":
-            %d
-                    ',
-          self$`not_sure`
-          )
-        }
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      json_string <- as.character(jsonlite::minify(paste("{", jsoncontent, "}", sep = "")))
+    toJSONString = function(...) {
+      simple <- self$toSimpleType()
+      json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
+      return(as.character(jsonlite::minify(json)))
     },
 
     #' @description
