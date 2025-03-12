@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> BreedingSite create(breeding_site_request)
+> BreedingSite create(created_at, sent_at, location, photos, note = var.note, tags = var.tags, site_type = var.site_type, has_water = var.has_water, in_public_area = var.in_public_area, has_near_mosquitoes = var.has_near_mosquitoes, has_larvae = var.has_larvae)
 
 
 
@@ -21,7 +21,17 @@ Method | HTTP request | Description
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_breeding_site_request <- BreedingSiteRequest$new("created_at_example", "sent_at_example", LocationRequest$new("current", Location_point$new(123, 123)), c(SimplePhotoRequest$new(123)), "note_example", c("tags_example"), "basin", "has_water_example", "in_public_area_example", "has_near_mosquitoes_example", "has_larvae_example") # BreedingSiteRequest | 
+var_created_at <- "created_at_example" # character | 
+var_sent_at <- "sent_at_example" # character | 
+var_location <- LocationRequest$new("current", Location_point$new(123, 123)) # LocationRequest | 
+var_photos <- c(SimplePhotoRequest$new(123)) # array[SimplePhotoRequest] | 
+var_note <- "note_example" # character | Note user attached to report. (Optional)
+var_tags <- c("inner_example") # array[character] |  (Optional)
+var_site_type <- "site_type_example" # character | Breeding site type. (Optional)
+var_has_water <- "has_water_example" # character | Either if the user perceived water in the breeding site. (Optional)
+var_in_public_area <- "in_public_area_example" # character | Either if the breeding site is found in a public area. (Optional)
+var_has_near_mosquitoes <- "has_near_mosquitoes_example" # character | Either if the user perceived mosquitoes near the breeding site (less than 10 meters). (Optional)
+var_has_larvae <- "has_larvae_example" # character | Either if the user perceived larvaes the breeding site. (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: cookieAuth
@@ -31,8 +41,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$create(var_breeding_site_requestdata_file = "result.txt")
-result <- api_instance$breeding_sites_api$create(var_breeding_site_request)
+# result <- api_instance$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, site_type = var_site_type, has_water = var_has_water, in_public_area = var_in_public_area, has_near_mosquitoes = var_has_near_mosquitoes, has_larvae = var_has_larvaedata_file = "result.txt")
+result <- api_instance$breeding_sites_api$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, site_type = var_site_type, has_water = var_has_water, in_public_area = var_in_public_area, has_near_mosquitoes = var_has_near_mosquitoes, has_larvae = var_has_larvae)
 dput(result)
 ```
 
@@ -40,7 +50,17 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **breeding_site_request** | [**BreedingSiteRequest**](BreedingSiteRequest.md)|  | 
+ **created_at** | **character**|  | 
+ **sent_at** | **character**|  | 
+ **location** | [**LocationRequest**](LocationRequest.md)|  | 
+ **photos** | list( [**SimplePhotoRequest**](SimplePhotoRequest.md) )|  | 
+ **note** | **character**| Note user attached to report. | [optional] 
+ **tags** | list( **character** )|  | [optional] 
+ **site_type** | Enum [basin, bucket, fountain, small_container, storm_drain, well, other, ] | Breeding site type. | [optional] 
+ **has_water** | **character**| Either if the user perceived water in the breeding site. | [optional] 
+ **in_public_area** | **character**| Either if the breeding site is found in a public area. | [optional] 
+ **has_near_mosquitoes** | **character**| Either if the user perceived mosquitoes near the breeding site (less than 10 meters). | [optional] 
+ **has_larvae** | **character**| Either if the user perceived larvaes the breeding site. | [optional] 
 
 ### Return type
 
@@ -52,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+ - **Content-Type**: multipart/form-data, application/x-www-form-urlencoded
  - **Accept**: application/json
 
 ### HTTP response details

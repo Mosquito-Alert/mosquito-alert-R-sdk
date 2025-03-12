@@ -8,7 +8,17 @@ api_instance <- BreedingSitesApi$new()
 test_that("create", {
   # tests for create
   # base path: https://api.mosquitoalert.com/v1
-  # @param breeding_site_request BreedingSiteRequest 
+  # @param created_at character 
+  # @param sent_at character 
+  # @param location LocationRequest 
+  # @param photos array[SimplePhotoRequest] 
+  # @param note character Note user attached to report. (optional)
+  # @param tags array[character]  (optional)
+  # @param site_type character Breeding site type. (optional)
+  # @param has_water character Either if the user perceived water in the breeding site. (optional)
+  # @param in_public_area character Either if the breeding site is found in a public area. (optional)
+  # @param has_near_mosquitoes character Either if the user perceived mosquitoes near the breeding site (less than 10 meters). (optional)
+  # @param has_larvae character Either if the user perceived larvaes the breeding site. (optional)
   # @return [BreedingSite]
 
   # uncomment below to test the operation

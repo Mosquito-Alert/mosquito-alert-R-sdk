@@ -8,14 +8,11 @@ Method | HTTP request | Description
 [**destroy**](ObservationsApi.md#destroy) | **DELETE** /observations/{uuid}/ | 
 [**list**](ObservationsApi.md#list) | **GET** /observations/ | 
 [**list_mine**](ObservationsApi.md#list_mine) | **GET** /me/observations/ | 
-[**prediction_create**](ObservationsApi.md#prediction_create) | **POST** /observations/{uuid}/prediction/ | 
-[**prediction_destroy**](ObservationsApi.md#prediction_destroy) | **DELETE** /observations/{uuid}/prediction/ | 
-[**prediction_retrieve**](ObservationsApi.md#prediction_retrieve) | **GET** /observations/{uuid}/prediction/ | 
 [**retrieve**](ObservationsApi.md#retrieve) | **GET** /observations/{uuid}/ | 
 
 
 # **create**
-> Observation create(observation_request)
+> Observation create(created_at, sent_at, location, photos, note = var.note, tags = var.tags, event_environment = var.event_environment, event_moment = var.event_moment, user_perceived_mosquito_specie = var.user_perceived_mosquito_specie, user_perceived_mosquito_thorax = var.user_perceived_mosquito_thorax, user_perceived_mosquito_abdomen = var.user_perceived_mosquito_abdomen, user_perceived_mosquito_legs = var.user_perceived_mosquito_legs)
 
 
 
@@ -24,7 +21,18 @@ Method | HTTP request | Description
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_observation_request <- ObservationRequest$new("created_at_example", "sent_at_example", LocationRequest$new("current", Location_point$new(123, 123)), c(SimplePhotoRequest$new(123)), "note_example", c("tags_example"), "indoors", "now", "albopictus", "albopictus", "albopictus", "albopictus") # ObservationRequest | 
+var_created_at <- "created_at_example" # character | 
+var_sent_at <- "sent_at_example" # character | 
+var_location <- LocationRequest$new("current", Location_point$new(123, 123)) # LocationRequest | 
+var_photos <- c(SimplePhotoRequest$new(123)) # array[SimplePhotoRequest] | 
+var_note <- "note_example" # character | Note user attached to report. (Optional)
+var_tags <- c("inner_example") # array[character] |  (Optional)
+var_event_environment <- "event_environment_example" # character | The environment where the event took place. (Optional)
+var_event_moment <- "event_moment_example" # character | The moment of the day when the event took place. (Optional)
+var_user_perceived_mosquito_specie <- "user_perceived_mosquito_specie_example" # character | The mosquito specie perceived by the user. (Optional)
+var_user_perceived_mosquito_thorax <- "user_perceived_mosquito_thorax_example" # character | The species of mosquito that the thorax resembles, according to the user. (Optional)
+var_user_perceived_mosquito_abdomen <- "user_perceived_mosquito_abdomen_example" # character | The species of mosquito that the abdomen resembles, according to the user. (Optional)
+var_user_perceived_mosquito_legs <- "user_perceived_mosquito_legs_example" # character | The species of mosquito that the leg resembles, according to the user. (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: cookieAuth
@@ -34,8 +42,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$create(var_observation_requestdata_file = "result.txt")
-result <- api_instance$observations_api$create(var_observation_request)
+# result <- api_instance$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, event_environment = var_event_environment, event_moment = var_event_moment, user_perceived_mosquito_specie = var_user_perceived_mosquito_specie, user_perceived_mosquito_thorax = var_user_perceived_mosquito_thorax, user_perceived_mosquito_abdomen = var_user_perceived_mosquito_abdomen, user_perceived_mosquito_legs = var_user_perceived_mosquito_legsdata_file = "result.txt")
+result <- api_instance$observations_api$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, event_environment = var_event_environment, event_moment = var_event_moment, user_perceived_mosquito_specie = var_user_perceived_mosquito_specie, user_perceived_mosquito_thorax = var_user_perceived_mosquito_thorax, user_perceived_mosquito_abdomen = var_user_perceived_mosquito_abdomen, user_perceived_mosquito_legs = var_user_perceived_mosquito_legs)
 dput(result)
 ```
 
@@ -43,7 +51,18 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **observation_request** | [**ObservationRequest**](ObservationRequest.md)|  | 
+ **created_at** | **character**|  | 
+ **sent_at** | **character**|  | 
+ **location** | [**LocationRequest**](LocationRequest.md)|  | 
+ **photos** | list( [**SimplePhotoRequest**](SimplePhotoRequest.md) )|  | 
+ **note** | **character**| Note user attached to report. | [optional] 
+ **tags** | list( **character** )|  | [optional] 
+ **event_environment** | Enum [indoors, outdoors, vehicle, , null] | The environment where the event took place. | [optional] 
+ **event_moment** | Enum [now, last_morning, last_midday, last_afternoon, last_night, , null] | The moment of the day when the event took place. | [optional] 
+ **user_perceived_mosquito_specie** | Enum [albopictus, aegypti, japonicus, koreicus, culex, other, , null] | The mosquito specie perceived by the user. | [optional] 
+ **user_perceived_mosquito_thorax** | Enum [albopictus, aegypti, japonicus, koreicus, culex, other, , null] | The species of mosquito that the thorax resembles, according to the user. | [optional] 
+ **user_perceived_mosquito_abdomen** | Enum [albopictus, aegypti, japonicus, koreicus, culex, other, , null] | The species of mosquito that the abdomen resembles, according to the user. | [optional] 
+ **user_perceived_mosquito_legs** | Enum [albopictus, aegypti, japonicus, koreicus, culex, other, , null] | The species of mosquito that the leg resembles, according to the user. | [optional] 
 
 ### Return type
 
@@ -55,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+ - **Content-Type**: multipart/form-data, application/x-www-form-urlencoded
  - **Accept**: application/json
 
 ### HTTP response details
@@ -117,7 +136,7 @@ void (empty response body)
 | **204** | No response body |  -  |
 
 # **list**
-> PaginatedObservationList list(created_at_after = var.created_at_after, created_at_before = var.created_at_before, has_photos = var.has_photos, has_prediction = var.has_prediction, has_predictions_all_photos = var.has_predictions_all_photos, location_country_id = var.location_country_id, location_nuts_2 = var.location_nuts_2, location_nuts_3 = var.location_nuts_3, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
+> PaginatedObservationList list(created_at_after = var.created_at_after, created_at_before = var.created_at_before, has_photos = var.has_photos, location_country_id = var.location_country_id, location_nuts_2 = var.location_nuts_2, location_nuts_3 = var.location_nuts_3, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
 
 
 
@@ -129,8 +148,6 @@ library(MosquitoAlert)
 var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
-var_has_prediction <- "has_prediction_example" # character | Filter observations that have an associated prediction. An observation is considered to have a prediction if a photo has been selected as reference to use the prediction from. (Optional)
-var_has_predictions_all_photos <- "has_predictions_all_photos_example" # character | Filters observations based on whether all associated photos have predictions. Set to True to include observations where every photo has a prediction; set to False to include observations where at least one photo is missing a prediction. (Optional)
 var_location_country_id <- 56 # integer |  (Optional)
 var_location_nuts_2 <- "location_nuts_2_example" # character |  (Optional)
 var_location_nuts_3 <- "location_nuts_3_example" # character |  (Optional)
@@ -152,8 +169,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, has_prediction = var_has_prediction, has_predictions_all_photos = var_has_predictions_all_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-result <- api_instance$observations_api$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, has_prediction = var_has_prediction, has_predictions_all_photos = var_has_predictions_all_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+# result <- api_instance$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+result <- api_instance$observations_api$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 dput(result)
 ```
 
@@ -164,8 +181,6 @@ Name | Type | Description  | Notes
  **created_at_after** | **character**| Created at | [optional] 
  **created_at_before** | **character**| Created at | [optional] 
  **has_photos** | **character**| Has any photo | [optional] 
- **has_prediction** | **character**| Filter observations that have an associated prediction. An observation is considered to have a prediction if a photo has been selected as reference to use the prediction from. | [optional] 
- **has_predictions_all_photos** | **character**| Filters observations based on whether all associated photos have predictions. Set to True to include observations where every photo has a prediction; set to False to include observations where at least one photo is missing a prediction. | [optional] 
  **location_country_id** | **integer**|  | [optional] 
  **location_nuts_2** | **character**|  | [optional] 
  **location_nuts_3** | **character**|  | [optional] 
@@ -201,7 +216,7 @@ Name | Type | Description  | Notes
 | **200** |  |  -  |
 
 # **list_mine**
-> PaginatedObservationList list_mine(created_at_after = var.created_at_after, created_at_before = var.created_at_before, has_photos = var.has_photos, has_prediction = var.has_prediction, has_predictions_all_photos = var.has_predictions_all_photos, location_country_id = var.location_country_id, location_nuts_2 = var.location_nuts_2, location_nuts_3 = var.location_nuts_3, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
+> PaginatedObservationList list_mine(created_at_after = var.created_at_after, created_at_before = var.created_at_before, has_photos = var.has_photos, location_country_id = var.location_country_id, location_nuts_2 = var.location_nuts_2, location_nuts_3 = var.location_nuts_3, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
 
 
 
@@ -215,8 +230,6 @@ library(MosquitoAlert)
 var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
-var_has_prediction <- "has_prediction_example" # character | Filter observations that have an associated prediction. An observation is considered to have a prediction if a photo has been selected as reference to use the prediction from. (Optional)
-var_has_predictions_all_photos <- "has_predictions_all_photos_example" # character | Filters observations based on whether all associated photos have predictions. Set to True to include observations where every photo has a prediction; set to False to include observations where at least one photo is missing a prediction. (Optional)
 var_location_country_id <- 56 # integer |  (Optional)
 var_location_nuts_2 <- "location_nuts_2_example" # character |  (Optional)
 var_location_nuts_3 <- "location_nuts_3_example" # character |  (Optional)
@@ -234,8 +247,8 @@ api_instance <- mosquitoalert_api$new()
 # Configure HTTP bearer authorization: jwtAuth
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, has_prediction = var_has_prediction, has_predictions_all_photos = var_has_predictions_all_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-result <- api_instance$observations_api$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, has_prediction = var_has_prediction, has_predictions_all_photos = var_has_predictions_all_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+# result <- api_instance$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+result <- api_instance$observations_api$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 dput(result)
 ```
 
@@ -246,8 +259,6 @@ Name | Type | Description  | Notes
  **created_at_after** | **character**| Created at | [optional] 
  **created_at_before** | **character**| Created at | [optional] 
  **has_photos** | **character**| Has any photo | [optional] 
- **has_prediction** | **character**| Filter observations that have an associated prediction. An observation is considered to have a prediction if a photo has been selected as reference to use the prediction from. | [optional] 
- **has_predictions_all_photos** | **character**| Filters observations based on whether all associated photos have predictions. Set to True to include observations where every photo has a prediction; set to False to include observations where at least one photo is missing a prediction. | [optional] 
  **location_country_id** | **integer**|  | [optional] 
  **location_nuts_2** | **character**|  | [optional] 
  **location_nuts_3** | **character**|  | [optional] 
@@ -278,156 +289,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **400** |  |  -  |
-| **401** |  |  -  |
-| **403** |  |  -  |
-| **404** |  |  -  |
-| **200** |  |  -  |
-
-# **prediction_create**
-> ObservationPrediction prediction_create(uuid, observation_prediction_request)
-
-
-
-### Example
-```R
-library(MosquitoAlert)
-
-# prepare function argument(s)
-var_uuid <- "uuid_example" # character | 
-var_observation_prediction_request <- ObservationPredictionRequest$new("ref_photo_uuid_example", "is_executive_validation_example") # ObservationPredictionRequest | 
-
-api_instance <- mosquitoalert_api$new()
-# Configure API key authorization: cookieAuth
-api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-# Configure API key authorization: tokenAuth
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-# to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$prediction_create(var_uuid, var_observation_prediction_requestdata_file = "result.txt")
-result <- api_instance$observations_api$prediction_create(var_uuid, var_observation_prediction_request)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **uuid** | **character**|  | 
- **observation_prediction_request** | [**ObservationPredictionRequest**](ObservationPredictionRequest.md)|  | 
-
-### Return type
-
-[**ObservationPrediction**](ObservationPrediction.md)
-
-### Authorization
-
-[cookieAuth](../README.md#cookieAuth), [tokenAuth](../README.md#tokenAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **400** |  |  -  |
-| **401** |  |  -  |
-| **403** |  |  -  |
-| **404** |  |  -  |
-| **200** |  |  -  |
-
-# **prediction_destroy**
-> prediction_destroy(uuid)
-
-
-
-### Example
-```R
-library(MosquitoAlert)
-
-# prepare function argument(s)
-var_uuid <- "uuid_example" # character | 
-
-api_instance <- mosquitoalert_api$new()
-# Configure API key authorization: cookieAuth
-api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-# Configure API key authorization: tokenAuth
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-api_instance$observations_api$prediction_destroy(var_uuid)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **uuid** | **character**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[cookieAuth](../README.md#cookieAuth), [tokenAuth](../README.md#tokenAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **401** |  |  -  |
-| **403** |  |  -  |
-| **404** |  |  -  |
-| **204** | No response body |  -  |
-
-# **prediction_retrieve**
-> ObservationPrediction prediction_retrieve(uuid)
-
-
-
-### Example
-```R
-library(MosquitoAlert)
-
-# prepare function argument(s)
-var_uuid <- "uuid_example" # character | 
-
-api_instance <- mosquitoalert_api$new()
-# Configure API key authorization: cookieAuth
-api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-# Configure API key authorization: tokenAuth
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-# to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$prediction_retrieve(var_uuiddata_file = "result.txt")
-result <- api_instance$observations_api$prediction_retrieve(var_uuid)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **uuid** | **character**|  | 
-
-### Return type
-
-[**ObservationPrediction**](ObservationPrediction.md)
-
-### Authorization
-
-[cookieAuth](../README.md#cookieAuth), [tokenAuth](../README.md#tokenAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
