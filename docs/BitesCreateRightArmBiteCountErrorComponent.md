@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attr** | **character** |  | [Enum: [right_arm_bite_count]] 
-**code** | **character** |  | [Enum: [invalid, max_string_length]] 
+**code** | **character** |  | [Enum: [invalid, max_string_length, null]] 
 **detail** | **character** |  | 
 
 

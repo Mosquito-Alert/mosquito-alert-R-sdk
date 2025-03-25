@@ -17,7 +17,7 @@
 #' ####################  create  ####################
 #'
 #' library(MosquitoAlert)
-#' var_bite_request <- BiteRequest$new("created_at_example", "sent_at_example", LocationRequest$new("current", Location_point$new(123, 123)), "note_example", c("tags_example"), "indoors", "now", 123, 123, 123, 123, 123, 123) # BiteRequest | 
+#' var_bite_request <- BiteRequest$new("created_at_example", "sent_at_example", LocationRequest$new("auto", Location_point$new(123, 123)), "note_example", c("tags_example"), "indoors", "now", 123, 123, 123, 123, 123, 123) # BiteRequest | 
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -60,9 +60,9 @@
 #' library(MosquitoAlert)
 #' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 #' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
+#' var_location_adm_nuts2 <- "location_adm_nuts2_example" # character |  (Optional)
+#' var_location_adm_nuts3 <- "location_adm_nuts3_example" # character |  (Optional)
 #' var_location_country_id <- 56 # integer |  (Optional)
-#' var_location_nuts_2 <- "location_nuts_2_example" # character |  (Optional)
-#' var_location_nuts_3 <- "location_nuts_3_example" # character |  (Optional)
 #' var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
@@ -85,8 +85,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-#' result <- api_instance$bites_api$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+#' # result <- api_instance$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_adm_nuts2 = var_location_adm_nuts2, location_adm_nuts3 = var_location_adm_nuts3, location_country_id = var_location_country_id, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+#' result <- api_instance$bites_api$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_adm_nuts2 = var_location_adm_nuts2, location_adm_nuts3 = var_location_adm_nuts3, location_country_id = var_location_country_id, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 #' dput(result)
 #'
 #'
@@ -95,9 +95,9 @@
 #' library(MosquitoAlert)
 #' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 #' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
+#' var_location_adm_nuts2 <- "location_adm_nuts2_example" # character |  (Optional)
+#' var_location_adm_nuts3 <- "location_adm_nuts3_example" # character |  (Optional)
 #' var_location_country_id <- 56 # integer |  (Optional)
-#' var_location_nuts_2 <- "location_nuts_2_example" # character |  (Optional)
-#' var_location_nuts_3 <- "location_nuts_3_example" # character |  (Optional)
 #' var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
@@ -114,8 +114,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-#' result <- api_instance$bites_api$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_country_id = var_location_country_id, location_nuts_2 = var_location_nuts_2, location_nuts_3 = var_location_nuts_3, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+#' # result <- api_instance$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_adm_nuts2 = var_location_adm_nuts2, location_adm_nuts3 = var_location_adm_nuts3, location_country_id = var_location_country_id, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+#' result <- api_instance$bites_api$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, location_adm_nuts2 = var_location_adm_nuts2, location_adm_nuts3 = var_location_adm_nuts3, location_country_id = var_location_country_id, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 #' dput(result)
 #'
 #'
@@ -370,9 +370,9 @@ BitesApi <- R6::R6Class(
     #'
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
+    #' @param location_adm_nuts2 (optional) No description
+    #' @param location_adm_nuts3 (optional) No description
     #' @param location_country_id (optional) No description
-    #' @param location_nuts_2 (optional) No description
-    #' @param location_nuts_3 (optional) No description
     #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
@@ -386,8 +386,8 @@ BitesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedBiteList
-    list = function(created_at_after = NULL, created_at_before = NULL, location_country_id = NULL, location_nuts_2 = NULL, location_nuts_3 = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_with_http_info(created_at_after, created_at_before, location_country_id, location_nuts_2, location_nuts_3, order_by, page, page_size, received_at_after, received_at_before, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    list = function(created_at_after = NULL, created_at_before = NULL, location_adm_nuts2 = NULL, location_adm_nuts3 = NULL, location_country_id = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_with_http_info(created_at_after, created_at_before, location_adm_nuts2, location_adm_nuts3, location_country_id, order_by, page, page_size, received_at_after, received_at_before, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -404,9 +404,9 @@ BitesApi <- R6::R6Class(
     #'
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
+    #' @param location_adm_nuts2 (optional) No description
+    #' @param location_adm_nuts3 (optional) No description
     #' @param location_country_id (optional) No description
-    #' @param location_nuts_2 (optional) No description
-    #' @param location_nuts_3 (optional) No description
     #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
@@ -420,7 +420,7 @@ BitesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedBiteList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(created_at_after = NULL, created_at_before = NULL, location_country_id = NULL, location_nuts_2 = NULL, location_nuts_3 = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(created_at_after = NULL, created_at_before = NULL, location_adm_nuts2 = NULL, location_adm_nuts3 = NULL, location_country_id = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -448,11 +448,11 @@ BitesApi <- R6::R6Class(
 
       query_params[["created_at_before"]] <- `created_at_before`
 
+      query_params[["location_adm_nuts2"]] <- `location_adm_nuts2`
+
+      query_params[["location_adm_nuts3"]] <- `location_adm_nuts3`
+
       query_params[["location_country_id"]] <- `location_country_id`
-
-      query_params[["location_nuts_2"]] <- `location_nuts_2`
-
-      query_params[["location_nuts_3"]] <- `location_nuts_3`
 
       # no explore
       # validate enum values
@@ -543,9 +543,9 @@ BitesApi <- R6::R6Class(
     #'
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
+    #' @param location_adm_nuts2 (optional) No description
+    #' @param location_adm_nuts3 (optional) No description
     #' @param location_country_id (optional) No description
-    #' @param location_nuts_2 (optional) No description
-    #' @param location_nuts_3 (optional) No description
     #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
@@ -559,8 +559,8 @@ BitesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedBiteList
-    list_mine = function(created_at_after = NULL, created_at_before = NULL, location_country_id = NULL, location_nuts_2 = NULL, location_nuts_3 = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_mine_with_http_info(created_at_after, created_at_before, location_country_id, location_nuts_2, location_nuts_3, order_by, page, page_size, received_at_after, received_at_before, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    list_mine = function(created_at_after = NULL, created_at_before = NULL, location_adm_nuts2 = NULL, location_adm_nuts3 = NULL, location_country_id = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_mine_with_http_info(created_at_after, created_at_before, location_adm_nuts2, location_adm_nuts3, location_country_id, order_by, page, page_size, received_at_after, received_at_before, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -577,9 +577,9 @@ BitesApi <- R6::R6Class(
     #'
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
+    #' @param location_adm_nuts2 (optional) No description
+    #' @param location_adm_nuts3 (optional) No description
     #' @param location_country_id (optional) No description
-    #' @param location_nuts_2 (optional) No description
-    #' @param location_nuts_3 (optional) No description
     #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
@@ -593,7 +593,7 @@ BitesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedBiteList) with additional information such as HTTP status code, headers
-    list_mine_with_http_info = function(created_at_after = NULL, created_at_before = NULL, location_country_id = NULL, location_nuts_2 = NULL, location_nuts_3 = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    list_mine_with_http_info = function(created_at_after = NULL, created_at_before = NULL, location_adm_nuts2 = NULL, location_adm_nuts3 = NULL, location_country_id = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -621,11 +621,11 @@ BitesApi <- R6::R6Class(
 
       query_params[["created_at_before"]] <- `created_at_before`
 
+      query_params[["location_adm_nuts2"]] <- `location_adm_nuts2`
+
+      query_params[["location_adm_nuts3"]] <- `location_adm_nuts3`
+
       query_params[["location_country_id"]] <- `location_country_id`
-
-      query_params[["location_nuts_2"]] <- `location_nuts_2`
-
-      query_params[["location_nuts_3"]] <- `location_nuts_3`
 
       # no explore
       # validate enum values

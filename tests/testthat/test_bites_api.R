@@ -30,9 +30,9 @@ test_that("list", {
   # base path: https://api.mosquitoalert.com/v1
   # @param created_at_after character Created at (optional)
   # @param created_at_before character Created at (optional)
+  # @param location_adm_nuts2 character  (optional)
+  # @param location_adm_nuts3 character  (optional)
   # @param location_country_id integer  (optional)
-  # @param location_nuts_2 character  (optional)
-  # @param location_nuts_3 character  (optional)
   # @param order_by array[character] Ordenado   (optional)
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)
@@ -54,9 +54,9 @@ test_that("list_mine", {
   # Get Current User&#39;s Bites
   # @param created_at_after character Created at (optional)
   # @param created_at_before character Created at (optional)
+  # @param location_adm_nuts2 character  (optional)
+  # @param location_adm_nuts3 character  (optional)
   # @param location_country_id integer  (optional)
-  # @param location_nuts_2 character  (optional)
-  # @param location_nuts_3 character  (optional)
   # @param order_by array[character] Ordenado   (optional)
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)

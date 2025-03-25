@@ -7,7 +7,7 @@
 #' @title Photo
 #' @description Photo Class
 #' @format An \code{R6Class} generator object
-#' @field uuid  character [optional]
+#' @field uuid  character
 #' @field image_url Photo uploaded by user. character
 #' @field image_path Internal server path of the image. character
 #' @importFrom R6 R6Class
@@ -23,11 +23,17 @@ Photo <- R6::R6Class(
     #' @description
     #' Initialize a new Photo class.
     #'
+    #' @param uuid uuid
     #' @param image_url Photo uploaded by user.
     #' @param image_path Internal server path of the image.
-    #' @param uuid uuid
     #' @param ... Other optional arguments.
-    initialize = function(`image_url`, `image_path`, `uuid` = NULL, ...) {
+    initialize = function(`uuid`, `image_url`, `image_path`, ...) {
+      if (!missing(`uuid`)) {
+        if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
+          stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
+        }
+        self$`uuid` <- `uuid`
+      }
       if (!missing(`image_url`)) {
         if (!(is.character(`image_url`) && length(`image_url`) == 1)) {
           stop(paste("Error! Invalid data for `image_url`. Must be a string:", `image_url`))
@@ -43,12 +49,6 @@ Photo <- R6::R6Class(
           stop(paste("Error! Invalid data for `image_path`. Must be a string:", `image_path`))
         }
         self$`image_path` <- `image_path`
-      }
-      if (!is.null(`uuid`)) {
-        if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
-          stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
-        }
-        self$`uuid` <- `uuid`
       }
     },
 
@@ -155,6 +155,14 @@ Photo <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `uuid`
+      if (!is.null(input_json$`uuid`)) {
+        if (!(is.character(input_json$`uuid`) && length(input_json$`uuid`) == 1)) {
+          stop(paste("Error! Invalid data for `uuid`. Must be a string:", input_json$`uuid`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Photo: the required field `uuid` is missing."))
+      }
       # check the required field `image_url`
       if (!is.null(input_json$`image_url`)) {
         if (!(is.character(input_json$`image_url`) && length(input_json$`image_url`) == 1)) {
@@ -190,6 +198,11 @@ Photo <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `uuid` is null
+      if (is.null(self$`uuid`)) {
+        return(FALSE)
+      }
+
       # check if the required `image_url` is null
       if (is.null(self$`image_url`)) {
         return(FALSE)
@@ -209,6 +222,11 @@ Photo <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `uuid` is null
+      if (is.null(self$`uuid`)) {
+        invalid_fields["uuid"] <- "Non-nullable required field `uuid` cannot be null."
+      }
+
       # check if the required `image_url` is null
       if (is.null(self$`image_url`)) {
         invalid_fields["image_url"] <- "Non-nullable required field `image_url` cannot be null."

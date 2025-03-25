@@ -16,27 +16,27 @@ BreedingsitesListError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("BreedingsitesListCreatedAtErrorComponent", "BreedingsitesListLocationCountryIdErrorComponent", "BreedingsitesListLocationNuts2ErrorComponent", "BreedingsitesListLocationNuts3ErrorComponent", "BreedingsitesListOrderByErrorComponent", "BreedingsitesListReceivedAtErrorComponent", "BreedingsitesListShortIdErrorComponent", "BreedingsitesListUpdatedAtErrorComponent", "BreedingsitesListUserUuidErrorComponent"),
+    one_of = list("BreedingsitesListCreatedAtErrorComponent", "BreedingsitesListLocationAdmNuts2ErrorComponent", "BreedingsitesListLocationAdmNuts3ErrorComponent", "BreedingsitesListLocationCountryIdErrorComponent", "BreedingsitesListOrderByErrorComponent", "BreedingsitesListReceivedAtErrorComponent", "BreedingsitesListShortIdErrorComponent", "BreedingsitesListUpdatedAtErrorComponent", "BreedingsitesListUserUuidErrorComponent"),
 
     #' @description
     #' Initialize a new BreedingsitesListError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "BreedingsitesListCreatedAtErrorComponent", "BreedingsitesListLocationCountryIdErrorComponent", "BreedingsitesListLocationNuts2ErrorComponent", "BreedingsitesListLocationNuts3ErrorComponent", "BreedingsitesListOrderByErrorComponent", "BreedingsitesListReceivedAtErrorComponent", "BreedingsitesListShortIdErrorComponent", "BreedingsitesListUpdatedAtErrorComponent", "BreedingsitesListUserUuidErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "BreedingsitesListCreatedAtErrorComponent", "BreedingsitesListLocationAdmNuts2ErrorComponent", "BreedingsitesListLocationAdmNuts3ErrorComponent", "BreedingsitesListLocationCountryIdErrorComponent", "BreedingsitesListOrderByErrorComponent", "BreedingsitesListReceivedAtErrorComponent", "BreedingsitesListShortIdErrorComponent", "BreedingsitesListUpdatedAtErrorComponent", "BreedingsitesListUserUuidErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BreedingsitesListCreatedAtErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "BreedingsitesListCreatedAtErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BreedingsitesListLocationAdmNuts2ErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "BreedingsitesListLocationAdmNuts2ErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BreedingsitesListLocationAdmNuts3ErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "BreedingsitesListLocationAdmNuts3ErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BreedingsitesListLocationCountryIdErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "BreedingsitesListLocationCountryIdErrorComponent"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BreedingsitesListLocationNuts2ErrorComponent") {
-        self$actual_instance <- instance
-        self$actual_type <- "BreedingsitesListLocationNuts2ErrorComponent"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BreedingsitesListLocationNuts3ErrorComponent") {
-        self$actual_instance <- instance
-        self$actual_type <- "BreedingsitesListLocationNuts3ErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BreedingsitesListOrderByErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "BreedingsitesListOrderByErrorComponent"
@@ -53,7 +53,7 @@ BreedingsitesListError <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "BreedingsitesListUserUuidErrorComponent"
       } else {
-        stop(paste("Failed to initialize BreedingsitesListError with oneOf schemas BreedingsitesListCreatedAtErrorComponent, BreedingsitesListLocationCountryIdErrorComponent, BreedingsitesListLocationNuts2ErrorComponent, BreedingsitesListLocationNuts3ErrorComponent, BreedingsitesListOrderByErrorComponent, BreedingsitesListReceivedAtErrorComponent, BreedingsitesListShortIdErrorComponent, BreedingsitesListUpdatedAtErrorComponent, BreedingsitesListUserUuidErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize BreedingsitesListError with oneOf schemas BreedingsitesListCreatedAtErrorComponent, BreedingsitesListLocationAdmNuts2ErrorComponent, BreedingsitesListLocationAdmNuts3ErrorComponent, BreedingsitesListLocationCountryIdErrorComponent, BreedingsitesListOrderByErrorComponent, BreedingsitesListReceivedAtErrorComponent, BreedingsitesListShortIdErrorComponent, BreedingsitesListUpdatedAtErrorComponent, BreedingsitesListUserUuidErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -156,34 +156,34 @@ BreedingsitesListError <- R6::R6Class(
         error_messages <- append(error_messages, `BreedingsitesListLocationCountryIdErrorComponent_result`["message"])
       }
 
-      `BreedingsitesListLocationNuts3ErrorComponent_result` <- tryCatch({
-          `BreedingsitesListLocationNuts3ErrorComponent`$public_methods$validateJSON(input)
-          `BreedingsitesListLocationNuts3ErrorComponent_instance` <- `BreedingsitesListLocationNuts3ErrorComponent`$new()
-          instance <- `BreedingsitesListLocationNuts3ErrorComponent_instance`$fromJSON(input)
-          instance_type <- "BreedingsitesListLocationNuts3ErrorComponent"
-          matched_schemas <- append(matched_schemas, "BreedingsitesListLocationNuts3ErrorComponent")
+      `BreedingsitesListLocationAdmNuts3ErrorComponent_result` <- tryCatch({
+          `BreedingsitesListLocationAdmNuts3ErrorComponent`$public_methods$validateJSON(input)
+          `BreedingsitesListLocationAdmNuts3ErrorComponent_instance` <- `BreedingsitesListLocationAdmNuts3ErrorComponent`$new()
+          instance <- `BreedingsitesListLocationAdmNuts3ErrorComponent_instance`$fromJSON(input)
+          instance_type <- "BreedingsitesListLocationAdmNuts3ErrorComponent"
+          matched_schemas <- append(matched_schemas, "BreedingsitesListLocationAdmNuts3ErrorComponent")
           matched <- matched + 1
         },
         error = function(err) err
       )
 
-      if (!is.null(`BreedingsitesListLocationNuts3ErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `BreedingsitesListLocationNuts3ErrorComponent_result`["message"])
+      if (!is.null(`BreedingsitesListLocationAdmNuts3ErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `BreedingsitesListLocationAdmNuts3ErrorComponent_result`["message"])
       }
 
-      `BreedingsitesListLocationNuts2ErrorComponent_result` <- tryCatch({
-          `BreedingsitesListLocationNuts2ErrorComponent`$public_methods$validateJSON(input)
-          `BreedingsitesListLocationNuts2ErrorComponent_instance` <- `BreedingsitesListLocationNuts2ErrorComponent`$new()
-          instance <- `BreedingsitesListLocationNuts2ErrorComponent_instance`$fromJSON(input)
-          instance_type <- "BreedingsitesListLocationNuts2ErrorComponent"
-          matched_schemas <- append(matched_schemas, "BreedingsitesListLocationNuts2ErrorComponent")
+      `BreedingsitesListLocationAdmNuts2ErrorComponent_result` <- tryCatch({
+          `BreedingsitesListLocationAdmNuts2ErrorComponent`$public_methods$validateJSON(input)
+          `BreedingsitesListLocationAdmNuts2ErrorComponent_instance` <- `BreedingsitesListLocationAdmNuts2ErrorComponent`$new()
+          instance <- `BreedingsitesListLocationAdmNuts2ErrorComponent_instance`$fromJSON(input)
+          instance_type <- "BreedingsitesListLocationAdmNuts2ErrorComponent"
+          matched_schemas <- append(matched_schemas, "BreedingsitesListLocationAdmNuts2ErrorComponent")
           matched <- matched + 1
         },
         error = function(err) err
       )
 
-      if (!is.null(`BreedingsitesListLocationNuts2ErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `BreedingsitesListLocationNuts2ErrorComponent_result`["message"])
+      if (!is.null(`BreedingsitesListLocationAdmNuts2ErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `BreedingsitesListLocationAdmNuts2ErrorComponent_result`["message"])
       }
 
       `BreedingsitesListUserUuidErrorComponent_result` <- tryCatch({
@@ -222,11 +222,11 @@ BreedingsitesListError <- R6::R6Class(
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into BreedingsitesListError with oneOf schemas BreedingsitesListCreatedAtErrorComponent, BreedingsitesListLocationCountryIdErrorComponent, BreedingsitesListLocationNuts2ErrorComponent, BreedingsitesListLocationNuts3ErrorComponent, BreedingsitesListOrderByErrorComponent, BreedingsitesListReceivedAtErrorComponent, BreedingsitesListShortIdErrorComponent, BreedingsitesListUpdatedAtErrorComponent, BreedingsitesListUserUuidErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into BreedingsitesListError with oneOf schemas BreedingsitesListCreatedAtErrorComponent, BreedingsitesListLocationAdmNuts2ErrorComponent, BreedingsitesListLocationAdmNuts3ErrorComponent, BreedingsitesListLocationCountryIdErrorComponent, BreedingsitesListOrderByErrorComponent, BreedingsitesListReceivedAtErrorComponent, BreedingsitesListShortIdErrorComponent, BreedingsitesListUpdatedAtErrorComponent, BreedingsitesListUserUuidErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into BreedingsitesListError with oneOf schemas BreedingsitesListCreatedAtErrorComponent, BreedingsitesListLocationCountryIdErrorComponent, BreedingsitesListLocationNuts2ErrorComponent, BreedingsitesListLocationNuts3ErrorComponent, BreedingsitesListOrderByErrorComponent, BreedingsitesListReceivedAtErrorComponent, BreedingsitesListShortIdErrorComponent, BreedingsitesListUpdatedAtErrorComponent, BreedingsitesListUserUuidErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into BreedingsitesListError with oneOf schemas BreedingsitesListCreatedAtErrorComponent, BreedingsitesListLocationAdmNuts2ErrorComponent, BreedingsitesListLocationAdmNuts3ErrorComponent, BreedingsitesListLocationCountryIdErrorComponent, BreedingsitesListOrderByErrorComponent, BreedingsitesListReceivedAtErrorComponent, BreedingsitesListShortIdErrorComponent, BreedingsitesListUpdatedAtErrorComponent, BreedingsitesListUserUuidErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

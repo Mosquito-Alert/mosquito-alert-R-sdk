@@ -13,8 +13,7 @@
 #' @field locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code. character [optional]
 #' @field language_iso ISO 639-1 code character
 #' @field is_guest  character
-#' @field score Global XP Score. This field is updated whenever the user asks for the score, and is only stored here. The content must equal score_v2_adult + score_v2_bite + score_v2_site integer
-#' @field last_score_update Last time score was updated character
+#' @field score  \link{UserScore}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -28,7 +27,6 @@ User <- R6::R6Class(
     `language_iso` = NULL,
     `is_guest` = NULL,
     `score` = NULL,
-    `last_score_update` = NULL,
 
     #' @description
     #' Initialize a new User class.
@@ -38,11 +36,10 @@ User <- R6::R6Class(
     #' @param registration_time The date and time when user registered and consented to sharing data. Automatically set by server when user uploads registration.
     #' @param language_iso ISO 639-1 code
     #' @param is_guest is_guest
-    #' @param score Global XP Score. This field is updated whenever the user asks for the score, and is only stored here. The content must equal score_v2_adult + score_v2_bite + score_v2_site
-    #' @param last_score_update Last time score was updated
-    #' @param locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code.
+    #' @param score score
+    #' @param locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code.. Default to "en".
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `username`, `registration_time`, `language_iso`, `is_guest`, `score`, `last_score_update`, `locale` = NULL, ...) {
+    initialize = function(`uuid`, `username`, `registration_time`, `language_iso`, `is_guest`, `score`, `locale` = "en", ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
@@ -74,16 +71,8 @@ User <- R6::R6Class(
         self$`is_guest` <- `is_guest`
       }
       if (!missing(`score`)) {
-        if (!(is.numeric(`score`) && length(`score`) == 1)) {
-          stop(paste("Error! Invalid data for `score`. Must be an integer:", `score`))
-        }
+        stopifnot(R6::is.R6(`score`))
         self$`score` <- `score`
-      }
-      if (!missing(`last_score_update`)) {
-        if (!(is.character(`last_score_update`) && length(`last_score_update`) == 1)) {
-          stop(paste("Error! Invalid data for `last_score_update`. Must be a string:", `last_score_update`))
-        }
-        self$`last_score_update` <- `last_score_update`
       }
       if (!is.null(`locale`)) {
         if (!(`locale` %in% c("es", "ca", "eu", "bn", "sv", "en", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
@@ -153,11 +142,7 @@ User <- R6::R6Class(
       }
       if (!is.null(self$`score`)) {
         UserObject[["score"]] <-
-          self$`score`
-      }
-      if (!is.null(self$`last_score_update`)) {
-        UserObject[["last_score_update"]] <-
-          self$`last_score_update`
+          self$`score`$toSimpleType()
       }
       return(UserObject)
     },
@@ -191,10 +176,9 @@ User <- R6::R6Class(
         self$`is_guest` <- this_object$`is_guest`
       }
       if (!is.null(this_object$`score`)) {
-        self$`score` <- this_object$`score`
-      }
-      if (!is.null(this_object$`last_score_update`)) {
-        self$`last_score_update` <- this_object$`last_score_update`
+        `score_object` <- UserScore$new()
+        `score_object`$fromJSON(jsonlite::toJSON(this_object$`score`, auto_unbox = TRUE, digits = NA))
+        self$`score` <- `score_object`
       }
       self
     },
@@ -226,8 +210,7 @@ User <- R6::R6Class(
       self$`locale` <- this_object$`locale`
       self$`language_iso` <- this_object$`language_iso`
       self$`is_guest` <- this_object$`is_guest`
-      self$`score` <- this_object$`score`
-      self$`last_score_update` <- this_object$`last_score_update`
+      self$`score` <- UserScore$new()$fromJSON(jsonlite::toJSON(this_object$`score`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -279,19 +262,9 @@ User <- R6::R6Class(
       }
       # check the required field `score`
       if (!is.null(input_json$`score`)) {
-        if (!(is.numeric(input_json$`score`) && length(input_json$`score`) == 1)) {
-          stop(paste("Error! Invalid data for `score`. Must be an integer:", input_json$`score`))
-        }
+        stopifnot(R6::is.R6(input_json$`score`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for User: the required field `score` is missing."))
-      }
-      # check the required field `last_score_update`
-      if (!is.null(input_json$`last_score_update`)) {
-        if (!(is.character(input_json$`last_score_update`) && length(input_json$`last_score_update`) == 1)) {
-          stop(paste("Error! Invalid data for `last_score_update`. Must be a string:", input_json$`last_score_update`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for User: the required field `last_score_update` is missing."))
       }
     },
 
@@ -338,11 +311,6 @@ User <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `last_score_update` is null
-      if (is.null(self$`last_score_update`)) {
-        return(FALSE)
-      }
-
       TRUE
     },
 
@@ -380,11 +348,6 @@ User <- R6::R6Class(
       # check if the required `score` is null
       if (is.null(self$`score`)) {
         invalid_fields["score"] <- "Non-nullable required field `score` cannot be null."
-      }
-
-      # check if the required `last_score_update` is null
-      if (is.null(self$`last_score_update`)) {
-        invalid_fields["last_score_update"] <- "Non-nullable required field `last_score_update` cannot be null."
       }
 
       invalid_fields

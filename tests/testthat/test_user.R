@@ -51,17 +51,8 @@ test_that("is_guest", {
 })
 
 test_that("score", {
-  # tests for the property `score` (integer)
-  # Global XP Score. This field is updated whenever the user asks for the score, and is only stored here. The content must equal score_v2_adult + score_v2_bite + score_v2_site
+  # tests for the property `score` (UserScore)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`score`, "EXPECTED_RESULT")
-})
-
-test_that("last_score_update", {
-  # tests for the property `last_score_update` (character)
-  # Last time score was updated
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`last_score_update`, "EXPECTED_RESULT")
 })

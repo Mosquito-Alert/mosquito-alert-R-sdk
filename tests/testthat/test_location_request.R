@@ -5,12 +5,12 @@ context("Test LocationRequest")
 
 model_instance <- LocationRequest$new()
 
-test_that("type", {
-  # tests for the property `type` (character)
-  # Did user indicate that report relates to current location of phone (&#39;current&#39;) or to a location selected manually on the map (&#39;selected&#39;)? Or is the choice missing (&#39;missing&#39;)
+test_that("source", {
+  # tests for the property `source` (character)
+  # Indicates how the location was obtained. Use &#39;Auto (GPS)&#39; if the location was automatically retrieved from the device&#39;s GPS, or &#39;Manual (User-selected)&#39; if the location was selected by the user on a map.
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`source`, "EXPECTED_RESULT")
 })
 
 test_that("point", {

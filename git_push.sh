@@ -24,7 +24,7 @@ if [ "$git_repo_id" = "" ]; then
 fi
 
 if [ "$release_note" = "" ]; then
-    release_note="Start using openapi generator v7.12.0"
+    release_note="Test release note"
     echo "[INFO] No command line input provided. Set \$release_note to $release_note"
 fi
 

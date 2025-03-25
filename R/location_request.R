@@ -7,7 +7,7 @@
 #' @title LocationRequest
 #' @description LocationRequest Class
 #' @format An \code{R6Class} generator object
-#' @field type Did user indicate that report relates to current location of phone ('current') or to a location selected manually on the map ('selected')? Or is the choice missing ('missing') character
+#' @field source Indicates how the location was obtained. Use 'Auto (GPS)' if the location was automatically retrieved from the device's GPS, or 'Manual (User-selected)' if the location was selected by the user on a map. character
 #' @field point  \link{LocationPoint}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -15,24 +15,24 @@
 LocationRequest <- R6::R6Class(
   "LocationRequest",
   public = list(
-    `type` = NULL,
+    `source` = NULL,
     `point` = NULL,
 
     #' @description
     #' Initialize a new LocationRequest class.
     #'
-    #' @param type Did user indicate that report relates to current location of phone ('current') or to a location selected manually on the map ('selected')? Or is the choice missing ('missing')
+    #' @param source Indicates how the location was obtained. Use 'Auto (GPS)' if the location was automatically retrieved from the device's GPS, or 'Manual (User-selected)' if the location was selected by the user on a map.
     #' @param point point
     #' @param ... Other optional arguments.
-    initialize = function(`type`, `point`, ...) {
-      if (!missing(`type`)) {
-        if (!(`type` %in% c("current", "selected", "missing"))) {
-          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"current\", \"selected\", \"missing\".", sep = ""))
+    initialize = function(`source`, `point`, ...) {
+      if (!missing(`source`)) {
+        if (!(`source` %in% c("auto", "manual"))) {
+          stop(paste("Error! \"", `source`, "\" cannot be assigned to `source`. Must be \"auto\", \"manual\".", sep = ""))
         }
-        if (!(is.character(`type`) && length(`type`) == 1)) {
-          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        if (!(is.character(`source`) && length(`source`) == 1)) {
+          stop(paste("Error! Invalid data for `source`. Must be a string:", `source`))
         }
-        self$`type` <- `type`
+        self$`source` <- `source`
       }
       if (!missing(`point`)) {
         stopifnot(R6::is.R6(`point`))
@@ -71,9 +71,9 @@ LocationRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       LocationRequestObject <- list()
-      if (!is.null(self$`type`)) {
-        LocationRequestObject[["type"]] <-
-          self$`type`
+      if (!is.null(self$`source`)) {
+        LocationRequestObject[["source"]] <-
+          self$`source`
       }
       if (!is.null(self$`point`)) {
         LocationRequestObject[["point"]] <-
@@ -89,11 +89,11 @@ LocationRequest <- R6::R6Class(
     #' @return the instance of LocationRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`type`)) {
-        if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("current", "selected", "missing"))) {
-          stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"current\", \"selected\", \"missing\".", sep = ""))
+      if (!is.null(this_object$`source`)) {
+        if (!is.null(this_object$`source`) && !(this_object$`source` %in% c("auto", "manual"))) {
+          stop(paste("Error! \"", this_object$`source`, "\" cannot be assigned to `source`. Must be \"auto\", \"manual\".", sep = ""))
         }
-        self$`type` <- this_object$`type`
+        self$`source` <- this_object$`source`
       }
       if (!is.null(this_object$`point`)) {
         `point_object` <- LocationPoint$new()
@@ -121,10 +121,10 @@ LocationRequest <- R6::R6Class(
     #' @return the instance of LocationRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("current", "selected", "missing"))) {
-        stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"current\", \"selected\", \"missing\".", sep = ""))
+      if (!is.null(this_object$`source`) && !(this_object$`source` %in% c("auto", "manual"))) {
+        stop(paste("Error! \"", this_object$`source`, "\" cannot be assigned to `source`. Must be \"auto\", \"manual\".", sep = ""))
       }
-      self$`type` <- this_object$`type`
+      self$`source` <- this_object$`source`
       self$`point` <- LocationPoint$new()$fromJSON(jsonlite::toJSON(this_object$`point`, auto_unbox = TRUE, digits = NA))
       self
     },
@@ -135,13 +135,13 @@ LocationRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `type`
-      if (!is.null(input_json$`type`)) {
-        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
-          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+      # check the required field `source`
+      if (!is.null(input_json$`source`)) {
+        if (!(is.character(input_json$`source`) && length(input_json$`source`) == 1)) {
+          stop(paste("Error! Invalid data for `source`. Must be a string:", input_json$`source`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for LocationRequest: the required field `type` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for LocationRequest: the required field `source` is missing."))
       }
       # check the required field `point`
       if (!is.null(input_json$`point`)) {
@@ -164,8 +164,8 @@ LocationRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `type` is null
-      if (is.null(self$`type`)) {
+      # check if the required `source` is null
+      if (is.null(self$`source`)) {
         return(FALSE)
       }
 
@@ -178,9 +178,9 @@ LocationRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `type` is null
-      if (is.null(self$`type`)) {
-        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
+      # check if the required `source` is null
+      if (is.null(self$`source`)) {
+        invalid_fields["source"] <- "Non-nullable required field `source` cannot be null."
       }
 
       invalid_fields
