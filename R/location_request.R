@@ -169,6 +169,11 @@ LocationRequest <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `point` is null
+      if (is.null(self$`point`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -181,6 +186,11 @@ LocationRequest <- R6::R6Class(
       # check if the required `source` is null
       if (is.null(self$`source`)) {
         invalid_fields["source"] <- "Non-nullable required field `source` cannot be null."
+      }
+
+      # check if the required `point` is null
+      if (is.null(self$`point`)) {
+        invalid_fields["point"] <- "Non-nullable required field `point` cannot be null."
       }
 
       invalid_fields

@@ -1,11 +1,11 @@
-#' Create a new ObservationsCreateLocationPointErrorComponent
+#' Create a new BreedingsitesListCountryIdErrorComponent
 #'
 #' @description
-#' ObservationsCreateLocationPointErrorComponent Class
+#' BreedingsitesListCountryIdErrorComponent Class
 #'
 #' @docType class
-#' @title ObservationsCreateLocationPointErrorComponent
-#' @description ObservationsCreateLocationPointErrorComponent Class
+#' @title BreedingsitesListCountryIdErrorComponent
+#' @description BreedingsitesListCountryIdErrorComponent Class
 #' @format An \code{R6Class} generator object
 #' @field attr  character
 #' @field code  character
@@ -13,15 +13,15 @@
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-ObservationsCreateLocationPointErrorComponent <- R6::R6Class(
-  "ObservationsCreateLocationPointErrorComponent",
+BreedingsitesListCountryIdErrorComponent <- R6::R6Class(
+  "BreedingsitesListCountryIdErrorComponent",
   public = list(
     `attr` = NULL,
     `code` = NULL,
     `detail` = NULL,
 
     #' @description
-    #' Initialize a new ObservationsCreateLocationPointErrorComponent class.
+    #' Initialize a new BreedingsitesListCountryIdErrorComponent class.
     #'
     #' @param attr attr
     #' @param code code
@@ -29,8 +29,8 @@ ObservationsCreateLocationPointErrorComponent <- R6::R6Class(
     #' @param ... Other optional arguments.
     initialize = function(`attr`, `code`, `detail`, ...) {
       if (!missing(`attr`)) {
-        if (!(`attr` %in% c("location.point"))) {
-          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"location.point\".", sep = ""))
+        if (!(`attr` %in% c("country_id"))) {
+          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"country_id\".", sep = ""))
         }
         if (!(is.character(`attr`) && length(`attr`) == 1)) {
           stop(paste("Error! Invalid data for `attr`. Must be a string:", `attr`))
@@ -38,8 +38,8 @@ ObservationsCreateLocationPointErrorComponent <- R6::R6Class(
         self$`attr` <- `attr`
       }
       if (!missing(`code`)) {
-        if (!(`code` %in% c("invalid", "null", "required"))) {
-          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"invalid\", \"null\", \"required\".", sep = ""))
+        if (!(`code` %in% c("invalid_choice"))) {
+          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\".", sep = ""))
         }
         if (!(is.character(`code`) && length(`code`) == 1)) {
           stop(paste("Error! Invalid data for `code`. Must be a string:", `code`))
@@ -66,9 +66,9 @@ ObservationsCreateLocationPointErrorComponent <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return ObservationsCreateLocationPointErrorComponent as a base R list.
+    #' @return BreedingsitesListCountryIdErrorComponent as a base R list.
     #' @examples
-    #' # convert array of ObservationsCreateLocationPointErrorComponent (x) to a data frame
+    #' # convert array of BreedingsitesListCountryIdErrorComponent (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -80,42 +80,42 @@ ObservationsCreateLocationPointErrorComponent <- R6::R6Class(
     },
 
     #' @description
-    #' Convert ObservationsCreateLocationPointErrorComponent to a base R type
+    #' Convert BreedingsitesListCountryIdErrorComponent to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      ObservationsCreateLocationPointErrorComponentObject <- list()
+      BreedingsitesListCountryIdErrorComponentObject <- list()
       if (!is.null(self$`attr`)) {
-        ObservationsCreateLocationPointErrorComponentObject[["attr"]] <-
+        BreedingsitesListCountryIdErrorComponentObject[["attr"]] <-
           self$`attr`
       }
       if (!is.null(self$`code`)) {
-        ObservationsCreateLocationPointErrorComponentObject[["code"]] <-
+        BreedingsitesListCountryIdErrorComponentObject[["code"]] <-
           self$`code`
       }
       if (!is.null(self$`detail`)) {
-        ObservationsCreateLocationPointErrorComponentObject[["detail"]] <-
+        BreedingsitesListCountryIdErrorComponentObject[["detail"]] <-
           self$`detail`
       }
-      return(ObservationsCreateLocationPointErrorComponentObject)
+      return(BreedingsitesListCountryIdErrorComponentObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of ObservationsCreateLocationPointErrorComponent
+    #' Deserialize JSON string into an instance of BreedingsitesListCountryIdErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of ObservationsCreateLocationPointErrorComponent
+    #' @return the instance of BreedingsitesListCountryIdErrorComponent
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`attr`)) {
-        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("location.point"))) {
-          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"location.point\".", sep = ""))
+        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("country_id"))) {
+          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"country_id\".", sep = ""))
         }
         self$`attr` <- this_object$`attr`
       }
       if (!is.null(this_object$`code`)) {
-        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid", "null", "required"))) {
-          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid\", \"null\", \"required\".", sep = ""))
+        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice"))) {
+          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\".", sep = ""))
         }
         self$`code` <- this_object$`code`
       }
@@ -129,7 +129,7 @@ ObservationsCreateLocationPointErrorComponent <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return ObservationsCreateLocationPointErrorComponent in JSON format
+    #' @return BreedingsitesListCountryIdErrorComponent in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -137,18 +137,18 @@ ObservationsCreateLocationPointErrorComponent <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of ObservationsCreateLocationPointErrorComponent
+    #' Deserialize JSON string into an instance of BreedingsitesListCountryIdErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of ObservationsCreateLocationPointErrorComponent
+    #' @return the instance of BreedingsitesListCountryIdErrorComponent
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("location.point"))) {
-        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"location.point\".", sep = ""))
+      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("country_id"))) {
+        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"country_id\".", sep = ""))
       }
       self$`attr` <- this_object$`attr`
-      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid", "null", "required"))) {
-        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid\", \"null\", \"required\".", sep = ""))
+      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice"))) {
+        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\".", sep = ""))
       }
       self$`code` <- this_object$`code`
       self$`detail` <- this_object$`detail`
@@ -156,7 +156,7 @@ ObservationsCreateLocationPointErrorComponent <- R6::R6Class(
     },
 
     #' @description
-    #' Validate JSON input with respect to ObservationsCreateLocationPointErrorComponent and throw an exception if invalid
+    #' Validate JSON input with respect to BreedingsitesListCountryIdErrorComponent and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -167,7 +167,7 @@ ObservationsCreateLocationPointErrorComponent <- R6::R6Class(
           stop(paste("Error! Invalid data for `attr`. Must be a string:", input_json$`attr`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for ObservationsCreateLocationPointErrorComponent: the required field `attr` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for BreedingsitesListCountryIdErrorComponent: the required field `attr` is missing."))
       }
       # check the required field `code`
       if (!is.null(input_json$`code`)) {
@@ -175,7 +175,7 @@ ObservationsCreateLocationPointErrorComponent <- R6::R6Class(
           stop(paste("Error! Invalid data for `code`. Must be a string:", input_json$`code`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for ObservationsCreateLocationPointErrorComponent: the required field `code` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for BreedingsitesListCountryIdErrorComponent: the required field `code` is missing."))
       }
       # check the required field `detail`
       if (!is.null(input_json$`detail`)) {
@@ -183,14 +183,14 @@ ObservationsCreateLocationPointErrorComponent <- R6::R6Class(
           stop(paste("Error! Invalid data for `detail`. Must be a string:", input_json$`detail`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for ObservationsCreateLocationPointErrorComponent: the required field `detail` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for BreedingsitesListCountryIdErrorComponent: the required field `detail` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of ObservationsCreateLocationPointErrorComponent
+    #' @return String representation of BreedingsitesListCountryIdErrorComponent
     toString = function() {
       self$toJSONString()
     },
@@ -253,13 +253,13 @@ ObservationsCreateLocationPointErrorComponent <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# ObservationsCreateLocationPointErrorComponent$unlock()
+# BreedingsitesListCountryIdErrorComponent$unlock()
 #
 ## Below is an example to define the print function
-# ObservationsCreateLocationPointErrorComponent$set("public", "print", function(...) {
+# BreedingsitesListCountryIdErrorComponent$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# ObservationsCreateLocationPointErrorComponent$lock()
+# BreedingsitesListCountryIdErrorComponent$lock()
 

@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
  **photos** | list( [**SimplePhotoRequest**](SimplePhotoRequest.md) )|  | 
  **note** | **character**| Note user attached to report. | [optional] 
  **tags** | list( **character** )|  | [optional] 
- **site_type** | Enum [basin, bucket, fountain, small_container, storm_drain, well, other, ] | Breeding site type. | [optional] 
+ **site_type** | Enum [basin, bucket, fountain, small_container, storm_drain, well, other] | Breeding site type. | [optional] 
  **has_water** | **character**| Either if the user perceived water in the breeding site. | [optional] 
  **in_public_area** | **character**| Either if the breeding site is found in a public area. | [optional] 
  **has_near_mosquitoes** | **character**| Either if the user perceived mosquitoes near the breeding site (less than 10 meters). | [optional] 
@@ -134,7 +134,7 @@ void (empty response body)
 | **204** | No response body |  -  |
 
 # **list**
-> PaginatedBreedingSiteList list(created_at_after = var.created_at_after, created_at_before = var.created_at_before, has_photos = var.has_photos, location_adm_nuts2 = var.location_adm_nuts2, location_adm_nuts3 = var.location_adm_nuts3, location_country_id = var.location_country_id, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
+> PaginatedBreedingSiteList list(country_id = var.country_id, created_at_after = var.created_at_after, created_at_before = var.created_at_before, has_photos = var.has_photos, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
 
 
 
@@ -143,12 +143,10 @@ void (empty response body)
 library(MosquitoAlert)
 
 # prepare function argument(s)
+var_country_id <- 56 # integer |  (Optional)
 var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
-var_location_adm_nuts2 <- "location_adm_nuts2_example" # character |  (Optional)
-var_location_adm_nuts3 <- "location_adm_nuts3_example" # character |  (Optional)
-var_location_country_id <- 56 # integer |  (Optional)
 var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
@@ -167,8 +165,8 @@ api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, location_adm_nuts2 = var_location_adm_nuts2, location_adm_nuts3 = var_location_adm_nuts3, location_country_id = var_location_country_id, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-result <- api_instance$breeding_sites_api$list(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, location_adm_nuts2 = var_location_adm_nuts2, location_adm_nuts3 = var_location_adm_nuts3, location_country_id = var_location_country_id, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+# result <- api_instance$list(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+result <- api_instance$breeding_sites_api$list(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 dput(result)
 ```
 
@@ -176,12 +174,10 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **country_id** | **integer**|  | [optional] 
  **created_at_after** | **character**| Created at | [optional] 
  **created_at_before** | **character**| Created at | [optional] 
  **has_photos** | **character**| Has any photo | [optional] 
- **location_adm_nuts2** | **character**|  | [optional] 
- **location_adm_nuts3** | **character**|  | [optional] 
- **location_country_id** | **integer**|  | [optional] 
  **order_by** | Enum [-created_at, -received_at, created_at, received_at] | Ordenado   | [optional] 
  **page** | **integer**| A page number within the paginated result set. | [optional] 
  **page_size** | **integer**| Number of results to return per page. | [optional] 
@@ -214,7 +210,7 @@ Name | Type | Description  | Notes
 | **200** |  |  -  |
 
 # **list_mine**
-> PaginatedBreedingSiteList list_mine(created_at_after = var.created_at_after, created_at_before = var.created_at_before, has_photos = var.has_photos, location_adm_nuts2 = var.location_adm_nuts2, location_adm_nuts3 = var.location_adm_nuts3, location_country_id = var.location_country_id, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
+> PaginatedBreedingSiteList list_mine(country_id = var.country_id, created_at_after = var.created_at_after, created_at_before = var.created_at_before, has_photos = var.has_photos, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
 
 
 
@@ -225,12 +221,10 @@ Get Current User's Breeding Sites
 library(MosquitoAlert)
 
 # prepare function argument(s)
+var_country_id <- 56 # integer |  (Optional)
 var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
-var_location_adm_nuts2 <- "location_adm_nuts2_example" # character |  (Optional)
-var_location_adm_nuts3 <- "location_adm_nuts3_example" # character |  (Optional)
-var_location_country_id <- 56 # integer |  (Optional)
 var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
@@ -245,8 +239,8 @@ api_instance <- mosquitoalert_api$new()
 # Configure HTTP bearer authorization: jwtAuth
 api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, location_adm_nuts2 = var_location_adm_nuts2, location_adm_nuts3 = var_location_adm_nuts3, location_country_id = var_location_country_id, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-result <- api_instance$breeding_sites_api$list_mine(created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, location_adm_nuts2 = var_location_adm_nuts2, location_adm_nuts3 = var_location_adm_nuts3, location_country_id = var_location_country_id, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+# result <- api_instance$list_mine(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+result <- api_instance$breeding_sites_api$list_mine(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 dput(result)
 ```
 
@@ -254,12 +248,10 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **country_id** | **integer**|  | [optional] 
  **created_at_after** | **character**| Created at | [optional] 
  **created_at_before** | **character**| Created at | [optional] 
  **has_photos** | **character**| Has any photo | [optional] 
- **location_adm_nuts2** | **character**|  | [optional] 
- **location_adm_nuts3** | **character**|  | [optional] 
- **location_country_id** | **integer**|  | [optional] 
  **order_by** | Enum [-created_at, -received_at, created_at, received_at] | Ordenado   | [optional] 
  **page** | **integer**| A page number within the paginated result set. | [optional] 
  **page_size** | **integer**| Number of results to return per page. | [optional] 

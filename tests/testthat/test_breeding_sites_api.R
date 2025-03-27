@@ -38,12 +38,10 @@ test_that("destroy", {
 test_that("list", {
   # tests for list
   # base path: https://api.mosquitoalert.com/v1
+  # @param country_id integer  (optional)
   # @param created_at_after character Created at (optional)
   # @param created_at_before character Created at (optional)
   # @param has_photos character Has any photo (optional)
-  # @param location_adm_nuts2 character  (optional)
-  # @param location_adm_nuts3 character  (optional)
-  # @param location_country_id integer  (optional)
   # @param order_by array[character] Ordenado   (optional)
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)
@@ -63,12 +61,10 @@ test_that("list_mine", {
   # tests for list_mine
   # base path: https://api.mosquitoalert.com/v1
   # Get Current User&#39;s Breeding Sites
+  # @param country_id integer  (optional)
   # @param created_at_after character Created at (optional)
   # @param created_at_before character Created at (optional)
   # @param has_photos character Has any photo (optional)
-  # @param location_adm_nuts2 character  (optional)
-  # @param location_adm_nuts3 character  (optional)
-  # @param location_country_id integer  (optional)
   # @param order_by array[character] Ordenado   (optional)
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)

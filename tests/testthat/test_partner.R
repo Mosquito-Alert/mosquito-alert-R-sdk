@@ -13,7 +13,7 @@ test_that("id", {
 })
 
 test_that("point", {
-  # tests for the property `point` (PartnerPoint)
+  # tests for the property `point` (LocationPoint)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`point`, "EXPECTED_RESULT")

@@ -16,27 +16,21 @@ ObservationsListError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("ObservationsListCreatedAtErrorComponent", "ObservationsListLocationAdmNuts2ErrorComponent", "ObservationsListLocationAdmNuts3ErrorComponent", "ObservationsListLocationCountryIdErrorComponent", "ObservationsListOrderByErrorComponent", "ObservationsListReceivedAtErrorComponent", "ObservationsListShortIdErrorComponent", "ObservationsListUpdatedAtErrorComponent", "ObservationsListUserUuidErrorComponent"),
+    one_of = list("ObservationsListCountryIdErrorComponent", "ObservationsListCreatedAtErrorComponent", "ObservationsListOrderByErrorComponent", "ObservationsListReceivedAtErrorComponent", "ObservationsListShortIdErrorComponent", "ObservationsListUpdatedAtErrorComponent", "ObservationsListUserUuidErrorComponent"),
 
     #' @description
     #' Initialize a new ObservationsListError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "ObservationsListCreatedAtErrorComponent", "ObservationsListLocationAdmNuts2ErrorComponent", "ObservationsListLocationAdmNuts3ErrorComponent", "ObservationsListLocationCountryIdErrorComponent", "ObservationsListOrderByErrorComponent", "ObservationsListReceivedAtErrorComponent", "ObservationsListShortIdErrorComponent", "ObservationsListUpdatedAtErrorComponent", "ObservationsListUserUuidErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "ObservationsListCountryIdErrorComponent", "ObservationsListCreatedAtErrorComponent", "ObservationsListOrderByErrorComponent", "ObservationsListReceivedAtErrorComponent", "ObservationsListShortIdErrorComponent", "ObservationsListUpdatedAtErrorComponent", "ObservationsListUserUuidErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListCountryIdErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "ObservationsListCountryIdErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListCreatedAtErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListCreatedAtErrorComponent"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListLocationAdmNuts2ErrorComponent") {
-        self$actual_instance <- instance
-        self$actual_type <- "ObservationsListLocationAdmNuts2ErrorComponent"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListLocationAdmNuts3ErrorComponent") {
-        self$actual_instance <- instance
-        self$actual_type <- "ObservationsListLocationAdmNuts3ErrorComponent"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListLocationCountryIdErrorComponent") {
-        self$actual_instance <- instance
-        self$actual_type <- "ObservationsListLocationCountryIdErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListOrderByErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListOrderByErrorComponent"
@@ -53,7 +47,7 @@ ObservationsListError <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListUserUuidErrorComponent"
       } else {
-        stop(paste("Failed to initialize ObservationsListError with oneOf schemas ObservationsListCreatedAtErrorComponent, ObservationsListLocationAdmNuts2ErrorComponent, ObservationsListLocationAdmNuts3ErrorComponent, ObservationsListLocationCountryIdErrorComponent, ObservationsListOrderByErrorComponent, ObservationsListReceivedAtErrorComponent, ObservationsListShortIdErrorComponent, ObservationsListUpdatedAtErrorComponent, ObservationsListUserUuidErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize ObservationsListError with oneOf schemas ObservationsListCountryIdErrorComponent, ObservationsListCreatedAtErrorComponent, ObservationsListOrderByErrorComponent, ObservationsListReceivedAtErrorComponent, ObservationsListShortIdErrorComponent, ObservationsListUpdatedAtErrorComponent, ObservationsListUserUuidErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -141,49 +135,19 @@ ObservationsListError <- R6::R6Class(
         error_messages <- append(error_messages, `ObservationsListUpdatedAtErrorComponent_result`["message"])
       }
 
-      `ObservationsListLocationCountryIdErrorComponent_result` <- tryCatch({
-          `ObservationsListLocationCountryIdErrorComponent`$public_methods$validateJSON(input)
-          `ObservationsListLocationCountryIdErrorComponent_instance` <- `ObservationsListLocationCountryIdErrorComponent`$new()
-          instance <- `ObservationsListLocationCountryIdErrorComponent_instance`$fromJSON(input)
-          instance_type <- "ObservationsListLocationCountryIdErrorComponent"
-          matched_schemas <- append(matched_schemas, "ObservationsListLocationCountryIdErrorComponent")
+      `ObservationsListCountryIdErrorComponent_result` <- tryCatch({
+          `ObservationsListCountryIdErrorComponent`$public_methods$validateJSON(input)
+          `ObservationsListCountryIdErrorComponent_instance` <- `ObservationsListCountryIdErrorComponent`$new()
+          instance <- `ObservationsListCountryIdErrorComponent_instance`$fromJSON(input)
+          instance_type <- "ObservationsListCountryIdErrorComponent"
+          matched_schemas <- append(matched_schemas, "ObservationsListCountryIdErrorComponent")
           matched <- matched + 1
         },
         error = function(err) err
       )
 
-      if (!is.null(`ObservationsListLocationCountryIdErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `ObservationsListLocationCountryIdErrorComponent_result`["message"])
-      }
-
-      `ObservationsListLocationAdmNuts3ErrorComponent_result` <- tryCatch({
-          `ObservationsListLocationAdmNuts3ErrorComponent`$public_methods$validateJSON(input)
-          `ObservationsListLocationAdmNuts3ErrorComponent_instance` <- `ObservationsListLocationAdmNuts3ErrorComponent`$new()
-          instance <- `ObservationsListLocationAdmNuts3ErrorComponent_instance`$fromJSON(input)
-          instance_type <- "ObservationsListLocationAdmNuts3ErrorComponent"
-          matched_schemas <- append(matched_schemas, "ObservationsListLocationAdmNuts3ErrorComponent")
-          matched <- matched + 1
-        },
-        error = function(err) err
-      )
-
-      if (!is.null(`ObservationsListLocationAdmNuts3ErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `ObservationsListLocationAdmNuts3ErrorComponent_result`["message"])
-      }
-
-      `ObservationsListLocationAdmNuts2ErrorComponent_result` <- tryCatch({
-          `ObservationsListLocationAdmNuts2ErrorComponent`$public_methods$validateJSON(input)
-          `ObservationsListLocationAdmNuts2ErrorComponent_instance` <- `ObservationsListLocationAdmNuts2ErrorComponent`$new()
-          instance <- `ObservationsListLocationAdmNuts2ErrorComponent_instance`$fromJSON(input)
-          instance_type <- "ObservationsListLocationAdmNuts2ErrorComponent"
-          matched_schemas <- append(matched_schemas, "ObservationsListLocationAdmNuts2ErrorComponent")
-          matched <- matched + 1
-        },
-        error = function(err) err
-      )
-
-      if (!is.null(`ObservationsListLocationAdmNuts2ErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `ObservationsListLocationAdmNuts2ErrorComponent_result`["message"])
+      if (!is.null(`ObservationsListCountryIdErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `ObservationsListCountryIdErrorComponent_result`["message"])
       }
 
       `ObservationsListUserUuidErrorComponent_result` <- tryCatch({
@@ -222,11 +186,11 @@ ObservationsListError <- R6::R6Class(
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into ObservationsListError with oneOf schemas ObservationsListCreatedAtErrorComponent, ObservationsListLocationAdmNuts2ErrorComponent, ObservationsListLocationAdmNuts3ErrorComponent, ObservationsListLocationCountryIdErrorComponent, ObservationsListOrderByErrorComponent, ObservationsListReceivedAtErrorComponent, ObservationsListShortIdErrorComponent, ObservationsListUpdatedAtErrorComponent, ObservationsListUserUuidErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into ObservationsListError with oneOf schemas ObservationsListCountryIdErrorComponent, ObservationsListCreatedAtErrorComponent, ObservationsListOrderByErrorComponent, ObservationsListReceivedAtErrorComponent, ObservationsListShortIdErrorComponent, ObservationsListUpdatedAtErrorComponent, ObservationsListUserUuidErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into ObservationsListError with oneOf schemas ObservationsListCreatedAtErrorComponent, ObservationsListLocationAdmNuts2ErrorComponent, ObservationsListLocationAdmNuts3ErrorComponent, ObservationsListLocationCountryIdErrorComponent, ObservationsListOrderByErrorComponent, ObservationsListReceivedAtErrorComponent, ObservationsListShortIdErrorComponent, ObservationsListUpdatedAtErrorComponent, ObservationsListUserUuidErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into ObservationsListError with oneOf schemas ObservationsListCountryIdErrorComponent, ObservationsListCreatedAtErrorComponent, ObservationsListOrderByErrorComponent, ObservationsListReceivedAtErrorComponent, ObservationsListShortIdErrorComponent, ObservationsListUpdatedAtErrorComponent, ObservationsListUserUuidErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

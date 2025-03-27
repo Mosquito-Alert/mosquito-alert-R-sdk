@@ -148,8 +148,8 @@ BreedingSite <- R6::R6Class(
         self$`tags` <- `tags`
       }
       if (!is.null(`site_type`)) {
-        if (!(`site_type` %in% c("basin", "bucket", "fountain", "small_container", "storm_drain", "well", "other", ""))) {
-          stop(paste("Error! \"", `site_type`, "\" cannot be assigned to `site_type`. Must be \"basin\", \"bucket\", \"fountain\", \"small_container\", \"storm_drain\", \"well\", \"other\", \"\".", sep = ""))
+        if (!(`site_type` %in% c("basin", "bucket", "fountain", "small_container", "storm_drain", "well", "other"))) {
+          stop(paste("Error! \"", `site_type`, "\" cannot be assigned to `site_type`. Must be \"basin\", \"bucket\", \"fountain\", \"small_container\", \"storm_drain\", \"well\", \"other\".", sep = ""))
         }
         if (!(is.character(`site_type`) && length(`site_type`) == 1)) {
           stop(paste("Error! Invalid data for `site_type`. Must be a string:", `site_type`))
@@ -337,8 +337,8 @@ BreedingSite <- R6::R6Class(
         self$`photos` <- ApiClient$new()$deserializeObj(this_object$`photos`, "array[SimplePhoto]", loadNamespace("MosquitoAlert"))
       }
       if (!is.null(this_object$`site_type`)) {
-        if (!is.null(this_object$`site_type`) && !(this_object$`site_type` %in% c("basin", "bucket", "fountain", "small_container", "storm_drain", "well", "other", ""))) {
-          stop(paste("Error! \"", this_object$`site_type`, "\" cannot be assigned to `site_type`. Must be \"basin\", \"bucket\", \"fountain\", \"small_container\", \"storm_drain\", \"well\", \"other\", \"\".", sep = ""))
+        if (!is.null(this_object$`site_type`) && !(this_object$`site_type` %in% c("basin", "bucket", "fountain", "small_container", "storm_drain", "well", "other"))) {
+          stop(paste("Error! \"", this_object$`site_type`, "\" cannot be assigned to `site_type`. Must be \"basin\", \"bucket\", \"fountain\", \"small_container\", \"storm_drain\", \"well\", \"other\".", sep = ""))
         }
         self$`site_type` <- this_object$`site_type`
       }
@@ -388,8 +388,8 @@ BreedingSite <- R6::R6Class(
       self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
       self$`published` <- this_object$`published`
       self$`photos` <- ApiClient$new()$deserializeObj(this_object$`photos`, "array[SimplePhoto]", loadNamespace("MosquitoAlert"))
-      if (!is.null(this_object$`site_type`) && !(this_object$`site_type` %in% c("basin", "bucket", "fountain", "small_container", "storm_drain", "well", "other", ""))) {
-        stop(paste("Error! \"", this_object$`site_type`, "\" cannot be assigned to `site_type`. Must be \"basin\", \"bucket\", \"fountain\", \"small_container\", \"storm_drain\", \"well\", \"other\", \"\".", sep = ""))
+      if (!is.null(this_object$`site_type`) && !(this_object$`site_type` %in% c("basin", "bucket", "fountain", "small_container", "storm_drain", "well", "other"))) {
+        stop(paste("Error! \"", this_object$`site_type`, "\" cannot be assigned to `site_type`. Must be \"basin\", \"bucket\", \"fountain\", \"small_container\", \"storm_drain\", \"well\", \"other\".", sep = ""))
       }
       self$`site_type` <- this_object$`site_type`
       self$`has_water` <- this_object$`has_water`

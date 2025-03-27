@@ -27,6 +27,13 @@ test_that("timezone", {
   #expect_equal(model.instance$`timezone`, "EXPECTED_RESULT")
 })
 
+test_that("display_name", {
+  # tests for the property `display_name` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`display_name`, "EXPECTED_RESULT")
+})
+
 test_that("country_id", {
   # tests for the property `country_id` (integer)
 
@@ -35,7 +42,7 @@ test_that("country_id", {
 })
 
 test_that("adm_boundaries", {
-  # tests for the property `adm_boundaries` (AdmBoundaries)
+  # tests for the property `adm_boundaries` (array[AdmBoundary])
 
   # uncomment below to test the property
   #expect_equal(model.instance$`adm_boundaries`, "EXPECTED_RESULT")
