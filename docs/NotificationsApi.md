@@ -25,10 +25,10 @@ library(MosquitoAlert)
 var_meta_notification_request <- MetaNotificationRequest$new("user", CreateNotificationMessageRequest$new(LocalizedFieldRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-CN_example"), LocalizedFieldRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-CN_example")), c("user_uuids_example"), c("topic_codes_example")) # MetaNotificationRequest |  (Optional)
 
 api_instance <- mosquitoalert_api$new()
-# Configure API key authorization: cookieAuth
-api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure API key authorization: tokenAuth
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[cookieAuth](../README.md#cookieAuth), [tokenAuth](../README.md#tokenAuth), [jwtAuth](../README.md#jwtAuth)
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
 
 ### HTTP request headers
 
@@ -81,10 +81,10 @@ var_page <- 56 # integer | A page number within the paginated result set. (Optio
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 
 api_instance <- mosquitoalert_api$new()
-# Configure API key authorization: cookieAuth
-api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure API key authorization: tokenAuth
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[cookieAuth](../README.md#cookieAuth), [tokenAuth](../README.md#tokenAuth), [jwtAuth](../README.md#jwtAuth)
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
 
 ### HTTP request headers
 
@@ -195,10 +195,10 @@ var_id <- 56 # integer | A unique integer value identifying this notification.
 var_patched_notification_request <- PatchedNotificationRequest$new("is_read_example") # PatchedNotificationRequest |  (Optional)
 
 api_instance <- mosquitoalert_api$new()
-# Configure API key authorization: cookieAuth
-api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure API key authorization: tokenAuth
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[cookieAuth](../README.md#cookieAuth), [tokenAuth](../README.md#tokenAuth), [jwtAuth](../README.md#jwtAuth)
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
 
 ### HTTP request headers
 
@@ -249,10 +249,10 @@ library(MosquitoAlert)
 var_id <- 56 # integer | A unique integer value identifying this notification.
 
 api_instance <- mosquitoalert_api$new()
-# Configure API key authorization: cookieAuth
-api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure API key authorization: tokenAuth
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[cookieAuth](../README.md#cookieAuth), [tokenAuth](../README.md#tokenAuth), [jwtAuth](../README.md#jwtAuth)
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
 
 ### HTTP request headers
 
@@ -302,10 +302,10 @@ var_id <- 56 # integer | A unique integer value identifying this notification.
 var_notification_request <- NotificationRequest$new("is_read_example") # NotificationRequest | 
 
 api_instance <- mosquitoalert_api$new()
-# Configure API key authorization: cookieAuth
-api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure API key authorization: tokenAuth
-# api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
@@ -327,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[cookieAuth](../README.md#cookieAuth), [tokenAuth](../README.md#tokenAuth), [jwtAuth](../README.md#jwtAuth)
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
 
 ### HTTP request headers
 
