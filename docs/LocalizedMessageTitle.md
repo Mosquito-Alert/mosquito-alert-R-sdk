@@ -1,4 +1,4 @@
-# MosquitoAlert::LocalizedField
+# MosquitoAlert::LocalizedMessageTitle
 
 A custom serializer field that supports localization for a dynamic field name. Allows calling with arguments such as 'title', 'message', max_length, help_text, etc.
 

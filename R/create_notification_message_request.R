@@ -7,8 +7,8 @@
 #' @title CreateNotificationMessageRequest
 #' @description CreateNotificationMessageRequest Class
 #' @format An \code{R6Class} generator object
-#' @field title Provide the message's title in all supported languages \link{LocalizedFieldRequest}
-#' @field body Provide the message's body in all supported languages \link{LocalizedFieldRequest}
+#' @field title Provide the message's title in all supported languages \link{LocalizedMessageTitleRequest}
+#' @field body Provide the message's body in all supported languages \link{LocalizedMessageBodyRequest}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -85,12 +85,12 @@ CreateNotificationMessageRequest <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`title`)) {
-        `title_object` <- LocalizedFieldRequest$new()
+        `title_object` <- LocalizedMessageTitleRequest$new()
         `title_object`$fromJSON(jsonlite::toJSON(this_object$`title`, auto_unbox = TRUE, digits = NA))
         self$`title` <- `title_object`
       }
       if (!is.null(this_object$`body`)) {
-        `body_object` <- LocalizedFieldRequest$new()
+        `body_object` <- LocalizedMessageBodyRequest$new()
         `body_object`$fromJSON(jsonlite::toJSON(this_object$`body`, auto_unbox = TRUE, digits = NA))
         self$`body` <- `body_object`
       }
@@ -115,8 +115,8 @@ CreateNotificationMessageRequest <- R6::R6Class(
     #' @return the instance of CreateNotificationMessageRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`title` <- LocalizedFieldRequest$new()$fromJSON(jsonlite::toJSON(this_object$`title`, auto_unbox = TRUE, digits = NA))
-      self$`body` <- LocalizedFieldRequest$new()$fromJSON(jsonlite::toJSON(this_object$`body`, auto_unbox = TRUE, digits = NA))
+      self$`title` <- LocalizedMessageTitleRequest$new()$fromJSON(jsonlite::toJSON(this_object$`title`, auto_unbox = TRUE, digits = NA))
+      self$`body` <- LocalizedMessageBodyRequest$new()$fromJSON(jsonlite::toJSON(this_object$`body`, auto_unbox = TRUE, digits = NA))
       self
     },
 

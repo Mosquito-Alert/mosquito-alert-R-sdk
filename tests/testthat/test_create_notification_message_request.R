@@ -6,7 +6,7 @@ context("Test CreateNotificationMessageRequest")
 model_instance <- CreateNotificationMessageRequest$new()
 
 test_that("title", {
-  # tests for the property `title` (LocalizedFieldRequest)
+  # tests for the property `title` (LocalizedMessageTitleRequest)
   # Provide the message&#39;s title in all supported languages
 
   # uncomment below to test the property
@@ -14,7 +14,7 @@ test_that("title", {
 })
 
 test_that("body", {
-  # tests for the property `body` (LocalizedFieldRequest)
+  # tests for the property `body` (LocalizedMessageBodyRequest)
   # Provide the message&#39;s body in all supported languages
 
   # uncomment below to test the property

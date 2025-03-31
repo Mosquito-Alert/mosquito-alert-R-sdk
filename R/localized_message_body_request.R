@@ -1,11 +1,11 @@
-#' Create a new LocalizedField
+#' Create a new LocalizedMessageBodyRequest
 #'
 #' @description
 #' A custom serializer field that supports localization for a dynamic field name. Allows calling with arguments such as 'title', 'message', max_length, help_text, etc.
 #'
 #' @docType class
-#' @title LocalizedField
-#' @description LocalizedField Class
+#' @title LocalizedMessageBodyRequest
+#' @description LocalizedMessageBodyRequest Class
 #' @format An \code{R6Class} generator object
 #' @field bg Български character [optional]
 #' @field bn বাংলা character [optional]
@@ -34,8 +34,8 @@
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-LocalizedField <- R6::R6Class(
-  "LocalizedField",
+LocalizedMessageBodyRequest <- R6::R6Class(
+  "LocalizedMessageBodyRequest",
   public = list(
     `bg` = NULL,
     `bn` = NULL,
@@ -63,7 +63,7 @@ LocalizedField <- R6::R6Class(
     `zh-CN` = NULL,
 
     #' @description
-    #' Initialize a new LocalizedField class.
+    #' Initialize a new LocalizedMessageBodyRequest class.
     #'
     #' @param en English
     #' @param bg Български
@@ -249,9 +249,9 @@ LocalizedField <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return LocalizedField as a base R list.
+    #' @return LocalizedMessageBodyRequest as a base R list.
     #' @examples
-    #' # convert array of LocalizedField (x) to a data frame
+    #' # convert array of LocalizedMessageBodyRequest (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -263,115 +263,115 @@ LocalizedField <- R6::R6Class(
     },
 
     #' @description
-    #' Convert LocalizedField to a base R type
+    #' Convert LocalizedMessageBodyRequest to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      LocalizedFieldObject <- list()
+      LocalizedMessageBodyRequestObject <- list()
       if (!is.null(self$`bg`)) {
-        LocalizedFieldObject[["bg"]] <-
+        LocalizedMessageBodyRequestObject[["bg"]] <-
           self$`bg`
       }
       if (!is.null(self$`bn`)) {
-        LocalizedFieldObject[["bn"]] <-
+        LocalizedMessageBodyRequestObject[["bn"]] <-
           self$`bn`
       }
       if (!is.null(self$`ca`)) {
-        LocalizedFieldObject[["ca"]] <-
+        LocalizedMessageBodyRequestObject[["ca"]] <-
           self$`ca`
       }
       if (!is.null(self$`de`)) {
-        LocalizedFieldObject[["de"]] <-
+        LocalizedMessageBodyRequestObject[["de"]] <-
           self$`de`
       }
       if (!is.null(self$`el`)) {
-        LocalizedFieldObject[["el"]] <-
+        LocalizedMessageBodyRequestObject[["el"]] <-
           self$`el`
       }
       if (!is.null(self$`en`)) {
-        LocalizedFieldObject[["en"]] <-
+        LocalizedMessageBodyRequestObject[["en"]] <-
           self$`en`
       }
       if (!is.null(self$`es`)) {
-        LocalizedFieldObject[["es"]] <-
+        LocalizedMessageBodyRequestObject[["es"]] <-
           self$`es`
       }
       if (!is.null(self$`eu`)) {
-        LocalizedFieldObject[["eu"]] <-
+        LocalizedMessageBodyRequestObject[["eu"]] <-
           self$`eu`
       }
       if (!is.null(self$`fr`)) {
-        LocalizedFieldObject[["fr"]] <-
+        LocalizedMessageBodyRequestObject[["fr"]] <-
           self$`fr`
       }
       if (!is.null(self$`gl`)) {
-        LocalizedFieldObject[["gl"]] <-
+        LocalizedMessageBodyRequestObject[["gl"]] <-
           self$`gl`
       }
       if (!is.null(self$`hr`)) {
-        LocalizedFieldObject[["hr"]] <-
+        LocalizedMessageBodyRequestObject[["hr"]] <-
           self$`hr`
       }
       if (!is.null(self$`hu`)) {
-        LocalizedFieldObject[["hu"]] <-
+        LocalizedMessageBodyRequestObject[["hu"]] <-
           self$`hu`
       }
       if (!is.null(self$`it`)) {
-        LocalizedFieldObject[["it"]] <-
+        LocalizedMessageBodyRequestObject[["it"]] <-
           self$`it`
       }
       if (!is.null(self$`lb`)) {
-        LocalizedFieldObject[["lb"]] <-
+        LocalizedMessageBodyRequestObject[["lb"]] <-
           self$`lb`
       }
       if (!is.null(self$`mk`)) {
-        LocalizedFieldObject[["mk"]] <-
+        LocalizedMessageBodyRequestObject[["mk"]] <-
           self$`mk`
       }
       if (!is.null(self$`nl`)) {
-        LocalizedFieldObject[["nl"]] <-
+        LocalizedMessageBodyRequestObject[["nl"]] <-
           self$`nl`
       }
       if (!is.null(self$`pt`)) {
-        LocalizedFieldObject[["pt"]] <-
+        LocalizedMessageBodyRequestObject[["pt"]] <-
           self$`pt`
       }
       if (!is.null(self$`ro`)) {
-        LocalizedFieldObject[["ro"]] <-
+        LocalizedMessageBodyRequestObject[["ro"]] <-
           self$`ro`
       }
       if (!is.null(self$`sl`)) {
-        LocalizedFieldObject[["sl"]] <-
+        LocalizedMessageBodyRequestObject[["sl"]] <-
           self$`sl`
       }
       if (!is.null(self$`sq`)) {
-        LocalizedFieldObject[["sq"]] <-
+        LocalizedMessageBodyRequestObject[["sq"]] <-
           self$`sq`
       }
       if (!is.null(self$`sr`)) {
-        LocalizedFieldObject[["sr"]] <-
+        LocalizedMessageBodyRequestObject[["sr"]] <-
           self$`sr`
       }
       if (!is.null(self$`sv`)) {
-        LocalizedFieldObject[["sv"]] <-
+        LocalizedMessageBodyRequestObject[["sv"]] <-
           self$`sv`
       }
       if (!is.null(self$`tr`)) {
-        LocalizedFieldObject[["tr"]] <-
+        LocalizedMessageBodyRequestObject[["tr"]] <-
           self$`tr`
       }
       if (!is.null(self$`zh-CN`)) {
-        LocalizedFieldObject[["zh-CN"]] <-
+        LocalizedMessageBodyRequestObject[["zh-CN"]] <-
           self$`zh-CN`
       }
-      return(LocalizedFieldObject)
+      return(LocalizedMessageBodyRequestObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of LocalizedField
+    #' Deserialize JSON string into an instance of LocalizedMessageBodyRequest
     #'
     #' @param input_json the JSON input
-    #' @return the instance of LocalizedField
+    #' @return the instance of LocalizedMessageBodyRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`bg`)) {
@@ -453,7 +453,7 @@ LocalizedField <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return LocalizedField in JSON format
+    #' @return LocalizedMessageBodyRequest in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -461,10 +461,10 @@ LocalizedField <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of LocalizedField
+    #' Deserialize JSON string into an instance of LocalizedMessageBodyRequest
     #'
     #' @param input_json the JSON input
-    #' @return the instance of LocalizedField
+    #' @return the instance of LocalizedMessageBodyRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`bg` <- this_object$`bg`
@@ -495,7 +495,7 @@ LocalizedField <- R6::R6Class(
     },
 
     #' @description
-    #' Validate JSON input with respect to LocalizedField and throw an exception if invalid
+    #' Validate JSON input with respect to LocalizedMessageBodyRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -506,14 +506,14 @@ LocalizedField <- R6::R6Class(
           stop(paste("Error! Invalid data for `en`. Must be a string:", input_json$`en`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for LocalizedField: the required field `en` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for LocalizedMessageBodyRequest: the required field `en` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of LocalizedField
+    #' @return String representation of LocalizedMessageBodyRequest
     toString = function() {
       self$toJSONString()
     },
@@ -523,23 +523,23 @@ LocalizedField <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      if (nchar(self$`bg`) > 255) {
+      if (nchar(self$`bg`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`bn`) > 255) {
+      if (nchar(self$`bn`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`ca`) > 255) {
+      if (nchar(self$`ca`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`de`) > 255) {
+      if (nchar(self$`de`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`el`) > 255) {
+      if (nchar(self$`el`) < 1) {
         return(FALSE)
       }
 
@@ -548,79 +548,79 @@ LocalizedField <- R6::R6Class(
         return(FALSE)
       }
 
-      if (nchar(self$`en`) > 255) {
+      if (nchar(self$`en`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`es`) > 255) {
+      if (nchar(self$`es`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`eu`) > 255) {
+      if (nchar(self$`eu`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`fr`) > 255) {
+      if (nchar(self$`fr`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`gl`) > 255) {
+      if (nchar(self$`gl`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`hr`) > 255) {
+      if (nchar(self$`hr`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`hu`) > 255) {
+      if (nchar(self$`hu`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`it`) > 255) {
+      if (nchar(self$`it`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`lb`) > 255) {
+      if (nchar(self$`lb`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`mk`) > 255) {
+      if (nchar(self$`mk`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`nl`) > 255) {
+      if (nchar(self$`nl`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`pt`) > 255) {
+      if (nchar(self$`pt`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`ro`) > 255) {
+      if (nchar(self$`ro`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`sl`) > 255) {
+      if (nchar(self$`sl`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`sq`) > 255) {
+      if (nchar(self$`sq`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`sr`) > 255) {
+      if (nchar(self$`sr`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`sv`) > 255) {
+      if (nchar(self$`sv`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`tr`) > 255) {
+      if (nchar(self$`tr`) < 1) {
         return(FALSE)
       }
 
-      if (nchar(self$`zh-CN`) > 255) {
+      if (nchar(self$`zh-CN`) < 1) {
         return(FALSE)
       }
 
@@ -633,24 +633,24 @@ LocalizedField <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      if (nchar(self$`bg`) > 255) {
-        invalid_fields["bg"] <- "Invalid length for `bg`, must be smaller than or equal to 255."
+      if (nchar(self$`bg`) < 1) {
+        invalid_fields["bg"] <- "Invalid length for `bg`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`bn`) > 255) {
-        invalid_fields["bn"] <- "Invalid length for `bn`, must be smaller than or equal to 255."
+      if (nchar(self$`bn`) < 1) {
+        invalid_fields["bn"] <- "Invalid length for `bn`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`ca`) > 255) {
-        invalid_fields["ca"] <- "Invalid length for `ca`, must be smaller than or equal to 255."
+      if (nchar(self$`ca`) < 1) {
+        invalid_fields["ca"] <- "Invalid length for `ca`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`de`) > 255) {
-        invalid_fields["de"] <- "Invalid length for `de`, must be smaller than or equal to 255."
+      if (nchar(self$`de`) < 1) {
+        invalid_fields["de"] <- "Invalid length for `de`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`el`) > 255) {
-        invalid_fields["el"] <- "Invalid length for `el`, must be smaller than or equal to 255."
+      if (nchar(self$`el`) < 1) {
+        invalid_fields["el"] <- "Invalid length for `el`, must be bigger than or equal to 1."
       }
 
       # check if the required `en` is null
@@ -658,80 +658,80 @@ LocalizedField <- R6::R6Class(
         invalid_fields["en"] <- "Non-nullable required field `en` cannot be null."
       }
 
-      if (nchar(self$`en`) > 255) {
-        invalid_fields["en"] <- "Invalid length for `en`, must be smaller than or equal to 255."
+      if (nchar(self$`en`) < 1) {
+        invalid_fields["en"] <- "Invalid length for `en`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`es`) > 255) {
-        invalid_fields["es"] <- "Invalid length for `es`, must be smaller than or equal to 255."
+      if (nchar(self$`es`) < 1) {
+        invalid_fields["es"] <- "Invalid length for `es`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`eu`) > 255) {
-        invalid_fields["eu"] <- "Invalid length for `eu`, must be smaller than or equal to 255."
+      if (nchar(self$`eu`) < 1) {
+        invalid_fields["eu"] <- "Invalid length for `eu`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`fr`) > 255) {
-        invalid_fields["fr"] <- "Invalid length for `fr`, must be smaller than or equal to 255."
+      if (nchar(self$`fr`) < 1) {
+        invalid_fields["fr"] <- "Invalid length for `fr`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`gl`) > 255) {
-        invalid_fields["gl"] <- "Invalid length for `gl`, must be smaller than or equal to 255."
+      if (nchar(self$`gl`) < 1) {
+        invalid_fields["gl"] <- "Invalid length for `gl`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`hr`) > 255) {
-        invalid_fields["hr"] <- "Invalid length for `hr`, must be smaller than or equal to 255."
+      if (nchar(self$`hr`) < 1) {
+        invalid_fields["hr"] <- "Invalid length for `hr`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`hu`) > 255) {
-        invalid_fields["hu"] <- "Invalid length for `hu`, must be smaller than or equal to 255."
+      if (nchar(self$`hu`) < 1) {
+        invalid_fields["hu"] <- "Invalid length for `hu`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`it`) > 255) {
-        invalid_fields["it"] <- "Invalid length for `it`, must be smaller than or equal to 255."
+      if (nchar(self$`it`) < 1) {
+        invalid_fields["it"] <- "Invalid length for `it`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`lb`) > 255) {
-        invalid_fields["lb"] <- "Invalid length for `lb`, must be smaller than or equal to 255."
+      if (nchar(self$`lb`) < 1) {
+        invalid_fields["lb"] <- "Invalid length for `lb`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`mk`) > 255) {
-        invalid_fields["mk"] <- "Invalid length for `mk`, must be smaller than or equal to 255."
+      if (nchar(self$`mk`) < 1) {
+        invalid_fields["mk"] <- "Invalid length for `mk`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`nl`) > 255) {
-        invalid_fields["nl"] <- "Invalid length for `nl`, must be smaller than or equal to 255."
+      if (nchar(self$`nl`) < 1) {
+        invalid_fields["nl"] <- "Invalid length for `nl`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`pt`) > 255) {
-        invalid_fields["pt"] <- "Invalid length for `pt`, must be smaller than or equal to 255."
+      if (nchar(self$`pt`) < 1) {
+        invalid_fields["pt"] <- "Invalid length for `pt`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`ro`) > 255) {
-        invalid_fields["ro"] <- "Invalid length for `ro`, must be smaller than or equal to 255."
+      if (nchar(self$`ro`) < 1) {
+        invalid_fields["ro"] <- "Invalid length for `ro`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`sl`) > 255) {
-        invalid_fields["sl"] <- "Invalid length for `sl`, must be smaller than or equal to 255."
+      if (nchar(self$`sl`) < 1) {
+        invalid_fields["sl"] <- "Invalid length for `sl`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`sq`) > 255) {
-        invalid_fields["sq"] <- "Invalid length for `sq`, must be smaller than or equal to 255."
+      if (nchar(self$`sq`) < 1) {
+        invalid_fields["sq"] <- "Invalid length for `sq`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`sr`) > 255) {
-        invalid_fields["sr"] <- "Invalid length for `sr`, must be smaller than or equal to 255."
+      if (nchar(self$`sr`) < 1) {
+        invalid_fields["sr"] <- "Invalid length for `sr`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`sv`) > 255) {
-        invalid_fields["sv"] <- "Invalid length for `sv`, must be smaller than or equal to 255."
+      if (nchar(self$`sv`) < 1) {
+        invalid_fields["sv"] <- "Invalid length for `sv`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`tr`) > 255) {
-        invalid_fields["tr"] <- "Invalid length for `tr`, must be smaller than or equal to 255."
+      if (nchar(self$`tr`) < 1) {
+        invalid_fields["tr"] <- "Invalid length for `tr`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`zh-CN`) > 255) {
-        invalid_fields["zh-CN"] <- "Invalid length for `zh-CN`, must be smaller than or equal to 255."
+      if (nchar(self$`zh-CN`) < 1) {
+        invalid_fields["zh-CN"] <- "Invalid length for `zh-CN`, must be bigger than or equal to 1."
       }
 
       invalid_fields
@@ -748,13 +748,13 @@ LocalizedField <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# LocalizedField$unlock()
+# LocalizedMessageBodyRequest$unlock()
 #
 ## Below is an example to define the print function
-# LocalizedField$set("public", "print", function(...) {
+# LocalizedMessageBodyRequest$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# LocalizedField$lock()
+# LocalizedMessageBodyRequest$lock()
 

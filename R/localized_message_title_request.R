@@ -1,11 +1,11 @@
-#' Create a new LocalizedFieldRequest
+#' Create a new LocalizedMessageTitleRequest
 #'
 #' @description
 #' A custom serializer field that supports localization for a dynamic field name. Allows calling with arguments such as 'title', 'message', max_length, help_text, etc.
 #'
 #' @docType class
-#' @title LocalizedFieldRequest
-#' @description LocalizedFieldRequest Class
+#' @title LocalizedMessageTitleRequest
+#' @description LocalizedMessageTitleRequest Class
 #' @format An \code{R6Class} generator object
 #' @field bg Български character [optional]
 #' @field bn বাংলা character [optional]
@@ -34,8 +34,8 @@
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-LocalizedFieldRequest <- R6::R6Class(
-  "LocalizedFieldRequest",
+LocalizedMessageTitleRequest <- R6::R6Class(
+  "LocalizedMessageTitleRequest",
   public = list(
     `bg` = NULL,
     `bn` = NULL,
@@ -63,7 +63,7 @@ LocalizedFieldRequest <- R6::R6Class(
     `zh-CN` = NULL,
 
     #' @description
-    #' Initialize a new LocalizedFieldRequest class.
+    #' Initialize a new LocalizedMessageTitleRequest class.
     #'
     #' @param en English
     #' @param bg Български
@@ -249,9 +249,9 @@ LocalizedFieldRequest <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return LocalizedFieldRequest as a base R list.
+    #' @return LocalizedMessageTitleRequest as a base R list.
     #' @examples
-    #' # convert array of LocalizedFieldRequest (x) to a data frame
+    #' # convert array of LocalizedMessageTitleRequest (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -263,115 +263,115 @@ LocalizedFieldRequest <- R6::R6Class(
     },
 
     #' @description
-    #' Convert LocalizedFieldRequest to a base R type
+    #' Convert LocalizedMessageTitleRequest to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      LocalizedFieldRequestObject <- list()
+      LocalizedMessageTitleRequestObject <- list()
       if (!is.null(self$`bg`)) {
-        LocalizedFieldRequestObject[["bg"]] <-
+        LocalizedMessageTitleRequestObject[["bg"]] <-
           self$`bg`
       }
       if (!is.null(self$`bn`)) {
-        LocalizedFieldRequestObject[["bn"]] <-
+        LocalizedMessageTitleRequestObject[["bn"]] <-
           self$`bn`
       }
       if (!is.null(self$`ca`)) {
-        LocalizedFieldRequestObject[["ca"]] <-
+        LocalizedMessageTitleRequestObject[["ca"]] <-
           self$`ca`
       }
       if (!is.null(self$`de`)) {
-        LocalizedFieldRequestObject[["de"]] <-
+        LocalizedMessageTitleRequestObject[["de"]] <-
           self$`de`
       }
       if (!is.null(self$`el`)) {
-        LocalizedFieldRequestObject[["el"]] <-
+        LocalizedMessageTitleRequestObject[["el"]] <-
           self$`el`
       }
       if (!is.null(self$`en`)) {
-        LocalizedFieldRequestObject[["en"]] <-
+        LocalizedMessageTitleRequestObject[["en"]] <-
           self$`en`
       }
       if (!is.null(self$`es`)) {
-        LocalizedFieldRequestObject[["es"]] <-
+        LocalizedMessageTitleRequestObject[["es"]] <-
           self$`es`
       }
       if (!is.null(self$`eu`)) {
-        LocalizedFieldRequestObject[["eu"]] <-
+        LocalizedMessageTitleRequestObject[["eu"]] <-
           self$`eu`
       }
       if (!is.null(self$`fr`)) {
-        LocalizedFieldRequestObject[["fr"]] <-
+        LocalizedMessageTitleRequestObject[["fr"]] <-
           self$`fr`
       }
       if (!is.null(self$`gl`)) {
-        LocalizedFieldRequestObject[["gl"]] <-
+        LocalizedMessageTitleRequestObject[["gl"]] <-
           self$`gl`
       }
       if (!is.null(self$`hr`)) {
-        LocalizedFieldRequestObject[["hr"]] <-
+        LocalizedMessageTitleRequestObject[["hr"]] <-
           self$`hr`
       }
       if (!is.null(self$`hu`)) {
-        LocalizedFieldRequestObject[["hu"]] <-
+        LocalizedMessageTitleRequestObject[["hu"]] <-
           self$`hu`
       }
       if (!is.null(self$`it`)) {
-        LocalizedFieldRequestObject[["it"]] <-
+        LocalizedMessageTitleRequestObject[["it"]] <-
           self$`it`
       }
       if (!is.null(self$`lb`)) {
-        LocalizedFieldRequestObject[["lb"]] <-
+        LocalizedMessageTitleRequestObject[["lb"]] <-
           self$`lb`
       }
       if (!is.null(self$`mk`)) {
-        LocalizedFieldRequestObject[["mk"]] <-
+        LocalizedMessageTitleRequestObject[["mk"]] <-
           self$`mk`
       }
       if (!is.null(self$`nl`)) {
-        LocalizedFieldRequestObject[["nl"]] <-
+        LocalizedMessageTitleRequestObject[["nl"]] <-
           self$`nl`
       }
       if (!is.null(self$`pt`)) {
-        LocalizedFieldRequestObject[["pt"]] <-
+        LocalizedMessageTitleRequestObject[["pt"]] <-
           self$`pt`
       }
       if (!is.null(self$`ro`)) {
-        LocalizedFieldRequestObject[["ro"]] <-
+        LocalizedMessageTitleRequestObject[["ro"]] <-
           self$`ro`
       }
       if (!is.null(self$`sl`)) {
-        LocalizedFieldRequestObject[["sl"]] <-
+        LocalizedMessageTitleRequestObject[["sl"]] <-
           self$`sl`
       }
       if (!is.null(self$`sq`)) {
-        LocalizedFieldRequestObject[["sq"]] <-
+        LocalizedMessageTitleRequestObject[["sq"]] <-
           self$`sq`
       }
       if (!is.null(self$`sr`)) {
-        LocalizedFieldRequestObject[["sr"]] <-
+        LocalizedMessageTitleRequestObject[["sr"]] <-
           self$`sr`
       }
       if (!is.null(self$`sv`)) {
-        LocalizedFieldRequestObject[["sv"]] <-
+        LocalizedMessageTitleRequestObject[["sv"]] <-
           self$`sv`
       }
       if (!is.null(self$`tr`)) {
-        LocalizedFieldRequestObject[["tr"]] <-
+        LocalizedMessageTitleRequestObject[["tr"]] <-
           self$`tr`
       }
       if (!is.null(self$`zh-CN`)) {
-        LocalizedFieldRequestObject[["zh-CN"]] <-
+        LocalizedMessageTitleRequestObject[["zh-CN"]] <-
           self$`zh-CN`
       }
-      return(LocalizedFieldRequestObject)
+      return(LocalizedMessageTitleRequestObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of LocalizedFieldRequest
+    #' Deserialize JSON string into an instance of LocalizedMessageTitleRequest
     #'
     #' @param input_json the JSON input
-    #' @return the instance of LocalizedFieldRequest
+    #' @return the instance of LocalizedMessageTitleRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`bg`)) {
@@ -453,7 +453,7 @@ LocalizedFieldRequest <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return LocalizedFieldRequest in JSON format
+    #' @return LocalizedMessageTitleRequest in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -461,10 +461,10 @@ LocalizedFieldRequest <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of LocalizedFieldRequest
+    #' Deserialize JSON string into an instance of LocalizedMessageTitleRequest
     #'
     #' @param input_json the JSON input
-    #' @return the instance of LocalizedFieldRequest
+    #' @return the instance of LocalizedMessageTitleRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`bg` <- this_object$`bg`
@@ -495,7 +495,7 @@ LocalizedFieldRequest <- R6::R6Class(
     },
 
     #' @description
-    #' Validate JSON input with respect to LocalizedFieldRequest and throw an exception if invalid
+    #' Validate JSON input with respect to LocalizedMessageTitleRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -506,14 +506,14 @@ LocalizedFieldRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `en`. Must be a string:", input_json$`en`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for LocalizedFieldRequest: the required field `en` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for LocalizedMessageTitleRequest: the required field `en` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of LocalizedFieldRequest
+    #' @return String representation of LocalizedMessageTitleRequest
     toString = function() {
       self$toJSONString()
     },
@@ -892,13 +892,13 @@ LocalizedFieldRequest <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# LocalizedFieldRequest$unlock()
+# LocalizedMessageTitleRequest$unlock()
 #
 ## Below is an example to define the print function
-# LocalizedFieldRequest$set("public", "print", function(...) {
+# LocalizedMessageTitleRequest$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# LocalizedFieldRequest$lock()
+# LocalizedMessageTitleRequest$lock()
 

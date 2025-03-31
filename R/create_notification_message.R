@@ -7,8 +7,8 @@
 #' @title CreateNotificationMessage
 #' @description CreateNotificationMessage Class
 #' @format An \code{R6Class} generator object
-#' @field title Provide the message's title in all supported languages \link{LocalizedField}
-#' @field body Provide the message's body in all supported languages \link{LocalizedField}
+#' @field title Provide the message's title in all supported languages \link{LocalizedMessageTitle}
+#' @field body Provide the message's body in all supported languages \link{LocalizedMessageBody}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -85,12 +85,12 @@ CreateNotificationMessage <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`title`)) {
-        `title_object` <- LocalizedField$new()
+        `title_object` <- LocalizedMessageTitle$new()
         `title_object`$fromJSON(jsonlite::toJSON(this_object$`title`, auto_unbox = TRUE, digits = NA))
         self$`title` <- `title_object`
       }
       if (!is.null(this_object$`body`)) {
-        `body_object` <- LocalizedField$new()
+        `body_object` <- LocalizedMessageBody$new()
         `body_object`$fromJSON(jsonlite::toJSON(this_object$`body`, auto_unbox = TRUE, digits = NA))
         self$`body` <- `body_object`
       }
@@ -115,8 +115,8 @@ CreateNotificationMessage <- R6::R6Class(
     #' @return the instance of CreateNotificationMessage
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`title` <- LocalizedField$new()$fromJSON(jsonlite::toJSON(this_object$`title`, auto_unbox = TRUE, digits = NA))
-      self$`body` <- LocalizedField$new()$fromJSON(jsonlite::toJSON(this_object$`body`, auto_unbox = TRUE, digits = NA))
+      self$`title` <- LocalizedMessageTitle$new()$fromJSON(jsonlite::toJSON(this_object$`title`, auto_unbox = TRUE, digits = NA))
+      self$`body` <- LocalizedMessageBody$new()$fromJSON(jsonlite::toJSON(this_object$`body`, auto_unbox = TRUE, digits = NA))
       self
     },
 
