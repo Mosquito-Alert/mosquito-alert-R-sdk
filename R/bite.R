@@ -21,13 +21,7 @@
 #' @field published  character
 #' @field event_environment The environment where the event took place. character [optional]
 #' @field event_moment The moment of the day when the event took place. character [optional]
-#' @field bite_count Total number of bites reported. integer
-#' @field head_bite_count Number of bites reported in the head. integer [optional]
-#' @field left_arm_bite_count Number of bites reported in the left arm. integer [optional]
-#' @field right_arm_bite_count Number of bites reported in the right arm. integer [optional]
-#' @field chest_bite_count Number of bites reported in the chest. integer [optional]
-#' @field left_leg_bite_count Number of bites reported in the left leg. integer [optional]
-#' @field right_leg_bite_count Number of bites reported in the right leg. integer [optional]
+#' @field counts  \link{BiteCounts}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -48,13 +42,7 @@ Bite <- R6::R6Class(
     `published` = NULL,
     `event_environment` = NULL,
     `event_moment` = NULL,
-    `bite_count` = NULL,
-    `head_bite_count` = NULL,
-    `left_arm_bite_count` = NULL,
-    `right_arm_bite_count` = NULL,
-    `chest_bite_count` = NULL,
-    `left_leg_bite_count` = NULL,
-    `right_leg_bite_count` = NULL,
+    `counts` = NULL,
 
     #' @description
     #' Initialize a new Bite class.
@@ -69,19 +57,13 @@ Bite <- R6::R6Class(
     #' @param updated_at Date and time when the report was last modified
     #' @param location location
     #' @param published published
-    #' @param bite_count Total number of bites reported.
+    #' @param counts counts
     #' @param note Note user attached to report.
     #' @param tags tags
     #' @param event_environment The environment where the event took place.
     #' @param event_moment The moment of the day when the event took place.
-    #' @param head_bite_count Number of bites reported in the head.. Default to 0.
-    #' @param left_arm_bite_count Number of bites reported in the left arm.. Default to 0.
-    #' @param right_arm_bite_count Number of bites reported in the right arm.. Default to 0.
-    #' @param chest_bite_count Number of bites reported in the chest.. Default to 0.
-    #' @param left_leg_bite_count Number of bites reported in the left leg.. Default to 0.
-    #' @param right_leg_bite_count Number of bites reported in the right leg.. Default to 0.
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `sent_at`, `received_at`, `updated_at`, `location`, `published`, `bite_count`, `note` = NULL, `tags` = NULL, `event_environment` = NULL, `event_moment` = NULL, `head_bite_count` = 0, `left_arm_bite_count` = 0, `right_arm_bite_count` = 0, `chest_bite_count` = 0, `left_leg_bite_count` = 0, `right_leg_bite_count` = 0, ...) {
+    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `sent_at`, `received_at`, `updated_at`, `location`, `published`, `counts`, `note` = NULL, `tags` = NULL, `event_environment` = NULL, `event_moment` = NULL, ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
@@ -140,11 +122,9 @@ Bite <- R6::R6Class(
         }
         self$`published` <- `published`
       }
-      if (!missing(`bite_count`)) {
-        if (!(is.numeric(`bite_count`) && length(`bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `bite_count`. Must be an integer:", `bite_count`))
-        }
-        self$`bite_count` <- `bite_count`
+      if (!missing(`counts`)) {
+        stopifnot(R6::is.R6(`counts`))
+        self$`counts` <- `counts`
       }
       if (!is.null(`note`)) {
         if (!(is.character(`note`) && length(`note`) == 1)) {
@@ -174,42 +154,6 @@ Bite <- R6::R6Class(
           stop(paste("Error! Invalid data for `event_moment`. Must be a string:", `event_moment`))
         }
         self$`event_moment` <- `event_moment`
-      }
-      if (!is.null(`head_bite_count`)) {
-        if (!(is.numeric(`head_bite_count`) && length(`head_bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `head_bite_count`. Must be an integer:", `head_bite_count`))
-        }
-        self$`head_bite_count` <- `head_bite_count`
-      }
-      if (!is.null(`left_arm_bite_count`)) {
-        if (!(is.numeric(`left_arm_bite_count`) && length(`left_arm_bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `left_arm_bite_count`. Must be an integer:", `left_arm_bite_count`))
-        }
-        self$`left_arm_bite_count` <- `left_arm_bite_count`
-      }
-      if (!is.null(`right_arm_bite_count`)) {
-        if (!(is.numeric(`right_arm_bite_count`) && length(`right_arm_bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `right_arm_bite_count`. Must be an integer:", `right_arm_bite_count`))
-        }
-        self$`right_arm_bite_count` <- `right_arm_bite_count`
-      }
-      if (!is.null(`chest_bite_count`)) {
-        if (!(is.numeric(`chest_bite_count`) && length(`chest_bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `chest_bite_count`. Must be an integer:", `chest_bite_count`))
-        }
-        self$`chest_bite_count` <- `chest_bite_count`
-      }
-      if (!is.null(`left_leg_bite_count`)) {
-        if (!(is.numeric(`left_leg_bite_count`) && length(`left_leg_bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `left_leg_bite_count`. Must be an integer:", `left_leg_bite_count`))
-        }
-        self$`left_leg_bite_count` <- `left_leg_bite_count`
-      }
-      if (!is.null(`right_leg_bite_count`)) {
-        if (!(is.numeric(`right_leg_bite_count`) && length(`right_leg_bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `right_leg_bite_count`. Must be an integer:", `right_leg_bite_count`))
-        }
-        self$`right_leg_bite_count` <- `right_leg_bite_count`
       }
     },
 
@@ -300,33 +244,9 @@ Bite <- R6::R6Class(
         BiteObject[["event_moment"]] <-
           self$`event_moment`
       }
-      if (!is.null(self$`bite_count`)) {
-        BiteObject[["bite_count"]] <-
-          self$`bite_count`
-      }
-      if (!is.null(self$`head_bite_count`)) {
-        BiteObject[["head_bite_count"]] <-
-          self$`head_bite_count`
-      }
-      if (!is.null(self$`left_arm_bite_count`)) {
-        BiteObject[["left_arm_bite_count"]] <-
-          self$`left_arm_bite_count`
-      }
-      if (!is.null(self$`right_arm_bite_count`)) {
-        BiteObject[["right_arm_bite_count"]] <-
-          self$`right_arm_bite_count`
-      }
-      if (!is.null(self$`chest_bite_count`)) {
-        BiteObject[["chest_bite_count"]] <-
-          self$`chest_bite_count`
-      }
-      if (!is.null(self$`left_leg_bite_count`)) {
-        BiteObject[["left_leg_bite_count"]] <-
-          self$`left_leg_bite_count`
-      }
-      if (!is.null(self$`right_leg_bite_count`)) {
-        BiteObject[["right_leg_bite_count"]] <-
-          self$`right_leg_bite_count`
+      if (!is.null(self$`counts`)) {
+        BiteObject[["counts"]] <-
+          self$`counts`$toSimpleType()
       }
       return(BiteObject)
     },
@@ -388,26 +308,10 @@ Bite <- R6::R6Class(
         }
         self$`event_moment` <- this_object$`event_moment`
       }
-      if (!is.null(this_object$`bite_count`)) {
-        self$`bite_count` <- this_object$`bite_count`
-      }
-      if (!is.null(this_object$`head_bite_count`)) {
-        self$`head_bite_count` <- this_object$`head_bite_count`
-      }
-      if (!is.null(this_object$`left_arm_bite_count`)) {
-        self$`left_arm_bite_count` <- this_object$`left_arm_bite_count`
-      }
-      if (!is.null(this_object$`right_arm_bite_count`)) {
-        self$`right_arm_bite_count` <- this_object$`right_arm_bite_count`
-      }
-      if (!is.null(this_object$`chest_bite_count`)) {
-        self$`chest_bite_count` <- this_object$`chest_bite_count`
-      }
-      if (!is.null(this_object$`left_leg_bite_count`)) {
-        self$`left_leg_bite_count` <- this_object$`left_leg_bite_count`
-      }
-      if (!is.null(this_object$`right_leg_bite_count`)) {
-        self$`right_leg_bite_count` <- this_object$`right_leg_bite_count`
+      if (!is.null(this_object$`counts`)) {
+        `counts_object` <- BiteCounts$new()
+        `counts_object`$fromJSON(jsonlite::toJSON(this_object$`counts`, auto_unbox = TRUE, digits = NA))
+        self$`counts` <- `counts_object`
       }
       self
     },
@@ -450,13 +354,7 @@ Bite <- R6::R6Class(
         stop(paste("Error! \"", this_object$`event_moment`, "\" cannot be assigned to `event_moment`. Must be \"now\", \"last_morning\", \"last_midday\", \"last_afternoon\", \"last_night\", \"\".", sep = ""))
       }
       self$`event_moment` <- this_object$`event_moment`
-      self$`bite_count` <- this_object$`bite_count`
-      self$`head_bite_count` <- this_object$`head_bite_count`
-      self$`left_arm_bite_count` <- this_object$`left_arm_bite_count`
-      self$`right_arm_bite_count` <- this_object$`right_arm_bite_count`
-      self$`chest_bite_count` <- this_object$`chest_bite_count`
-      self$`left_leg_bite_count` <- this_object$`left_leg_bite_count`
-      self$`right_leg_bite_count` <- this_object$`right_leg_bite_count`
+      self$`counts` <- BiteCounts$new()$fromJSON(jsonlite::toJSON(this_object$`counts`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -544,13 +442,11 @@ Bite <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Bite: the required field `published` is missing."))
       }
-      # check the required field `bite_count`
-      if (!is.null(input_json$`bite_count`)) {
-        if (!(is.numeric(input_json$`bite_count`) && length(input_json$`bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `bite_count`. Must be an integer:", input_json$`bite_count`))
-        }
+      # check the required field `counts`
+      if (!is.null(input_json$`counts`)) {
+        stopifnot(R6::is.R6(input_json$`counts`))
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for Bite: the required field `bite_count` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for Bite: the required field `counts` is missing."))
       }
     },
 
@@ -617,8 +513,8 @@ Bite <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `bite_count` is null
-      if (is.null(self$`bite_count`)) {
+      # check if the required `counts` is null
+      if (is.null(self$`counts`)) {
         return(FALSE)
       }
 
@@ -681,9 +577,9 @@ Bite <- R6::R6Class(
         invalid_fields["published"] <- "Non-nullable required field `published` cannot be null."
       }
 
-      # check if the required `bite_count` is null
-      if (is.null(self$`bite_count`)) {
-        invalid_fields["bite_count"] <- "Non-nullable required field `bite_count` cannot be null."
+      # check if the required `counts` is null
+      if (is.null(self$`counts`)) {
+        invalid_fields["counts"] <- "Non-nullable required field `counts` cannot be null."
       }
 
       invalid_fields

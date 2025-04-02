@@ -14,12 +14,7 @@
 #' @field tags  list(character) [optional]
 #' @field event_environment The environment where the event took place. character [optional]
 #' @field event_moment The moment of the day when the event took place. character [optional]
-#' @field head_bite_count Number of bites reported in the head. integer [optional]
-#' @field left_arm_bite_count Number of bites reported in the left arm. integer [optional]
-#' @field right_arm_bite_count Number of bites reported in the right arm. integer [optional]
-#' @field chest_bite_count Number of bites reported in the chest. integer [optional]
-#' @field left_leg_bite_count Number of bites reported in the left leg. integer [optional]
-#' @field right_leg_bite_count Number of bites reported in the right leg. integer [optional]
+#' @field counts  \link{BiteCountsRequest}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -33,12 +28,7 @@ BiteRequest <- R6::R6Class(
     `tags` = NULL,
     `event_environment` = NULL,
     `event_moment` = NULL,
-    `head_bite_count` = NULL,
-    `left_arm_bite_count` = NULL,
-    `right_arm_bite_count` = NULL,
-    `chest_bite_count` = NULL,
-    `left_leg_bite_count` = NULL,
-    `right_leg_bite_count` = NULL,
+    `counts` = NULL,
 
     #' @description
     #' Initialize a new BiteRequest class.
@@ -46,18 +36,13 @@ BiteRequest <- R6::R6Class(
     #' @param created_at created_at
     #' @param sent_at sent_at
     #' @param location location
+    #' @param counts counts
     #' @param note Note user attached to report.
     #' @param tags tags
     #' @param event_environment The environment where the event took place.
     #' @param event_moment The moment of the day when the event took place.
-    #' @param head_bite_count Number of bites reported in the head.. Default to 0.
-    #' @param left_arm_bite_count Number of bites reported in the left arm.. Default to 0.
-    #' @param right_arm_bite_count Number of bites reported in the right arm.. Default to 0.
-    #' @param chest_bite_count Number of bites reported in the chest.. Default to 0.
-    #' @param left_leg_bite_count Number of bites reported in the left leg.. Default to 0.
-    #' @param right_leg_bite_count Number of bites reported in the right leg.. Default to 0.
     #' @param ... Other optional arguments.
-    initialize = function(`created_at`, `sent_at`, `location`, `note` = NULL, `tags` = NULL, `event_environment` = NULL, `event_moment` = NULL, `head_bite_count` = 0, `left_arm_bite_count` = 0, `right_arm_bite_count` = 0, `chest_bite_count` = 0, `left_leg_bite_count` = 0, `right_leg_bite_count` = 0, ...) {
+    initialize = function(`created_at`, `sent_at`, `location`, `counts`, `note` = NULL, `tags` = NULL, `event_environment` = NULL, `event_moment` = NULL, ...) {
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
           stop(paste("Error! Invalid data for `created_at`. Must be a string:", `created_at`))
@@ -73,6 +58,10 @@ BiteRequest <- R6::R6Class(
       if (!missing(`location`)) {
         stopifnot(R6::is.R6(`location`))
         self$`location` <- `location`
+      }
+      if (!missing(`counts`)) {
+        stopifnot(R6::is.R6(`counts`))
+        self$`counts` <- `counts`
       }
       if (!is.null(`note`)) {
         if (!(is.character(`note`) && length(`note`) == 1)) {
@@ -102,42 +91,6 @@ BiteRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `event_moment`. Must be a string:", `event_moment`))
         }
         self$`event_moment` <- `event_moment`
-      }
-      if (!is.null(`head_bite_count`)) {
-        if (!(is.numeric(`head_bite_count`) && length(`head_bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `head_bite_count`. Must be an integer:", `head_bite_count`))
-        }
-        self$`head_bite_count` <- `head_bite_count`
-      }
-      if (!is.null(`left_arm_bite_count`)) {
-        if (!(is.numeric(`left_arm_bite_count`) && length(`left_arm_bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `left_arm_bite_count`. Must be an integer:", `left_arm_bite_count`))
-        }
-        self$`left_arm_bite_count` <- `left_arm_bite_count`
-      }
-      if (!is.null(`right_arm_bite_count`)) {
-        if (!(is.numeric(`right_arm_bite_count`) && length(`right_arm_bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `right_arm_bite_count`. Must be an integer:", `right_arm_bite_count`))
-        }
-        self$`right_arm_bite_count` <- `right_arm_bite_count`
-      }
-      if (!is.null(`chest_bite_count`)) {
-        if (!(is.numeric(`chest_bite_count`) && length(`chest_bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `chest_bite_count`. Must be an integer:", `chest_bite_count`))
-        }
-        self$`chest_bite_count` <- `chest_bite_count`
-      }
-      if (!is.null(`left_leg_bite_count`)) {
-        if (!(is.numeric(`left_leg_bite_count`) && length(`left_leg_bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `left_leg_bite_count`. Must be an integer:", `left_leg_bite_count`))
-        }
-        self$`left_leg_bite_count` <- `left_leg_bite_count`
-      }
-      if (!is.null(`right_leg_bite_count`)) {
-        if (!(is.numeric(`right_leg_bite_count`) && length(`right_leg_bite_count`) == 1)) {
-          stop(paste("Error! Invalid data for `right_leg_bite_count`. Must be an integer:", `right_leg_bite_count`))
-        }
-        self$`right_leg_bite_count` <- `right_leg_bite_count`
       }
     },
 
@@ -200,29 +153,9 @@ BiteRequest <- R6::R6Class(
         BiteRequestObject[["event_moment"]] <-
           self$`event_moment`
       }
-      if (!is.null(self$`head_bite_count`)) {
-        BiteRequestObject[["head_bite_count"]] <-
-          self$`head_bite_count`
-      }
-      if (!is.null(self$`left_arm_bite_count`)) {
-        BiteRequestObject[["left_arm_bite_count"]] <-
-          self$`left_arm_bite_count`
-      }
-      if (!is.null(self$`right_arm_bite_count`)) {
-        BiteRequestObject[["right_arm_bite_count"]] <-
-          self$`right_arm_bite_count`
-      }
-      if (!is.null(self$`chest_bite_count`)) {
-        BiteRequestObject[["chest_bite_count"]] <-
-          self$`chest_bite_count`
-      }
-      if (!is.null(self$`left_leg_bite_count`)) {
-        BiteRequestObject[["left_leg_bite_count"]] <-
-          self$`left_leg_bite_count`
-      }
-      if (!is.null(self$`right_leg_bite_count`)) {
-        BiteRequestObject[["right_leg_bite_count"]] <-
-          self$`right_leg_bite_count`
+      if (!is.null(self$`counts`)) {
+        BiteRequestObject[["counts"]] <-
+          self$`counts`$toSimpleType()
       }
       return(BiteRequestObject)
     },
@@ -263,23 +196,10 @@ BiteRequest <- R6::R6Class(
         }
         self$`event_moment` <- this_object$`event_moment`
       }
-      if (!is.null(this_object$`head_bite_count`)) {
-        self$`head_bite_count` <- this_object$`head_bite_count`
-      }
-      if (!is.null(this_object$`left_arm_bite_count`)) {
-        self$`left_arm_bite_count` <- this_object$`left_arm_bite_count`
-      }
-      if (!is.null(this_object$`right_arm_bite_count`)) {
-        self$`right_arm_bite_count` <- this_object$`right_arm_bite_count`
-      }
-      if (!is.null(this_object$`chest_bite_count`)) {
-        self$`chest_bite_count` <- this_object$`chest_bite_count`
-      }
-      if (!is.null(this_object$`left_leg_bite_count`)) {
-        self$`left_leg_bite_count` <- this_object$`left_leg_bite_count`
-      }
-      if (!is.null(this_object$`right_leg_bite_count`)) {
-        self$`right_leg_bite_count` <- this_object$`right_leg_bite_count`
+      if (!is.null(this_object$`counts`)) {
+        `counts_object` <- BiteCountsRequest$new()
+        `counts_object`$fromJSON(jsonlite::toJSON(this_object$`counts`, auto_unbox = TRUE, digits = NA))
+        self$`counts` <- `counts_object`
       }
       self
     },
@@ -315,12 +235,7 @@ BiteRequest <- R6::R6Class(
         stop(paste("Error! \"", this_object$`event_moment`, "\" cannot be assigned to `event_moment`. Must be \"now\", \"last_morning\", \"last_midday\", \"last_afternoon\", \"last_night\", \"\".", sep = ""))
       }
       self$`event_moment` <- this_object$`event_moment`
-      self$`head_bite_count` <- this_object$`head_bite_count`
-      self$`left_arm_bite_count` <- this_object$`left_arm_bite_count`
-      self$`right_arm_bite_count` <- this_object$`right_arm_bite_count`
-      self$`chest_bite_count` <- this_object$`chest_bite_count`
-      self$`left_leg_bite_count` <- this_object$`left_leg_bite_count`
-      self$`right_leg_bite_count` <- this_object$`right_leg_bite_count`
+      self$`counts` <- BiteCountsRequest$new()$fromJSON(jsonlite::toJSON(this_object$`counts`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -352,6 +267,12 @@ BiteRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for BiteRequest: the required field `location` is missing."))
       }
+      # check the required field `counts`
+      if (!is.null(input_json$`counts`)) {
+        stopifnot(R6::is.R6(input_json$`counts`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for BiteRequest: the required field `counts` is missing."))
+      }
     },
 
     #' @description
@@ -382,6 +303,11 @@ BiteRequest <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `counts` is null
+      if (is.null(self$`counts`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -404,6 +330,11 @@ BiteRequest <- R6::R6Class(
       # check if the required `location` is null
       if (is.null(self$`location`)) {
         invalid_fields["location"] <- "Non-nullable required field `location` cannot be null."
+      }
+
+      # check if the required `counts` is null
+      if (is.null(self$`counts`)) {
+        invalid_fields["counts"] <- "Non-nullable required field `counts` cannot be null."
       }
 
       invalid_fields

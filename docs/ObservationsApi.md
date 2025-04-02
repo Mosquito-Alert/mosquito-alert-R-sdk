@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create**
-> Observation create(created_at, sent_at, location, photos, note = var.note, tags = var.tags, event_environment = var.event_environment, event_moment = var.event_moment, user_perceived_mosquito_specie = var.user_perceived_mosquito_specie, user_perceived_mosquito_thorax = var.user_perceived_mosquito_thorax, user_perceived_mosquito_abdomen = var.user_perceived_mosquito_abdomen, user_perceived_mosquito_legs = var.user_perceived_mosquito_legs)
+> Observation create(created_at, sent_at, location, photos, note = var.note, tags = var.tags, event_environment = var.event_environment, event_moment = var.event_moment, mosquito_appearance = var.mosquito_appearance)
 
 
 
@@ -29,10 +29,7 @@ var_note <- "note_example" # character | Note user attached to report. (Optional
 var_tags <- c("inner_example") # array[character] |  (Optional)
 var_event_environment <- "event_environment_example" # character | The environment where the event took place. (Optional)
 var_event_moment <- "event_moment_example" # character | The moment of the day when the event took place. (Optional)
-var_user_perceived_mosquito_specie <- "user_perceived_mosquito_specie_example" # character | The mosquito specie perceived by the user. (Optional)
-var_user_perceived_mosquito_thorax <- "user_perceived_mosquito_thorax_example" # character | The species of mosquito that the thorax resembles, according to the user. (Optional)
-var_user_perceived_mosquito_abdomen <- "user_perceived_mosquito_abdomen_example" # character | The species of mosquito that the abdomen resembles, according to the user. (Optional)
-var_user_perceived_mosquito_legs <- "user_perceived_mosquito_legs_example" # character | The species of mosquito that the leg resembles, according to the user. (Optional)
+var_mosquito_appearance <- MosquitoAppearanceRequest$new("albopictus", "albopictus", "albopictus", "albopictus") # MosquitoAppearanceRequest | User-provided description of the mosquito's appearance (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -42,8 +39,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, event_environment = var_event_environment, event_moment = var_event_moment, user_perceived_mosquito_specie = var_user_perceived_mosquito_specie, user_perceived_mosquito_thorax = var_user_perceived_mosquito_thorax, user_perceived_mosquito_abdomen = var_user_perceived_mosquito_abdomen, user_perceived_mosquito_legs = var_user_perceived_mosquito_legsdata_file = "result.txt")
-result <- api_instance$observations_api$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, event_environment = var_event_environment, event_moment = var_event_moment, user_perceived_mosquito_specie = var_user_perceived_mosquito_specie, user_perceived_mosquito_thorax = var_user_perceived_mosquito_thorax, user_perceived_mosquito_abdomen = var_user_perceived_mosquito_abdomen, user_perceived_mosquito_legs = var_user_perceived_mosquito_legs)
+# result <- api_instance$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, event_environment = var_event_environment, event_moment = var_event_moment, mosquito_appearance = var_mosquito_appearancedata_file = "result.txt")
+result <- api_instance$observations_api$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, event_environment = var_event_environment, event_moment = var_event_moment, mosquito_appearance = var_mosquito_appearance)
 dput(result)
 ```
 
@@ -59,10 +56,7 @@ Name | Type | Description  | Notes
  **tags** | list( **character** )|  | [optional] 
  **event_environment** | Enum [indoors, outdoors, vehicle, , null] | The environment where the event took place. | [optional] 
  **event_moment** | Enum [now, last_morning, last_midday, last_afternoon, last_night, , null] | The moment of the day when the event took place. | [optional] 
- **user_perceived_mosquito_specie** | Enum [albopictus, aegypti, japonicus, koreicus, culex, other, , null] | The mosquito specie perceived by the user. | [optional] 
- **user_perceived_mosquito_thorax** | Enum [albopictus, aegypti, japonicus, koreicus, culex, other, , null] | The species of mosquito that the thorax resembles, according to the user. | [optional] 
- **user_perceived_mosquito_abdomen** | Enum [albopictus, aegypti, japonicus, koreicus, culex, other, , null] | The species of mosquito that the abdomen resembles, according to the user. | [optional] 
- **user_perceived_mosquito_legs** | Enum [albopictus, aegypti, japonicus, koreicus, culex, other, , null] | The species of mosquito that the leg resembles, according to the user. | [optional] 
+ **mosquito_appearance** | [**MosquitoAppearanceRequest**](MosquitoAppearanceRequest.md)| User-provided description of the mosquito&#39;s appearance | [optional] 
 
 ### Return type
 

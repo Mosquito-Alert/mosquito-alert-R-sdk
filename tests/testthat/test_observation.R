@@ -115,34 +115,10 @@ test_that("event_moment", {
   #expect_equal(model.instance$`event_moment`, "EXPECTED_RESULT")
 })
 
-test_that("user_perceived_mosquito_specie", {
-  # tests for the property `user_perceived_mosquito_specie` (character)
-  # The mosquito specie perceived by the user.
+test_that("mosquito_appearance", {
+  # tests for the property `mosquito_appearance` (MosquitoAppearance)
+  # User-provided description of the mosquito&#39;s appearance
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`user_perceived_mosquito_specie`, "EXPECTED_RESULT")
-})
-
-test_that("user_perceived_mosquito_thorax", {
-  # tests for the property `user_perceived_mosquito_thorax` (character)
-  # The species of mosquito that the thorax resembles, according to the user.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`user_perceived_mosquito_thorax`, "EXPECTED_RESULT")
-})
-
-test_that("user_perceived_mosquito_abdomen", {
-  # tests for the property `user_perceived_mosquito_abdomen` (character)
-  # The species of mosquito that the abdomen resembles, according to the user.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`user_perceived_mosquito_abdomen`, "EXPECTED_RESULT")
-})
-
-test_that("user_perceived_mosquito_legs", {
-  # tests for the property `user_perceived_mosquito_legs` (character)
-  # The species of mosquito that the leg resembles, according to the user.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`user_perceived_mosquito_legs`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`mosquito_appearance`, "EXPECTED_RESULT")
 })

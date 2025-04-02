@@ -7,7 +7,7 @@
 #' @title UserNotificationCreateRequest
 #' @description UserNotificationCreateRequest Class
 #' @format An \code{R6Class} generator object
-#' @field receiver_type  character
+#' @field receiver_type  character [optional]
 #' @field message The message of the notification \link{CreateNotificationMessageRequest}
 #' @field user_uuids  list(character)
 #' @importFrom R6 R6Class
@@ -23,20 +23,11 @@ UserNotificationCreateRequest <- R6::R6Class(
     #' @description
     #' Initialize a new UserNotificationCreateRequest class.
     #'
-    #' @param receiver_type receiver_type
     #' @param message The message of the notification
     #' @param user_uuids user_uuids
+    #' @param receiver_type receiver_type. Default to "user".
     #' @param ... Other optional arguments.
-    initialize = function(`receiver_type`, `message`, `user_uuids`, ...) {
-      if (!missing(`receiver_type`)) {
-        if (!(`receiver_type` %in% c("user", "topic"))) {
-          stop(paste("Error! \"", `receiver_type`, "\" cannot be assigned to `receiver_type`. Must be \"user\", \"topic\".", sep = ""))
-        }
-        if (!(is.character(`receiver_type`) && length(`receiver_type`) == 1)) {
-          stop(paste("Error! Invalid data for `receiver_type`. Must be a string:", `receiver_type`))
-        }
-        self$`receiver_type` <- `receiver_type`
-      }
+    initialize = function(`message`, `user_uuids`, `receiver_type` = "user", ...) {
       if (!missing(`message`)) {
         stopifnot(R6::is.R6(`message`))
         self$`message` <- `message`
@@ -45,6 +36,15 @@ UserNotificationCreateRequest <- R6::R6Class(
         stopifnot(is.vector(`user_uuids`), length(`user_uuids`) != 0)
         sapply(`user_uuids`, function(x) stopifnot(is.character(x)))
         self$`user_uuids` <- `user_uuids`
+      }
+      if (!is.null(`receiver_type`)) {
+        if (!(`receiver_type` %in% c("user"))) {
+          stop(paste("Error! \"", `receiver_type`, "\" cannot be assigned to `receiver_type`. Must be \"user\".", sep = ""))
+        }
+        if (!(is.character(`receiver_type`) && length(`receiver_type`) == 1)) {
+          stop(paste("Error! Invalid data for `receiver_type`. Must be a string:", `receiver_type`))
+        }
+        self$`receiver_type` <- `receiver_type`
       }
     },
 
@@ -102,8 +102,8 @@ UserNotificationCreateRequest <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`receiver_type`)) {
-        if (!is.null(this_object$`receiver_type`) && !(this_object$`receiver_type` %in% c("user", "topic"))) {
-          stop(paste("Error! \"", this_object$`receiver_type`, "\" cannot be assigned to `receiver_type`. Must be \"user\", \"topic\".", sep = ""))
+        if (!is.null(this_object$`receiver_type`) && !(this_object$`receiver_type` %in% c("user"))) {
+          stop(paste("Error! \"", this_object$`receiver_type`, "\" cannot be assigned to `receiver_type`. Must be \"user\".", sep = ""))
         }
         self$`receiver_type` <- this_object$`receiver_type`
       }
@@ -136,8 +136,8 @@ UserNotificationCreateRequest <- R6::R6Class(
     #' @return the instance of UserNotificationCreateRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`receiver_type`) && !(this_object$`receiver_type` %in% c("user", "topic"))) {
-        stop(paste("Error! \"", this_object$`receiver_type`, "\" cannot be assigned to `receiver_type`. Must be \"user\", \"topic\".", sep = ""))
+      if (!is.null(this_object$`receiver_type`) && !(this_object$`receiver_type` %in% c("user"))) {
+        stop(paste("Error! \"", this_object$`receiver_type`, "\" cannot be assigned to `receiver_type`. Must be \"user\".", sep = ""))
       }
       self$`receiver_type` <- this_object$`receiver_type`
       self$`message` <- CreateNotificationMessageRequest$new()$fromJSON(jsonlite::toJSON(this_object$`message`, auto_unbox = TRUE, digits = NA))
@@ -151,14 +151,6 @@ UserNotificationCreateRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `receiver_type`
-      if (!is.null(input_json$`receiver_type`)) {
-        if (!(is.character(input_json$`receiver_type`) && length(input_json$`receiver_type`) == 1)) {
-          stop(paste("Error! Invalid data for `receiver_type`. Must be a string:", input_json$`receiver_type`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for UserNotificationCreateRequest: the required field `receiver_type` is missing."))
-      }
       # check the required field `message`
       if (!is.null(input_json$`message`)) {
         stopifnot(R6::is.R6(input_json$`message`))
@@ -187,11 +179,6 @@ UserNotificationCreateRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `receiver_type` is null
-      if (is.null(self$`receiver_type`)) {
-        return(FALSE)
-      }
-
       # check if the required `message` is null
       if (is.null(self$`message`)) {
         return(FALSE)
@@ -215,11 +202,6 @@ UserNotificationCreateRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `receiver_type` is null
-      if (is.null(self$`receiver_type`)) {
-        invalid_fields["receiver_type"] <- "Non-nullable required field `receiver_type` cannot be null."
-      }
-
       # check if the required `message` is null
       if (is.null(self$`message`)) {
         invalid_fields["message"] <- "Non-nullable required field `message` cannot be null."

@@ -22,10 +22,7 @@
 #' @field photos  list(\link{SimplePhoto})
 #' @field event_environment The environment where the event took place. character [optional]
 #' @field event_moment The moment of the day when the event took place. character [optional]
-#' @field user_perceived_mosquito_specie The mosquito specie perceived by the user. character [optional]
-#' @field user_perceived_mosquito_thorax The species of mosquito that the thorax resembles, according to the user. character [optional]
-#' @field user_perceived_mosquito_abdomen The species of mosquito that the abdomen resembles, according to the user. character [optional]
-#' @field user_perceived_mosquito_legs The species of mosquito that the leg resembles, according to the user. character [optional]
+#' @field mosquito_appearance User-provided description of the mosquito's appearance \link{MosquitoAppearance} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -47,10 +44,7 @@ Observation <- R6::R6Class(
     `photos` = NULL,
     `event_environment` = NULL,
     `event_moment` = NULL,
-    `user_perceived_mosquito_specie` = NULL,
-    `user_perceived_mosquito_thorax` = NULL,
-    `user_perceived_mosquito_abdomen` = NULL,
-    `user_perceived_mosquito_legs` = NULL,
+    `mosquito_appearance` = NULL,
 
     #' @description
     #' Initialize a new Observation class.
@@ -70,12 +64,9 @@ Observation <- R6::R6Class(
     #' @param tags tags
     #' @param event_environment The environment where the event took place.
     #' @param event_moment The moment of the day when the event took place.
-    #' @param user_perceived_mosquito_specie The mosquito specie perceived by the user.
-    #' @param user_perceived_mosquito_thorax The species of mosquito that the thorax resembles, according to the user.
-    #' @param user_perceived_mosquito_abdomen The species of mosquito that the abdomen resembles, according to the user.
-    #' @param user_perceived_mosquito_legs The species of mosquito that the leg resembles, according to the user.
+    #' @param mosquito_appearance User-provided description of the mosquito's appearance
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `sent_at`, `received_at`, `updated_at`, `location`, `published`, `photos`, `note` = NULL, `tags` = NULL, `event_environment` = NULL, `event_moment` = NULL, `user_perceived_mosquito_specie` = NULL, `user_perceived_mosquito_thorax` = NULL, `user_perceived_mosquito_abdomen` = NULL, `user_perceived_mosquito_legs` = NULL, ...) {
+    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `sent_at`, `received_at`, `updated_at`, `location`, `published`, `photos`, `note` = NULL, `tags` = NULL, `event_environment` = NULL, `event_moment` = NULL, `mosquito_appearance` = NULL, ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
@@ -168,41 +159,9 @@ Observation <- R6::R6Class(
         }
         self$`event_moment` <- `event_moment`
       }
-      if (!is.null(`user_perceived_mosquito_specie`)) {
-        if (!(`user_perceived_mosquito_specie` %in% c("albopictus", "aegypti", "japonicus", "koreicus", "culex", "other", ""))) {
-          stop(paste("Error! \"", `user_perceived_mosquito_specie`, "\" cannot be assigned to `user_perceived_mosquito_specie`. Must be \"albopictus\", \"aegypti\", \"japonicus\", \"koreicus\", \"culex\", \"other\", \"\".", sep = ""))
-        }
-        if (!(is.character(`user_perceived_mosquito_specie`) && length(`user_perceived_mosquito_specie`) == 1)) {
-          stop(paste("Error! Invalid data for `user_perceived_mosquito_specie`. Must be a string:", `user_perceived_mosquito_specie`))
-        }
-        self$`user_perceived_mosquito_specie` <- `user_perceived_mosquito_specie`
-      }
-      if (!is.null(`user_perceived_mosquito_thorax`)) {
-        if (!(`user_perceived_mosquito_thorax` %in% c("albopictus", "aegypti", "japonicus", "koreicus", "culex", "other", ""))) {
-          stop(paste("Error! \"", `user_perceived_mosquito_thorax`, "\" cannot be assigned to `user_perceived_mosquito_thorax`. Must be \"albopictus\", \"aegypti\", \"japonicus\", \"koreicus\", \"culex\", \"other\", \"\".", sep = ""))
-        }
-        if (!(is.character(`user_perceived_mosquito_thorax`) && length(`user_perceived_mosquito_thorax`) == 1)) {
-          stop(paste("Error! Invalid data for `user_perceived_mosquito_thorax`. Must be a string:", `user_perceived_mosquito_thorax`))
-        }
-        self$`user_perceived_mosquito_thorax` <- `user_perceived_mosquito_thorax`
-      }
-      if (!is.null(`user_perceived_mosquito_abdomen`)) {
-        if (!(`user_perceived_mosquito_abdomen` %in% c("albopictus", "aegypti", "japonicus", "koreicus", "culex", "other", ""))) {
-          stop(paste("Error! \"", `user_perceived_mosquito_abdomen`, "\" cannot be assigned to `user_perceived_mosquito_abdomen`. Must be \"albopictus\", \"aegypti\", \"japonicus\", \"koreicus\", \"culex\", \"other\", \"\".", sep = ""))
-        }
-        if (!(is.character(`user_perceived_mosquito_abdomen`) && length(`user_perceived_mosquito_abdomen`) == 1)) {
-          stop(paste("Error! Invalid data for `user_perceived_mosquito_abdomen`. Must be a string:", `user_perceived_mosquito_abdomen`))
-        }
-        self$`user_perceived_mosquito_abdomen` <- `user_perceived_mosquito_abdomen`
-      }
-      if (!is.null(`user_perceived_mosquito_legs`)) {
-        if (!(`user_perceived_mosquito_legs` %in% c("albopictus", "aegypti", "japonicus", "koreicus", "culex", "other", ""))) {
-          stop(paste("Error! \"", `user_perceived_mosquito_legs`, "\" cannot be assigned to `user_perceived_mosquito_legs`. Must be \"albopictus\", \"aegypti\", \"japonicus\", \"koreicus\", \"culex\", \"other\", \"\".", sep = ""))
-        }
-        if (!(is.character(`user_perceived_mosquito_legs`) && length(`user_perceived_mosquito_legs`) == 1)) {
-          stop(paste("Error! Invalid data for `user_perceived_mosquito_legs`. Must be a string:", `user_perceived_mosquito_legs`))
-        }
-        self$`user_perceived_mosquito_legs` <- `user_perceived_mosquito_legs`
+      if (!is.null(`mosquito_appearance`)) {
+        stopifnot(R6::is.R6(`mosquito_appearance`))
+        self$`mosquito_appearance` <- `mosquito_appearance`
       }
     },
 
@@ -297,21 +256,9 @@ Observation <- R6::R6Class(
         ObservationObject[["event_moment"]] <-
           self$`event_moment`
       }
-      if (!is.null(self$`user_perceived_mosquito_specie`)) {
-        ObservationObject[["user_perceived_mosquito_specie"]] <-
-          self$`user_perceived_mosquito_specie`
-      }
-      if (!is.null(self$`user_perceived_mosquito_thorax`)) {
-        ObservationObject[["user_perceived_mosquito_thorax"]] <-
-          self$`user_perceived_mosquito_thorax`
-      }
-      if (!is.null(self$`user_perceived_mosquito_abdomen`)) {
-        ObservationObject[["user_perceived_mosquito_abdomen"]] <-
-          self$`user_perceived_mosquito_abdomen`
-      }
-      if (!is.null(self$`user_perceived_mosquito_legs`)) {
-        ObservationObject[["user_perceived_mosquito_legs"]] <-
-          self$`user_perceived_mosquito_legs`
+      if (!is.null(self$`mosquito_appearance`)) {
+        ObservationObject[["mosquito_appearance"]] <-
+          self$`mosquito_appearance`$toSimpleType()
       }
       return(ObservationObject)
     },
@@ -376,29 +323,10 @@ Observation <- R6::R6Class(
         }
         self$`event_moment` <- this_object$`event_moment`
       }
-      if (!is.null(this_object$`user_perceived_mosquito_specie`)) {
-        if (!is.null(this_object$`user_perceived_mosquito_specie`) && !(this_object$`user_perceived_mosquito_specie` %in% c("albopictus", "aegypti", "japonicus", "koreicus", "culex", "other", ""))) {
-          stop(paste("Error! \"", this_object$`user_perceived_mosquito_specie`, "\" cannot be assigned to `user_perceived_mosquito_specie`. Must be \"albopictus\", \"aegypti\", \"japonicus\", \"koreicus\", \"culex\", \"other\", \"\".", sep = ""))
-        }
-        self$`user_perceived_mosquito_specie` <- this_object$`user_perceived_mosquito_specie`
-      }
-      if (!is.null(this_object$`user_perceived_mosquito_thorax`)) {
-        if (!is.null(this_object$`user_perceived_mosquito_thorax`) && !(this_object$`user_perceived_mosquito_thorax` %in% c("albopictus", "aegypti", "japonicus", "koreicus", "culex", "other", ""))) {
-          stop(paste("Error! \"", this_object$`user_perceived_mosquito_thorax`, "\" cannot be assigned to `user_perceived_mosquito_thorax`. Must be \"albopictus\", \"aegypti\", \"japonicus\", \"koreicus\", \"culex\", \"other\", \"\".", sep = ""))
-        }
-        self$`user_perceived_mosquito_thorax` <- this_object$`user_perceived_mosquito_thorax`
-      }
-      if (!is.null(this_object$`user_perceived_mosquito_abdomen`)) {
-        if (!is.null(this_object$`user_perceived_mosquito_abdomen`) && !(this_object$`user_perceived_mosquito_abdomen` %in% c("albopictus", "aegypti", "japonicus", "koreicus", "culex", "other", ""))) {
-          stop(paste("Error! \"", this_object$`user_perceived_mosquito_abdomen`, "\" cannot be assigned to `user_perceived_mosquito_abdomen`. Must be \"albopictus\", \"aegypti\", \"japonicus\", \"koreicus\", \"culex\", \"other\", \"\".", sep = ""))
-        }
-        self$`user_perceived_mosquito_abdomen` <- this_object$`user_perceived_mosquito_abdomen`
-      }
-      if (!is.null(this_object$`user_perceived_mosquito_legs`)) {
-        if (!is.null(this_object$`user_perceived_mosquito_legs`) && !(this_object$`user_perceived_mosquito_legs` %in% c("albopictus", "aegypti", "japonicus", "koreicus", "culex", "other", ""))) {
-          stop(paste("Error! \"", this_object$`user_perceived_mosquito_legs`, "\" cannot be assigned to `user_perceived_mosquito_legs`. Must be \"albopictus\", \"aegypti\", \"japonicus\", \"koreicus\", \"culex\", \"other\", \"\".", sep = ""))
-        }
-        self$`user_perceived_mosquito_legs` <- this_object$`user_perceived_mosquito_legs`
+      if (!is.null(this_object$`mosquito_appearance`)) {
+        `mosquito_appearance_object` <- MosquitoAppearance$new()
+        `mosquito_appearance_object`$fromJSON(jsonlite::toJSON(this_object$`mosquito_appearance`, auto_unbox = TRUE, digits = NA))
+        self$`mosquito_appearance` <- `mosquito_appearance_object`
       }
       self
     },
@@ -442,22 +370,7 @@ Observation <- R6::R6Class(
         stop(paste("Error! \"", this_object$`event_moment`, "\" cannot be assigned to `event_moment`. Must be \"now\", \"last_morning\", \"last_midday\", \"last_afternoon\", \"last_night\", \"\".", sep = ""))
       }
       self$`event_moment` <- this_object$`event_moment`
-      if (!is.null(this_object$`user_perceived_mosquito_specie`) && !(this_object$`user_perceived_mosquito_specie` %in% c("albopictus", "aegypti", "japonicus", "koreicus", "culex", "other", ""))) {
-        stop(paste("Error! \"", this_object$`user_perceived_mosquito_specie`, "\" cannot be assigned to `user_perceived_mosquito_specie`. Must be \"albopictus\", \"aegypti\", \"japonicus\", \"koreicus\", \"culex\", \"other\", \"\".", sep = ""))
-      }
-      self$`user_perceived_mosquito_specie` <- this_object$`user_perceived_mosquito_specie`
-      if (!is.null(this_object$`user_perceived_mosquito_thorax`) && !(this_object$`user_perceived_mosquito_thorax` %in% c("albopictus", "aegypti", "japonicus", "koreicus", "culex", "other", ""))) {
-        stop(paste("Error! \"", this_object$`user_perceived_mosquito_thorax`, "\" cannot be assigned to `user_perceived_mosquito_thorax`. Must be \"albopictus\", \"aegypti\", \"japonicus\", \"koreicus\", \"culex\", \"other\", \"\".", sep = ""))
-      }
-      self$`user_perceived_mosquito_thorax` <- this_object$`user_perceived_mosquito_thorax`
-      if (!is.null(this_object$`user_perceived_mosquito_abdomen`) && !(this_object$`user_perceived_mosquito_abdomen` %in% c("albopictus", "aegypti", "japonicus", "koreicus", "culex", "other", ""))) {
-        stop(paste("Error! \"", this_object$`user_perceived_mosquito_abdomen`, "\" cannot be assigned to `user_perceived_mosquito_abdomen`. Must be \"albopictus\", \"aegypti\", \"japonicus\", \"koreicus\", \"culex\", \"other\", \"\".", sep = ""))
-      }
-      self$`user_perceived_mosquito_abdomen` <- this_object$`user_perceived_mosquito_abdomen`
-      if (!is.null(this_object$`user_perceived_mosquito_legs`) && !(this_object$`user_perceived_mosquito_legs` %in% c("albopictus", "aegypti", "japonicus", "koreicus", "culex", "other", ""))) {
-        stop(paste("Error! \"", this_object$`user_perceived_mosquito_legs`, "\" cannot be assigned to `user_perceived_mosquito_legs`. Must be \"albopictus\", \"aegypti\", \"japonicus\", \"koreicus\", \"culex\", \"other\", \"\".", sep = ""))
-      }
-      self$`user_perceived_mosquito_legs` <- this_object$`user_perceived_mosquito_legs`
+      self$`mosquito_appearance` <- MosquitoAppearance$new()$fromJSON(jsonlite::toJSON(this_object$`mosquito_appearance`, auto_unbox = TRUE, digits = NA))
       self
     },
 

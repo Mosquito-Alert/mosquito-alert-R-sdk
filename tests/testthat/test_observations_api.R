@@ -16,10 +16,7 @@ test_that("create", {
   # @param tags array[character]  (optional)
   # @param event_environment character The environment where the event took place. (optional)
   # @param event_moment character The moment of the day when the event took place. (optional)
-  # @param user_perceived_mosquito_specie character The mosquito specie perceived by the user. (optional)
-  # @param user_perceived_mosquito_thorax character The species of mosquito that the thorax resembles, according to the user. (optional)
-  # @param user_perceived_mosquito_abdomen character The species of mosquito that the abdomen resembles, according to the user. (optional)
-  # @param user_perceived_mosquito_legs character The species of mosquito that the leg resembles, according to the user. (optional)
+  # @param mosquito_appearance MosquitoAppearanceRequest User-provided description of the mosquito's appearance (optional)
   # @return [Observation]
 
   # uncomment below to test the operation

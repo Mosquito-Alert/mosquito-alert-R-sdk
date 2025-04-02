@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attr** | **character** |  | [Enum: [user_perceived_mosquito_legs]] 
+**attr** | **character** |  | [Enum: [mosquito_appearance.legs]] 
 **code** | **character** |  | [Enum: [invalid_choice]] 
 **detail** | **character** |  | 
 

@@ -25,10 +25,7 @@
 #' var_tags <- c("inner_example") # array[character] |  (Optional)
 #' var_event_environment <- "event_environment_example" # character | The environment where the event took place. (Optional)
 #' var_event_moment <- "event_moment_example" # character | The moment of the day when the event took place. (Optional)
-#' var_user_perceived_mosquito_specie <- "user_perceived_mosquito_specie_example" # character | The mosquito specie perceived by the user. (Optional)
-#' var_user_perceived_mosquito_thorax <- "user_perceived_mosquito_thorax_example" # character | The species of mosquito that the thorax resembles, according to the user. (Optional)
-#' var_user_perceived_mosquito_abdomen <- "user_perceived_mosquito_abdomen_example" # character | The species of mosquito that the abdomen resembles, according to the user. (Optional)
-#' var_user_perceived_mosquito_legs <- "user_perceived_mosquito_legs_example" # character | The species of mosquito that the leg resembles, according to the user. (Optional)
+#' var_mosquito_appearance <- MosquitoAppearanceRequest$new("albopictus", "albopictus", "albopictus", "albopictus") # MosquitoAppearanceRequest | User-provided description of the mosquito's appearance (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -42,8 +39,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, event_environment = var_event_environment, event_moment = var_event_moment, user_perceived_mosquito_specie = var_user_perceived_mosquito_specie, user_perceived_mosquito_thorax = var_user_perceived_mosquito_thorax, user_perceived_mosquito_abdomen = var_user_perceived_mosquito_abdomen, user_perceived_mosquito_legs = var_user_perceived_mosquito_legsdata_file = "result.txt")
-#' result <- api_instance$observations_api$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, event_environment = var_event_environment, event_moment = var_event_moment, user_perceived_mosquito_specie = var_user_perceived_mosquito_specie, user_perceived_mosquito_thorax = var_user_perceived_mosquito_thorax, user_perceived_mosquito_abdomen = var_user_perceived_mosquito_abdomen, user_perceived_mosquito_legs = var_user_perceived_mosquito_legs)
+#' # result <- api_instance$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, event_environment = var_event_environment, event_moment = var_event_moment, mosquito_appearance = var_mosquito_appearancedata_file = "result.txt")
+#' result <- api_instance$observations_api$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, event_environment = var_event_environment, event_moment = var_event_moment, mosquito_appearance = var_mosquito_appearance)
 #' dput(result)
 #'
 #'
@@ -182,16 +179,13 @@ ObservationsApi <- R6::R6Class(
     #' @param tags (optional) No description
     #' @param event_environment (optional) The environment where the event took place.
     #' @param event_moment (optional) The moment of the day when the event took place.
-    #' @param user_perceived_mosquito_specie (optional) The mosquito specie perceived by the user.
-    #' @param user_perceived_mosquito_thorax (optional) The species of mosquito that the thorax resembles, according to the user.
-    #' @param user_perceived_mosquito_abdomen (optional) The species of mosquito that the abdomen resembles, according to the user.
-    #' @param user_perceived_mosquito_legs (optional) The species of mosquito that the leg resembles, according to the user.
+    #' @param mosquito_appearance (optional) User-provided description of the mosquito's appearance
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
     #' @return Observation
-    create = function(created_at, sent_at, location, photos, note = NULL, tags = NULL, event_environment = NULL, event_moment = NULL, user_perceived_mosquito_specie = NULL, user_perceived_mosquito_thorax = NULL, user_perceived_mosquito_abdomen = NULL, user_perceived_mosquito_legs = NULL, data_file = NULL, ...) {
-      local_var_response <- self$create_with_http_info(created_at, sent_at, location, photos, note, tags, event_environment, event_moment, user_perceived_mosquito_specie, user_perceived_mosquito_thorax, user_perceived_mosquito_abdomen, user_perceived_mosquito_legs, data_file = data_file, ...)
+    create = function(created_at, sent_at, location, photos, note = NULL, tags = NULL, event_environment = NULL, event_moment = NULL, mosquito_appearance = NULL, data_file = NULL, ...) {
+      local_var_response <- self$create_with_http_info(created_at, sent_at, location, photos, note, tags, event_environment, event_moment, mosquito_appearance, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -214,15 +208,12 @@ ObservationsApi <- R6::R6Class(
     #' @param tags (optional) No description
     #' @param event_environment (optional) The environment where the event took place.
     #' @param event_moment (optional) The moment of the day when the event took place.
-    #' @param user_perceived_mosquito_specie (optional) The mosquito specie perceived by the user.
-    #' @param user_perceived_mosquito_thorax (optional) The species of mosquito that the thorax resembles, according to the user.
-    #' @param user_perceived_mosquito_abdomen (optional) The species of mosquito that the abdomen resembles, according to the user.
-    #' @param user_perceived_mosquito_legs (optional) The species of mosquito that the leg resembles, according to the user.
+    #' @param mosquito_appearance (optional) User-provided description of the mosquito's appearance
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
     #' @return API response (Observation) with additional information such as HTTP status code, headers
-    create_with_http_info = function(created_at, sent_at, location, photos, note = NULL, tags = NULL, event_environment = NULL, event_moment = NULL, user_perceived_mosquito_specie = NULL, user_perceived_mosquito_thorax = NULL, user_perceived_mosquito_abdomen = NULL, user_perceived_mosquito_legs = NULL, data_file = NULL, ...) {
+    create_with_http_info = function(created_at, sent_at, location, photos, note = NULL, tags = NULL, event_environment = NULL, event_moment = NULL, mosquito_appearance = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -257,9 +248,6 @@ ObservationsApi <- R6::R6Class(
 
 
 
-
-
-
       form_params["created_at"] <- `created_at`
       form_params["sent_at"] <- `sent_at`
       form_params["location"] <- `location`
@@ -268,10 +256,7 @@ ObservationsApi <- R6::R6Class(
       form_params["photos"] <- `photos`
       form_params["event_environment"] <- `event_environment`
       form_params["event_moment"] <- `event_moment`
-      form_params["user_perceived_mosquito_specie"] <- `user_perceived_mosquito_specie`
-      form_params["user_perceived_mosquito_thorax"] <- `user_perceived_mosquito_thorax`
-      form_params["user_perceived_mosquito_abdomen"] <- `user_perceived_mosquito_abdomen`
-      form_params["user_perceived_mosquito_legs"] <- `user_perceived_mosquito_legs`
+      form_params["mosquito_appearance"] <- `mosquito_appearance`
       local_var_url_path <- "/observations/"
       # API key authentication
       if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {

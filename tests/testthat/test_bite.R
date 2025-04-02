@@ -108,58 +108,9 @@ test_that("event_moment", {
   #expect_equal(model.instance$`event_moment`, "EXPECTED_RESULT")
 })
 
-test_that("bite_count", {
-  # tests for the property `bite_count` (integer)
-  # Total number of bites reported.
+test_that("counts", {
+  # tests for the property `counts` (BiteCounts)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`bite_count`, "EXPECTED_RESULT")
-})
-
-test_that("head_bite_count", {
-  # tests for the property `head_bite_count` (integer)
-  # Number of bites reported in the head.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`head_bite_count`, "EXPECTED_RESULT")
-})
-
-test_that("left_arm_bite_count", {
-  # tests for the property `left_arm_bite_count` (integer)
-  # Number of bites reported in the left arm.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`left_arm_bite_count`, "EXPECTED_RESULT")
-})
-
-test_that("right_arm_bite_count", {
-  # tests for the property `right_arm_bite_count` (integer)
-  # Number of bites reported in the right arm.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`right_arm_bite_count`, "EXPECTED_RESULT")
-})
-
-test_that("chest_bite_count", {
-  # tests for the property `chest_bite_count` (integer)
-  # Number of bites reported in the chest.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`chest_bite_count`, "EXPECTED_RESULT")
-})
-
-test_that("left_leg_bite_count", {
-  # tests for the property `left_leg_bite_count` (integer)
-  # Number of bites reported in the left leg.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`left_leg_bite_count`, "EXPECTED_RESULT")
-})
-
-test_that("right_leg_bite_count", {
-  # tests for the property `right_leg_bite_count` (integer)
-  # Number of bites reported in the right leg.
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`right_leg_bite_count`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`counts`, "EXPECTED_RESULT")
 })

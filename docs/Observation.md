@@ -19,9 +19,6 @@ Name | Type | Description | Notes
 **photos** | [**array[SimplePhoto]**](SimplePhoto.md) |  | 
 **event_environment** | **character** | The environment where the event took place. | [optional] [Enum: [indoors, outdoors, vehicle, ]] 
 **event_moment** | **character** | The moment of the day when the event took place. | [optional] [Enum: [now, last_morning, last_midday, last_afternoon, last_night, ]] 
-**user_perceived_mosquito_specie** | **character** | The mosquito specie perceived by the user. | [optional] [Enum: [albopictus, aegypti, japonicus, koreicus, culex, other, ]] 
-**user_perceived_mosquito_thorax** | **character** | The species of mosquito that the thorax resembles, according to the user. | [optional] [Enum: [albopictus, aegypti, japonicus, koreicus, culex, other, ]] 
-**user_perceived_mosquito_abdomen** | **character** | The species of mosquito that the abdomen resembles, according to the user. | [optional] [Enum: [albopictus, aegypti, japonicus, koreicus, culex, other, ]] 
-**user_perceived_mosquito_legs** | **character** | The species of mosquito that the leg resembles, according to the user. | [optional] [Enum: [albopictus, aegypti, japonicus, koreicus, culex, other, ]] 
+**mosquito_appearance** | [**MosquitoAppearance**](MosquitoAppearance.md) | User-provided description of the mosquito&#39;s appearance | [optional] 
 
 
