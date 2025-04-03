@@ -39,7 +39,7 @@ ApiClient  <- R6::R6Class(
     # base path of all requests
     base_path = "https://api.mosquitoalert.com/v1",
     # user agent in the HTTP request
-    user_agent = "OpenAPI-Generator/0.1.4/r",
+    user_agent = "OpenAPI-Generator/0.1.5/r",
     # default headers in the HTTP request
     default_headers = NULL,
     # username (HTTP basic authentication)

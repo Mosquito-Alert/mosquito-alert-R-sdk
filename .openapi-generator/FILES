@@ -124,6 +124,7 @@ R/campaigns_list_order_by_error_component.R
 R/campaigns_list_validation_error.R
 R/countries_api.R
 R/country.R
+R/country_request.R
 R/create_notification.R
 R/create_notification_message.R
 R/create_notification_message_request.R
@@ -479,6 +480,7 @@ docs/CampaignsListOrderByErrorComponent.md
 docs/CampaignsListValidationError.md
 docs/CountriesApi.md
 docs/Country.md
+docs/CountryRequest.md
 docs/CreateNotification.md
 docs/CreateNotificationMessage.md
 docs/CreateNotificationMessageRequest.md
@@ -834,6 +836,7 @@ tests/testthat/test_campaigns_list_order_by_error_component.R
 tests/testthat/test_campaigns_list_validation_error.R
 tests/testthat/test_countries_api.R
 tests/testthat/test_country.R
+tests/testthat/test_country_request.R
 tests/testthat/test_create_notification.R
 tests/testthat/test_create_notification_message.R
 tests/testthat/test_create_notification_message_request.R

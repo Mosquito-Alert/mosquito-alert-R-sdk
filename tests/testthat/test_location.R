@@ -34,11 +34,11 @@ test_that("display_name", {
   #expect_equal(model.instance$`display_name`, "EXPECTED_RESULT")
 })
 
-test_that("country_id", {
-  # tests for the property `country_id` (integer)
+test_that("country", {
+  # tests for the property `country` (Country)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`country_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`country`, "EXPECTED_RESULT")
 })
 
 test_that("adm_boundaries", {

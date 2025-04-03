@@ -11,7 +11,7 @@
 #' @field point  \link{LocationPoint}
 #' @field timezone  character
 #' @field display_name  character
-#' @field country_id  integer
+#' @field country  \link{Country}
 #' @field adm_boundaries  list(\link{AdmBoundary})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +23,7 @@ Location <- R6::R6Class(
     `point` = NULL,
     `timezone` = NULL,
     `display_name` = NULL,
-    `country_id` = NULL,
+    `country` = NULL,
     `adm_boundaries` = NULL,
 
     #' @description
@@ -33,10 +33,10 @@ Location <- R6::R6Class(
     #' @param point point
     #' @param timezone timezone
     #' @param display_name display_name
-    #' @param country_id country_id
+    #' @param country country
     #' @param adm_boundaries adm_boundaries
     #' @param ... Other optional arguments.
-    initialize = function(`source`, `point`, `timezone`, `display_name`, `country_id`, `adm_boundaries`, ...) {
+    initialize = function(`source`, `point`, `timezone`, `display_name`, `country`, `adm_boundaries`, ...) {
       if (!missing(`source`)) {
         if (!(`source` %in% c("auto", "manual"))) {
           stop(paste("Error! \"", `source`, "\" cannot be assigned to `source`. Must be \"auto\", \"manual\".", sep = ""))
@@ -65,11 +65,9 @@ Location <- R6::R6Class(
         }
         self$`display_name` <- `display_name`
       }
-      if (!missing(`country_id`)) {
-        if (!(is.numeric(`country_id`) && length(`country_id`) == 1)) {
-          stop(paste("Error! Invalid data for `country_id`. Must be an integer:", `country_id`))
-        }
-        self$`country_id` <- `country_id`
+      if (!missing(`country`)) {
+        stopifnot(R6::is.R6(`country`))
+        self$`country` <- `country`
       }
       if (!missing(`adm_boundaries`)) {
         stopifnot(is.vector(`adm_boundaries`), length(`adm_boundaries`) != 0)
@@ -125,9 +123,9 @@ Location <- R6::R6Class(
         LocationObject[["display_name"]] <-
           self$`display_name`
       }
-      if (!is.null(self$`country_id`)) {
-        LocationObject[["country_id"]] <-
-          self$`country_id`
+      if (!is.null(self$`country`)) {
+        LocationObject[["country"]] <-
+          self$`country`$toSimpleType()
       }
       if (!is.null(self$`adm_boundaries`)) {
         LocationObject[["adm_boundaries"]] <-
@@ -163,8 +161,10 @@ Location <- R6::R6Class(
       if (!is.null(this_object$`display_name`)) {
         self$`display_name` <- this_object$`display_name`
       }
-      if (!is.null(this_object$`country_id`)) {
-        self$`country_id` <- this_object$`country_id`
+      if (!is.null(this_object$`country`)) {
+        `country_object` <- Country$new()
+        `country_object`$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
+        self$`country` <- `country_object`
       }
       if (!is.null(this_object$`adm_boundaries`)) {
         self$`adm_boundaries` <- ApiClient$new()$deserializeObj(this_object$`adm_boundaries`, "array[AdmBoundary]", loadNamespace("MosquitoAlert"))
@@ -200,7 +200,7 @@ Location <- R6::R6Class(
       }
       self$`timezone` <- this_object$`timezone`
       self$`display_name` <- this_object$`display_name`
-      self$`country_id` <- this_object$`country_id`
+      self$`country` <- Country$new()$fromJSON(jsonlite::toJSON(this_object$`country`, auto_unbox = TRUE, digits = NA))
       self$`adm_boundaries` <- ApiClient$new()$deserializeObj(this_object$`adm_boundaries`, "array[AdmBoundary]", loadNamespace("MosquitoAlert"))
       self
     },
@@ -241,13 +241,11 @@ Location <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Location: the required field `display_name` is missing."))
       }
-      # check the required field `country_id`
-      if (!is.null(input_json$`country_id`)) {
-        if (!(is.numeric(input_json$`country_id`) && length(input_json$`country_id`) == 1)) {
-          stop(paste("Error! Invalid data for `country_id`. Must be an integer:", input_json$`country_id`))
-        }
+      # check the required field `country`
+      if (!is.null(input_json$`country`)) {
+        stopifnot(R6::is.R6(input_json$`country`))
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for Location: the required field `country_id` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for Location: the required field `country` is missing."))
       }
       # check the required field `adm_boundaries`
       if (!is.null(input_json$`adm_boundaries`)) {
