@@ -5,6 +5,48 @@ context("Test PhotosApi")
 
 api_instance <- PhotosApi$new()
 
+test_that("prediction_destroy", {
+  # tests for prediction_destroy
+  # base path: https://api.mosquitoalert.com/v1
+  # @param uuid character 
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("prediction_partial_update", {
+  # tests for prediction_partial_update
+  # base path: https://api.mosquitoalert.com/v1
+  # @param uuid character 
+  # @param patched_photo_prediction_request PatchedPhotoPredictionRequest  (optional)
+  # @return [PhotoPrediction]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("prediction_retrieve", {
+  # tests for prediction_retrieve
+  # base path: https://api.mosquitoalert.com/v1
+  # @param uuid character 
+  # @return [PhotoPrediction]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("prediction_update", {
+  # tests for prediction_update
+  # base path: https://api.mosquitoalert.com/v1
+  # @param uuid character 
+  # @param photo_prediction_request PhotoPredictionRequest 
+  # @return [PhotoPrediction]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
 test_that("retrieve", {
   # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1

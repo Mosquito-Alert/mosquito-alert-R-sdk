@@ -130,8 +130,12 @@ library(MosquitoAlert)
 
 
 api_instance <- mosquitoalert_api$new()
+# Configure API key authorization: tokenAuth
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
-api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$retrieve_mine(data_file = "result.txt")
 result <- api_instance$users_api$retrieve_mine()
@@ -147,7 +151,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[jwtAuth](../README.md#jwtAuth)
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
 
 ### HTTP request headers
 

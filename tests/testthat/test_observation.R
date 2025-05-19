@@ -99,6 +99,13 @@ test_that("photos", {
   #expect_equal(model.instance$`photos`, "EXPECTED_RESULT")
 })
 
+test_that("identification", {
+  # tests for the property `identification` (Identification)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`identification`, "EXPECTED_RESULT")
+})
+
 test_that("event_environment", {
   # tests for the property `event_environment` (character)
   # The environment where the event took place.

@@ -5,6 +5,17 @@ context("Test CountriesApi")
 
 api_instance <- CountriesApi$new()
 
+test_that("list", {
+  # tests for list
+  # base path: https://api.mosquitoalert.com/v1
+  # @param page integer A page number within the paginated result set. (optional)
+  # @param page_size integer Number of results to return per page. (optional)
+  # @return [PaginatedCountryList]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
 test_that("retrieve", {
   # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1

@@ -16,12 +16,12 @@ ObservationsListMineError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("ObservationsListMineCountryIdErrorComponent", "ObservationsListMineCreatedAtErrorComponent", "ObservationsListMineOrderByErrorComponent", "ObservationsListMineReceivedAtErrorComponent", "ObservationsListMineShortIdErrorComponent", "ObservationsListMineUpdatedAtErrorComponent", "ObservationsListMineUserUuidErrorComponent"),
+    one_of = list("ObservationsListMineCountryIdErrorComponent", "ObservationsListMineCreatedAtErrorComponent", "ObservationsListMineIdentificationTaxonIdsErrorComponent", "ObservationsListMineOrderByErrorComponent", "ObservationsListMineReceivedAtErrorComponent", "ObservationsListMineShortIdErrorComponent", "ObservationsListMineUpdatedAtErrorComponent", "ObservationsListMineUserUuidErrorComponent"),
 
     #' @description
     #' Initialize a new ObservationsListMineError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "ObservationsListMineCountryIdErrorComponent", "ObservationsListMineCreatedAtErrorComponent", "ObservationsListMineOrderByErrorComponent", "ObservationsListMineReceivedAtErrorComponent", "ObservationsListMineShortIdErrorComponent", "ObservationsListMineUpdatedAtErrorComponent", "ObservationsListMineUserUuidErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "ObservationsListMineCountryIdErrorComponent", "ObservationsListMineCreatedAtErrorComponent", "ObservationsListMineIdentificationTaxonIdsErrorComponent", "ObservationsListMineOrderByErrorComponent", "ObservationsListMineReceivedAtErrorComponent", "ObservationsListMineShortIdErrorComponent", "ObservationsListMineUpdatedAtErrorComponent", "ObservationsListMineUserUuidErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -31,6 +31,9 @@ ObservationsListMineError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListMineCreatedAtErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListMineCreatedAtErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListMineIdentificationTaxonIdsErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "ObservationsListMineIdentificationTaxonIdsErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListMineOrderByErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListMineOrderByErrorComponent"
@@ -47,7 +50,7 @@ ObservationsListMineError <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListMineUserUuidErrorComponent"
       } else {
-        stop(paste("Failed to initialize ObservationsListMineError with oneOf schemas ObservationsListMineCountryIdErrorComponent, ObservationsListMineCreatedAtErrorComponent, ObservationsListMineOrderByErrorComponent, ObservationsListMineReceivedAtErrorComponent, ObservationsListMineShortIdErrorComponent, ObservationsListMineUpdatedAtErrorComponent, ObservationsListMineUserUuidErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize ObservationsListMineError with oneOf schemas ObservationsListMineCountryIdErrorComponent, ObservationsListMineCreatedAtErrorComponent, ObservationsListMineIdentificationTaxonIdsErrorComponent, ObservationsListMineOrderByErrorComponent, ObservationsListMineReceivedAtErrorComponent, ObservationsListMineShortIdErrorComponent, ObservationsListMineUpdatedAtErrorComponent, ObservationsListMineUserUuidErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -180,17 +183,32 @@ ObservationsListMineError <- R6::R6Class(
         error_messages <- append(error_messages, `ObservationsListMineOrderByErrorComponent_result`["message"])
       }
 
+      `ObservationsListMineIdentificationTaxonIdsErrorComponent_result` <- tryCatch({
+          `ObservationsListMineIdentificationTaxonIdsErrorComponent`$public_methods$validateJSON(input)
+          `ObservationsListMineIdentificationTaxonIdsErrorComponent_instance` <- `ObservationsListMineIdentificationTaxonIdsErrorComponent`$new()
+          instance <- `ObservationsListMineIdentificationTaxonIdsErrorComponent_instance`$fromJSON(input)
+          instance_type <- "ObservationsListMineIdentificationTaxonIdsErrorComponent"
+          matched_schemas <- append(matched_schemas, "ObservationsListMineIdentificationTaxonIdsErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`ObservationsListMineIdentificationTaxonIdsErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `ObservationsListMineIdentificationTaxonIdsErrorComponent_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into ObservationsListMineError with oneOf schemas ObservationsListMineCountryIdErrorComponent, ObservationsListMineCreatedAtErrorComponent, ObservationsListMineOrderByErrorComponent, ObservationsListMineReceivedAtErrorComponent, ObservationsListMineShortIdErrorComponent, ObservationsListMineUpdatedAtErrorComponent, ObservationsListMineUserUuidErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into ObservationsListMineError with oneOf schemas ObservationsListMineCountryIdErrorComponent, ObservationsListMineCreatedAtErrorComponent, ObservationsListMineIdentificationTaxonIdsErrorComponent, ObservationsListMineOrderByErrorComponent, ObservationsListMineReceivedAtErrorComponent, ObservationsListMineShortIdErrorComponent, ObservationsListMineUpdatedAtErrorComponent, ObservationsListMineUserUuidErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into ObservationsListMineError with oneOf schemas ObservationsListMineCountryIdErrorComponent, ObservationsListMineCreatedAtErrorComponent, ObservationsListMineOrderByErrorComponent, ObservationsListMineReceivedAtErrorComponent, ObservationsListMineShortIdErrorComponent, ObservationsListMineUpdatedAtErrorComponent, ObservationsListMineUserUuidErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into ObservationsListMineError with oneOf schemas ObservationsListMineCountryIdErrorComponent, ObservationsListMineCreatedAtErrorComponent, ObservationsListMineIdentificationTaxonIdsErrorComponent, ObservationsListMineOrderByErrorComponent, ObservationsListMineReceivedAtErrorComponent, ObservationsListMineShortIdErrorComponent, ObservationsListMineUpdatedAtErrorComponent, ObservationsListMineUserUuidErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

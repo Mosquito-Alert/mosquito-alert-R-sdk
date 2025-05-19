@@ -21,6 +21,12 @@
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
+#' # Configure API key authorization: tokenAuth
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: cookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
 #' # Configure HTTP bearer authorization: jwtAuth
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
@@ -38,6 +44,12 @@
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
+#' # Configure API key authorization: tokenAuth
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: cookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
 #' # Configure HTTP bearer authorization: jwtAuth
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
@@ -53,6 +65,12 @@
 #' var_device_id <- "device_id_example" # character | 
 #'
 #' api_instance <- mosquitoalert_api$new()
+#'
+#' # Configure API key authorization: tokenAuth
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: cookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # Configure HTTP bearer authorization: jwtAuth
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -70,6 +88,12 @@
 #' var_device_update_request <- DeviceUpdateRequest$new("fcm_token_example", DeviceOsRequest$new("name_example", "version_example", "locale_example"), "name_example", MobileAppRequest$new("package_name_example", "package_version_example")) # DeviceUpdateRequest | 
 #'
 #' api_instance <- mosquitoalert_api$new()
+#'
+#' # Configure API key authorization: tokenAuth
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: cookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # Configure HTTP bearer authorization: jwtAuth
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
@@ -152,6 +176,11 @@ DevicesApi <- R6::R6Class(
       }
 
       local_var_url_path <- "/devices/"
+      # API key authentication
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
+      }
+      # API key authentication
       # Bearer token
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
@@ -263,6 +292,11 @@ DevicesApi <- R6::R6Class(
         local_var_url_path <- gsub("\\{device_id\\}", URLencode(as.character(`device_id`), reserved = TRUE), local_var_url_path)
       }
 
+      # API key authentication
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
+      }
+      # API key authentication
       # Bearer token
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
@@ -365,6 +399,11 @@ DevicesApi <- R6::R6Class(
         local_var_url_path <- gsub("\\{device_id\\}", URLencode(as.character(`device_id`), reserved = TRUE), local_var_url_path)
       }
 
+      # API key authentication
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
+      }
+      # API key authentication
       # Bearer token
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
@@ -480,6 +519,11 @@ DevicesApi <- R6::R6Class(
         local_var_url_path <- gsub("\\{device_id\\}", URLencode(as.character(`device_id`), reserved = TRUE), local_var_url_path)
       }
 
+      # API key authentication
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
+      }
+      # API key authentication
       # Bearer token
       if (!is.null(self$api_client$bearer_token)) {
         header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")

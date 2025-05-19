@@ -20,6 +20,7 @@
 #' @field tags  list(character) [optional]
 #' @field published  character
 #' @field photos  list(\link{SimplePhoto})
+#' @field identification  \link{Identification}
 #' @field event_environment The environment where the event took place. character [optional]
 #' @field event_moment The moment of the day when the event took place. character [optional]
 #' @field mosquito_appearance User-provided description of the mosquito's appearance \link{MosquitoAppearance} [optional]
@@ -42,6 +43,7 @@ Observation <- R6::R6Class(
     `tags` = NULL,
     `published` = NULL,
     `photos` = NULL,
+    `identification` = NULL,
     `event_environment` = NULL,
     `event_moment` = NULL,
     `mosquito_appearance` = NULL,
@@ -60,13 +62,14 @@ Observation <- R6::R6Class(
     #' @param location location
     #' @param published published
     #' @param photos photos
+    #' @param identification identification
     #' @param note Note user attached to report.
     #' @param tags tags
     #' @param event_environment The environment where the event took place.
     #' @param event_moment The moment of the day when the event took place.
     #' @param mosquito_appearance User-provided description of the mosquito's appearance
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `sent_at`, `received_at`, `updated_at`, `location`, `published`, `photos`, `note` = NULL, `tags` = NULL, `event_environment` = NULL, `event_moment` = NULL, `mosquito_appearance` = NULL, ...) {
+    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `sent_at`, `received_at`, `updated_at`, `location`, `published`, `photos`, `identification`, `note` = NULL, `tags` = NULL, `event_environment` = NULL, `event_moment` = NULL, `mosquito_appearance` = NULL, ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
@@ -129,6 +132,10 @@ Observation <- R6::R6Class(
         stopifnot(is.vector(`photos`), length(`photos`) != 0)
         sapply(`photos`, function(x) stopifnot(R6::is.R6(x)))
         self$`photos` <- `photos`
+      }
+      if (!missing(`identification`)) {
+        stopifnot(R6::is.R6(`identification`))
+        self$`identification` <- `identification`
       }
       if (!is.null(`note`)) {
         if (!(is.character(`note`) && length(`note`) == 1)) {
@@ -248,6 +255,10 @@ Observation <- R6::R6Class(
         ObservationObject[["photos"]] <-
           lapply(self$`photos`, function(x) x$toSimpleType())
       }
+      if (!is.null(self$`identification`)) {
+        ObservationObject[["identification"]] <-
+          self$`identification`$toSimpleType()
+      }
       if (!is.null(self$`event_environment`)) {
         ObservationObject[["event_environment"]] <-
           self$`event_environment`
@@ -311,6 +322,11 @@ Observation <- R6::R6Class(
       if (!is.null(this_object$`photos`)) {
         self$`photos` <- ApiClient$new()$deserializeObj(this_object$`photos`, "array[SimplePhoto]", loadNamespace("MosquitoAlert"))
       }
+      if (!is.null(this_object$`identification`)) {
+        `identification_object` <- Identification$new()
+        `identification_object`$fromJSON(jsonlite::toJSON(this_object$`identification`, auto_unbox = TRUE, digits = NA))
+        self$`identification` <- `identification_object`
+      }
       if (!is.null(this_object$`event_environment`)) {
         if (!is.null(this_object$`event_environment`) && !(this_object$`event_environment` %in% c("indoors", "outdoors", "vehicle", ""))) {
           stop(paste("Error! \"", this_object$`event_environment`, "\" cannot be assigned to `event_environment`. Must be \"indoors\", \"outdoors\", \"vehicle\", \"\".", sep = ""))
@@ -362,6 +378,7 @@ Observation <- R6::R6Class(
       self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
       self$`published` <- this_object$`published`
       self$`photos` <- ApiClient$new()$deserializeObj(this_object$`photos`, "array[SimplePhoto]", loadNamespace("MosquitoAlert"))
+      self$`identification` <- Identification$new()$fromJSON(jsonlite::toJSON(this_object$`identification`, auto_unbox = TRUE, digits = NA))
       if (!is.null(this_object$`event_environment`) && !(this_object$`event_environment` %in% c("indoors", "outdoors", "vehicle", ""))) {
         stop(paste("Error! \"", this_object$`event_environment`, "\" cannot be assigned to `event_environment`. Must be \"indoors\", \"outdoors\", \"vehicle\", \"\".", sep = ""))
       }
@@ -464,6 +481,12 @@ Observation <- R6::R6Class(
         tmp <- sapply(input_json$`photos`, function(x) stopifnot(R6::is.R6(x)))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Observation: the required field `photos` is missing."))
+      }
+      # check the required field `identification`
+      if (!is.null(input_json$`identification`)) {
+        stopifnot(R6::is.R6(input_json$`identification`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Observation: the required field `identification` is missing."))
       }
     },
 

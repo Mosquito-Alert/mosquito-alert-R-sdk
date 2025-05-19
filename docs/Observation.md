@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **tags** | **array[character]** |  | [optional] 
 **published** | **character** |  | [readonly] 
 **photos** | [**array[SimplePhoto]**](SimplePhoto.md) |  | 
+**identification** | [**Identification**](Identification.md) |  | [readonly] 
 **event_environment** | **character** | The environment where the event took place. | [optional] [Enum: [indoors, outdoors, vehicle, ]] 
 **event_moment** | **character** | The moment of the day when the event took place. | [optional] [Enum: [now, last_morning, last_midday, last_afternoon, last_night, ]] 
 **mosquito_appearance** | [**MosquitoAppearance**](MosquitoAppearance.md) | User-provided description of the mosquito&#39;s appearance | [optional] 

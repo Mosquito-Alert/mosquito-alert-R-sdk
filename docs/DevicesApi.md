@@ -23,8 +23,12 @@ library(MosquitoAlert)
 var_device_request <- DeviceRequest$new("device_id_example", "fcm_token_example", "ios", "model_example", DeviceOsRequest$new("name_example", "version_example", "locale_example"), "name_example", "manufacturer_example", MobileAppRequest$new("package_name_example", "package_version_example")) # DeviceRequest | 
 
 api_instance <- mosquitoalert_api$new()
+# Configure API key authorization: tokenAuth
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
-api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$create(var_device_requestdata_file = "result.txt")
 result <- api_instance$devices_api$create(var_device_request)
@@ -43,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwtAuth](../README.md#jwtAuth)
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
 
 ### HTTP request headers
 
@@ -73,8 +77,12 @@ var_device_id <- "device_id_example" # character |
 var_patched_device_update_request <- PatchedDeviceUpdateRequest$new("name_example", "fcm_token_example", DeviceOsRequest$new("name_example", "version_example", "locale_example"), MobileAppRequest$new("package_name_example", "package_version_example")) # PatchedDeviceUpdateRequest |  (Optional)
 
 api_instance <- mosquitoalert_api$new()
+# Configure API key authorization: tokenAuth
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
-api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$partial_update(var_device_id, patched_device_update_request = var_patched_device_update_requestdata_file = "result.txt")
 result <- api_instance$devices_api$partial_update(var_device_id, patched_device_update_request = var_patched_device_update_request)
@@ -94,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwtAuth](../README.md#jwtAuth)
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
 
 ### HTTP request headers
 
@@ -123,8 +131,12 @@ library(MosquitoAlert)
 var_device_id <- "device_id_example" # character | 
 
 api_instance <- mosquitoalert_api$new()
+# Configure API key authorization: tokenAuth
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
-api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$retrieve(var_device_iddata_file = "result.txt")
 result <- api_instance$devices_api$retrieve(var_device_id)
@@ -143,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwtAuth](../README.md#jwtAuth)
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
 
 ### HTTP request headers
 
@@ -172,8 +184,12 @@ var_device_id <- "device_id_example" # character |
 var_device_update_request <- DeviceUpdateRequest$new("fcm_token_example", DeviceOsRequest$new("name_example", "version_example", "locale_example"), "name_example", MobileAppRequest$new("package_name_example", "package_version_example")) # DeviceUpdateRequest | 
 
 api_instance <- mosquitoalert_api$new()
+# Configure API key authorization: tokenAuth
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
-api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 # result <- api_instance$update(var_device_id, var_device_update_requestdata_file = "result.txt")
 result <- api_instance$devices_api$update(var_device_id, var_device_update_request)
@@ -193,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwtAuth](../README.md#jwtAuth)
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
 
 ### HTTP request headers
 
