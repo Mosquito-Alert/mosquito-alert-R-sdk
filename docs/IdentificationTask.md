@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**observation** | [**SimplifiedObservation**](SimplifiedObservation.md) |  | [readonly] 
+**observation** | [**SimplifiedObservationWithPhotos**](SimplifiedObservationWithPhotos.md) |  | [readonly] 
 **public_photo** | [**SimplePhoto**](SimplePhoto.md) |  | 
-**assignments** | [**array[Assignment]**](Assignment.md) |  | [readonly] 
+**assignments** | [**array[UserAssignment]**](UserAssignment.md) |  | [readonly] 
 **status** | **character** |  | [optional] [default to &quot;open&quot;] [Enum: [open, conflict, review, done, archived]] 
 **is_flagged** | **character** |  | [readonly] 
 **is_safe** | **character** | Indicates if the content is safe for publication. | [readonly] 

@@ -5,16 +5,16 @@ context("Test Assignment")
 
 model_instance <- Assignment$new()
 
-test_that("user", {
-  # tests for the property `user` (SimpleAnnotatorUser)
+test_that("observation", {
+  # tests for the property `observation` (SimplifiedObservationWithPhotos)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`user`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`observation`, "EXPECTED_RESULT")
 })
 
-test_that("annotation_id", {
-  # tests for the property `annotation_id` (integer)
+test_that("annotation_type", {
+  # tests for the property `annotation_type` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`annotation_id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`annotation_type`, "EXPECTED_RESULT")
 })

@@ -16,12 +16,12 @@ IdentificationtasksAnnotationsListMineError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("IdentificationtasksAnnotationsListMineClassificationConfidenceErrorComponent", "IdentificationtasksAnnotationsListMineClassificationConfidenceLabelErrorComponent", "IdentificationtasksAnnotationsListMineClassificationTaxonIdsErrorComponent", "IdentificationtasksAnnotationsListMineOrderByErrorComponent", "IdentificationtasksAnnotationsListMineUserIdsErrorComponent"),
+    one_of = list("IdentificationtasksAnnotationsListMineClassificationConfidenceErrorComponent", "IdentificationtasksAnnotationsListMineClassificationConfidenceLabelErrorComponent", "IdentificationtasksAnnotationsListMineClassificationTaxonIdsErrorComponent", "IdentificationtasksAnnotationsListMineCreatedAtErrorComponent", "IdentificationtasksAnnotationsListMineOrderByErrorComponent", "IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent", "IdentificationtasksAnnotationsListMineUserIdsErrorComponent"),
 
     #' @description
     #' Initialize a new IdentificationtasksAnnotationsListMineError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "IdentificationtasksAnnotationsListMineClassificationConfidenceErrorComponent", "IdentificationtasksAnnotationsListMineClassificationConfidenceLabelErrorComponent", "IdentificationtasksAnnotationsListMineClassificationTaxonIdsErrorComponent", "IdentificationtasksAnnotationsListMineOrderByErrorComponent", "IdentificationtasksAnnotationsListMineUserIdsErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "IdentificationtasksAnnotationsListMineClassificationConfidenceErrorComponent", "IdentificationtasksAnnotationsListMineClassificationConfidenceLabelErrorComponent", "IdentificationtasksAnnotationsListMineClassificationTaxonIdsErrorComponent", "IdentificationtasksAnnotationsListMineCreatedAtErrorComponent", "IdentificationtasksAnnotationsListMineOrderByErrorComponent", "IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent", "IdentificationtasksAnnotationsListMineUserIdsErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -34,14 +34,20 @@ IdentificationtasksAnnotationsListMineError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksAnnotationsListMineClassificationTaxonIdsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "IdentificationtasksAnnotationsListMineClassificationTaxonIdsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksAnnotationsListMineCreatedAtErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "IdentificationtasksAnnotationsListMineCreatedAtErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksAnnotationsListMineOrderByErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "IdentificationtasksAnnotationsListMineOrderByErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksAnnotationsListMineUserIdsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "IdentificationtasksAnnotationsListMineUserIdsErrorComponent"
       } else {
-        stop(paste("Failed to initialize IdentificationtasksAnnotationsListMineError with oneOf schemas IdentificationtasksAnnotationsListMineClassificationConfidenceErrorComponent, IdentificationtasksAnnotationsListMineClassificationConfidenceLabelErrorComponent, IdentificationtasksAnnotationsListMineClassificationTaxonIdsErrorComponent, IdentificationtasksAnnotationsListMineOrderByErrorComponent, IdentificationtasksAnnotationsListMineUserIdsErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize IdentificationtasksAnnotationsListMineError with oneOf schemas IdentificationtasksAnnotationsListMineClassificationConfidenceErrorComponent, IdentificationtasksAnnotationsListMineClassificationConfidenceLabelErrorComponent, IdentificationtasksAnnotationsListMineClassificationTaxonIdsErrorComponent, IdentificationtasksAnnotationsListMineCreatedAtErrorComponent, IdentificationtasksAnnotationsListMineOrderByErrorComponent, IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent, IdentificationtasksAnnotationsListMineUserIdsErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -129,6 +135,36 @@ IdentificationtasksAnnotationsListMineError <- R6::R6Class(
         error_messages <- append(error_messages, `IdentificationtasksAnnotationsListMineClassificationConfidenceLabelErrorComponent_result`["message"])
       }
 
+      `IdentificationtasksAnnotationsListMineCreatedAtErrorComponent_result` <- tryCatch({
+          `IdentificationtasksAnnotationsListMineCreatedAtErrorComponent`$public_methods$validateJSON(input)
+          `IdentificationtasksAnnotationsListMineCreatedAtErrorComponent_instance` <- `IdentificationtasksAnnotationsListMineCreatedAtErrorComponent`$new()
+          instance <- `IdentificationtasksAnnotationsListMineCreatedAtErrorComponent_instance`$fromJSON(input)
+          instance_type <- "IdentificationtasksAnnotationsListMineCreatedAtErrorComponent"
+          matched_schemas <- append(matched_schemas, "IdentificationtasksAnnotationsListMineCreatedAtErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`IdentificationtasksAnnotationsListMineCreatedAtErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `IdentificationtasksAnnotationsListMineCreatedAtErrorComponent_result`["message"])
+      }
+
+      `IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent_result` <- tryCatch({
+          `IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent`$public_methods$validateJSON(input)
+          `IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent_instance` <- `IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent`$new()
+          instance <- `IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent_instance`$fromJSON(input)
+          instance_type <- "IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent"
+          matched_schemas <- append(matched_schemas, "IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent_result`["message"])
+      }
+
       `IdentificationtasksAnnotationsListMineOrderByErrorComponent_result` <- tryCatch({
           `IdentificationtasksAnnotationsListMineOrderByErrorComponent`$public_methods$validateJSON(input)
           `IdentificationtasksAnnotationsListMineOrderByErrorComponent_instance` <- `IdentificationtasksAnnotationsListMineOrderByErrorComponent`$new()
@@ -150,11 +186,11 @@ IdentificationtasksAnnotationsListMineError <- R6::R6Class(
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into IdentificationtasksAnnotationsListMineError with oneOf schemas IdentificationtasksAnnotationsListMineClassificationConfidenceErrorComponent, IdentificationtasksAnnotationsListMineClassificationConfidenceLabelErrorComponent, IdentificationtasksAnnotationsListMineClassificationTaxonIdsErrorComponent, IdentificationtasksAnnotationsListMineOrderByErrorComponent, IdentificationtasksAnnotationsListMineUserIdsErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into IdentificationtasksAnnotationsListMineError with oneOf schemas IdentificationtasksAnnotationsListMineClassificationConfidenceErrorComponent, IdentificationtasksAnnotationsListMineClassificationConfidenceLabelErrorComponent, IdentificationtasksAnnotationsListMineClassificationTaxonIdsErrorComponent, IdentificationtasksAnnotationsListMineCreatedAtErrorComponent, IdentificationtasksAnnotationsListMineOrderByErrorComponent, IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent, IdentificationtasksAnnotationsListMineUserIdsErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into IdentificationtasksAnnotationsListMineError with oneOf schemas IdentificationtasksAnnotationsListMineClassificationConfidenceErrorComponent, IdentificationtasksAnnotationsListMineClassificationConfidenceLabelErrorComponent, IdentificationtasksAnnotationsListMineClassificationTaxonIdsErrorComponent, IdentificationtasksAnnotationsListMineOrderByErrorComponent, IdentificationtasksAnnotationsListMineUserIdsErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into IdentificationtasksAnnotationsListMineError with oneOf schemas IdentificationtasksAnnotationsListMineClassificationConfidenceErrorComponent, IdentificationtasksAnnotationsListMineClassificationConfidenceLabelErrorComponent, IdentificationtasksAnnotationsListMineClassificationTaxonIdsErrorComponent, IdentificationtasksAnnotationsListMineCreatedAtErrorComponent, IdentificationtasksAnnotationsListMineOrderByErrorComponent, IdentificationtasksAnnotationsListMineUpdatedAtErrorComponent, IdentificationtasksAnnotationsListMineUserIdsErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

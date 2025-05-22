@@ -1,10 +1,11 @@
-# MosquitoAlert::Assignment
+# MosquitoAlert::UserAssignment
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**observation** | [**SimplifiedObservationWithPhotos**](SimplifiedObservationWithPhotos.md) |  | [readonly] 
+**user** | [**SimpleAnnotatorUser**](SimpleAnnotatorUser.md) |  | 
+**annotation_id** | **integer** |  | [readonly] 
 **annotation_type** | **character** |  | [readonly] [Enum: [short, long]] 
 
 

@@ -7,9 +7,9 @@
 #' @title IdentificationTask
 #' @description IdentificationTask Class
 #' @format An \code{R6Class} generator object
-#' @field observation  \link{SimplifiedObservation}
+#' @field observation  \link{SimplifiedObservationWithPhotos}
 #' @field public_photo  \link{SimplePhoto}
-#' @field assignments  list(\link{Assignment})
+#' @field assignments  list(\link{UserAssignment})
 #' @field status  character [optional]
 #' @field is_flagged  character
 #' @field is_safe Indicates if the content is safe for publication. character
@@ -213,7 +213,7 @@ IdentificationTask <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`observation`)) {
-        `observation_object` <- SimplifiedObservation$new()
+        `observation_object` <- SimplifiedObservationWithPhotos$new()
         `observation_object`$fromJSON(jsonlite::toJSON(this_object$`observation`, auto_unbox = TRUE, digits = NA))
         self$`observation` <- `observation_object`
       }
@@ -223,7 +223,7 @@ IdentificationTask <- R6::R6Class(
         self$`public_photo` <- `public_photo_object`
       }
       if (!is.null(this_object$`assignments`)) {
-        self$`assignments` <- ApiClient$new()$deserializeObj(this_object$`assignments`, "array[Assignment]", loadNamespace("MosquitoAlert"))
+        self$`assignments` <- ApiClient$new()$deserializeObj(this_object$`assignments`, "array[UserAssignment]", loadNamespace("MosquitoAlert"))
       }
       if (!is.null(this_object$`status`)) {
         if (!is.null(this_object$`status`) && !(this_object$`status` %in% c("open", "conflict", "review", "done", "archived"))) {
@@ -280,9 +280,9 @@ IdentificationTask <- R6::R6Class(
     #' @return the instance of IdentificationTask
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`observation` <- SimplifiedObservation$new()$fromJSON(jsonlite::toJSON(this_object$`observation`, auto_unbox = TRUE, digits = NA))
+      self$`observation` <- SimplifiedObservationWithPhotos$new()$fromJSON(jsonlite::toJSON(this_object$`observation`, auto_unbox = TRUE, digits = NA))
       self$`public_photo` <- SimplePhoto$new()$fromJSON(jsonlite::toJSON(this_object$`public_photo`, auto_unbox = TRUE, digits = NA))
-      self$`assignments` <- ApiClient$new()$deserializeObj(this_object$`assignments`, "array[Assignment]", loadNamespace("MosquitoAlert"))
+      self$`assignments` <- ApiClient$new()$deserializeObj(this_object$`assignments`, "array[UserAssignment]", loadNamespace("MosquitoAlert"))
       if (!is.null(this_object$`status`) && !(this_object$`status` %in% c("open", "conflict", "review", "done", "archived"))) {
         stop(paste("Error! \"", this_object$`status`, "\" cannot be assigned to `status`. Must be \"open\", \"conflict\", \"review\", \"done\", \"archived\".", sep = ""))
       }

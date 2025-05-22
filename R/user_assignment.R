@@ -1,33 +1,42 @@
-#' Create a new Assignment
+#' Create a new UserAssignment
 #'
 #' @description
-#' Assignment Class
+#' UserAssignment Class
 #'
 #' @docType class
-#' @title Assignment
-#' @description Assignment Class
+#' @title UserAssignment
+#' @description UserAssignment Class
 #' @format An \code{R6Class} generator object
-#' @field observation  \link{SimplifiedObservationWithPhotos}
+#' @field user  \link{SimpleAnnotatorUser}
+#' @field annotation_id  integer
 #' @field annotation_type  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-Assignment <- R6::R6Class(
-  "Assignment",
+UserAssignment <- R6::R6Class(
+  "UserAssignment",
   public = list(
-    `observation` = NULL,
+    `user` = NULL,
+    `annotation_id` = NULL,
     `annotation_type` = NULL,
 
     #' @description
-    #' Initialize a new Assignment class.
+    #' Initialize a new UserAssignment class.
     #'
-    #' @param observation observation
+    #' @param user user
+    #' @param annotation_id annotation_id
     #' @param annotation_type annotation_type
     #' @param ... Other optional arguments.
-    initialize = function(`observation`, `annotation_type`, ...) {
-      if (!missing(`observation`)) {
-        stopifnot(R6::is.R6(`observation`))
-        self$`observation` <- `observation`
+    initialize = function(`user`, `annotation_id`, `annotation_type`, ...) {
+      if (!missing(`user`)) {
+        stopifnot(R6::is.R6(`user`))
+        self$`user` <- `user`
+      }
+      if (!missing(`annotation_id`)) {
+        if (!(is.numeric(`annotation_id`) && length(`annotation_id`) == 1)) {
+          stop(paste("Error! Invalid data for `annotation_id`. Must be an integer:", `annotation_id`))
+        }
+        self$`annotation_id` <- `annotation_id`
       }
       if (!missing(`annotation_type`)) {
         if (!(`annotation_type` %in% c("short", "long"))) {
@@ -52,9 +61,9 @@ Assignment <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return Assignment as a base R list.
+    #' @return UserAssignment as a base R list.
     #' @examples
-    #' # convert array of Assignment (x) to a data frame
+    #' # convert array of UserAssignment (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -66,33 +75,40 @@ Assignment <- R6::R6Class(
     },
 
     #' @description
-    #' Convert Assignment to a base R type
+    #' Convert UserAssignment to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      AssignmentObject <- list()
-      if (!is.null(self$`observation`)) {
-        AssignmentObject[["observation"]] <-
-          self$`observation`$toSimpleType()
+      UserAssignmentObject <- list()
+      if (!is.null(self$`user`)) {
+        UserAssignmentObject[["user"]] <-
+          self$`user`$toSimpleType()
+      }
+      if (!is.null(self$`annotation_id`)) {
+        UserAssignmentObject[["annotation_id"]] <-
+          self$`annotation_id`
       }
       if (!is.null(self$`annotation_type`)) {
-        AssignmentObject[["annotation_type"]] <-
+        UserAssignmentObject[["annotation_type"]] <-
           self$`annotation_type`
       }
-      return(AssignmentObject)
+      return(UserAssignmentObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of Assignment
+    #' Deserialize JSON string into an instance of UserAssignment
     #'
     #' @param input_json the JSON input
-    #' @return the instance of Assignment
+    #' @return the instance of UserAssignment
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`observation`)) {
-        `observation_object` <- SimplifiedObservationWithPhotos$new()
-        `observation_object`$fromJSON(jsonlite::toJSON(this_object$`observation`, auto_unbox = TRUE, digits = NA))
-        self$`observation` <- `observation_object`
+      if (!is.null(this_object$`user`)) {
+        `user_object` <- SimpleAnnotatorUser$new()
+        `user_object`$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
+        self$`user` <- `user_object`
+      }
+      if (!is.null(this_object$`annotation_id`)) {
+        self$`annotation_id` <- this_object$`annotation_id`
       }
       if (!is.null(this_object$`annotation_type`)) {
         if (!is.null(this_object$`annotation_type`) && !(this_object$`annotation_type` %in% c("short", "long"))) {
@@ -107,7 +123,7 @@ Assignment <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return Assignment in JSON format
+    #' @return UserAssignment in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -115,13 +131,14 @@ Assignment <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of Assignment
+    #' Deserialize JSON string into an instance of UserAssignment
     #'
     #' @param input_json the JSON input
-    #' @return the instance of Assignment
+    #' @return the instance of UserAssignment
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`observation` <- SimplifiedObservationWithPhotos$new()$fromJSON(jsonlite::toJSON(this_object$`observation`, auto_unbox = TRUE, digits = NA))
+      self$`user` <- SimpleAnnotatorUser$new()$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
+      self$`annotation_id` <- this_object$`annotation_id`
       if (!is.null(this_object$`annotation_type`) && !(this_object$`annotation_type` %in% c("short", "long"))) {
         stop(paste("Error! \"", this_object$`annotation_type`, "\" cannot be assigned to `annotation_type`. Must be \"short\", \"long\".", sep = ""))
       }
@@ -130,16 +147,24 @@ Assignment <- R6::R6Class(
     },
 
     #' @description
-    #' Validate JSON input with respect to Assignment and throw an exception if invalid
+    #' Validate JSON input with respect to UserAssignment and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `observation`
-      if (!is.null(input_json$`observation`)) {
-        stopifnot(R6::is.R6(input_json$`observation`))
+      # check the required field `user`
+      if (!is.null(input_json$`user`)) {
+        stopifnot(R6::is.R6(input_json$`user`))
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for Assignment: the required field `observation` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for UserAssignment: the required field `user` is missing."))
+      }
+      # check the required field `annotation_id`
+      if (!is.null(input_json$`annotation_id`)) {
+        if (!(is.numeric(input_json$`annotation_id`) && length(input_json$`annotation_id`) == 1)) {
+          stop(paste("Error! Invalid data for `annotation_id`. Must be an integer:", input_json$`annotation_id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for UserAssignment: the required field `annotation_id` is missing."))
       }
       # check the required field `annotation_type`
       if (!is.null(input_json$`annotation_type`)) {
@@ -147,14 +172,14 @@ Assignment <- R6::R6Class(
           stop(paste("Error! Invalid data for `annotation_type`. Must be a string:", input_json$`annotation_type`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for Assignment: the required field `annotation_type` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for UserAssignment: the required field `annotation_type` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of Assignment
+    #' @return String representation of UserAssignment
     toString = function() {
       self$toJSONString()
     },
@@ -164,8 +189,8 @@ Assignment <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `observation` is null
-      if (is.null(self$`observation`)) {
+      # check if the required `user` is null
+      if (is.null(self$`user`)) {
         return(FALSE)
       }
 
@@ -183,9 +208,9 @@ Assignment <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `observation` is null
-      if (is.null(self$`observation`)) {
-        invalid_fields["observation"] <- "Non-nullable required field `observation` cannot be null."
+      # check if the required `user` is null
+      if (is.null(self$`user`)) {
+        invalid_fields["user"] <- "Non-nullable required field `user` cannot be null."
       }
 
       # check if the required `annotation_type` is null
@@ -207,13 +232,13 @@ Assignment <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# Assignment$unlock()
+# UserAssignment$unlock()
 #
 ## Below is an example to define the print function
-# Assignment$set("public", "print", function(...) {
+# UserAssignment$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# Assignment$lock()
+# UserAssignment$lock()
 

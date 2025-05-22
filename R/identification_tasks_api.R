@@ -45,11 +45,15 @@
 #' var_classification_confidence_max <- 3.4 # numeric |  (Optional)
 #' var_classification_confidence_min <- 3.4 # numeric |  (Optional)
 #' var_classification_taxon_ids <- c(123) # array[integer] |  (Optional)
+#' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
+#' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 #' var_is_decisive <- "is_decisive_example" # character |  (Optional)
 #' var_is_flagged <- "is_flagged_example" # character |  (Optional)
 #' var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#' var_updated_at_after <- "updated_at_after_example" # character | Updated at (Optional)
+#' var_updated_at_before <- "updated_at_before_example" # character | Updated at (Optional)
 #' var_user_ids <- c(123) # array[integer] |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
@@ -64,8 +68,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$annotations_list(var_observation_uuid, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, user_ids = var_user_idsdata_file = "result.txt")
-#' result <- api_instance$identification_tasks_api$annotations_list(var_observation_uuid, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, user_ids = var_user_ids)
+#' # result <- api_instance$annotations_list(var_observation_uuid, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
+#' result <- api_instance$identification_tasks_api$annotations_list(var_observation_uuid, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
 #' dput(result)
 #'
 #'
@@ -76,11 +80,15 @@
 #' var_classification_confidence_max <- 3.4 # numeric |  (Optional)
 #' var_classification_confidence_min <- 3.4 # numeric |  (Optional)
 #' var_classification_taxon_ids <- c(123) # array[integer] |  (Optional)
+#' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
+#' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 #' var_is_decisive <- "is_decisive_example" # character |  (Optional)
 #' var_is_flagged <- "is_flagged_example" # character |  (Optional)
 #' var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#' var_updated_at_after <- "updated_at_after_example" # character | Updated at (Optional)
+#' var_updated_at_before <- "updated_at_before_example" # character | Updated at (Optional)
 #' var_user_ids <- c(123) # array[integer] |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
@@ -95,8 +103,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$annotations_list_mine(classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, user_ids = var_user_idsdata_file = "result.txt")
-#' result <- api_instance$identification_tasks_api$annotations_list_mine(classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, user_ids = var_user_ids)
+#' # result <- api_instance$annotations_list_mine(classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
+#' result <- api_instance$identification_tasks_api$annotations_list_mine(classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
 #' dput(result)
 #'
 #'
@@ -123,7 +131,7 @@
 #' dput(result)
 #'
 #'
-#' ####################  assign_new  ####################
+#' ####################  assign_next  ####################
 #'
 #' library(MosquitoAlert)
 #'
@@ -139,8 +147,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$assign_new(data_file = "result.txt")
-#' result <- api_instance$identification_tasks_api$assign_new()
+#' # result <- api_instance$assign_next(data_file = "result.txt")
+#' result <- api_instance$identification_tasks_api$assign_next()
 #' dput(result)
 #'
 #'
@@ -233,53 +241,6 @@
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 #' # result <- api_instance$list_mine(annotator_ids = var_annotator_ids, assignee_ids = var_assignee_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, fully_predicted = var_fully_predicted, is_flagged = var_is_flagged, is_safe = var_is_safe, num_annotations_max = var_num_annotations_max, num_annotations_min = var_num_annotations_min, observation_country_ids = var_observation_country_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, result_agreement_max = var_result_agreement_max, result_agreement_min = var_result_agreement_min, result_confidence_max = var_result_confidence_max, result_confidence_min = var_result_confidence_min, result_source = var_result_source, result_taxon_ids = var_result_taxon_ids, result_uncertainty_max = var_result_uncertainty_max, result_uncertainty_min = var_result_uncertainty_min, review_type = var_review_type, status = var_status, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_beforedata_file = "result.txt")
 #' result <- api_instance$identification_tasks_api$list_mine(annotator_ids = var_annotator_ids, assignee_ids = var_assignee_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, fully_predicted = var_fully_predicted, is_flagged = var_is_flagged, is_safe = var_is_safe, num_annotations_max = var_num_annotations_max, num_annotations_min = var_num_annotations_min, observation_country_ids = var_observation_country_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, result_agreement_max = var_result_agreement_max, result_agreement_min = var_result_agreement_min, result_confidence_max = var_result_confidence_max, result_confidence_min = var_result_confidence_min, result_source = var_result_source, result_taxon_ids = var_result_taxon_ids, result_uncertainty_max = var_result_uncertainty_max, result_uncertainty_min = var_result_uncertainty_min, review_type = var_review_type, status = var_status, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before)
-#' dput(result)
-#'
-#'
-#' ####################  photos_list  ####################
-#'
-#' library(MosquitoAlert)
-#' var_observation_uuid <- "observation_uuid_example" # character | UUID of the Observation
-#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
-#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
-#'
-#' api_instance <- mosquitoalert_api$new()
-#'
-#' # Configure API key authorization: tokenAuth
-#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: cookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure HTTP bearer authorization: jwtAuth
-#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$photos_list(var_observation_uuid, page = var_page, page_size = var_page_sizedata_file = "result.txt")
-#' result <- api_instance$identification_tasks_api$photos_list(var_observation_uuid, page = var_page, page_size = var_page_size)
-#' dput(result)
-#'
-#'
-#' ####################  photos_retrieve  ####################
-#'
-#' library(MosquitoAlert)
-#' var_observation_uuid <- "observation_uuid_example" # character | UUID of the Observation
-#' var_uuid <- "uuid_example" # character | 
-#'
-#' api_instance <- mosquitoalert_api$new()
-#'
-#' # Configure API key authorization: tokenAuth
-#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: cookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure HTTP bearer authorization: jwtAuth
-#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$photos_retrieve(var_observation_uuid, var_uuiddata_file = "result.txt")
-#' result <- api_instance$identification_tasks_api$photos_retrieve(var_observation_uuid, var_uuid)
 #' dput(result)
 #'
 #'
@@ -592,18 +553,22 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param classification_confidence_max (optional) No description
     #' @param classification_confidence_min (optional) No description
     #' @param classification_taxon_ids (optional) No description
+    #' @param created_at_after (optional) Created at
+    #' @param created_at_before (optional) Created at
     #' @param is_decisive (optional) No description
     #' @param is_flagged (optional) No description
     #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
+    #' @param updated_at_after (optional) Updated at
+    #' @param updated_at_before (optional) Updated at
     #' @param user_ids (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedAnnotationList
-    annotations_list = function(observation_uuid, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, is_decisive = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, user_ids = NULL, data_file = NULL, ...) {
-      local_var_response <- self$annotations_list_with_http_info(observation_uuid, classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, is_decisive, is_flagged, order_by, page, page_size, user_ids, data_file = data_file, ...)
+    annotations_list = function(observation_uuid, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
+      local_var_response <- self$annotations_list_with_http_info(observation_uuid, classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, is_decisive, is_flagged, order_by, page, page_size, updated_at_after, updated_at_before, user_ids, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -623,17 +588,21 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param classification_confidence_max (optional) No description
     #' @param classification_confidence_min (optional) No description
     #' @param classification_taxon_ids (optional) No description
+    #' @param created_at_after (optional) Created at
+    #' @param created_at_before (optional) Created at
     #' @param is_decisive (optional) No description
     #' @param is_flagged (optional) No description
     #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
+    #' @param updated_at_after (optional) Updated at
+    #' @param updated_at_before (optional) Updated at
     #' @param user_ids (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedAnnotationList) with additional information such as HTTP status code, headers
-    annotations_list_with_http_info = function(observation_uuid, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, is_decisive = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, user_ids = NULL, data_file = NULL, ...) {
+    annotations_list_with_http_info = function(observation_uuid, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -670,6 +639,10 @@ IdentificationTasksApi <- R6::R6Class(
 
 
 
+
+
+
+
       if (!is.null(`classification_confidence_label`) && !(`classification_confidence_label` %in% c("definitely", "probably"))) {
         stop("Invalid value for classification_confidence_label when calling IdentificationTasksApi$annotations_list. Must be [definitely, probably].")
       }
@@ -683,6 +656,10 @@ IdentificationTasksApi <- R6::R6Class(
       for (query_item in `classification_taxon_ids`) {
         query_params[["classification_taxon_ids"]] <- c(query_params[["classification_taxon_ids"]], list(`classification_taxon_ids` = query_item))
       }
+
+      query_params[["created_at_after"]] <- `created_at_after`
+
+      query_params[["created_at_before"]] <- `created_at_before`
 
       query_params[["is_decisive"]] <- `is_decisive`
 
@@ -700,6 +677,10 @@ IdentificationTasksApi <- R6::R6Class(
       query_params[["page"]] <- `page`
 
       query_params[["page_size"]] <- `page_size`
+
+      query_params[["updated_at_after"]] <- `updated_at_after`
+
+      query_params[["updated_at_before"]] <- `updated_at_before`
 
       # explore
       for (query_item in `user_ids`) {
@@ -776,18 +757,22 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param classification_confidence_max (optional) No description
     #' @param classification_confidence_min (optional) No description
     #' @param classification_taxon_ids (optional) No description
+    #' @param created_at_after (optional) Created at
+    #' @param created_at_before (optional) Created at
     #' @param is_decisive (optional) No description
     #' @param is_flagged (optional) No description
     #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
+    #' @param updated_at_after (optional) Updated at
+    #' @param updated_at_before (optional) Updated at
     #' @param user_ids (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedAnnotationList
-    annotations_list_mine = function(classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, is_decisive = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, user_ids = NULL, data_file = NULL, ...) {
-      local_var_response <- self$annotations_list_mine_with_http_info(classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, is_decisive, is_flagged, order_by, page, page_size, user_ids, data_file = data_file, ...)
+    annotations_list_mine = function(classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
+      local_var_response <- self$annotations_list_mine_with_http_info(classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, is_decisive, is_flagged, order_by, page, page_size, updated_at_after, updated_at_before, user_ids, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -806,17 +791,21 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param classification_confidence_max (optional) No description
     #' @param classification_confidence_min (optional) No description
     #' @param classification_taxon_ids (optional) No description
+    #' @param created_at_after (optional) Created at
+    #' @param created_at_before (optional) Created at
     #' @param is_decisive (optional) No description
     #' @param is_flagged (optional) No description
     #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
+    #' @param updated_at_after (optional) Updated at
+    #' @param updated_at_before (optional) Updated at
     #' @param user_ids (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedAnnotationList) with additional information such as HTTP status code, headers
-    annotations_list_mine_with_http_info = function(classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, is_decisive = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, user_ids = NULL, data_file = NULL, ...) {
+    annotations_list_mine_with_http_info = function(classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -848,6 +837,10 @@ IdentificationTasksApi <- R6::R6Class(
 
 
 
+
+
+
+
       if (!is.null(`classification_confidence_label`) && !(`classification_confidence_label` %in% c("definitely", "probably"))) {
         stop("Invalid value for classification_confidence_label when calling IdentificationTasksApi$annotations_list_mine. Must be [definitely, probably].")
       }
@@ -861,6 +854,10 @@ IdentificationTasksApi <- R6::R6Class(
       for (query_item in `classification_taxon_ids`) {
         query_params[["classification_taxon_ids"]] <- c(query_params[["classification_taxon_ids"]], list(`classification_taxon_ids` = query_item))
       }
+
+      query_params[["created_at_after"]] <- `created_at_after`
+
+      query_params[["created_at_before"]] <- `created_at_before`
 
       query_params[["is_decisive"]] <- `is_decisive`
 
@@ -878,6 +875,10 @@ IdentificationTasksApi <- R6::R6Class(
       query_params[["page"]] <- `page`
 
       query_params[["page_size"]] <- `page_size`
+
+      query_params[["updated_at_after"]] <- `updated_at_after`
+
+      query_params[["updated_at_before"]] <- `updated_at_before`
 
       # explore
       for (query_item in `user_ids`) {
@@ -1067,9 +1068,9 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
-    #' @return IdentificationTask
-    assign_new = function(data_file = NULL, ...) {
-      local_var_response <- self$assign_new_with_http_info(data_file = data_file, ...)
+    #' @return Assignment
+    assign_next = function(data_file = NULL, ...) {
+      local_var_response <- self$assign_next_with_http_info(data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1087,8 +1088,8 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
-    #' @return API response (IdentificationTask) with additional information such as HTTP status code, headers
-    assign_new_with_http_info = function(data_file = NULL, ...) {
+    #' @return API response (Assignment) with additional information such as HTTP status code, headers
+    assign_next_with_http_info = function(data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1098,7 +1099,7 @@ IdentificationTasksApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
-      local_var_url_path <- "/identification-tasks/assign/"
+      local_var_url_path <- "/identification-tasks/assignments/next/"
       # API key authentication
       if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
         header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
@@ -1135,7 +1136,7 @@ IdentificationTasksApi <- R6::R6Class(
         }
 
         deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "IdentificationTask"),
+          self$api_client$DeserializeResponse(local_var_resp, "Assignment"),
           error = function(e) {
             stop("Failed to deserialize response")
           }
@@ -1654,241 +1655,6 @@ IdentificationTasksApi <- R6::R6Class(
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedIdentificationTaskList"),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(paste("Server returned ", local_var_resp$status_code, " response status code."), local_var_resp)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new("API client error", local_var_resp)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || local_var_resp$response == "") {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' 
-    #'
-    #' @param observation_uuid UUID of the Observation
-    #' @param page (optional) A page number within the paginated result set.
-    #' @param page_size (optional) Number of results to return per page.
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #'
-    #' @return PaginatedSimplePhotoList
-    photos_list = function(observation_uuid, page = NULL, page_size = NULL, data_file = NULL, ...) {
-      local_var_response <- self$photos_list_with_http_info(observation_uuid, page, page_size, data_file = data_file, ...)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' 
-    #'
-    #' @param observation_uuid UUID of the Observation
-    #' @param page (optional) A page number within the paginated result set.
-    #' @param page_size (optional) Number of results to return per page.
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #'
-    #' @return API response (PaginatedSimplePhotoList) with additional information such as HTTP status code, headers
-    photos_list_with_http_info = function(observation_uuid, page = NULL, page_size = NULL, data_file = NULL, ...) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (missing(`observation_uuid`)) {
-        stop("Missing required parameter `observation_uuid`.")
-      }
-
-
-
-
-      query_params[["page"]] <- `page`
-
-      query_params[["page_size"]] <- `page_size`
-
-      local_var_url_path <- "/identification-tasks/{observation_uuid}/photos/"
-      if (!missing(`observation_uuid`)) {
-        local_var_url_path <- gsub("\\{observation_uuid\\}", URLencode(as.character(`observation_uuid`), reserved = TRUE), local_var_url_path)
-      }
-
-      # API key authentication
-      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
-        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
-      }
-      # API key authentication
-      # Bearer token
-      if (!is.null(self$api_client$bearer_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list()
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          self$api_client$WriteFile(local_var_resp, data_file)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "PaginatedSimplePhotoList"),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(paste("Server returned ", local_var_resp$status_code, " response status code."), local_var_resp)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new("API client error", local_var_resp)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || local_var_resp$response == "") {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' 
-    #'
-    #' @param observation_uuid UUID of the Observation
-    #' @param uuid 
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #'
-    #' @return SimplePhoto
-    photos_retrieve = function(observation_uuid, uuid, data_file = NULL, ...) {
-      local_var_response <- self$photos_retrieve_with_http_info(observation_uuid, uuid, data_file = data_file, ...)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' 
-    #'
-    #' @param observation_uuid UUID of the Observation
-    #' @param uuid 
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #'
-    #' @return API response (SimplePhoto) with additional information such as HTTP status code, headers
-    photos_retrieve_with_http_info = function(observation_uuid, uuid, data_file = NULL, ...) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (missing(`observation_uuid`)) {
-        stop("Missing required parameter `observation_uuid`.")
-      }
-
-      if (missing(`uuid`)) {
-        stop("Missing required parameter `uuid`.")
-      }
-
-
-
-      local_var_url_path <- "/identification-tasks/{observation_uuid}/photos/{uuid}/"
-      if (!missing(`observation_uuid`)) {
-        local_var_url_path <- gsub("\\{observation_uuid\\}", URLencode(as.character(`observation_uuid`), reserved = TRUE), local_var_url_path)
-      }
-
-      if (!missing(`uuid`)) {
-        local_var_url_path <- gsub("\\{uuid\\}", URLencode(as.character(`uuid`), reserved = TRUE), local_var_url_path)
-      }
-
-      # API key authentication
-      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
-        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
-      }
-      # API key authentication
-      # Bearer token
-      if (!is.null(self$api_client$bearer_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list()
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          self$api_client$WriteFile(local_var_resp, data_file)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "SimplePhoto"),
           error = function(e) {
             stop("Failed to deserialize response")
           }

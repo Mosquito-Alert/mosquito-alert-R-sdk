@@ -6,7 +6,7 @@ context("Test IdentificationTask")
 model_instance <- IdentificationTask$new()
 
 test_that("observation", {
-  # tests for the property `observation` (SimplifiedObservation)
+  # tests for the property `observation` (SimplifiedObservationWithPhotos)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`observation`, "EXPECTED_RESULT")
@@ -20,7 +20,7 @@ test_that("public_photo", {
 })
 
 test_that("assignments", {
-  # tests for the property `assignments` (array[Assignment])
+  # tests for the property `assignments` (array[UserAssignment])
 
   # uncomment below to test the property
   #expect_equal(model.instance$`assignments`, "EXPECTED_RESULT")

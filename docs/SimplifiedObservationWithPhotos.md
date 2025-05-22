@@ -1,4 +1,4 @@
-# MosquitoAlert::SimplifiedObservation
+# MosquitoAlert::SimplifiedObservationWithPhotos
 
 
 ## Properties
@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **received_at** | **character** |  | [readonly] 
 **location** | [**SimplifiedLocation**](SimplifiedLocation.md) |  | 
 **note** | **character** | Note user attached to report. | [optional] 
+**photos** | [**array[SimplePhoto]**](SimplePhoto.md) |  | 
 
 

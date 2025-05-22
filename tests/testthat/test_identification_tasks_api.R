@@ -24,11 +24,15 @@ test_that("annotations_list", {
   # @param classification_confidence_max numeric  (optional)
   # @param classification_confidence_min numeric  (optional)
   # @param classification_taxon_ids array[integer]  (optional)
+  # @param created_at_after character Created at (optional)
+  # @param created_at_before character Created at (optional)
   # @param is_decisive character  (optional)
   # @param is_flagged character  (optional)
   # @param order_by array[character] Ordenado   (optional)
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)
+  # @param updated_at_after character Updated at (optional)
+  # @param updated_at_before character Updated at (optional)
   # @param user_ids array[integer]  (optional)
   # @return [PaginatedAnnotationList]
 
@@ -44,11 +48,15 @@ test_that("annotations_list_mine", {
   # @param classification_confidence_max numeric  (optional)
   # @param classification_confidence_min numeric  (optional)
   # @param classification_taxon_ids array[integer]  (optional)
+  # @param created_at_after character Created at (optional)
+  # @param created_at_before character Created at (optional)
   # @param is_decisive character  (optional)
   # @param is_flagged character  (optional)
   # @param order_by array[character] Ordenado   (optional)
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)
+  # @param updated_at_after character Updated at (optional)
+  # @param updated_at_before character Updated at (optional)
   # @param user_ids array[integer]  (optional)
   # @return [PaginatedAnnotationList]
 
@@ -67,11 +75,11 @@ test_that("annotations_retrieve", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("assign_new", {
-  # tests for assign_new
+test_that("assign_next", {
+  # tests for assign_next
   # base path: https://api.mosquitoalert.com/v1
   # Assign the next available identification task.
-  # @return [IdentificationTask]
+  # @return [Assignment]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -141,29 +149,6 @@ test_that("list_mine", {
   # @param updated_at_after character Update at (optional)
   # @param updated_at_before character Update at (optional)
   # @return [PaginatedIdentificationTaskList]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("photos_list", {
-  # tests for photos_list
-  # base path: https://api.mosquitoalert.com/v1
-  # @param observation_uuid character UUID of the Observation
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
-  # @return [PaginatedSimplePhotoList]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("photos_retrieve", {
-  # tests for photos_retrieve
-  # base path: https://api.mosquitoalert.com/v1
-  # @param observation_uuid character UUID of the Observation
-  # @param uuid character 
-  # @return [SimplePhoto]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
