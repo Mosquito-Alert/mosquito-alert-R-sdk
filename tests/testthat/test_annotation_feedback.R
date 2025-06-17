@@ -13,6 +13,14 @@ test_that("public_note", {
   #expect_equal(model.instance$`public_note`, "EXPECTED_RESULT")
 })
 
+test_that("internal_note", {
+  # tests for the property `internal_note` (character)
+  # Internal notes for yourself or other experts
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`internal_note`, "EXPECTED_RESULT")
+})
+
 test_that("user_note", {
   # tests for the property `user_note` (character)
   # Message that user will receive when viewing report on phone

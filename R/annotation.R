@@ -13,8 +13,10 @@
 #' @field best_photo  \link{SimplePhoto}
 #' @field classification  \link{AnnotationClassification}
 #' @field feedback  \link{AnnotationFeedback} [optional]
+#' @field type  character
 #' @field is_flagged  character
 #' @field is_decisive  character
+#' @field observation_flags  \link{ObservationFlags} [optional]
 #' @field tags  list(character) [optional]
 #' @field created_at  character
 #' @field updated_at  character
@@ -30,8 +32,10 @@ Annotation <- R6::R6Class(
     `best_photo` = NULL,
     `classification` = NULL,
     `feedback` = NULL,
+    `type` = NULL,
     `is_flagged` = NULL,
     `is_decisive` = NULL,
+    `observation_flags` = NULL,
     `tags` = NULL,
     `created_at` = NULL,
     `updated_at` = NULL,
@@ -44,14 +48,16 @@ Annotation <- R6::R6Class(
     #' @param user user
     #' @param best_photo best_photo
     #' @param classification classification
+    #' @param type type
     #' @param is_flagged is_flagged
     #' @param is_decisive is_decisive
     #' @param created_at created_at
     #' @param updated_at updated_at
     #' @param feedback feedback
+    #' @param observation_flags observation_flags
     #' @param tags tags
     #' @param ... Other optional arguments.
-    initialize = function(`id`, `observation_uuid`, `user`, `best_photo`, `classification`, `is_flagged`, `is_decisive`, `created_at`, `updated_at`, `feedback` = NULL, `tags` = NULL, ...) {
+    initialize = function(`id`, `observation_uuid`, `user`, `best_photo`, `classification`, `type`, `is_flagged`, `is_decisive`, `created_at`, `updated_at`, `feedback` = NULL, `observation_flags` = NULL, `tags` = NULL, ...) {
       if (!missing(`id`)) {
         if (!(is.numeric(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be an integer:", `id`))
@@ -75,6 +81,15 @@ Annotation <- R6::R6Class(
       if (!missing(`classification`)) {
         stopifnot(R6::is.R6(`classification`))
         self$`classification` <- `classification`
+      }
+      if (!missing(`type`)) {
+        if (!(`type` %in% c("short", "long"))) {
+          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"short\", \"long\".", sep = ""))
+        }
+        if (!(is.character(`type`) && length(`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        }
+        self$`type` <- `type`
       }
       if (!missing(`is_flagged`)) {
         if (!(is.logical(`is_flagged`) && length(`is_flagged`) == 1)) {
@@ -103,6 +118,10 @@ Annotation <- R6::R6Class(
       if (!is.null(`feedback`)) {
         stopifnot(R6::is.R6(`feedback`))
         self$`feedback` <- `feedback`
+      }
+      if (!is.null(`observation_flags`)) {
+        stopifnot(R6::is.R6(`observation_flags`))
+        self$`observation_flags` <- `observation_flags`
       }
       if (!is.null(`tags`)) {
         stopifnot(is.vector(`tags`), length(`tags`) != 0)
@@ -166,6 +185,10 @@ Annotation <- R6::R6Class(
         AnnotationObject[["feedback"]] <-
           self$`feedback`$toSimpleType()
       }
+      if (!is.null(self$`type`)) {
+        AnnotationObject[["type"]] <-
+          self$`type`
+      }
       if (!is.null(self$`is_flagged`)) {
         AnnotationObject[["is_flagged"]] <-
           self$`is_flagged`
@@ -173,6 +196,10 @@ Annotation <- R6::R6Class(
       if (!is.null(self$`is_decisive`)) {
         AnnotationObject[["is_decisive"]] <-
           self$`is_decisive`
+      }
+      if (!is.null(self$`observation_flags`)) {
+        AnnotationObject[["observation_flags"]] <-
+          self$`observation_flags`$toSimpleType()
       }
       if (!is.null(self$`tags`)) {
         AnnotationObject[["tags"]] <-
@@ -222,11 +249,22 @@ Annotation <- R6::R6Class(
         `feedback_object`$fromJSON(jsonlite::toJSON(this_object$`feedback`, auto_unbox = TRUE, digits = NA))
         self$`feedback` <- `feedback_object`
       }
+      if (!is.null(this_object$`type`)) {
+        if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("short", "long"))) {
+          stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"short\", \"long\".", sep = ""))
+        }
+        self$`type` <- this_object$`type`
+      }
       if (!is.null(this_object$`is_flagged`)) {
         self$`is_flagged` <- this_object$`is_flagged`
       }
       if (!is.null(this_object$`is_decisive`)) {
         self$`is_decisive` <- this_object$`is_decisive`
+      }
+      if (!is.null(this_object$`observation_flags`)) {
+        `observation_flags_object` <- ObservationFlags$new()
+        `observation_flags_object`$fromJSON(jsonlite::toJSON(this_object$`observation_flags`, auto_unbox = TRUE, digits = NA))
+        self$`observation_flags` <- `observation_flags_object`
       }
       if (!is.null(this_object$`tags`)) {
         self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
@@ -264,8 +302,13 @@ Annotation <- R6::R6Class(
       self$`best_photo` <- SimplePhoto$new()$fromJSON(jsonlite::toJSON(this_object$`best_photo`, auto_unbox = TRUE, digits = NA))
       self$`classification` <- AnnotationClassification$new()$fromJSON(jsonlite::toJSON(this_object$`classification`, auto_unbox = TRUE, digits = NA))
       self$`feedback` <- AnnotationFeedback$new()$fromJSON(jsonlite::toJSON(this_object$`feedback`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("short", "long"))) {
+        stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"short\", \"long\".", sep = ""))
+      }
+      self$`type` <- this_object$`type`
       self$`is_flagged` <- this_object$`is_flagged`
       self$`is_decisive` <- this_object$`is_decisive`
+      self$`observation_flags` <- ObservationFlags$new()$fromJSON(jsonlite::toJSON(this_object$`observation_flags`, auto_unbox = TRUE, digits = NA))
       self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
       self$`created_at` <- this_object$`created_at`
       self$`updated_at` <- this_object$`updated_at`
@@ -311,6 +354,14 @@ Annotation <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`classification`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Annotation: the required field `classification` is missing."))
+      }
+      # check the required field `type`
+      if (!is.null(input_json$`type`)) {
+        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
+          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Annotation: the required field `type` is missing."))
       }
       # check the required field `is_flagged`
       if (!is.null(input_json$`is_flagged`)) {
@@ -374,6 +425,11 @@ Annotation <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `type` is null
+      if (is.null(self$`type`)) {
+        return(FALSE)
+      }
+
       # check if the required `is_flagged` is null
       if (is.null(self$`is_flagged`)) {
         return(FALSE)
@@ -416,6 +472,11 @@ Annotation <- R6::R6Class(
       # check if the required `user` is null
       if (is.null(self$`user`)) {
         invalid_fields["user"] <- "Non-nullable required field `user` cannot be null."
+      }
+
+      # check if the required `type` is null
+      if (is.null(self$`type`)) {
+        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
       }
 
       # check if the required `is_flagged` is null

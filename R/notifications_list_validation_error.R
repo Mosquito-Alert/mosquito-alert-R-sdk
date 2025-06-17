@@ -8,7 +8,7 @@
 #' @description NotificationsListValidationError Class
 #' @format An \code{R6Class} generator object
 #' @field type  character
-#' @field errors  list(\link{NotificationsListError})
+#' @field errors  list(\link{NotificationsListOrderByErrorComponent})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -97,7 +97,7 @@ NotificationsListValidationError <- R6::R6Class(
         self$`type` <- this_object$`type`
       }
       if (!is.null(this_object$`errors`)) {
-        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[NotificationsListError]", loadNamespace("MosquitoAlert"))
+        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[NotificationsListOrderByErrorComponent]", loadNamespace("MosquitoAlert"))
       }
       self
     },
@@ -124,7 +124,7 @@ NotificationsListValidationError <- R6::R6Class(
         stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"validation_error\".", sep = ""))
       }
       self$`type` <- this_object$`type`
-      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[NotificationsListError]", loadNamespace("MosquitoAlert"))
+      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[NotificationsListOrderByErrorComponent]", loadNamespace("MosquitoAlert"))
       self
     },
 

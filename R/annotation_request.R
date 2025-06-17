@@ -9,9 +9,11 @@
 #' @format An \code{R6Class} generator object
 #' @field best_photo_uuid  character [optional]
 #' @field classification  \link{AnnotationClassificationRequest}
+#' @field characteristics  \link{AnnotationCharacteristicsRequest} [optional]
 #' @field feedback  \link{AnnotationFeedbackRequest} [optional]
 #' @field is_flagged  character [optional]
 #' @field is_decisive  character [optional]
+#' @field observation_flags  \link{ObservationFlagsRequest} [optional]
 #' @field tags  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -21,9 +23,11 @@ AnnotationRequest <- R6::R6Class(
   public = list(
     `best_photo_uuid` = NULL,
     `classification` = NULL,
+    `characteristics` = NULL,
     `feedback` = NULL,
     `is_flagged` = NULL,
     `is_decisive` = NULL,
+    `observation_flags` = NULL,
     `tags` = NULL,
 
     #' @description
@@ -31,12 +35,14 @@ AnnotationRequest <- R6::R6Class(
     #'
     #' @param classification classification
     #' @param best_photo_uuid best_photo_uuid
+    #' @param characteristics characteristics
     #' @param feedback feedback
     #' @param is_flagged is_flagged. Default to FALSE.
     #' @param is_decisive is_decisive. Default to FALSE.
+    #' @param observation_flags observation_flags
     #' @param tags tags
     #' @param ... Other optional arguments.
-    initialize = function(`classification`, `best_photo_uuid` = NULL, `feedback` = NULL, `is_flagged` = FALSE, `is_decisive` = FALSE, `tags` = NULL, ...) {
+    initialize = function(`classification`, `best_photo_uuid` = NULL, `characteristics` = NULL, `feedback` = NULL, `is_flagged` = FALSE, `is_decisive` = FALSE, `observation_flags` = NULL, `tags` = NULL, ...) {
       if (!missing(`classification`)) {
         stopifnot(R6::is.R6(`classification`))
         self$`classification` <- `classification`
@@ -46,6 +52,10 @@ AnnotationRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `best_photo_uuid`. Must be a string:", `best_photo_uuid`))
         }
         self$`best_photo_uuid` <- `best_photo_uuid`
+      }
+      if (!is.null(`characteristics`)) {
+        stopifnot(R6::is.R6(`characteristics`))
+        self$`characteristics` <- `characteristics`
       }
       if (!is.null(`feedback`)) {
         stopifnot(R6::is.R6(`feedback`))
@@ -62,6 +72,10 @@ AnnotationRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `is_decisive`. Must be a boolean:", `is_decisive`))
         }
         self$`is_decisive` <- `is_decisive`
+      }
+      if (!is.null(`observation_flags`)) {
+        stopifnot(R6::is.R6(`observation_flags`))
+        self$`observation_flags` <- `observation_flags`
       }
       if (!is.null(`tags`)) {
         stopifnot(is.vector(`tags`), length(`tags`) != 0)
@@ -109,6 +123,10 @@ AnnotationRequest <- R6::R6Class(
         AnnotationRequestObject[["classification"]] <-
           self$`classification`$toSimpleType()
       }
+      if (!is.null(self$`characteristics`)) {
+        AnnotationRequestObject[["characteristics"]] <-
+          self$`characteristics`$toSimpleType()
+      }
       if (!is.null(self$`feedback`)) {
         AnnotationRequestObject[["feedback"]] <-
           self$`feedback`$toSimpleType()
@@ -120,6 +138,10 @@ AnnotationRequest <- R6::R6Class(
       if (!is.null(self$`is_decisive`)) {
         AnnotationRequestObject[["is_decisive"]] <-
           self$`is_decisive`
+      }
+      if (!is.null(self$`observation_flags`)) {
+        AnnotationRequestObject[["observation_flags"]] <-
+          self$`observation_flags`$toSimpleType()
       }
       if (!is.null(self$`tags`)) {
         AnnotationRequestObject[["tags"]] <-
@@ -143,6 +165,11 @@ AnnotationRequest <- R6::R6Class(
         `classification_object`$fromJSON(jsonlite::toJSON(this_object$`classification`, auto_unbox = TRUE, digits = NA))
         self$`classification` <- `classification_object`
       }
+      if (!is.null(this_object$`characteristics`)) {
+        `characteristics_object` <- AnnotationCharacteristicsRequest$new()
+        `characteristics_object`$fromJSON(jsonlite::toJSON(this_object$`characteristics`, auto_unbox = TRUE, digits = NA))
+        self$`characteristics` <- `characteristics_object`
+      }
       if (!is.null(this_object$`feedback`)) {
         `feedback_object` <- AnnotationFeedbackRequest$new()
         `feedback_object`$fromJSON(jsonlite::toJSON(this_object$`feedback`, auto_unbox = TRUE, digits = NA))
@@ -153,6 +180,11 @@ AnnotationRequest <- R6::R6Class(
       }
       if (!is.null(this_object$`is_decisive`)) {
         self$`is_decisive` <- this_object$`is_decisive`
+      }
+      if (!is.null(this_object$`observation_flags`)) {
+        `observation_flags_object` <- ObservationFlagsRequest$new()
+        `observation_flags_object`$fromJSON(jsonlite::toJSON(this_object$`observation_flags`, auto_unbox = TRUE, digits = NA))
+        self$`observation_flags` <- `observation_flags_object`
       }
       if (!is.null(this_object$`tags`)) {
         self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
@@ -180,9 +212,11 @@ AnnotationRequest <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`best_photo_uuid` <- this_object$`best_photo_uuid`
       self$`classification` <- AnnotationClassificationRequest$new()$fromJSON(jsonlite::toJSON(this_object$`classification`, auto_unbox = TRUE, digits = NA))
+      self$`characteristics` <- AnnotationCharacteristicsRequest$new()$fromJSON(jsonlite::toJSON(this_object$`characteristics`, auto_unbox = TRUE, digits = NA))
       self$`feedback` <- AnnotationFeedbackRequest$new()$fromJSON(jsonlite::toJSON(this_object$`feedback`, auto_unbox = TRUE, digits = NA))
       self$`is_flagged` <- this_object$`is_flagged`
       self$`is_decisive` <- this_object$`is_decisive`
+      self$`observation_flags` <- ObservationFlagsRequest$new()$fromJSON(jsonlite::toJSON(this_object$`observation_flags`, auto_unbox = TRUE, digits = NA))
       self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
       self
     },

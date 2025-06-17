@@ -10,8 +10,10 @@ Name | Type | Description | Notes
 **best_photo** | [**SimplePhoto**](SimplePhoto.md) |  | [readonly] 
 **classification** | [**AnnotationClassification**](AnnotationClassification.md) |  | 
 **feedback** | [**AnnotationFeedback**](AnnotationFeedback.md) |  | [optional] 
+**type** | **character** |  | [readonly] [Enum: [short, long]] 
 **is_flagged** | **character** |  | [readonly] [default to FALSE] 
 **is_decisive** | **character** |  | [readonly] [default to FALSE] 
+**observation_flags** | [**ObservationFlags**](ObservationFlags.md) |  | [optional] 
 **tags** | **array[character]** |  | [optional] 
 **created_at** | **character** |  | [readonly] 
 **updated_at** | **character** |  | [readonly] 

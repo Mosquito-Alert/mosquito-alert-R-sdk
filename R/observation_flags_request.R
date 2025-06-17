@@ -1,26 +1,42 @@
-#' Create a new TaxaListError
+#' Create a new ObservationFlagsRequest
 #'
 #' @description
-#' TaxaListError Class
+#' ObservationFlagsRequest Class
 #'
 #' @docType class
-#' @title TaxaListError
-#' @description TaxaListError Class
+#' @title ObservationFlagsRequest
+#' @description ObservationFlagsRequest Class
 #' @format An \code{R6Class} generator object
+#' @field is_favourite  character [optional]
+#' @field is_visible  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-TaxaListError <- R6::R6Class(
-  "TaxaListError",
+ObservationFlagsRequest <- R6::R6Class(
+  "ObservationFlagsRequest",
   public = list(
-    `_discriminator_property_name` = 'attr',
-    
+    `is_favourite` = NULL,
+    `is_visible` = NULL,
 
     #' @description
-    #' Initialize a new TaxaListError class.
+    #' Initialize a new ObservationFlagsRequest class.
     #'
+    #' @param is_favourite is_favourite. Default to FALSE.
+    #' @param is_visible is_visible. Default to TRUE.
     #' @param ... Other optional arguments.
-    initialize = function(...) {
+    initialize = function(`is_favourite` = FALSE, `is_visible` = TRUE, ...) {
+      if (!is.null(`is_favourite`)) {
+        if (!(is.logical(`is_favourite`) && length(`is_favourite`) == 1)) {
+          stop(paste("Error! Invalid data for `is_favourite`. Must be a boolean:", `is_favourite`))
+        }
+        self$`is_favourite` <- `is_favourite`
+      }
+      if (!is.null(`is_visible`)) {
+        if (!(is.logical(`is_visible`) && length(`is_visible`) == 1)) {
+          stop(paste("Error! Invalid data for `is_visible`. Must be a boolean:", `is_visible`))
+        }
+        self$`is_visible` <- `is_visible`
+      }
     },
 
     #' @description
@@ -35,9 +51,9 @@ TaxaListError <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return TaxaListError as a base R list.
+    #' @return ObservationFlagsRequest as a base R list.
     #' @examples
-    #' # convert array of TaxaListError (x) to a data frame
+    #' # convert array of ObservationFlagsRequest (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -49,21 +65,35 @@ TaxaListError <- R6::R6Class(
     },
 
     #' @description
-    #' Convert TaxaListError to a base R type
+    #' Convert ObservationFlagsRequest to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      TaxaListErrorObject <- list()
-      return(TaxaListErrorObject)
+      ObservationFlagsRequestObject <- list()
+      if (!is.null(self$`is_favourite`)) {
+        ObservationFlagsRequestObject[["is_favourite"]] <-
+          self$`is_favourite`
+      }
+      if (!is.null(self$`is_visible`)) {
+        ObservationFlagsRequestObject[["is_visible"]] <-
+          self$`is_visible`
+      }
+      return(ObservationFlagsRequestObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of TaxaListError
+    #' Deserialize JSON string into an instance of ObservationFlagsRequest
     #'
     #' @param input_json the JSON input
-    #' @return the instance of TaxaListError
+    #' @return the instance of ObservationFlagsRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`is_favourite`)) {
+        self$`is_favourite` <- this_object$`is_favourite`
+      }
+      if (!is.null(this_object$`is_visible`)) {
+        self$`is_visible` <- this_object$`is_visible`
+      }
       self
     },
 
@@ -71,7 +101,7 @@ TaxaListError <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return TaxaListError in JSON format
+    #' @return ObservationFlagsRequest in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -79,17 +109,19 @@ TaxaListError <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of TaxaListError
+    #' Deserialize JSON string into an instance of ObservationFlagsRequest
     #'
     #' @param input_json the JSON input
-    #' @return the instance of TaxaListError
+    #' @return the instance of ObservationFlagsRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`is_favourite` <- this_object$`is_favourite`
+      self$`is_visible` <- this_object$`is_visible`
       self
     },
 
     #' @description
-    #' Validate JSON input with respect to TaxaListError and throw an exception if invalid
+    #' Validate JSON input with respect to ObservationFlagsRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -99,7 +131,7 @@ TaxaListError <- R6::R6Class(
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of TaxaListError
+    #' @return String representation of ObservationFlagsRequest
     toString = function() {
       self$toJSONString()
     },
@@ -132,13 +164,13 @@ TaxaListError <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# TaxaListError$unlock()
+# ObservationFlagsRequest$unlock()
 #
 ## Below is an example to define the print function
-# TaxaListError$set("public", "print", function(...) {
+# ObservationFlagsRequest$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# TaxaListError$lock()
+# ObservationFlagsRequest$lock()
 

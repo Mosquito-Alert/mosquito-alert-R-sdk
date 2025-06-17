@@ -11,6 +11,7 @@
 #' @field bbox  \link{BoundingBox}
 #' @field insect_confidence Insect confidence numeric
 #' @field predicted_class  character
+#' @field taxon  \link{SimpleTaxon}
 #' @field threshold_deviation  numeric
 #' @field is_decisive Indicates if this prediction can close the identification task. character [optional]
 #' @field scores  \link{PredictionScore}
@@ -27,6 +28,7 @@ CreatePhotoPrediction <- R6::R6Class(
     `bbox` = NULL,
     `insect_confidence` = NULL,
     `predicted_class` = NULL,
+    `taxon` = NULL,
     `threshold_deviation` = NULL,
     `is_decisive` = NULL,
     `scores` = NULL,
@@ -41,6 +43,7 @@ CreatePhotoPrediction <- R6::R6Class(
     #' @param bbox bbox
     #' @param insect_confidence Insect confidence
     #' @param predicted_class predicted_class
+    #' @param taxon taxon
     #' @param threshold_deviation threshold_deviation
     #' @param scores scores
     #' @param classifier_version classifier_version
@@ -48,7 +51,7 @@ CreatePhotoPrediction <- R6::R6Class(
     #' @param updated_at updated_at
     #' @param is_decisive Indicates if this prediction can close the identification task.
     #' @param ... Other optional arguments.
-    initialize = function(`photo`, `bbox`, `insect_confidence`, `predicted_class`, `threshold_deviation`, `scores`, `classifier_version`, `created_at`, `updated_at`, `is_decisive` = NULL, ...) {
+    initialize = function(`photo`, `bbox`, `insect_confidence`, `predicted_class`, `taxon`, `threshold_deviation`, `scores`, `classifier_version`, `created_at`, `updated_at`, `is_decisive` = NULL, ...) {
       if (!missing(`photo`)) {
         stopifnot(R6::is.R6(`photo`))
         self$`photo` <- `photo`
@@ -71,6 +74,10 @@ CreatePhotoPrediction <- R6::R6Class(
           stop(paste("Error! Invalid data for `predicted_class`. Must be a string:", `predicted_class`))
         }
         self$`predicted_class` <- `predicted_class`
+      }
+      if (!missing(`taxon`)) {
+        stopifnot(R6::is.R6(`taxon`))
+        self$`taxon` <- `taxon`
       }
       if (!missing(`threshold_deviation`)) {
         if (!(is.numeric(`threshold_deviation`) && length(`threshold_deviation`) == 1)) {
@@ -158,6 +165,10 @@ CreatePhotoPrediction <- R6::R6Class(
         CreatePhotoPredictionObject[["predicted_class"]] <-
           self$`predicted_class`
       }
+      if (!is.null(self$`taxon`)) {
+        CreatePhotoPredictionObject[["taxon"]] <-
+          self$`taxon`$toSimpleType()
+      }
       if (!is.null(self$`threshold_deviation`)) {
         CreatePhotoPredictionObject[["threshold_deviation"]] <-
           self$`threshold_deviation`
@@ -211,6 +222,11 @@ CreatePhotoPrediction <- R6::R6Class(
         }
         self$`predicted_class` <- this_object$`predicted_class`
       }
+      if (!is.null(this_object$`taxon`)) {
+        `taxon_object` <- SimpleTaxon$new()
+        `taxon_object`$fromJSON(jsonlite::toJSON(this_object$`taxon`, auto_unbox = TRUE, digits = NA))
+        self$`taxon` <- `taxon_object`
+      }
       if (!is.null(this_object$`threshold_deviation`)) {
         self$`threshold_deviation` <- this_object$`threshold_deviation`
       }
@@ -262,6 +278,7 @@ CreatePhotoPrediction <- R6::R6Class(
         stop(paste("Error! \"", this_object$`predicted_class`, "\" cannot be assigned to `predicted_class`. Must be \"ae_albopictus\", \"ae_aegypti\", \"ae_japonicus\", \"ae_koreicus\", \"culex\", \"anopheles\", \"culiseta\", \"other_species\", \"not_sure\".", sep = ""))
       }
       self$`predicted_class` <- this_object$`predicted_class`
+      self$`taxon` <- SimpleTaxon$new()$fromJSON(jsonlite::toJSON(this_object$`taxon`, auto_unbox = TRUE, digits = NA))
       self$`threshold_deviation` <- this_object$`threshold_deviation`
       self$`is_decisive` <- this_object$`is_decisive`
       self$`scores` <- PredictionScore$new()$fromJSON(jsonlite::toJSON(this_object$`scores`, auto_unbox = TRUE, digits = NA))
@@ -307,6 +324,12 @@ CreatePhotoPrediction <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CreatePhotoPrediction: the required field `predicted_class` is missing."))
+      }
+      # check the required field `taxon`
+      if (!is.null(input_json$`taxon`)) {
+        stopifnot(R6::is.R6(input_json$`taxon`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CreatePhotoPrediction: the required field `taxon` is missing."))
       }
       # check the required field `threshold_deviation`
       if (!is.null(input_json$`threshold_deviation`)) {

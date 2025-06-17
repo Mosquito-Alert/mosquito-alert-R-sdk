@@ -8,7 +8,7 @@
 #' @description TaxaListValidationError Class
 #' @format An \code{R6Class} generator object
 #' @field type  character
-#' @field errors  list(\link{TaxaListError})
+#' @field errors  list(\link{TaxaListRankErrorComponent})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -97,7 +97,7 @@ TaxaListValidationError <- R6::R6Class(
         self$`type` <- this_object$`type`
       }
       if (!is.null(this_object$`errors`)) {
-        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[TaxaListError]", loadNamespace("MosquitoAlert"))
+        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[TaxaListRankErrorComponent]", loadNamespace("MosquitoAlert"))
       }
       self
     },
@@ -124,7 +124,7 @@ TaxaListValidationError <- R6::R6Class(
         stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"validation_error\".", sep = ""))
       }
       self$`type` <- this_object$`type`
-      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[TaxaListError]", loadNamespace("MosquitoAlert"))
+      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[TaxaListRankErrorComponent]", loadNamespace("MosquitoAlert"))
       self
     },
 

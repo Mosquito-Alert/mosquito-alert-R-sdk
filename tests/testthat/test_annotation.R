@@ -48,6 +48,13 @@ test_that("feedback", {
   #expect_equal(model.instance$`feedback`, "EXPECTED_RESULT")
 })
 
+test_that("type", {
+  # tests for the property `type` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`type`, "EXPECTED_RESULT")
+})
+
 test_that("is_flagged", {
   # tests for the property `is_flagged` (character)
 
@@ -60,6 +67,13 @@ test_that("is_decisive", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_decisive`, "EXPECTED_RESULT")
+})
+
+test_that("observation_flags", {
+  # tests for the property `observation_flags` (ObservationFlags)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`observation_flags`, "EXPECTED_RESULT")
 })
 
 test_that("tags", {

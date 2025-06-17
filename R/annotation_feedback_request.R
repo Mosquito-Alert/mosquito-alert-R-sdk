@@ -8,6 +8,7 @@
 #' @description AnnotationFeedbackRequest Class
 #' @format An \code{R6Class} generator object
 #' @field public_note Notes to display on public map character [optional]
+#' @field internal_note Internal notes for yourself or other experts character [optional]
 #' @field user_note Message that user will receive when viewing report on phone character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -16,20 +17,28 @@ AnnotationFeedbackRequest <- R6::R6Class(
   "AnnotationFeedbackRequest",
   public = list(
     `public_note` = NULL,
+    `internal_note` = NULL,
     `user_note` = NULL,
 
     #' @description
     #' Initialize a new AnnotationFeedbackRequest class.
     #'
     #' @param public_note Notes to display on public map
+    #' @param internal_note Internal notes for yourself or other experts
     #' @param user_note Message that user will receive when viewing report on phone
     #' @param ... Other optional arguments.
-    initialize = function(`public_note` = NULL, `user_note` = NULL, ...) {
+    initialize = function(`public_note` = NULL, `internal_note` = NULL, `user_note` = NULL, ...) {
       if (!is.null(`public_note`)) {
         if (!(is.character(`public_note`) && length(`public_note`) == 1)) {
           stop(paste("Error! Invalid data for `public_note`. Must be a string:", `public_note`))
         }
         self$`public_note` <- `public_note`
+      }
+      if (!is.null(`internal_note`)) {
+        if (!(is.character(`internal_note`) && length(`internal_note`) == 1)) {
+          stop(paste("Error! Invalid data for `internal_note`. Must be a string:", `internal_note`))
+        }
+        self$`internal_note` <- `internal_note`
       }
       if (!is.null(`user_note`)) {
         if (!(is.character(`user_note`) && length(`user_note`) == 1)) {
@@ -74,6 +83,10 @@ AnnotationFeedbackRequest <- R6::R6Class(
         AnnotationFeedbackRequestObject[["public_note"]] <-
           self$`public_note`
       }
+      if (!is.null(self$`internal_note`)) {
+        AnnotationFeedbackRequestObject[["internal_note"]] <-
+          self$`internal_note`
+      }
       if (!is.null(self$`user_note`)) {
         AnnotationFeedbackRequestObject[["user_note"]] <-
           self$`user_note`
@@ -90,6 +103,9 @@ AnnotationFeedbackRequest <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`public_note`)) {
         self$`public_note` <- this_object$`public_note`
+      }
+      if (!is.null(this_object$`internal_note`)) {
+        self$`internal_note` <- this_object$`internal_note`
       }
       if (!is.null(this_object$`user_note`)) {
         self$`user_note` <- this_object$`user_note`
@@ -116,6 +132,7 @@ AnnotationFeedbackRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`public_note` <- this_object$`public_note`
+      self$`internal_note` <- this_object$`internal_note`
       self$`user_note` <- this_object$`user_note`
       self
     },

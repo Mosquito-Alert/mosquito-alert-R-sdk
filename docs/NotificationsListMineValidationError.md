@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **character** |  | [Enum: [validation_error]] 
-**errors** | [**array[NotificationsListMineError]**](NotificationsListMineError.md) |  | 
+**errors** | [**array[NotificationsListMineOrderByErrorComponent]**](NotificationsListMineOrderByErrorComponent.md) |  | 
 
 

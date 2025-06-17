@@ -7,7 +7,7 @@
 #' @title Assignment
 #' @description Assignment Class
 #' @format An \code{R6Class} generator object
-#' @field observation  \link{SimplifiedObservationWithPhotos}
+#' @field observation  \link{AssignedObservation}
 #' @field annotation_type  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -90,7 +90,7 @@ Assignment <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`observation`)) {
-        `observation_object` <- SimplifiedObservationWithPhotos$new()
+        `observation_object` <- AssignedObservation$new()
         `observation_object`$fromJSON(jsonlite::toJSON(this_object$`observation`, auto_unbox = TRUE, digits = NA))
         self$`observation` <- `observation_object`
       }
@@ -121,7 +121,7 @@ Assignment <- R6::R6Class(
     #' @return the instance of Assignment
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`observation` <- SimplifiedObservationWithPhotos$new()$fromJSON(jsonlite::toJSON(this_object$`observation`, auto_unbox = TRUE, digits = NA))
+      self$`observation` <- AssignedObservation$new()$fromJSON(jsonlite::toJSON(this_object$`observation`, auto_unbox = TRUE, digits = NA))
       if (!is.null(this_object$`annotation_type`) && !(this_object$`annotation_type` %in% c("short", "long"))) {
         stop(paste("Error! \"", this_object$`annotation_type`, "\" cannot be assigned to `annotation_type`. Must be \"short\", \"long\".", sep = ""))
       }

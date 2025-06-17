@@ -6,7 +6,7 @@ context("Test Assignment")
 model_instance <- Assignment$new()
 
 test_that("observation", {
-  # tests for the property `observation` (SimplifiedObservationWithPhotos)
+  # tests for the property `observation` (AssignedObservation)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`observation`, "EXPECTED_RESULT")

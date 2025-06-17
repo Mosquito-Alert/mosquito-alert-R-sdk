@@ -11,6 +11,7 @@ test_that("list", {
   # @param is_relevant character  (optional)
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)
+  # @param rank array[integer]  (optional)
   # @return [PaginatedTaxonList]
 
   # uncomment below to test the operation

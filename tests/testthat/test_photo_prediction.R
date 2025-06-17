@@ -34,6 +34,13 @@ test_that("predicted_class", {
   #expect_equal(model.instance$`predicted_class`, "EXPECTED_RESULT")
 })
 
+test_that("taxon", {
+  # tests for the property `taxon` (SimpleTaxon)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`taxon`, "EXPECTED_RESULT")
+})
+
 test_that("threshold_deviation", {
   # tests for the property `threshold_deviation` (numeric)
 

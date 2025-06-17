@@ -19,6 +19,13 @@ test_that("classification", {
   #expect_equal(model.instance$`classification`, "EXPECTED_RESULT")
 })
 
+test_that("characteristics", {
+  # tests for the property `characteristics` (AnnotationCharacteristicsRequest)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`characteristics`, "EXPECTED_RESULT")
+})
+
 test_that("feedback", {
   # tests for the property `feedback` (AnnotationFeedbackRequest)
 
@@ -38,6 +45,13 @@ test_that("is_decisive", {
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_decisive`, "EXPECTED_RESULT")
+})
+
+test_that("observation_flags", {
+  # tests for the property `observation_flags` (ObservationFlagsRequest)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`observation_flags`, "EXPECTED_RESULT")
 })
 
 test_that("tags", {

@@ -6,32 +6,32 @@ context("Test BoundingBox")
 model_instance <- BoundingBox$new()
 
 test_that("x_min", {
-  # tests for the property `x_min` (integer)
-  # photo bounding box coordinates top left x
+  # tests for the property `x_min` (numeric)
+  # photo bounding box relative coordinates top left x
 
   # uncomment below to test the property
   #expect_equal(model.instance$`x_min`, "EXPECTED_RESULT")
 })
 
 test_that("y_min", {
-  # tests for the property `y_min` (integer)
-  # photo bounding box coordinates top left y
+  # tests for the property `y_min` (numeric)
+  # photo bounding box relative coordinates top left y
 
   # uncomment below to test the property
   #expect_equal(model.instance$`y_min`, "EXPECTED_RESULT")
 })
 
 test_that("x_max", {
-  # tests for the property `x_max` (integer)
-  # photo bounding box coordinates bottom right x
+  # tests for the property `x_max` (numeric)
+  # photo bounding box relative coordinates bottom right x
 
   # uncomment below to test the property
   #expect_equal(model.instance$`x_max`, "EXPECTED_RESULT")
 })
 
 test_that("y_max", {
-  # tests for the property `y_max` (integer)
-  # photo bounding box coordinates bottom right y
+  # tests for the property `y_max` (numeric)
+  # photo bounding box relative coordinates bottom right y
 
   # uncomment below to test the property
   #expect_equal(model.instance$`y_max`, "EXPECTED_RESULT")

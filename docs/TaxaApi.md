@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **list**
-> PaginatedTaxonList list(is_relevant = var.is_relevant, page = var.page, page_size = var.page_size)
+> PaginatedTaxonList list(is_relevant = var.is_relevant, page = var.page, page_size = var.page_size, rank = var.rank)
 
 
 
@@ -23,6 +23,7 @@ library(MosquitoAlert)
 var_is_relevant <- "is_relevant_example" # character |  (Optional)
 var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+var_rank <- c(123) # array[integer] |  (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -32,8 +33,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$list(is_relevant = var_is_relevant, page = var_page, page_size = var_page_sizedata_file = "result.txt")
-result <- api_instance$taxa_api$list(is_relevant = var_is_relevant, page = var_page, page_size = var_page_size)
+# result <- api_instance$list(is_relevant = var_is_relevant, page = var_page, page_size = var_page_size, rank = var_rankdata_file = "result.txt")
+result <- api_instance$taxa_api$list(is_relevant = var_is_relevant, page = var_page, page_size = var_page_size, rank = var_rank)
 dput(result)
 ```
 
@@ -44,6 +45,7 @@ Name | Type | Description  | Notes
  **is_relevant** | **character**|  | [optional] 
  **page** | **integer**| A page number within the paginated result set. | [optional] 
  **page_size** | **integer**| Number of results to return per page. | [optional] 
+ **rank** | Enum [null, null, null, null, null, null, null] |  | [optional] 
 
 ### Return type
 

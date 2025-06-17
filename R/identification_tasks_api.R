@@ -18,7 +18,7 @@
 #'
 #' library(MosquitoAlert)
 #' var_observation_uuid <- "observation_uuid_example" # character | UUID of the Observation
-#' var_annotation_request <- AnnotationRequest$new(AnnotationClassificationRequest$new(123, "definitely"), "best_photo_uuid_example", AnnotationFeedbackRequest$new("public_note_example", "user_note_example"), "is_flagged_example", "is_decisive_example", c("tags_example")) # AnnotationRequest | 
+#' var_annotation_request <- AnnotationRequest$new(AnnotationClassificationRequest$new(123, "definitely"), "best_photo_uuid_example", AnnotationCharacteristicsRequest$new("male", "is_blood_fed_example", "is_gravid_example"), AnnotationFeedbackRequest$new("public_note_example", "internal_note_example", "user_note_example"), "is_flagged_example", "is_decisive_example", ObservationFlagsRequest$new("is_favourite_example", "is_visible_example"), c("tags_example")) # AnnotationRequest | 
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -48,10 +48,12 @@
 #' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 #' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 #' var_is_decisive <- "is_decisive_example" # character |  (Optional)
+#' var_is_favourite <- "is_favourite_example" # character |  (Optional)
 #' var_is_flagged <- "is_flagged_example" # character |  (Optional)
 #' var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#' var_type <- "type_example" # character |  (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Updated at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Updated at (Optional)
 #' var_user_ids <- c(123) # array[integer] |  (Optional)
@@ -68,8 +70,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$annotations_list(var_observation_uuid, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
-#' result <- api_instance$identification_tasks_api$annotations_list(var_observation_uuid, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
+#' # result <- api_instance$annotations_list(var_observation_uuid, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
+#' result <- api_instance$identification_tasks_api$annotations_list(var_observation_uuid, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
 #' dput(result)
 #'
 #'
@@ -83,10 +85,12 @@
 #' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 #' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 #' var_is_decisive <- "is_decisive_example" # character |  (Optional)
+#' var_is_favourite <- "is_favourite_example" # character |  (Optional)
 #' var_is_flagged <- "is_flagged_example" # character |  (Optional)
 #' var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#' var_type <- "type_example" # character |  (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Updated at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Updated at (Optional)
 #' var_user_ids <- c(123) # array[integer] |  (Optional)
@@ -103,8 +107,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$annotations_list_mine(classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
-#' result <- api_instance$identification_tasks_api$annotations_list_mine(classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
+#' # result <- api_instance$annotations_list_mine(classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
+#' result <- api_instance$identification_tasks_api$annotations_list_mine(classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
 #' dput(result)
 #'
 #'
@@ -556,10 +560,12 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
     #' @param is_decisive (optional) No description
+    #' @param is_favourite (optional) No description
     #' @param is_flagged (optional) No description
     #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
+    #' @param type (optional) No description
     #' @param updated_at_after (optional) Updated at
     #' @param updated_at_before (optional) Updated at
     #' @param user_ids (optional) No description
@@ -567,8 +573,8 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedAnnotationList
-    annotations_list = function(observation_uuid, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
-      local_var_response <- self$annotations_list_with_http_info(observation_uuid, classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, is_decisive, is_flagged, order_by, page, page_size, updated_at_after, updated_at_before, user_ids, data_file = data_file, ...)
+    annotations_list = function(observation_uuid, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
+      local_var_response <- self$annotations_list_with_http_info(observation_uuid, classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, is_decisive, is_favourite, is_flagged, order_by, page, page_size, type, updated_at_after, updated_at_before, user_ids, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -591,10 +597,12 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
     #' @param is_decisive (optional) No description
+    #' @param is_favourite (optional) No description
     #' @param is_flagged (optional) No description
     #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
+    #' @param type (optional) No description
     #' @param updated_at_after (optional) Updated at
     #' @param updated_at_before (optional) Updated at
     #' @param user_ids (optional) No description
@@ -602,7 +610,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedAnnotationList) with additional information such as HTTP status code, headers
-    annotations_list_with_http_info = function(observation_uuid, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
+    annotations_list_with_http_info = function(observation_uuid, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -643,6 +651,8 @@ IdentificationTasksApi <- R6::R6Class(
 
 
 
+
+
       if (!is.null(`classification_confidence_label`) && !(`classification_confidence_label` %in% c("definitely", "probably"))) {
         stop("Invalid value for classification_confidence_label when calling IdentificationTasksApi$annotations_list. Must be [definitely, probably].")
       }
@@ -663,6 +673,8 @@ IdentificationTasksApi <- R6::R6Class(
 
       query_params[["is_decisive"]] <- `is_decisive`
 
+      query_params[["is_favourite"]] <- `is_favourite`
+
       query_params[["is_flagged"]] <- `is_flagged`
 
       # no explore
@@ -677,6 +689,11 @@ IdentificationTasksApi <- R6::R6Class(
       query_params[["page"]] <- `page`
 
       query_params[["page_size"]] <- `page_size`
+
+      if (!is.null(`type`) && !(`type` %in% c("long", "short"))) {
+        stop("Invalid value for type when calling IdentificationTasksApi$annotations_list. Must be [long, short].")
+      }
+      query_params[["type"]] <- `type`
 
       query_params[["updated_at_after"]] <- `updated_at_after`
 
@@ -760,10 +777,12 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
     #' @param is_decisive (optional) No description
+    #' @param is_favourite (optional) No description
     #' @param is_flagged (optional) No description
     #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
+    #' @param type (optional) No description
     #' @param updated_at_after (optional) Updated at
     #' @param updated_at_before (optional) Updated at
     #' @param user_ids (optional) No description
@@ -771,8 +790,8 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedAnnotationList
-    annotations_list_mine = function(classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
-      local_var_response <- self$annotations_list_mine_with_http_info(classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, is_decisive, is_flagged, order_by, page, page_size, updated_at_after, updated_at_before, user_ids, data_file = data_file, ...)
+    annotations_list_mine = function(classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
+      local_var_response <- self$annotations_list_mine_with_http_info(classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, is_decisive, is_favourite, is_flagged, order_by, page, page_size, type, updated_at_after, updated_at_before, user_ids, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -794,10 +813,12 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
     #' @param is_decisive (optional) No description
+    #' @param is_favourite (optional) No description
     #' @param is_flagged (optional) No description
     #' @param order_by (optional) Ordenado  
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
+    #' @param type (optional) No description
     #' @param updated_at_after (optional) Updated at
     #' @param updated_at_before (optional) Updated at
     #' @param user_ids (optional) No description
@@ -805,7 +826,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedAnnotationList) with additional information such as HTTP status code, headers
-    annotations_list_mine_with_http_info = function(classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
+    annotations_list_mine_with_http_info = function(classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -841,6 +862,8 @@ IdentificationTasksApi <- R6::R6Class(
 
 
 
+
+
       if (!is.null(`classification_confidence_label`) && !(`classification_confidence_label` %in% c("definitely", "probably"))) {
         stop("Invalid value for classification_confidence_label when calling IdentificationTasksApi$annotations_list_mine. Must be [definitely, probably].")
       }
@@ -861,6 +884,8 @@ IdentificationTasksApi <- R6::R6Class(
 
       query_params[["is_decisive"]] <- `is_decisive`
 
+      query_params[["is_favourite"]] <- `is_favourite`
+
       query_params[["is_flagged"]] <- `is_flagged`
 
       # no explore
@@ -875,6 +900,11 @@ IdentificationTasksApi <- R6::R6Class(
       query_params[["page"]] <- `page`
 
       query_params[["page_size"]] <- `page_size`
+
+      if (!is.null(`type`) && !(`type` %in% c("long", "short"))) {
+        stop("Invalid value for type when calling IdentificationTasksApi$annotations_list_mine. Must be [long, short].")
+      }
+      query_params[["type"]] <- `type`
 
       query_params[["updated_at_after"]] <- `updated_at_after`
 

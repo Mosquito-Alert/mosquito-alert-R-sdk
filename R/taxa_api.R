@@ -20,6 +20,7 @@
 #' var_is_relevant <- "is_relevant_example" # character |  (Optional)
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#' var_rank <- c(123) # array[integer] |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -33,8 +34,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list(is_relevant = var_is_relevant, page = var_page, page_size = var_page_sizedata_file = "result.txt")
-#' result <- api_instance$taxa_api$list(is_relevant = var_is_relevant, page = var_page, page_size = var_page_size)
+#' # result <- api_instance$list(is_relevant = var_is_relevant, page = var_page, page_size = var_page_size, rank = var_rankdata_file = "result.txt")
+#' result <- api_instance$taxa_api$list(is_relevant = var_is_relevant, page = var_page, page_size = var_page_size, rank = var_rank)
 #' dput(result)
 #'
 #'
@@ -130,12 +131,13 @@ TaxaApi <- R6::R6Class(
     #' @param is_relevant (optional) No description
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
+    #' @param rank (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedTaxonList
-    list = function(is_relevant = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_with_http_info(is_relevant, page, page_size, data_file = data_file, ...)
+    list = function(is_relevant = NULL, page = NULL, page_size = NULL, rank = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_with_http_info(is_relevant, page, page_size, rank, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -153,11 +155,12 @@ TaxaApi <- R6::R6Class(
     #' @param is_relevant (optional) No description
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
+    #' @param rank (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedTaxonList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(is_relevant = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(is_relevant = NULL, page = NULL, page_size = NULL, rank = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -170,11 +173,21 @@ TaxaApi <- R6::R6Class(
 
 
 
+
       query_params[["is_relevant"]] <- `is_relevant`
 
       query_params[["page"]] <- `page`
 
       query_params[["page_size"]] <- `page_size`
+
+      # explore
+      for (query_item in `rank`) {
+        # validate enum values
+        if (!is.null(query_item) && !(query_item %in% c())) {
+          stop("Invalid value for rank when calling TaxaApi$list. Must be [].")
+        }
+        query_params[["rank"]] <- c(query_params[["rank"]], list(`rank` = query_item))
+      }
 
       local_var_url_path <- "/taxa/"
       # API key authentication

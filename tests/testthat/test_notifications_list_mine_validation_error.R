@@ -13,7 +13,7 @@ test_that("type", {
 })
 
 test_that("errors", {
-  # tests for the property `errors` (array[NotificationsListMineError])
+  # tests for the property `errors` (array[NotificationsListMineOrderByErrorComponent])
 
   # uncomment below to test the property
   #expect_equal(model.instance$`errors`, "EXPECTED_RESULT")

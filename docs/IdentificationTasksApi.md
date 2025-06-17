@@ -31,7 +31,7 @@ library(MosquitoAlert)
 
 # prepare function argument(s)
 var_observation_uuid <- "observation_uuid_example" # character | UUID of the Observation
-var_annotation_request <- AnnotationRequest$new(AnnotationClassificationRequest$new(123, "definitely"), "best_photo_uuid_example", AnnotationFeedbackRequest$new("public_note_example", "user_note_example"), "is_flagged_example", "is_decisive_example", c("tags_example")) # AnnotationRequest | 
+var_annotation_request <- AnnotationRequest$new(AnnotationClassificationRequest$new(123, "definitely"), "best_photo_uuid_example", AnnotationCharacteristicsRequest$new("male", "is_blood_fed_example", "is_gravid_example"), AnnotationFeedbackRequest$new("public_note_example", "internal_note_example", "user_note_example"), "is_flagged_example", "is_decisive_example", ObservationFlagsRequest$new("is_favourite_example", "is_visible_example"), c("tags_example")) # AnnotationRequest | 
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 | **201** |  |  -  |
 
 # **annotations_list**
-> PaginatedAnnotationList annotations_list(observation_uuid, classification_confidence_label = var.classification_confidence_label, classification_confidence_max = var.classification_confidence_max, classification_confidence_min = var.classification_confidence_min, classification_taxon_ids = var.classification_taxon_ids, created_at_after = var.created_at_after, created_at_before = var.created_at_before, is_decisive = var.is_decisive, is_flagged = var.is_flagged, order_by = var.order_by, page = var.page, page_size = var.page_size, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_ids = var.user_ids)
+> PaginatedAnnotationList annotations_list(observation_uuid, classification_confidence_label = var.classification_confidence_label, classification_confidence_max = var.classification_confidence_max, classification_confidence_min = var.classification_confidence_min, classification_taxon_ids = var.classification_taxon_ids, created_at_after = var.created_at_after, created_at_before = var.created_at_before, is_decisive = var.is_decisive, is_favourite = var.is_favourite, is_flagged = var.is_flagged, order_by = var.order_by, page = var.page, page_size = var.page_size, type = var.type, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_ids = var.user_ids)
 
 
 
@@ -93,10 +93,12 @@ var_classification_taxon_ids <- c(123) # array[integer] |  (Optional)
 var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 var_is_decisive <- "is_decisive_example" # character |  (Optional)
+var_is_favourite <- "is_favourite_example" # character |  (Optional)
 var_is_flagged <- "is_flagged_example" # character |  (Optional)
 var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+var_type <- "type_example" # character |  (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Updated at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Updated at (Optional)
 var_user_ids <- c(123) # array[integer] |  (Optional)
@@ -109,8 +111,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$annotations_list(var_observation_uuid, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
-result <- api_instance$identification_tasks_api$annotations_list(var_observation_uuid, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
+# result <- api_instance$annotations_list(var_observation_uuid, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
+result <- api_instance$identification_tasks_api$annotations_list(var_observation_uuid, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
 dput(result)
 ```
 
@@ -126,10 +128,12 @@ Name | Type | Description  | Notes
  **created_at_after** | **character**| Created at | [optional] 
  **created_at_before** | **character**| Created at | [optional] 
  **is_decisive** | **character**|  | [optional] 
+ **is_favourite** | **character**|  | [optional] 
  **is_flagged** | **character**|  | [optional] 
  **order_by** | Enum [-created_at, -updated_at, created_at, updated_at] | Ordenado   | [optional] 
  **page** | **integer**| A page number within the paginated result set. | [optional] 
  **page_size** | **integer**| Number of results to return per page. | [optional] 
+ **type** | Enum [long, short] |  | [optional] 
  **updated_at_after** | **character**| Updated at | [optional] 
  **updated_at_before** | **character**| Updated at | [optional] 
  **user_ids** | list( **integer** )|  | [optional] 
@@ -157,7 +161,7 @@ Name | Type | Description  | Notes
 | **200** |  |  -  |
 
 # **annotations_list_mine**
-> PaginatedAnnotationList annotations_list_mine(classification_confidence_label = var.classification_confidence_label, classification_confidence_max = var.classification_confidence_max, classification_confidence_min = var.classification_confidence_min, classification_taxon_ids = var.classification_taxon_ids, created_at_after = var.created_at_after, created_at_before = var.created_at_before, is_decisive = var.is_decisive, is_flagged = var.is_flagged, order_by = var.order_by, page = var.page, page_size = var.page_size, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_ids = var.user_ids)
+> PaginatedAnnotationList annotations_list_mine(classification_confidence_label = var.classification_confidence_label, classification_confidence_max = var.classification_confidence_max, classification_confidence_min = var.classification_confidence_min, classification_taxon_ids = var.classification_taxon_ids, created_at_after = var.created_at_after, created_at_before = var.created_at_before, is_decisive = var.is_decisive, is_favourite = var.is_favourite, is_flagged = var.is_flagged, order_by = var.order_by, page = var.page, page_size = var.page_size, type = var.type, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_ids = var.user_ids)
 
 
 
@@ -175,10 +179,12 @@ var_classification_taxon_ids <- c(123) # array[integer] |  (Optional)
 var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 var_is_decisive <- "is_decisive_example" # character |  (Optional)
+var_is_favourite <- "is_favourite_example" # character |  (Optional)
 var_is_flagged <- "is_flagged_example" # character |  (Optional)
 var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
 var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+var_type <- "type_example" # character |  (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Updated at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Updated at (Optional)
 var_user_ids <- c(123) # array[integer] |  (Optional)
@@ -191,8 +197,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$annotations_list_mine(classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
-result <- api_instance$identification_tasks_api$annotations_list_mine(classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
+# result <- api_instance$annotations_list_mine(classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
+result <- api_instance$identification_tasks_api$annotations_list_mine(classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
 dput(result)
 ```
 
@@ -207,10 +213,12 @@ Name | Type | Description  | Notes
  **created_at_after** | **character**| Created at | [optional] 
  **created_at_before** | **character**| Created at | [optional] 
  **is_decisive** | **character**|  | [optional] 
+ **is_favourite** | **character**|  | [optional] 
  **is_flagged** | **character**|  | [optional] 
  **order_by** | Enum [-created_at, -updated_at, created_at, updated_at] | Ordenado   | [optional] 
  **page** | **integer**| A page number within the paginated result set. | [optional] 
  **page_size** | **integer**| Number of results to return per page. | [optional] 
+ **type** | Enum [long, short] |  | [optional] 
  **updated_at_after** | **character**| Updated at | [optional] 
  **updated_at_before** | **character**| Updated at | [optional] 
  **user_ids** | list( **integer** )|  | [optional] 

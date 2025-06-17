@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **character** |  | [Enum: [validation_error]] 
-**errors** | [**array[TaxaListError]**](TaxaListError.md) |  | 
+**errors** | [**array[TaxaListRankErrorComponent]**](TaxaListRankErrorComponent.md) |  | 
 
 
