@@ -14,7 +14,7 @@
 #' @field location  \link{SimplifiedLocation}
 #' @field note Note user attached to report. character [optional]
 #' @field photos  list(\link{SimplePhoto})
-#' @field user  \link{SimpleUser}
+#' @field user  \link{MinimalUser}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -185,7 +185,7 @@ AssignedObservation <- R6::R6Class(
         self$`photos` <- ApiClient$new()$deserializeObj(this_object$`photos`, "array[SimplePhoto]", loadNamespace("MosquitoAlert"))
       }
       if (!is.null(this_object$`user`)) {
-        `user_object` <- SimpleUser$new()
+        `user_object` <- MinimalUser$new()
         `user_object`$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
         self$`user` <- `user_object`
       }
@@ -217,7 +217,7 @@ AssignedObservation <- R6::R6Class(
       self$`location` <- SimplifiedLocation$new()$fromJSON(jsonlite::toJSON(this_object$`location`, auto_unbox = TRUE, digits = NA))
       self$`note` <- this_object$`note`
       self$`photos` <- ApiClient$new()$deserializeObj(this_object$`photos`, "array[SimplePhoto]", loadNamespace("MosquitoAlert"))
-      self$`user` <- SimpleUser$new()$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
+      self$`user` <- MinimalUser$new()$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
       self
     },
 

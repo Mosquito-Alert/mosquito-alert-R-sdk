@@ -1,25 +1,25 @@
-#' Create a new SimpleUser
+#' Create a new MinimalUser
 #'
 #' @description
-#' SimpleUser Class
+#' MinimalUser Class
 #'
 #' @docType class
-#' @title SimpleUser
-#' @description SimpleUser Class
+#' @title MinimalUser
+#' @description MinimalUser Class
 #' @format An \code{R6Class} generator object
 #' @field uuid  character
 #' @field locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code. character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-SimpleUser <- R6::R6Class(
-  "SimpleUser",
+MinimalUser <- R6::R6Class(
+  "MinimalUser",
   public = list(
     `uuid` = NULL,
     `locale` = NULL,
 
     #' @description
-    #' Initialize a new SimpleUser class.
+    #' Initialize a new MinimalUser class.
     #'
     #' @param uuid uuid
     #' @param locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code.. Default to "en".
@@ -54,9 +54,9 @@ SimpleUser <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return SimpleUser as a base R list.
+    #' @return MinimalUser as a base R list.
     #' @examples
-    #' # convert array of SimpleUser (x) to a data frame
+    #' # convert array of MinimalUser (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -68,27 +68,27 @@ SimpleUser <- R6::R6Class(
     },
 
     #' @description
-    #' Convert SimpleUser to a base R type
+    #' Convert MinimalUser to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      SimpleUserObject <- list()
+      MinimalUserObject <- list()
       if (!is.null(self$`uuid`)) {
-        SimpleUserObject[["uuid"]] <-
+        MinimalUserObject[["uuid"]] <-
           self$`uuid`
       }
       if (!is.null(self$`locale`)) {
-        SimpleUserObject[["locale"]] <-
+        MinimalUserObject[["locale"]] <-
           self$`locale`
       }
-      return(SimpleUserObject)
+      return(MinimalUserObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of SimpleUser
+    #' Deserialize JSON string into an instance of MinimalUser
     #'
     #' @param input_json the JSON input
-    #' @return the instance of SimpleUser
+    #' @return the instance of MinimalUser
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`uuid`)) {
@@ -107,7 +107,7 @@ SimpleUser <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return SimpleUser in JSON format
+    #' @return MinimalUser in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -115,10 +115,10 @@ SimpleUser <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of SimpleUser
+    #' Deserialize JSON string into an instance of MinimalUser
     #'
     #' @param input_json the JSON input
-    #' @return the instance of SimpleUser
+    #' @return the instance of MinimalUser
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`uuid` <- this_object$`uuid`
@@ -130,7 +130,7 @@ SimpleUser <- R6::R6Class(
     },
 
     #' @description
-    #' Validate JSON input with respect to SimpleUser and throw an exception if invalid
+    #' Validate JSON input with respect to MinimalUser and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -141,14 +141,14 @@ SimpleUser <- R6::R6Class(
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", input_json$`uuid`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for SimpleUser: the required field `uuid` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for MinimalUser: the required field `uuid` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of SimpleUser
+    #' @return String representation of MinimalUser
     toString = function() {
       self$toJSONString()
     },
@@ -191,13 +191,13 @@ SimpleUser <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# SimpleUser$unlock()
+# MinimalUser$unlock()
 #
 ## Below is an example to define the print function
-# SimpleUser$set("public", "print", function(...) {
+# MinimalUser$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# SimpleUser$lock()
+# MinimalUser$lock()
 

@@ -1,4 +1,4 @@
-# MosquitoAlert::SimpleUser
+# MosquitoAlert::MinimalUser
 
 
 ## Properties

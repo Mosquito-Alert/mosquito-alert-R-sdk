@@ -19,6 +19,27 @@ test_that("username", {
   #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
 })
 
+test_that("first_name", {
+  # tests for the property `first_name` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`first_name`, "EXPECTED_RESULT")
+})
+
+test_that("last_name", {
+  # tests for the property `last_name` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`last_name`, "EXPECTED_RESULT")
+})
+
+test_that("full_name", {
+  # tests for the property `full_name` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`full_name`, "EXPECTED_RESULT")
+})
+
 test_that("registration_time", {
   # tests for the property `registration_time` (character)
   # The date and time when user registered and consented to sharing data. Automatically set by server when user uploads registration.

@@ -57,7 +57,7 @@ test_that("photos", {
 })
 
 test_that("user", {
-  # tests for the property `user` (SimpleUser)
+  # tests for the property `user` (MinimalUser)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`user`, "EXPECTED_RESULT")

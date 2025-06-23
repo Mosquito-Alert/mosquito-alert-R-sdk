@@ -7,10 +7,10 @@
 #' @title SimpleAnnotatorUser
 #' @description SimpleAnnotatorUser Class
 #' @format An \code{R6Class} generator object
-#' @field id  integer
-#' @field username Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y @/./+/-/_ character
-#' @field first_name  character [optional]
-#' @field last_name  character [optional]
+#' @field uuid  character
+#' @field username  character
+#' @field first_name  character
+#' @field last_name  character
 #' @field full_name  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -18,7 +18,7 @@
 SimpleAnnotatorUser <- R6::R6Class(
   "SimpleAnnotatorUser",
   public = list(
-    `id` = NULL,
+    `uuid` = NULL,
     `username` = NULL,
     `first_name` = NULL,
     `last_name` = NULL,
@@ -27,18 +27,18 @@ SimpleAnnotatorUser <- R6::R6Class(
     #' @description
     #' Initialize a new SimpleAnnotatorUser class.
     #'
-    #' @param id id
-    #' @param username Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y @/./+/-/_
-    #' @param full_name full_name
+    #' @param uuid uuid
+    #' @param username username
     #' @param first_name first_name
     #' @param last_name last_name
+    #' @param full_name full_name
     #' @param ... Other optional arguments.
-    initialize = function(`id`, `username`, `full_name`, `first_name` = NULL, `last_name` = NULL, ...) {
-      if (!missing(`id`)) {
-        if (!(is.numeric(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be an integer:", `id`))
+    initialize = function(`uuid`, `username`, `first_name`, `last_name`, `full_name`, ...) {
+      if (!missing(`uuid`)) {
+        if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
+          stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
         }
-        self$`id` <- `id`
+        self$`uuid` <- `uuid`
       }
       if (!missing(`username`)) {
         if (!(is.character(`username`) && length(`username`) == 1)) {
@@ -46,23 +46,23 @@ SimpleAnnotatorUser <- R6::R6Class(
         }
         self$`username` <- `username`
       }
-      if (!missing(`full_name`)) {
-        if (!(is.character(`full_name`) && length(`full_name`) == 1)) {
-          stop(paste("Error! Invalid data for `full_name`. Must be a string:", `full_name`))
-        }
-        self$`full_name` <- `full_name`
-      }
-      if (!is.null(`first_name`)) {
+      if (!missing(`first_name`)) {
         if (!(is.character(`first_name`) && length(`first_name`) == 1)) {
           stop(paste("Error! Invalid data for `first_name`. Must be a string:", `first_name`))
         }
         self$`first_name` <- `first_name`
       }
-      if (!is.null(`last_name`)) {
+      if (!missing(`last_name`)) {
         if (!(is.character(`last_name`) && length(`last_name`) == 1)) {
           stop(paste("Error! Invalid data for `last_name`. Must be a string:", `last_name`))
         }
         self$`last_name` <- `last_name`
+      }
+      if (!missing(`full_name`)) {
+        if (!(is.character(`full_name`) && length(`full_name`) == 1)) {
+          stop(paste("Error! Invalid data for `full_name`. Must be a string:", `full_name`))
+        }
+        self$`full_name` <- `full_name`
       }
     },
 
@@ -97,9 +97,9 @@ SimpleAnnotatorUser <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       SimpleAnnotatorUserObject <- list()
-      if (!is.null(self$`id`)) {
-        SimpleAnnotatorUserObject[["id"]] <-
-          self$`id`
+      if (!is.null(self$`uuid`)) {
+        SimpleAnnotatorUserObject[["uuid"]] <-
+          self$`uuid`
       }
       if (!is.null(self$`username`)) {
         SimpleAnnotatorUserObject[["username"]] <-
@@ -127,8 +127,8 @@ SimpleAnnotatorUser <- R6::R6Class(
     #' @return the instance of SimpleAnnotatorUser
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`id`)) {
-        self$`id` <- this_object$`id`
+      if (!is.null(this_object$`uuid`)) {
+        self$`uuid` <- this_object$`uuid`
       }
       if (!is.null(this_object$`username`)) {
         self$`username` <- this_object$`username`
@@ -163,7 +163,7 @@ SimpleAnnotatorUser <- R6::R6Class(
     #' @return the instance of SimpleAnnotatorUser
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`id` <- this_object$`id`
+      self$`uuid` <- this_object$`uuid`
       self$`username` <- this_object$`username`
       self$`first_name` <- this_object$`first_name`
       self$`last_name` <- this_object$`last_name`
@@ -177,13 +177,13 @@ SimpleAnnotatorUser <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `id`
-      if (!is.null(input_json$`id`)) {
-        if (!(is.numeric(input_json$`id`) && length(input_json$`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be an integer:", input_json$`id`))
+      # check the required field `uuid`
+      if (!is.null(input_json$`uuid`)) {
+        if (!(is.character(input_json$`uuid`) && length(input_json$`uuid`) == 1)) {
+          stop(paste("Error! Invalid data for `uuid`. Must be a string:", input_json$`uuid`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for SimpleAnnotatorUser: the required field `id` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for SimpleAnnotatorUser: the required field `uuid` is missing."))
       }
       # check the required field `username`
       if (!is.null(input_json$`username`)) {
@@ -192,6 +192,22 @@ SimpleAnnotatorUser <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for SimpleAnnotatorUser: the required field `username` is missing."))
+      }
+      # check the required field `first_name`
+      if (!is.null(input_json$`first_name`)) {
+        if (!(is.character(input_json$`first_name`) && length(input_json$`first_name`) == 1)) {
+          stop(paste("Error! Invalid data for `first_name`. Must be a string:", input_json$`first_name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for SimpleAnnotatorUser: the required field `first_name` is missing."))
+      }
+      # check the required field `last_name`
+      if (!is.null(input_json$`last_name`)) {
+        if (!(is.character(input_json$`last_name`) && length(input_json$`last_name`) == 1)) {
+          stop(paste("Error! Invalid data for `last_name`. Must be a string:", input_json$`last_name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for SimpleAnnotatorUser: the required field `last_name` is missing."))
       }
       # check the required field `full_name`
       if (!is.null(input_json$`full_name`)) {
@@ -216,8 +232,8 @@ SimpleAnnotatorUser <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `id` is null
-      if (is.null(self$`id`)) {
+      # check if the required `uuid` is null
+      if (is.null(self$`uuid`)) {
         return(FALSE)
       }
 
@@ -226,18 +242,13 @@ SimpleAnnotatorUser <- R6::R6Class(
         return(FALSE)
       }
 
-      if (nchar(self$`username`) > 150) {
-        return(FALSE)
-      }
-      if (!str_detect(self$`username`, "^[\\w.@+-]+$")) {
-        return(FALSE)
-      }
-
-      if (nchar(self$`first_name`) > 150) {
+      # check if the required `first_name` is null
+      if (is.null(self$`first_name`)) {
         return(FALSE)
       }
 
-      if (nchar(self$`last_name`) > 150) {
+      # check if the required `last_name` is null
+      if (is.null(self$`last_name`)) {
         return(FALSE)
       }
 
@@ -255,9 +266,9 @@ SimpleAnnotatorUser <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `id` is null
-      if (is.null(self$`id`)) {
-        invalid_fields["id"] <- "Non-nullable required field `id` cannot be null."
+      # check if the required `uuid` is null
+      if (is.null(self$`uuid`)) {
+        invalid_fields["uuid"] <- "Non-nullable required field `uuid` cannot be null."
       }
 
       # check if the required `username` is null
@@ -265,19 +276,14 @@ SimpleAnnotatorUser <- R6::R6Class(
         invalid_fields["username"] <- "Non-nullable required field `username` cannot be null."
       }
 
-      if (nchar(self$`username`) > 150) {
-        invalid_fields["username"] <- "Invalid length for `username`, must be smaller than or equal to 150."
-      }
-      if (!str_detect(self$`username`, "^[\\w.@+-]+$")) {
-        invalid_fields["username"] <- "Invalid value for `username`, must conform to the pattern ^[\\w.@+-]+$."
+      # check if the required `first_name` is null
+      if (is.null(self$`first_name`)) {
+        invalid_fields["first_name"] <- "Non-nullable required field `first_name` cannot be null."
       }
 
-      if (nchar(self$`first_name`) > 150) {
-        invalid_fields["first_name"] <- "Invalid length for `first_name`, must be smaller than or equal to 150."
-      }
-
-      if (nchar(self$`last_name`) > 150) {
-        invalid_fields["last_name"] <- "Invalid length for `last_name`, must be smaller than or equal to 150."
+      # check if the required `last_name` is null
+      if (is.null(self$`last_name`)) {
+        invalid_fields["last_name"] <- "Non-nullable required field `last_name` cannot be null."
       }
 
       # check if the required `full_name` is null

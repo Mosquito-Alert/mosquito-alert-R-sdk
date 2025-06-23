@@ -9,6 +9,9 @@
 #' @format An \code{R6Class} generator object
 #' @field uuid  character
 #' @field username  character
+#' @field first_name  character
+#' @field last_name  character
+#' @field full_name  character
 #' @field registration_time The date and time when user registered and consented to sharing data. Automatically set by server when user uploads registration. character
 #' @field locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code. character [optional]
 #' @field language_iso ISO 639-1 code character
@@ -22,6 +25,9 @@ User <- R6::R6Class(
   public = list(
     `uuid` = NULL,
     `username` = NULL,
+    `first_name` = NULL,
+    `last_name` = NULL,
+    `full_name` = NULL,
     `registration_time` = NULL,
     `locale` = NULL,
     `language_iso` = NULL,
@@ -33,13 +39,16 @@ User <- R6::R6Class(
     #'
     #' @param uuid uuid
     #' @param username username
+    #' @param first_name first_name
+    #' @param last_name last_name
+    #' @param full_name full_name
     #' @param registration_time The date and time when user registered and consented to sharing data. Automatically set by server when user uploads registration.
     #' @param language_iso ISO 639-1 code
     #' @param is_guest is_guest
     #' @param score score
     #' @param locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code.. Default to "en".
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `username`, `registration_time`, `language_iso`, `is_guest`, `score`, `locale` = "en", ...) {
+    initialize = function(`uuid`, `username`, `first_name`, `last_name`, `full_name`, `registration_time`, `language_iso`, `is_guest`, `score`, `locale` = "en", ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
@@ -51,6 +60,24 @@ User <- R6::R6Class(
           stop(paste("Error! Invalid data for `username`. Must be a string:", `username`))
         }
         self$`username` <- `username`
+      }
+      if (!missing(`first_name`)) {
+        if (!(is.character(`first_name`) && length(`first_name`) == 1)) {
+          stop(paste("Error! Invalid data for `first_name`. Must be a string:", `first_name`))
+        }
+        self$`first_name` <- `first_name`
+      }
+      if (!missing(`last_name`)) {
+        if (!(is.character(`last_name`) && length(`last_name`) == 1)) {
+          stop(paste("Error! Invalid data for `last_name`. Must be a string:", `last_name`))
+        }
+        self$`last_name` <- `last_name`
+      }
+      if (!missing(`full_name`)) {
+        if (!(is.character(`full_name`) && length(`full_name`) == 1)) {
+          stop(paste("Error! Invalid data for `full_name`. Must be a string:", `full_name`))
+        }
+        self$`full_name` <- `full_name`
       }
       if (!missing(`registration_time`)) {
         if (!(is.character(`registration_time`) && length(`registration_time`) == 1)) {
@@ -124,6 +151,18 @@ User <- R6::R6Class(
         UserObject[["username"]] <-
           self$`username`
       }
+      if (!is.null(self$`first_name`)) {
+        UserObject[["first_name"]] <-
+          self$`first_name`
+      }
+      if (!is.null(self$`last_name`)) {
+        UserObject[["last_name"]] <-
+          self$`last_name`
+      }
+      if (!is.null(self$`full_name`)) {
+        UserObject[["full_name"]] <-
+          self$`full_name`
+      }
       if (!is.null(self$`registration_time`)) {
         UserObject[["registration_time"]] <-
           self$`registration_time`
@@ -159,6 +198,15 @@ User <- R6::R6Class(
       }
       if (!is.null(this_object$`username`)) {
         self$`username` <- this_object$`username`
+      }
+      if (!is.null(this_object$`first_name`)) {
+        self$`first_name` <- this_object$`first_name`
+      }
+      if (!is.null(this_object$`last_name`)) {
+        self$`last_name` <- this_object$`last_name`
+      }
+      if (!is.null(this_object$`full_name`)) {
+        self$`full_name` <- this_object$`full_name`
       }
       if (!is.null(this_object$`registration_time`)) {
         self$`registration_time` <- this_object$`registration_time`
@@ -203,6 +251,9 @@ User <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`uuid` <- this_object$`uuid`
       self$`username` <- this_object$`username`
+      self$`first_name` <- this_object$`first_name`
+      self$`last_name` <- this_object$`last_name`
+      self$`full_name` <- this_object$`full_name`
       self$`registration_time` <- this_object$`registration_time`
       if (!is.null(this_object$`locale`) && !(this_object$`locale` %in% c("es", "ca", "eu", "bn", "sv", "en", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
         stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"en\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
@@ -235,6 +286,30 @@ User <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for User: the required field `username` is missing."))
+      }
+      # check the required field `first_name`
+      if (!is.null(input_json$`first_name`)) {
+        if (!(is.character(input_json$`first_name`) && length(input_json$`first_name`) == 1)) {
+          stop(paste("Error! Invalid data for `first_name`. Must be a string:", input_json$`first_name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for User: the required field `first_name` is missing."))
+      }
+      # check the required field `last_name`
+      if (!is.null(input_json$`last_name`)) {
+        if (!(is.character(input_json$`last_name`) && length(input_json$`last_name`) == 1)) {
+          stop(paste("Error! Invalid data for `last_name`. Must be a string:", input_json$`last_name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for User: the required field `last_name` is missing."))
+      }
+      # check the required field `full_name`
+      if (!is.null(input_json$`full_name`)) {
+        if (!(is.character(input_json$`full_name`) && length(input_json$`full_name`) == 1)) {
+          stop(paste("Error! Invalid data for `full_name`. Must be a string:", input_json$`full_name`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for User: the required field `full_name` is missing."))
       }
       # check the required field `registration_time`
       if (!is.null(input_json$`registration_time`)) {
@@ -291,6 +366,21 @@ User <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `first_name` is null
+      if (is.null(self$`first_name`)) {
+        return(FALSE)
+      }
+
+      # check if the required `last_name` is null
+      if (is.null(self$`last_name`)) {
+        return(FALSE)
+      }
+
+      # check if the required `full_name` is null
+      if (is.null(self$`full_name`)) {
+        return(FALSE)
+      }
+
       # check if the required `registration_time` is null
       if (is.null(self$`registration_time`)) {
         return(FALSE)
@@ -328,6 +418,21 @@ User <- R6::R6Class(
       # check if the required `username` is null
       if (is.null(self$`username`)) {
         invalid_fields["username"] <- "Non-nullable required field `username` cannot be null."
+      }
+
+      # check if the required `first_name` is null
+      if (is.null(self$`first_name`)) {
+        invalid_fields["first_name"] <- "Non-nullable required field `first_name` cannot be null."
+      }
+
+      # check if the required `last_name` is null
+      if (is.null(self$`last_name`)) {
+        invalid_fields["last_name"] <- "Non-nullable required field `last_name` cannot be null."
+      }
+
+      # check if the required `full_name` is null
+      if (is.null(self$`full_name`)) {
+        invalid_fields["full_name"] <- "Non-nullable required field `full_name` cannot be null."
       }
 
       # check if the required `registration_time` is null

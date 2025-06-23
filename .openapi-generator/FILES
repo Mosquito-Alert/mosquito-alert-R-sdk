@@ -371,6 +371,7 @@ R/location.R
 R/location_point.R
 R/location_request.R
 R/meta_notification_request.R
+R/minimal_user.R
 R/mobile_app.R
 R/mobile_app_request.R
 R/mosquito_appearance.R
@@ -567,12 +568,10 @@ R/photos_prediction_update_validation_error.R
 R/prediction_score.R
 R/prediction_score_request.R
 R/simple_annotator_user.R
-R/simple_annotator_user_request.R
 R/simple_photo.R
 R/simple_photo_request.R
 R/simple_taxon.R
 R/simple_taxon_request.R
-R/simple_user.R
 R/simplified_location.R
 R/simplified_observation_with_photos.R
 R/taxa_api.R
@@ -963,6 +962,7 @@ docs/Location.md
 docs/LocationPoint.md
 docs/LocationRequest.md
 docs/MetaNotificationRequest.md
+docs/MinimalUser.md
 docs/MobileApp.md
 docs/MobileAppRequest.md
 docs/MosquitoAppearance.md
@@ -1158,12 +1158,10 @@ docs/PhotosPredictionUpdateValidationError.md
 docs/PredictionScore.md
 docs/PredictionScoreRequest.md
 docs/SimpleAnnotatorUser.md
-docs/SimpleAnnotatorUserRequest.md
 docs/SimplePhoto.md
 docs/SimplePhotoRequest.md
 docs/SimpleTaxon.md
 docs/SimpleTaxonRequest.md
-docs/SimpleUser.md
 docs/SimplifiedLocation.md
 docs/SimplifiedObservationWithPhotos.md
 docs/TaxaApi.md
@@ -1555,6 +1553,7 @@ tests/testthat/test_location.R
 tests/testthat/test_location_point.R
 tests/testthat/test_location_request.R
 tests/testthat/test_meta_notification_request.R
+tests/testthat/test_minimal_user.R
 tests/testthat/test_mobile_app.R
 tests/testthat/test_mobile_app_request.R
 tests/testthat/test_mosquito_appearance.R
@@ -1750,12 +1749,10 @@ tests/testthat/test_photos_prediction_update_validation_error.R
 tests/testthat/test_prediction_score.R
 tests/testthat/test_prediction_score_request.R
 tests/testthat/test_simple_annotator_user.R
-tests/testthat/test_simple_annotator_user_request.R
 tests/testthat/test_simple_photo.R
 tests/testthat/test_simple_photo_request.R
 tests/testthat/test_simple_taxon.R
 tests/testthat/test_simple_taxon_request.R
-tests/testthat/test_simple_user.R
 tests/testthat/test_simplified_location.R
 tests/testthat/test_simplified_observation_with_photos.R
 tests/testthat/test_taxa_api.R

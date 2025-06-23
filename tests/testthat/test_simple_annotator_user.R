@@ -5,16 +5,15 @@ context("Test SimpleAnnotatorUser")
 
 model_instance <- SimpleAnnotatorUser$new()
 
-test_that("id", {
-  # tests for the property `id` (integer)
+test_that("uuid", {
+  # tests for the property `uuid` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`id`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`uuid`, "EXPECTED_RESULT")
 })
 
 test_that("username", {
   # tests for the property `username` (character)
-  # Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y @/./+/-/_ 
 
   # uncomment below to test the property
   #expect_equal(model.instance$`username`, "EXPECTED_RESULT")
