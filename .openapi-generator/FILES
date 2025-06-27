@@ -14,6 +14,7 @@ R/annotation_classification.R
 R/annotation_classification_request.R
 R/annotation_feedback.R
 R/annotation_feedback_request.R
+R/annotation_permission.R
 R/annotation_request.R
 R/api_client.R
 R/api_response.R
@@ -136,6 +137,7 @@ R/campaigns_list_order_by_error_component.R
 R/campaigns_list_validation_error.R
 R/countries_api.R
 R/country.R
+R/country_permission.R
 R/country_request.R
 R/create_notification.R
 R/create_notification_message.R
@@ -210,11 +212,13 @@ R/fixes_create_point_non_field_errors_error_component.R
 R/fixes_create_power_error_component.R
 R/fixes_create_sent_at_error_component.R
 R/fixes_create_validation_error.R
+R/general_permission.R
 R/guest_registration.R
 R/guest_registration_request.R
 R/identification.R
 R/identification_request.R
 R/identification_task.R
+R/identification_task_permission.R
 R/identification_task_result.R
 R/identification_task_result_request.R
 R/identification_task_review.R
@@ -515,6 +519,8 @@ R/patched_device_update_request.R
 R/patched_notification_request.R
 R/patched_photo_prediction_request.R
 R/patched_user_request.R
+R/permissions.R
+R/permissions_api.R
 R/photo.R
 R/photo_prediction.R
 R/photo_prediction_request.R
@@ -567,6 +573,7 @@ R/photos_prediction_update_threshold_deviation_error_component.R
 R/photos_prediction_update_validation_error.R
 R/prediction_score.R
 R/prediction_score_request.R
+R/review_permission.R
 R/simple_annotator_user.R
 R/simple_photo.R
 R/simple_photo_request.R
@@ -586,6 +593,7 @@ R/topic_notification_create_request.R
 R/user.R
 R/user_assignment.R
 R/user_notification_create_request.R
+R/user_permission.R
 R/user_request.R
 R/user_score.R
 R/users_api.R
@@ -607,6 +615,7 @@ docs/AnnotationClassification.md
 docs/AnnotationClassificationRequest.md
 docs/AnnotationFeedback.md
 docs/AnnotationFeedbackRequest.md
+docs/AnnotationPermission.md
 docs/AnnotationRequest.md
 docs/AppUserTokenObtainPair.md
 docs/AppUserTokenObtainPairRequest.md
@@ -727,6 +736,7 @@ docs/CampaignsListOrderByErrorComponent.md
 docs/CampaignsListValidationError.md
 docs/CountriesApi.md
 docs/Country.md
+docs/CountryPermission.md
 docs/CountryRequest.md
 docs/CreateNotification.md
 docs/CreateNotificationMessage.md
@@ -801,11 +811,13 @@ docs/FixesCreatePointNonFieldErrorsErrorComponent.md
 docs/FixesCreatePowerErrorComponent.md
 docs/FixesCreateSentAtErrorComponent.md
 docs/FixesCreateValidationError.md
+docs/GeneralPermission.md
 docs/GuestRegistration.md
 docs/GuestRegistrationRequest.md
 docs/Identification.md
 docs/IdentificationRequest.md
 docs/IdentificationTask.md
+docs/IdentificationTaskPermission.md
 docs/IdentificationTaskResult.md
 docs/IdentificationTaskResultRequest.md
 docs/IdentificationTaskReview.md
@@ -1105,6 +1117,8 @@ docs/PatchedDeviceUpdateRequest.md
 docs/PatchedNotificationRequest.md
 docs/PatchedPhotoPredictionRequest.md
 docs/PatchedUserRequest.md
+docs/Permissions.md
+docs/PermissionsApi.md
 docs/Photo.md
 docs/PhotoPrediction.md
 docs/PhotoPredictionRequest.md
@@ -1157,6 +1171,7 @@ docs/PhotosPredictionUpdateThresholdDeviationErrorComponent.md
 docs/PhotosPredictionUpdateValidationError.md
 docs/PredictionScore.md
 docs/PredictionScoreRequest.md
+docs/ReviewPermission.md
 docs/SimpleAnnotatorUser.md
 docs/SimplePhoto.md
 docs/SimplePhotoRequest.md
@@ -1176,6 +1191,7 @@ docs/TopicNotificationCreateRequest.md
 docs/User.md
 docs/UserAssignment.md
 docs/UserNotificationCreateRequest.md
+docs/UserPermission.md
 docs/UserRequest.md
 docs/UserScore.md
 docs/UsersApi.md
@@ -1198,6 +1214,7 @@ tests/testthat/test_annotation_classification.R
 tests/testthat/test_annotation_classification_request.R
 tests/testthat/test_annotation_feedback.R
 tests/testthat/test_annotation_feedback_request.R
+tests/testthat/test_annotation_permission.R
 tests/testthat/test_annotation_request.R
 tests/testthat/test_app_user_token_obtain_pair.R
 tests/testthat/test_app_user_token_obtain_pair_request.R
@@ -1318,6 +1335,7 @@ tests/testthat/test_campaigns_list_order_by_error_component.R
 tests/testthat/test_campaigns_list_validation_error.R
 tests/testthat/test_countries_api.R
 tests/testthat/test_country.R
+tests/testthat/test_country_permission.R
 tests/testthat/test_country_request.R
 tests/testthat/test_create_notification.R
 tests/testthat/test_create_notification_message.R
@@ -1392,11 +1410,13 @@ tests/testthat/test_fixes_create_point_non_field_errors_error_component.R
 tests/testthat/test_fixes_create_power_error_component.R
 tests/testthat/test_fixes_create_sent_at_error_component.R
 tests/testthat/test_fixes_create_validation_error.R
+tests/testthat/test_general_permission.R
 tests/testthat/test_guest_registration.R
 tests/testthat/test_guest_registration_request.R
 tests/testthat/test_identification.R
 tests/testthat/test_identification_request.R
 tests/testthat/test_identification_task.R
+tests/testthat/test_identification_task_permission.R
 tests/testthat/test_identification_task_result.R
 tests/testthat/test_identification_task_result_request.R
 tests/testthat/test_identification_task_review.R
@@ -1696,6 +1716,8 @@ tests/testthat/test_patched_device_update_request.R
 tests/testthat/test_patched_notification_request.R
 tests/testthat/test_patched_photo_prediction_request.R
 tests/testthat/test_patched_user_request.R
+tests/testthat/test_permissions.R
+tests/testthat/test_permissions_api.R
 tests/testthat/test_photo.R
 tests/testthat/test_photo_prediction.R
 tests/testthat/test_photo_prediction_request.R
@@ -1748,6 +1770,7 @@ tests/testthat/test_photos_prediction_update_threshold_deviation_error_component
 tests/testthat/test_photos_prediction_update_validation_error.R
 tests/testthat/test_prediction_score.R
 tests/testthat/test_prediction_score_request.R
+tests/testthat/test_review_permission.R
 tests/testthat/test_simple_annotator_user.R
 tests/testthat/test_simple_photo.R
 tests/testthat/test_simple_photo_request.R
@@ -1767,6 +1790,7 @@ tests/testthat/test_topic_notification_create_request.R
 tests/testthat/test_user.R
 tests/testthat/test_user_assignment.R
 tests/testthat/test_user_notification_create_request.R
+tests/testthat/test_user_permission.R
 tests/testthat/test_user_request.R
 tests/testthat/test_user_score.R
 tests/testthat/test_users_api.R

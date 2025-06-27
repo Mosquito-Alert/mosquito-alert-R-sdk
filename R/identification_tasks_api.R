@@ -176,7 +176,7 @@
 #' var_result_agreement_min <- 3.4 # numeric |  (Optional)
 #' var_result_confidence_max <- 3.4 # numeric |  (Optional)
 #' var_result_confidence_min <- 3.4 # numeric |  (Optional)
-#' var_result_source <- "result_source_example" # character |  (Optional)
+#' var_result_source <- c("ai") # array[character] |  (Optional)
 #' var_result_taxon_ids <- c(123) # array[integer] |  (Optional)
 #' var_result_uncertainty_max <- 3.4 # numeric |  (Optional)
 #' var_result_uncertainty_min <- 3.4 # numeric |  (Optional)
@@ -222,7 +222,7 @@
 #' var_result_agreement_min <- 3.4 # numeric |  (Optional)
 #' var_result_confidence_max <- 3.4 # numeric |  (Optional)
 #' var_result_confidence_min <- 3.4 # numeric |  (Optional)
-#' var_result_source <- "result_source_example" # character |  (Optional)
+#' var_result_source <- c("ai") # array[character] |  (Optional)
 #' var_result_taxon_ids <- c(123) # array[integer] |  (Optional)
 #' var_result_uncertainty_max <- 3.4 # numeric |  (Optional)
 #' var_result_uncertainty_min <- 3.4 # numeric |  (Optional)
@@ -1356,10 +1356,14 @@ IdentificationTasksApi <- R6::R6Class(
 
       query_params[["result_confidence_min"]] <- `result_confidence_min`
 
-      if (!is.null(`result_source`) && !(`result_source` %in% c("ai", "expert"))) {
-        stop("Invalid value for result_source when calling IdentificationTasksApi$list. Must be [ai, expert].")
+      # explore
+      for (query_item in `result_source`) {
+        # validate enum values
+        if (!is.null(query_item) && !(query_item %in% c("ai", "expert"))) {
+          stop("Invalid value for result_source when calling IdentificationTasksApi$list. Must be [ai, expert].")
+        }
+        query_params[["result_source"]] <- c(query_params[["result_source"]], list(`result_source` = query_item))
       }
-      query_params[["result_source"]] <- `result_source`
 
       # explore
       for (query_item in `result_taxon_ids`) {
@@ -1615,10 +1619,14 @@ IdentificationTasksApi <- R6::R6Class(
 
       query_params[["result_confidence_min"]] <- `result_confidence_min`
 
-      if (!is.null(`result_source`) && !(`result_source` %in% c("ai", "expert"))) {
-        stop("Invalid value for result_source when calling IdentificationTasksApi$list_mine. Must be [ai, expert].")
+      # explore
+      for (query_item in `result_source`) {
+        # validate enum values
+        if (!is.null(query_item) && !(query_item %in% c("ai", "expert"))) {
+          stop("Invalid value for result_source when calling IdentificationTasksApi$list_mine. Must be [ai, expert].")
+        }
+        query_params[["result_source"]] <- c(query_params[["result_source"]], list(`result_source` = query_item))
       }
-      query_params[["result_source"]] <- `result_source`
 
       # explore
       for (query_item in `result_taxon_ids`) {
