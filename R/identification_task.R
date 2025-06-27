@@ -432,11 +432,6 @@ IdentificationTask <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `result` is null
-      if (is.null(self$`result`)) {
-        return(FALSE)
-      }
-
       # check if the required `created_at` is null
       if (is.null(self$`created_at`)) {
         return(FALSE)
@@ -488,11 +483,6 @@ IdentificationTask <- R6::R6Class(
 
       if (self$`num_annotations` < 0) {
         invalid_fields["num_annotations"] <- "Invalid value for `num_annotations`, must be bigger than or equal to 0."
-      }
-
-      # check if the required `result` is null
-      if (is.null(self$`result`)) {
-        invalid_fields["result"] <- "Non-nullable required field `result` cannot be null."
       }
 
       # check if the required `created_at` is null

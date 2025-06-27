@@ -141,6 +141,11 @@ IdentificationTaskResultRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `source` is null
+      if (is.null(self$`source`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -150,6 +155,11 @@ IdentificationTaskResultRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `source` is null
+      if (is.null(self$`source`)) {
+        invalid_fields["source"] <- "Non-nullable required field `source` cannot be null."
+      }
+
       invalid_fields
     },
 
