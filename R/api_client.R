@@ -320,7 +320,7 @@ ApiClient  <- R6::R6Class(
         if (c(inner_return_type) %in% primitive_types) {
           return_obj <- vector("list", length = length(obj))
           if (length(obj) > 0) {
-            for (row in 1:length(obj)) {
+            for (row in seq_along(obj)) {
               return_obj[[row]] <- self$deserializeObj(obj[row], inner_return_type, pkg_env)
             }
           }
@@ -328,7 +328,7 @@ ApiClient  <- R6::R6Class(
           if (!is.null(nrow(obj))) {
             return_obj <- vector("list", length = nrow(obj))
             if (nrow(obj) > 0) {
-              for (row in 1:nrow(obj)) {
+              for (row in seq_len(nrow(obj))) {
                 return_obj[[row]] <- self$deserializeObj(obj[row, , drop = FALSE],
                                                          inner_return_type, pkg_env)
               }
