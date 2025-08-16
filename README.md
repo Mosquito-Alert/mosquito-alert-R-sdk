@@ -18,7 +18,7 @@ Install the dependencies
 
 ```R
 install.packages("jsonlite")
-install.packages("httr")
+install.packages("httr2")
 install.packages("base64enc")
 ```
 
