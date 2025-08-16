@@ -86,10 +86,11 @@ MosquitoAlert <- R6::R6Class(
         if (inherits(e, "MosquitoAlertError")) {
           stop(e)
         } else {
-          stop(MosquitoAlertError$new(
+          error_obj <- MosquitoAlertError$new(
             status_code = 0,
             message = paste("Failed to get observations:", e$message)
-          ))
+          )
+          stop(error_obj$toString())
         }
       })
     },
@@ -120,10 +121,11 @@ MosquitoAlert <- R6::R6Class(
         if (inherits(e, "MosquitoAlertError")) {
           stop(e)
         } else {
-          stop(MosquitoAlertError$new(
+          error_obj <- MosquitoAlertError$new(
             status_code = 0,
             message = paste("Failed to get user observations:", e$message)
-          ))
+          )
+          stop(error_obj$toString())
         }
       })
     },
@@ -150,10 +152,11 @@ MosquitoAlert <- R6::R6Class(
         if (inherits(e, "MosquitoAlertError")) {
           stop(e)
         } else {
-          stop(MosquitoAlertError$new(
+          error_obj <- MosquitoAlertError$new(
             status_code = 0,
             message = paste("Failed to get countries:", e$message)
-          ))
+          )
+          stop(error_obj$toString())
         }
       })
     },
@@ -189,20 +192,22 @@ MosquitoAlert <- R6::R6Class(
           
           return(parsed_data)
         } else {
-          stop(MosquitoAlertError$new(
+          error_obj <- MosquitoAlertError$new(
             status_code = 0,
             message = "Authentication response was empty"
-          ))
+          )
+          stop(error_obj$toString())
         }
         
       }, error = function(e) {
         if (inherits(e, "MosquitoAlertError")) {
           stop(e)
         } else {
-          stop(MosquitoAlertError$new(
+          error_obj <- MosquitoAlertError$new(
             status_code = 0,
             message = paste("Authentication failed:", e$message)
-          ))
+          )
+          stop(error_obj$toString())
         }
       })
     },
@@ -216,10 +221,11 @@ MosquitoAlert <- R6::R6Class(
         countries <- self$get_countries(limit = 1)
         return(TRUE)
       }, error = function(e) {
-        stop(MosquitoAlertError$new(
+        error_obj <- MosquitoAlertError$new(
           status_code = 0,
           message = paste("Connection test failed:", e$message)
-        ))
+        )
+        stop(error_obj$toString())
       })
     }
   )

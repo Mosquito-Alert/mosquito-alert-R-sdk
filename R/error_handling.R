@@ -67,11 +67,12 @@ MosquitoAlertError <- R6::R6Class(
 #' @export
 check_api_response <- function(response) {
   if (is.null(response) || is.null(response$status_code)) {
-    stop(MosquitoAlertError$new(
+    error_obj <- MosquitoAlertError$new(
       status_code = 0,
       status_desc = "Unknown Error",
       message = "No response received from API"
-    ))
+    )
+    stop(error_obj$toString())
   }
   
   status_code <- response$status_code
@@ -121,11 +122,13 @@ check_api_response <- function(response) {
   }
   
   # Throw the error
-  stop(MosquitoAlertError$new(
+  error_obj <- MosquitoAlertError$new(
     status_code = status_code,
     status_desc = response$status_code_desc,
     message = error_message,
     response = response,
     details = error_details
-  ))
+  )
+  
+  stop(error_obj$toString())
 }

@@ -2,7 +2,9 @@
 context("Test Error Handling")
 
 test_that("MosquitoAlertError can be created and printed", {
-  error <- MosquitoAlertError$new(
+  skip_if_not_installed("MosquitoAlert")
+  
+  error <- MosquitoAlert::MosquitoAlertError$new(
     status_code = 404,
     status_desc = "Not Found",
     message = "Resource not found",
@@ -21,6 +23,8 @@ test_that("MosquitoAlertError can be created and printed", {
 })
 
 test_that("check_api_response handles successful responses", {
+  skip_if_not_installed("MosquitoAlert")
+  
   # Mock successful response
   response <- list(
     status_code = 200,
@@ -30,7 +34,7 @@ test_that("check_api_response handles successful responses", {
   class(response) <- "ApiResponse"
   
   # Should return the response without error
-  result <- check_api_response(response)
+  result <- MosquitoAlert::check_api_response(response)
   expect_equal(result, response)
 })
 
