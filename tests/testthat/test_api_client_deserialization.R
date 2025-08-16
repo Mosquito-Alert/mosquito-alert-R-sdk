@@ -1,6 +1,9 @@
 # Test for ApiClient deserialization edge cases
 context("Test ApiClient Deserialization")
 
+# Load the package functions
+library(MosquitoAlert)
+
 test_that("ApiClient deserializeObj handles empty objects safely", {
   client <- ApiClient$new()
   

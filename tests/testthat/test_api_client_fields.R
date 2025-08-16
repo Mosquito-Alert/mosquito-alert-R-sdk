@@ -1,6 +1,9 @@
 # Test for ApiClient field definitions and initialization
 context("Test ApiClient Fields")
 
+# Load the package functions
+library(MosquitoAlert)
+
 test_that("ApiClient has all required fields defined", {
   # Create an ApiClient instance
   client <- ApiClient$new()

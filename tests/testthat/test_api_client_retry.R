@@ -1,6 +1,9 @@
 # Test for ApiClient retry configuration
 context("Test ApiClient Retry Configuration")
 
+# Load the package functions
+library(MosquitoAlert)
+
 # Mock the httr2 functions for testing
 test_that("ApiClient retry configuration uses correct parameters", {
   skip_if_not_installed("httr2")

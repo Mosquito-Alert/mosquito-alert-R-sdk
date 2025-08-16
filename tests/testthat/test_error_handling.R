@@ -1,6 +1,9 @@
 # Test for improved error handling
 context("Test Error Handling")
 
+# Load the package functions
+library(MosquitoAlert)
+
 test_that("MosquitoAlertError can be created and printed", {
   skip_if_not_installed("MosquitoAlert")
   
