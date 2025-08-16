@@ -56,6 +56,72 @@ install.packages("MosquitoAlert_0.1.21.tar.gz", repos = NULL, type = "source")
 library(MosquitoAlert)
 ```
 
+#### Basic Usage with High-Level Client
+
+The easiest way to get started is with the high-level `MosquitoAlert` client:
+
+```R
+# Create a client instance
+client <- MosquitoAlert$new()
+
+# Authenticate with username and password
+auth_result <- client$authenticate("your_username", "your_password")
+
+# Or set a bearer token directly
+client$set_token("your_bearer_token")
+
+# Get observations from Spain
+observations <- client$get_observations(country_id = "ES", limit = 10)
+
+# Get your own observations
+my_observations <- client$get_my_observations(limit = 5)
+
+# Get list of available countries
+countries <- client$get_countries()
+
+# Test the connection
+client$test_connection()
+```
+
+#### Advanced Usage with Low-Level API
+
+For more control, you can use the auto-generated API classes directly:
+
+```R
+# Create API instance
+api_instance <- mosquitoalert_api$new()
+
+# Configure authentication
+api_instance$api_client$bearer_token <- "your_token"
+
+# Use specific API endpoints
+result <- api_instance$observations_api$list(limit = 20, country_id = "ES")
+
+# Handle the response
+if (result$status_code == 200) {
+  data <- jsonlite::fromJSON(rawToChar(result$content))
+  print(data)
+} else {
+  cat("Error:", result$status_code, "\n")
+}
+```
+
+#### Error Handling
+
+The package provides unified error handling:
+
+```R
+tryCatch({
+  observations <- client$get_observations(country_id = "INVALID")
+}, error = function(e) {
+  if (inherits(e, "MosquitoAlertError")) {
+    cat("API Error:", e$status_code, "-", e$message, "\n")
+  } else {
+    cat("Other error:", e$message, "\n")
+  }
+})
+```
+
 ### Reformat code
 
 To reformat code using [styler](https://styler.r-lib.org/index.html), please run the following in the R console:
