@@ -9,6 +9,7 @@ import(stringr)
 
 # Wrapper
 export(mosquitoalert_api)
+export(MosquitoAlert)
 
 # Core
 export(ApiClient)
