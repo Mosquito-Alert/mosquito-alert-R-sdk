@@ -238,8 +238,10 @@ ApiClient  <- R6::R6Class(
 
       # set retry
       if (!is.null(self$max_retry_attempts)) {
-        req <- req %>% retry_max_tries(self$timeout)
-        req <- req %>% retry_max_seconds(self$timeout)
+        req <- req %>% retry_max_tries(self$max_retry_attempts)
+        if (!is.null(self$timeout)) {
+          req <- req %>% retry_max_seconds(self$timeout)
+        }
       }
 
       # set user agent
