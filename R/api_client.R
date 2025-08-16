@@ -48,6 +48,8 @@ ApiClient  <- R6::R6Class(
     password = NULL,
     # API keys
     api_keys = NULL,
+    # Access token  
+    access_token = NULL,
     # Bearer token
     bearer_token = NULL,
     # Time Out (seconds)
