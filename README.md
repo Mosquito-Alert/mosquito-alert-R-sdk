@@ -56,13 +56,16 @@ install.packages("MosquitoAlert_0.1.21.tar.gz", repos = NULL, type = "source")
 library(MosquitoAlert)
 ```
 
-#### Basic Usage with High-Level Client
+#### High-Level Client (Recommended)
 
-The easiest way to get started is with the high-level `MosquitoAlert` client:
+The easiest way to get started is with the high-level `MosquitoAlert` client that provides a user-friendly interface:
 
 ```R
 # Create a client instance
 client <- MosquitoAlert$new()
+
+# Test the connection
+client$test_connection()
 
 # Authenticate with username and password
 auth_result <- client$authenticate("your_username", "your_password")
@@ -70,8 +73,13 @@ auth_result <- client$authenticate("your_username", "your_password")
 # Or set a bearer token directly
 client$set_token("your_bearer_token")
 
-# Get observations from Spain
-observations <- client$get_observations(country_id = "ES", limit = 10)
+# Get observations with filters
+observations <- client$get_observations(
+  country_id = "ES", 
+  limit = 10,
+  created_at_after = "2024-01-01",
+  created_at_before = "2024-12-31"
+)
 
 # Get your own observations
 my_observations <- client$get_my_observations(limit = 5)
@@ -79,13 +87,27 @@ my_observations <- client$get_my_observations(limit = 5)
 # Get list of available countries
 countries <- client$get_countries()
 
-# Test the connection
-client$test_connection()
+# Get bite reports
+bites <- client$get_bites(country_id = "ES", limit = 10)
+
+# Get breeding sites
+breeding_sites <- client$get_breeding_sites(country_id = "ES", limit = 10)
+
+# The client includes automatic error handling
+tryCatch({
+  observations <- client$get_observations(country_id = "INVALID")
+}, error = function(e) {
+  cat("Error:", e$message, "\n")
+  if (inherits(e, "MosquitoAlertError")) {
+    cat("Status code:", e$status_code, "\n")
+    cat("Details:", e$details, "\n")
+  }
+})
 ```
 
-#### Advanced Usage with Low-Level API
+#### Low-Level API Access
 
-For more control, you can use the auto-generated API classes directly:
+For advanced usage and full control over API calls, use the auto-generated API classes:
 
 ```R
 # Create API instance
@@ -94,10 +116,20 @@ api_instance <- mosquitoalert_api$new()
 # Configure authentication
 api_instance$api_client$bearer_token <- "your_token"
 
-# Use specific API endpoints
-result <- api_instance$observations_api$list(limit = 20, country_id = "ES")
+# Use specific API endpoints directly
+result <- api_instance$observations_api$observations_list(
+  limit = 20, 
+  country_id = "ES",
+  created_at_after = "2024-01-01"
+)
 
-# Handle the response
+# Handle the response manually
+if (result$status_code == 200) {
+  data <- result$content
+  cat("Retrieved", length(data$results), "observations\n")
+} else {
+  cat("Error:", result$status_code, "\n")
+}
 if (result$status_code == 200) {
   data <- jsonlite::fromJSON(rawToChar(result$content))
   print(data)
