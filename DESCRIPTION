@@ -1,6 +1,6 @@
 Package: MosquitoAlert
 Title: R Package Client for Mosquito Alert API
-Version: 0.1.21
+Version: 0.1.22
 Author: person("Developers", email = "it@mosquitoalert.com", role = c("aut", "cre"))
 Maintainer: Developers <it@mosquitoalert.com>
 Description: Introducing API v1 for Mosquito Alert platform, a project desgined to facilitate citizen science initiatives and enable collaboration among scientists, public health officials, and environmental managers in the investigation and control of disease-carrying mosquitoes.

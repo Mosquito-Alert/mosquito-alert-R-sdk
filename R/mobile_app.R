@@ -174,6 +174,9 @@ MobileApp <- R6::R6Class(
       if (nchar(self$`package_version`) > 32) {
         return(FALSE)
       }
+      if (!str_detect(self$`package_version`, "^(\\d+)\\.(\\d+)\\.(\\d+)(?:-([0-9a-zA-Z.-]+))?(?:\\+([0-9a-zA-Z.-]+))?$")) {
+        return(FALSE)
+      }
 
       TRUE
     },
@@ -200,6 +203,9 @@ MobileApp <- R6::R6Class(
 
       if (nchar(self$`package_version`) > 32) {
         invalid_fields["package_version"] <- "Invalid length for `package_version`, must be smaller than or equal to 32."
+      }
+      if (!str_detect(self$`package_version`, "^(\\d+)\\.(\\d+)\\.(\\d+)(?:-([0-9a-zA-Z.-]+))?(?:\\+([0-9a-zA-Z.-]+))?$")) {
+        invalid_fields["package_version"] <- "Invalid value for `package_version`, must conform to the pattern ^(\\d+)\\.(\\d+)\\.(\\d+)(?:-([0-9a-zA-Z.-]+))?(?:\\+([0-9a-zA-Z.-]+))?$."
       }
 
       invalid_fields
