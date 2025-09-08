@@ -1,11 +1,11 @@
-#' Create a new IdentificationtasksListReviewTypeErrorComponent
+#' Create a new IdentificationtasksReviewCreateActionErrorComponent
 #'
 #' @description
-#' IdentificationtasksListReviewTypeErrorComponent Class
+#' IdentificationtasksReviewCreateActionErrorComponent Class
 #'
 #' @docType class
-#' @title IdentificationtasksListReviewTypeErrorComponent
-#' @description IdentificationtasksListReviewTypeErrorComponent Class
+#' @title IdentificationtasksReviewCreateActionErrorComponent
+#' @description IdentificationtasksReviewCreateActionErrorComponent Class
 #' @format An \code{R6Class} generator object
 #' @field attr  character
 #' @field code  character
@@ -13,15 +13,15 @@
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-IdentificationtasksListReviewTypeErrorComponent <- R6::R6Class(
-  "IdentificationtasksListReviewTypeErrorComponent",
+IdentificationtasksReviewCreateActionErrorComponent <- R6::R6Class(
+  "IdentificationtasksReviewCreateActionErrorComponent",
   public = list(
     `attr` = NULL,
     `code` = NULL,
     `detail` = NULL,
 
     #' @description
-    #' Initialize a new IdentificationtasksListReviewTypeErrorComponent class.
+    #' Initialize a new IdentificationtasksReviewCreateActionErrorComponent class.
     #'
     #' @param attr attr
     #' @param code code
@@ -29,8 +29,8 @@ IdentificationtasksListReviewTypeErrorComponent <- R6::R6Class(
     #' @param ... Other optional arguments.
     initialize = function(`attr`, `code`, `detail`, ...) {
       if (!missing(`attr`)) {
-        if (!(`attr` %in% c("review_type"))) {
-          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"review_type\".", sep = ""))
+        if (!(`attr` %in% c("action"))) {
+          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"action\".", sep = ""))
         }
         if (!(is.character(`attr`) && length(`attr`) == 1)) {
           stop(paste("Error! Invalid data for `attr`. Must be a string:", `attr`))
@@ -38,8 +38,8 @@ IdentificationtasksListReviewTypeErrorComponent <- R6::R6Class(
         self$`attr` <- `attr`
       }
       if (!missing(`code`)) {
-        if (!(`code` %in% c("invalid_choice"))) {
-          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\".", sep = ""))
+        if (!(`code` %in% c("invalid_choice", "null"))) {
+          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\", \"null\".", sep = ""))
         }
         if (!(is.character(`code`) && length(`code`) == 1)) {
           stop(paste("Error! Invalid data for `code`. Must be a string:", `code`))
@@ -66,9 +66,9 @@ IdentificationtasksListReviewTypeErrorComponent <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return IdentificationtasksListReviewTypeErrorComponent as a base R list.
+    #' @return IdentificationtasksReviewCreateActionErrorComponent as a base R list.
     #' @examples
-    #' # convert array of IdentificationtasksListReviewTypeErrorComponent (x) to a data frame
+    #' # convert array of IdentificationtasksReviewCreateActionErrorComponent (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -80,42 +80,42 @@ IdentificationtasksListReviewTypeErrorComponent <- R6::R6Class(
     },
 
     #' @description
-    #' Convert IdentificationtasksListReviewTypeErrorComponent to a base R type
+    #' Convert IdentificationtasksReviewCreateActionErrorComponent to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      IdentificationtasksListReviewTypeErrorComponentObject <- list()
+      IdentificationtasksReviewCreateActionErrorComponentObject <- list()
       if (!is.null(self$`attr`)) {
-        IdentificationtasksListReviewTypeErrorComponentObject[["attr"]] <-
+        IdentificationtasksReviewCreateActionErrorComponentObject[["attr"]] <-
           self$`attr`
       }
       if (!is.null(self$`code`)) {
-        IdentificationtasksListReviewTypeErrorComponentObject[["code"]] <-
+        IdentificationtasksReviewCreateActionErrorComponentObject[["code"]] <-
           self$`code`
       }
       if (!is.null(self$`detail`)) {
-        IdentificationtasksListReviewTypeErrorComponentObject[["detail"]] <-
+        IdentificationtasksReviewCreateActionErrorComponentObject[["detail"]] <-
           self$`detail`
       }
-      return(IdentificationtasksListReviewTypeErrorComponentObject)
+      return(IdentificationtasksReviewCreateActionErrorComponentObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksListReviewTypeErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateActionErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksListReviewTypeErrorComponent
+    #' @return the instance of IdentificationtasksReviewCreateActionErrorComponent
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`attr`)) {
-        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("review_type"))) {
-          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"review_type\".", sep = ""))
+        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("action"))) {
+          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"action\".", sep = ""))
         }
         self$`attr` <- this_object$`attr`
       }
       if (!is.null(this_object$`code`)) {
-        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice"))) {
-          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\".", sep = ""))
+        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice", "null"))) {
+          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\", \"null\".", sep = ""))
         }
         self$`code` <- this_object$`code`
       }
@@ -129,7 +129,7 @@ IdentificationtasksListReviewTypeErrorComponent <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return IdentificationtasksListReviewTypeErrorComponent in JSON format
+    #' @return IdentificationtasksReviewCreateActionErrorComponent in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -137,18 +137,18 @@ IdentificationtasksListReviewTypeErrorComponent <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksListReviewTypeErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateActionErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksListReviewTypeErrorComponent
+    #' @return the instance of IdentificationtasksReviewCreateActionErrorComponent
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("review_type"))) {
-        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"review_type\".", sep = ""))
+      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("action"))) {
+        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"action\".", sep = ""))
       }
       self$`attr` <- this_object$`attr`
-      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice"))) {
-        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\".", sep = ""))
+      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice", "null"))) {
+        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\", \"null\".", sep = ""))
       }
       self$`code` <- this_object$`code`
       self$`detail` <- this_object$`detail`
@@ -156,7 +156,7 @@ IdentificationtasksListReviewTypeErrorComponent <- R6::R6Class(
     },
 
     #' @description
-    #' Validate JSON input with respect to IdentificationtasksListReviewTypeErrorComponent and throw an exception if invalid
+    #' Validate JSON input with respect to IdentificationtasksReviewCreateActionErrorComponent and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -167,7 +167,7 @@ IdentificationtasksListReviewTypeErrorComponent <- R6::R6Class(
           stop(paste("Error! Invalid data for `attr`. Must be a string:", input_json$`attr`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksListReviewTypeErrorComponent: the required field `attr` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateActionErrorComponent: the required field `attr` is missing."))
       }
       # check the required field `code`
       if (!is.null(input_json$`code`)) {
@@ -175,7 +175,7 @@ IdentificationtasksListReviewTypeErrorComponent <- R6::R6Class(
           stop(paste("Error! Invalid data for `code`. Must be a string:", input_json$`code`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksListReviewTypeErrorComponent: the required field `code` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateActionErrorComponent: the required field `code` is missing."))
       }
       # check the required field `detail`
       if (!is.null(input_json$`detail`)) {
@@ -183,14 +183,14 @@ IdentificationtasksListReviewTypeErrorComponent <- R6::R6Class(
           stop(paste("Error! Invalid data for `detail`. Must be a string:", input_json$`detail`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksListReviewTypeErrorComponent: the required field `detail` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateActionErrorComponent: the required field `detail` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of IdentificationtasksListReviewTypeErrorComponent
+    #' @return String representation of IdentificationtasksReviewCreateActionErrorComponent
     toString = function() {
       self$toJSONString()
     },
@@ -253,13 +253,13 @@ IdentificationtasksListReviewTypeErrorComponent <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# IdentificationtasksListReviewTypeErrorComponent$unlock()
+# IdentificationtasksReviewCreateActionErrorComponent$unlock()
 #
 ## Below is an example to define the print function
-# IdentificationtasksListReviewTypeErrorComponent$set("public", "print", function(...) {
+# IdentificationtasksReviewCreateActionErrorComponent$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# IdentificationtasksListReviewTypeErrorComponent$lock()
+# IdentificationtasksReviewCreateActionErrorComponent$lock()
 

@@ -7,7 +7,7 @@
 #' @title IdentificationTaskReview
 #' @description IdentificationTaskReview Class
 #' @format An \code{R6Class} generator object
-#' @field type  character
+#' @field action  character
 #' @field created_at  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -15,24 +15,24 @@
 IdentificationTaskReview <- R6::R6Class(
   "IdentificationTaskReview",
   public = list(
-    `type` = NULL,
+    `action` = NULL,
     `created_at` = NULL,
 
     #' @description
     #' Initialize a new IdentificationTaskReview class.
     #'
-    #' @param type type
+    #' @param action action
     #' @param created_at created_at
     #' @param ... Other optional arguments.
-    initialize = function(`type`, `created_at`, ...) {
-      if (!missing(`type`)) {
-        if (!(`type` %in% c("agree", "overwrite"))) {
-          stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"agree\", \"overwrite\".", sep = ""))
+    initialize = function(`action`, `created_at`, ...) {
+      if (!missing(`action`)) {
+        if (!(`action` %in% c("agree", "overwrite"))) {
+          stop(paste("Error! \"", `action`, "\" cannot be assigned to `action`. Must be \"agree\", \"overwrite\".", sep = ""))
         }
-        if (!(is.character(`type`) && length(`type`) == 1)) {
-          stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
+        if (!(is.character(`action`) && length(`action`) == 1)) {
+          stop(paste("Error! Invalid data for `action`. Must be a string:", `action`))
         }
-        self$`type` <- `type`
+        self$`action` <- `action`
       }
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
@@ -73,9 +73,9 @@ IdentificationTaskReview <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       IdentificationTaskReviewObject <- list()
-      if (!is.null(self$`type`)) {
-        IdentificationTaskReviewObject[["type"]] <-
-          self$`type`
+      if (!is.null(self$`action`)) {
+        IdentificationTaskReviewObject[["action"]] <-
+          self$`action`
       }
       if (!is.null(self$`created_at`)) {
         IdentificationTaskReviewObject[["created_at"]] <-
@@ -91,11 +91,11 @@ IdentificationTaskReview <- R6::R6Class(
     #' @return the instance of IdentificationTaskReview
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`type`)) {
-        if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("agree", "overwrite"))) {
-          stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"agree\", \"overwrite\".", sep = ""))
+      if (!is.null(this_object$`action`)) {
+        if (!is.null(this_object$`action`) && !(this_object$`action` %in% c("agree", "overwrite"))) {
+          stop(paste("Error! \"", this_object$`action`, "\" cannot be assigned to `action`. Must be \"agree\", \"overwrite\".", sep = ""))
         }
-        self$`type` <- this_object$`type`
+        self$`action` <- this_object$`action`
       }
       if (!is.null(this_object$`created_at`)) {
         self$`created_at` <- this_object$`created_at`
@@ -121,10 +121,10 @@ IdentificationTaskReview <- R6::R6Class(
     #' @return the instance of IdentificationTaskReview
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`type`) && !(this_object$`type` %in% c("agree", "overwrite"))) {
-        stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"agree\", \"overwrite\".", sep = ""))
+      if (!is.null(this_object$`action`) && !(this_object$`action` %in% c("agree", "overwrite"))) {
+        stop(paste("Error! \"", this_object$`action`, "\" cannot be assigned to `action`. Must be \"agree\", \"overwrite\".", sep = ""))
       }
-      self$`type` <- this_object$`type`
+      self$`action` <- this_object$`action`
       self$`created_at` <- this_object$`created_at`
       self
     },
@@ -135,13 +135,13 @@ IdentificationTaskReview <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `type`
-      if (!is.null(input_json$`type`)) {
-        if (!(is.character(input_json$`type`) && length(input_json$`type`) == 1)) {
-          stop(paste("Error! Invalid data for `type`. Must be a string:", input_json$`type`))
+      # check the required field `action`
+      if (!is.null(input_json$`action`)) {
+        if (!(is.character(input_json$`action`) && length(input_json$`action`) == 1)) {
+          stop(paste("Error! Invalid data for `action`. Must be a string:", input_json$`action`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationTaskReview: the required field `type` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationTaskReview: the required field `action` is missing."))
       }
       # check the required field `created_at`
       if (!is.null(input_json$`created_at`)) {
@@ -166,8 +166,8 @@ IdentificationTaskReview <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `type` is null
-      if (is.null(self$`type`)) {
+      # check if the required `action` is null
+      if (is.null(self$`action`)) {
         return(FALSE)
       }
 
@@ -185,9 +185,9 @@ IdentificationTaskReview <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `type` is null
-      if (is.null(self$`type`)) {
-        invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
+      # check if the required `action` is null
+      if (is.null(self$`action`)) {
+        invalid_fields["action"] <- "Non-nullable required field `action` cannot be null."
       }
 
       # check if the required `created_at` is null

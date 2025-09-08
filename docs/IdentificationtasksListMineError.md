@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attr** | **character** |  | [Enum: [result_source]] 
-**code** | **character** |  | [Enum: [invalid_choice, invalid_list]] 
+**attr** | **character** |  | [Enum: [review_action]] 
+**code** | **character** |  | [Enum: [invalid_choice]] 
 **detail** | **character** |  | 
 
 

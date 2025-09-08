@@ -180,7 +180,7 @@
 #' var_result_taxon_ids <- c(123) # array[integer] |  (Optional)
 #' var_result_uncertainty_max <- 3.4 # numeric |  (Optional)
 #' var_result_uncertainty_min <- 3.4 # numeric |  (Optional)
-#' var_review_type <- "review_type_example" # character |  (Optional)
+#' var_review_action <- "review_action_example" # character |  (Optional)
 #' var_status <- c("archived") # array[character] |  (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -197,8 +197,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list(annotator_ids = var_annotator_ids, assignee_ids = var_assignee_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, fully_predicted = var_fully_predicted, is_flagged = var_is_flagged, is_safe = var_is_safe, num_annotations_max = var_num_annotations_max, num_annotations_min = var_num_annotations_min, observation_country_ids = var_observation_country_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, result_agreement_max = var_result_agreement_max, result_agreement_min = var_result_agreement_min, result_confidence_max = var_result_confidence_max, result_confidence_min = var_result_confidence_min, result_source = var_result_source, result_taxon_ids = var_result_taxon_ids, result_uncertainty_max = var_result_uncertainty_max, result_uncertainty_min = var_result_uncertainty_min, review_type = var_review_type, status = var_status, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_beforedata_file = "result.txt")
-#' result <- api_instance$identification_tasks_api$list(annotator_ids = var_annotator_ids, assignee_ids = var_assignee_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, fully_predicted = var_fully_predicted, is_flagged = var_is_flagged, is_safe = var_is_safe, num_annotations_max = var_num_annotations_max, num_annotations_min = var_num_annotations_min, observation_country_ids = var_observation_country_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, result_agreement_max = var_result_agreement_max, result_agreement_min = var_result_agreement_min, result_confidence_max = var_result_confidence_max, result_confidence_min = var_result_confidence_min, result_source = var_result_source, result_taxon_ids = var_result_taxon_ids, result_uncertainty_max = var_result_uncertainty_max, result_uncertainty_min = var_result_uncertainty_min, review_type = var_review_type, status = var_status, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before)
+#' # result <- api_instance$list(annotator_ids = var_annotator_ids, assignee_ids = var_assignee_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, fully_predicted = var_fully_predicted, is_flagged = var_is_flagged, is_safe = var_is_safe, num_annotations_max = var_num_annotations_max, num_annotations_min = var_num_annotations_min, observation_country_ids = var_observation_country_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, result_agreement_max = var_result_agreement_max, result_agreement_min = var_result_agreement_min, result_confidence_max = var_result_confidence_max, result_confidence_min = var_result_confidence_min, result_source = var_result_source, result_taxon_ids = var_result_taxon_ids, result_uncertainty_max = var_result_uncertainty_max, result_uncertainty_min = var_result_uncertainty_min, review_action = var_review_action, status = var_status, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_beforedata_file = "result.txt")
+#' result <- api_instance$identification_tasks_api$list(annotator_ids = var_annotator_ids, assignee_ids = var_assignee_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, fully_predicted = var_fully_predicted, is_flagged = var_is_flagged, is_safe = var_is_safe, num_annotations_max = var_num_annotations_max, num_annotations_min = var_num_annotations_min, observation_country_ids = var_observation_country_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, result_agreement_max = var_result_agreement_max, result_agreement_min = var_result_agreement_min, result_confidence_max = var_result_confidence_max, result_confidence_min = var_result_confidence_min, result_source = var_result_source, result_taxon_ids = var_result_taxon_ids, result_uncertainty_max = var_result_uncertainty_max, result_uncertainty_min = var_result_uncertainty_min, review_action = var_review_action, status = var_status, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before)
 #' dput(result)
 #'
 #'
@@ -226,7 +226,7 @@
 #' var_result_taxon_ids <- c(123) # array[integer] |  (Optional)
 #' var_result_uncertainty_max <- 3.4 # numeric |  (Optional)
 #' var_result_uncertainty_min <- 3.4 # numeric |  (Optional)
-#' var_review_type <- "review_type_example" # character |  (Optional)
+#' var_review_action <- "review_action_example" # character |  (Optional)
 #' var_status <- c("archived") # array[character] |  (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -243,8 +243,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list_mine(annotator_ids = var_annotator_ids, assignee_ids = var_assignee_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, fully_predicted = var_fully_predicted, is_flagged = var_is_flagged, is_safe = var_is_safe, num_annotations_max = var_num_annotations_max, num_annotations_min = var_num_annotations_min, observation_country_ids = var_observation_country_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, result_agreement_max = var_result_agreement_max, result_agreement_min = var_result_agreement_min, result_confidence_max = var_result_confidence_max, result_confidence_min = var_result_confidence_min, result_source = var_result_source, result_taxon_ids = var_result_taxon_ids, result_uncertainty_max = var_result_uncertainty_max, result_uncertainty_min = var_result_uncertainty_min, review_type = var_review_type, status = var_status, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_beforedata_file = "result.txt")
-#' result <- api_instance$identification_tasks_api$list_mine(annotator_ids = var_annotator_ids, assignee_ids = var_assignee_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, fully_predicted = var_fully_predicted, is_flagged = var_is_flagged, is_safe = var_is_safe, num_annotations_max = var_num_annotations_max, num_annotations_min = var_num_annotations_min, observation_country_ids = var_observation_country_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, result_agreement_max = var_result_agreement_max, result_agreement_min = var_result_agreement_min, result_confidence_max = var_result_confidence_max, result_confidence_min = var_result_confidence_min, result_source = var_result_source, result_taxon_ids = var_result_taxon_ids, result_uncertainty_max = var_result_uncertainty_max, result_uncertainty_min = var_result_uncertainty_min, review_type = var_review_type, status = var_status, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before)
+#' # result <- api_instance$list_mine(annotator_ids = var_annotator_ids, assignee_ids = var_assignee_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, fully_predicted = var_fully_predicted, is_flagged = var_is_flagged, is_safe = var_is_safe, num_annotations_max = var_num_annotations_max, num_annotations_min = var_num_annotations_min, observation_country_ids = var_observation_country_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, result_agreement_max = var_result_agreement_max, result_agreement_min = var_result_agreement_min, result_confidence_max = var_result_confidence_max, result_confidence_min = var_result_confidence_min, result_source = var_result_source, result_taxon_ids = var_result_taxon_ids, result_uncertainty_max = var_result_uncertainty_max, result_uncertainty_min = var_result_uncertainty_min, review_action = var_review_action, status = var_status, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_beforedata_file = "result.txt")
+#' result <- api_instance$identification_tasks_api$list_mine(annotator_ids = var_annotator_ids, assignee_ids = var_assignee_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, fully_predicted = var_fully_predicted, is_flagged = var_is_flagged, is_safe = var_is_safe, num_annotations_max = var_num_annotations_max, num_annotations_min = var_num_annotations_min, observation_country_ids = var_observation_country_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, result_agreement_max = var_result_agreement_max, result_agreement_min = var_result_agreement_min, result_confidence_max = var_result_confidence_max, result_confidence_min = var_result_confidence_min, result_source = var_result_source, result_taxon_ids = var_result_taxon_ids, result_uncertainty_max = var_result_uncertainty_max, result_uncertainty_min = var_result_uncertainty_min, review_action = var_review_action, status = var_status, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before)
 #' dput(result)
 #'
 #'
@@ -405,6 +405,29 @@
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
 #' # result <- api_instance$retrieve(var_observation_uuiddata_file = "result.txt")
 #' result <- api_instance$identification_tasks_api$retrieve(var_observation_uuid)
+#' dput(result)
+#'
+#'
+#' ####################  review_create  ####################
+#'
+#' library(MosquitoAlert)
+#' var_observation_uuid <- "observation_uuid_example" # character | 
+#' var_meta_create_identification_task_review_request <- MetaCreateIdentificationTaskReviewRequest$new("public_photo_uuid_example", "is_safe_example", "public_note_example", AnnotationClassificationRequest$new(123, "definitely"), "overwrite") # MetaCreateIdentificationTaskReviewRequest |  (Optional)
+#'
+#' api_instance <- mosquitoalert_api$new()
+#'
+#' # Configure API key authorization: tokenAuth
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: cookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure HTTP bearer authorization: jwtAuth
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$review_create(var_observation_uuid, meta_create_identification_task_review_request = var_meta_create_identification_task_review_requestdata_file = "result.txt")
+#' result <- api_instance$identification_tasks_api$review_create(var_observation_uuid, meta_create_identification_task_review_request = var_meta_create_identification_task_review_request)
 #' dput(result)
 #'
 #'
@@ -1212,7 +1235,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param result_taxon_ids (optional) No description
     #' @param result_uncertainty_max (optional) No description
     #' @param result_uncertainty_min (optional) No description
-    #' @param review_type (optional) No description
+    #' @param review_action (optional) No description
     #' @param status (optional) No description
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -1220,8 +1243,8 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedIdentificationTaskList
-    list = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_type = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_with_http_info(annotator_ids, assignee_ids, created_at_after, created_at_before, fully_predicted, is_flagged, is_safe, num_annotations_max, num_annotations_min, observation_country_ids, order_by, page, page_size, result_agreement_max, result_agreement_min, result_confidence_max, result_confidence_min, result_source, result_taxon_ids, result_uncertainty_max, result_uncertainty_min, review_type, status, updated_at_after, updated_at_before, data_file = data_file, ...)
+    list = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_action = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_with_http_info(annotator_ids, assignee_ids, created_at_after, created_at_before, fully_predicted, is_flagged, is_safe, num_annotations_max, num_annotations_min, observation_country_ids, order_by, page, page_size, result_agreement_max, result_agreement_min, result_confidence_max, result_confidence_min, result_source, result_taxon_ids, result_uncertainty_max, result_uncertainty_min, review_action, status, updated_at_after, updated_at_before, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1257,7 +1280,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param result_taxon_ids (optional) No description
     #' @param result_uncertainty_max (optional) No description
     #' @param result_uncertainty_min (optional) No description
-    #' @param review_type (optional) No description
+    #' @param review_action (optional) No description
     #' @param status (optional) No description
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -1265,7 +1288,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedIdentificationTaskList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_type = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_action = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1374,10 +1397,10 @@ IdentificationTasksApi <- R6::R6Class(
 
       query_params[["result_uncertainty_min"]] <- `result_uncertainty_min`
 
-      if (!is.null(`review_type`) && !(`review_type` %in% c("agree", "overwrite"))) {
-        stop("Invalid value for review_type when calling IdentificationTasksApi$list. Must be [agree, overwrite].")
+      if (!is.null(`review_action`) && !(`review_action` %in% c("agree", "null", "overwrite"))) {
+        stop("Invalid value for review_action when calling IdentificationTasksApi$list. Must be [agree, null, overwrite].")
       }
-      query_params[["review_type"]] <- `review_type`
+      query_params[["review_action"]] <- `review_action`
 
       # explore
       for (query_item in `status`) {
@@ -1475,7 +1498,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param result_taxon_ids (optional) No description
     #' @param result_uncertainty_max (optional) No description
     #' @param result_uncertainty_min (optional) No description
-    #' @param review_type (optional) No description
+    #' @param review_action (optional) No description
     #' @param status (optional) No description
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -1483,8 +1506,8 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedIdentificationTaskList
-    list_mine = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_type = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_mine_with_http_info(annotator_ids, assignee_ids, created_at_after, created_at_before, fully_predicted, is_flagged, is_safe, num_annotations_max, num_annotations_min, observation_country_ids, order_by, page, page_size, result_agreement_max, result_agreement_min, result_confidence_max, result_confidence_min, result_source, result_taxon_ids, result_uncertainty_max, result_uncertainty_min, review_type, status, updated_at_after, updated_at_before, data_file = data_file, ...)
+    list_mine = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_action = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_mine_with_http_info(annotator_ids, assignee_ids, created_at_after, created_at_before, fully_predicted, is_flagged, is_safe, num_annotations_max, num_annotations_min, observation_country_ids, order_by, page, page_size, result_agreement_max, result_agreement_min, result_confidence_max, result_confidence_min, result_source, result_taxon_ids, result_uncertainty_max, result_uncertainty_min, review_action, status, updated_at_after, updated_at_before, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1520,7 +1543,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param result_taxon_ids (optional) No description
     #' @param result_uncertainty_max (optional) No description
     #' @param result_uncertainty_min (optional) No description
-    #' @param review_type (optional) No description
+    #' @param review_action (optional) No description
     #' @param status (optional) No description
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -1528,7 +1551,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedIdentificationTaskList) with additional information such as HTTP status code, headers
-    list_mine_with_http_info = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_type = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ...) {
+    list_mine_with_http_info = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_action = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1637,10 +1660,10 @@ IdentificationTasksApi <- R6::R6Class(
 
       query_params[["result_uncertainty_min"]] <- `result_uncertainty_min`
 
-      if (!is.null(`review_type`) && !(`review_type` %in% c("agree", "overwrite"))) {
-        stop("Invalid value for review_type when calling IdentificationTasksApi$list_mine. Must be [agree, overwrite].")
+      if (!is.null(`review_action`) && !(`review_action` %in% c("agree", "null", "overwrite"))) {
+        stop("Invalid value for review_action when calling IdentificationTasksApi$list_mine. Must be [agree, null, overwrite].")
       }
-      query_params[["review_type"]] <- `review_type`
+      query_params[["review_action"]] <- `review_action`
 
       # explore
       for (query_item in `status`) {
@@ -2518,6 +2541,122 @@ IdentificationTasksApi <- R6::R6Class(
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "IdentificationTask"),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(paste("Server returned ", local_var_resp$status_code, " response status code."), local_var_resp)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new("API client error", local_var_resp)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || local_var_resp$response == "") {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' 
+    #'
+    #' @param observation_uuid 
+    #' @param meta_create_identification_task_review_request (optional) No description
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #'
+    #' @return IdentificationTaskReview
+    review_create = function(observation_uuid, meta_create_identification_task_review_request = NULL, data_file = NULL, ...) {
+      local_var_response <- self$review_create_with_http_info(observation_uuid, meta_create_identification_task_review_request, data_file = data_file, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' 
+    #'
+    #' @param observation_uuid 
+    #' @param meta_create_identification_task_review_request (optional) No description
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (IdentificationTaskReview) with additional information such as HTTP status code, headers
+    review_create_with_http_info = function(observation_uuid, meta_create_identification_task_review_request = NULL, data_file = NULL, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`observation_uuid`)) {
+        stop("Missing required parameter `observation_uuid`.")
+      }
+
+
+
+      if (!is.null(`meta_create_identification_task_review_request`)) {
+        local_var_body <- `meta_create_identification_task_review_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
+
+      local_var_url_path <- "/identification-tasks/{observation_uuid}/review/"
+      if (!missing(`observation_uuid`)) {
+        local_var_url_path <- gsub("\\{observation_uuid\\}", URLencode(as.character(`observation_uuid`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
+      }
+      # API key authentication
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list("application/json", "application/x-www-form-urlencoded", "multipart/form-data")
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "POST",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          self$api_client$WriteFile(local_var_resp, data_file)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$DeserializeResponse(local_var_resp, "IdentificationTaskReview"),
           error = function(e) {
             stop("Failed to deserialize response")
           }

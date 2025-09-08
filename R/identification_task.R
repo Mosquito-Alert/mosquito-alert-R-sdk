@@ -10,7 +10,7 @@
 #' @field observation  \link{SimplifiedObservationWithPhotos}
 #' @field public_photo  \link{SimplePhoto}
 #' @field assignments  list(\link{UserAssignment})
-#' @field status  character [optional]
+#' @field status  character
 #' @field is_flagged  character
 #' @field is_safe Indicates if the content is safe for publication. character
 #' @field public_note  character
@@ -44,6 +44,7 @@ IdentificationTask <- R6::R6Class(
     #' @param observation observation
     #' @param public_photo public_photo
     #' @param assignments assignments
+    #' @param status status
     #' @param is_flagged is_flagged
     #' @param is_safe Indicates if the content is safe for publication.
     #' @param public_note public_note
@@ -52,9 +53,8 @@ IdentificationTask <- R6::R6Class(
     #' @param result result
     #' @param created_at created_at
     #' @param updated_at updated_at
-    #' @param status status. Default to "open".
     #' @param ... Other optional arguments.
-    initialize = function(`observation`, `public_photo`, `assignments`, `is_flagged`, `is_safe`, `public_note`, `num_annotations`, `review`, `result`, `created_at`, `updated_at`, `status` = "open", ...) {
+    initialize = function(`observation`, `public_photo`, `assignments`, `status`, `is_flagged`, `is_safe`, `public_note`, `num_annotations`, `review`, `result`, `created_at`, `updated_at`, ...) {
       if (!missing(`observation`)) {
         stopifnot(R6::is.R6(`observation`))
         self$`observation` <- `observation`
@@ -67,6 +67,15 @@ IdentificationTask <- R6::R6Class(
         stopifnot(is.vector(`assignments`), length(`assignments`) != 0)
         sapply(`assignments`, function(x) stopifnot(R6::is.R6(x)))
         self$`assignments` <- `assignments`
+      }
+      if (!missing(`status`)) {
+        if (!(`status` %in% c("open", "conflict", "review", "done", "archived"))) {
+          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be \"open\", \"conflict\", \"review\", \"done\", \"archived\".", sep = ""))
+        }
+        if (!(is.character(`status`) && length(`status`) == 1)) {
+          stop(paste("Error! Invalid data for `status`. Must be a string:", `status`))
+        }
+        self$`status` <- `status`
       }
       if (!missing(`is_flagged`)) {
         if (!(is.logical(`is_flagged`) && length(`is_flagged`) == 1)) {
@@ -111,15 +120,6 @@ IdentificationTask <- R6::R6Class(
           stop(paste("Error! Invalid data for `updated_at`. Must be a string:", `updated_at`))
         }
         self$`updated_at` <- `updated_at`
-      }
-      if (!is.null(`status`)) {
-        if (!(`status` %in% c("open", "conflict", "review", "done", "archived"))) {
-          stop(paste("Error! \"", `status`, "\" cannot be assigned to `status`. Must be \"open\", \"conflict\", \"review\", \"done\", \"archived\".", sep = ""))
-        }
-        if (!(is.character(`status`) && length(`status`) == 1)) {
-          stop(paste("Error! Invalid data for `status`. Must be a string:", `status`))
-        }
-        self$`status` <- `status`
       }
     },
 
@@ -323,6 +323,14 @@ IdentificationTask <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for IdentificationTask: the required field `assignments` is missing."))
       }
+      # check the required field `status`
+      if (!is.null(input_json$`status`)) {
+        if (!(is.character(input_json$`status`) && length(input_json$`status`) == 1)) {
+          stop(paste("Error! Invalid data for `status`. Must be a string:", input_json$`status`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationTask: the required field `status` is missing."))
+      }
       # check the required field `is_flagged`
       if (!is.null(input_json$`is_flagged`)) {
         if (!(is.logical(input_json$`is_flagged`) && length(input_json$`is_flagged`) == 1)) {
@@ -413,6 +421,11 @@ IdentificationTask <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `status` is null
+      if (is.null(self$`status`)) {
+        return(FALSE)
+      }
+
       # check if the required `is_flagged` is null
       if (is.null(self$`is_flagged`)) {
         return(FALSE)
@@ -464,6 +477,11 @@ IdentificationTask <- R6::R6Class(
       # check if the required `assignments` is null
       if (is.null(self$`assignments`)) {
         invalid_fields["assignments"] <- "Non-nullable required field `assignments` cannot be null."
+      }
+
+      # check if the required `status` is null
+      if (is.null(self$`status`)) {
+        invalid_fields["status"] <- "Non-nullable required field `status` cannot be null."
       }
 
       # check if the required `is_flagged` is null

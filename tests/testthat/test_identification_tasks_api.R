@@ -113,7 +113,7 @@ test_that("list", {
   # @param result_taxon_ids array[integer]  (optional)
   # @param result_uncertainty_max numeric  (optional)
   # @param result_uncertainty_min numeric  (optional)
-  # @param review_type character  (optional)
+  # @param review_action character  (optional)
   # @param status array[character]  (optional)
   # @param updated_at_after character Update at (optional)
   # @param updated_at_before character Update at (optional)
@@ -148,7 +148,7 @@ test_that("list_mine", {
   # @param result_taxon_ids array[integer]  (optional)
   # @param result_uncertainty_max numeric  (optional)
   # @param result_uncertainty_min numeric  (optional)
-  # @param review_type character  (optional)
+  # @param review_action character  (optional)
   # @param status array[character]  (optional)
   # @param updated_at_after character Update at (optional)
   # @param updated_at_before character Update at (optional)
@@ -232,6 +232,17 @@ test_that("retrieve", {
   # base path: https://api.mosquitoalert.com/v1
   # @param observation_uuid character 
   # @return [IdentificationTask]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("review_create", {
+  # tests for review_create
+  # base path: https://api.mosquitoalert.com/v1
+  # @param observation_uuid character 
+  # @param meta_create_identification_task_review_request MetaCreateIdentificationTaskReviewRequest  (optional)
+  # @return [IdentificationTaskReview]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
