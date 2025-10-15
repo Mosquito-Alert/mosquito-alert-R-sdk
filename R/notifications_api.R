@@ -214,6 +214,9 @@ NotificationsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`meta_notification_request`) && is.null(`meta_notification_request`)) {
+        stop("Invalid value for `meta_notification_request` when calling NotificationsApi$create, `meta_notification_request` is not nullable")
+      }
 
       if (!is.null(`meta_notification_request`)) {
         local_var_body <- `meta_notification_request`$toJSONString()
@@ -325,9 +328,21 @@ NotificationsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`is_read`) && is.null(`is_read`)) {
+        stop("Invalid value for `is_read` when calling NotificationsApi$list, `is_read` is not nullable")
+      }
 
+      if (!missing(`order_by`) && is.null(`order_by`)) {
+        stop("Invalid value for `order_by` when calling NotificationsApi$list, `order_by` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling NotificationsApi$list, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling NotificationsApi$list, `page_size` is not nullable")
+      }
 
       query_params[["is_read"]] <- `is_read`
 
@@ -448,9 +463,21 @@ NotificationsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`is_read`) && is.null(`is_read`)) {
+        stop("Invalid value for `is_read` when calling NotificationsApi$list_mine, `is_read` is not nullable")
+      }
 
+      if (!missing(`order_by`) && is.null(`order_by`)) {
+        stop("Invalid value for `order_by` when calling NotificationsApi$list_mine, `order_by` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling NotificationsApi$list_mine, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling NotificationsApi$list_mine, `page_size` is not nullable")
+      }
 
       query_params[["is_read"]] <- `is_read`
 
@@ -571,7 +598,13 @@ NotificationsApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling NotificationsApi$partial_update, `id` is not nullable")
+      }
 
+      if (!missing(`patched_notification_request`) && is.null(`patched_notification_request`)) {
+        stop("Invalid value for `patched_notification_request` when calling NotificationsApi$partial_update, `patched_notification_request` is not nullable")
+      }
 
       if (!is.null(`patched_notification_request`)) {
         local_var_body <- `patched_notification_request`$toJSONString()
@@ -685,6 +718,9 @@ NotificationsApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling NotificationsApi$retrieve, `id` is not nullable")
+      }
 
       local_var_url_path <- "/notifications/{id}/"
       if (!missing(`id`)) {
@@ -798,7 +834,13 @@ NotificationsApi <- R6::R6Class(
         stop("Missing required parameter `notification_request`.")
       }
 
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling NotificationsApi$update, `id` is not nullable")
+      }
 
+      if (!missing(`notification_request`) && is.null(`notification_request`)) {
+        stop("Invalid value for `notification_request` when calling NotificationsApi$update, `notification_request` is not nullable")
+      }
 
       if (!is.null(`notification_request`)) {
         local_var_body <- `notification_request`$toJSONString()

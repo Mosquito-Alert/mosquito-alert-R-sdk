@@ -501,7 +501,13 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Missing required parameter `annotation_request`.")
       }
 
+      if (!missing(`observation_uuid`) && is.null(`observation_uuid`)) {
+        stop("Invalid value for `observation_uuid` when calling IdentificationTasksApi$annotations_create, `observation_uuid` is not nullable")
+      }
 
+      if (!missing(`annotation_request`) && is.null(`annotation_request`)) {
+        stop("Invalid value for `annotation_request` when calling IdentificationTasksApi$annotations_create, `annotation_request` is not nullable")
+      }
 
       if (!is.null(`annotation_request`)) {
         local_var_body <- `annotation_request`$toJSONString()
@@ -647,34 +653,85 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Missing required parameter `observation_uuid`.")
       }
 
+      if (!missing(`observation_uuid`) && is.null(`observation_uuid`)) {
+        stop("Invalid value for `observation_uuid` when calling IdentificationTasksApi$annotations_list, `observation_uuid` is not nullable")
+      }
 
+      if (!missing(`classification_confidence_label`) && is.null(`classification_confidence_label`)) {
+        stop("Invalid value for `classification_confidence_label` when calling IdentificationTasksApi$annotations_list, `classification_confidence_label` is not nullable")
+      }
 
-      if (`classification_confidence_max` > 1.0) {
+      if (!missing(`classification_confidence_max`) && is.null(`classification_confidence_max`)) {
+        stop("Invalid value for `classification_confidence_max` when calling IdentificationTasksApi$annotations_list, `classification_confidence_max` is not nullable")
+      }
+      if (!is.null(`classification_confidence_max`) && `classification_confidence_max` >  1.0) {
         stop("Invalid value for `classification_confidence_max` when calling IdentificationTasksApi$annotations_list, must be smaller than or equal to 1.0.")
       }
-      if (`classification_confidence_max` < 0.0) {
+      if (!is.null(`classification_confidence_max`) && `classification_confidence_max` <  0.0) {
         stop("Invalid value for `classification_confidence_max` when calling IdentificationTasksApi$annotations_list, must be bigger than or equal to 0.0.")
       }
 
-      if (`classification_confidence_min` > 1.0) {
+      if (!missing(`classification_confidence_min`) && is.null(`classification_confidence_min`)) {
+        stop("Invalid value for `classification_confidence_min` when calling IdentificationTasksApi$annotations_list, `classification_confidence_min` is not nullable")
+      }
+      if (!is.null(`classification_confidence_min`) && `classification_confidence_min` >  1.0) {
         stop("Invalid value for `classification_confidence_min` when calling IdentificationTasksApi$annotations_list, must be smaller than or equal to 1.0.")
       }
-      if (`classification_confidence_min` < 0.0) {
+      if (!is.null(`classification_confidence_min`) && `classification_confidence_min` <  0.0) {
         stop("Invalid value for `classification_confidence_min` when calling IdentificationTasksApi$annotations_list, must be bigger than or equal to 0.0.")
       }
 
+      if (!missing(`classification_taxon_ids`) && is.null(`classification_taxon_ids`)) {
+        stop("Invalid value for `classification_taxon_ids` when calling IdentificationTasksApi$annotations_list, `classification_taxon_ids` is not nullable")
+      }
 
+      if (!missing(`created_at_after`) && is.null(`created_at_after`)) {
+        stop("Invalid value for `created_at_after` when calling IdentificationTasksApi$annotations_list, `created_at_after` is not nullable")
+      }
 
+      if (!missing(`created_at_before`) && is.null(`created_at_before`)) {
+        stop("Invalid value for `created_at_before` when calling IdentificationTasksApi$annotations_list, `created_at_before` is not nullable")
+      }
 
+      if (!missing(`is_decisive`) && is.null(`is_decisive`)) {
+        stop("Invalid value for `is_decisive` when calling IdentificationTasksApi$annotations_list, `is_decisive` is not nullable")
+      }
 
+      if (!missing(`is_favourite`) && is.null(`is_favourite`)) {
+        stop("Invalid value for `is_favourite` when calling IdentificationTasksApi$annotations_list, `is_favourite` is not nullable")
+      }
 
+      if (!missing(`is_flagged`) && is.null(`is_flagged`)) {
+        stop("Invalid value for `is_flagged` when calling IdentificationTasksApi$annotations_list, `is_flagged` is not nullable")
+      }
 
+      if (!missing(`order_by`) && is.null(`order_by`)) {
+        stop("Invalid value for `order_by` when calling IdentificationTasksApi$annotations_list, `order_by` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling IdentificationTasksApi$annotations_list, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling IdentificationTasksApi$annotations_list, `page_size` is not nullable")
+      }
 
+      if (!missing(`type`) && is.null(`type`)) {
+        stop("Invalid value for `type` when calling IdentificationTasksApi$annotations_list, `type` is not nullable")
+      }
 
+      if (!missing(`updated_at_after`) && is.null(`updated_at_after`)) {
+        stop("Invalid value for `updated_at_after` when calling IdentificationTasksApi$annotations_list, `updated_at_after` is not nullable")
+      }
 
+      if (!missing(`updated_at_before`) && is.null(`updated_at_before`)) {
+        stop("Invalid value for `updated_at_before` when calling IdentificationTasksApi$annotations_list, `updated_at_before` is not nullable")
+      }
 
+      if (!missing(`user_ids`) && is.null(`user_ids`)) {
+        stop("Invalid value for `user_ids` when calling IdentificationTasksApi$annotations_list, `user_ids` is not nullable")
+      }
 
       if (!is.null(`classification_confidence_label`) && !(`classification_confidence_label` %in% c("definitely", "probably"))) {
         stop("Invalid value for classification_confidence_label when calling IdentificationTasksApi$annotations_list. Must be [definitely, probably].")
@@ -859,33 +916,81 @@ IdentificationTasksApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`classification_confidence_label`) && is.null(`classification_confidence_label`)) {
+        stop("Invalid value for `classification_confidence_label` when calling IdentificationTasksApi$annotations_list_mine, `classification_confidence_label` is not nullable")
+      }
 
-      if (`classification_confidence_max` > 1.0) {
+      if (!missing(`classification_confidence_max`) && is.null(`classification_confidence_max`)) {
+        stop("Invalid value for `classification_confidence_max` when calling IdentificationTasksApi$annotations_list_mine, `classification_confidence_max` is not nullable")
+      }
+      if (!is.null(`classification_confidence_max`) && `classification_confidence_max` >  1.0) {
         stop("Invalid value for `classification_confidence_max` when calling IdentificationTasksApi$annotations_list_mine, must be smaller than or equal to 1.0.")
       }
-      if (`classification_confidence_max` < 0.0) {
+      if (!is.null(`classification_confidence_max`) && `classification_confidence_max` <  0.0) {
         stop("Invalid value for `classification_confidence_max` when calling IdentificationTasksApi$annotations_list_mine, must be bigger than or equal to 0.0.")
       }
 
-      if (`classification_confidence_min` > 1.0) {
+      if (!missing(`classification_confidence_min`) && is.null(`classification_confidence_min`)) {
+        stop("Invalid value for `classification_confidence_min` when calling IdentificationTasksApi$annotations_list_mine, `classification_confidence_min` is not nullable")
+      }
+      if (!is.null(`classification_confidence_min`) && `classification_confidence_min` >  1.0) {
         stop("Invalid value for `classification_confidence_min` when calling IdentificationTasksApi$annotations_list_mine, must be smaller than or equal to 1.0.")
       }
-      if (`classification_confidence_min` < 0.0) {
+      if (!is.null(`classification_confidence_min`) && `classification_confidence_min` <  0.0) {
         stop("Invalid value for `classification_confidence_min` when calling IdentificationTasksApi$annotations_list_mine, must be bigger than or equal to 0.0.")
       }
 
+      if (!missing(`classification_taxon_ids`) && is.null(`classification_taxon_ids`)) {
+        stop("Invalid value for `classification_taxon_ids` when calling IdentificationTasksApi$annotations_list_mine, `classification_taxon_ids` is not nullable")
+      }
 
+      if (!missing(`created_at_after`) && is.null(`created_at_after`)) {
+        stop("Invalid value for `created_at_after` when calling IdentificationTasksApi$annotations_list_mine, `created_at_after` is not nullable")
+      }
 
+      if (!missing(`created_at_before`) && is.null(`created_at_before`)) {
+        stop("Invalid value for `created_at_before` when calling IdentificationTasksApi$annotations_list_mine, `created_at_before` is not nullable")
+      }
 
+      if (!missing(`is_decisive`) && is.null(`is_decisive`)) {
+        stop("Invalid value for `is_decisive` when calling IdentificationTasksApi$annotations_list_mine, `is_decisive` is not nullable")
+      }
 
+      if (!missing(`is_favourite`) && is.null(`is_favourite`)) {
+        stop("Invalid value for `is_favourite` when calling IdentificationTasksApi$annotations_list_mine, `is_favourite` is not nullable")
+      }
 
+      if (!missing(`is_flagged`) && is.null(`is_flagged`)) {
+        stop("Invalid value for `is_flagged` when calling IdentificationTasksApi$annotations_list_mine, `is_flagged` is not nullable")
+      }
 
+      if (!missing(`order_by`) && is.null(`order_by`)) {
+        stop("Invalid value for `order_by` when calling IdentificationTasksApi$annotations_list_mine, `order_by` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling IdentificationTasksApi$annotations_list_mine, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling IdentificationTasksApi$annotations_list_mine, `page_size` is not nullable")
+      }
 
+      if (!missing(`type`) && is.null(`type`)) {
+        stop("Invalid value for `type` when calling IdentificationTasksApi$annotations_list_mine, `type` is not nullable")
+      }
 
+      if (!missing(`updated_at_after`) && is.null(`updated_at_after`)) {
+        stop("Invalid value for `updated_at_after` when calling IdentificationTasksApi$annotations_list_mine, `updated_at_after` is not nullable")
+      }
 
+      if (!missing(`updated_at_before`) && is.null(`updated_at_before`)) {
+        stop("Invalid value for `updated_at_before` when calling IdentificationTasksApi$annotations_list_mine, `updated_at_before` is not nullable")
+      }
 
+      if (!missing(`user_ids`) && is.null(`user_ids`)) {
+        stop("Invalid value for `user_ids` when calling IdentificationTasksApi$annotations_list_mine, `user_ids` is not nullable")
+      }
 
       if (!is.null(`classification_confidence_label`) && !(`classification_confidence_label` %in% c("definitely", "probably"))) {
         stop("Invalid value for classification_confidence_label when calling IdentificationTasksApi$annotations_list_mine. Must be [definitely, probably].")
@@ -1046,7 +1151,13 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Missing required parameter `observation_uuid`.")
       }
 
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling IdentificationTasksApi$annotations_retrieve, `id` is not nullable")
+      }
 
+      if (!missing(`observation_uuid`) && is.null(`observation_uuid`)) {
+        stop("Invalid value for `observation_uuid` when calling IdentificationTasksApi$annotations_retrieve, `observation_uuid` is not nullable")
+      }
 
       local_var_url_path <- "/identification-tasks/{observation_uuid}/annotations/{id}/"
       if (!missing(`id`)) {
@@ -1298,36 +1409,111 @@ IdentificationTasksApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`annotator_ids`) && is.null(`annotator_ids`)) {
+        stop("Invalid value for `annotator_ids` when calling IdentificationTasksApi$list, `annotator_ids` is not nullable")
+      }
 
+      if (!missing(`assignee_ids`) && is.null(`assignee_ids`)) {
+        stop("Invalid value for `assignee_ids` when calling IdentificationTasksApi$list, `assignee_ids` is not nullable")
+      }
 
+      if (!missing(`created_at_after`) && is.null(`created_at_after`)) {
+        stop("Invalid value for `created_at_after` when calling IdentificationTasksApi$list, `created_at_after` is not nullable")
+      }
 
+      if (!missing(`created_at_before`) && is.null(`created_at_before`)) {
+        stop("Invalid value for `created_at_before` when calling IdentificationTasksApi$list, `created_at_before` is not nullable")
+      }
 
+      if (!missing(`fully_predicted`) && is.null(`fully_predicted`)) {
+        stop("Invalid value for `fully_predicted` when calling IdentificationTasksApi$list, `fully_predicted` is not nullable")
+      }
 
+      if (!missing(`is_flagged`) && is.null(`is_flagged`)) {
+        stop("Invalid value for `is_flagged` when calling IdentificationTasksApi$list, `is_flagged` is not nullable")
+      }
 
+      if (!missing(`is_safe`) && is.null(`is_safe`)) {
+        stop("Invalid value for `is_safe` when calling IdentificationTasksApi$list, `is_safe` is not nullable")
+      }
 
+      if (!missing(`num_annotations_max`) && is.null(`num_annotations_max`)) {
+        stop("Invalid value for `num_annotations_max` when calling IdentificationTasksApi$list, `num_annotations_max` is not nullable")
+      }
 
+      if (!missing(`num_annotations_min`) && is.null(`num_annotations_min`)) {
+        stop("Invalid value for `num_annotations_min` when calling IdentificationTasksApi$list, `num_annotations_min` is not nullable")
+      }
 
+      if (!missing(`observation_country_ids`) && is.null(`observation_country_ids`)) {
+        stop("Invalid value for `observation_country_ids` when calling IdentificationTasksApi$list, `observation_country_ids` is not nullable")
+      }
 
+      if (!missing(`order_by`) && is.null(`order_by`)) {
+        stop("Invalid value for `order_by` when calling IdentificationTasksApi$list, `order_by` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling IdentificationTasksApi$list, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling IdentificationTasksApi$list, `page_size` is not nullable")
+      }
 
+      if (!missing(`result_agreement_max`) && is.null(`result_agreement_max`)) {
+        stop("Invalid value for `result_agreement_max` when calling IdentificationTasksApi$list, `result_agreement_max` is not nullable")
+      }
 
+      if (!missing(`result_agreement_min`) && is.null(`result_agreement_min`)) {
+        stop("Invalid value for `result_agreement_min` when calling IdentificationTasksApi$list, `result_agreement_min` is not nullable")
+      }
 
-      if (!str_detect(`result_confidence_max`, "^-?\\d{0,1}(?:\\.\\d{0,6})?$")) {
+      if (!missing(`result_confidence_max`) && is.null(`result_confidence_max`)) {
+        stop("Invalid value for `result_confidence_max` when calling IdentificationTasksApi$list, `result_confidence_max` is not nullable")
+      }
+      if (!is.null(`result_confidence_max`) && !stringr::str_detect(`result_confidence_max`, "^-?\\d{0,1}(?:\\.\\d{0,6})?$")) {
         stop("Invalid value for `result_confidence_max` when calling IdentificationTasksApi$list, must conform to the pattern ^-?\\d{0,1}(?:\\.\\d{0,6})?$.")
       }
 
-      if (!str_detect(`result_confidence_min`, "^-?\\d{0,1}(?:\\.\\d{0,6})?$")) {
+      if (!missing(`result_confidence_min`) && is.null(`result_confidence_min`)) {
+        stop("Invalid value for `result_confidence_min` when calling IdentificationTasksApi$list, `result_confidence_min` is not nullable")
+      }
+      if (!is.null(`result_confidence_min`) && !stringr::str_detect(`result_confidence_min`, "^-?\\d{0,1}(?:\\.\\d{0,6})?$")) {
         stop("Invalid value for `result_confidence_min` when calling IdentificationTasksApi$list, must conform to the pattern ^-?\\d{0,1}(?:\\.\\d{0,6})?$.")
       }
 
+      if (!missing(`result_source`) && is.null(`result_source`)) {
+        stop("Invalid value for `result_source` when calling IdentificationTasksApi$list, `result_source` is not nullable")
+      }
 
+      if (!missing(`result_taxon_ids`) && is.null(`result_taxon_ids`)) {
+        stop("Invalid value for `result_taxon_ids` when calling IdentificationTasksApi$list, `result_taxon_ids` is not nullable")
+      }
 
+      if (!missing(`result_uncertainty_max`) && is.null(`result_uncertainty_max`)) {
+        stop("Invalid value for `result_uncertainty_max` when calling IdentificationTasksApi$list, `result_uncertainty_max` is not nullable")
+      }
 
+      if (!missing(`result_uncertainty_min`) && is.null(`result_uncertainty_min`)) {
+        stop("Invalid value for `result_uncertainty_min` when calling IdentificationTasksApi$list, `result_uncertainty_min` is not nullable")
+      }
 
+      if (!missing(`review_action`) && is.null(`review_action`)) {
+        stop("Invalid value for `review_action` when calling IdentificationTasksApi$list, `review_action` is not nullable")
+      }
 
+      if (!missing(`status`) && is.null(`status`)) {
+        stop("Invalid value for `status` when calling IdentificationTasksApi$list, `status` is not nullable")
+      }
 
+      if (!missing(`updated_at_after`) && is.null(`updated_at_after`)) {
+        stop("Invalid value for `updated_at_after` when calling IdentificationTasksApi$list, `updated_at_after` is not nullable")
+      }
 
+      if (!missing(`updated_at_before`) && is.null(`updated_at_before`)) {
+        stop("Invalid value for `updated_at_before` when calling IdentificationTasksApi$list, `updated_at_before` is not nullable")
+      }
 
       # explore
       for (query_item in `annotator_ids`) {
@@ -1561,36 +1747,111 @@ IdentificationTasksApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`annotator_ids`) && is.null(`annotator_ids`)) {
+        stop("Invalid value for `annotator_ids` when calling IdentificationTasksApi$list_mine, `annotator_ids` is not nullable")
+      }
 
+      if (!missing(`assignee_ids`) && is.null(`assignee_ids`)) {
+        stop("Invalid value for `assignee_ids` when calling IdentificationTasksApi$list_mine, `assignee_ids` is not nullable")
+      }
 
+      if (!missing(`created_at_after`) && is.null(`created_at_after`)) {
+        stop("Invalid value for `created_at_after` when calling IdentificationTasksApi$list_mine, `created_at_after` is not nullable")
+      }
 
+      if (!missing(`created_at_before`) && is.null(`created_at_before`)) {
+        stop("Invalid value for `created_at_before` when calling IdentificationTasksApi$list_mine, `created_at_before` is not nullable")
+      }
 
+      if (!missing(`fully_predicted`) && is.null(`fully_predicted`)) {
+        stop("Invalid value for `fully_predicted` when calling IdentificationTasksApi$list_mine, `fully_predicted` is not nullable")
+      }
 
+      if (!missing(`is_flagged`) && is.null(`is_flagged`)) {
+        stop("Invalid value for `is_flagged` when calling IdentificationTasksApi$list_mine, `is_flagged` is not nullable")
+      }
 
+      if (!missing(`is_safe`) && is.null(`is_safe`)) {
+        stop("Invalid value for `is_safe` when calling IdentificationTasksApi$list_mine, `is_safe` is not nullable")
+      }
 
+      if (!missing(`num_annotations_max`) && is.null(`num_annotations_max`)) {
+        stop("Invalid value for `num_annotations_max` when calling IdentificationTasksApi$list_mine, `num_annotations_max` is not nullable")
+      }
 
+      if (!missing(`num_annotations_min`) && is.null(`num_annotations_min`)) {
+        stop("Invalid value for `num_annotations_min` when calling IdentificationTasksApi$list_mine, `num_annotations_min` is not nullable")
+      }
 
+      if (!missing(`observation_country_ids`) && is.null(`observation_country_ids`)) {
+        stop("Invalid value for `observation_country_ids` when calling IdentificationTasksApi$list_mine, `observation_country_ids` is not nullable")
+      }
 
+      if (!missing(`order_by`) && is.null(`order_by`)) {
+        stop("Invalid value for `order_by` when calling IdentificationTasksApi$list_mine, `order_by` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling IdentificationTasksApi$list_mine, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling IdentificationTasksApi$list_mine, `page_size` is not nullable")
+      }
 
+      if (!missing(`result_agreement_max`) && is.null(`result_agreement_max`)) {
+        stop("Invalid value for `result_agreement_max` when calling IdentificationTasksApi$list_mine, `result_agreement_max` is not nullable")
+      }
 
+      if (!missing(`result_agreement_min`) && is.null(`result_agreement_min`)) {
+        stop("Invalid value for `result_agreement_min` when calling IdentificationTasksApi$list_mine, `result_agreement_min` is not nullable")
+      }
 
-      if (!str_detect(`result_confidence_max`, "^-?\\d{0,1}(?:\\.\\d{0,6})?$")) {
+      if (!missing(`result_confidence_max`) && is.null(`result_confidence_max`)) {
+        stop("Invalid value for `result_confidence_max` when calling IdentificationTasksApi$list_mine, `result_confidence_max` is not nullable")
+      }
+      if (!is.null(`result_confidence_max`) && !stringr::str_detect(`result_confidence_max`, "^-?\\d{0,1}(?:\\.\\d{0,6})?$")) {
         stop("Invalid value for `result_confidence_max` when calling IdentificationTasksApi$list_mine, must conform to the pattern ^-?\\d{0,1}(?:\\.\\d{0,6})?$.")
       }
 
-      if (!str_detect(`result_confidence_min`, "^-?\\d{0,1}(?:\\.\\d{0,6})?$")) {
+      if (!missing(`result_confidence_min`) && is.null(`result_confidence_min`)) {
+        stop("Invalid value for `result_confidence_min` when calling IdentificationTasksApi$list_mine, `result_confidence_min` is not nullable")
+      }
+      if (!is.null(`result_confidence_min`) && !stringr::str_detect(`result_confidence_min`, "^-?\\d{0,1}(?:\\.\\d{0,6})?$")) {
         stop("Invalid value for `result_confidence_min` when calling IdentificationTasksApi$list_mine, must conform to the pattern ^-?\\d{0,1}(?:\\.\\d{0,6})?$.")
       }
 
+      if (!missing(`result_source`) && is.null(`result_source`)) {
+        stop("Invalid value for `result_source` when calling IdentificationTasksApi$list_mine, `result_source` is not nullable")
+      }
 
+      if (!missing(`result_taxon_ids`) && is.null(`result_taxon_ids`)) {
+        stop("Invalid value for `result_taxon_ids` when calling IdentificationTasksApi$list_mine, `result_taxon_ids` is not nullable")
+      }
 
+      if (!missing(`result_uncertainty_max`) && is.null(`result_uncertainty_max`)) {
+        stop("Invalid value for `result_uncertainty_max` when calling IdentificationTasksApi$list_mine, `result_uncertainty_max` is not nullable")
+      }
 
+      if (!missing(`result_uncertainty_min`) && is.null(`result_uncertainty_min`)) {
+        stop("Invalid value for `result_uncertainty_min` when calling IdentificationTasksApi$list_mine, `result_uncertainty_min` is not nullable")
+      }
 
+      if (!missing(`review_action`) && is.null(`review_action`)) {
+        stop("Invalid value for `review_action` when calling IdentificationTasksApi$list_mine, `review_action` is not nullable")
+      }
 
+      if (!missing(`status`) && is.null(`status`)) {
+        stop("Invalid value for `status` when calling IdentificationTasksApi$list_mine, `status` is not nullable")
+      }
 
+      if (!missing(`updated_at_after`) && is.null(`updated_at_after`)) {
+        stop("Invalid value for `updated_at_after` when calling IdentificationTasksApi$list_mine, `updated_at_after` is not nullable")
+      }
 
+      if (!missing(`updated_at_before`) && is.null(`updated_at_before`)) {
+        stop("Invalid value for `updated_at_before` when calling IdentificationTasksApi$list_mine, `updated_at_before` is not nullable")
+      }
 
       # explore
       for (query_item in `annotator_ids`) {
@@ -1786,7 +2047,13 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Missing required parameter `create_photo_prediction_request`.")
       }
 
+      if (!missing(`observation_uuid`) && is.null(`observation_uuid`)) {
+        stop("Invalid value for `observation_uuid` when calling IdentificationTasksApi$predictions_create, `observation_uuid` is not nullable")
+      }
 
+      if (!missing(`create_photo_prediction_request`) && is.null(`create_photo_prediction_request`)) {
+        stop("Invalid value for `create_photo_prediction_request` when calling IdentificationTasksApi$predictions_create, `create_photo_prediction_request` is not nullable")
+      }
 
       if (!is.null(`create_photo_prediction_request`)) {
         local_var_body <- `create_photo_prediction_request`$toJSONString()
@@ -1904,7 +2171,13 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Missing required parameter `photo_uuid`.")
       }
 
+      if (!missing(`observation_uuid`) && is.null(`observation_uuid`)) {
+        stop("Invalid value for `observation_uuid` when calling IdentificationTasksApi$predictions_destroy, `observation_uuid` is not nullable")
+      }
 
+      if (!missing(`photo_uuid`) && is.null(`photo_uuid`)) {
+        stop("Invalid value for `photo_uuid` when calling IdentificationTasksApi$predictions_destroy, `photo_uuid` is not nullable")
+      }
 
       local_var_url_path <- "/identification-tasks/{observation_uuid}/predictions/{photo_uuid}/"
       if (!missing(`observation_uuid`)) {
@@ -2009,8 +2282,17 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Missing required parameter `observation_uuid`.")
       }
 
+      if (!missing(`observation_uuid`) && is.null(`observation_uuid`)) {
+        stop("Invalid value for `observation_uuid` when calling IdentificationTasksApi$predictions_list, `observation_uuid` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling IdentificationTasksApi$predictions_list, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling IdentificationTasksApi$predictions_list, `page_size` is not nullable")
+      }
 
       query_params[["page"]] <- `page`
 
@@ -2130,8 +2412,17 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Missing required parameter `photo_uuid`.")
       }
 
+      if (!missing(`observation_uuid`) && is.null(`observation_uuid`)) {
+        stop("Invalid value for `observation_uuid` when calling IdentificationTasksApi$predictions_partial_update, `observation_uuid` is not nullable")
+      }
 
+      if (!missing(`photo_uuid`) && is.null(`photo_uuid`)) {
+        stop("Invalid value for `photo_uuid` when calling IdentificationTasksApi$predictions_partial_update, `photo_uuid` is not nullable")
+      }
 
+      if (!missing(`patched_photo_prediction_request`) && is.null(`patched_photo_prediction_request`)) {
+        stop("Invalid value for `patched_photo_prediction_request` when calling IdentificationTasksApi$predictions_partial_update, `patched_photo_prediction_request` is not nullable")
+      }
 
       if (!is.null(`patched_photo_prediction_request`)) {
         local_var_body <- `patched_photo_prediction_request`$toJSONString()
@@ -2255,7 +2546,13 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Missing required parameter `photo_uuid`.")
       }
 
+      if (!missing(`observation_uuid`) && is.null(`observation_uuid`)) {
+        stop("Invalid value for `observation_uuid` when calling IdentificationTasksApi$predictions_retrieve, `observation_uuid` is not nullable")
+      }
 
+      if (!missing(`photo_uuid`) && is.null(`photo_uuid`)) {
+        stop("Invalid value for `photo_uuid` when calling IdentificationTasksApi$predictions_retrieve, `photo_uuid` is not nullable")
+      }
 
       local_var_url_path <- "/identification-tasks/{observation_uuid}/predictions/{photo_uuid}/"
       if (!missing(`observation_uuid`)) {
@@ -2379,8 +2676,17 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Missing required parameter `photo_prediction_request`.")
       }
 
+      if (!missing(`observation_uuid`) && is.null(`observation_uuid`)) {
+        stop("Invalid value for `observation_uuid` when calling IdentificationTasksApi$predictions_update, `observation_uuid` is not nullable")
+      }
 
+      if (!missing(`photo_uuid`) && is.null(`photo_uuid`)) {
+        stop("Invalid value for `photo_uuid` when calling IdentificationTasksApi$predictions_update, `photo_uuid` is not nullable")
+      }
 
+      if (!missing(`photo_prediction_request`) && is.null(`photo_prediction_request`)) {
+        stop("Invalid value for `photo_prediction_request` when calling IdentificationTasksApi$predictions_update, `photo_prediction_request` is not nullable")
+      }
 
       if (!is.null(`photo_prediction_request`)) {
         local_var_body <- `photo_prediction_request`$toJSONString()
@@ -2498,6 +2804,9 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Missing required parameter `observation_uuid`.")
       }
 
+      if (!missing(`observation_uuid`) && is.null(`observation_uuid`)) {
+        stop("Invalid value for `observation_uuid` when calling IdentificationTasksApi$retrieve, `observation_uuid` is not nullable")
+      }
 
       local_var_url_path <- "/identification-tasks/{observation_uuid}/"
       if (!missing(`observation_uuid`)) {
@@ -2607,7 +2916,13 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Missing required parameter `observation_uuid`.")
       }
 
+      if (!missing(`observation_uuid`) && is.null(`observation_uuid`)) {
+        stop("Invalid value for `observation_uuid` when calling IdentificationTasksApi$review_create, `observation_uuid` is not nullable")
+      }
 
+      if (!missing(`meta_create_identification_task_review_request`) && is.null(`meta_create_identification_task_review_request`)) {
+        stop("Invalid value for `meta_create_identification_task_review_request` when calling IdentificationTasksApi$review_create, `meta_create_identification_task_review_request` is not nullable")
+      }
 
       if (!is.null(`meta_create_identification_task_review_request`)) {
         local_var_body <- `meta_create_identification_task_review_request`$toJSONString()

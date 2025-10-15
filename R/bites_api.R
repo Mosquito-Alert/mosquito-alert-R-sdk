@@ -207,6 +207,9 @@ BitesApi <- R6::R6Class(
         stop("Missing required parameter `bite_request`.")
       }
 
+      if (!missing(`bite_request`) && is.null(`bite_request`)) {
+        stop("Invalid value for `bite_request` when calling BitesApi$create, `bite_request` is not nullable")
+      }
 
       if (!is.null(`bite_request`)) {
         local_var_body <- `bite_request`$toJSONString()
@@ -314,6 +317,9 @@ BitesApi <- R6::R6Class(
         stop("Missing required parameter `uuid`.")
       }
 
+      if (!missing(`uuid`) && is.null(`uuid`)) {
+        stop("Invalid value for `uuid` when calling BitesApi$destroy, `uuid` is not nullable")
+      }
 
       local_var_url_path <- "/bites/{uuid}/"
       if (!missing(`uuid`)) {
@@ -429,16 +435,49 @@ BitesApi <- R6::R6Class(
       is_oauth <- FALSE
 
 
+      if (!missing(`created_at_after`) && is.null(`created_at_after`)) {
+        stop("Invalid value for `created_at_after` when calling BitesApi$list, `created_at_after` is not nullable")
+      }
 
+      if (!missing(`created_at_before`) && is.null(`created_at_before`)) {
+        stop("Invalid value for `created_at_before` when calling BitesApi$list, `created_at_before` is not nullable")
+      }
 
+      if (!missing(`order_by`) && is.null(`order_by`)) {
+        stop("Invalid value for `order_by` when calling BitesApi$list, `order_by` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling BitesApi$list, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BitesApi$list, `page_size` is not nullable")
+      }
 
+      if (!missing(`received_at_after`) && is.null(`received_at_after`)) {
+        stop("Invalid value for `received_at_after` when calling BitesApi$list, `received_at_after` is not nullable")
+      }
 
+      if (!missing(`received_at_before`) && is.null(`received_at_before`)) {
+        stop("Invalid value for `received_at_before` when calling BitesApi$list, `received_at_before` is not nullable")
+      }
 
+      if (!missing(`short_id`) && is.null(`short_id`)) {
+        stop("Invalid value for `short_id` when calling BitesApi$list, `short_id` is not nullable")
+      }
 
+      if (!missing(`updated_at_after`) && is.null(`updated_at_after`)) {
+        stop("Invalid value for `updated_at_after` when calling BitesApi$list, `updated_at_after` is not nullable")
+      }
 
+      if (!missing(`updated_at_before`) && is.null(`updated_at_before`)) {
+        stop("Invalid value for `updated_at_before` when calling BitesApi$list, `updated_at_before` is not nullable")
+      }
 
+      if (!missing(`user_uuid`) && is.null(`user_uuid`)) {
+        stop("Invalid value for `user_uuid` when calling BitesApi$list, `user_uuid` is not nullable")
+      }
 
       query_params[["country_id"]] <- `country_id`
 
@@ -592,16 +631,49 @@ BitesApi <- R6::R6Class(
       is_oauth <- FALSE
 
 
+      if (!missing(`created_at_after`) && is.null(`created_at_after`)) {
+        stop("Invalid value for `created_at_after` when calling BitesApi$list_mine, `created_at_after` is not nullable")
+      }
 
+      if (!missing(`created_at_before`) && is.null(`created_at_before`)) {
+        stop("Invalid value for `created_at_before` when calling BitesApi$list_mine, `created_at_before` is not nullable")
+      }
 
+      if (!missing(`order_by`) && is.null(`order_by`)) {
+        stop("Invalid value for `order_by` when calling BitesApi$list_mine, `order_by` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling BitesApi$list_mine, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BitesApi$list_mine, `page_size` is not nullable")
+      }
 
+      if (!missing(`received_at_after`) && is.null(`received_at_after`)) {
+        stop("Invalid value for `received_at_after` when calling BitesApi$list_mine, `received_at_after` is not nullable")
+      }
 
+      if (!missing(`received_at_before`) && is.null(`received_at_before`)) {
+        stop("Invalid value for `received_at_before` when calling BitesApi$list_mine, `received_at_before` is not nullable")
+      }
 
+      if (!missing(`short_id`) && is.null(`short_id`)) {
+        stop("Invalid value for `short_id` when calling BitesApi$list_mine, `short_id` is not nullable")
+      }
 
+      if (!missing(`updated_at_after`) && is.null(`updated_at_after`)) {
+        stop("Invalid value for `updated_at_after` when calling BitesApi$list_mine, `updated_at_after` is not nullable")
+      }
 
+      if (!missing(`updated_at_before`) && is.null(`updated_at_before`)) {
+        stop("Invalid value for `updated_at_before` when calling BitesApi$list_mine, `updated_at_before` is not nullable")
+      }
 
+      if (!missing(`user_uuid`) && is.null(`user_uuid`)) {
+        stop("Invalid value for `user_uuid` when calling BitesApi$list_mine, `user_uuid` is not nullable")
+      }
 
       query_params[["country_id"]] <- `country_id`
 
@@ -736,6 +808,9 @@ BitesApi <- R6::R6Class(
         stop("Missing required parameter `uuid`.")
       }
 
+      if (!missing(`uuid`) && is.null(`uuid`)) {
+        stop("Invalid value for `uuid` when calling BitesApi$retrieve, `uuid` is not nullable")
+      }
 
       local_var_url_path <- "/bites/{uuid}/"
       if (!missing(`uuid`)) {

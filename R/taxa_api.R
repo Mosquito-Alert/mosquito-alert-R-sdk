@@ -170,9 +170,21 @@ TaxaApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`is_relevant`) && is.null(`is_relevant`)) {
+        stop("Invalid value for `is_relevant` when calling TaxaApi$list, `is_relevant` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling TaxaApi$list, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling TaxaApi$list, `page_size` is not nullable")
+      }
 
+      if (!missing(`rank`) && is.null(`rank`)) {
+        stop("Invalid value for `rank` when calling TaxaApi$list, `rank` is not nullable")
+      }
 
       query_params[["is_relevant"]] <- `is_relevant`
 
@@ -291,6 +303,9 @@ TaxaApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling TaxaApi$retrieve, `id` is not nullable")
+      }
 
       local_var_url_path <- "/taxa/{id}/"
       if (!missing(`id`)) {
@@ -494,6 +509,9 @@ TaxaApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling TaxaApi$tree_retrieve, `id` is not nullable")
+      }
 
       local_var_url_path <- "/taxa/{id}/tree/"
       if (!missing(`id`)) {

@@ -251,12 +251,30 @@ BreedingSitesApi <- R6::R6Class(
         stop("Missing required parameter `photos`.")
       }
 
+      if (!missing(`created_at`) && is.null(`created_at`)) {
+        stop("Invalid value for `created_at` when calling BreedingSitesApi$create, `created_at` is not nullable")
+      }
+
+      if (!missing(`sent_at`) && is.null(`sent_at`)) {
+        stop("Invalid value for `sent_at` when calling BreedingSitesApi$create, `sent_at` is not nullable")
+      }
+
+      if (!missing(`location`) && is.null(`location`)) {
+        stop("Invalid value for `location` when calling BreedingSitesApi$create, `location` is not nullable")
+      }
+
+      if (!missing(`photos`) && is.null(`photos`)) {
+        stop("Invalid value for `photos` when calling BreedingSitesApi$create, `photos` is not nullable")
+      }
 
 
+      if (!missing(`tags`) && is.null(`tags`)) {
+        stop("Invalid value for `tags` when calling BreedingSitesApi$create, `tags` is not nullable")
+      }
 
-
-
-
+      if (!missing(`site_type`) && is.null(`site_type`)) {
+        stop("Invalid value for `site_type` when calling BreedingSitesApi$create, `site_type` is not nullable")
+      }
 
 
 
@@ -373,6 +391,9 @@ BreedingSitesApi <- R6::R6Class(
         stop("Missing required parameter `uuid`.")
       }
 
+      if (!missing(`uuid`) && is.null(`uuid`)) {
+        stop("Invalid value for `uuid` when calling BreedingSitesApi$destroy, `uuid` is not nullable")
+      }
 
       local_var_url_path <- "/breeding-sites/{uuid}/"
       if (!missing(`uuid`)) {
@@ -490,17 +511,53 @@ BreedingSitesApi <- R6::R6Class(
       is_oauth <- FALSE
 
 
+      if (!missing(`created_at_after`) && is.null(`created_at_after`)) {
+        stop("Invalid value for `created_at_after` when calling BreedingSitesApi$list, `created_at_after` is not nullable")
+      }
 
+      if (!missing(`created_at_before`) && is.null(`created_at_before`)) {
+        stop("Invalid value for `created_at_before` when calling BreedingSitesApi$list, `created_at_before` is not nullable")
+      }
 
+      if (!missing(`has_photos`) && is.null(`has_photos`)) {
+        stop("Invalid value for `has_photos` when calling BreedingSitesApi$list, `has_photos` is not nullable")
+      }
 
+      if (!missing(`order_by`) && is.null(`order_by`)) {
+        stop("Invalid value for `order_by` when calling BreedingSitesApi$list, `order_by` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling BreedingSitesApi$list, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BreedingSitesApi$list, `page_size` is not nullable")
+      }
 
+      if (!missing(`received_at_after`) && is.null(`received_at_after`)) {
+        stop("Invalid value for `received_at_after` when calling BreedingSitesApi$list, `received_at_after` is not nullable")
+      }
 
+      if (!missing(`received_at_before`) && is.null(`received_at_before`)) {
+        stop("Invalid value for `received_at_before` when calling BreedingSitesApi$list, `received_at_before` is not nullable")
+      }
 
+      if (!missing(`short_id`) && is.null(`short_id`)) {
+        stop("Invalid value for `short_id` when calling BreedingSitesApi$list, `short_id` is not nullable")
+      }
 
+      if (!missing(`updated_at_after`) && is.null(`updated_at_after`)) {
+        stop("Invalid value for `updated_at_after` when calling BreedingSitesApi$list, `updated_at_after` is not nullable")
+      }
 
+      if (!missing(`updated_at_before`) && is.null(`updated_at_before`)) {
+        stop("Invalid value for `updated_at_before` when calling BreedingSitesApi$list, `updated_at_before` is not nullable")
+      }
 
+      if (!missing(`user_uuid`) && is.null(`user_uuid`)) {
+        stop("Invalid value for `user_uuid` when calling BreedingSitesApi$list, `user_uuid` is not nullable")
+      }
 
       query_params[["country_id"]] <- `country_id`
 
@@ -658,17 +715,53 @@ BreedingSitesApi <- R6::R6Class(
       is_oauth <- FALSE
 
 
+      if (!missing(`created_at_after`) && is.null(`created_at_after`)) {
+        stop("Invalid value for `created_at_after` when calling BreedingSitesApi$list_mine, `created_at_after` is not nullable")
+      }
 
+      if (!missing(`created_at_before`) && is.null(`created_at_before`)) {
+        stop("Invalid value for `created_at_before` when calling BreedingSitesApi$list_mine, `created_at_before` is not nullable")
+      }
 
+      if (!missing(`has_photos`) && is.null(`has_photos`)) {
+        stop("Invalid value for `has_photos` when calling BreedingSitesApi$list_mine, `has_photos` is not nullable")
+      }
 
+      if (!missing(`order_by`) && is.null(`order_by`)) {
+        stop("Invalid value for `order_by` when calling BreedingSitesApi$list_mine, `order_by` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling BreedingSitesApi$list_mine, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling BreedingSitesApi$list_mine, `page_size` is not nullable")
+      }
 
+      if (!missing(`received_at_after`) && is.null(`received_at_after`)) {
+        stop("Invalid value for `received_at_after` when calling BreedingSitesApi$list_mine, `received_at_after` is not nullable")
+      }
 
+      if (!missing(`received_at_before`) && is.null(`received_at_before`)) {
+        stop("Invalid value for `received_at_before` when calling BreedingSitesApi$list_mine, `received_at_before` is not nullable")
+      }
 
+      if (!missing(`short_id`) && is.null(`short_id`)) {
+        stop("Invalid value for `short_id` when calling BreedingSitesApi$list_mine, `short_id` is not nullable")
+      }
 
+      if (!missing(`updated_at_after`) && is.null(`updated_at_after`)) {
+        stop("Invalid value for `updated_at_after` when calling BreedingSitesApi$list_mine, `updated_at_after` is not nullable")
+      }
 
+      if (!missing(`updated_at_before`) && is.null(`updated_at_before`)) {
+        stop("Invalid value for `updated_at_before` when calling BreedingSitesApi$list_mine, `updated_at_before` is not nullable")
+      }
 
+      if (!missing(`user_uuid`) && is.null(`user_uuid`)) {
+        stop("Invalid value for `user_uuid` when calling BreedingSitesApi$list_mine, `user_uuid` is not nullable")
+      }
 
       query_params[["country_id"]] <- `country_id`
 
@@ -805,6 +898,9 @@ BreedingSitesApi <- R6::R6Class(
         stop("Missing required parameter `uuid`.")
       }
 
+      if (!missing(`uuid`) && is.null(`uuid`)) {
+        stop("Invalid value for `uuid` when calling BreedingSitesApi$retrieve, `uuid` is not nullable")
+      }
 
       local_var_url_path <- "/breeding-sites/{uuid}/"
       if (!missing(`uuid`)) {

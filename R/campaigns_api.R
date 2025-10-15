@@ -130,10 +130,25 @@ CampaignsApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`country_id`) && is.null(`country_id`)) {
+        stop("Invalid value for `country_id` when calling CampaignsApi$list, `country_id` is not nullable")
+      }
 
+      if (!missing(`is_active`) && is.null(`is_active`)) {
+        stop("Invalid value for `is_active` when calling CampaignsApi$list, `is_active` is not nullable")
+      }
 
+      if (!missing(`order_by`) && is.null(`order_by`)) {
+        stop("Invalid value for `order_by` when calling CampaignsApi$list, `order_by` is not nullable")
+      }
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling CampaignsApi$list, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling CampaignsApi$list, `page_size` is not nullable")
+      }
 
       query_params[["country_id"]] <- `country_id`
 
@@ -254,6 +269,9 @@ CampaignsApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling CampaignsApi$retrieve, `id` is not nullable")
+      }
 
       local_var_url_path <- "/campaigns/{id}/"
       if (!missing(`id`)) {

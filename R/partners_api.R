@@ -121,7 +121,13 @@ PartnersApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling PartnersApi$list, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling PartnersApi$list, `page_size` is not nullable")
+      }
 
       query_params[["page"]] <- `page`
 
@@ -229,6 +235,9 @@ PartnersApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling PartnersApi$retrieve, `id` is not nullable")
+      }
 
       local_var_url_path <- "/partners/{id}/"
       if (!missing(`id`)) {

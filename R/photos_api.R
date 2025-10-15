@@ -185,6 +185,9 @@ PhotosApi <- R6::R6Class(
         stop("Missing required parameter `uuid`.")
       }
 
+      if (!missing(`uuid`) && is.null(`uuid`)) {
+        stop("Invalid value for `uuid` when calling PhotosApi$prediction_destroy, `uuid` is not nullable")
+      }
 
       local_var_url_path <- "/photos/{uuid}/prediction/"
       if (!missing(`uuid`)) {
@@ -283,7 +286,13 @@ PhotosApi <- R6::R6Class(
         stop("Missing required parameter `uuid`.")
       }
 
+      if (!missing(`uuid`) && is.null(`uuid`)) {
+        stop("Invalid value for `uuid` when calling PhotosApi$prediction_partial_update, `uuid` is not nullable")
+      }
 
+      if (!missing(`patched_photo_prediction_request`) && is.null(`patched_photo_prediction_request`)) {
+        stop("Invalid value for `patched_photo_prediction_request` when calling PhotosApi$prediction_partial_update, `patched_photo_prediction_request` is not nullable")
+      }
 
       if (!is.null(`patched_photo_prediction_request`)) {
         local_var_body <- `patched_photo_prediction_request`$toJSONString()
@@ -397,6 +406,9 @@ PhotosApi <- R6::R6Class(
         stop("Missing required parameter `uuid`.")
       }
 
+      if (!missing(`uuid`) && is.null(`uuid`)) {
+        stop("Invalid value for `uuid` when calling PhotosApi$prediction_retrieve, `uuid` is not nullable")
+      }
 
       local_var_url_path <- "/photos/{uuid}/prediction/"
       if (!missing(`uuid`)) {
@@ -510,7 +522,13 @@ PhotosApi <- R6::R6Class(
         stop("Missing required parameter `photo_prediction_request`.")
       }
 
+      if (!missing(`uuid`) && is.null(`uuid`)) {
+        stop("Invalid value for `uuid` when calling PhotosApi$prediction_update, `uuid` is not nullable")
+      }
 
+      if (!missing(`photo_prediction_request`) && is.null(`photo_prediction_request`)) {
+        stop("Invalid value for `photo_prediction_request` when calling PhotosApi$prediction_update, `photo_prediction_request` is not nullable")
+      }
 
       if (!is.null(`photo_prediction_request`)) {
         local_var_body <- `photo_prediction_request`$toJSONString()
@@ -624,6 +642,9 @@ PhotosApi <- R6::R6Class(
         stop("Missing required parameter `uuid`.")
       }
 
+      if (!missing(`uuid`) && is.null(`uuid`)) {
+        stop("Invalid value for `uuid` when calling PhotosApi$retrieve, `uuid` is not nullable")
+      }
 
       local_var_url_path <- "/photos/{uuid}/"
       if (!missing(`uuid`)) {

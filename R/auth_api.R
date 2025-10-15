@@ -144,6 +144,9 @@ AuthApi <- R6::R6Class(
         stop("Missing required parameter `password_change_request`.")
       }
 
+      if (!missing(`password_change_request`) && is.null(`password_change_request`)) {
+        stop("Invalid value for `password_change_request` when calling AuthApi$change_password, `password_change_request` is not nullable")
+      }
 
       if (!is.null(`password_change_request`)) {
         local_var_body <- `password_change_request`$toJSONString()
@@ -242,6 +245,9 @@ AuthApi <- R6::R6Class(
         stop("Missing required parameter `app_user_token_obtain_pair_request`.")
       }
 
+      if (!missing(`app_user_token_obtain_pair_request`) && is.null(`app_user_token_obtain_pair_request`)) {
+        stop("Invalid value for `app_user_token_obtain_pair_request` when calling AuthApi$obtain_token, `app_user_token_obtain_pair_request` is not nullable")
+      }
 
       if (!is.null(`app_user_token_obtain_pair_request`)) {
         local_var_body <- `app_user_token_obtain_pair_request`$toJSONString()
@@ -342,6 +348,9 @@ AuthApi <- R6::R6Class(
         stop("Missing required parameter `token_refresh_request`.")
       }
 
+      if (!missing(`token_refresh_request`) && is.null(`token_refresh_request`)) {
+        stop("Invalid value for `token_refresh_request` when calling AuthApi$refresh_token, `token_refresh_request` is not nullable")
+      }
 
       if (!is.null(`token_refresh_request`)) {
         local_var_body <- `token_refresh_request`$toJSONString()
@@ -442,6 +451,9 @@ AuthApi <- R6::R6Class(
         stop("Missing required parameter `guest_registration_request`.")
       }
 
+      if (!missing(`guest_registration_request`) && is.null(`guest_registration_request`)) {
+        stop("Invalid value for `guest_registration_request` when calling AuthApi$signup_guest, `guest_registration_request` is not nullable")
+      }
 
       if (!is.null(`guest_registration_request`)) {
         local_var_body <- `guest_registration_request`$toJSONString()
@@ -540,6 +552,9 @@ AuthApi <- R6::R6Class(
         stop("Missing required parameter `token_verify_request`.")
       }
 
+      if (!missing(`token_verify_request`) && is.null(`token_verify_request`)) {
+        stop("Invalid value for `token_verify_request` when calling AuthApi$verify_token, `token_verify_request` is not nullable")
+      }
 
       if (!is.null(`token_verify_request`)) {
         local_var_body <- `token_verify_request`$toJSONString()

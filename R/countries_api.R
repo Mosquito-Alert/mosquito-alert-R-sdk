@@ -121,7 +121,13 @@ CountriesApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling CountriesApi$list, `page` is not nullable")
+      }
 
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling CountriesApi$list, `page_size` is not nullable")
+      }
 
       query_params[["page"]] <- `page`
 
@@ -229,6 +235,9 @@ CountriesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling CountriesApi$retrieve, `id` is not nullable")
+      }
 
       local_var_url_path <- "/countries/{id}/"
       if (!missing(`id`)) {

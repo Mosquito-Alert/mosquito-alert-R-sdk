@@ -168,6 +168,9 @@ DevicesApi <- R6::R6Class(
         stop("Missing required parameter `device_request`.")
       }
 
+      if (!missing(`device_request`) && is.null(`device_request`)) {
+        stop("Invalid value for `device_request` when calling DevicesApi$create, `device_request` is not nullable")
+      }
 
       if (!is.null(`device_request`)) {
         local_var_body <- `device_request`$toJSONString()
@@ -279,7 +282,13 @@ DevicesApi <- R6::R6Class(
         stop("Missing required parameter `device_id`.")
       }
 
+      if (!missing(`device_id`) && is.null(`device_id`)) {
+        stop("Invalid value for `device_id` when calling DevicesApi$partial_update, `device_id` is not nullable")
+      }
 
+      if (!missing(`patched_device_update_request`) && is.null(`patched_device_update_request`)) {
+        stop("Invalid value for `patched_device_update_request` when calling DevicesApi$partial_update, `patched_device_update_request` is not nullable")
+      }
 
       if (!is.null(`patched_device_update_request`)) {
         local_var_body <- `patched_device_update_request`$toJSONString()
@@ -393,6 +402,9 @@ DevicesApi <- R6::R6Class(
         stop("Missing required parameter `device_id`.")
       }
 
+      if (!missing(`device_id`) && is.null(`device_id`)) {
+        stop("Invalid value for `device_id` when calling DevicesApi$retrieve, `device_id` is not nullable")
+      }
 
       local_var_url_path <- "/devices/{device_id}/"
       if (!missing(`device_id`)) {
@@ -506,7 +518,13 @@ DevicesApi <- R6::R6Class(
         stop("Missing required parameter `device_update_request`.")
       }
 
+      if (!missing(`device_id`) && is.null(`device_id`)) {
+        stop("Invalid value for `device_id` when calling DevicesApi$update, `device_id` is not nullable")
+      }
 
+      if (!missing(`device_update_request`) && is.null(`device_update_request`)) {
+        stop("Invalid value for `device_update_request` when calling DevicesApi$update, `device_update_request` is not nullable")
+      }
 
       if (!is.null(`device_update_request`)) {
         local_var_body <- `device_update_request`$toJSONString()

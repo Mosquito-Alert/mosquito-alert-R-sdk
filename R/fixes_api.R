@@ -100,6 +100,9 @@ FixesApi <- R6::R6Class(
         stop("Missing required parameter `fix_request`.")
       }
 
+      if (!missing(`fix_request`) && is.null(`fix_request`)) {
+        stop("Invalid value for `fix_request` when calling FixesApi$create, `fix_request` is not nullable")
+      }
 
       if (!is.null(`fix_request`)) {
         local_var_body <- `fix_request`$toJSONString()
