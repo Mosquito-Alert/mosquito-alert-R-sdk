@@ -12,6 +12,13 @@ test_that("uuid", {
   #expect_equal(model.instance$`uuid`, "EXPECTED_RESULT")
 })
 
+test_that("short_id", {
+  # tests for the property `short_id` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`short_id`, "EXPECTED_RESULT")
+})
+
 test_that("created_at", {
   # tests for the property `created_at` (character)
 

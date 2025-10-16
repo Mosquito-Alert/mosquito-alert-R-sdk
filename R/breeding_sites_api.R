@@ -77,6 +77,7 @@
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 #' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
+#' var_search <- "search_example" # character | A search term. (Optional)
 #' var_short_id <- "short_id_example" # character | Short ID (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -94,8 +95,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-#' result <- api_instance$breeding_sites_api$list(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+#' # result <- api_instance$list(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+#' result <- api_instance$breeding_sites_api$list(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 #' dput(result)
 #'
 #'
@@ -111,6 +112,7 @@
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 #' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
+#' var_search <- "search_example" # character | A search term. (Optional)
 #' var_short_id <- "short_id_example" # character | Short ID (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -128,8 +130,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list_mine(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-#' result <- api_instance$breeding_sites_api$list_mine(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+#' # result <- api_instance$list_mine(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+#' result <- api_instance$breeding_sites_api$list_mine(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 #' dput(result)
 #'
 #'
@@ -459,6 +461,7 @@ BreedingSitesApi <- R6::R6Class(
     #' @param page_size (optional) Number of results to return per page.
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -467,8 +470,8 @@ BreedingSitesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedBreedingSiteList
-    list = function(country_id = NULL, created_at_after = NULL, created_at_before = NULL, has_photos = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_with_http_info(country_id, created_at_after, created_at_before, has_photos, order_by, page, page_size, received_at_after, received_at_before, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    list = function(country_id = NULL, created_at_after = NULL, created_at_before = NULL, has_photos = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_with_http_info(country_id, created_at_after, created_at_before, has_photos, order_by, page, page_size, received_at_after, received_at_before, search, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -492,6 +495,7 @@ BreedingSitesApi <- R6::R6Class(
     #' @param page_size (optional) Number of results to return per page.
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -500,7 +504,7 @@ BreedingSitesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedBreedingSiteList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(country_id = NULL, created_at_after = NULL, created_at_before = NULL, has_photos = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(country_id = NULL, created_at_after = NULL, created_at_before = NULL, has_photos = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -543,6 +547,10 @@ BreedingSitesApi <- R6::R6Class(
         stop("Invalid value for `received_at_before` when calling BreedingSitesApi$list, `received_at_before` is not nullable")
       }
 
+      if (!missing(`search`) && is.null(`search`)) {
+        stop("Invalid value for `search` when calling BreedingSitesApi$list, `search` is not nullable")
+      }
+
       if (!missing(`short_id`) && is.null(`short_id`)) {
         stop("Invalid value for `short_id` when calling BreedingSitesApi$list, `short_id` is not nullable")
       }
@@ -583,6 +591,8 @@ BreedingSitesApi <- R6::R6Class(
       query_params[["received_at_after"]] <- `received_at_after`
 
       query_params[["received_at_before"]] <- `received_at_before`
+
+      query_params[["search"]] <- `search`
 
       query_params[["short_id"]] <- `short_id`
 
@@ -663,6 +673,7 @@ BreedingSitesApi <- R6::R6Class(
     #' @param page_size (optional) Number of results to return per page.
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -671,8 +682,8 @@ BreedingSitesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedBreedingSiteList
-    list_mine = function(country_id = NULL, created_at_after = NULL, created_at_before = NULL, has_photos = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_mine_with_http_info(country_id, created_at_after, created_at_before, has_photos, order_by, page, page_size, received_at_after, received_at_before, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    list_mine = function(country_id = NULL, created_at_after = NULL, created_at_before = NULL, has_photos = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_mine_with_http_info(country_id, created_at_after, created_at_before, has_photos, order_by, page, page_size, received_at_after, received_at_before, search, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -696,6 +707,7 @@ BreedingSitesApi <- R6::R6Class(
     #' @param page_size (optional) Number of results to return per page.
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -704,7 +716,7 @@ BreedingSitesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedBreedingSiteList) with additional information such as HTTP status code, headers
-    list_mine_with_http_info = function(country_id = NULL, created_at_after = NULL, created_at_before = NULL, has_photos = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    list_mine_with_http_info = function(country_id = NULL, created_at_after = NULL, created_at_before = NULL, has_photos = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -747,6 +759,10 @@ BreedingSitesApi <- R6::R6Class(
         stop("Invalid value for `received_at_before` when calling BreedingSitesApi$list_mine, `received_at_before` is not nullable")
       }
 
+      if (!missing(`search`) && is.null(`search`)) {
+        stop("Invalid value for `search` when calling BreedingSitesApi$list_mine, `search` is not nullable")
+      }
+
       if (!missing(`short_id`) && is.null(`short_id`)) {
         stop("Invalid value for `short_id` when calling BreedingSitesApi$list_mine, `short_id` is not nullable")
       }
@@ -787,6 +803,8 @@ BreedingSitesApi <- R6::R6Class(
       query_params[["received_at_after"]] <- `received_at_after`
 
       query_params[["received_at_before"]] <- `received_at_before`
+
+      query_params[["search"]] <- `search`
 
       query_params[["short_id"]] <- `short_id`
 

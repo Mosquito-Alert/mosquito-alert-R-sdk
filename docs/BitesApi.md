@@ -114,7 +114,7 @@ void (empty response body)
 | **204** | No response body |  -  |
 
 # **list**
-> PaginatedBiteList list(country_id = var.country_id, created_at_after = var.created_at_after, created_at_before = var.created_at_before, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
+> PaginatedBiteList list(country_id = var.country_id, created_at_after = var.created_at_after, created_at_before = var.created_at_before, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, search = var.search, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
 
 
 
@@ -131,6 +131,7 @@ var_page <- 56 # integer | A page number within the paginated result set. (Optio
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
+var_search <- "search_example" # character | A search term. (Optional)
 var_short_id <- "short_id_example" # character | Short ID (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -144,8 +145,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$list(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-result <- api_instance$bites_api$list(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+# result <- api_instance$list(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+result <- api_instance$bites_api$list(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 dput(result)
 ```
 
@@ -161,6 +162,7 @@ Name | Type | Description  | Notes
  **page_size** | **integer**| Number of results to return per page. | [optional] 
  **received_at_after** | **character**| Received at | [optional] 
  **received_at_before** | **character**| Received at | [optional] 
+ **search** | **character**| A search term. | [optional] 
  **short_id** | **character**| Short ID | [optional] 
  **updated_at_after** | **character**| Update at | [optional] 
  **updated_at_before** | **character**| Update at | [optional] 
@@ -188,7 +190,7 @@ Name | Type | Description  | Notes
 | **200** |  |  -  |
 
 # **list_mine**
-> PaginatedBiteList list_mine(country_id = var.country_id, created_at_after = var.created_at_after, created_at_before = var.created_at_before, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
+> PaginatedBiteList list_mine(country_id = var.country_id, created_at_after = var.created_at_after, created_at_before = var.created_at_before, order_by = var.order_by, page = var.page, page_size = var.page_size, received_at_after = var.received_at_after, received_at_before = var.received_at_before, search = var.search, short_id = var.short_id, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
 
 
 
@@ -207,6 +209,7 @@ var_page <- 56 # integer | A page number within the paginated result set. (Optio
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
+var_search <- "search_example" # character | A search term. (Optional)
 var_short_id <- "short_id_example" # character | Short ID (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -220,8 +223,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$list_mine(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-result <- api_instance$bites_api$list_mine(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+# result <- api_instance$list_mine(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+result <- api_instance$bites_api$list_mine(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 dput(result)
 ```
 
@@ -237,6 +240,7 @@ Name | Type | Description  | Notes
  **page_size** | **integer**| Number of results to return per page. | [optional] 
  **received_at_after** | **character**| Received at | [optional] 
  **received_at_before** | **character**| Received at | [optional] 
+ **search** | **character**| A search term. | [optional] 
  **short_id** | **character**| Short ID | [optional] 
  **updated_at_after** | **character**| Update at | [optional] 
  **updated_at_before** | **character**| Update at | [optional] 

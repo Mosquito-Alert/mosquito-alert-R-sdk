@@ -8,6 +8,7 @@
 #' @description AssignedObservation Class
 #' @format An \code{R6Class} generator object
 #' @field uuid  character
+#' @field short_id  character
 #' @field created_at  character
 #' @field created_at_local The date and time when the record was created, displayed in the local timezone specified for this entry. character
 #' @field received_at  character
@@ -22,6 +23,7 @@ AssignedObservation <- R6::R6Class(
   "AssignedObservation",
   public = list(
     `uuid` = NULL,
+    `short_id` = NULL,
     `created_at` = NULL,
     `created_at_local` = NULL,
     `received_at` = NULL,
@@ -34,6 +36,7 @@ AssignedObservation <- R6::R6Class(
     #' Initialize a new AssignedObservation class.
     #'
     #' @param uuid uuid
+    #' @param short_id short_id
     #' @param created_at created_at
     #' @param created_at_local The date and time when the record was created, displayed in the local timezone specified for this entry.
     #' @param received_at received_at
@@ -42,12 +45,18 @@ AssignedObservation <- R6::R6Class(
     #' @param user user
     #' @param note Note user attached to report.
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `created_at`, `created_at_local`, `received_at`, `location`, `photos`, `user`, `note` = NULL, ...) {
+    initialize = function(`uuid`, `short_id`, `created_at`, `created_at_local`, `received_at`, `location`, `photos`, `user`, `note` = NULL, ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
         }
         self$`uuid` <- `uuid`
+      }
+      if (!missing(`short_id`)) {
+        if (!(is.character(`short_id`) && length(`short_id`) == 1)) {
+          stop(paste("Error! Invalid data for `short_id`. Must be a string:", `short_id`))
+        }
+        self$`short_id` <- `short_id`
       }
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
@@ -123,6 +132,10 @@ AssignedObservation <- R6::R6Class(
         AssignedObservationObject[["uuid"]] <-
           self$`uuid`
       }
+      if (!is.null(self$`short_id`)) {
+        AssignedObservationObject[["short_id"]] <-
+          self$`short_id`
+      }
       if (!is.null(self$`created_at`)) {
         AssignedObservationObject[["created_at"]] <-
           self$`created_at`
@@ -163,6 +176,9 @@ AssignedObservation <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`uuid`)) {
         self$`uuid` <- this_object$`uuid`
+      }
+      if (!is.null(this_object$`short_id`)) {
+        self$`short_id` <- this_object$`short_id`
       }
       if (!is.null(this_object$`created_at`)) {
         self$`created_at` <- this_object$`created_at`
@@ -211,6 +227,7 @@ AssignedObservation <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`uuid` <- this_object$`uuid`
+      self$`short_id` <- this_object$`short_id`
       self$`created_at` <- this_object$`created_at`
       self$`created_at_local` <- this_object$`created_at_local`
       self$`received_at` <- this_object$`received_at`
@@ -234,6 +251,14 @@ AssignedObservation <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for AssignedObservation: the required field `uuid` is missing."))
+      }
+      # check the required field `short_id`
+      if (!is.null(input_json$`short_id`)) {
+        if (!(is.character(input_json$`short_id`) && length(input_json$`short_id`) == 1)) {
+          stop(paste("Error! Invalid data for `short_id`. Must be a string:", input_json$`short_id`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssignedObservation: the required field `short_id` is missing."))
       }
       # check the required field `created_at`
       if (!is.null(input_json$`created_at`)) {
@@ -298,6 +323,11 @@ AssignedObservation <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `short_id` is null
+      if (is.null(self$`short_id`)) {
+        return(FALSE)
+      }
+
       # check if the required `created_at` is null
       if (is.null(self$`created_at`)) {
         return(FALSE)
@@ -340,6 +370,11 @@ AssignedObservation <- R6::R6Class(
       # check if the required `uuid` is null
       if (is.null(self$`uuid`)) {
         invalid_fields["uuid"] <- "Non-nullable required field `uuid` cannot be null."
+      }
+
+      # check if the required `short_id` is null
+      if (is.null(self$`short_id`)) {
+        invalid_fields["short_id"] <- "Non-nullable required field `short_id` cannot be null."
       }
 
       # check if the required `created_at` is null
