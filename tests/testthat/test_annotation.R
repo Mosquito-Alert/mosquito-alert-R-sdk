@@ -14,7 +14,6 @@ test_that("id", {
 
 test_that("observation_uuid", {
   # tests for the property `observation_uuid` (character)
-  # UUID randomly generated on phone to identify each unique report version. Must be exactly 36 characters (32 hex digits plus 4 hyphens).
 
   # uncomment below to test the property
   #expect_equal(model.instance$`observation_uuid`, "EXPECTED_RESULT")

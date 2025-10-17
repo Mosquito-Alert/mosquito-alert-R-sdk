@@ -8,7 +8,7 @@
 #' @description Annotation Class
 #' @format An \code{R6Class} generator object
 #' @field id  integer
-#' @field observation_uuid UUID randomly generated on phone to identify each unique report version. Must be exactly 36 characters (32 hex digits plus 4 hyphens). character
+#' @field observation_uuid  character
 #' @field user  \link{SimpleAnnotatorUser}
 #' @field best_photo  \link{SimplePhoto}
 #' @field classification  \link{AnnotationClassification}
@@ -44,7 +44,7 @@ Annotation <- R6::R6Class(
     #' Initialize a new Annotation class.
     #'
     #' @param id id
-    #' @param observation_uuid UUID randomly generated on phone to identify each unique report version. Must be exactly 36 characters (32 hex digits plus 4 hyphens).
+    #' @param observation_uuid observation_uuid
     #' @param user user
     #' @param best_photo best_photo
     #' @param classification classification
