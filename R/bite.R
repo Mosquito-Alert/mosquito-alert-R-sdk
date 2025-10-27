@@ -11,7 +11,7 @@
 #' @field short_id  character
 #' @field user_uuid  character
 #' @field created_at  character
-#' @field created_at_local The date and time when the record was created, displayed in the local timezone specified for this entry. character
+#' @field created_at_local The date and time when the record was created, displayed without timezone field. character
 #' @field sent_at  character
 #' @field received_at  character
 #' @field updated_at Date and time when the report was last modified character
@@ -51,7 +51,7 @@ Bite <- R6::R6Class(
     #' @param short_id short_id
     #' @param user_uuid user_uuid
     #' @param created_at created_at
-    #' @param created_at_local The date and time when the record was created, displayed in the local timezone specified for this entry.
+    #' @param created_at_local The date and time when the record was created, displayed without timezone field.
     #' @param sent_at sent_at
     #' @param received_at received_at
     #' @param updated_at Date and time when the report was last modified

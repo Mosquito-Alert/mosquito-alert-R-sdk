@@ -8,7 +8,7 @@
 #' @description Partner Class
 #' @format An \code{R6Class} generator object
 #' @field id  integer
-#' @field point  \link{LocationPoint}
+#' @field point  \link{PartnerPoint}
 #' @field description Text desription on the pin. This text is meant to be visualized as the text body of the dialog on the map character
 #' @field url URL link to the organization page character
 #' @importFrom R6 R6Class
@@ -120,7 +120,7 @@ Partner <- R6::R6Class(
         self$`id` <- this_object$`id`
       }
       if (!is.null(this_object$`point`)) {
-        `point_object` <- LocationPoint$new()
+        `point_object` <- PartnerPoint$new()
         `point_object`$fromJSON(jsonlite::toJSON(this_object$`point`, auto_unbox = TRUE, digits = NA))
         self$`point` <- `point_object`
       }
@@ -156,7 +156,7 @@ Partner <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
-      self$`point` <- LocationPoint$new()$fromJSON(jsonlite::toJSON(this_object$`point`, auto_unbox = TRUE, digits = NA))
+      self$`point` <- PartnerPoint$new()$fromJSON(jsonlite::toJSON(this_object$`point`, auto_unbox = TRUE, digits = NA))
       self$`description` <- this_object$`description`
       # to validate URL. ref: https://stackoverflow.com/questions/73952024/url-validation-in-r
       if (!stringr::str_detect(this_object$`url`, "(https?|ftp)://[^ /$.?#].[^\\s]*")) {

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **short_id** | **character** |  | [readonly] 
 **user_uuid** | **character** |  | [readonly] 
 **created_at** | **character** |  | 
-**created_at_local** | **character** | The date and time when the record was created, displayed in the local timezone specified for this entry. | [readonly] 
+**created_at_local** | **character** | The date and time when the record was created, displayed without timezone field. | [readonly] 
 **sent_at** | **character** |  | 
 **received_at** | **character** |  | [readonly] 
 **updated_at** | **character** | Date and time when the report was last modified | [readonly] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **note** | **character** | Note user attached to report. | [optional] 
 **tags** | **array[character]** |  | [optional] 
 **published** | **character** |  | [readonly] 
-**photos** | [**array[SimplePhoto]**](SimplePhoto.md) |  | 
+**photos** | [**array[SimplePhoto]**](SimplePhoto.md) |  | [readonly] 
 **site_type** | **character** | Breeding site type. | [optional] [Enum: [basin, bucket, fountain, small_container, storm_drain, well, other]] 
 **has_water** | **character** | Either if the user perceived water in the breeding site. | [optional] 
 **in_public_area** | **character** | Either if the breeding site is found in a public area. | [optional] 

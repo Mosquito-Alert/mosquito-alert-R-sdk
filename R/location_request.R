@@ -8,7 +8,7 @@
 #' @description LocationRequest Class
 #' @format An \code{R6Class} generator object
 #' @field source Indicates how the location was obtained. Use 'Auto (GPS)' if the location was automatically retrieved from the device's GPS, or 'Manual (User-selected)' if the location was selected by the user on a map. character
-#' @field point  \link{LocationPoint}
+#' @field point  \link{PointRequest}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -96,7 +96,7 @@ LocationRequest <- R6::R6Class(
         self$`source` <- this_object$`source`
       }
       if (!is.null(this_object$`point`)) {
-        `point_object` <- LocationPoint$new()
+        `point_object` <- PointRequest$new()
         `point_object`$fromJSON(jsonlite::toJSON(this_object$`point`, auto_unbox = TRUE, digits = NA))
         self$`point` <- `point_object`
       }
@@ -125,7 +125,7 @@ LocationRequest <- R6::R6Class(
         stop(paste("Error! \"", this_object$`source`, "\" cannot be assigned to `source`. Must be \"auto\", \"manual\".", sep = ""))
       }
       self$`source` <- this_object$`source`
-      self$`point` <- LocationPoint$new()$fromJSON(jsonlite::toJSON(this_object$`point`, auto_unbox = TRUE, digits = NA))
+      self$`point` <- PointRequest$new()$fromJSON(jsonlite::toJSON(this_object$`point`, auto_unbox = TRUE, digits = NA))
       self
     },
 

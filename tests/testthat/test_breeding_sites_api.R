@@ -11,7 +11,7 @@ test_that("create", {
   # @param created_at character 
   # @param sent_at character 
   # @param location LocationRequest 
-  # @param photos array[SimplePhotoRequest] 
+  # @param photos array[data.frame] 
   # @param note character Note user attached to report. (optional)
   # @param tags array[character]  (optional)
   # @param site_type character Breeding site type. (optional)

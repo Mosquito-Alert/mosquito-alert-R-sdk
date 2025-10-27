@@ -10,7 +10,7 @@
 #' @field uuid  character
 #' @field short_id  character
 #' @field created_at  character
-#' @field created_at_local The date and time when the record was created, displayed in the local timezone specified for this entry. character
+#' @field created_at_local The date and time when the record was created, displayed without timezone field. character
 #' @field received_at  character
 #' @field location  \link{SimplifiedLocation}
 #' @field note Note user attached to report. character [optional]
@@ -38,7 +38,7 @@ AssignedObservation <- R6::R6Class(
     #' @param uuid uuid
     #' @param short_id short_id
     #' @param created_at created_at
-    #' @param created_at_local The date and time when the record was created, displayed in the local timezone specified for this entry.
+    #' @param created_at_local The date and time when the record was created, displayed without timezone field.
     #' @param received_at received_at
     #' @param location location
     #' @param photos photos

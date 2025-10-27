@@ -35,7 +35,7 @@ test_that("created_at", {
 
 test_that("created_at_local", {
   # tests for the property `created_at_local` (character)
-  # The date and time when the record was created, displayed in the local timezone specified for this entry.
+  # The date and time when the record was created, displayed without timezone field.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`created_at_local`, "EXPECTED_RESULT")

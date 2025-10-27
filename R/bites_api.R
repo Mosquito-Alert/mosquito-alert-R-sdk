@@ -17,7 +17,7 @@
 #' ####################  create  ####################
 #'
 #' library(MosquitoAlert)
-#' var_bite_request <- BiteRequest$new("created_at_example", "sent_at_example", LocationRequest$new("auto", Location_point$new(123, 123)), BiteCountsRequest$new(123, 123, 123, 123, 123, 123), "note_example", c("tags_example"), "indoors", "now") # BiteRequest | 
+#' var_bite_request <- BiteRequest$new("created_at_example", "sent_at_example", LocationRequest$new("auto", PointRequest$new(123, 123)), BiteCountsRequest$new(123, 123, 123, 123, 123, 123), "note_example", c("tags_example"), "indoors", "now") # BiteRequest | 
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'

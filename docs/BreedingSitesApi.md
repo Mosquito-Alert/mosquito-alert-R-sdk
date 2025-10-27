@@ -23,8 +23,8 @@ library(MosquitoAlert)
 # prepare function argument(s)
 var_created_at <- "created_at_example" # character | 
 var_sent_at <- "sent_at_example" # character | 
-var_location <- LocationRequest$new("auto", Location_point$new(123, 123)) # LocationRequest | 
-var_photos <- c(SimplePhotoRequest$new(123)) # array[SimplePhotoRequest] | 
+var_location <- LocationRequest$new("auto", PointRequest$new(123, 123)) # LocationRequest | 
+var_photos <- c(123) # array[data.frame] | 
 var_note <- "note_example" # character | Note user attached to report. (Optional)
 var_tags <- c("inner_example") # array[character] |  (Optional)
 var_site_type <- "site_type_example" # character | Breeding site type. (Optional)
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
  **created_at** | **character**|  | 
  **sent_at** | **character**|  | 
  **location** | [**LocationRequest**](LocationRequest.md)|  | 
- **photos** | list( [**SimplePhotoRequest**](SimplePhotoRequest.md) )|  | 
+ **photos** | list( **data.frame** )|  | 
  **note** | **character**| Note user attached to report. | [optional] 
  **tags** | list( **character** )|  | [optional] 
  **site_type** | Enum [basin, bucket, fountain, small_container, storm_drain, well, other] | Breeding site type. | [optional] 

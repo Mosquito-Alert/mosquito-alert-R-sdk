@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **short_id** | **character** |  | [readonly] 
 **user_uuid** | **character** |  | [readonly] 
 **created_at** | **character** |  | 
-**created_at_local** | **character** | The date and time when the record was created, displayed in the local timezone specified for this entry. | [readonly] 
+**created_at_local** | **character** | The date and time when the record was created, displayed without timezone field. | [readonly] 
 **sent_at** | **character** |  | 
 **received_at** | **character** |  | [readonly] 
 **updated_at** | **character** | Date and time when the report was last modified | [readonly] 

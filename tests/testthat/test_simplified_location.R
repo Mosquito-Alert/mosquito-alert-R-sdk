@@ -6,7 +6,7 @@ context("Test SimplifiedLocation")
 model_instance <- SimplifiedLocation$new()
 
 test_that("point", {
-  # tests for the property `point` (LocationPoint)
+  # tests for the property `point` (Point)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`point`, "EXPECTED_RESULT")

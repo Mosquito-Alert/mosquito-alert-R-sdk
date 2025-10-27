@@ -19,8 +19,8 @@
 #' library(MosquitoAlert)
 #' var_created_at <- "created_at_example" # character | 
 #' var_sent_at <- "sent_at_example" # character | 
-#' var_location <- LocationRequest$new("auto", Location_point$new(123, 123)) # LocationRequest | 
-#' var_photos <- c(SimplePhotoRequest$new(123)) # array[SimplePhotoRequest] | 
+#' var_location <- LocationRequest$new("auto", PointRequest$new(123, 123)) # LocationRequest | 
+#' var_photos <- c(123) # array[data.frame] | 
 #' var_note <- "note_example" # character | Note user attached to report. (Optional)
 #' var_tags <- c("inner_example") # array[character] |  (Optional)
 #' var_event_environment <- "event_environment_example" # character | The environment where the event took place. (Optional)
@@ -264,6 +264,9 @@ ObservationsApi <- R6::R6Class(
       if (!missing(`photos`) && is.null(`photos`)) {
         stop("Invalid value for `photos` when calling ObservationsApi$create, `photos` is not nullable")
       }
+      if (!is.null(`photos`) && length(`photos`) < 1) {
+        stop("Invalid length for `photos` when calling ObservationsApi$create, number of items must be greater than or equal to 1.")
+      }
 
 
       if (!missing(`tags`) && is.null(`tags`)) {
@@ -278,7 +281,7 @@ ObservationsApi <- R6::R6Class(
       form_params["location"] <- `location`
       form_params["note"] <- `note`
       form_params["tags"] <- `tags`
-      form_params["photos"] <- `photos`
+      file_params[["photos"]] <- curl::form_file(`photos`)
       form_params["event_environment"] <- `event_environment`
       form_params["event_moment"] <- `event_moment`
       form_params["mosquito_appearance"] <- `mosquito_appearance`
