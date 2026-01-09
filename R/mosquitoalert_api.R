@@ -32,6 +32,7 @@
 #' @field partners_api an instance of PartnersApi
 #' @field permissions_api an instance of PermissionsApi
 #' @field photos_api an instance of PhotosApi
+#' @field status_api an instance of StatusApi
 #' @field taxa_api an instance of TaxaApi
 #' @field users_api an instance of UsersApi
 #' @export
@@ -52,6 +53,7 @@ mosquitoalert_api <- R6::R6Class(
     partners_api = NULL,
     permissions_api = NULL,
     photos_api = NULL,
+    status_api = NULL,
     taxa_api = NULL,
     users_api = NULL,
     #' Initialize a new MosquitoAlert API Class.
@@ -93,6 +95,8 @@ mosquitoalert_api <- R6::R6Class(
       self$permissions_api <- PermissionsApi$new(self$api_client)
 
       self$photos_api <- PhotosApi$new(self$api_client)
+
+      self$status_api <- StatusApi$new(self$api_client)
 
       self$taxa_api <- TaxaApi$new(self$api_client)
 

@@ -59,7 +59,7 @@ void (empty response body)
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |
-| **200** | No response body |  -  |
+| **204** | No response body |  -  |
 
 # **obtain_token**
 > AppUserTokenObtainPair obtain_token(app_user_token_obtain_pair_request)

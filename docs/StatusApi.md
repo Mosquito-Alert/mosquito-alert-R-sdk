@@ -1,0 +1,45 @@
+# StatusApi
+
+All URIs are relative to *https://api.mosquitoalert.com/v1*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**retrieve**](StatusApi.md#retrieve) | **GET** /status/ | 
+
+
+# **retrieve**
+> retrieve()
+
+
+
+### Example
+```R
+library(MosquitoAlert)
+
+
+api_instance <- mosquitoalert_api$new()
+api_instance$status_api$retrieve()
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **404** |  |  -  |
+| **200** | No response body |  -  |
+

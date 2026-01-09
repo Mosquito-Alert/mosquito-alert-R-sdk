@@ -20,7 +20,7 @@
 #' @field tags  list(character) [optional]
 #' @field published  character
 #' @field photos  list(\link{SimplePhoto})
-#' @field site_type Breeding site type. character [optional]
+#' @field site_type Breeding site type. character
 #' @field has_water Either if the user perceived water in the breeding site. character [optional]
 #' @field in_public_area Either if the breeding site is found in a public area. character [optional]
 #' @field has_near_mosquitoes Either if the user perceived mosquitoes near the breeding site (less than 10 meters). character [optional]
@@ -64,15 +64,15 @@ BreedingSite <- R6::R6Class(
     #' @param location location
     #' @param published published
     #' @param photos photos
+    #' @param site_type Breeding site type.
     #' @param note Note user attached to report.
     #' @param tags tags
-    #' @param site_type Breeding site type.
     #' @param has_water Either if the user perceived water in the breeding site.
     #' @param in_public_area Either if the breeding site is found in a public area.
     #' @param has_near_mosquitoes Either if the user perceived mosquitoes near the breeding site (less than 10 meters).
     #' @param has_larvae Either if the user perceived larvaes the breeding site.
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `sent_at`, `received_at`, `updated_at`, `location`, `published`, `photos`, `note` = NULL, `tags` = NULL, `site_type` = NULL, `has_water` = NULL, `in_public_area` = NULL, `has_near_mosquitoes` = NULL, `has_larvae` = NULL, ...) {
+    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `sent_at`, `received_at`, `updated_at`, `location`, `published`, `photos`, `site_type`, `note` = NULL, `tags` = NULL, `has_water` = NULL, `in_public_area` = NULL, `has_near_mosquitoes` = NULL, `has_larvae` = NULL, ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
@@ -136,6 +136,15 @@ BreedingSite <- R6::R6Class(
         sapply(`photos`, function(x) stopifnot(R6::is.R6(x)))
         self$`photos` <- `photos`
       }
+      if (!missing(`site_type`)) {
+        if (!(`site_type` %in% c("basin", "bucket", "fountain", "small_container", "storm_drain", "well", "other"))) {
+          stop(paste("Error! \"", `site_type`, "\" cannot be assigned to `site_type`. Must be \"basin\", \"bucket\", \"fountain\", \"small_container\", \"storm_drain\", \"well\", \"other\".", sep = ""))
+        }
+        if (!(is.character(`site_type`) && length(`site_type`) == 1)) {
+          stop(paste("Error! Invalid data for `site_type`. Must be a string:", `site_type`))
+        }
+        self$`site_type` <- `site_type`
+      }
       if (!is.null(`note`)) {
         if (!(is.character(`note`) && length(`note`) == 1)) {
           stop(paste("Error! Invalid data for `note`. Must be a string:", `note`))
@@ -146,15 +155,6 @@ BreedingSite <- R6::R6Class(
         stopifnot(is.vector(`tags`), length(`tags`) != 0)
         sapply(`tags`, function(x) stopifnot(is.character(x)))
         self$`tags` <- `tags`
-      }
-      if (!is.null(`site_type`)) {
-        if (!(`site_type` %in% c("basin", "bucket", "fountain", "small_container", "storm_drain", "well", "other"))) {
-          stop(paste("Error! \"", `site_type`, "\" cannot be assigned to `site_type`. Must be \"basin\", \"bucket\", \"fountain\", \"small_container\", \"storm_drain\", \"well\", \"other\".", sep = ""))
-        }
-        if (!(is.character(`site_type`) && length(`site_type`) == 1)) {
-          stop(paste("Error! Invalid data for `site_type`. Must be a string:", `site_type`))
-        }
-        self$`site_type` <- `site_type`
       }
       if (!is.null(`has_water`)) {
         if (!(is.logical(`has_water`) && length(`has_water`) == 1)) {
@@ -490,6 +490,14 @@ BreedingSite <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for BreedingSite: the required field `photos` is missing."))
       }
+      # check the required field `site_type`
+      if (!is.null(input_json$`site_type`)) {
+        if (!(is.character(input_json$`site_type`) && length(input_json$`site_type`) == 1)) {
+          stop(paste("Error! Invalid data for `site_type`. Must be a string:", input_json$`site_type`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for BreedingSite: the required field `site_type` is missing."))
+      }
     },
 
     #' @description
@@ -560,6 +568,11 @@ BreedingSite <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `site_type` is null
+      if (is.null(self$`site_type`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -622,6 +635,11 @@ BreedingSite <- R6::R6Class(
       # check if the required `photos` is null
       if (is.null(self$`photos`)) {
         invalid_fields["photos"] <- "Non-nullable required field `photos` cannot be null."
+      }
+
+      # check if the required `site_type` is null
+      if (is.null(self$`site_type`)) {
+        invalid_fields["site_type"] <- "Non-nullable required field `site_type` cannot be null."
       }
 
       invalid_fields

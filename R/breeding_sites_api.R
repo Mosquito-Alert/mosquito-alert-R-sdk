@@ -21,9 +21,9 @@
 #' var_sent_at <- "sent_at_example" # character | 
 #' var_location <- LocationRequest$new("auto", PointRequest$new(123, 123)) # LocationRequest | 
 #' var_photos <- c(123) # array[data.frame] | 
+#' var_site_type <- "site_type_example" # character | Breeding site type.
 #' var_note <- "note_example" # character | Note user attached to report. (Optional)
 #' var_tags <- c("inner_example") # array[character] |  (Optional)
-#' var_site_type <- "site_type_example" # character | Breeding site type. (Optional)
 #' var_has_water <- "has_water_example" # character | Either if the user perceived water in the breeding site. (Optional)
 #' var_in_public_area <- "in_public_area_example" # character | Either if the breeding site is found in a public area. (Optional)
 #' var_has_near_mosquitoes <- "has_near_mosquitoes_example" # character | Either if the user perceived mosquitoes near the breeding site (less than 10 meters). (Optional)
@@ -41,8 +41,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, site_type = var_site_type, has_water = var_has_water, in_public_area = var_in_public_area, has_near_mosquitoes = var_has_near_mosquitoes, has_larvae = var_has_larvaedata_file = "result.txt")
-#' result <- api_instance$breeding_sites_api$create(var_created_at, var_sent_at, var_location, var_photos, note = var_note, tags = var_tags, site_type = var_site_type, has_water = var_has_water, in_public_area = var_in_public_area, has_near_mosquitoes = var_has_near_mosquitoes, has_larvae = var_has_larvae)
+#' # result <- api_instance$create(var_created_at, var_sent_at, var_location, var_photos, var_site_type, note = var_note, tags = var_tags, has_water = var_has_water, in_public_area = var_in_public_area, has_near_mosquitoes = var_has_near_mosquitoes, has_larvae = var_has_larvaedata_file = "result.txt")
+#' result <- api_instance$breeding_sites_api$create(var_created_at, var_sent_at, var_location, var_photos, var_site_type, note = var_note, tags = var_tags, has_water = var_has_water, in_public_area = var_in_public_area, has_near_mosquitoes = var_has_near_mosquitoes, has_larvae = var_has_larvae)
 #' dput(result)
 #'
 #'
@@ -185,9 +185,9 @@ BreedingSitesApi <- R6::R6Class(
     #' @param sent_at 
     #' @param location 
     #' @param photos 
+    #' @param site_type Breeding site type.
     #' @param note (optional) Note user attached to report.
     #' @param tags (optional) No description
-    #' @param site_type (optional) Breeding site type.
     #' @param has_water (optional) Either if the user perceived water in the breeding site.
     #' @param in_public_area (optional) Either if the breeding site is found in a public area.
     #' @param has_near_mosquitoes (optional) Either if the user perceived mosquitoes near the breeding site (less than 10 meters).
@@ -196,8 +196,8 @@ BreedingSitesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return BreedingSite
-    create = function(created_at, sent_at, location, photos, note = NULL, tags = NULL, site_type = NULL, has_water = NULL, in_public_area = NULL, has_near_mosquitoes = NULL, has_larvae = NULL, data_file = NULL, ...) {
-      local_var_response <- self$create_with_http_info(created_at, sent_at, location, photos, note, tags, site_type, has_water, in_public_area, has_near_mosquitoes, has_larvae, data_file = data_file, ...)
+    create = function(created_at, sent_at, location, photos, site_type, note = NULL, tags = NULL, has_water = NULL, in_public_area = NULL, has_near_mosquitoes = NULL, has_larvae = NULL, data_file = NULL, ...) {
+      local_var_response <- self$create_with_http_info(created_at, sent_at, location, photos, site_type, note, tags, has_water, in_public_area, has_near_mosquitoes, has_larvae, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -216,9 +216,9 @@ BreedingSitesApi <- R6::R6Class(
     #' @param sent_at 
     #' @param location 
     #' @param photos 
+    #' @param site_type Breeding site type.
     #' @param note (optional) Note user attached to report.
     #' @param tags (optional) No description
-    #' @param site_type (optional) Breeding site type.
     #' @param has_water (optional) Either if the user perceived water in the breeding site.
     #' @param in_public_area (optional) Either if the breeding site is found in a public area.
     #' @param has_near_mosquitoes (optional) Either if the user perceived mosquitoes near the breeding site (less than 10 meters).
@@ -227,7 +227,7 @@ BreedingSitesApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (BreedingSite) with additional information such as HTTP status code, headers
-    create_with_http_info = function(created_at, sent_at, location, photos, note = NULL, tags = NULL, site_type = NULL, has_water = NULL, in_public_area = NULL, has_near_mosquitoes = NULL, has_larvae = NULL, data_file = NULL, ...) {
+    create_with_http_info = function(created_at, sent_at, location, photos, site_type, note = NULL, tags = NULL, has_water = NULL, in_public_area = NULL, has_near_mosquitoes = NULL, has_larvae = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -253,6 +253,10 @@ BreedingSitesApi <- R6::R6Class(
         stop("Missing required parameter `photos`.")
       }
 
+      if (missing(`site_type`)) {
+        stop("Missing required parameter `site_type`.")
+      }
+
       if (!missing(`created_at`) && is.null(`created_at`)) {
         stop("Invalid value for `created_at` when calling BreedingSitesApi$create, `created_at` is not nullable")
       }
@@ -272,13 +276,13 @@ BreedingSitesApi <- R6::R6Class(
         stop("Invalid length for `photos` when calling BreedingSitesApi$create, number of items must be greater than or equal to 1.")
       }
 
+      if (!missing(`site_type`) && is.null(`site_type`)) {
+        stop("Invalid value for `site_type` when calling BreedingSitesApi$create, `site_type` is not nullable")
+      }
+
 
       if (!missing(`tags`) && is.null(`tags`)) {
         stop("Invalid value for `tags` when calling BreedingSitesApi$create, `tags` is not nullable")
-      }
-
-      if (!missing(`site_type`) && is.null(`site_type`)) {
-        stop("Invalid value for `site_type` when calling BreedingSitesApi$create, `site_type` is not nullable")
       }
 
 
