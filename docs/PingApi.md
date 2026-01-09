@@ -1,10 +1,10 @@
-# StatusApi
+# PingApi
 
 All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**retrieve**](StatusApi.md#retrieve) | **GET** /status/ | 
+[**retrieve**](PingApi.md#retrieve) | **GET** /ping/ | 
 
 
 # **retrieve**
@@ -12,13 +12,15 @@ Method | HTTP request | Description
 
 
 
+Simple ping endpoint to check API connectivity
+
 ### Example
 ```R
 library(MosquitoAlert)
 
 
 api_instance <- mosquitoalert_api$new()
-api_instance$status_api$retrieve()
+api_instance$ping_api$retrieve()
 ```
 
 ### Parameters
@@ -41,5 +43,5 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **404** |  |  -  |
-| **200** | No response body |  -  |
+| **204** | No response body |  -  |
 

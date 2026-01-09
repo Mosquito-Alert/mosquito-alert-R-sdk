@@ -586,6 +586,7 @@ R/photos_prediction_update_scores_not_sure_error_component.R
 R/photos_prediction_update_scores_other_species_error_component.R
 R/photos_prediction_update_threshold_deviation_error_component.R
 R/photos_prediction_update_validation_error.R
+R/ping_api.R
 R/point.R
 R/point_request.R
 R/prediction_score.R
@@ -597,7 +598,6 @@ R/simple_taxon.R
 R/simple_taxon_request.R
 R/simplified_location.R
 R/simplified_observation_with_photos.R
-R/status_api.R
 R/taxa_api.R
 R/taxa_list_rank_error_component.R
 R/taxa_list_validation_error.R
@@ -1201,6 +1201,7 @@ docs/PhotosPredictionUpdateScoresNotSureErrorComponent.md
 docs/PhotosPredictionUpdateScoresOtherSpeciesErrorComponent.md
 docs/PhotosPredictionUpdateThresholdDeviationErrorComponent.md
 docs/PhotosPredictionUpdateValidationError.md
+docs/PingApi.md
 docs/Point.md
 docs/PointRequest.md
 docs/PredictionScore.md
@@ -1212,7 +1213,6 @@ docs/SimpleTaxon.md
 docs/SimpleTaxonRequest.md
 docs/SimplifiedLocation.md
 docs/SimplifiedObservationWithPhotos.md
-docs/StatusApi.md
 docs/TaxaApi.md
 docs/TaxaListRankErrorComponent.md
 docs/TaxaListValidationError.md
@@ -1817,6 +1817,7 @@ tests/testthat/test_photos_prediction_update_scores_not_sure_error_component.R
 tests/testthat/test_photos_prediction_update_scores_other_species_error_component.R
 tests/testthat/test_photos_prediction_update_threshold_deviation_error_component.R
 tests/testthat/test_photos_prediction_update_validation_error.R
+tests/testthat/test_ping_api.R
 tests/testthat/test_point.R
 tests/testthat/test_point_request.R
 tests/testthat/test_prediction_score.R
@@ -1828,7 +1829,6 @@ tests/testthat/test_simple_taxon.R
 tests/testthat/test_simple_taxon_request.R
 tests/testthat/test_simplified_location.R
 tests/testthat/test_simplified_observation_with_photos.R
-tests/testthat/test_status_api.R
 tests/testthat/test_taxa_api.R
 tests/testthat/test_taxa_list_rank_error_component.R
 tests/testthat/test_taxa_list_validation_error.R
