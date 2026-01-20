@@ -10,9 +10,9 @@ test_that("list", {
   # base path: https://api.mosquitoalert.com/v1
   # @param country_id integer Country in which the campaign is taking place (optional)
   # @param is_active character  (optional)
-  # @param order_by array[character] Ordenado   (optional)
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
+  # @param order_by array[character] Ordenamiento   (optional)
+  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
+  # @param page_size integer Número de resultados a devolver por página. (optional)
   # @return [PaginatedCampaignList]
 
   # uncomment below to test the operation
@@ -22,7 +22,7 @@ test_that("list", {
 test_that("retrieve", {
   # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
-  # @param id integer A unique integer value identifying this ow campaigns.
+  # @param id integer Un valor de entero único que identifique este ow campaigns.
   # @return [Campaign]
 
   # uncomment below to test the operation

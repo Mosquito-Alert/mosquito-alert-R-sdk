@@ -29,10 +29,10 @@ test_that("annotations_list", {
   # @param is_decisive character  (optional)
   # @param is_favourite character  (optional)
   # @param is_flagged character  (optional)
-  # @param order_by array[character] Ordenado   (optional)
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
-  # @param search character A search term. (optional)
+  # @param order_by array[character] Ordenamiento   (optional)
+  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
+  # @param page_size integer Número de resultados a devolver por página. (optional)
+  # @param search character Un término de búsqueda. (optional)
   # @param type character  (optional)
   # @param updated_at_after character Updated at (optional)
   # @param updated_at_before character Updated at (optional)
@@ -56,10 +56,10 @@ test_that("annotations_list_mine", {
   # @param is_decisive character  (optional)
   # @param is_favourite character  (optional)
   # @param is_flagged character  (optional)
-  # @param order_by array[character] Ordenado   (optional)
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
-  # @param search character A search term. (optional)
+  # @param order_by array[character] Ordenamiento   (optional)
+  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
+  # @param page_size integer Número de resultados a devolver por página. (optional)
+  # @param search character Un término de búsqueda. (optional)
   # @param type character  (optional)
   # @param updated_at_after character Updated at (optional)
   # @param updated_at_before character Updated at (optional)
@@ -73,7 +73,7 @@ test_that("annotations_list_mine", {
 test_that("annotations_retrieve", {
   # tests for annotations_retrieve
   # base path: https://api.mosquitoalert.com/v1
-  # @param id integer A unique integer value identifying this expert report annotation.
+  # @param id integer Un valor de entero único que identifique este expert report annotation.
   # @param observation_uuid character UUID of the Observation
   # @return [Annotation]
 
@@ -104,9 +104,9 @@ test_that("list", {
   # @param num_annotations_max integer  (optional)
   # @param num_annotations_min integer  (optional)
   # @param observation_country_ids array[integer]  (optional)
-  # @param order_by array[character] Ordenado   (optional)
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
+  # @param order_by array[character] Ordenamiento   (optional)
+  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
+  # @param page_size integer Número de resultados a devolver por página. (optional)
   # @param result_agreement_max numeric  (optional)
   # @param result_agreement_min numeric  (optional)
   # @param result_confidence_max numeric  (optional)
@@ -116,7 +116,7 @@ test_that("list", {
   # @param result_uncertainty_max numeric  (optional)
   # @param result_uncertainty_min numeric  (optional)
   # @param review_action character  (optional)
-  # @param search character A search term. (optional)
+  # @param search character Un término de búsqueda. (optional)
   # @param status array[character]  (optional)
   # @param updated_at_after character Update at (optional)
   # @param updated_at_before character Update at (optional)
@@ -140,9 +140,9 @@ test_that("list_mine", {
   # @param num_annotations_max integer  (optional)
   # @param num_annotations_min integer  (optional)
   # @param observation_country_ids array[integer]  (optional)
-  # @param order_by array[character] Ordenado   (optional)
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
+  # @param order_by array[character] Ordenamiento   (optional)
+  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
+  # @param page_size integer Número de resultados a devolver por página. (optional)
   # @param result_agreement_max numeric  (optional)
   # @param result_agreement_min numeric  (optional)
   # @param result_confidence_max numeric  (optional)
@@ -152,7 +152,7 @@ test_that("list_mine", {
   # @param result_uncertainty_max numeric  (optional)
   # @param result_uncertainty_min numeric  (optional)
   # @param review_action character  (optional)
-  # @param search character A search term. (optional)
+  # @param search character Un término de búsqueda. (optional)
   # @param status array[character]  (optional)
   # @param updated_at_after character Update at (optional)
   # @param updated_at_before character Update at (optional)
@@ -188,8 +188,8 @@ test_that("predictions_list", {
   # tests for predictions_list
   # base path: https://api.mosquitoalert.com/v1
   # @param observation_uuid character UUID of the Observation
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
+  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
+  # @param page_size integer Número de resultados a devolver por página. (optional)
   # @return [PaginatedPhotoPredictionList]
 
   # uncomment below to test the operation

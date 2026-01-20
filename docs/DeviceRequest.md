@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**device_id** | **character** | Unique device identifier | [Max. length: 255] 
+**device_id** | **character** | Unique device identifier | [Max. length: 255] [Min. length: 1] 
 **name** | **character** |  | [optional] [Max. length: 255] 
 **fcm_token** | **character** |  | [Min. length: 1] 
 **type** | **character** |  | [Enum: [ios, android, web]] 

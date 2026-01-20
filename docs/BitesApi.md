@@ -126,12 +126,12 @@ library(MosquitoAlert)
 var_country_id <- 56 # integer |  (Optional)
 var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
-var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
-var_page <- 56 # integer | A page number within the paginated result set. (Optional)
-var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
+var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
 var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-var_search <- "search_example" # character | A search term. (Optional)
+var_search <- "search_example" # character | Un término de búsqueda. (Optional)
 var_short_id <- "short_id_example" # character | Short ID (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -157,12 +157,12 @@ Name | Type | Description  | Notes
  **country_id** | **integer**|  | [optional] 
  **created_at_after** | **character**| Created at | [optional] 
  **created_at_before** | **character**| Created at | [optional] 
- **order_by** | Enum [-created_at, -received_at, created_at, received_at] | Ordenado   | [optional] 
- **page** | **integer**| A page number within the paginated result set. | [optional] 
- **page_size** | **integer**| Number of results to return per page. | [optional] 
+ **order_by** | Enum [-created_at, -received_at, created_at, received_at] | Ordenamiento   | [optional] 
+ **page** | **integer**| Un número de página dentro del conjunto de resultados paginado. | [optional] 
+ **page_size** | **integer**| Número de resultados a devolver por página. | [optional] 
  **received_at_after** | **character**| Received at | [optional] 
  **received_at_before** | **character**| Received at | [optional] 
- **search** | **character**| A search term. | [optional] 
+ **search** | **character**| Un término de búsqueda. | [optional] 
  **short_id** | **character**| Short ID | [optional] 
  **updated_at_after** | **character**| Update at | [optional] 
  **updated_at_before** | **character**| Update at | [optional] 
@@ -204,12 +204,12 @@ library(MosquitoAlert)
 var_country_id <- 56 # integer |  (Optional)
 var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
-var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
-var_page <- 56 # integer | A page number within the paginated result set. (Optional)
-var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
+var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
 var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-var_search <- "search_example" # character | A search term. (Optional)
+var_search <- "search_example" # character | Un término de búsqueda. (Optional)
 var_short_id <- "short_id_example" # character | Short ID (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -235,12 +235,12 @@ Name | Type | Description  | Notes
  **country_id** | **integer**|  | [optional] 
  **created_at_after** | **character**| Created at | [optional] 
  **created_at_before** | **character**| Created at | [optional] 
- **order_by** | Enum [-created_at, -received_at, created_at, received_at] | Ordenado   | [optional] 
- **page** | **integer**| A page number within the paginated result set. | [optional] 
- **page_size** | **integer**| Number of results to return per page. | [optional] 
+ **order_by** | Enum [-created_at, -received_at, created_at, received_at] | Ordenamiento   | [optional] 
+ **page** | **integer**| Un número de página dentro del conjunto de resultados paginado. | [optional] 
+ **page_size** | **integer**| Número de resultados a devolver por página. | [optional] 
  **received_at_after** | **character**| Received at | [optional] 
  **received_at_before** | **character**| Received at | [optional] 
- **search** | **character**| A search term. | [optional] 
+ **search** | **character**| Un término de búsqueda. | [optional] 
  **short_id** | **character**| Short ID | [optional] 
  **updated_at_after** | **character**| Update at | [optional] 
  **updated_at_before** | **character**| Update at | [optional] 

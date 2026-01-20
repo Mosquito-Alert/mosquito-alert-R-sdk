@@ -387,11 +387,6 @@ DeviceUpdate <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `manufacturer` is null
-      if (is.null(self$`manufacturer`)) {
-        return(FALSE)
-      }
-
       # check if the required `model` is null
       if (is.null(self$`model`)) {
         return(FALSE)
@@ -438,11 +433,6 @@ DeviceUpdate <- R6::R6Class(
       # check if the required `type` is null
       if (is.null(self$`type`)) {
         invalid_fields["type"] <- "Non-nullable required field `type` cannot be null."
-      }
-
-      # check if the required `manufacturer` is null
-      if (is.null(self$`manufacturer`)) {
-        invalid_fields["manufacturer"] <- "Non-nullable required field `manufacturer` cannot be null."
       }
 
       # check if the required `model` is null

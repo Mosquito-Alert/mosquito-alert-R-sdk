@@ -298,6 +298,9 @@ DeviceRequest <- R6::R6Class(
       if (nchar(self$`device_id`) > 255) {
         return(FALSE)
       }
+      if (nchar(self$`device_id`) < 1) {
+        return(FALSE)
+      }
 
       if (nchar(self$`name`) > 255) {
         return(FALSE)
@@ -351,6 +354,9 @@ DeviceRequest <- R6::R6Class(
 
       if (nchar(self$`device_id`) > 255) {
         invalid_fields["device_id"] <- "Invalid length for `device_id`, must be smaller than or equal to 255."
+      }
+      if (nchar(self$`device_id`) < 1) {
+        invalid_fields["device_id"] <- "Invalid length for `device_id`, must be bigger than or equal to 1."
       }
 
       if (nchar(self$`name`) > 255) {

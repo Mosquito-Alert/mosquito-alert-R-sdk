@@ -76,9 +76,9 @@ library(MosquitoAlert)
 
 # prepare function argument(s)
 var_is_read <- "is_read_example" # character |  (Optional)
-var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
-var_page <- 56 # integer | A page number within the paginated result set. (Optional)
-var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
+var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -98,9 +98,9 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **is_read** | **character**|  | [optional] 
- **order_by** | Enum [-created_at, created_at] | Ordenado   | [optional] 
- **page** | **integer**| A page number within the paginated result set. | [optional] 
- **page_size** | **integer**| Number of results to return per page. | [optional] 
+ **order_by** | Enum [-created_at, created_at] | Ordenamiento   | [optional] 
+ **page** | **integer**| Un número de página dentro del conjunto de resultados paginado. | [optional] 
+ **page_size** | **integer**| Número de resultados a devolver por página. | [optional] 
 
 ### Return type
 
@@ -137,9 +137,9 @@ library(MosquitoAlert)
 
 # prepare function argument(s)
 var_is_read <- "is_read_example" # character |  (Optional)
-var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
-var_page <- 56 # integer | A page number within the paginated result set. (Optional)
-var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
+var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -159,9 +159,9 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **is_read** | **character**|  | [optional] 
- **order_by** | Enum [-created_at, created_at] | Ordenado   | [optional] 
- **page** | **integer**| A page number within the paginated result set. | [optional] 
- **page_size** | **integer**| Number of results to return per page. | [optional] 
+ **order_by** | Enum [-created_at, created_at] | Ordenamiento   | [optional] 
+ **page** | **integer**| Un número de página dentro del conjunto de resultados paginado. | [optional] 
+ **page_size** | **integer**| Número de resultados a devolver por página. | [optional] 
 
 ### Return type
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_id <- 56 # integer | A unique integer value identifying this notification.
+var_id <- 56 # integer | Un valor de entero único que identifique este notification.
 var_patched_notification_request <- PatchedNotificationRequest$new("is_read_example") # PatchedNotificationRequest |  (Optional)
 
 api_instance <- mosquitoalert_api$new()
@@ -215,7 +215,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **integer**| A unique integer value identifying this notification. | 
+ **id** | **integer**| Un valor de entero único que identifique este notification. | 
  **patched_notification_request** | [**PatchedNotificationRequest**](PatchedNotificationRequest.md)|  | [optional] 
 
 ### Return type
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_id <- 56 # integer | A unique integer value identifying this notification.
+var_id <- 56 # integer | Un valor de entero único que identifique este notification.
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -269,7 +269,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **integer**| A unique integer value identifying this notification. | 
+ **id** | **integer**| Un valor de entero único que identifique este notification. | 
 
 ### Return type
 
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_id <- 56 # integer | A unique integer value identifying this notification.
+var_id <- 56 # integer | Un valor de entero único que identifique este notification.
 var_notification_request <- NotificationRequest$new("is_read_example") # NotificationRequest | 
 
 api_instance <- mosquitoalert_api$new()
@@ -322,7 +322,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **integer**| A unique integer value identifying this notification. | 
+ **id** | **integer**| Un valor de entero único que identifique este notification. | 
  **notification_request** | [**NotificationRequest**](NotificationRequest.md)|  | 
 
 ### Return type

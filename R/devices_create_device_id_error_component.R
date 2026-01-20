@@ -38,8 +38,8 @@ DevicesCreateDeviceIdErrorComponent <- R6::R6Class(
         self$`attr` <- `attr`
       }
       if (!missing(`code`)) {
-        if (!(`code` %in% c("invalid", "max_length", "null", "null_characters_not_allowed", "required", "surrogate_characters_not_allowed"))) {
-          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"invalid\", \"max_length\", \"null\", \"null_characters_not_allowed\", \"required\", \"surrogate_characters_not_allowed\".", sep = ""))
+        if (!(`code` %in% c("blank", "invalid", "max_length", "null", "null_characters_not_allowed", "required", "surrogate_characters_not_allowed"))) {
+          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"blank\", \"invalid\", \"max_length\", \"null\", \"null_characters_not_allowed\", \"required\", \"surrogate_characters_not_allowed\".", sep = ""))
         }
         if (!(is.character(`code`) && length(`code`) == 1)) {
           stop(paste("Error! Invalid data for `code`. Must be a string:", `code`))
@@ -114,8 +114,8 @@ DevicesCreateDeviceIdErrorComponent <- R6::R6Class(
         self$`attr` <- this_object$`attr`
       }
       if (!is.null(this_object$`code`)) {
-        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid", "max_length", "null", "null_characters_not_allowed", "required", "surrogate_characters_not_allowed"))) {
-          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid\", \"max_length\", \"null\", \"null_characters_not_allowed\", \"required\", \"surrogate_characters_not_allowed\".", sep = ""))
+        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("blank", "invalid", "max_length", "null", "null_characters_not_allowed", "required", "surrogate_characters_not_allowed"))) {
+          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"blank\", \"invalid\", \"max_length\", \"null\", \"null_characters_not_allowed\", \"required\", \"surrogate_characters_not_allowed\".", sep = ""))
         }
         self$`code` <- this_object$`code`
       }
@@ -147,8 +147,8 @@ DevicesCreateDeviceIdErrorComponent <- R6::R6Class(
         stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"device_id\".", sep = ""))
       }
       self$`attr` <- this_object$`attr`
-      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid", "max_length", "null", "null_characters_not_allowed", "required", "surrogate_characters_not_allowed"))) {
-        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid\", \"max_length\", \"null\", \"null_characters_not_allowed\", \"required\", \"surrogate_characters_not_allowed\".", sep = ""))
+      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("blank", "invalid", "max_length", "null", "null_characters_not_allowed", "required", "surrogate_characters_not_allowed"))) {
+        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"blank\", \"invalid\", \"max_length\", \"null\", \"null_characters_not_allowed\", \"required\", \"surrogate_characters_not_allowed\".", sep = ""))
       }
       self$`code` <- this_object$`code`
       self$`detail` <- this_object$`detail`

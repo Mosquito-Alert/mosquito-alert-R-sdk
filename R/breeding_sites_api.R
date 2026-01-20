@@ -72,12 +72,12 @@
 #' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 #' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 #' var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
-#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
-#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
+#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
 #' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 #' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-#' var_search <- "search_example" # character | A search term. (Optional)
+#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
 #' var_short_id <- "short_id_example" # character | Short ID (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -107,12 +107,12 @@
 #' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 #' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 #' var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenado   (Optional)
-#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
-#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
+#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
 #' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 #' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-#' var_search <- "search_example" # character | A search term. (Optional)
+#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
 #' var_short_id <- "short_id_example" # character | Short ID (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -463,12 +463,12 @@ BreedingSitesApi <- R6::R6Class(
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
     #' @param has_photos (optional) Has any photo
-    #' @param order_by (optional) Ordenado  
-    #' @param page (optional) A page number within the paginated result set.
-    #' @param page_size (optional) Number of results to return per page.
+    #' @param order_by (optional) Ordenamiento  
+    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
+    #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) A search term.
+    #' @param search (optional) Un término de búsqueda.
     #' @param short_id (optional) Short ID
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -497,12 +497,12 @@ BreedingSitesApi <- R6::R6Class(
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
     #' @param has_photos (optional) Has any photo
-    #' @param order_by (optional) Ordenado  
-    #' @param page (optional) A page number within the paginated result set.
-    #' @param page_size (optional) Number of results to return per page.
+    #' @param order_by (optional) Ordenamiento  
+    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
+    #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) A search term.
+    #' @param search (optional) Un término de búsqueda.
     #' @param short_id (optional) Short ID
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -521,6 +521,9 @@ BreedingSitesApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`country_id`) && is.null(`country_id`)) {
+        stop("Invalid value for `country_id` when calling BreedingSitesApi$list, `country_id` is not nullable")
+      }
 
       if (!missing(`created_at_after`) && is.null(`created_at_after`)) {
         stop("Invalid value for `created_at_after` when calling BreedingSitesApi$list, `created_at_after` is not nullable")
@@ -675,12 +678,12 @@ BreedingSitesApi <- R6::R6Class(
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
     #' @param has_photos (optional) Has any photo
-    #' @param order_by (optional) Ordenado  
-    #' @param page (optional) A page number within the paginated result set.
-    #' @param page_size (optional) Number of results to return per page.
+    #' @param order_by (optional) Ordenamiento  
+    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
+    #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) A search term.
+    #' @param search (optional) Un término de búsqueda.
     #' @param short_id (optional) Short ID
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -709,12 +712,12 @@ BreedingSitesApi <- R6::R6Class(
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
     #' @param has_photos (optional) Has any photo
-    #' @param order_by (optional) Ordenado  
-    #' @param page (optional) A page number within the paginated result set.
-    #' @param page_size (optional) Number of results to return per page.
+    #' @param order_by (optional) Ordenamiento  
+    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
+    #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) A search term.
+    #' @param search (optional) Un término de búsqueda.
     #' @param short_id (optional) Short ID
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -733,6 +736,9 @@ BreedingSitesApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
+      if (!missing(`country_id`) && is.null(`country_id`)) {
+        stop("Invalid value for `country_id` when calling BreedingSitesApi$list_mine, `country_id` is not nullable")
+      }
 
       if (!missing(`created_at_after`) && is.null(`created_at_after`)) {
         stop("Invalid value for `created_at_after` when calling BreedingSitesApi$list_mine, `created_at_after` is not nullable")

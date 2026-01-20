@@ -9,8 +9,8 @@ test_that("list", {
   # tests for list
   # base path: https://api.mosquitoalert.com/v1
   # @param is_relevant character  (optional)
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
+  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
+  # @param page_size integer Número de resultados a devolver por página. (optional)
   # @param rank array[integer]  (optional)
   # @return [PaginatedTaxonList]
 
@@ -21,7 +21,7 @@ test_that("list", {
 test_that("retrieve", {
   # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
-  # @param id integer A unique integer value identifying this taxon.
+  # @param id integer Un valor de entero único que identifique este taxon.
   # @return [Taxon]
 
   # uncomment below to test the operation
@@ -40,7 +40,7 @@ test_that("root_tree_retrieve", {
 test_that("tree_retrieve", {
   # tests for tree_retrieve
   # base path: https://api.mosquitoalert.com/v1
-  # @param id integer A unique integer value identifying this taxon.
+  # @param id integer Un valor de entero único que identifique este taxon.
   # @return [TaxonTreeNode]
 
   # uncomment below to test the operation

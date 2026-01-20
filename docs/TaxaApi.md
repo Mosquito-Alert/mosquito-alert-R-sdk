@@ -21,8 +21,8 @@ library(MosquitoAlert)
 
 # prepare function argument(s)
 var_is_relevant <- "is_relevant_example" # character |  (Optional)
-var_page <- 56 # integer | A page number within the paginated result set. (Optional)
-var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
+var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
 var_rank <- c(123) # array[integer] |  (Optional)
 
 api_instance <- mosquitoalert_api$new()
@@ -43,8 +43,8 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **is_relevant** | **character**|  | [optional] 
- **page** | **integer**| A page number within the paginated result set. | [optional] 
- **page_size** | **integer**| Number of results to return per page. | [optional] 
+ **page** | **integer**| Un número de página dentro del conjunto de resultados paginado. | [optional] 
+ **page_size** | **integer**| Número de resultados a devolver por página. | [optional] 
  **rank** | Enum [null, null, null, null, null, null, null] |  | [optional] 
 
 ### Return type
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_id <- 56 # integer | A unique integer value identifying this taxon.
+var_id <- 56 # integer | Un valor de entero único que identifique este taxon.
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -98,7 +98,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **integer**| A unique integer value identifying this taxon. | 
+ **id** | **integer**| Un valor de entero único que identifique este taxon. | 
 
 ### Return type
 
@@ -178,7 +178,7 @@ This endpoint does not need any parameter.
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_id <- 56 # integer | A unique integer value identifying this taxon.
+var_id <- 56 # integer | Un valor de entero único que identifique este taxon.
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -197,7 +197,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **integer**| A unique integer value identifying this taxon. | 
+ **id** | **integer**| Un valor de entero único que identifique este taxon. | 
 
 ### Return type
 

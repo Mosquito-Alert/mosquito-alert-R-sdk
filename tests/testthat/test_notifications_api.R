@@ -19,9 +19,9 @@ test_that("list", {
   # tests for list
   # base path: https://api.mosquitoalert.com/v1
   # @param is_read character  (optional)
-  # @param order_by array[character] Ordenado   (optional)
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
+  # @param order_by array[character] Ordenamiento   (optional)
+  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
+  # @param page_size integer Número de resultados a devolver por página. (optional)
   # @return [PaginatedNotificationList]
 
   # uncomment below to test the operation
@@ -33,9 +33,9 @@ test_that("list_mine", {
   # base path: https://api.mosquitoalert.com/v1
   # Get Current User&#39;s Notifications
   # @param is_read character  (optional)
-  # @param order_by array[character] Ordenado   (optional)
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
+  # @param order_by array[character] Ordenamiento   (optional)
+  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
+  # @param page_size integer Número de resultados a devolver por página. (optional)
   # @return [PaginatedNotificationList]
 
   # uncomment below to test the operation
@@ -45,7 +45,7 @@ test_that("list_mine", {
 test_that("partial_update", {
   # tests for partial_update
   # base path: https://api.mosquitoalert.com/v1
-  # @param id integer A unique integer value identifying this notification.
+  # @param id integer Un valor de entero único que identifique este notification.
   # @param patched_notification_request PatchedNotificationRequest  (optional)
   # @return [Notification]
 
@@ -56,7 +56,7 @@ test_that("partial_update", {
 test_that("retrieve", {
   # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
-  # @param id integer A unique integer value identifying this notification.
+  # @param id integer Un valor de entero único que identifique este notification.
   # @return [Notification]
 
   # uncomment below to test the operation
@@ -66,7 +66,7 @@ test_that("retrieve", {
 test_that("update", {
   # tests for update
   # base path: https://api.mosquitoalert.com/v1
-  # @param id integer A unique integer value identifying this notification.
+  # @param id integer Un valor de entero único que identifique este notification.
   # @param notification_request NotificationRequest 
   # @return [Notification]
 

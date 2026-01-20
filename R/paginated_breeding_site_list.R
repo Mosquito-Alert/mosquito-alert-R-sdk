@@ -7,10 +7,10 @@
 #' @title PaginatedBreedingSiteList
 #' @description PaginatedBreedingSiteList Class
 #' @format An \code{R6Class} generator object
-#' @field count  integer [optional]
+#' @field count  integer
 #' @field next  character [optional]
 #' @field previous  character [optional]
-#' @field results  list(\link{BreedingSite}) [optional]
+#' @field results  list(\link{BreedingSite})
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -26,16 +26,21 @@ PaginatedBreedingSiteList <- R6::R6Class(
     #' Initialize a new PaginatedBreedingSiteList class.
     #'
     #' @param count count
+    #' @param results results
     #' @param next next
     #' @param previous previous
-    #' @param results results
     #' @param ... Other optional arguments.
-    initialize = function(`count` = NULL, `next` = NULL, `previous` = NULL, `results` = NULL, ...) {
-      if (!is.null(`count`)) {
+    initialize = function(`count`, `results`, `next` = NULL, `previous` = NULL, ...) {
+      if (!missing(`count`)) {
         if (!(is.numeric(`count`) && length(`count`) == 1)) {
           stop(paste("Error! Invalid data for `count`. Must be an integer:", `count`))
         }
         self$`count` <- `count`
+      }
+      if (!missing(`results`)) {
+        stopifnot(is.vector(`results`), length(`results`) != 0)
+        sapply(`results`, function(x) stopifnot(R6::is.R6(x)))
+        self$`results` <- `results`
       }
       if (!is.null(`next`)) {
         if (!(is.character(`next`) && length(`next`) == 1)) {
@@ -56,11 +61,6 @@ PaginatedBreedingSiteList <- R6::R6Class(
           stop(paste("Error! Invalid data for `previous`. Must be a URL:", `previous`))
         }
         self$`previous` <- `previous`
-      }
-      if (!is.null(`results`)) {
-        stopifnot(is.vector(`results`), length(`results`) != 0)
-        sapply(`results`, function(x) stopifnot(R6::is.R6(x)))
-        self$`results` <- `results`
       }
     },
 
@@ -183,6 +183,21 @@ PaginatedBreedingSiteList <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `count`
+      if (!is.null(input_json$`count`)) {
+        if (!(is.numeric(input_json$`count`) && length(input_json$`count`) == 1)) {
+          stop(paste("Error! Invalid data for `count`. Must be an integer:", input_json$`count`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for PaginatedBreedingSiteList: the required field `count` is missing."))
+      }
+      # check the required field `results`
+      if (!is.null(input_json$`results`)) {
+        stopifnot(is.vector(input_json$`results`), length(input_json$`results`) != 0)
+        tmp <- sapply(input_json$`results`, function(x) stopifnot(R6::is.R6(x)))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for PaginatedBreedingSiteList: the required field `results` is missing."))
+      }
     },
 
     #' @description
@@ -198,6 +213,16 @@ PaginatedBreedingSiteList <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `count` is null
+      if (is.null(self$`count`)) {
+        return(FALSE)
+      }
+
+      # check if the required `results` is null
+      if (is.null(self$`results`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -207,6 +232,16 @@ PaginatedBreedingSiteList <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `count` is null
+      if (is.null(self$`count`)) {
+        invalid_fields["count"] <- "Non-nullable required field `count` cannot be null."
+      }
+
+      # check if the required `results` is null
+      if (is.null(self$`results`)) {
+        invalid_fields["results"] <- "Non-nullable required field `results` cannot be null."
+      }
+
       invalid_fields
     },
 

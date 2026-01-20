@@ -17,8 +17,8 @@
 #' ####################  list  ####################
 #'
 #' library(MosquitoAlert)
-#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
-#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
+#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -40,7 +40,7 @@
 #' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
-#' var_id <- 56 # integer | A unique integer value identifying this organization pin.
+#' var_id <- 56 # integer | Un valor de entero único que identifique este organization pin.
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -83,8 +83,8 @@ PartnersApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param page (optional) A page number within the paginated result set.
-    #' @param page_size (optional) Number of results to return per page.
+    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
+    #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
@@ -105,8 +105,8 @@ PartnersApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param page (optional) A page number within the paginated result set.
-    #' @param page_size (optional) Number of results to return per page.
+    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
+    #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
@@ -195,7 +195,7 @@ PartnersApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id A unique integer value identifying this organization pin.
+    #' @param id Un valor de entero único que identifique este organization pin.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
@@ -216,7 +216,7 @@ PartnersApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id A unique integer value identifying this organization pin.
+    #' @param id Un valor de entero único que identifique este organization pin.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'

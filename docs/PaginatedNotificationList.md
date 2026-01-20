@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | **integer** |  | [optional] 
+**count** | **integer** |  | 
 **next** | **character** |  | [optional] 
 **previous** | **character** |  | [optional] 
-**results** | [**array[Notification]**](Notification.md) |  | [optional] 
+**results** | [**array[Notification]**](Notification.md) |  | 
 
 

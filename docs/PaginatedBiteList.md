@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | **integer** |  | [optional] 
+**count** | **integer** |  | 
 **next** | **character** |  | [optional] 
 **previous** | **character** |  | [optional] 
-**results** | [**array[Bite]**](Bite.md) |  | [optional] 
+**results** | [**array[Bite]**](Bite.md) |  | 
 
 
