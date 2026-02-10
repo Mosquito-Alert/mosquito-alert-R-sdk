@@ -5,6 +5,13 @@ context("Test BreedingSiteGeoJsonModelProperties")
 
 model_instance <- BreedingSiteGeoJsonModelProperties$new()
 
+test_that("uuid", {
+  # tests for the property `uuid` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`uuid`, "EXPECTED_RESULT")
+})
+
 test_that("received_at", {
   # tests for the property `received_at` (character)
 

@@ -8,7 +8,6 @@
 #' @description ObservationGeoJsonModel Class
 #' @format An \code{R6Class} generator object
 #' @field type  character [optional]
-#' @field id  character [optional]
 #' @field geometry  \link{BiteGeoJsonModelGeometry} [optional]
 #' @field properties  \link{ObservationGeoJsonModelProperties} [optional]
 #' @importFrom R6 R6Class
@@ -18,7 +17,6 @@ ObservationGeoJsonModel <- R6::R6Class(
   "ObservationGeoJsonModel",
   public = list(
     `type` = NULL,
-    `id` = NULL,
     `geometry` = NULL,
     `properties` = NULL,
 
@@ -26,11 +24,10 @@ ObservationGeoJsonModel <- R6::R6Class(
     #' Initialize a new ObservationGeoJsonModel class.
     #'
     #' @param type type
-    #' @param id id
     #' @param geometry geometry
     #' @param properties properties
     #' @param ... Other optional arguments.
-    initialize = function(`type` = NULL, `id` = NULL, `geometry` = NULL, `properties` = NULL, ...) {
+    initialize = function(`type` = NULL, `geometry` = NULL, `properties` = NULL, ...) {
       if (!is.null(`type`)) {
         if (!(`type` %in% c("Feature"))) {
           stop(paste("Error! \"", `type`, "\" cannot be assigned to `type`. Must be \"Feature\".", sep = ""))
@@ -39,12 +36,6 @@ ObservationGeoJsonModel <- R6::R6Class(
           stop(paste("Error! Invalid data for `type`. Must be a string:", `type`))
         }
         self$`type` <- `type`
-      }
-      if (!is.null(`id`)) {
-        if (!(is.character(`id`) && length(`id`) == 1)) {
-          stop(paste("Error! Invalid data for `id`. Must be a string:", `id`))
-        }
-        self$`id` <- `id`
       }
       if (!is.null(`geometry`)) {
         stopifnot(R6::is.R6(`geometry`))
@@ -91,10 +82,6 @@ ObservationGeoJsonModel <- R6::R6Class(
         ObservationGeoJsonModelObject[["type"]] <-
           self$`type`
       }
-      if (!is.null(self$`id`)) {
-        ObservationGeoJsonModelObject[["id"]] <-
-          self$`id`
-      }
       if (!is.null(self$`geometry`)) {
         ObservationGeoJsonModelObject[["geometry"]] <-
           self$`geometry`$toSimpleType()
@@ -118,9 +105,6 @@ ObservationGeoJsonModel <- R6::R6Class(
           stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"Feature\".", sep = ""))
         }
         self$`type` <- this_object$`type`
-      }
-      if (!is.null(this_object$`id`)) {
-        self$`id` <- this_object$`id`
       }
       if (!is.null(this_object$`geometry`)) {
         `geometry_object` <- BiteGeoJsonModelGeometry$new()
@@ -157,7 +141,6 @@ ObservationGeoJsonModel <- R6::R6Class(
         stop(paste("Error! \"", this_object$`type`, "\" cannot be assigned to `type`. Must be \"Feature\".", sep = ""))
       }
       self$`type` <- this_object$`type`
-      self$`id` <- this_object$`id`
       self$`geometry` <- BiteGeoJsonModelGeometry$new()$fromJSON(jsonlite::toJSON(this_object$`geometry`, auto_unbox = TRUE, digits = NA))
       self$`properties` <- ObservationGeoJsonModelProperties$new()$fromJSON(jsonlite::toJSON(this_object$`properties`, auto_unbox = TRUE, digits = NA))
       self

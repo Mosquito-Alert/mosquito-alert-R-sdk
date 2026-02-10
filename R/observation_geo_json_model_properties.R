@@ -7,6 +7,7 @@
 #' @title ObservationGeoJsonModelProperties
 #' @description ObservationGeoJsonModelProperties Class
 #' @format An \code{R6Class} generator object
+#' @field uuid  character [optional]
 #' @field received_at  character [optional]
 #' @field identification_taxon_id  integer [optional]
 #' @importFrom R6 R6Class
@@ -15,16 +16,24 @@
 ObservationGeoJsonModelProperties <- R6::R6Class(
   "ObservationGeoJsonModelProperties",
   public = list(
+    `uuid` = NULL,
     `received_at` = NULL,
     `identification_taxon_id` = NULL,
 
     #' @description
     #' Initialize a new ObservationGeoJsonModelProperties class.
     #'
+    #' @param uuid uuid
     #' @param received_at received_at
     #' @param identification_taxon_id identification_taxon_id
     #' @param ... Other optional arguments.
-    initialize = function(`received_at` = NULL, `identification_taxon_id` = NULL, ...) {
+    initialize = function(`uuid` = NULL, `received_at` = NULL, `identification_taxon_id` = NULL, ...) {
+      if (!is.null(`uuid`)) {
+        if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
+          stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
+        }
+        self$`uuid` <- `uuid`
+      }
       if (!is.null(`received_at`)) {
         if (!is.character(`received_at`)) {
           stop(paste("Error! Invalid data for `received_at`. Must be a string:", `received_at`))
@@ -70,6 +79,10 @@ ObservationGeoJsonModelProperties <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       ObservationGeoJsonModelPropertiesObject <- list()
+      if (!is.null(self$`uuid`)) {
+        ObservationGeoJsonModelPropertiesObject[["uuid"]] <-
+          self$`uuid`
+      }
       if (!is.null(self$`received_at`)) {
         ObservationGeoJsonModelPropertiesObject[["received_at"]] <-
           self$`received_at`
@@ -88,6 +101,9 @@ ObservationGeoJsonModelProperties <- R6::R6Class(
     #' @return the instance of ObservationGeoJsonModelProperties
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`uuid`)) {
+        self$`uuid` <- this_object$`uuid`
+      }
       if (!is.null(this_object$`received_at`)) {
         self$`received_at` <- this_object$`received_at`
       }
@@ -115,6 +131,7 @@ ObservationGeoJsonModelProperties <- R6::R6Class(
     #' @return the instance of ObservationGeoJsonModelProperties
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`uuid` <- this_object$`uuid`
       self$`received_at` <- this_object$`received_at`
       self$`identification_taxon_id` <- this_object$`identification_taxon_id`
       self

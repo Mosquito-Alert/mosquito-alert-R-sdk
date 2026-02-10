@@ -7,6 +7,7 @@
 #' @title BreedingSiteGeoJsonModelProperties
 #' @description BreedingSiteGeoJsonModelProperties Class
 #' @format An \code{R6Class} generator object
+#' @field uuid  character [optional]
 #' @field received_at  character [optional]
 #' @field site_type  character [optional]
 #' @field has_water Either if the user perceived water in the breeding site. character [optional]
@@ -16,6 +17,7 @@
 BreedingSiteGeoJsonModelProperties <- R6::R6Class(
   "BreedingSiteGeoJsonModelProperties",
   public = list(
+    `uuid` = NULL,
     `received_at` = NULL,
     `site_type` = NULL,
     `has_water` = NULL,
@@ -23,11 +25,18 @@ BreedingSiteGeoJsonModelProperties <- R6::R6Class(
     #' @description
     #' Initialize a new BreedingSiteGeoJsonModelProperties class.
     #'
+    #' @param uuid uuid
     #' @param received_at received_at
     #' @param site_type site_type
     #' @param has_water Either if the user perceived water in the breeding site.
     #' @param ... Other optional arguments.
-    initialize = function(`received_at` = NULL, `site_type` = NULL, `has_water` = NULL, ...) {
+    initialize = function(`uuid` = NULL, `received_at` = NULL, `site_type` = NULL, `has_water` = NULL, ...) {
+      if (!is.null(`uuid`)) {
+        if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
+          stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
+        }
+        self$`uuid` <- `uuid`
+      }
       if (!is.null(`received_at`)) {
         if (!is.character(`received_at`)) {
           stop(paste("Error! Invalid data for `received_at`. Must be a string:", `received_at`))
@@ -82,6 +91,10 @@ BreedingSiteGeoJsonModelProperties <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       BreedingSiteGeoJsonModelPropertiesObject <- list()
+      if (!is.null(self$`uuid`)) {
+        BreedingSiteGeoJsonModelPropertiesObject[["uuid"]] <-
+          self$`uuid`
+      }
       if (!is.null(self$`received_at`)) {
         BreedingSiteGeoJsonModelPropertiesObject[["received_at"]] <-
           self$`received_at`
@@ -104,6 +117,9 @@ BreedingSiteGeoJsonModelProperties <- R6::R6Class(
     #' @return the instance of BreedingSiteGeoJsonModelProperties
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      if (!is.null(this_object$`uuid`)) {
+        self$`uuid` <- this_object$`uuid`
+      }
       if (!is.null(this_object$`received_at`)) {
         self$`received_at` <- this_object$`received_at`
       }
@@ -137,6 +153,7 @@ BreedingSiteGeoJsonModelProperties <- R6::R6Class(
     #' @return the instance of BreedingSiteGeoJsonModelProperties
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
+      self$`uuid` <- this_object$`uuid`
       self$`received_at` <- this_object$`received_at`
       if (!is.null(this_object$`site_type`) && !(this_object$`site_type` %in% c("basin", "bucket", "fountain", "small_container", "storm_drain", "well", "other"))) {
         stop(paste("Error! \"", this_object$`site_type`, "\" cannot be assigned to `site_type`. Must be \"basin\", \"bucket\", \"fountain\", \"small_container\", \"storm_drain\", \"well\", \"other\".", sep = ""))
