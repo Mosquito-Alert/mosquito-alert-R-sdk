@@ -72,7 +72,6 @@ test_that("location", {
 
 test_that("note", {
   # tests for the property `note` (character)
-  # Note user attached to report.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`note`, "EXPECTED_RESULT")
@@ -101,7 +100,6 @@ test_that("photos", {
 
 test_that("site_type", {
   # tests for the property `site_type` (character)
-  # Breeding site type.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`site_type`, "EXPECTED_RESULT")

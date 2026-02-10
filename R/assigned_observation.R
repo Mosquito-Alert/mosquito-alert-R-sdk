@@ -13,7 +13,7 @@
 #' @field created_at_local The date and time when the record was created, displayed without timezone field. character
 #' @field received_at  character
 #' @field location  \link{SimplifiedLocation}
-#' @field note Note user attached to report. character [optional]
+#' @field note  character
 #' @field photos  list(\link{SimplePhoto})
 #' @field user  \link{MinimalUser}
 #' @importFrom R6 R6Class
@@ -41,11 +41,11 @@ AssignedObservation <- R6::R6Class(
     #' @param created_at_local The date and time when the record was created, displayed without timezone field.
     #' @param received_at received_at
     #' @param location location
+    #' @param note note
     #' @param photos photos
     #' @param user user
-    #' @param note Note user attached to report.
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `short_id`, `created_at`, `created_at_local`, `received_at`, `location`, `photos`, `user`, `note` = NULL, ...) {
+    initialize = function(`uuid`, `short_id`, `created_at`, `created_at_local`, `received_at`, `location`, `note`, `photos`, `user`, ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
@@ -80,6 +80,12 @@ AssignedObservation <- R6::R6Class(
         stopifnot(R6::is.R6(`location`))
         self$`location` <- `location`
       }
+      if (!missing(`note`)) {
+        if (!(is.character(`note`) && length(`note`) == 1)) {
+          stop(paste("Error! Invalid data for `note`. Must be a string:", `note`))
+        }
+        self$`note` <- `note`
+      }
       if (!missing(`photos`)) {
         stopifnot(is.vector(`photos`), length(`photos`) != 0)
         sapply(`photos`, function(x) stopifnot(R6::is.R6(x)))
@@ -88,12 +94,6 @@ AssignedObservation <- R6::R6Class(
       if (!missing(`user`)) {
         stopifnot(R6::is.R6(`user`))
         self$`user` <- `user`
-      }
-      if (!is.null(`note`)) {
-        if (!(is.character(`note`) && length(`note`) == 1)) {
-          stop(paste("Error! Invalid data for `note`. Must be a string:", `note`))
-        }
-        self$`note` <- `note`
       }
     },
 
@@ -289,6 +289,14 @@ AssignedObservation <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`location`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for AssignedObservation: the required field `location` is missing."))
+      }
+      # check the required field `note`
+      if (!is.null(input_json$`note`)) {
+        if (!(is.character(input_json$`note`) && length(input_json$`note`) == 1)) {
+          stop(paste("Error! Invalid data for `note`. Must be a string:", input_json$`note`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for AssignedObservation: the required field `note` is missing."))
       }
       # check the required field `photos`
       if (!is.null(input_json$`photos`)) {

@@ -16,12 +16,12 @@ BitesCreateError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("BitesCreateCountsChestErrorComponent", "BitesCreateCountsHeadErrorComponent", "BitesCreateCountsLeftArmErrorComponent", "BitesCreateCountsLeftLegErrorComponent", "BitesCreateCountsNonFieldErrorsErrorComponent", "BitesCreateCountsRightArmErrorComponent", "BitesCreateCountsRightLegErrorComponent", "BitesCreateCreatedAtErrorComponent", "BitesCreateEventEnvironmentErrorComponent", "BitesCreateEventMomentErrorComponent", "BitesCreateLocationNonFieldErrorsErrorComponent", "BitesCreateLocationPointLatitudeErrorComponent", "BitesCreateLocationPointLongitudeErrorComponent", "BitesCreateLocationPointNonFieldErrorsErrorComponent", "BitesCreateLocationSourceErrorComponent", "BitesCreateNonFieldErrorsErrorComponent", "BitesCreateNoteErrorComponent", "BitesCreateSentAtErrorComponent", "BitesCreateTagsErrorComponent", "BitesCreateTagsINDEXErrorComponent"),
+    one_of = list("BitesCreateCountsChestErrorComponent", "BitesCreateCountsHeadErrorComponent", "BitesCreateCountsLeftArmErrorComponent", "BitesCreateCountsLeftLegErrorComponent", "BitesCreateCountsNonFieldErrorsErrorComponent", "BitesCreateCountsRightArmErrorComponent", "BitesCreateCountsRightLegErrorComponent", "BitesCreateCreatedAtErrorComponent", "BitesCreateEventEnvironmentErrorComponent", "BitesCreateEventMomentErrorComponent", "BitesCreateLocationNonFieldErrorsErrorComponent", "BitesCreateLocationPointLatitudeErrorComponent", "BitesCreateLocationPointLongitudeErrorComponent", "BitesCreateLocationPointNonFieldErrorsErrorComponent", "BitesCreateLocationSourceErrorComponent", "BitesCreateNonFieldErrorsErrorComponent", "BitesCreateSentAtErrorComponent", "BitesCreateTagsErrorComponent", "BitesCreateTagsINDEXErrorComponent"),
 
     #' @description
     #' Initialize a new BitesCreateError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "BitesCreateCountsChestErrorComponent", "BitesCreateCountsHeadErrorComponent", "BitesCreateCountsLeftArmErrorComponent", "BitesCreateCountsLeftLegErrorComponent", "BitesCreateCountsNonFieldErrorsErrorComponent", "BitesCreateCountsRightArmErrorComponent", "BitesCreateCountsRightLegErrorComponent", "BitesCreateCreatedAtErrorComponent", "BitesCreateEventEnvironmentErrorComponent", "BitesCreateEventMomentErrorComponent", "BitesCreateLocationNonFieldErrorsErrorComponent", "BitesCreateLocationPointLatitudeErrorComponent", "BitesCreateLocationPointLongitudeErrorComponent", "BitesCreateLocationPointNonFieldErrorsErrorComponent", "BitesCreateLocationSourceErrorComponent", "BitesCreateNonFieldErrorsErrorComponent", "BitesCreateNoteErrorComponent", "BitesCreateSentAtErrorComponent", "BitesCreateTagsErrorComponent", "BitesCreateTagsINDEXErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "BitesCreateCountsChestErrorComponent", "BitesCreateCountsHeadErrorComponent", "BitesCreateCountsLeftArmErrorComponent", "BitesCreateCountsLeftLegErrorComponent", "BitesCreateCountsNonFieldErrorsErrorComponent", "BitesCreateCountsRightArmErrorComponent", "BitesCreateCountsRightLegErrorComponent", "BitesCreateCreatedAtErrorComponent", "BitesCreateEventEnvironmentErrorComponent", "BitesCreateEventMomentErrorComponent", "BitesCreateLocationNonFieldErrorsErrorComponent", "BitesCreateLocationPointLatitudeErrorComponent", "BitesCreateLocationPointLongitudeErrorComponent", "BitesCreateLocationPointNonFieldErrorsErrorComponent", "BitesCreateLocationSourceErrorComponent", "BitesCreateNonFieldErrorsErrorComponent", "BitesCreateSentAtErrorComponent", "BitesCreateTagsErrorComponent", "BitesCreateTagsINDEXErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -73,9 +73,6 @@ BitesCreateError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BitesCreateNonFieldErrorsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "BitesCreateNonFieldErrorsErrorComponent"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BitesCreateNoteErrorComponent") {
-        self$actual_instance <- instance
-        self$actual_type <- "BitesCreateNoteErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BitesCreateSentAtErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "BitesCreateSentAtErrorComponent"
@@ -86,7 +83,7 @@ BitesCreateError <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "BitesCreateTagsINDEXErrorComponent"
       } else {
-        stop(paste("Failed to initialize BitesCreateError with oneOf schemas BitesCreateCountsChestErrorComponent, BitesCreateCountsHeadErrorComponent, BitesCreateCountsLeftArmErrorComponent, BitesCreateCountsLeftLegErrorComponent, BitesCreateCountsNonFieldErrorsErrorComponent, BitesCreateCountsRightArmErrorComponent, BitesCreateCountsRightLegErrorComponent, BitesCreateCreatedAtErrorComponent, BitesCreateEventEnvironmentErrorComponent, BitesCreateEventMomentErrorComponent, BitesCreateLocationNonFieldErrorsErrorComponent, BitesCreateLocationPointLatitudeErrorComponent, BitesCreateLocationPointLongitudeErrorComponent, BitesCreateLocationPointNonFieldErrorsErrorComponent, BitesCreateLocationSourceErrorComponent, BitesCreateNonFieldErrorsErrorComponent, BitesCreateNoteErrorComponent, BitesCreateSentAtErrorComponent, BitesCreateTagsErrorComponent, BitesCreateTagsINDEXErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize BitesCreateError with oneOf schemas BitesCreateCountsChestErrorComponent, BitesCreateCountsHeadErrorComponent, BitesCreateCountsLeftArmErrorComponent, BitesCreateCountsLeftLegErrorComponent, BitesCreateCountsNonFieldErrorsErrorComponent, BitesCreateCountsRightArmErrorComponent, BitesCreateCountsRightLegErrorComponent, BitesCreateCreatedAtErrorComponent, BitesCreateEventEnvironmentErrorComponent, BitesCreateEventMomentErrorComponent, BitesCreateLocationNonFieldErrorsErrorComponent, BitesCreateLocationPointLatitudeErrorComponent, BitesCreateLocationPointLongitudeErrorComponent, BitesCreateLocationPointNonFieldErrorsErrorComponent, BitesCreateLocationSourceErrorComponent, BitesCreateNonFieldErrorsErrorComponent, BitesCreateSentAtErrorComponent, BitesCreateTagsErrorComponent, BitesCreateTagsINDEXErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -232,21 +229,6 @@ BitesCreateError <- R6::R6Class(
 
       if (!is.null(`BitesCreateLocationPointLongitudeErrorComponent_result`["error"])) {
         error_messages <- append(error_messages, `BitesCreateLocationPointLongitudeErrorComponent_result`["message"])
-      }
-
-      `BitesCreateNoteErrorComponent_result` <- tryCatch({
-          `BitesCreateNoteErrorComponent`$public_methods$validateJSON(input)
-          `BitesCreateNoteErrorComponent_instance` <- `BitesCreateNoteErrorComponent`$new()
-          instance <- `BitesCreateNoteErrorComponent_instance`$fromJSON(input)
-          instance_type <- "BitesCreateNoteErrorComponent"
-          matched_schemas <- append(matched_schemas, "BitesCreateNoteErrorComponent")
-          matched <- matched + 1
-        },
-        error = function(err) err
-      )
-
-      if (!is.null(`BitesCreateNoteErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `BitesCreateNoteErrorComponent_result`["message"])
       }
 
       `BitesCreateTagsErrorComponent_result` <- tryCatch({
@@ -420,11 +402,11 @@ BitesCreateError <- R6::R6Class(
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into BitesCreateError with oneOf schemas BitesCreateCountsChestErrorComponent, BitesCreateCountsHeadErrorComponent, BitesCreateCountsLeftArmErrorComponent, BitesCreateCountsLeftLegErrorComponent, BitesCreateCountsNonFieldErrorsErrorComponent, BitesCreateCountsRightArmErrorComponent, BitesCreateCountsRightLegErrorComponent, BitesCreateCreatedAtErrorComponent, BitesCreateEventEnvironmentErrorComponent, BitesCreateEventMomentErrorComponent, BitesCreateLocationNonFieldErrorsErrorComponent, BitesCreateLocationPointLatitudeErrorComponent, BitesCreateLocationPointLongitudeErrorComponent, BitesCreateLocationPointNonFieldErrorsErrorComponent, BitesCreateLocationSourceErrorComponent, BitesCreateNonFieldErrorsErrorComponent, BitesCreateNoteErrorComponent, BitesCreateSentAtErrorComponent, BitesCreateTagsErrorComponent, BitesCreateTagsINDEXErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into BitesCreateError with oneOf schemas BitesCreateCountsChestErrorComponent, BitesCreateCountsHeadErrorComponent, BitesCreateCountsLeftArmErrorComponent, BitesCreateCountsLeftLegErrorComponent, BitesCreateCountsNonFieldErrorsErrorComponent, BitesCreateCountsRightArmErrorComponent, BitesCreateCountsRightLegErrorComponent, BitesCreateCreatedAtErrorComponent, BitesCreateEventEnvironmentErrorComponent, BitesCreateEventMomentErrorComponent, BitesCreateLocationNonFieldErrorsErrorComponent, BitesCreateLocationPointLatitudeErrorComponent, BitesCreateLocationPointLongitudeErrorComponent, BitesCreateLocationPointNonFieldErrorsErrorComponent, BitesCreateLocationSourceErrorComponent, BitesCreateNonFieldErrorsErrorComponent, BitesCreateSentAtErrorComponent, BitesCreateTagsErrorComponent, BitesCreateTagsINDEXErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into BitesCreateError with oneOf schemas BitesCreateCountsChestErrorComponent, BitesCreateCountsHeadErrorComponent, BitesCreateCountsLeftArmErrorComponent, BitesCreateCountsLeftLegErrorComponent, BitesCreateCountsNonFieldErrorsErrorComponent, BitesCreateCountsRightArmErrorComponent, BitesCreateCountsRightLegErrorComponent, BitesCreateCreatedAtErrorComponent, BitesCreateEventEnvironmentErrorComponent, BitesCreateEventMomentErrorComponent, BitesCreateLocationNonFieldErrorsErrorComponent, BitesCreateLocationPointLatitudeErrorComponent, BitesCreateLocationPointLongitudeErrorComponent, BitesCreateLocationPointNonFieldErrorsErrorComponent, BitesCreateLocationSourceErrorComponent, BitesCreateNonFieldErrorsErrorComponent, BitesCreateNoteErrorComponent, BitesCreateSentAtErrorComponent, BitesCreateTagsErrorComponent, BitesCreateTagsINDEXErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into BitesCreateError with oneOf schemas BitesCreateCountsChestErrorComponent, BitesCreateCountsHeadErrorComponent, BitesCreateCountsLeftArmErrorComponent, BitesCreateCountsLeftLegErrorComponent, BitesCreateCountsNonFieldErrorsErrorComponent, BitesCreateCountsRightArmErrorComponent, BitesCreateCountsRightLegErrorComponent, BitesCreateCreatedAtErrorComponent, BitesCreateEventEnvironmentErrorComponent, BitesCreateEventMomentErrorComponent, BitesCreateLocationNonFieldErrorsErrorComponent, BitesCreateLocationPointLatitudeErrorComponent, BitesCreateLocationPointLongitudeErrorComponent, BitesCreateLocationPointNonFieldErrorsErrorComponent, BitesCreateLocationSourceErrorComponent, BitesCreateNonFieldErrorsErrorComponent, BitesCreateSentAtErrorComponent, BitesCreateTagsErrorComponent, BitesCreateTagsINDEXErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

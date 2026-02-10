@@ -12,7 +12,7 @@ test_that("create", {
   # @param sent_at character 
   # @param location LocationRequest 
   # @param photos array[data.frame] 
-  # @param note character Note user attached to report. (optional)
+  # @param note character  (optional)
   # @param tags array[character]  (optional)
   # @param event_environment character The environment where the event took place. (optional)
   # @param event_moment character The moment of the day when the event took place. (optional)
@@ -33,21 +33,59 @@ test_that("destroy", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("list", {
-  # tests for list
+test_that("geo_list", {
+  # tests for geo_list
   # base path: https://api.mosquitoalert.com/v1
+  # @param boundary_uuid character  (optional)
   # @param country_id integer  (optional)
   # @param created_at_after character Created at (optional)
   # @param created_at_before character Created at (optional)
+  # @param dist numeric Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (optional)
+  # @param format character  (optional)
+  # @param geo_precision numeric Latitude/Longitude precision (optional)
   # @param has_photos character Has any photo (optional)
-  # @param identification_taxon_ids array[integer]  (optional)
+  # @param identification_taxon_ids array[character]  (optional)
+  # @param identification_taxon_ids_lookup character  (optional)
+  # @param negate_identification_taxon_ids character Negate identification_taxon_ids filter (optional)
   # @param order_by array[character] Ordenamiento   (optional)
-  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
-  # @param page_size integer Número de resultados a devolver por página. (optional)
+  # @param point array[numeric] Point represented in **x,y** format. Represents **point** in **Distance to point filter** (optional)
   # @param received_at_after character Received at (optional)
   # @param received_at_before character Received at (optional)
   # @param search character Un término de búsqueda. (optional)
   # @param short_id character Short ID (optional)
+  # @param tags array[character] Múltiples valores separados por comas. (optional)
+  # @param updated_at_after character Update at (optional)
+  # @param updated_at_before character Update at (optional)
+  # @param user_uuid character  (optional)
+  # @return [array[ObservationGeoModel]]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("list", {
+  # tests for list
+  # base path: https://api.mosquitoalert.com/v1
+  # @param boundary_uuid character  (optional)
+  # @param country_id integer  (optional)
+  # @param created_at_after character Created at (optional)
+  # @param created_at_before character Created at (optional)
+  # @param dist numeric Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (optional)
+  # @param format character  (optional)
+  # @param geo_precision numeric Latitude/Longitude precision (optional)
+  # @param has_photos character Has any photo (optional)
+  # @param identification_taxon_ids array[character]  (optional)
+  # @param identification_taxon_ids_lookup character  (optional)
+  # @param negate_identification_taxon_ids character Negate identification_taxon_ids filter (optional)
+  # @param order_by array[character] Ordenamiento   (optional)
+  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
+  # @param page_size integer Número de resultados a devolver por página. (optional)
+  # @param point array[numeric] Point represented in **x,y** format. Represents **point** in **Distance to point filter** (optional)
+  # @param received_at_after character Received at (optional)
+  # @param received_at_before character Received at (optional)
+  # @param search character Un término de búsqueda. (optional)
+  # @param short_id character Short ID (optional)
+  # @param tags array[character] Múltiples valores separados por comas. (optional)
   # @param updated_at_after character Update at (optional)
   # @param updated_at_before character Update at (optional)
   # @param user_uuid character  (optional)
@@ -61,18 +99,26 @@ test_that("list_mine", {
   # tests for list_mine
   # base path: https://api.mosquitoalert.com/v1
   # Get Current User&#39;s Observations
+  # @param boundary_uuid character  (optional)
   # @param country_id integer  (optional)
   # @param created_at_after character Created at (optional)
   # @param created_at_before character Created at (optional)
+  # @param dist numeric Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (optional)
+  # @param format character  (optional)
+  # @param geo_precision numeric Latitude/Longitude precision (optional)
   # @param has_photos character Has any photo (optional)
-  # @param identification_taxon_ids array[integer]  (optional)
+  # @param identification_taxon_ids array[character]  (optional)
+  # @param identification_taxon_ids_lookup character  (optional)
+  # @param negate_identification_taxon_ids character Negate identification_taxon_ids filter (optional)
   # @param order_by array[character] Ordenamiento   (optional)
   # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
   # @param page_size integer Número de resultados a devolver por página. (optional)
+  # @param point array[numeric] Point represented in **x,y** format. Represents **point** in **Distance to point filter** (optional)
   # @param received_at_after character Received at (optional)
   # @param received_at_before character Received at (optional)
   # @param search character Un término de búsqueda. (optional)
   # @param short_id character Short ID (optional)
+  # @param tags array[character] Múltiples valores separados por comas. (optional)
   # @param updated_at_after character Update at (optional)
   # @param updated_at_before character Update at (optional)
   # @param user_uuid character  (optional)

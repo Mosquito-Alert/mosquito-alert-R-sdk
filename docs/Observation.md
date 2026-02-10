@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **received_at** | **character** |  | [readonly] 
 **updated_at** | **character** | Date and time when the report was last modified | [readonly] 
 **location** | [**Location**](Location.md) |  | 
-**note** | **character** | Note user attached to report. | [optional] 
+**note** | **character** |  | [readonly] 
 **tags** | **array[character]** |  | [optional] 
 **published** | **character** |  | [readonly] 
 **photos** | [**array[SimplePhoto]**](SimplePhoto.md) |  | [readonly] 

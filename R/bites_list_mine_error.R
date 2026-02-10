@@ -16,21 +16,27 @@ BitesListMineError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("BitesListMineCountryIdErrorComponent", "BitesListMineCreatedAtErrorComponent", "BitesListMineOrderByErrorComponent", "BitesListMineReceivedAtErrorComponent", "BitesListMineShortIdErrorComponent", "BitesListMineUpdatedAtErrorComponent", "BitesListMineUserUuidErrorComponent"),
+    one_of = list("BitesListMineBoundaryUuidErrorComponent", "BitesListMineCountryIdErrorComponent", "BitesListMineCreatedAtErrorComponent", "BitesListMineGeoPrecisionErrorComponent", "BitesListMineOrderByErrorComponent", "BitesListMineReceivedAtErrorComponent", "BitesListMineShortIdErrorComponent", "BitesListMineTagsErrorComponent", "BitesListMineUpdatedAtErrorComponent", "BitesListMineUserUuidErrorComponent"),
 
     #' @description
     #' Initialize a new BitesListMineError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "BitesListMineCountryIdErrorComponent", "BitesListMineCreatedAtErrorComponent", "BitesListMineOrderByErrorComponent", "BitesListMineReceivedAtErrorComponent", "BitesListMineShortIdErrorComponent", "BitesListMineUpdatedAtErrorComponent", "BitesListMineUserUuidErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "BitesListMineBoundaryUuidErrorComponent", "BitesListMineCountryIdErrorComponent", "BitesListMineCreatedAtErrorComponent", "BitesListMineGeoPrecisionErrorComponent", "BitesListMineOrderByErrorComponent", "BitesListMineReceivedAtErrorComponent", "BitesListMineShortIdErrorComponent", "BitesListMineTagsErrorComponent", "BitesListMineUpdatedAtErrorComponent", "BitesListMineUserUuidErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BitesListMineBoundaryUuidErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "BitesListMineBoundaryUuidErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BitesListMineCountryIdErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "BitesListMineCountryIdErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BitesListMineCreatedAtErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "BitesListMineCreatedAtErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BitesListMineGeoPrecisionErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "BitesListMineGeoPrecisionErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BitesListMineOrderByErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "BitesListMineOrderByErrorComponent"
@@ -40,6 +46,9 @@ BitesListMineError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BitesListMineShortIdErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "BitesListMineShortIdErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BitesListMineTagsErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "BitesListMineTagsErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BitesListMineUpdatedAtErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "BitesListMineUpdatedAtErrorComponent"
@@ -47,7 +56,7 @@ BitesListMineError <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "BitesListMineUserUuidErrorComponent"
       } else {
-        stop(paste("Failed to initialize BitesListMineError with oneOf schemas BitesListMineCountryIdErrorComponent, BitesListMineCreatedAtErrorComponent, BitesListMineOrderByErrorComponent, BitesListMineReceivedAtErrorComponent, BitesListMineShortIdErrorComponent, BitesListMineUpdatedAtErrorComponent, BitesListMineUserUuidErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize BitesListMineError with oneOf schemas BitesListMineBoundaryUuidErrorComponent, BitesListMineCountryIdErrorComponent, BitesListMineCreatedAtErrorComponent, BitesListMineGeoPrecisionErrorComponent, BitesListMineOrderByErrorComponent, BitesListMineReceivedAtErrorComponent, BitesListMineShortIdErrorComponent, BitesListMineTagsErrorComponent, BitesListMineUpdatedAtErrorComponent, BitesListMineUserUuidErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -180,17 +189,62 @@ BitesListMineError <- R6::R6Class(
         error_messages <- append(error_messages, `BitesListMineOrderByErrorComponent_result`["message"])
       }
 
+      `BitesListMineTagsErrorComponent_result` <- tryCatch({
+          `BitesListMineTagsErrorComponent`$public_methods$validateJSON(input)
+          `BitesListMineTagsErrorComponent_instance` <- `BitesListMineTagsErrorComponent`$new()
+          instance <- `BitesListMineTagsErrorComponent_instance`$fromJSON(input)
+          instance_type <- "BitesListMineTagsErrorComponent"
+          matched_schemas <- append(matched_schemas, "BitesListMineTagsErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`BitesListMineTagsErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `BitesListMineTagsErrorComponent_result`["message"])
+      }
+
+      `BitesListMineGeoPrecisionErrorComponent_result` <- tryCatch({
+          `BitesListMineGeoPrecisionErrorComponent`$public_methods$validateJSON(input)
+          `BitesListMineGeoPrecisionErrorComponent_instance` <- `BitesListMineGeoPrecisionErrorComponent`$new()
+          instance <- `BitesListMineGeoPrecisionErrorComponent_instance`$fromJSON(input)
+          instance_type <- "BitesListMineGeoPrecisionErrorComponent"
+          matched_schemas <- append(matched_schemas, "BitesListMineGeoPrecisionErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`BitesListMineGeoPrecisionErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `BitesListMineGeoPrecisionErrorComponent_result`["message"])
+      }
+
+      `BitesListMineBoundaryUuidErrorComponent_result` <- tryCatch({
+          `BitesListMineBoundaryUuidErrorComponent`$public_methods$validateJSON(input)
+          `BitesListMineBoundaryUuidErrorComponent_instance` <- `BitesListMineBoundaryUuidErrorComponent`$new()
+          instance <- `BitesListMineBoundaryUuidErrorComponent_instance`$fromJSON(input)
+          instance_type <- "BitesListMineBoundaryUuidErrorComponent"
+          matched_schemas <- append(matched_schemas, "BitesListMineBoundaryUuidErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`BitesListMineBoundaryUuidErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `BitesListMineBoundaryUuidErrorComponent_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into BitesListMineError with oneOf schemas BitesListMineCountryIdErrorComponent, BitesListMineCreatedAtErrorComponent, BitesListMineOrderByErrorComponent, BitesListMineReceivedAtErrorComponent, BitesListMineShortIdErrorComponent, BitesListMineUpdatedAtErrorComponent, BitesListMineUserUuidErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into BitesListMineError with oneOf schemas BitesListMineBoundaryUuidErrorComponent, BitesListMineCountryIdErrorComponent, BitesListMineCreatedAtErrorComponent, BitesListMineGeoPrecisionErrorComponent, BitesListMineOrderByErrorComponent, BitesListMineReceivedAtErrorComponent, BitesListMineShortIdErrorComponent, BitesListMineTagsErrorComponent, BitesListMineUpdatedAtErrorComponent, BitesListMineUserUuidErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into BitesListMineError with oneOf schemas BitesListMineCountryIdErrorComponent, BitesListMineCreatedAtErrorComponent, BitesListMineOrderByErrorComponent, BitesListMineReceivedAtErrorComponent, BitesListMineShortIdErrorComponent, BitesListMineUpdatedAtErrorComponent, BitesListMineUserUuidErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into BitesListMineError with oneOf schemas BitesListMineBoundaryUuidErrorComponent, BitesListMineCountryIdErrorComponent, BitesListMineCreatedAtErrorComponent, BitesListMineGeoPrecisionErrorComponent, BitesListMineOrderByErrorComponent, BitesListMineReceivedAtErrorComponent, BitesListMineShortIdErrorComponent, BitesListMineTagsErrorComponent, BitesListMineUpdatedAtErrorComponent, BitesListMineUserUuidErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

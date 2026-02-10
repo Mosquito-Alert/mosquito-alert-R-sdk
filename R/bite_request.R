@@ -10,7 +10,7 @@
 #' @field created_at  character
 #' @field sent_at  character
 #' @field location  \link{LocationRequest}
-#' @field note Note user attached to report. character [optional]
+#' @field note  character [optional]
 #' @field tags  list(character) [optional]
 #' @field event_environment The environment where the event took place. character [optional]
 #' @field event_moment The moment of the day when the event took place. character [optional]
@@ -37,7 +37,7 @@ BiteRequest <- R6::R6Class(
     #' @param sent_at sent_at
     #' @param location location
     #' @param counts counts
-    #' @param note Note user attached to report.
+    #' @param note note
     #' @param tags tags
     #' @param event_environment The environment where the event took place.
     #' @param event_moment The moment of the day when the event took place.

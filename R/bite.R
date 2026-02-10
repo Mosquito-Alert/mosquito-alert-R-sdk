@@ -16,7 +16,7 @@
 #' @field received_at  character
 #' @field updated_at Date and time when the report was last modified character
 #' @field location  \link{Location}
-#' @field note Note user attached to report. character [optional]
+#' @field note  character
 #' @field tags  list(character) [optional]
 #' @field published  character
 #' @field event_environment The environment where the event took place. character [optional]
@@ -56,14 +56,14 @@ Bite <- R6::R6Class(
     #' @param received_at received_at
     #' @param updated_at Date and time when the report was last modified
     #' @param location location
+    #' @param note note
     #' @param published published
     #' @param counts counts
-    #' @param note Note user attached to report.
     #' @param tags tags
     #' @param event_environment The environment where the event took place.
     #' @param event_moment The moment of the day when the event took place.
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `sent_at`, `received_at`, `updated_at`, `location`, `published`, `counts`, `note` = NULL, `tags` = NULL, `event_environment` = NULL, `event_moment` = NULL, ...) {
+    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `sent_at`, `received_at`, `updated_at`, `location`, `note`, `published`, `counts`, `tags` = NULL, `event_environment` = NULL, `event_moment` = NULL, ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
@@ -116,6 +116,12 @@ Bite <- R6::R6Class(
         stopifnot(R6::is.R6(`location`))
         self$`location` <- `location`
       }
+      if (!missing(`note`)) {
+        if (!(is.character(`note`) && length(`note`) == 1)) {
+          stop(paste("Error! Invalid data for `note`. Must be a string:", `note`))
+        }
+        self$`note` <- `note`
+      }
       if (!missing(`published`)) {
         if (!(is.logical(`published`) && length(`published`) == 1)) {
           stop(paste("Error! Invalid data for `published`. Must be a boolean:", `published`))
@@ -125,12 +131,6 @@ Bite <- R6::R6Class(
       if (!missing(`counts`)) {
         stopifnot(R6::is.R6(`counts`))
         self$`counts` <- `counts`
-      }
-      if (!is.null(`note`)) {
-        if (!(is.character(`note`) && length(`note`) == 1)) {
-          stop(paste("Error! Invalid data for `note`. Must be a string:", `note`))
-        }
-        self$`note` <- `note`
       }
       if (!is.null(`tags`)) {
         stopifnot(is.vector(`tags`), length(`tags`) != 0)
@@ -433,6 +433,14 @@ Bite <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`location`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Bite: the required field `location` is missing."))
+      }
+      # check the required field `note`
+      if (!is.null(input_json$`note`)) {
+        if (!(is.character(input_json$`note`) && length(input_json$`note`) == 1)) {
+          stop(paste("Error! Invalid data for `note`. Must be a string:", input_json$`note`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Bite: the required field `note` is missing."))
       }
       # check the required field `published`
       if (!is.null(input_json$`published`)) {

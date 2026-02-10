@@ -16,12 +16,12 @@ ObservationsCreateError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("ObservationsCreateCreatedAtErrorComponent", "ObservationsCreateEventEnvironmentErrorComponent", "ObservationsCreateEventMomentErrorComponent", "ObservationsCreateLocationNonFieldErrorsErrorComponent", "ObservationsCreateLocationPointLatitudeErrorComponent", "ObservationsCreateLocationPointLongitudeErrorComponent", "ObservationsCreateLocationPointNonFieldErrorsErrorComponent", "ObservationsCreateLocationSourceErrorComponent", "ObservationsCreateMosquitoAppearanceAbdomenErrorComponent", "ObservationsCreateMosquitoAppearanceLegsErrorComponent", "ObservationsCreateMosquitoAppearanceNonFieldErrorsErrorComponent", "ObservationsCreateMosquitoAppearanceSpecieErrorComponent", "ObservationsCreateMosquitoAppearanceThoraxErrorComponent", "ObservationsCreateNonFieldErrorsErrorComponent", "ObservationsCreateNoteErrorComponent", "ObservationsCreatePhotosErrorComponent", "ObservationsCreatePhotosINDEXErrorComponent", "ObservationsCreateSentAtErrorComponent", "ObservationsCreateTagsErrorComponent", "ObservationsCreateTagsINDEXErrorComponent"),
+    one_of = list("ObservationsCreateCreatedAtErrorComponent", "ObservationsCreateEventEnvironmentErrorComponent", "ObservationsCreateEventMomentErrorComponent", "ObservationsCreateLocationNonFieldErrorsErrorComponent", "ObservationsCreateLocationPointLatitudeErrorComponent", "ObservationsCreateLocationPointLongitudeErrorComponent", "ObservationsCreateLocationPointNonFieldErrorsErrorComponent", "ObservationsCreateLocationSourceErrorComponent", "ObservationsCreateMosquitoAppearanceAbdomenErrorComponent", "ObservationsCreateMosquitoAppearanceLegsErrorComponent", "ObservationsCreateMosquitoAppearanceNonFieldErrorsErrorComponent", "ObservationsCreateMosquitoAppearanceSpecieErrorComponent", "ObservationsCreateMosquitoAppearanceThoraxErrorComponent", "ObservationsCreateNonFieldErrorsErrorComponent", "ObservationsCreatePhotosErrorComponent", "ObservationsCreatePhotosINDEXErrorComponent", "ObservationsCreateSentAtErrorComponent", "ObservationsCreateTagsErrorComponent", "ObservationsCreateTagsINDEXErrorComponent"),
 
     #' @description
     #' Initialize a new ObservationsCreateError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "ObservationsCreateCreatedAtErrorComponent", "ObservationsCreateEventEnvironmentErrorComponent", "ObservationsCreateEventMomentErrorComponent", "ObservationsCreateLocationNonFieldErrorsErrorComponent", "ObservationsCreateLocationPointLatitudeErrorComponent", "ObservationsCreateLocationPointLongitudeErrorComponent", "ObservationsCreateLocationPointNonFieldErrorsErrorComponent", "ObservationsCreateLocationSourceErrorComponent", "ObservationsCreateMosquitoAppearanceAbdomenErrorComponent", "ObservationsCreateMosquitoAppearanceLegsErrorComponent", "ObservationsCreateMosquitoAppearanceNonFieldErrorsErrorComponent", "ObservationsCreateMosquitoAppearanceSpecieErrorComponent", "ObservationsCreateMosquitoAppearanceThoraxErrorComponent", "ObservationsCreateNonFieldErrorsErrorComponent", "ObservationsCreateNoteErrorComponent", "ObservationsCreatePhotosErrorComponent", "ObservationsCreatePhotosINDEXErrorComponent", "ObservationsCreateSentAtErrorComponent", "ObservationsCreateTagsErrorComponent", "ObservationsCreateTagsINDEXErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "ObservationsCreateCreatedAtErrorComponent", "ObservationsCreateEventEnvironmentErrorComponent", "ObservationsCreateEventMomentErrorComponent", "ObservationsCreateLocationNonFieldErrorsErrorComponent", "ObservationsCreateLocationPointLatitudeErrorComponent", "ObservationsCreateLocationPointLongitudeErrorComponent", "ObservationsCreateLocationPointNonFieldErrorsErrorComponent", "ObservationsCreateLocationSourceErrorComponent", "ObservationsCreateMosquitoAppearanceAbdomenErrorComponent", "ObservationsCreateMosquitoAppearanceLegsErrorComponent", "ObservationsCreateMosquitoAppearanceNonFieldErrorsErrorComponent", "ObservationsCreateMosquitoAppearanceSpecieErrorComponent", "ObservationsCreateMosquitoAppearanceThoraxErrorComponent", "ObservationsCreateNonFieldErrorsErrorComponent", "ObservationsCreatePhotosErrorComponent", "ObservationsCreatePhotosINDEXErrorComponent", "ObservationsCreateSentAtErrorComponent", "ObservationsCreateTagsErrorComponent", "ObservationsCreateTagsINDEXErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -67,9 +67,6 @@ ObservationsCreateError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsCreateNonFieldErrorsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "ObservationsCreateNonFieldErrorsErrorComponent"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsCreateNoteErrorComponent") {
-        self$actual_instance <- instance
-        self$actual_type <- "ObservationsCreateNoteErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsCreatePhotosErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "ObservationsCreatePhotosErrorComponent"
@@ -86,7 +83,7 @@ ObservationsCreateError <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "ObservationsCreateTagsINDEXErrorComponent"
       } else {
-        stop(paste("Failed to initialize ObservationsCreateError with oneOf schemas ObservationsCreateCreatedAtErrorComponent, ObservationsCreateEventEnvironmentErrorComponent, ObservationsCreateEventMomentErrorComponent, ObservationsCreateLocationNonFieldErrorsErrorComponent, ObservationsCreateLocationPointLatitudeErrorComponent, ObservationsCreateLocationPointLongitudeErrorComponent, ObservationsCreateLocationPointNonFieldErrorsErrorComponent, ObservationsCreateLocationSourceErrorComponent, ObservationsCreateMosquitoAppearanceAbdomenErrorComponent, ObservationsCreateMosquitoAppearanceLegsErrorComponent, ObservationsCreateMosquitoAppearanceNonFieldErrorsErrorComponent, ObservationsCreateMosquitoAppearanceSpecieErrorComponent, ObservationsCreateMosquitoAppearanceThoraxErrorComponent, ObservationsCreateNonFieldErrorsErrorComponent, ObservationsCreateNoteErrorComponent, ObservationsCreatePhotosErrorComponent, ObservationsCreatePhotosINDEXErrorComponent, ObservationsCreateSentAtErrorComponent, ObservationsCreateTagsErrorComponent, ObservationsCreateTagsINDEXErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize ObservationsCreateError with oneOf schemas ObservationsCreateCreatedAtErrorComponent, ObservationsCreateEventEnvironmentErrorComponent, ObservationsCreateEventMomentErrorComponent, ObservationsCreateLocationNonFieldErrorsErrorComponent, ObservationsCreateLocationPointLatitudeErrorComponent, ObservationsCreateLocationPointLongitudeErrorComponent, ObservationsCreateLocationPointNonFieldErrorsErrorComponent, ObservationsCreateLocationSourceErrorComponent, ObservationsCreateMosquitoAppearanceAbdomenErrorComponent, ObservationsCreateMosquitoAppearanceLegsErrorComponent, ObservationsCreateMosquitoAppearanceNonFieldErrorsErrorComponent, ObservationsCreateMosquitoAppearanceSpecieErrorComponent, ObservationsCreateMosquitoAppearanceThoraxErrorComponent, ObservationsCreateNonFieldErrorsErrorComponent, ObservationsCreatePhotosErrorComponent, ObservationsCreatePhotosINDEXErrorComponent, ObservationsCreateSentAtErrorComponent, ObservationsCreateTagsErrorComponent, ObservationsCreateTagsINDEXErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -232,21 +229,6 @@ ObservationsCreateError <- R6::R6Class(
 
       if (!is.null(`ObservationsCreateLocationPointLongitudeErrorComponent_result`["error"])) {
         error_messages <- append(error_messages, `ObservationsCreateLocationPointLongitudeErrorComponent_result`["message"])
-      }
-
-      `ObservationsCreateNoteErrorComponent_result` <- tryCatch({
-          `ObservationsCreateNoteErrorComponent`$public_methods$validateJSON(input)
-          `ObservationsCreateNoteErrorComponent_instance` <- `ObservationsCreateNoteErrorComponent`$new()
-          instance <- `ObservationsCreateNoteErrorComponent_instance`$fromJSON(input)
-          instance_type <- "ObservationsCreateNoteErrorComponent"
-          matched_schemas <- append(matched_schemas, "ObservationsCreateNoteErrorComponent")
-          matched <- matched + 1
-        },
-        error = function(err) err
-      )
-
-      if (!is.null(`ObservationsCreateNoteErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `ObservationsCreateNoteErrorComponent_result`["message"])
       }
 
       `ObservationsCreateTagsErrorComponent_result` <- tryCatch({
@@ -420,11 +402,11 @@ ObservationsCreateError <- R6::R6Class(
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into ObservationsCreateError with oneOf schemas ObservationsCreateCreatedAtErrorComponent, ObservationsCreateEventEnvironmentErrorComponent, ObservationsCreateEventMomentErrorComponent, ObservationsCreateLocationNonFieldErrorsErrorComponent, ObservationsCreateLocationPointLatitudeErrorComponent, ObservationsCreateLocationPointLongitudeErrorComponent, ObservationsCreateLocationPointNonFieldErrorsErrorComponent, ObservationsCreateLocationSourceErrorComponent, ObservationsCreateMosquitoAppearanceAbdomenErrorComponent, ObservationsCreateMosquitoAppearanceLegsErrorComponent, ObservationsCreateMosquitoAppearanceNonFieldErrorsErrorComponent, ObservationsCreateMosquitoAppearanceSpecieErrorComponent, ObservationsCreateMosquitoAppearanceThoraxErrorComponent, ObservationsCreateNonFieldErrorsErrorComponent, ObservationsCreateNoteErrorComponent, ObservationsCreatePhotosErrorComponent, ObservationsCreatePhotosINDEXErrorComponent, ObservationsCreateSentAtErrorComponent, ObservationsCreateTagsErrorComponent, ObservationsCreateTagsINDEXErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into ObservationsCreateError with oneOf schemas ObservationsCreateCreatedAtErrorComponent, ObservationsCreateEventEnvironmentErrorComponent, ObservationsCreateEventMomentErrorComponent, ObservationsCreateLocationNonFieldErrorsErrorComponent, ObservationsCreateLocationPointLatitudeErrorComponent, ObservationsCreateLocationPointLongitudeErrorComponent, ObservationsCreateLocationPointNonFieldErrorsErrorComponent, ObservationsCreateLocationSourceErrorComponent, ObservationsCreateMosquitoAppearanceAbdomenErrorComponent, ObservationsCreateMosquitoAppearanceLegsErrorComponent, ObservationsCreateMosquitoAppearanceNonFieldErrorsErrorComponent, ObservationsCreateMosquitoAppearanceSpecieErrorComponent, ObservationsCreateMosquitoAppearanceThoraxErrorComponent, ObservationsCreateNonFieldErrorsErrorComponent, ObservationsCreatePhotosErrorComponent, ObservationsCreatePhotosINDEXErrorComponent, ObservationsCreateSentAtErrorComponent, ObservationsCreateTagsErrorComponent, ObservationsCreateTagsINDEXErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into ObservationsCreateError with oneOf schemas ObservationsCreateCreatedAtErrorComponent, ObservationsCreateEventEnvironmentErrorComponent, ObservationsCreateEventMomentErrorComponent, ObservationsCreateLocationNonFieldErrorsErrorComponent, ObservationsCreateLocationPointLatitudeErrorComponent, ObservationsCreateLocationPointLongitudeErrorComponent, ObservationsCreateLocationPointNonFieldErrorsErrorComponent, ObservationsCreateLocationSourceErrorComponent, ObservationsCreateMosquitoAppearanceAbdomenErrorComponent, ObservationsCreateMosquitoAppearanceLegsErrorComponent, ObservationsCreateMosquitoAppearanceNonFieldErrorsErrorComponent, ObservationsCreateMosquitoAppearanceSpecieErrorComponent, ObservationsCreateMosquitoAppearanceThoraxErrorComponent, ObservationsCreateNonFieldErrorsErrorComponent, ObservationsCreateNoteErrorComponent, ObservationsCreatePhotosErrorComponent, ObservationsCreatePhotosINDEXErrorComponent, ObservationsCreateSentAtErrorComponent, ObservationsCreateTagsErrorComponent, ObservationsCreateTagsINDEXErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into ObservationsCreateError with oneOf schemas ObservationsCreateCreatedAtErrorComponent, ObservationsCreateEventEnvironmentErrorComponent, ObservationsCreateEventMomentErrorComponent, ObservationsCreateLocationNonFieldErrorsErrorComponent, ObservationsCreateLocationPointLatitudeErrorComponent, ObservationsCreateLocationPointLongitudeErrorComponent, ObservationsCreateLocationPointNonFieldErrorsErrorComponent, ObservationsCreateLocationSourceErrorComponent, ObservationsCreateMosquitoAppearanceAbdomenErrorComponent, ObservationsCreateMosquitoAppearanceLegsErrorComponent, ObservationsCreateMosquitoAppearanceNonFieldErrorsErrorComponent, ObservationsCreateMosquitoAppearanceSpecieErrorComponent, ObservationsCreateMosquitoAppearanceThoraxErrorComponent, ObservationsCreateNonFieldErrorsErrorComponent, ObservationsCreatePhotosErrorComponent, ObservationsCreatePhotosINDEXErrorComponent, ObservationsCreateSentAtErrorComponent, ObservationsCreateTagsErrorComponent, ObservationsCreateTagsINDEXErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

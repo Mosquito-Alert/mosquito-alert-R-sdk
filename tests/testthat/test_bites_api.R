@@ -25,19 +25,51 @@ test_that("destroy", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("list", {
-  # tests for list
+test_that("geo_list", {
+  # tests for geo_list
   # base path: https://api.mosquitoalert.com/v1
+  # @param boundary_uuid character  (optional)
   # @param country_id integer  (optional)
   # @param created_at_after character Created at (optional)
   # @param created_at_before character Created at (optional)
+  # @param dist numeric Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (optional)
+  # @param format character  (optional)
+  # @param geo_precision numeric Latitude/Longitude precision (optional)
   # @param order_by array[character] Ordenamiento   (optional)
-  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
-  # @param page_size integer Número de resultados a devolver por página. (optional)
+  # @param point array[numeric] Point represented in **x,y** format. Represents **point** in **Distance to point filter** (optional)
   # @param received_at_after character Received at (optional)
   # @param received_at_before character Received at (optional)
   # @param search character Un término de búsqueda. (optional)
   # @param short_id character Short ID (optional)
+  # @param tags array[character] Múltiples valores separados por comas. (optional)
+  # @param updated_at_after character Update at (optional)
+  # @param updated_at_before character Update at (optional)
+  # @param user_uuid character  (optional)
+  # @return [array[BiteGeoModel]]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("list", {
+  # tests for list
+  # base path: https://api.mosquitoalert.com/v1
+  # @param boundary_uuid character  (optional)
+  # @param country_id integer  (optional)
+  # @param created_at_after character Created at (optional)
+  # @param created_at_before character Created at (optional)
+  # @param dist numeric Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (optional)
+  # @param format character  (optional)
+  # @param geo_precision numeric Latitude/Longitude precision (optional)
+  # @param order_by array[character] Ordenamiento   (optional)
+  # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
+  # @param page_size integer Número de resultados a devolver por página. (optional)
+  # @param point array[numeric] Point represented in **x,y** format. Represents **point** in **Distance to point filter** (optional)
+  # @param received_at_after character Received at (optional)
+  # @param received_at_before character Received at (optional)
+  # @param search character Un término de búsqueda. (optional)
+  # @param short_id character Short ID (optional)
+  # @param tags array[character] Múltiples valores separados por comas. (optional)
   # @param updated_at_after character Update at (optional)
   # @param updated_at_before character Update at (optional)
   # @param user_uuid character  (optional)
@@ -51,16 +83,22 @@ test_that("list_mine", {
   # tests for list_mine
   # base path: https://api.mosquitoalert.com/v1
   # Get Current User&#39;s Bites
+  # @param boundary_uuid character  (optional)
   # @param country_id integer  (optional)
   # @param created_at_after character Created at (optional)
   # @param created_at_before character Created at (optional)
+  # @param dist numeric Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (optional)
+  # @param format character  (optional)
+  # @param geo_precision numeric Latitude/Longitude precision (optional)
   # @param order_by array[character] Ordenamiento   (optional)
   # @param page integer Un número de página dentro del conjunto de resultados paginado. (optional)
   # @param page_size integer Número de resultados a devolver por página. (optional)
+  # @param point array[numeric] Point represented in **x,y** format. Represents **point** in **Distance to point filter** (optional)
   # @param received_at_after character Received at (optional)
   # @param received_at_before character Received at (optional)
   # @param search character Un término de búsqueda. (optional)
   # @param short_id character Short ID (optional)
+  # @param tags array[character] Múltiples valores separados por comas. (optional)
   # @param updated_at_after character Update at (optional)
   # @param updated_at_before character Update at (optional)
   # @param user_uuid character  (optional)

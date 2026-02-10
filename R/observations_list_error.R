@@ -16,24 +16,33 @@ ObservationsListError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("ObservationsListCountryIdErrorComponent", "ObservationsListCreatedAtErrorComponent", "ObservationsListIdentificationTaxonIdsErrorComponent", "ObservationsListOrderByErrorComponent", "ObservationsListReceivedAtErrorComponent", "ObservationsListShortIdErrorComponent", "ObservationsListUpdatedAtErrorComponent", "ObservationsListUserUuidErrorComponent"),
+    one_of = list("ObservationsListBoundaryUuidErrorComponent", "ObservationsListCountryIdErrorComponent", "ObservationsListCreatedAtErrorComponent", "ObservationsListGeoPrecisionErrorComponent", "ObservationsListIdentificationTaxonIdsErrorComponent", "ObservationsListIdentificationTaxonIdsLookupErrorComponent", "ObservationsListOrderByErrorComponent", "ObservationsListReceivedAtErrorComponent", "ObservationsListShortIdErrorComponent", "ObservationsListTagsErrorComponent", "ObservationsListUpdatedAtErrorComponent", "ObservationsListUserUuidErrorComponent"),
 
     #' @description
     #' Initialize a new ObservationsListError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "ObservationsListCountryIdErrorComponent", "ObservationsListCreatedAtErrorComponent", "ObservationsListIdentificationTaxonIdsErrorComponent", "ObservationsListOrderByErrorComponent", "ObservationsListReceivedAtErrorComponent", "ObservationsListShortIdErrorComponent", "ObservationsListUpdatedAtErrorComponent", "ObservationsListUserUuidErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "ObservationsListBoundaryUuidErrorComponent", "ObservationsListCountryIdErrorComponent", "ObservationsListCreatedAtErrorComponent", "ObservationsListGeoPrecisionErrorComponent", "ObservationsListIdentificationTaxonIdsErrorComponent", "ObservationsListIdentificationTaxonIdsLookupErrorComponent", "ObservationsListOrderByErrorComponent", "ObservationsListReceivedAtErrorComponent", "ObservationsListShortIdErrorComponent", "ObservationsListTagsErrorComponent", "ObservationsListUpdatedAtErrorComponent", "ObservationsListUserUuidErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListBoundaryUuidErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "ObservationsListBoundaryUuidErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListCountryIdErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListCountryIdErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListCreatedAtErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListCreatedAtErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListGeoPrecisionErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "ObservationsListGeoPrecisionErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListIdentificationTaxonIdsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListIdentificationTaxonIdsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListIdentificationTaxonIdsLookupErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "ObservationsListIdentificationTaxonIdsLookupErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListOrderByErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListOrderByErrorComponent"
@@ -43,6 +52,9 @@ ObservationsListError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListShortIdErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListShortIdErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListTagsErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "ObservationsListTagsErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "ObservationsListUpdatedAtErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListUpdatedAtErrorComponent"
@@ -50,7 +62,7 @@ ObservationsListError <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "ObservationsListUserUuidErrorComponent"
       } else {
-        stop(paste("Failed to initialize ObservationsListError with oneOf schemas ObservationsListCountryIdErrorComponent, ObservationsListCreatedAtErrorComponent, ObservationsListIdentificationTaxonIdsErrorComponent, ObservationsListOrderByErrorComponent, ObservationsListReceivedAtErrorComponent, ObservationsListShortIdErrorComponent, ObservationsListUpdatedAtErrorComponent, ObservationsListUserUuidErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize ObservationsListError with oneOf schemas ObservationsListBoundaryUuidErrorComponent, ObservationsListCountryIdErrorComponent, ObservationsListCreatedAtErrorComponent, ObservationsListGeoPrecisionErrorComponent, ObservationsListIdentificationTaxonIdsErrorComponent, ObservationsListIdentificationTaxonIdsLookupErrorComponent, ObservationsListOrderByErrorComponent, ObservationsListReceivedAtErrorComponent, ObservationsListShortIdErrorComponent, ObservationsListTagsErrorComponent, ObservationsListUpdatedAtErrorComponent, ObservationsListUserUuidErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -183,6 +195,51 @@ ObservationsListError <- R6::R6Class(
         error_messages <- append(error_messages, `ObservationsListOrderByErrorComponent_result`["message"])
       }
 
+      `ObservationsListTagsErrorComponent_result` <- tryCatch({
+          `ObservationsListTagsErrorComponent`$public_methods$validateJSON(input)
+          `ObservationsListTagsErrorComponent_instance` <- `ObservationsListTagsErrorComponent`$new()
+          instance <- `ObservationsListTagsErrorComponent_instance`$fromJSON(input)
+          instance_type <- "ObservationsListTagsErrorComponent"
+          matched_schemas <- append(matched_schemas, "ObservationsListTagsErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`ObservationsListTagsErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `ObservationsListTagsErrorComponent_result`["message"])
+      }
+
+      `ObservationsListGeoPrecisionErrorComponent_result` <- tryCatch({
+          `ObservationsListGeoPrecisionErrorComponent`$public_methods$validateJSON(input)
+          `ObservationsListGeoPrecisionErrorComponent_instance` <- `ObservationsListGeoPrecisionErrorComponent`$new()
+          instance <- `ObservationsListGeoPrecisionErrorComponent_instance`$fromJSON(input)
+          instance_type <- "ObservationsListGeoPrecisionErrorComponent"
+          matched_schemas <- append(matched_schemas, "ObservationsListGeoPrecisionErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`ObservationsListGeoPrecisionErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `ObservationsListGeoPrecisionErrorComponent_result`["message"])
+      }
+
+      `ObservationsListBoundaryUuidErrorComponent_result` <- tryCatch({
+          `ObservationsListBoundaryUuidErrorComponent`$public_methods$validateJSON(input)
+          `ObservationsListBoundaryUuidErrorComponent_instance` <- `ObservationsListBoundaryUuidErrorComponent`$new()
+          instance <- `ObservationsListBoundaryUuidErrorComponent_instance`$fromJSON(input)
+          instance_type <- "ObservationsListBoundaryUuidErrorComponent"
+          matched_schemas <- append(matched_schemas, "ObservationsListBoundaryUuidErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`ObservationsListBoundaryUuidErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `ObservationsListBoundaryUuidErrorComponent_result`["message"])
+      }
+
       `ObservationsListIdentificationTaxonIdsErrorComponent_result` <- tryCatch({
           `ObservationsListIdentificationTaxonIdsErrorComponent`$public_methods$validateJSON(input)
           `ObservationsListIdentificationTaxonIdsErrorComponent_instance` <- `ObservationsListIdentificationTaxonIdsErrorComponent`$new()
@@ -198,17 +255,32 @@ ObservationsListError <- R6::R6Class(
         error_messages <- append(error_messages, `ObservationsListIdentificationTaxonIdsErrorComponent_result`["message"])
       }
 
+      `ObservationsListIdentificationTaxonIdsLookupErrorComponent_result` <- tryCatch({
+          `ObservationsListIdentificationTaxonIdsLookupErrorComponent`$public_methods$validateJSON(input)
+          `ObservationsListIdentificationTaxonIdsLookupErrorComponent_instance` <- `ObservationsListIdentificationTaxonIdsLookupErrorComponent`$new()
+          instance <- `ObservationsListIdentificationTaxonIdsLookupErrorComponent_instance`$fromJSON(input)
+          instance_type <- "ObservationsListIdentificationTaxonIdsLookupErrorComponent"
+          matched_schemas <- append(matched_schemas, "ObservationsListIdentificationTaxonIdsLookupErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`ObservationsListIdentificationTaxonIdsLookupErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `ObservationsListIdentificationTaxonIdsLookupErrorComponent_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into ObservationsListError with oneOf schemas ObservationsListCountryIdErrorComponent, ObservationsListCreatedAtErrorComponent, ObservationsListIdentificationTaxonIdsErrorComponent, ObservationsListOrderByErrorComponent, ObservationsListReceivedAtErrorComponent, ObservationsListShortIdErrorComponent, ObservationsListUpdatedAtErrorComponent, ObservationsListUserUuidErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into ObservationsListError with oneOf schemas ObservationsListBoundaryUuidErrorComponent, ObservationsListCountryIdErrorComponent, ObservationsListCreatedAtErrorComponent, ObservationsListGeoPrecisionErrorComponent, ObservationsListIdentificationTaxonIdsErrorComponent, ObservationsListIdentificationTaxonIdsLookupErrorComponent, ObservationsListOrderByErrorComponent, ObservationsListReceivedAtErrorComponent, ObservationsListShortIdErrorComponent, ObservationsListTagsErrorComponent, ObservationsListUpdatedAtErrorComponent, ObservationsListUserUuidErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into ObservationsListError with oneOf schemas ObservationsListCountryIdErrorComponent, ObservationsListCreatedAtErrorComponent, ObservationsListIdentificationTaxonIdsErrorComponent, ObservationsListOrderByErrorComponent, ObservationsListReceivedAtErrorComponent, ObservationsListShortIdErrorComponent, ObservationsListUpdatedAtErrorComponent, ObservationsListUserUuidErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into ObservationsListError with oneOf schemas ObservationsListBoundaryUuidErrorComponent, ObservationsListCountryIdErrorComponent, ObservationsListCreatedAtErrorComponent, ObservationsListGeoPrecisionErrorComponent, ObservationsListIdentificationTaxonIdsErrorComponent, ObservationsListIdentificationTaxonIdsLookupErrorComponent, ObservationsListOrderByErrorComponent, ObservationsListReceivedAtErrorComponent, ObservationsListShortIdErrorComponent, ObservationsListTagsErrorComponent, ObservationsListUpdatedAtErrorComponent, ObservationsListUserUuidErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

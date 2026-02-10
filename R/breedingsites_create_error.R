@@ -16,12 +16,12 @@ BreedingsitesCreateError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("BreedingsitesCreateCreatedAtErrorComponent", "BreedingsitesCreateHasLarvaeErrorComponent", "BreedingsitesCreateHasNearMosquitoesErrorComponent", "BreedingsitesCreateHasWaterErrorComponent", "BreedingsitesCreateInPublicAreaErrorComponent", "BreedingsitesCreateLocationNonFieldErrorsErrorComponent", "BreedingsitesCreateLocationPointLatitudeErrorComponent", "BreedingsitesCreateLocationPointLongitudeErrorComponent", "BreedingsitesCreateLocationPointNonFieldErrorsErrorComponent", "BreedingsitesCreateLocationSourceErrorComponent", "BreedingsitesCreateNonFieldErrorsErrorComponent", "BreedingsitesCreateNoteErrorComponent", "BreedingsitesCreatePhotosErrorComponent", "BreedingsitesCreatePhotosINDEXErrorComponent", "BreedingsitesCreateSentAtErrorComponent", "BreedingsitesCreateSiteTypeErrorComponent", "BreedingsitesCreateTagsErrorComponent", "BreedingsitesCreateTagsINDEXErrorComponent"),
+    one_of = list("BreedingsitesCreateCreatedAtErrorComponent", "BreedingsitesCreateHasLarvaeErrorComponent", "BreedingsitesCreateHasNearMosquitoesErrorComponent", "BreedingsitesCreateHasWaterErrorComponent", "BreedingsitesCreateInPublicAreaErrorComponent", "BreedingsitesCreateLocationNonFieldErrorsErrorComponent", "BreedingsitesCreateLocationPointLatitudeErrorComponent", "BreedingsitesCreateLocationPointLongitudeErrorComponent", "BreedingsitesCreateLocationPointNonFieldErrorsErrorComponent", "BreedingsitesCreateLocationSourceErrorComponent", "BreedingsitesCreateNonFieldErrorsErrorComponent", "BreedingsitesCreatePhotosErrorComponent", "BreedingsitesCreatePhotosINDEXErrorComponent", "BreedingsitesCreateSentAtErrorComponent", "BreedingsitesCreateSiteTypeErrorComponent", "BreedingsitesCreateTagsErrorComponent", "BreedingsitesCreateTagsINDEXErrorComponent"),
 
     #' @description
     #' Initialize a new BreedingsitesCreateError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "BreedingsitesCreateCreatedAtErrorComponent", "BreedingsitesCreateHasLarvaeErrorComponent", "BreedingsitesCreateHasNearMosquitoesErrorComponent", "BreedingsitesCreateHasWaterErrorComponent", "BreedingsitesCreateInPublicAreaErrorComponent", "BreedingsitesCreateLocationNonFieldErrorsErrorComponent", "BreedingsitesCreateLocationPointLatitudeErrorComponent", "BreedingsitesCreateLocationPointLongitudeErrorComponent", "BreedingsitesCreateLocationPointNonFieldErrorsErrorComponent", "BreedingsitesCreateLocationSourceErrorComponent", "BreedingsitesCreateNonFieldErrorsErrorComponent", "BreedingsitesCreateNoteErrorComponent", "BreedingsitesCreatePhotosErrorComponent", "BreedingsitesCreatePhotosINDEXErrorComponent", "BreedingsitesCreateSentAtErrorComponent", "BreedingsitesCreateSiteTypeErrorComponent", "BreedingsitesCreateTagsErrorComponent", "BreedingsitesCreateTagsINDEXErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "BreedingsitesCreateCreatedAtErrorComponent", "BreedingsitesCreateHasLarvaeErrorComponent", "BreedingsitesCreateHasNearMosquitoesErrorComponent", "BreedingsitesCreateHasWaterErrorComponent", "BreedingsitesCreateInPublicAreaErrorComponent", "BreedingsitesCreateLocationNonFieldErrorsErrorComponent", "BreedingsitesCreateLocationPointLatitudeErrorComponent", "BreedingsitesCreateLocationPointLongitudeErrorComponent", "BreedingsitesCreateLocationPointNonFieldErrorsErrorComponent", "BreedingsitesCreateLocationSourceErrorComponent", "BreedingsitesCreateNonFieldErrorsErrorComponent", "BreedingsitesCreatePhotosErrorComponent", "BreedingsitesCreatePhotosINDEXErrorComponent", "BreedingsitesCreateSentAtErrorComponent", "BreedingsitesCreateSiteTypeErrorComponent", "BreedingsitesCreateTagsErrorComponent", "BreedingsitesCreateTagsINDEXErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -58,9 +58,6 @@ BreedingsitesCreateError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BreedingsitesCreateNonFieldErrorsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "BreedingsitesCreateNonFieldErrorsErrorComponent"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BreedingsitesCreateNoteErrorComponent") {
-        self$actual_instance <- instance
-        self$actual_type <- "BreedingsitesCreateNoteErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "BreedingsitesCreatePhotosErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "BreedingsitesCreatePhotosErrorComponent"
@@ -80,7 +77,7 @@ BreedingsitesCreateError <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "BreedingsitesCreateTagsINDEXErrorComponent"
       } else {
-        stop(paste("Failed to initialize BreedingsitesCreateError with oneOf schemas BreedingsitesCreateCreatedAtErrorComponent, BreedingsitesCreateHasLarvaeErrorComponent, BreedingsitesCreateHasNearMosquitoesErrorComponent, BreedingsitesCreateHasWaterErrorComponent, BreedingsitesCreateInPublicAreaErrorComponent, BreedingsitesCreateLocationNonFieldErrorsErrorComponent, BreedingsitesCreateLocationPointLatitudeErrorComponent, BreedingsitesCreateLocationPointLongitudeErrorComponent, BreedingsitesCreateLocationPointNonFieldErrorsErrorComponent, BreedingsitesCreateLocationSourceErrorComponent, BreedingsitesCreateNonFieldErrorsErrorComponent, BreedingsitesCreateNoteErrorComponent, BreedingsitesCreatePhotosErrorComponent, BreedingsitesCreatePhotosINDEXErrorComponent, BreedingsitesCreateSentAtErrorComponent, BreedingsitesCreateSiteTypeErrorComponent, BreedingsitesCreateTagsErrorComponent, BreedingsitesCreateTagsINDEXErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize BreedingsitesCreateError with oneOf schemas BreedingsitesCreateCreatedAtErrorComponent, BreedingsitesCreateHasLarvaeErrorComponent, BreedingsitesCreateHasNearMosquitoesErrorComponent, BreedingsitesCreateHasWaterErrorComponent, BreedingsitesCreateInPublicAreaErrorComponent, BreedingsitesCreateLocationNonFieldErrorsErrorComponent, BreedingsitesCreateLocationPointLatitudeErrorComponent, BreedingsitesCreateLocationPointLongitudeErrorComponent, BreedingsitesCreateLocationPointNonFieldErrorsErrorComponent, BreedingsitesCreateLocationSourceErrorComponent, BreedingsitesCreateNonFieldErrorsErrorComponent, BreedingsitesCreatePhotosErrorComponent, BreedingsitesCreatePhotosINDEXErrorComponent, BreedingsitesCreateSentAtErrorComponent, BreedingsitesCreateSiteTypeErrorComponent, BreedingsitesCreateTagsErrorComponent, BreedingsitesCreateTagsINDEXErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -228,21 +225,6 @@ BreedingsitesCreateError <- R6::R6Class(
         error_messages <- append(error_messages, `BreedingsitesCreateLocationPointLongitudeErrorComponent_result`["message"])
       }
 
-      `BreedingsitesCreateNoteErrorComponent_result` <- tryCatch({
-          `BreedingsitesCreateNoteErrorComponent`$public_methods$validateJSON(input)
-          `BreedingsitesCreateNoteErrorComponent_instance` <- `BreedingsitesCreateNoteErrorComponent`$new()
-          instance <- `BreedingsitesCreateNoteErrorComponent_instance`$fromJSON(input)
-          instance_type <- "BreedingsitesCreateNoteErrorComponent"
-          matched_schemas <- append(matched_schemas, "BreedingsitesCreateNoteErrorComponent")
-          matched <- matched + 1
-        },
-        error = function(err) err
-      )
-
-      if (!is.null(`BreedingsitesCreateNoteErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `BreedingsitesCreateNoteErrorComponent_result`["message"])
-      }
-
       `BreedingsitesCreateTagsErrorComponent_result` <- tryCatch({
           `BreedingsitesCreateTagsErrorComponent`$public_methods$validateJSON(input)
           `BreedingsitesCreateTagsErrorComponent_instance` <- `BreedingsitesCreateTagsErrorComponent`$new()
@@ -384,11 +366,11 @@ BreedingsitesCreateError <- R6::R6Class(
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into BreedingsitesCreateError with oneOf schemas BreedingsitesCreateCreatedAtErrorComponent, BreedingsitesCreateHasLarvaeErrorComponent, BreedingsitesCreateHasNearMosquitoesErrorComponent, BreedingsitesCreateHasWaterErrorComponent, BreedingsitesCreateInPublicAreaErrorComponent, BreedingsitesCreateLocationNonFieldErrorsErrorComponent, BreedingsitesCreateLocationPointLatitudeErrorComponent, BreedingsitesCreateLocationPointLongitudeErrorComponent, BreedingsitesCreateLocationPointNonFieldErrorsErrorComponent, BreedingsitesCreateLocationSourceErrorComponent, BreedingsitesCreateNonFieldErrorsErrorComponent, BreedingsitesCreateNoteErrorComponent, BreedingsitesCreatePhotosErrorComponent, BreedingsitesCreatePhotosINDEXErrorComponent, BreedingsitesCreateSentAtErrorComponent, BreedingsitesCreateSiteTypeErrorComponent, BreedingsitesCreateTagsErrorComponent, BreedingsitesCreateTagsINDEXErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into BreedingsitesCreateError with oneOf schemas BreedingsitesCreateCreatedAtErrorComponent, BreedingsitesCreateHasLarvaeErrorComponent, BreedingsitesCreateHasNearMosquitoesErrorComponent, BreedingsitesCreateHasWaterErrorComponent, BreedingsitesCreateInPublicAreaErrorComponent, BreedingsitesCreateLocationNonFieldErrorsErrorComponent, BreedingsitesCreateLocationPointLatitudeErrorComponent, BreedingsitesCreateLocationPointLongitudeErrorComponent, BreedingsitesCreateLocationPointNonFieldErrorsErrorComponent, BreedingsitesCreateLocationSourceErrorComponent, BreedingsitesCreateNonFieldErrorsErrorComponent, BreedingsitesCreatePhotosErrorComponent, BreedingsitesCreatePhotosINDEXErrorComponent, BreedingsitesCreateSentAtErrorComponent, BreedingsitesCreateSiteTypeErrorComponent, BreedingsitesCreateTagsErrorComponent, BreedingsitesCreateTagsINDEXErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into BreedingsitesCreateError with oneOf schemas BreedingsitesCreateCreatedAtErrorComponent, BreedingsitesCreateHasLarvaeErrorComponent, BreedingsitesCreateHasNearMosquitoesErrorComponent, BreedingsitesCreateHasWaterErrorComponent, BreedingsitesCreateInPublicAreaErrorComponent, BreedingsitesCreateLocationNonFieldErrorsErrorComponent, BreedingsitesCreateLocationPointLatitudeErrorComponent, BreedingsitesCreateLocationPointLongitudeErrorComponent, BreedingsitesCreateLocationPointNonFieldErrorsErrorComponent, BreedingsitesCreateLocationSourceErrorComponent, BreedingsitesCreateNonFieldErrorsErrorComponent, BreedingsitesCreateNoteErrorComponent, BreedingsitesCreatePhotosErrorComponent, BreedingsitesCreatePhotosINDEXErrorComponent, BreedingsitesCreateSentAtErrorComponent, BreedingsitesCreateSiteTypeErrorComponent, BreedingsitesCreateTagsErrorComponent, BreedingsitesCreateTagsINDEXErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into BreedingsitesCreateError with oneOf schemas BreedingsitesCreateCreatedAtErrorComponent, BreedingsitesCreateHasLarvaeErrorComponent, BreedingsitesCreateHasNearMosquitoesErrorComponent, BreedingsitesCreateHasWaterErrorComponent, BreedingsitesCreateInPublicAreaErrorComponent, BreedingsitesCreateLocationNonFieldErrorsErrorComponent, BreedingsitesCreateLocationPointLatitudeErrorComponent, BreedingsitesCreateLocationPointLongitudeErrorComponent, BreedingsitesCreateLocationPointNonFieldErrorsErrorComponent, BreedingsitesCreateLocationSourceErrorComponent, BreedingsitesCreateNonFieldErrorsErrorComponent, BreedingsitesCreatePhotosErrorComponent, BreedingsitesCreatePhotosINDEXErrorComponent, BreedingsitesCreateSentAtErrorComponent, BreedingsitesCreateSiteTypeErrorComponent, BreedingsitesCreateTagsErrorComponent, BreedingsitesCreateTagsINDEXErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

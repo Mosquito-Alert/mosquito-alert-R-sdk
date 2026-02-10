@@ -16,11 +16,11 @@
 #' @field received_at  character
 #' @field updated_at Date and time when the report was last modified character
 #' @field location  \link{Location}
-#' @field note Note user attached to report. character [optional]
+#' @field note  character
 #' @field tags  list(character) [optional]
 #' @field published  character
 #' @field photos  list(\link{SimplePhoto})
-#' @field site_type Breeding site type. character
+#' @field site_type  character
 #' @field has_water Either if the user perceived water in the breeding site. character [optional]
 #' @field in_public_area Either if the breeding site is found in a public area. character [optional]
 #' @field has_near_mosquitoes Either if the user perceived mosquitoes near the breeding site (less than 10 meters). character [optional]
@@ -62,17 +62,17 @@ BreedingSite <- R6::R6Class(
     #' @param received_at received_at
     #' @param updated_at Date and time when the report was last modified
     #' @param location location
+    #' @param note note
     #' @param published published
     #' @param photos photos
-    #' @param site_type Breeding site type.
-    #' @param note Note user attached to report.
+    #' @param site_type site_type
     #' @param tags tags
     #' @param has_water Either if the user perceived water in the breeding site.
     #' @param in_public_area Either if the breeding site is found in a public area.
     #' @param has_near_mosquitoes Either if the user perceived mosquitoes near the breeding site (less than 10 meters).
     #' @param has_larvae Either if the user perceived larvaes the breeding site.
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `sent_at`, `received_at`, `updated_at`, `location`, `published`, `photos`, `site_type`, `note` = NULL, `tags` = NULL, `has_water` = NULL, `in_public_area` = NULL, `has_near_mosquitoes` = NULL, `has_larvae` = NULL, ...) {
+    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `sent_at`, `received_at`, `updated_at`, `location`, `note`, `published`, `photos`, `site_type`, `tags` = NULL, `has_water` = NULL, `in_public_area` = NULL, `has_near_mosquitoes` = NULL, `has_larvae` = NULL, ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
@@ -125,6 +125,12 @@ BreedingSite <- R6::R6Class(
         stopifnot(R6::is.R6(`location`))
         self$`location` <- `location`
       }
+      if (!missing(`note`)) {
+        if (!(is.character(`note`) && length(`note`) == 1)) {
+          stop(paste("Error! Invalid data for `note`. Must be a string:", `note`))
+        }
+        self$`note` <- `note`
+      }
       if (!missing(`published`)) {
         if (!(is.logical(`published`) && length(`published`) == 1)) {
           stop(paste("Error! Invalid data for `published`. Must be a boolean:", `published`))
@@ -144,12 +150,6 @@ BreedingSite <- R6::R6Class(
           stop(paste("Error! Invalid data for `site_type`. Must be a string:", `site_type`))
         }
         self$`site_type` <- `site_type`
-      }
-      if (!is.null(`note`)) {
-        if (!(is.character(`note`) && length(`note`) == 1)) {
-          stop(paste("Error! Invalid data for `note`. Must be a string:", `note`))
-        }
-        self$`note` <- `note`
       }
       if (!is.null(`tags`)) {
         stopifnot(is.vector(`tags`), length(`tags`) != 0)
@@ -474,6 +474,14 @@ BreedingSite <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`location`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for BreedingSite: the required field `location` is missing."))
+      }
+      # check the required field `note`
+      if (!is.null(input_json$`note`)) {
+        if (!(is.character(input_json$`note`) && length(input_json$`note`) == 1)) {
+          stop(paste("Error! Invalid data for `note`. Must be a string:", input_json$`note`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for BreedingSite: the required field `note` is missing."))
       }
       # check the required field `published`
       if (!is.null(input_json$`published`)) {

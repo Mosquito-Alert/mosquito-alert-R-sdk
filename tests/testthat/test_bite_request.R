@@ -28,7 +28,6 @@ test_that("location", {
 
 test_that("note", {
   # tests for the property `note` (character)
-  # Note user attached to report.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`note`, "EXPECTED_RESULT")

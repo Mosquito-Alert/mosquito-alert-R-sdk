@@ -21,7 +21,7 @@
 #' var_sent_at <- "sent_at_example" # character | 
 #' var_location <- LocationRequest$new("auto", PointRequest$new(123, 123)) # LocationRequest | 
 #' var_photos <- c(123) # array[data.frame] | 
-#' var_note <- "note_example" # character | Note user attached to report. (Optional)
+#' var_note <- "note_example" # character |  (Optional)
 #' var_tags <- c("inner_example") # array[character] |  (Optional)
 #' var_event_environment <- "event_environment_example" # character | The environment where the event took place. (Optional)
 #' var_event_moment <- "event_moment_example" # character | The moment of the day when the event took place. (Optional)
@@ -63,21 +63,27 @@
 #' api_instance$observations_api$destroy(var_uuid)
 #'
 #'
-#' ####################  list  ####################
+#' ####################  geo_list  ####################
 #'
 #' library(MosquitoAlert)
+#' var_boundary_uuid <- "boundary_uuid_example" # character |  (Optional)
 #' var_country_id <- 56 # integer |  (Optional)
 #' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 #' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
+#' var_dist <- 1000 # numeric | Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (Optional)
+#' var_format <- "format_example" # character |  (Optional)
+#' var_geo_precision <- 3.4 # numeric | Latitude/Longitude precision (Optional)
 #' var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
-#' var_identification_taxon_ids <- c(123) # array[integer] |  (Optional)
+#' var_identification_taxon_ids <- c("inner_example") # array[character] |  (Optional)
+#' var_identification_taxon_ids_lookup <- "identification_taxon_ids_lookup_example" # character |  (Optional)
+#' var_negate_identification_taxon_ids <- "negate_identification_taxon_ids_example" # character | Negate identification_taxon_ids filter (Optional)
 #' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_point <- c(123) # array[numeric] | Point represented in **x,y** format. Represents **point** in **Distance to point filter** (Optional)
 #' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 #' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
 #' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
 #' var_short_id <- "short_id_example" # character | Short ID (Optional)
+#' var_tags <- c("inner_example") # array[character] | Múltiples valores separados por comas. (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
 #' var_user_uuid <- "user_uuid_example" # character |  (Optional)
@@ -94,26 +100,78 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-#' result <- api_instance$observations_api$list(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+#' # result <- api_instance$geo_list(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, format = var_format, geo_precision = var_geo_precision, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, identification_taxon_ids_lookup = var_identification_taxon_ids_lookup, negate_identification_taxon_ids = var_negate_identification_taxon_ids, order_by = var_order_by, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+#' result <- api_instance$observations_api$geo_list(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, format = var_format, geo_precision = var_geo_precision, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, identification_taxon_ids_lookup = var_identification_taxon_ids_lookup, negate_identification_taxon_ids = var_negate_identification_taxon_ids, order_by = var_order_by, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+#' dput(result)
+#'
+#'
+#' ####################  list  ####################
+#'
+#' library(MosquitoAlert)
+#' var_boundary_uuid <- "boundary_uuid_example" # character |  (Optional)
+#' var_country_id <- 56 # integer |  (Optional)
+#' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
+#' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
+#' var_dist <- 1000 # numeric | Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (Optional)
+#' var_format <- "format_example" # character |  (Optional)
+#' var_geo_precision <- 3.4 # numeric | Latitude/Longitude precision (Optional)
+#' var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
+#' var_identification_taxon_ids <- c("inner_example") # array[character] |  (Optional)
+#' var_identification_taxon_ids_lookup <- "identification_taxon_ids_lookup_example" # character |  (Optional)
+#' var_negate_identification_taxon_ids <- "negate_identification_taxon_ids_example" # character | Negate identification_taxon_ids filter (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
+#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_point <- c(123) # array[numeric] | Point represented in **x,y** format. Represents **point** in **Distance to point filter** (Optional)
+#' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
+#' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
+#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+#' var_short_id <- "short_id_example" # character | Short ID (Optional)
+#' var_tags <- c("inner_example") # array[character] | Múltiples valores separados por comas. (Optional)
+#' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
+#' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
+#' var_user_uuid <- "user_uuid_example" # character |  (Optional)
+#'
+#' api_instance <- mosquitoalert_api$new()
+#'
+#' # Configure API key authorization: tokenAuth
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: cookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure HTTP bearer authorization: jwtAuth
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$list(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, format = var_format, geo_precision = var_geo_precision, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, identification_taxon_ids_lookup = var_identification_taxon_ids_lookup, negate_identification_taxon_ids = var_negate_identification_taxon_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+#' result <- api_instance$observations_api$list(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, format = var_format, geo_precision = var_geo_precision, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, identification_taxon_ids_lookup = var_identification_taxon_ids_lookup, negate_identification_taxon_ids = var_negate_identification_taxon_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 #' dput(result)
 #'
 #'
 #' ####################  list_mine  ####################
 #'
 #' library(MosquitoAlert)
+#' var_boundary_uuid <- "boundary_uuid_example" # character |  (Optional)
 #' var_country_id <- 56 # integer |  (Optional)
 #' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 #' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
+#' var_dist <- 1000 # numeric | Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (Optional)
+#' var_format <- "format_example" # character |  (Optional)
+#' var_geo_precision <- 3.4 # numeric | Latitude/Longitude precision (Optional)
 #' var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
-#' var_identification_taxon_ids <- c(123) # array[integer] |  (Optional)
+#' var_identification_taxon_ids <- c("inner_example") # array[character] |  (Optional)
+#' var_identification_taxon_ids_lookup <- "identification_taxon_ids_lookup_example" # character |  (Optional)
+#' var_negate_identification_taxon_ids <- "negate_identification_taxon_ids_example" # character | Negate identification_taxon_ids filter (Optional)
 #' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
 #' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
 #' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_point <- c(123) # array[numeric] | Point represented in **x,y** format. Represents **point** in **Distance to point filter** (Optional)
 #' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 #' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
 #' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
 #' var_short_id <- "short_id_example" # character | Short ID (Optional)
+#' var_tags <- c("inner_example") # array[character] | Múltiples valores separados por comas. (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
 #' var_user_uuid <- "user_uuid_example" # character |  (Optional)
@@ -130,8 +188,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list_mine(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-#' result <- api_instance$observations_api$list_mine(country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+#' # result <- api_instance$list_mine(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, format = var_format, geo_precision = var_geo_precision, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, identification_taxon_ids_lookup = var_identification_taxon_ids_lookup, negate_identification_taxon_ids = var_negate_identification_taxon_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+#' result <- api_instance$observations_api$list_mine(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, format = var_format, geo_precision = var_geo_precision, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, identification_taxon_ids_lookup = var_identification_taxon_ids_lookup, negate_identification_taxon_ids = var_negate_identification_taxon_ids, order_by = var_order_by, page = var_page, page_size = var_page_size, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 #' dput(result)
 #'
 #'
@@ -185,7 +243,7 @@ ObservationsApi <- R6::R6Class(
     #' @param sent_at 
     #' @param location 
     #' @param photos 
-    #' @param note (optional) Note user attached to report.
+    #' @param note (optional) No description
     #' @param tags (optional) No description
     #' @param event_environment (optional) The environment where the event took place.
     #' @param event_moment (optional) The moment of the day when the event took place.
@@ -214,7 +272,7 @@ ObservationsApi <- R6::R6Class(
     #' @param sent_at 
     #' @param location 
     #' @param photos 
-    #' @param note (optional) Note user attached to report.
+    #' @param note (optional) No description
     #' @param tags (optional) No description
     #' @param event_environment (optional) The environment where the event took place.
     #' @param event_moment (optional) The moment of the day when the event took place.
@@ -452,27 +510,33 @@ ObservationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
+    #' @param boundary_uuid (optional) No description
     #' @param country_id (optional) No description
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
+    #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
+    #' @param format (optional) No description
+    #' @param geo_precision (optional) Latitude/Longitude precision
     #' @param has_photos (optional) Has any photo
     #' @param identification_taxon_ids (optional) No description
+    #' @param identification_taxon_ids_lookup (optional) No description
+    #' @param negate_identification_taxon_ids (optional) Negate identification_taxon_ids filter
     #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
     #' @param search (optional) Un término de búsqueda.
     #' @param short_id (optional) Short ID
+    #' @param tags (optional) Múltiples valores separados por comas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
-    #' @return PaginatedObservationList
-    list = function(country_id = NULL, created_at_after = NULL, created_at_before = NULL, has_photos = NULL, identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_with_http_info(country_id, created_at_after, created_at_before, has_photos, identification_taxon_ids, order_by, page, page_size, received_at_after, received_at_before, search, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    #' @return array[ObservationGeoModel]
+    geo_list = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+      local_var_response <- self$geo_list_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, format, geo_precision, has_photos, identification_taxon_ids, identification_taxon_ids_lookup, negate_identification_taxon_ids, order_by, point, received_at_after, received_at_before, search, short_id, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -487,26 +551,32 @@ ObservationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
+    #' @param boundary_uuid (optional) No description
     #' @param country_id (optional) No description
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
+    #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
+    #' @param format (optional) No description
+    #' @param geo_precision (optional) Latitude/Longitude precision
     #' @param has_photos (optional) Has any photo
     #' @param identification_taxon_ids (optional) No description
+    #' @param identification_taxon_ids_lookup (optional) No description
+    #' @param negate_identification_taxon_ids (optional) Negate identification_taxon_ids filter
     #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
     #' @param search (optional) Un término de búsqueda.
     #' @param short_id (optional) Short ID
+    #' @param tags (optional) Múltiples valores separados por comas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #'
-    #' @return API response (PaginatedObservationList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(country_id = NULL, created_at_after = NULL, created_at_before = NULL, has_photos = NULL, identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    #' @return API response (array[ObservationGeoModel]) with additional information such as HTTP status code, headers
+    geo_list_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -515,6 +585,306 @@ ObservationsApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (!missing(`boundary_uuid`) && is.null(`boundary_uuid`)) {
+        stop("Invalid value for `boundary_uuid` when calling ObservationsApi$geo_list, `boundary_uuid` is not nullable")
+      }
+
+      if (!missing(`country_id`) && is.null(`country_id`)) {
+        stop("Invalid value for `country_id` when calling ObservationsApi$geo_list, `country_id` is not nullable")
+      }
+
+      if (!missing(`created_at_after`) && is.null(`created_at_after`)) {
+        stop("Invalid value for `created_at_after` when calling ObservationsApi$geo_list, `created_at_after` is not nullable")
+      }
+
+      if (!missing(`created_at_before`) && is.null(`created_at_before`)) {
+        stop("Invalid value for `created_at_before` when calling ObservationsApi$geo_list, `created_at_before` is not nullable")
+      }
+
+      if (!missing(`dist`) && is.null(`dist`)) {
+        stop("Invalid value for `dist` when calling ObservationsApi$geo_list, `dist` is not nullable")
+      }
+
+      if (!missing(`format`) && is.null(`format`)) {
+        stop("Invalid value for `format` when calling ObservationsApi$geo_list, `format` is not nullable")
+      }
+
+      if (!missing(`geo_precision`) && is.null(`geo_precision`)) {
+        stop("Invalid value for `geo_precision` when calling ObservationsApi$geo_list, `geo_precision` is not nullable")
+      }
+
+      if (!missing(`has_photos`) && is.null(`has_photos`)) {
+        stop("Invalid value for `has_photos` when calling ObservationsApi$geo_list, `has_photos` is not nullable")
+      }
+
+      if (!missing(`identification_taxon_ids`) && is.null(`identification_taxon_ids`)) {
+        stop("Invalid value for `identification_taxon_ids` when calling ObservationsApi$geo_list, `identification_taxon_ids` is not nullable")
+      }
+
+      if (!missing(`identification_taxon_ids_lookup`) && is.null(`identification_taxon_ids_lookup`)) {
+        stop("Invalid value for `identification_taxon_ids_lookup` when calling ObservationsApi$geo_list, `identification_taxon_ids_lookup` is not nullable")
+      }
+
+      if (!missing(`negate_identification_taxon_ids`) && is.null(`negate_identification_taxon_ids`)) {
+        stop("Invalid value for `negate_identification_taxon_ids` when calling ObservationsApi$geo_list, `negate_identification_taxon_ids` is not nullable")
+      }
+
+      if (!missing(`order_by`) && is.null(`order_by`)) {
+        stop("Invalid value for `order_by` when calling ObservationsApi$geo_list, `order_by` is not nullable")
+      }
+
+      if (!missing(`point`) && is.null(`point`)) {
+        stop("Invalid value for `point` when calling ObservationsApi$geo_list, `point` is not nullable")
+      }
+      if (!is.null(`point`) && length(`point`) > 2) {
+        stop("Invalid length for `point` when calling ObservationsApi$geo_list, number of items must be less than or equal to 2.")
+      }
+      if (!is.null(`point`) && length(`point`) < 2) {
+        stop("Invalid length for `point` when calling ObservationsApi$geo_list, number of items must be greater than or equal to 2.")
+      }
+
+      if (!missing(`received_at_after`) && is.null(`received_at_after`)) {
+        stop("Invalid value for `received_at_after` when calling ObservationsApi$geo_list, `received_at_after` is not nullable")
+      }
+
+      if (!missing(`received_at_before`) && is.null(`received_at_before`)) {
+        stop("Invalid value for `received_at_before` when calling ObservationsApi$geo_list, `received_at_before` is not nullable")
+      }
+
+      if (!missing(`search`) && is.null(`search`)) {
+        stop("Invalid value for `search` when calling ObservationsApi$geo_list, `search` is not nullable")
+      }
+
+      if (!missing(`short_id`) && is.null(`short_id`)) {
+        stop("Invalid value for `short_id` when calling ObservationsApi$geo_list, `short_id` is not nullable")
+      }
+
+      if (!missing(`tags`) && is.null(`tags`)) {
+        stop("Invalid value for `tags` when calling ObservationsApi$geo_list, `tags` is not nullable")
+      }
+
+      if (!missing(`updated_at_after`) && is.null(`updated_at_after`)) {
+        stop("Invalid value for `updated_at_after` when calling ObservationsApi$geo_list, `updated_at_after` is not nullable")
+      }
+
+      if (!missing(`updated_at_before`) && is.null(`updated_at_before`)) {
+        stop("Invalid value for `updated_at_before` when calling ObservationsApi$geo_list, `updated_at_before` is not nullable")
+      }
+
+      if (!missing(`user_uuid`) && is.null(`user_uuid`)) {
+        stop("Invalid value for `user_uuid` when calling ObservationsApi$geo_list, `user_uuid` is not nullable")
+      }
+
+      query_params[["boundary_uuid"]] <- `boundary_uuid`
+
+      query_params[["country_id"]] <- `country_id`
+
+      query_params[["created_at_after"]] <- `created_at_after`
+
+      query_params[["created_at_before"]] <- `created_at_before`
+
+      query_params[["dist"]] <- `dist`
+
+      if (!is.null(`format`) && !(`format` %in% c("geojson", "json"))) {
+        stop("Invalid value for format when calling ObservationsApi$geo_list. Must be [geojson, json].")
+      }
+      query_params[["format"]] <- `format`
+
+      query_params[["geo_precision"]] <- `geo_precision`
+
+      query_params[["has_photos"]] <- `has_photos`
+
+      # explore
+      for (query_item in `identification_taxon_ids`) {
+        query_params[["identification_taxon_ids"]] <- c(query_params[["identification_taxon_ids"]], list(`identification_taxon_ids` = query_item))
+      }
+
+      if (!is.null(`identification_taxon_ids_lookup`) && !(`identification_taxon_ids_lookup` %in% c("is_child_of", "is_descendant_of", "is_tree_of"))) {
+        stop("Invalid value for identification_taxon_ids_lookup when calling ObservationsApi$geo_list. Must be [is_child_of, is_descendant_of, is_tree_of].")
+      }
+      query_params[["identification_taxon_ids_lookup"]] <- `identification_taxon_ids_lookup`
+
+      query_params[["negate_identification_taxon_ids"]] <- `negate_identification_taxon_ids`
+
+      # no explore
+      # validate enum values
+      for (query_item in `order_by`) {
+        if (!is.null(query_item) && !(query_item %in% c("-created_at", "-received_at", "created_at", "received_at"))) {
+          stop("Invalid value for order_by when calling ObservationsApi$geo_list. Must be [-created_at, -received_at, created_at, received_at].")
+        }
+      }
+      query_params[["order_by"]] <- I(paste(lapply(`order_by`, URLencode, reserved = TRUE), collapse = ","))
+
+      # no explore
+      query_params[["point"]] <- I(paste(lapply(`point`, URLencode, reserved = TRUE), collapse = ","))
+
+      query_params[["received_at_after"]] <- `received_at_after`
+
+      query_params[["received_at_before"]] <- `received_at_before`
+
+      query_params[["search"]] <- `search`
+
+      query_params[["short_id"]] <- `short_id`
+
+      # no explore
+      query_params[["tags"]] <- I(paste(lapply(`tags`, URLencode, reserved = TRUE), collapse = ","))
+
+      query_params[["updated_at_after"]] <- `updated_at_after`
+
+      query_params[["updated_at_before"]] <- `updated_at_before`
+
+      query_params[["user_uuid"]] <- `user_uuid`
+
+      local_var_url_path <- "/observations/geo/"
+      # API key authentication
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
+      }
+      # API key authentication
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json", "application/geo+json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          self$api_client$WriteFile(local_var_resp, data_file)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$DeserializeResponse(local_var_resp, "array[ObservationGeoModel]"),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' 
+    #'
+    #' @param boundary_uuid (optional) No description
+    #' @param country_id (optional) No description
+    #' @param created_at_after (optional) Created at
+    #' @param created_at_before (optional) Created at
+    #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
+    #' @param format (optional) No description
+    #' @param geo_precision (optional) Latitude/Longitude precision
+    #' @param has_photos (optional) Has any photo
+    #' @param identification_taxon_ids (optional) No description
+    #' @param identification_taxon_ids_lookup (optional) No description
+    #' @param negate_identification_taxon_ids (optional) Negate identification_taxon_ids filter
+    #' @param order_by (optional) Ordenamiento  
+    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
+    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+    #' @param received_at_after (optional) Received at
+    #' @param received_at_before (optional) Received at
+    #' @param search (optional) Un término de búsqueda.
+    #' @param short_id (optional) Short ID
+    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param updated_at_after (optional) Update at
+    #' @param updated_at_before (optional) Update at
+    #' @param user_uuid (optional) No description
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #'
+    #' @return PaginatedObservationList
+    list = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, format, geo_precision, has_photos, identification_taxon_ids, identification_taxon_ids_lookup, negate_identification_taxon_ids, order_by, page, page_size, point, received_at_after, received_at_before, search, short_id, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' 
+    #'
+    #' @param boundary_uuid (optional) No description
+    #' @param country_id (optional) No description
+    #' @param created_at_after (optional) Created at
+    #' @param created_at_before (optional) Created at
+    #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
+    #' @param format (optional) No description
+    #' @param geo_precision (optional) Latitude/Longitude precision
+    #' @param has_photos (optional) Has any photo
+    #' @param identification_taxon_ids (optional) No description
+    #' @param identification_taxon_ids_lookup (optional) No description
+    #' @param negate_identification_taxon_ids (optional) Negate identification_taxon_ids filter
+    #' @param order_by (optional) Ordenamiento  
+    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
+    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
+    #' @param received_at_after (optional) Received at
+    #' @param received_at_before (optional) Received at
+    #' @param search (optional) Un término de búsqueda.
+    #' @param short_id (optional) Short ID
+    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param updated_at_after (optional) Update at
+    #' @param updated_at_before (optional) Update at
+    #' @param user_uuid (optional) No description
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (PaginatedObservationList) with additional information such as HTTP status code, headers
+    list_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (!missing(`boundary_uuid`) && is.null(`boundary_uuid`)) {
+        stop("Invalid value for `boundary_uuid` when calling ObservationsApi$list, `boundary_uuid` is not nullable")
+      }
 
       if (!missing(`country_id`) && is.null(`country_id`)) {
         stop("Invalid value for `country_id` when calling ObservationsApi$list, `country_id` is not nullable")
@@ -528,12 +898,32 @@ ObservationsApi <- R6::R6Class(
         stop("Invalid value for `created_at_before` when calling ObservationsApi$list, `created_at_before` is not nullable")
       }
 
+      if (!missing(`dist`) && is.null(`dist`)) {
+        stop("Invalid value for `dist` when calling ObservationsApi$list, `dist` is not nullable")
+      }
+
+      if (!missing(`format`) && is.null(`format`)) {
+        stop("Invalid value for `format` when calling ObservationsApi$list, `format` is not nullable")
+      }
+
+      if (!missing(`geo_precision`) && is.null(`geo_precision`)) {
+        stop("Invalid value for `geo_precision` when calling ObservationsApi$list, `geo_precision` is not nullable")
+      }
+
       if (!missing(`has_photos`) && is.null(`has_photos`)) {
         stop("Invalid value for `has_photos` when calling ObservationsApi$list, `has_photos` is not nullable")
       }
 
       if (!missing(`identification_taxon_ids`) && is.null(`identification_taxon_ids`)) {
         stop("Invalid value for `identification_taxon_ids` when calling ObservationsApi$list, `identification_taxon_ids` is not nullable")
+      }
+
+      if (!missing(`identification_taxon_ids_lookup`) && is.null(`identification_taxon_ids_lookup`)) {
+        stop("Invalid value for `identification_taxon_ids_lookup` when calling ObservationsApi$list, `identification_taxon_ids_lookup` is not nullable")
+      }
+
+      if (!missing(`negate_identification_taxon_ids`) && is.null(`negate_identification_taxon_ids`)) {
+        stop("Invalid value for `negate_identification_taxon_ids` when calling ObservationsApi$list, `negate_identification_taxon_ids` is not nullable")
       }
 
       if (!missing(`order_by`) && is.null(`order_by`)) {
@@ -546,6 +936,16 @@ ObservationsApi <- R6::R6Class(
 
       if (!missing(`page_size`) && is.null(`page_size`)) {
         stop("Invalid value for `page_size` when calling ObservationsApi$list, `page_size` is not nullable")
+      }
+
+      if (!missing(`point`) && is.null(`point`)) {
+        stop("Invalid value for `point` when calling ObservationsApi$list, `point` is not nullable")
+      }
+      if (!is.null(`point`) && length(`point`) > 2) {
+        stop("Invalid length for `point` when calling ObservationsApi$list, number of items must be less than or equal to 2.")
+      }
+      if (!is.null(`point`) && length(`point`) < 2) {
+        stop("Invalid length for `point` when calling ObservationsApi$list, number of items must be greater than or equal to 2.")
       }
 
       if (!missing(`received_at_after`) && is.null(`received_at_after`)) {
@@ -564,6 +964,10 @@ ObservationsApi <- R6::R6Class(
         stop("Invalid value for `short_id` when calling ObservationsApi$list, `short_id` is not nullable")
       }
 
+      if (!missing(`tags`) && is.null(`tags`)) {
+        stop("Invalid value for `tags` when calling ObservationsApi$list, `tags` is not nullable")
+      }
+
       if (!missing(`updated_at_after`) && is.null(`updated_at_after`)) {
         stop("Invalid value for `updated_at_after` when calling ObservationsApi$list, `updated_at_after` is not nullable")
       }
@@ -576,11 +980,22 @@ ObservationsApi <- R6::R6Class(
         stop("Invalid value for `user_uuid` when calling ObservationsApi$list, `user_uuid` is not nullable")
       }
 
+      query_params[["boundary_uuid"]] <- `boundary_uuid`
+
       query_params[["country_id"]] <- `country_id`
 
       query_params[["created_at_after"]] <- `created_at_after`
 
       query_params[["created_at_before"]] <- `created_at_before`
+
+      query_params[["dist"]] <- `dist`
+
+      if (!is.null(`format`) && !(`format` %in% c("csv", "json"))) {
+        stop("Invalid value for format when calling ObservationsApi$list. Must be [csv, json].")
+      }
+      query_params[["format"]] <- `format`
+
+      query_params[["geo_precision"]] <- `geo_precision`
 
       query_params[["has_photos"]] <- `has_photos`
 
@@ -588,6 +1003,13 @@ ObservationsApi <- R6::R6Class(
       for (query_item in `identification_taxon_ids`) {
         query_params[["identification_taxon_ids"]] <- c(query_params[["identification_taxon_ids"]], list(`identification_taxon_ids` = query_item))
       }
+
+      if (!is.null(`identification_taxon_ids_lookup`) && !(`identification_taxon_ids_lookup` %in% c("is_child_of", "is_descendant_of", "is_tree_of"))) {
+        stop("Invalid value for identification_taxon_ids_lookup when calling ObservationsApi$list. Must be [is_child_of, is_descendant_of, is_tree_of].")
+      }
+      query_params[["identification_taxon_ids_lookup"]] <- `identification_taxon_ids_lookup`
+
+      query_params[["negate_identification_taxon_ids"]] <- `negate_identification_taxon_ids`
 
       # no explore
       # validate enum values
@@ -602,6 +1024,9 @@ ObservationsApi <- R6::R6Class(
 
       query_params[["page_size"]] <- `page_size`
 
+      # no explore
+      query_params[["point"]] <- I(paste(lapply(`point`, URLencode, reserved = TRUE), collapse = ","))
+
       query_params[["received_at_after"]] <- `received_at_after`
 
       query_params[["received_at_before"]] <- `received_at_before`
@@ -609,6 +1034,9 @@ ObservationsApi <- R6::R6Class(
       query_params[["search"]] <- `search`
 
       query_params[["short_id"]] <- `short_id`
+
+      # no explore
+      query_params[["tags"]] <- I(paste(lapply(`tags`, URLencode, reserved = TRUE), collapse = ","))
 
       query_params[["updated_at_after"]] <- `updated_at_after`
 
@@ -628,7 +1056,7 @@ ObservationsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
+      local_var_accepts <- list("application/json", "text/csv")
 
       # The Content-Type representation header
       local_var_content_types <- list()
@@ -682,18 +1110,26 @@ ObservationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
+    #' @param boundary_uuid (optional) No description
     #' @param country_id (optional) No description
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
+    #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
+    #' @param format (optional) No description
+    #' @param geo_precision (optional) Latitude/Longitude precision
     #' @param has_photos (optional) Has any photo
     #' @param identification_taxon_ids (optional) No description
+    #' @param identification_taxon_ids_lookup (optional) No description
+    #' @param negate_identification_taxon_ids (optional) Negate identification_taxon_ids filter
     #' @param order_by (optional) Ordenamiento  
     #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
     #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
     #' @param search (optional) Un término de búsqueda.
     #' @param short_id (optional) Short ID
+    #' @param tags (optional) Múltiples valores separados por comas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
@@ -701,8 +1137,8 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return PaginatedObservationList
-    list_mine = function(country_id = NULL, created_at_after = NULL, created_at_before = NULL, has_photos = NULL, identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_mine_with_http_info(country_id, created_at_after, created_at_before, has_photos, identification_taxon_ids, order_by, page, page_size, received_at_after, received_at_before, search, short_id, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    list_mine = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+      local_var_response <- self$list_mine_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, format, geo_precision, has_photos, identification_taxon_ids, identification_taxon_ids_lookup, negate_identification_taxon_ids, order_by, page, page_size, point, received_at_after, received_at_before, search, short_id, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -717,18 +1153,26 @@ ObservationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
+    #' @param boundary_uuid (optional) No description
     #' @param country_id (optional) No description
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
+    #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
+    #' @param format (optional) No description
+    #' @param geo_precision (optional) Latitude/Longitude precision
     #' @param has_photos (optional) Has any photo
     #' @param identification_taxon_ids (optional) No description
+    #' @param identification_taxon_ids_lookup (optional) No description
+    #' @param negate_identification_taxon_ids (optional) Negate identification_taxon_ids filter
     #' @param order_by (optional) Ordenamiento  
     #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
     #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
     #' @param search (optional) Un término de búsqueda.
     #' @param short_id (optional) Short ID
+    #' @param tags (optional) Múltiples valores separados por comas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
@@ -736,7 +1180,7 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (PaginatedObservationList) with additional information such as HTTP status code, headers
-    list_mine_with_http_info = function(country_id = NULL, created_at_after = NULL, created_at_before = NULL, has_photos = NULL, identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    list_mine_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -745,6 +1189,10 @@ ObservationsApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (!missing(`boundary_uuid`) && is.null(`boundary_uuid`)) {
+        stop("Invalid value for `boundary_uuid` when calling ObservationsApi$list_mine, `boundary_uuid` is not nullable")
+      }
 
       if (!missing(`country_id`) && is.null(`country_id`)) {
         stop("Invalid value for `country_id` when calling ObservationsApi$list_mine, `country_id` is not nullable")
@@ -758,12 +1206,32 @@ ObservationsApi <- R6::R6Class(
         stop("Invalid value for `created_at_before` when calling ObservationsApi$list_mine, `created_at_before` is not nullable")
       }
 
+      if (!missing(`dist`) && is.null(`dist`)) {
+        stop("Invalid value for `dist` when calling ObservationsApi$list_mine, `dist` is not nullable")
+      }
+
+      if (!missing(`format`) && is.null(`format`)) {
+        stop("Invalid value for `format` when calling ObservationsApi$list_mine, `format` is not nullable")
+      }
+
+      if (!missing(`geo_precision`) && is.null(`geo_precision`)) {
+        stop("Invalid value for `geo_precision` when calling ObservationsApi$list_mine, `geo_precision` is not nullable")
+      }
+
       if (!missing(`has_photos`) && is.null(`has_photos`)) {
         stop("Invalid value for `has_photos` when calling ObservationsApi$list_mine, `has_photos` is not nullable")
       }
 
       if (!missing(`identification_taxon_ids`) && is.null(`identification_taxon_ids`)) {
         stop("Invalid value for `identification_taxon_ids` when calling ObservationsApi$list_mine, `identification_taxon_ids` is not nullable")
+      }
+
+      if (!missing(`identification_taxon_ids_lookup`) && is.null(`identification_taxon_ids_lookup`)) {
+        stop("Invalid value for `identification_taxon_ids_lookup` when calling ObservationsApi$list_mine, `identification_taxon_ids_lookup` is not nullable")
+      }
+
+      if (!missing(`negate_identification_taxon_ids`) && is.null(`negate_identification_taxon_ids`)) {
+        stop("Invalid value for `negate_identification_taxon_ids` when calling ObservationsApi$list_mine, `negate_identification_taxon_ids` is not nullable")
       }
 
       if (!missing(`order_by`) && is.null(`order_by`)) {
@@ -776,6 +1244,16 @@ ObservationsApi <- R6::R6Class(
 
       if (!missing(`page_size`) && is.null(`page_size`)) {
         stop("Invalid value for `page_size` when calling ObservationsApi$list_mine, `page_size` is not nullable")
+      }
+
+      if (!missing(`point`) && is.null(`point`)) {
+        stop("Invalid value for `point` when calling ObservationsApi$list_mine, `point` is not nullable")
+      }
+      if (!is.null(`point`) && length(`point`) > 2) {
+        stop("Invalid length for `point` when calling ObservationsApi$list_mine, number of items must be less than or equal to 2.")
+      }
+      if (!is.null(`point`) && length(`point`) < 2) {
+        stop("Invalid length for `point` when calling ObservationsApi$list_mine, number of items must be greater than or equal to 2.")
       }
 
       if (!missing(`received_at_after`) && is.null(`received_at_after`)) {
@@ -794,6 +1272,10 @@ ObservationsApi <- R6::R6Class(
         stop("Invalid value for `short_id` when calling ObservationsApi$list_mine, `short_id` is not nullable")
       }
 
+      if (!missing(`tags`) && is.null(`tags`)) {
+        stop("Invalid value for `tags` when calling ObservationsApi$list_mine, `tags` is not nullable")
+      }
+
       if (!missing(`updated_at_after`) && is.null(`updated_at_after`)) {
         stop("Invalid value for `updated_at_after` when calling ObservationsApi$list_mine, `updated_at_after` is not nullable")
       }
@@ -806,11 +1288,22 @@ ObservationsApi <- R6::R6Class(
         stop("Invalid value for `user_uuid` when calling ObservationsApi$list_mine, `user_uuid` is not nullable")
       }
 
+      query_params[["boundary_uuid"]] <- `boundary_uuid`
+
       query_params[["country_id"]] <- `country_id`
 
       query_params[["created_at_after"]] <- `created_at_after`
 
       query_params[["created_at_before"]] <- `created_at_before`
+
+      query_params[["dist"]] <- `dist`
+
+      if (!is.null(`format`) && !(`format` %in% c("csv", "json"))) {
+        stop("Invalid value for format when calling ObservationsApi$list_mine. Must be [csv, json].")
+      }
+      query_params[["format"]] <- `format`
+
+      query_params[["geo_precision"]] <- `geo_precision`
 
       query_params[["has_photos"]] <- `has_photos`
 
@@ -818,6 +1311,13 @@ ObservationsApi <- R6::R6Class(
       for (query_item in `identification_taxon_ids`) {
         query_params[["identification_taxon_ids"]] <- c(query_params[["identification_taxon_ids"]], list(`identification_taxon_ids` = query_item))
       }
+
+      if (!is.null(`identification_taxon_ids_lookup`) && !(`identification_taxon_ids_lookup` %in% c("is_child_of", "is_descendant_of", "is_tree_of"))) {
+        stop("Invalid value for identification_taxon_ids_lookup when calling ObservationsApi$list_mine. Must be [is_child_of, is_descendant_of, is_tree_of].")
+      }
+      query_params[["identification_taxon_ids_lookup"]] <- `identification_taxon_ids_lookup`
+
+      query_params[["negate_identification_taxon_ids"]] <- `negate_identification_taxon_ids`
 
       # no explore
       # validate enum values
@@ -832,6 +1332,9 @@ ObservationsApi <- R6::R6Class(
 
       query_params[["page_size"]] <- `page_size`
 
+      # no explore
+      query_params[["point"]] <- I(paste(lapply(`point`, URLencode, reserved = TRUE), collapse = ","))
+
       query_params[["received_at_after"]] <- `received_at_after`
 
       query_params[["received_at_before"]] <- `received_at_before`
@@ -839,6 +1342,9 @@ ObservationsApi <- R6::R6Class(
       query_params[["search"]] <- `search`
 
       query_params[["short_id"]] <- `short_id`
+
+      # no explore
+      query_params[["tags"]] <- I(paste(lapply(`tags`, URLencode, reserved = TRUE), collapse = ","))
 
       query_params[["updated_at_after"]] <- `updated_at_after`
 
@@ -858,7 +1364,7 @@ ObservationsApi <- R6::R6Class(
       }
 
       # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
+      local_var_accepts <- list("application/json", "text/csv")
 
       # The Content-Type representation header
       local_var_content_types <- list()

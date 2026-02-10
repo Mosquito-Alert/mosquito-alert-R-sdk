@@ -21,6 +21,7 @@
 #' @field api_client API client
 #' @field auth_api an instance of AuthApi
 #' @field bites_api an instance of BitesApi
+#' @field boundaries_api an instance of BoundariesApi
 #' @field breeding_sites_api an instance of BreedingSitesApi
 #' @field campaigns_api an instance of CampaignsApi
 #' @field countries_api an instance of CountriesApi
@@ -42,6 +43,7 @@ mosquitoalert_api <- R6::R6Class(
     api_client = NULL,
     auth_api = NULL,
     bites_api = NULL,
+    boundaries_api = NULL,
     breeding_sites_api = NULL,
     campaigns_api = NULL,
     countries_api = NULL,
@@ -73,6 +75,8 @@ mosquitoalert_api <- R6::R6Class(
       self$auth_api <- AuthApi$new(self$api_client)
 
       self$bites_api <- BitesApi$new(self$api_client)
+
+      self$boundaries_api <- BoundariesApi$new(self$api_client)
 
       self$breeding_sites_api <- BreedingSitesApi$new(self$api_client)
 
