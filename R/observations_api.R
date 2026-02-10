@@ -71,7 +71,6 @@
 #' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 #' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 #' var_dist <- 1000 # numeric | Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (Optional)
-#' var_format <- "format_example" # character |  (Optional)
 #' var_geo_precision <- 3.4 # numeric | Latitude/Longitude precision (Optional)
 #' var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
 #' var_identification_taxon_ids <- c("inner_example") # array[character] |  (Optional)
@@ -100,8 +99,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$geo_list(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, format = var_format, geo_precision = var_geo_precision, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, identification_taxon_ids_lookup = var_identification_taxon_ids_lookup, negate_identification_taxon_ids = var_negate_identification_taxon_ids, order_by = var_order_by, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-#' result <- api_instance$observations_api$geo_list(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, format = var_format, geo_precision = var_geo_precision, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, identification_taxon_ids_lookup = var_identification_taxon_ids_lookup, negate_identification_taxon_ids = var_negate_identification_taxon_ids, order_by = var_order_by, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+#' # result <- api_instance$geo_list(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, geo_precision = var_geo_precision, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, identification_taxon_ids_lookup = var_identification_taxon_ids_lookup, negate_identification_taxon_ids = var_negate_identification_taxon_ids, order_by = var_order_by, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+#' result <- api_instance$observations_api$geo_list(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, geo_precision = var_geo_precision, has_photos = var_has_photos, identification_taxon_ids = var_identification_taxon_ids, identification_taxon_ids_lookup = var_identification_taxon_ids_lookup, negate_identification_taxon_ids = var_negate_identification_taxon_ids, order_by = var_order_by, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 #' dput(result)
 #'
 #'
@@ -515,7 +514,6 @@ ObservationsApi <- R6::R6Class(
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
     #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
-    #' @param format (optional) No description
     #' @param geo_precision (optional) Latitude/Longitude precision
     #' @param has_photos (optional) Has any photo
     #' @param identification_taxon_ids (optional) No description
@@ -535,8 +533,8 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return array[ObservationGeoModel]
-    geo_list = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$geo_list_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, format, geo_precision, has_photos, identification_taxon_ids, identification_taxon_ids_lookup, negate_identification_taxon_ids, order_by, point, received_at_after, received_at_before, search, short_id, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    geo_list = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+      local_var_response <- self$geo_list_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, geo_precision, has_photos, identification_taxon_ids, identification_taxon_ids_lookup, negate_identification_taxon_ids, order_by, point, received_at_after, received_at_before, search, short_id, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -556,7 +554,6 @@ ObservationsApi <- R6::R6Class(
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
     #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
-    #' @param format (optional) No description
     #' @param geo_precision (optional) Latitude/Longitude precision
     #' @param has_photos (optional) Has any photo
     #' @param identification_taxon_ids (optional) No description
@@ -576,7 +573,7 @@ ObservationsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #'
     #' @return API response (array[ObservationGeoModel]) with additional information such as HTTP status code, headers
-    geo_list_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    geo_list_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -604,10 +601,6 @@ ObservationsApi <- R6::R6Class(
 
       if (!missing(`dist`) && is.null(`dist`)) {
         stop("Invalid value for `dist` when calling ObservationsApi$geo_list, `dist` is not nullable")
-      }
-
-      if (!missing(`format`) && is.null(`format`)) {
-        stop("Invalid value for `format` when calling ObservationsApi$geo_list, `format` is not nullable")
       }
 
       if (!missing(`geo_precision`) && is.null(`geo_precision`)) {
@@ -685,11 +678,6 @@ ObservationsApi <- R6::R6Class(
       query_params[["created_at_before"]] <- `created_at_before`
 
       query_params[["dist"]] <- `dist`
-
-      if (!is.null(`format`) && !(`format` %in% c("geojson", "json"))) {
-        stop("Invalid value for format when calling ObservationsApi$geo_list. Must be [geojson, json].")
-      }
-      query_params[["format"]] <- `format`
 
       query_params[["geo_precision"]] <- `geo_precision`
 

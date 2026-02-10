@@ -33,7 +33,6 @@ test_that("geo_list", {
   # @param created_at_after character Created at (optional)
   # @param created_at_before character Created at (optional)
   # @param dist numeric Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (optional)
-  # @param format character  (optional)
   # @param geo_precision numeric Latitude/Longitude precision (optional)
   # @param order_by array[character] Ordenamiento   (optional)
   # @param point array[numeric] Point represented in **x,y** format. Represents **point** in **Distance to point filter** (optional)

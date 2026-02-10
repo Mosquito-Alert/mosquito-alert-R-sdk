@@ -135,7 +135,7 @@ void (empty response body)
 | **204** | No response body |  -  |
 
 # **geo_list**
-> array[BreedingSiteGeoModel] geo_list(boundary_uuid = var.boundary_uuid, country_id = var.country_id, created_at_after = var.created_at_after, created_at_before = var.created_at_before, dist = 1000, format = var.format, geo_precision = var.geo_precision, has_larvae = var.has_larvae, has_near_mosquitoes = var.has_near_mosquitoes, has_photos = var.has_photos, has_water = var.has_water, order_by = var.order_by, point = var.point, received_at_after = var.received_at_after, received_at_before = var.received_at_before, search = var.search, short_id = var.short_id, site_type = var.site_type, tags = var.tags, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
+> array[BreedingSiteGeoModel] geo_list(boundary_uuid = var.boundary_uuid, country_id = var.country_id, created_at_after = var.created_at_after, created_at_before = var.created_at_before, dist = 1000, geo_precision = var.geo_precision, has_larvae = var.has_larvae, has_near_mosquitoes = var.has_near_mosquitoes, has_photos = var.has_photos, has_water = var.has_water, order_by = var.order_by, point = var.point, received_at_after = var.received_at_after, received_at_before = var.received_at_before, search = var.search, short_id = var.short_id, site_type = var.site_type, tags = var.tags, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before, user_uuid = var.user_uuid)
 
 
 
@@ -149,7 +149,6 @@ var_country_id <- 56 # integer |  (Optional)
 var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 var_dist <- 1000 # numeric | Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (Optional)
-var_format <- "format_example" # character |  (Optional)
 var_geo_precision <- 3.4 # numeric | Latitude/Longitude precision (Optional)
 var_has_larvae <- "has_larvae_example" # character |  (Optional)
 var_has_near_mosquitoes <- "has_near_mosquitoes_example" # character |  (Optional)
@@ -175,8 +174,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$geo_list(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, format = var_format, geo_precision = var_geo_precision, has_larvae = var_has_larvae, has_near_mosquitoes = var_has_near_mosquitoes, has_photos = var_has_photos, has_water = var_has_water, order_by = var_order_by, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, site_type = var_site_type, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
-result <- api_instance$breeding_sites_api$geo_list(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, format = var_format, geo_precision = var_geo_precision, has_larvae = var_has_larvae, has_near_mosquitoes = var_has_near_mosquitoes, has_photos = var_has_photos, has_water = var_has_water, order_by = var_order_by, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, site_type = var_site_type, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
+# result <- api_instance$geo_list(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, geo_precision = var_geo_precision, has_larvae = var_has_larvae, has_near_mosquitoes = var_has_near_mosquitoes, has_photos = var_has_photos, has_water = var_has_water, order_by = var_order_by, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, site_type = var_site_type, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuiddata_file = "result.txt")
+result <- api_instance$breeding_sites_api$geo_list(boundary_uuid = var_boundary_uuid, country_id = var_country_id, created_at_after = var_created_at_after, created_at_before = var_created_at_before, dist = var_dist, geo_precision = var_geo_precision, has_larvae = var_has_larvae, has_near_mosquitoes = var_has_near_mosquitoes, has_photos = var_has_photos, has_water = var_has_water, order_by = var_order_by, point = var_point, received_at_after = var_received_at_after, received_at_before = var_received_at_before, search = var_search, short_id = var_short_id, site_type = var_site_type, tags = var_tags, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_uuid = var_user_uuid)
 dput(result)
 ```
 
@@ -189,7 +188,6 @@ Name | Type | Description  | Notes
  **created_at_after** | **character**| Created at | [optional] 
  **created_at_before** | **character**| Created at | [optional] 
  **dist** | **numeric**| Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. | [optional] [default to 1000]
- **format** | Enum [geojson, json] |  | [optional] 
  **geo_precision** | **numeric**| Latitude/Longitude precision | [optional] 
  **has_larvae** | **character**|  | [optional] 
  **has_near_mosquitoes** | **character**|  | [optional] 
