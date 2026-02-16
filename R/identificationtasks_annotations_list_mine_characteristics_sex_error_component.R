@@ -1,11 +1,11 @@
-#' Create a new IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent
+#' Create a new IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent
 #'
 #' @description
-#' IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent Class
+#' IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent Class
 #'
 #' @docType class
-#' @title IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent
-#' @description IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent Class
+#' @title IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent
+#' @description IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent Class
 #' @format An \code{R6Class} generator object
 #' @field attr  character
 #' @field code  character
@@ -13,15 +13,15 @@
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent <- R6::R6Class(
-  "IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent",
+IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent <- R6::R6Class(
+  "IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent",
   public = list(
     `attr` = NULL,
     `code` = NULL,
     `detail` = NULL,
 
     #' @description
-    #' Initialize a new IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent class.
+    #' Initialize a new IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent class.
     #'
     #' @param attr attr
     #' @param code code
@@ -29,8 +29,8 @@ IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent <- R6::R6Cl
     #' @param ... Other optional arguments.
     initialize = function(`attr`, `code`, `detail`, ...) {
       if (!missing(`attr`)) {
-        if (!(`attr` %in% c("characteristics.sex"))) {
-          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"characteristics.sex\".", sep = ""))
+        if (!(`attr` %in% c("characteristics_sex"))) {
+          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"characteristics_sex\".", sep = ""))
         }
         if (!(is.character(`attr`) && length(`attr`) == 1)) {
           stop(paste("Error! Invalid data for `attr`. Must be a string:", `attr`))
@@ -38,8 +38,8 @@ IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent <- R6::R6Cl
         self$`attr` <- `attr`
       }
       if (!missing(`code`)) {
-        if (!(`code` %in% c("invalid_choice", "null", "required"))) {
-          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\", \"null\", \"required\".", sep = ""))
+        if (!(`code` %in% c("invalid_choice"))) {
+          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\".", sep = ""))
         }
         if (!(is.character(`code`) && length(`code`) == 1)) {
           stop(paste("Error! Invalid data for `code`. Must be a string:", `code`))
@@ -66,9 +66,9 @@ IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent <- R6::R6Cl
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent as a base R list.
+    #' @return IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent as a base R list.
     #' @examples
-    #' # convert array of IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent (x) to a data frame
+    #' # convert array of IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -80,42 +80,42 @@ IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent <- R6::R6Cl
     },
 
     #' @description
-    #' Convert IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent to a base R type
+    #' Convert IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponentObject <- list()
+      IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponentObject <- list()
       if (!is.null(self$`attr`)) {
-        IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponentObject[["attr"]] <-
+        IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponentObject[["attr"]] <-
           self$`attr`
       }
       if (!is.null(self$`code`)) {
-        IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponentObject[["code"]] <-
+        IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponentObject[["code"]] <-
           self$`code`
       }
       if (!is.null(self$`detail`)) {
-        IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponentObject[["detail"]] <-
+        IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponentObject[["detail"]] <-
           self$`detail`
       }
-      return(IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponentObject)
+      return(IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponentObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent
+    #' @return the instance of IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`attr`)) {
-        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("characteristics.sex"))) {
-          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"characteristics.sex\".", sep = ""))
+        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("characteristics_sex"))) {
+          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"characteristics_sex\".", sep = ""))
         }
         self$`attr` <- this_object$`attr`
       }
       if (!is.null(this_object$`code`)) {
-        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice", "null", "required"))) {
-          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\", \"null\", \"required\".", sep = ""))
+        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice"))) {
+          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\".", sep = ""))
         }
         self$`code` <- this_object$`code`
       }
@@ -129,7 +129,7 @@ IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent <- R6::R6Cl
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent in JSON format
+    #' @return IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -137,18 +137,18 @@ IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent <- R6::R6Cl
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent
+    #' @return the instance of IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("characteristics.sex"))) {
-        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"characteristics.sex\".", sep = ""))
+      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("characteristics_sex"))) {
+        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"characteristics_sex\".", sep = ""))
       }
       self$`attr` <- this_object$`attr`
-      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice", "null", "required"))) {
-        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\", \"null\", \"required\".", sep = ""))
+      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice"))) {
+        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\".", sep = ""))
       }
       self$`code` <- this_object$`code`
       self$`detail` <- this_object$`detail`
@@ -156,7 +156,7 @@ IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent <- R6::R6Cl
     },
 
     #' @description
-    #' Validate JSON input with respect to IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent and throw an exception if invalid
+    #' Validate JSON input with respect to IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -167,7 +167,7 @@ IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent <- R6::R6Cl
           stop(paste("Error! Invalid data for `attr`. Must be a string:", input_json$`attr`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent: the required field `attr` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent: the required field `attr` is missing."))
       }
       # check the required field `code`
       if (!is.null(input_json$`code`)) {
@@ -175,7 +175,7 @@ IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent <- R6::R6Cl
           stop(paste("Error! Invalid data for `code`. Must be a string:", input_json$`code`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent: the required field `code` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent: the required field `code` is missing."))
       }
       # check the required field `detail`
       if (!is.null(input_json$`detail`)) {
@@ -183,14 +183,14 @@ IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent <- R6::R6Cl
           stop(paste("Error! Invalid data for `detail`. Must be a string:", input_json$`detail`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent: the required field `detail` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent: the required field `detail` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent
+    #' @return String representation of IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent
     toString = function() {
       self$toJSONString()
     },
@@ -253,13 +253,13 @@ IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent <- R6::R6Cl
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent$unlock()
+# IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent$unlock()
 #
 ## Below is an example to define the print function
-# IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent$set("public", "print", function(...) {
+# IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# IdentificationtasksAnnotationsCreateCharacteristicsSexErrorComponent$lock()
+# IdentificationtasksAnnotationsListMineCharacteristicsSexErrorComponent$lock()
 

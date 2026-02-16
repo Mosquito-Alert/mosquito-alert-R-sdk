@@ -53,3 +53,10 @@ test_that("agreement", {
   # uncomment below to test the property
   #expect_equal(model.instance$`agreement`, "EXPECTED_RESULT")
 })
+
+test_that("characteristics", {
+  # tests for the property `characteristics` (SpeciesCharacteristics)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`characteristics`, "EXPECTED_RESULT")
+})

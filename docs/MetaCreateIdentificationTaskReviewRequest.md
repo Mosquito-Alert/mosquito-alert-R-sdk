@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **public_photo_uuid** | **character** |  | 
 **is_safe** | **character** | Indicates if the content is safe for publication. | 
 **public_note** | **character** |  | [Min. length: 1] 
-**result** | [**AnnotationClassificationRequest**](AnnotationClassificationRequest.md) |  | 
+**classification** | [**SpeciesClassificationRequest**](SpeciesClassificationRequest.md) |  | 
+**characteristics** | [**SpeciesCharacteristicsRequest**](SpeciesCharacteristicsRequest.md) |  | [optional] 
 
 

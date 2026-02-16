@@ -1,34 +1,34 @@
-#' Create a new AnnotationCharacteristicsRequest
+#' Create a new SpeciesCharacteristics
 #'
 #' @description
-#' AnnotationCharacteristicsRequest Class
+#' SpeciesCharacteristics Class
 #'
 #' @docType class
-#' @title AnnotationCharacteristicsRequest
-#' @description AnnotationCharacteristicsRequest Class
+#' @title SpeciesCharacteristics
+#' @description SpeciesCharacteristics Class
 #' @format An \code{R6Class} generator object
-#' @field sex  character [optional]
+#' @field sex  character
 #' @field is_blood_fed  character [optional]
 #' @field is_gravid  character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-AnnotationCharacteristicsRequest <- R6::R6Class(
-  "AnnotationCharacteristicsRequest",
+SpeciesCharacteristics <- R6::R6Class(
+  "SpeciesCharacteristics",
   public = list(
     `sex` = NULL,
     `is_blood_fed` = NULL,
     `is_gravid` = NULL,
 
     #' @description
-    #' Initialize a new AnnotationCharacteristicsRequest class.
+    #' Initialize a new SpeciesCharacteristics class.
     #'
     #' @param sex sex
-    #' @param is_blood_fed is_blood_fed. Default to FALSE.
-    #' @param is_gravid is_gravid. Default to FALSE.
+    #' @param is_blood_fed is_blood_fed
+    #' @param is_gravid is_gravid
     #' @param ... Other optional arguments.
-    initialize = function(`sex` = NULL, `is_blood_fed` = FALSE, `is_gravid` = FALSE, ...) {
-      if (!is.null(`sex`)) {
+    initialize = function(`sex`, `is_blood_fed` = NULL, `is_gravid` = NULL, ...) {
+      if (!missing(`sex`)) {
         if (!(`sex` %in% c("male", "female"))) {
           stop(paste("Error! \"", `sex`, "\" cannot be assigned to `sex`. Must be \"male\", \"female\".", sep = ""))
         }
@@ -63,9 +63,9 @@ AnnotationCharacteristicsRequest <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return AnnotationCharacteristicsRequest as a base R list.
+    #' @return SpeciesCharacteristics as a base R list.
     #' @examples
-    #' # convert array of AnnotationCharacteristicsRequest (x) to a data frame
+    #' # convert array of SpeciesCharacteristics (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -77,31 +77,31 @@ AnnotationCharacteristicsRequest <- R6::R6Class(
     },
 
     #' @description
-    #' Convert AnnotationCharacteristicsRequest to a base R type
+    #' Convert SpeciesCharacteristics to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      AnnotationCharacteristicsRequestObject <- list()
+      SpeciesCharacteristicsObject <- list()
       if (!is.null(self$`sex`)) {
-        AnnotationCharacteristicsRequestObject[["sex"]] <-
+        SpeciesCharacteristicsObject[["sex"]] <-
           self$`sex`
       }
       if (!is.null(self$`is_blood_fed`)) {
-        AnnotationCharacteristicsRequestObject[["is_blood_fed"]] <-
+        SpeciesCharacteristicsObject[["is_blood_fed"]] <-
           self$`is_blood_fed`
       }
       if (!is.null(self$`is_gravid`)) {
-        AnnotationCharacteristicsRequestObject[["is_gravid"]] <-
+        SpeciesCharacteristicsObject[["is_gravid"]] <-
           self$`is_gravid`
       }
-      return(AnnotationCharacteristicsRequestObject)
+      return(SpeciesCharacteristicsObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of AnnotationCharacteristicsRequest
+    #' Deserialize JSON string into an instance of SpeciesCharacteristics
     #'
     #' @param input_json the JSON input
-    #' @return the instance of AnnotationCharacteristicsRequest
+    #' @return the instance of SpeciesCharacteristics
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`sex`)) {
@@ -123,7 +123,7 @@ AnnotationCharacteristicsRequest <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return AnnotationCharacteristicsRequest in JSON format
+    #' @return SpeciesCharacteristics in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -131,10 +131,10 @@ AnnotationCharacteristicsRequest <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of AnnotationCharacteristicsRequest
+    #' Deserialize JSON string into an instance of SpeciesCharacteristics
     #'
     #' @param input_json the JSON input
-    #' @return the instance of AnnotationCharacteristicsRequest
+    #' @return the instance of SpeciesCharacteristics
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`sex`) && !(this_object$`sex` %in% c("male", "female"))) {
@@ -147,17 +147,25 @@ AnnotationCharacteristicsRequest <- R6::R6Class(
     },
 
     #' @description
-    #' Validate JSON input with respect to AnnotationCharacteristicsRequest and throw an exception if invalid
+    #' Validate JSON input with respect to SpeciesCharacteristics and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `sex`
+      if (!is.null(input_json$`sex`)) {
+        if (!(is.character(input_json$`sex`) && length(input_json$`sex`) == 1)) {
+          stop(paste("Error! Invalid data for `sex`. Must be a string:", input_json$`sex`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for SpeciesCharacteristics: the required field `sex` is missing."))
+      }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of AnnotationCharacteristicsRequest
+    #' @return String representation of SpeciesCharacteristics
     toString = function() {
       self$toJSONString()
     },
@@ -167,6 +175,11 @@ AnnotationCharacteristicsRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `sex` is null
+      if (is.null(self$`sex`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -176,6 +189,11 @@ AnnotationCharacteristicsRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `sex` is null
+      if (is.null(self$`sex`)) {
+        invalid_fields["sex"] <- "Non-nullable required field `sex` cannot be null."
+      }
+
       invalid_fields
     },
 
@@ -190,13 +208,13 @@ AnnotationCharacteristicsRequest <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# AnnotationCharacteristicsRequest$unlock()
+# SpeciesCharacteristics$unlock()
 #
 ## Below is an example to define the print function
-# AnnotationCharacteristicsRequest$set("public", "print", function(...) {
+# SpeciesCharacteristics$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# AnnotationCharacteristicsRequest$lock()
+# SpeciesCharacteristics$lock()
 

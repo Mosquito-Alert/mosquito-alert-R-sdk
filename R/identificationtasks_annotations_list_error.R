@@ -16,15 +16,18 @@ IdentificationtasksAnnotationsListError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("IdentificationtasksAnnotationsListClassificationConfidenceErrorComponent", "IdentificationtasksAnnotationsListClassificationConfidenceLabelErrorComponent", "IdentificationtasksAnnotationsListClassificationTaxonIdsErrorComponent", "IdentificationtasksAnnotationsListCreatedAtErrorComponent", "IdentificationtasksAnnotationsListOrderByErrorComponent", "IdentificationtasksAnnotationsListTypeErrorComponent", "IdentificationtasksAnnotationsListUpdatedAtErrorComponent", "IdentificationtasksAnnotationsListUserIdsErrorComponent"),
+    one_of = list("IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent", "IdentificationtasksAnnotationsListClassificationConfidenceErrorComponent", "IdentificationtasksAnnotationsListClassificationConfidenceLabelErrorComponent", "IdentificationtasksAnnotationsListClassificationTaxonIdsErrorComponent", "IdentificationtasksAnnotationsListCreatedAtErrorComponent", "IdentificationtasksAnnotationsListOrderByErrorComponent", "IdentificationtasksAnnotationsListTypeErrorComponent", "IdentificationtasksAnnotationsListUpdatedAtErrorComponent", "IdentificationtasksAnnotationsListUserIdsErrorComponent"),
 
     #' @description
     #' Initialize a new IdentificationtasksAnnotationsListError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "IdentificationtasksAnnotationsListClassificationConfidenceErrorComponent", "IdentificationtasksAnnotationsListClassificationConfidenceLabelErrorComponent", "IdentificationtasksAnnotationsListClassificationTaxonIdsErrorComponent", "IdentificationtasksAnnotationsListCreatedAtErrorComponent", "IdentificationtasksAnnotationsListOrderByErrorComponent", "IdentificationtasksAnnotationsListTypeErrorComponent", "IdentificationtasksAnnotationsListUpdatedAtErrorComponent", "IdentificationtasksAnnotationsListUserIdsErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent", "IdentificationtasksAnnotationsListClassificationConfidenceErrorComponent", "IdentificationtasksAnnotationsListClassificationConfidenceLabelErrorComponent", "IdentificationtasksAnnotationsListClassificationTaxonIdsErrorComponent", "IdentificationtasksAnnotationsListCreatedAtErrorComponent", "IdentificationtasksAnnotationsListOrderByErrorComponent", "IdentificationtasksAnnotationsListTypeErrorComponent", "IdentificationtasksAnnotationsListUpdatedAtErrorComponent", "IdentificationtasksAnnotationsListUserIdsErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksAnnotationsListClassificationConfidenceErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "IdentificationtasksAnnotationsListClassificationConfidenceErrorComponent"
@@ -50,7 +53,7 @@ IdentificationtasksAnnotationsListError <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "IdentificationtasksAnnotationsListUserIdsErrorComponent"
       } else {
-        stop(paste("Failed to initialize IdentificationtasksAnnotationsListError with oneOf schemas IdentificationtasksAnnotationsListClassificationConfidenceErrorComponent, IdentificationtasksAnnotationsListClassificationConfidenceLabelErrorComponent, IdentificationtasksAnnotationsListClassificationTaxonIdsErrorComponent, IdentificationtasksAnnotationsListCreatedAtErrorComponent, IdentificationtasksAnnotationsListOrderByErrorComponent, IdentificationtasksAnnotationsListTypeErrorComponent, IdentificationtasksAnnotationsListUpdatedAtErrorComponent, IdentificationtasksAnnotationsListUserIdsErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize IdentificationtasksAnnotationsListError with oneOf schemas IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent, IdentificationtasksAnnotationsListClassificationConfidenceErrorComponent, IdentificationtasksAnnotationsListClassificationConfidenceLabelErrorComponent, IdentificationtasksAnnotationsListClassificationTaxonIdsErrorComponent, IdentificationtasksAnnotationsListCreatedAtErrorComponent, IdentificationtasksAnnotationsListOrderByErrorComponent, IdentificationtasksAnnotationsListTypeErrorComponent, IdentificationtasksAnnotationsListUpdatedAtErrorComponent, IdentificationtasksAnnotationsListUserIdsErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -138,6 +141,21 @@ IdentificationtasksAnnotationsListError <- R6::R6Class(
         error_messages <- append(error_messages, `IdentificationtasksAnnotationsListClassificationConfidenceLabelErrorComponent_result`["message"])
       }
 
+      `IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent_result` <- tryCatch({
+          `IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent`$public_methods$validateJSON(input)
+          `IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent_instance` <- `IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent`$new()
+          instance <- `IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent_instance`$fromJSON(input)
+          instance_type <- "IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent"
+          matched_schemas <- append(matched_schemas, "IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent_result`["message"])
+      }
+
       `IdentificationtasksAnnotationsListCreatedAtErrorComponent_result` <- tryCatch({
           `IdentificationtasksAnnotationsListCreatedAtErrorComponent`$public_methods$validateJSON(input)
           `IdentificationtasksAnnotationsListCreatedAtErrorComponent_instance` <- `IdentificationtasksAnnotationsListCreatedAtErrorComponent`$new()
@@ -204,11 +222,11 @@ IdentificationtasksAnnotationsListError <- R6::R6Class(
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into IdentificationtasksAnnotationsListError with oneOf schemas IdentificationtasksAnnotationsListClassificationConfidenceErrorComponent, IdentificationtasksAnnotationsListClassificationConfidenceLabelErrorComponent, IdentificationtasksAnnotationsListClassificationTaxonIdsErrorComponent, IdentificationtasksAnnotationsListCreatedAtErrorComponent, IdentificationtasksAnnotationsListOrderByErrorComponent, IdentificationtasksAnnotationsListTypeErrorComponent, IdentificationtasksAnnotationsListUpdatedAtErrorComponent, IdentificationtasksAnnotationsListUserIdsErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into IdentificationtasksAnnotationsListError with oneOf schemas IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent, IdentificationtasksAnnotationsListClassificationConfidenceErrorComponent, IdentificationtasksAnnotationsListClassificationConfidenceLabelErrorComponent, IdentificationtasksAnnotationsListClassificationTaxonIdsErrorComponent, IdentificationtasksAnnotationsListCreatedAtErrorComponent, IdentificationtasksAnnotationsListOrderByErrorComponent, IdentificationtasksAnnotationsListTypeErrorComponent, IdentificationtasksAnnotationsListUpdatedAtErrorComponent, IdentificationtasksAnnotationsListUserIdsErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into IdentificationtasksAnnotationsListError with oneOf schemas IdentificationtasksAnnotationsListClassificationConfidenceErrorComponent, IdentificationtasksAnnotationsListClassificationConfidenceLabelErrorComponent, IdentificationtasksAnnotationsListClassificationTaxonIdsErrorComponent, IdentificationtasksAnnotationsListCreatedAtErrorComponent, IdentificationtasksAnnotationsListOrderByErrorComponent, IdentificationtasksAnnotationsListTypeErrorComponent, IdentificationtasksAnnotationsListUpdatedAtErrorComponent, IdentificationtasksAnnotationsListUserIdsErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into IdentificationtasksAnnotationsListError with oneOf schemas IdentificationtasksAnnotationsListCharacteristicsSexErrorComponent, IdentificationtasksAnnotationsListClassificationConfidenceErrorComponent, IdentificationtasksAnnotationsListClassificationConfidenceLabelErrorComponent, IdentificationtasksAnnotationsListClassificationTaxonIdsErrorComponent, IdentificationtasksAnnotationsListCreatedAtErrorComponent, IdentificationtasksAnnotationsListOrderByErrorComponent, IdentificationtasksAnnotationsListTypeErrorComponent, IdentificationtasksAnnotationsListUpdatedAtErrorComponent, IdentificationtasksAnnotationsListUserIdsErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

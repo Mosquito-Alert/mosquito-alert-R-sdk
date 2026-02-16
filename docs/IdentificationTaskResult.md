@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **confidence_label** | **character** |  | [readonly] 
 **uncertainty** | **numeric** |  | [readonly] [Max: 1] [Min: 0] 
 **agreement** | **numeric** |  | [readonly] [Max: 1] [Min: 0] 
+**characteristics** | [**SpeciesCharacteristics**](SpeciesCharacteristics.md) |  | [readonly] 
 
 

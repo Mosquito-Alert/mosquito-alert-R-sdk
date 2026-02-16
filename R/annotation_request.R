@@ -8,8 +8,8 @@
 #' @description AnnotationRequest Class
 #' @format An \code{R6Class} generator object
 #' @field best_photo_uuid  character [optional]
-#' @field classification  \link{AnnotationClassificationRequest}
-#' @field characteristics  \link{AnnotationCharacteristicsRequest} [optional]
+#' @field classification  \link{SpeciesClassificationRequest}
+#' @field characteristics  \link{SpeciesCharacteristicsRequest} [optional]
 #' @field feedback  \link{AnnotationFeedbackRequest} [optional]
 #' @field is_flagged  character [optional]
 #' @field is_decisive  character [optional]
@@ -184,12 +184,12 @@ AnnotationRequest <- R6::R6Class(
         self$`best_photo_uuid` <- this_object$`best_photo_uuid`
       }
       if (!is.null(this_object$`classification`)) {
-        `classification_object` <- AnnotationClassificationRequest$new()
+        `classification_object` <- SpeciesClassificationRequest$new()
         `classification_object`$fromJSON(jsonlite::toJSON(this_object$`classification`, auto_unbox = TRUE, digits = NA))
         self$`classification` <- `classification_object`
       }
       if (!is.null(this_object$`characteristics`)) {
-        `characteristics_object` <- AnnotationCharacteristicsRequest$new()
+        `characteristics_object` <- SpeciesCharacteristicsRequest$new()
         `characteristics_object`$fromJSON(jsonlite::toJSON(this_object$`characteristics`, auto_unbox = TRUE, digits = NA))
         self$`characteristics` <- `characteristics_object`
       }
@@ -234,8 +234,8 @@ AnnotationRequest <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`best_photo_uuid` <- this_object$`best_photo_uuid`
-      self$`classification` <- AnnotationClassificationRequest$new()$fromJSON(jsonlite::toJSON(this_object$`classification`, auto_unbox = TRUE, digits = NA))
-      self$`characteristics` <- AnnotationCharacteristicsRequest$new()$fromJSON(jsonlite::toJSON(this_object$`characteristics`, auto_unbox = TRUE, digits = NA))
+      self$`classification` <- SpeciesClassificationRequest$new()$fromJSON(jsonlite::toJSON(this_object$`classification`, auto_unbox = TRUE, digits = NA))
+      self$`characteristics` <- SpeciesCharacteristicsRequest$new()$fromJSON(jsonlite::toJSON(this_object$`characteristics`, auto_unbox = TRUE, digits = NA))
       self$`feedback` <- AnnotationFeedbackRequest$new()$fromJSON(jsonlite::toJSON(this_object$`feedback`, auto_unbox = TRUE, digits = NA))
       self$`is_flagged` <- this_object$`is_flagged`
       self$`is_decisive` <- this_object$`is_decisive`

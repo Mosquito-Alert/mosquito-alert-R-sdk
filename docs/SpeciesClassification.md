@@ -1,4 +1,4 @@
-# MosquitoAlert::AnnotationClassification
+# MosquitoAlert::SpeciesClassification
 
 
 ## Properties

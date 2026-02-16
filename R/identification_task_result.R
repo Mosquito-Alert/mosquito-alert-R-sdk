@@ -14,6 +14,7 @@
 #' @field confidence_label  character
 #' @field uncertainty  numeric
 #' @field agreement  numeric
+#' @field characteristics  \link{SpeciesCharacteristics}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -27,6 +28,7 @@ IdentificationTaskResult <- R6::R6Class(
     `confidence_label` = NULL,
     `uncertainty` = NULL,
     `agreement` = NULL,
+    `characteristics` = NULL,
 
     #' @description
     #' Initialize a new IdentificationTaskResult class.
@@ -38,8 +40,9 @@ IdentificationTaskResult <- R6::R6Class(
     #' @param confidence_label confidence_label
     #' @param uncertainty uncertainty
     #' @param agreement agreement
+    #' @param characteristics characteristics
     #' @param ... Other optional arguments.
-    initialize = function(`source`, `taxon`, `is_high_confidence`, `confidence`, `confidence_label`, `uncertainty`, `agreement`, ...) {
+    initialize = function(`source`, `taxon`, `is_high_confidence`, `confidence`, `confidence_label`, `uncertainty`, `agreement`, `characteristics`, ...) {
       if (!missing(`source`)) {
         if (!(`source` %in% c("expert", "ai"))) {
           stop(paste("Error! \"", `source`, "\" cannot be assigned to `source`. Must be \"expert\", \"ai\".", sep = ""))
@@ -82,6 +85,10 @@ IdentificationTaskResult <- R6::R6Class(
           stop(paste("Error! Invalid data for `agreement`. Must be a number:", `agreement`))
         }
         self$`agreement` <- `agreement`
+      }
+      if (!missing(`characteristics`)) {
+        stopifnot(R6::is.R6(`characteristics`))
+        self$`characteristics` <- `characteristics`
       }
     },
 
@@ -144,6 +151,10 @@ IdentificationTaskResult <- R6::R6Class(
         IdentificationTaskResultObject[["agreement"]] <-
           self$`agreement`
       }
+      if (!is.null(self$`characteristics`)) {
+        IdentificationTaskResultObject[["characteristics"]] <-
+          self$extractSimpleType(self$`characteristics`)
+      }
       return(IdentificationTaskResultObject)
     },
 
@@ -203,6 +214,11 @@ IdentificationTaskResult <- R6::R6Class(
       if (!is.null(this_object$`agreement`)) {
         self$`agreement` <- this_object$`agreement`
       }
+      if (!is.null(this_object$`characteristics`)) {
+        `characteristics_object` <- SpeciesCharacteristics$new()
+        `characteristics_object`$fromJSON(jsonlite::toJSON(this_object$`characteristics`, auto_unbox = TRUE, digits = NA))
+        self$`characteristics` <- `characteristics_object`
+      }
       self
     },
 
@@ -234,6 +250,7 @@ IdentificationTaskResult <- R6::R6Class(
       self$`confidence_label` <- this_object$`confidence_label`
       self$`uncertainty` <- this_object$`uncertainty`
       self$`agreement` <- this_object$`agreement`
+      self$`characteristics` <- SpeciesCharacteristics$new()$fromJSON(jsonlite::toJSON(this_object$`characteristics`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -296,6 +313,12 @@ IdentificationTaskResult <- R6::R6Class(
         }
       } else {
         stop(paste("The JSON input `", input, "` is invalid for IdentificationTaskResult: the required field `agreement` is missing."))
+      }
+      # check the required field `characteristics`
+      if (!is.null(input_json$`characteristics`)) {
+        stopifnot(R6::is.R6(input_json$`characteristics`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationTaskResult: the required field `characteristics` is missing."))
       }
     },
 

@@ -34,9 +34,16 @@ test_that("public_note", {
   #expect_equal(model.instance$`public_note`, "EXPECTED_RESULT")
 })
 
-test_that("result", {
-  # tests for the property `result` (AnnotationClassificationRequest)
+test_that("classification", {
+  # tests for the property `classification` (SpeciesClassificationRequest)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`result`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`classification`, "EXPECTED_RESULT")
+})
+
+test_that("characteristics", {
+  # tests for the property `characteristics` (SpeciesCharacteristicsRequest)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`characteristics`, "EXPECTED_RESULT")
 })

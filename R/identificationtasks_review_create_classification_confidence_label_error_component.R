@@ -1,11 +1,11 @@
-#' Create a new IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent
+#' Create a new IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent
 #'
 #' @description
-#' IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent Class
+#' IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent Class
 #'
 #' @docType class
-#' @title IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent
-#' @description IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent Class
+#' @title IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent
+#' @description IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent Class
 #' @format An \code{R6Class} generator object
 #' @field attr  character
 #' @field code  character
@@ -13,15 +13,15 @@
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent <- R6::R6Class(
-  "IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent",
+IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent <- R6::R6Class(
+  "IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent",
   public = list(
     `attr` = NULL,
     `code` = NULL,
     `detail` = NULL,
 
     #' @description
-    #' Initialize a new IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent class.
+    #' Initialize a new IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent class.
     #'
     #' @param attr attr
     #' @param code code
@@ -29,8 +29,8 @@ IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent <- R6::R6Clas
     #' @param ... Other optional arguments.
     initialize = function(`attr`, `code`, `detail`, ...) {
       if (!missing(`attr`)) {
-        if (!(`attr` %in% c("result.confidence_label"))) {
-          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"result.confidence_label\".", sep = ""))
+        if (!(`attr` %in% c("classification.confidence_label"))) {
+          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"classification.confidence_label\".", sep = ""))
         }
         if (!(is.character(`attr`) && length(`attr`) == 1)) {
           stop(paste("Error! Invalid data for `attr`. Must be a string:", `attr`))
@@ -66,9 +66,9 @@ IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent <- R6::R6Clas
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent as a base R list.
+    #' @return IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent as a base R list.
     #' @examples
-    #' # convert array of IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent (x) to a data frame
+    #' # convert array of IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -80,36 +80,36 @@ IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent <- R6::R6Clas
     },
 
     #' @description
-    #' Convert IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent to a base R type
+    #' Convert IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      IdentificationtasksReviewCreateResultConfidenceLabelErrorComponentObject <- list()
+      IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponentObject <- list()
       if (!is.null(self$`attr`)) {
-        IdentificationtasksReviewCreateResultConfidenceLabelErrorComponentObject[["attr"]] <-
+        IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponentObject[["attr"]] <-
           self$`attr`
       }
       if (!is.null(self$`code`)) {
-        IdentificationtasksReviewCreateResultConfidenceLabelErrorComponentObject[["code"]] <-
+        IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponentObject[["code"]] <-
           self$`code`
       }
       if (!is.null(self$`detail`)) {
-        IdentificationtasksReviewCreateResultConfidenceLabelErrorComponentObject[["detail"]] <-
+        IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponentObject[["detail"]] <-
           self$`detail`
       }
-      return(IdentificationtasksReviewCreateResultConfidenceLabelErrorComponentObject)
+      return(IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponentObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent
+    #' @return the instance of IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`attr`)) {
-        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("result.confidence_label"))) {
-          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"result.confidence_label\".", sep = ""))
+        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("classification.confidence_label"))) {
+          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"classification.confidence_label\".", sep = ""))
         }
         self$`attr` <- this_object$`attr`
       }
@@ -129,7 +129,7 @@ IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent <- R6::R6Clas
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent in JSON format
+    #' @return IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -137,14 +137,14 @@ IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent <- R6::R6Clas
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent
+    #' @return the instance of IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("result.confidence_label"))) {
-        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"result.confidence_label\".", sep = ""))
+      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("classification.confidence_label"))) {
+        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"classification.confidence_label\".", sep = ""))
       }
       self$`attr` <- this_object$`attr`
       if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice", "null", "required"))) {
@@ -156,7 +156,7 @@ IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent <- R6::R6Clas
     },
 
     #' @description
-    #' Validate JSON input with respect to IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent and throw an exception if invalid
+    #' Validate JSON input with respect to IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -167,7 +167,7 @@ IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent <- R6::R6Clas
           stop(paste("Error! Invalid data for `attr`. Must be a string:", input_json$`attr`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent: the required field `attr` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent: the required field `attr` is missing."))
       }
       # check the required field `code`
       if (!is.null(input_json$`code`)) {
@@ -175,7 +175,7 @@ IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent <- R6::R6Clas
           stop(paste("Error! Invalid data for `code`. Must be a string:", input_json$`code`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent: the required field `code` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent: the required field `code` is missing."))
       }
       # check the required field `detail`
       if (!is.null(input_json$`detail`)) {
@@ -183,14 +183,14 @@ IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent <- R6::R6Clas
           stop(paste("Error! Invalid data for `detail`. Must be a string:", input_json$`detail`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent: the required field `detail` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent: the required field `detail` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent
+    #' @return String representation of IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent
     toString = function() {
       self$toJSONString()
     },
@@ -253,13 +253,13 @@ IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent <- R6::R6Clas
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent$unlock()
+# IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent$unlock()
 #
 ## Below is an example to define the print function
-# IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent$set("public", "print", function(...) {
+# IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent$lock()
+# IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent$lock()
 

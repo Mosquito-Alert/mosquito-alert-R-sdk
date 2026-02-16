@@ -1,25 +1,25 @@
-#' Create a new AnnotationClassificationRequest
+#' Create a new SpeciesClassificationRequest
 #'
 #' @description
-#' AnnotationClassificationRequest Class
+#' SpeciesClassificationRequest Class
 #'
 #' @docType class
-#' @title AnnotationClassificationRequest
-#' @description AnnotationClassificationRequest Class
+#' @title SpeciesClassificationRequest
+#' @description SpeciesClassificationRequest Class
 #' @format An \code{R6Class} generator object
 #' @field taxon_id  integer
 #' @field confidence_label  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-AnnotationClassificationRequest <- R6::R6Class(
-  "AnnotationClassificationRequest",
+SpeciesClassificationRequest <- R6::R6Class(
+  "SpeciesClassificationRequest",
   public = list(
     `taxon_id` = NULL,
     `confidence_label` = NULL,
 
     #' @description
-    #' Initialize a new AnnotationClassificationRequest class.
+    #' Initialize a new SpeciesClassificationRequest class.
     #'
     #' @param taxon_id taxon_id
     #' @param confidence_label confidence_label
@@ -54,9 +54,9 @@ AnnotationClassificationRequest <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return AnnotationClassificationRequest as a base R list.
+    #' @return SpeciesClassificationRequest as a base R list.
     #' @examples
-    #' # convert array of AnnotationClassificationRequest (x) to a data frame
+    #' # convert array of SpeciesClassificationRequest (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -68,27 +68,27 @@ AnnotationClassificationRequest <- R6::R6Class(
     },
 
     #' @description
-    #' Convert AnnotationClassificationRequest to a base R type
+    #' Convert SpeciesClassificationRequest to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      AnnotationClassificationRequestObject <- list()
+      SpeciesClassificationRequestObject <- list()
       if (!is.null(self$`taxon_id`)) {
-        AnnotationClassificationRequestObject[["taxon_id"]] <-
+        SpeciesClassificationRequestObject[["taxon_id"]] <-
           self$`taxon_id`
       }
       if (!is.null(self$`confidence_label`)) {
-        AnnotationClassificationRequestObject[["confidence_label"]] <-
+        SpeciesClassificationRequestObject[["confidence_label"]] <-
           self$`confidence_label`
       }
-      return(AnnotationClassificationRequestObject)
+      return(SpeciesClassificationRequestObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of AnnotationClassificationRequest
+    #' Deserialize JSON string into an instance of SpeciesClassificationRequest
     #'
     #' @param input_json the JSON input
-    #' @return the instance of AnnotationClassificationRequest
+    #' @return the instance of SpeciesClassificationRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`taxon_id`)) {
@@ -107,7 +107,7 @@ AnnotationClassificationRequest <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return AnnotationClassificationRequest in JSON format
+    #' @return SpeciesClassificationRequest in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -115,10 +115,10 @@ AnnotationClassificationRequest <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of AnnotationClassificationRequest
+    #' Deserialize JSON string into an instance of SpeciesClassificationRequest
     #'
     #' @param input_json the JSON input
-    #' @return the instance of AnnotationClassificationRequest
+    #' @return the instance of SpeciesClassificationRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`taxon_id` <- this_object$`taxon_id`
@@ -130,7 +130,7 @@ AnnotationClassificationRequest <- R6::R6Class(
     },
 
     #' @description
-    #' Validate JSON input with respect to AnnotationClassificationRequest and throw an exception if invalid
+    #' Validate JSON input with respect to SpeciesClassificationRequest and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -141,7 +141,7 @@ AnnotationClassificationRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `taxon_id`. Must be an integer:", input_json$`taxon_id`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AnnotationClassificationRequest: the required field `taxon_id` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for SpeciesClassificationRequest: the required field `taxon_id` is missing."))
       }
       # check the required field `confidence_label`
       if (!is.null(input_json$`confidence_label`)) {
@@ -149,14 +149,14 @@ AnnotationClassificationRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `confidence_label`. Must be a string:", input_json$`confidence_label`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AnnotationClassificationRequest: the required field `confidence_label` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for SpeciesClassificationRequest: the required field `confidence_label` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of AnnotationClassificationRequest
+    #' @return String representation of SpeciesClassificationRequest
     toString = function() {
       self$toJSONString()
     },
@@ -209,13 +209,13 @@ AnnotationClassificationRequest <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# AnnotationClassificationRequest$unlock()
+# SpeciesClassificationRequest$unlock()
 #
 ## Below is an example to define the print function
-# AnnotationClassificationRequest$set("public", "print", function(...) {
+# SpeciesClassificationRequest$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# AnnotationClassificationRequest$lock()
+# SpeciesClassificationRequest$lock()
 

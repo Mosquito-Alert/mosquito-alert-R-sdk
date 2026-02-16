@@ -1,10 +1,10 @@
-# MosquitoAlert::IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent
+# MosquitoAlert::IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attr** | **character** |  | [Enum: [result.confidence_label]] 
+**attr** | **character** |  | [Enum: [classification.confidence_label]] 
 **code** | **character** |  | [Enum: [invalid_choice, null, required]] 
 **detail** | **character** |  | 
 

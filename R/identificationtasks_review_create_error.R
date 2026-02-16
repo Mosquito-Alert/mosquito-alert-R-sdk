@@ -16,18 +16,39 @@ IdentificationtasksReviewCreateError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("IdentificationtasksReviewCreateActionErrorComponent", "IdentificationtasksReviewCreateIsSafeErrorComponent", "IdentificationtasksReviewCreateNonFieldErrorsErrorComponent", "IdentificationtasksReviewCreatePublicNoteErrorComponent", "IdentificationtasksReviewCreatePublicPhotoUuidErrorComponent", "IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent", "IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent", "IdentificationtasksReviewCreateResultTaxonIdErrorComponent"),
+    one_of = list("IdentificationtasksReviewCreateActionErrorComponent", "IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent", "IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent", "IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent", "IdentificationtasksReviewCreateCharacteristicsSexErrorComponent", "IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent", "IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent", "IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent", "IdentificationtasksReviewCreateIsSafeErrorComponent", "IdentificationtasksReviewCreateNonFieldErrorsErrorComponent", "IdentificationtasksReviewCreatePublicNoteErrorComponent", "IdentificationtasksReviewCreatePublicPhotoUuidErrorComponent"),
 
     #' @description
     #' Initialize a new IdentificationtasksReviewCreateError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "IdentificationtasksReviewCreateActionErrorComponent", "IdentificationtasksReviewCreateIsSafeErrorComponent", "IdentificationtasksReviewCreateNonFieldErrorsErrorComponent", "IdentificationtasksReviewCreatePublicNoteErrorComponent", "IdentificationtasksReviewCreatePublicPhotoUuidErrorComponent", "IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent", "IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent", "IdentificationtasksReviewCreateResultTaxonIdErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "IdentificationtasksReviewCreateActionErrorComponent", "IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent", "IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent", "IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent", "IdentificationtasksReviewCreateCharacteristicsSexErrorComponent", "IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent", "IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent", "IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent", "IdentificationtasksReviewCreateIsSafeErrorComponent", "IdentificationtasksReviewCreateNonFieldErrorsErrorComponent", "IdentificationtasksReviewCreatePublicNoteErrorComponent", "IdentificationtasksReviewCreatePublicPhotoUuidErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreateActionErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "IdentificationtasksReviewCreateActionErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreateCharacteristicsSexErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "IdentificationtasksReviewCreateCharacteristicsSexErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreateIsSafeErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "IdentificationtasksReviewCreateIsSafeErrorComponent"
@@ -40,17 +61,8 @@ IdentificationtasksReviewCreateError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreatePublicPhotoUuidErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "IdentificationtasksReviewCreatePublicPhotoUuidErrorComponent"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent") {
-        self$actual_instance <- instance
-        self$actual_type <- "IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent") {
-        self$actual_instance <- instance
-        self$actual_type <- "IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent"
-      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "IdentificationtasksReviewCreateResultTaxonIdErrorComponent") {
-        self$actual_instance <- instance
-        self$actual_type <- "IdentificationtasksReviewCreateResultTaxonIdErrorComponent"
       } else {
-        stop(paste("Failed to initialize IdentificationtasksReviewCreateError with oneOf schemas IdentificationtasksReviewCreateActionErrorComponent, IdentificationtasksReviewCreateIsSafeErrorComponent, IdentificationtasksReviewCreateNonFieldErrorsErrorComponent, IdentificationtasksReviewCreatePublicNoteErrorComponent, IdentificationtasksReviewCreatePublicPhotoUuidErrorComponent, IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent, IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent, IdentificationtasksReviewCreateResultTaxonIdErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize IdentificationtasksReviewCreateError with oneOf schemas IdentificationtasksReviewCreateActionErrorComponent, IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent, IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent, IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent, IdentificationtasksReviewCreateCharacteristicsSexErrorComponent, IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent, IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent, IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent, IdentificationtasksReviewCreateIsSafeErrorComponent, IdentificationtasksReviewCreateNonFieldErrorsErrorComponent, IdentificationtasksReviewCreatePublicNoteErrorComponent, IdentificationtasksReviewCreatePublicPhotoUuidErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -153,49 +165,109 @@ IdentificationtasksReviewCreateError <- R6::R6Class(
         error_messages <- append(error_messages, `IdentificationtasksReviewCreatePublicNoteErrorComponent_result`["message"])
       }
 
-      `IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent_result` <- tryCatch({
-          `IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent`$public_methods$validateJSON(input)
-          `IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent_instance` <- `IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent`$new()
-          instance <- `IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent_instance`$fromJSON(input)
-          instance_type <- "IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent"
-          matched_schemas <- append(matched_schemas, "IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent")
+      `IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent_result` <- tryCatch({
+          `IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent`$public_methods$validateJSON(input)
+          `IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent_instance` <- `IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent`$new()
+          instance <- `IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent_instance`$fromJSON(input)
+          instance_type <- "IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent"
+          matched_schemas <- append(matched_schemas, "IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent")
           matched <- matched + 1
         },
         error = function(err) err
       )
 
-      if (!is.null(`IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent_result`["message"])
+      if (!is.null(`IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent_result`["message"])
       }
 
-      `IdentificationtasksReviewCreateResultTaxonIdErrorComponent_result` <- tryCatch({
-          `IdentificationtasksReviewCreateResultTaxonIdErrorComponent`$public_methods$validateJSON(input)
-          `IdentificationtasksReviewCreateResultTaxonIdErrorComponent_instance` <- `IdentificationtasksReviewCreateResultTaxonIdErrorComponent`$new()
-          instance <- `IdentificationtasksReviewCreateResultTaxonIdErrorComponent_instance`$fromJSON(input)
-          instance_type <- "IdentificationtasksReviewCreateResultTaxonIdErrorComponent"
-          matched_schemas <- append(matched_schemas, "IdentificationtasksReviewCreateResultTaxonIdErrorComponent")
+      `IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent_result` <- tryCatch({
+          `IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent`$public_methods$validateJSON(input)
+          `IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent_instance` <- `IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent`$new()
+          instance <- `IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent_instance`$fromJSON(input)
+          instance_type <- "IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent"
+          matched_schemas <- append(matched_schemas, "IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent")
           matched <- matched + 1
         },
         error = function(err) err
       )
 
-      if (!is.null(`IdentificationtasksReviewCreateResultTaxonIdErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `IdentificationtasksReviewCreateResultTaxonIdErrorComponent_result`["message"])
+      if (!is.null(`IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent_result`["message"])
       }
 
-      `IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent_result` <- tryCatch({
-          `IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent`$public_methods$validateJSON(input)
-          `IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent_instance` <- `IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent`$new()
-          instance <- `IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent_instance`$fromJSON(input)
-          instance_type <- "IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent"
-          matched_schemas <- append(matched_schemas, "IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent")
+      `IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent_result` <- tryCatch({
+          `IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent`$public_methods$validateJSON(input)
+          `IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent_instance` <- `IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent`$new()
+          instance <- `IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent_instance`$fromJSON(input)
+          instance_type <- "IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent"
+          matched_schemas <- append(matched_schemas, "IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent")
           matched <- matched + 1
         },
         error = function(err) err
       )
 
-      if (!is.null(`IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent_result`["message"])
+      if (!is.null(`IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent_result`["message"])
+      }
+
+      `IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent_result` <- tryCatch({
+          `IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent`$public_methods$validateJSON(input)
+          `IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent_instance` <- `IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent`$new()
+          instance <- `IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent_instance`$fromJSON(input)
+          instance_type <- "IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent"
+          matched_schemas <- append(matched_schemas, "IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent_result`["message"])
+      }
+
+      `IdentificationtasksReviewCreateCharacteristicsSexErrorComponent_result` <- tryCatch({
+          `IdentificationtasksReviewCreateCharacteristicsSexErrorComponent`$public_methods$validateJSON(input)
+          `IdentificationtasksReviewCreateCharacteristicsSexErrorComponent_instance` <- `IdentificationtasksReviewCreateCharacteristicsSexErrorComponent`$new()
+          instance <- `IdentificationtasksReviewCreateCharacteristicsSexErrorComponent_instance`$fromJSON(input)
+          instance_type <- "IdentificationtasksReviewCreateCharacteristicsSexErrorComponent"
+          matched_schemas <- append(matched_schemas, "IdentificationtasksReviewCreateCharacteristicsSexErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`IdentificationtasksReviewCreateCharacteristicsSexErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `IdentificationtasksReviewCreateCharacteristicsSexErrorComponent_result`["message"])
+      }
+
+      `IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent_result` <- tryCatch({
+          `IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent`$public_methods$validateJSON(input)
+          `IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent_instance` <- `IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent`$new()
+          instance <- `IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent_instance`$fromJSON(input)
+          instance_type <- "IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent"
+          matched_schemas <- append(matched_schemas, "IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent_result`["message"])
+      }
+
+      `IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent_result` <- tryCatch({
+          `IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent`$public_methods$validateJSON(input)
+          `IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent_instance` <- `IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent`$new()
+          instance <- `IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent_instance`$fromJSON(input)
+          instance_type <- "IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent"
+          matched_schemas <- append(matched_schemas, "IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent_result`["message"])
       }
 
       if (matched == 1) {
@@ -204,11 +276,11 @@ IdentificationtasksReviewCreateError <- R6::R6Class(
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into IdentificationtasksReviewCreateError with oneOf schemas IdentificationtasksReviewCreateActionErrorComponent, IdentificationtasksReviewCreateIsSafeErrorComponent, IdentificationtasksReviewCreateNonFieldErrorsErrorComponent, IdentificationtasksReviewCreatePublicNoteErrorComponent, IdentificationtasksReviewCreatePublicPhotoUuidErrorComponent, IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent, IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent, IdentificationtasksReviewCreateResultTaxonIdErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into IdentificationtasksReviewCreateError with oneOf schemas IdentificationtasksReviewCreateActionErrorComponent, IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent, IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent, IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent, IdentificationtasksReviewCreateCharacteristicsSexErrorComponent, IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent, IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent, IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent, IdentificationtasksReviewCreateIsSafeErrorComponent, IdentificationtasksReviewCreateNonFieldErrorsErrorComponent, IdentificationtasksReviewCreatePublicNoteErrorComponent, IdentificationtasksReviewCreatePublicPhotoUuidErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into IdentificationtasksReviewCreateError with oneOf schemas IdentificationtasksReviewCreateActionErrorComponent, IdentificationtasksReviewCreateIsSafeErrorComponent, IdentificationtasksReviewCreateNonFieldErrorsErrorComponent, IdentificationtasksReviewCreatePublicNoteErrorComponent, IdentificationtasksReviewCreatePublicPhotoUuidErrorComponent, IdentificationtasksReviewCreateResultConfidenceLabelErrorComponent, IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent, IdentificationtasksReviewCreateResultTaxonIdErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into IdentificationtasksReviewCreateError with oneOf schemas IdentificationtasksReviewCreateActionErrorComponent, IdentificationtasksReviewCreateCharacteristicsIsBloodFedErrorComponent, IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent, IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent, IdentificationtasksReviewCreateCharacteristicsSexErrorComponent, IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent, IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent, IdentificationtasksReviewCreateClassificationTaxonIdErrorComponent, IdentificationtasksReviewCreateIsSafeErrorComponent, IdentificationtasksReviewCreateNonFieldErrorsErrorComponent, IdentificationtasksReviewCreatePublicNoteErrorComponent, IdentificationtasksReviewCreatePublicPhotoUuidErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

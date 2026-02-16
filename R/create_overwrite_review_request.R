@@ -11,7 +11,8 @@
 #' @field public_photo_uuid  character
 #' @field is_safe Indicates if the content is safe for publication. character
 #' @field public_note  character
-#' @field result  \link{AnnotationClassificationRequest}
+#' @field classification  \link{SpeciesClassificationRequest}
+#' @field characteristics  \link{SpeciesCharacteristicsRequest} [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,7 +23,8 @@ CreateOverwriteReviewRequest <- R6::R6Class(
     `public_photo_uuid` = NULL,
     `is_safe` = NULL,
     `public_note` = NULL,
-    `result` = NULL,
+    `classification` = NULL,
+    `characteristics` = NULL,
 
     #' @description
     #' Initialize a new CreateOverwriteReviewRequest class.
@@ -30,10 +32,11 @@ CreateOverwriteReviewRequest <- R6::R6Class(
     #' @param public_photo_uuid public_photo_uuid
     #' @param is_safe Indicates if the content is safe for publication.
     #' @param public_note public_note
-    #' @param result result
+    #' @param classification classification
     #' @param action action. Default to "overwrite".
+    #' @param characteristics characteristics
     #' @param ... Other optional arguments.
-    initialize = function(`public_photo_uuid`, `is_safe`, `public_note`, `result`, `action` = "overwrite", ...) {
+    initialize = function(`public_photo_uuid`, `is_safe`, `public_note`, `classification`, `action` = "overwrite", `characteristics` = NULL, ...) {
       if (!missing(`public_photo_uuid`)) {
         if (!(is.character(`public_photo_uuid`) && length(`public_photo_uuid`) == 1)) {
           stop(paste("Error! Invalid data for `public_photo_uuid`. Must be a string:", `public_photo_uuid`))
@@ -52,9 +55,9 @@ CreateOverwriteReviewRequest <- R6::R6Class(
         }
         self$`public_note` <- `public_note`
       }
-      if (!missing(`result`)) {
-        stopifnot(R6::is.R6(`result`))
-        self$`result` <- `result`
+      if (!missing(`classification`)) {
+        stopifnot(R6::is.R6(`classification`))
+        self$`classification` <- `classification`
       }
       if (!is.null(`action`)) {
         if (!(`action` %in% c("overwrite"))) {
@@ -64,6 +67,10 @@ CreateOverwriteReviewRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `action`. Must be a string:", `action`))
         }
         self$`action` <- `action`
+      }
+      if (!is.null(`characteristics`)) {
+        stopifnot(R6::is.R6(`characteristics`))
+        self$`characteristics` <- `characteristics`
       }
     },
 
@@ -114,9 +121,13 @@ CreateOverwriteReviewRequest <- R6::R6Class(
         CreateOverwriteReviewRequestObject[["public_note"]] <-
           self$`public_note`
       }
-      if (!is.null(self$`result`)) {
-        CreateOverwriteReviewRequestObject[["result"]] <-
-          self$extractSimpleType(self$`result`)
+      if (!is.null(self$`classification`)) {
+        CreateOverwriteReviewRequestObject[["classification"]] <-
+          self$extractSimpleType(self$`classification`)
+      }
+      if (!is.null(self$`characteristics`)) {
+        CreateOverwriteReviewRequestObject[["characteristics"]] <-
+          self$extractSimpleType(self$`characteristics`)
       }
       return(CreateOverwriteReviewRequestObject)
     },
@@ -166,10 +177,15 @@ CreateOverwriteReviewRequest <- R6::R6Class(
       if (!is.null(this_object$`public_note`)) {
         self$`public_note` <- this_object$`public_note`
       }
-      if (!is.null(this_object$`result`)) {
-        `result_object` <- AnnotationClassificationRequest$new()
-        `result_object`$fromJSON(jsonlite::toJSON(this_object$`result`, auto_unbox = TRUE, digits = NA))
-        self$`result` <- `result_object`
+      if (!is.null(this_object$`classification`)) {
+        `classification_object` <- SpeciesClassificationRequest$new()
+        `classification_object`$fromJSON(jsonlite::toJSON(this_object$`classification`, auto_unbox = TRUE, digits = NA))
+        self$`classification` <- `classification_object`
+      }
+      if (!is.null(this_object$`characteristics`)) {
+        `characteristics_object` <- SpeciesCharacteristicsRequest$new()
+        `characteristics_object`$fromJSON(jsonlite::toJSON(this_object$`characteristics`, auto_unbox = TRUE, digits = NA))
+        self$`characteristics` <- `characteristics_object`
       }
       self
     },
@@ -199,7 +215,8 @@ CreateOverwriteReviewRequest <- R6::R6Class(
       self$`public_photo_uuid` <- this_object$`public_photo_uuid`
       self$`is_safe` <- this_object$`is_safe`
       self$`public_note` <- this_object$`public_note`
-      self$`result` <- AnnotationClassificationRequest$new()$fromJSON(jsonlite::toJSON(this_object$`result`, auto_unbox = TRUE, digits = NA))
+      self$`classification` <- SpeciesClassificationRequest$new()$fromJSON(jsonlite::toJSON(this_object$`classification`, auto_unbox = TRUE, digits = NA))
+      self$`characteristics` <- SpeciesCharacteristicsRequest$new()$fromJSON(jsonlite::toJSON(this_object$`characteristics`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -233,11 +250,11 @@ CreateOverwriteReviewRequest <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CreateOverwriteReviewRequest: the required field `public_note` is missing."))
       }
-      # check the required field `result`
-      if (!is.null(input_json$`result`)) {
-        stopifnot(R6::is.R6(input_json$`result`))
+      # check the required field `classification`
+      if (!is.null(input_json$`classification`)) {
+        stopifnot(R6::is.R6(input_json$`classification`))
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for CreateOverwriteReviewRequest: the required field `result` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for CreateOverwriteReviewRequest: the required field `classification` is missing."))
       }
     },
 

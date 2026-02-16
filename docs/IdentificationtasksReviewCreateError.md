@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attr** | **character** |  | [Enum: [result.confidence_label]] 
-**code** | **character** |  | [Enum: [invalid_choice, null, required]] 
+**attr** | **character** |  | [Enum: [characteristics.is_gravid]] 
+**code** | **character** |  | [Enum: [invalid]] 
 **detail** | **character** |  | 
 
 

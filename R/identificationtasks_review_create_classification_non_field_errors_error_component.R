@@ -1,11 +1,11 @@
-#' Create a new IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent
+#' Create a new IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent
 #'
 #' @description
-#' IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent Class
+#' IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent Class
 #'
 #' @docType class
-#' @title IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent
-#' @description IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent Class
+#' @title IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent
+#' @description IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent Class
 #' @format An \code{R6Class} generator object
 #' @field attr  character
 #' @field code  character
@@ -13,15 +13,15 @@
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent <- R6::R6Class(
-  "IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent",
+IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent <- R6::R6Class(
+  "IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent",
   public = list(
     `attr` = NULL,
     `code` = NULL,
     `detail` = NULL,
 
     #' @description
-    #' Initialize a new IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent class.
+    #' Initialize a new IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent class.
     #'
     #' @param attr attr
     #' @param code code
@@ -29,8 +29,8 @@ IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent <- R6::R6Class
     #' @param ... Other optional arguments.
     initialize = function(`attr`, `code`, `detail`, ...) {
       if (!missing(`attr`)) {
-        if (!(`attr` %in% c("result.non_field_errors"))) {
-          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"result.non_field_errors\".", sep = ""))
+        if (!(`attr` %in% c("classification.non_field_errors"))) {
+          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"classification.non_field_errors\".", sep = ""))
         }
         if (!(is.character(`attr`) && length(`attr`) == 1)) {
           stop(paste("Error! Invalid data for `attr`. Must be a string:", `attr`))
@@ -66,9 +66,9 @@ IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent <- R6::R6Class
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent as a base R list.
+    #' @return IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent as a base R list.
     #' @examples
-    #' # convert array of IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent (x) to a data frame
+    #' # convert array of IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -80,36 +80,36 @@ IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent <- R6::R6Class
     },
 
     #' @description
-    #' Convert IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent to a base R type
+    #' Convert IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponentObject <- list()
+      IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponentObject <- list()
       if (!is.null(self$`attr`)) {
-        IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponentObject[["attr"]] <-
+        IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponentObject[["attr"]] <-
           self$`attr`
       }
       if (!is.null(self$`code`)) {
-        IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponentObject[["code"]] <-
+        IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponentObject[["code"]] <-
           self$`code`
       }
       if (!is.null(self$`detail`)) {
-        IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponentObject[["detail"]] <-
+        IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponentObject[["detail"]] <-
           self$`detail`
       }
-      return(IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponentObject)
+      return(IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponentObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent
+    #' @return the instance of IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`attr`)) {
-        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("result.non_field_errors"))) {
-          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"result.non_field_errors\".", sep = ""))
+        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("classification.non_field_errors"))) {
+          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"classification.non_field_errors\".", sep = ""))
         }
         self$`attr` <- this_object$`attr`
       }
@@ -129,7 +129,7 @@ IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent <- R6::R6Class
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent in JSON format
+    #' @return IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -137,14 +137,14 @@ IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent <- R6::R6Class
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent
+    #' @return the instance of IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("result.non_field_errors"))) {
-        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"result.non_field_errors\".", sep = ""))
+      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("classification.non_field_errors"))) {
+        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"classification.non_field_errors\".", sep = ""))
       }
       self$`attr` <- this_object$`attr`
       if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid", "required"))) {
@@ -156,7 +156,7 @@ IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent <- R6::R6Class
     },
 
     #' @description
-    #' Validate JSON input with respect to IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent and throw an exception if invalid
+    #' Validate JSON input with respect to IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -167,7 +167,7 @@ IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent <- R6::R6Class
           stop(paste("Error! Invalid data for `attr`. Must be a string:", input_json$`attr`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent: the required field `attr` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent: the required field `attr` is missing."))
       }
       # check the required field `code`
       if (!is.null(input_json$`code`)) {
@@ -175,7 +175,7 @@ IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent <- R6::R6Class
           stop(paste("Error! Invalid data for `code`. Must be a string:", input_json$`code`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent: the required field `code` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent: the required field `code` is missing."))
       }
       # check the required field `detail`
       if (!is.null(input_json$`detail`)) {
@@ -183,14 +183,14 @@ IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent <- R6::R6Class
           stop(paste("Error! Invalid data for `detail`. Must be a string:", input_json$`detail`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent: the required field `detail` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent: the required field `detail` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent
+    #' @return String representation of IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent
     toString = function() {
       self$toJSONString()
     },
@@ -253,13 +253,13 @@ IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent <- R6::R6Class
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent$unlock()
+# IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent$unlock()
 #
 ## Below is an example to define the print function
-# IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent$set("public", "print", function(...) {
+# IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent$lock()
+# IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent$lock()
 

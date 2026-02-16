@@ -1,10 +1,10 @@
-# MosquitoAlert::IdentificationtasksAnnotationsCreateCharacteristicsNonFieldErrorsErrorComponent
+# MosquitoAlert::IdentificationtasksReviewCreateCharacteristicsIsGravidErrorComponent
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attr** | **character** |  | [Enum: [characteristics.non_field_errors]] 
+**attr** | **character** |  | [Enum: [characteristics.is_gravid]] 
 **code** | **character** |  | [Enum: [invalid]] 
 **detail** | **character** |  | 
 

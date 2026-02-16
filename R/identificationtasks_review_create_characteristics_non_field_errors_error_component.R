@@ -1,11 +1,11 @@
-#' Create a new IdentificationtasksReviewCreateResultTaxonIdErrorComponent
+#' Create a new IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent
 #'
 #' @description
-#' IdentificationtasksReviewCreateResultTaxonIdErrorComponent Class
+#' IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent Class
 #'
 #' @docType class
-#' @title IdentificationtasksReviewCreateResultTaxonIdErrorComponent
-#' @description IdentificationtasksReviewCreateResultTaxonIdErrorComponent Class
+#' @title IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent
+#' @description IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent Class
 #' @format An \code{R6Class} generator object
 #' @field attr  character
 #' @field code  character
@@ -13,15 +13,15 @@
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-IdentificationtasksReviewCreateResultTaxonIdErrorComponent <- R6::R6Class(
-  "IdentificationtasksReviewCreateResultTaxonIdErrorComponent",
+IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent <- R6::R6Class(
+  "IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent",
   public = list(
     `attr` = NULL,
     `code` = NULL,
     `detail` = NULL,
 
     #' @description
-    #' Initialize a new IdentificationtasksReviewCreateResultTaxonIdErrorComponent class.
+    #' Initialize a new IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent class.
     #'
     #' @param attr attr
     #' @param code code
@@ -29,8 +29,8 @@ IdentificationtasksReviewCreateResultTaxonIdErrorComponent <- R6::R6Class(
     #' @param ... Other optional arguments.
     initialize = function(`attr`, `code`, `detail`, ...) {
       if (!missing(`attr`)) {
-        if (!(`attr` %in% c("result.taxon_id"))) {
-          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"result.taxon_id\".", sep = ""))
+        if (!(`attr` %in% c("characteristics.non_field_errors"))) {
+          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"characteristics.non_field_errors\".", sep = ""))
         }
         if (!(is.character(`attr`) && length(`attr`) == 1)) {
           stop(paste("Error! Invalid data for `attr`. Must be a string:", `attr`))
@@ -38,8 +38,8 @@ IdentificationtasksReviewCreateResultTaxonIdErrorComponent <- R6::R6Class(
         self$`attr` <- `attr`
       }
       if (!missing(`code`)) {
-        if (!(`code` %in% c("does_not_exist", "incorrect_type", "null", "required"))) {
-          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"does_not_exist\", \"incorrect_type\", \"null\", \"required\".", sep = ""))
+        if (!(`code` %in% c("invalid"))) {
+          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"invalid\".", sep = ""))
         }
         if (!(is.character(`code`) && length(`code`) == 1)) {
           stop(paste("Error! Invalid data for `code`. Must be a string:", `code`))
@@ -66,9 +66,9 @@ IdentificationtasksReviewCreateResultTaxonIdErrorComponent <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return IdentificationtasksReviewCreateResultTaxonIdErrorComponent as a base R list.
+    #' @return IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent as a base R list.
     #' @examples
-    #' # convert array of IdentificationtasksReviewCreateResultTaxonIdErrorComponent (x) to a data frame
+    #' # convert array of IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -80,42 +80,42 @@ IdentificationtasksReviewCreateResultTaxonIdErrorComponent <- R6::R6Class(
     },
 
     #' @description
-    #' Convert IdentificationtasksReviewCreateResultTaxonIdErrorComponent to a base R type
+    #' Convert IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      IdentificationtasksReviewCreateResultTaxonIdErrorComponentObject <- list()
+      IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponentObject <- list()
       if (!is.null(self$`attr`)) {
-        IdentificationtasksReviewCreateResultTaxonIdErrorComponentObject[["attr"]] <-
+        IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponentObject[["attr"]] <-
           self$`attr`
       }
       if (!is.null(self$`code`)) {
-        IdentificationtasksReviewCreateResultTaxonIdErrorComponentObject[["code"]] <-
+        IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponentObject[["code"]] <-
           self$`code`
       }
       if (!is.null(self$`detail`)) {
-        IdentificationtasksReviewCreateResultTaxonIdErrorComponentObject[["detail"]] <-
+        IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponentObject[["detail"]] <-
           self$`detail`
       }
-      return(IdentificationtasksReviewCreateResultTaxonIdErrorComponentObject)
+      return(IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponentObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateResultTaxonIdErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksReviewCreateResultTaxonIdErrorComponent
+    #' @return the instance of IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`attr`)) {
-        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("result.taxon_id"))) {
-          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"result.taxon_id\".", sep = ""))
+        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("characteristics.non_field_errors"))) {
+          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"characteristics.non_field_errors\".", sep = ""))
         }
         self$`attr` <- this_object$`attr`
       }
       if (!is.null(this_object$`code`)) {
-        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("does_not_exist", "incorrect_type", "null", "required"))) {
-          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"does_not_exist\", \"incorrect_type\", \"null\", \"required\".", sep = ""))
+        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid"))) {
+          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid\".", sep = ""))
         }
         self$`code` <- this_object$`code`
       }
@@ -129,7 +129,7 @@ IdentificationtasksReviewCreateResultTaxonIdErrorComponent <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return IdentificationtasksReviewCreateResultTaxonIdErrorComponent in JSON format
+    #' @return IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -137,18 +137,18 @@ IdentificationtasksReviewCreateResultTaxonIdErrorComponent <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateResultTaxonIdErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksReviewCreateResultTaxonIdErrorComponent
+    #' @return the instance of IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("result.taxon_id"))) {
-        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"result.taxon_id\".", sep = ""))
+      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("characteristics.non_field_errors"))) {
+        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"characteristics.non_field_errors\".", sep = ""))
       }
       self$`attr` <- this_object$`attr`
-      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("does_not_exist", "incorrect_type", "null", "required"))) {
-        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"does_not_exist\", \"incorrect_type\", \"null\", \"required\".", sep = ""))
+      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid"))) {
+        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid\".", sep = ""))
       }
       self$`code` <- this_object$`code`
       self$`detail` <- this_object$`detail`
@@ -156,7 +156,7 @@ IdentificationtasksReviewCreateResultTaxonIdErrorComponent <- R6::R6Class(
     },
 
     #' @description
-    #' Validate JSON input with respect to IdentificationtasksReviewCreateResultTaxonIdErrorComponent and throw an exception if invalid
+    #' Validate JSON input with respect to IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -167,7 +167,7 @@ IdentificationtasksReviewCreateResultTaxonIdErrorComponent <- R6::R6Class(
           stop(paste("Error! Invalid data for `attr`. Must be a string:", input_json$`attr`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateResultTaxonIdErrorComponent: the required field `attr` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent: the required field `attr` is missing."))
       }
       # check the required field `code`
       if (!is.null(input_json$`code`)) {
@@ -175,7 +175,7 @@ IdentificationtasksReviewCreateResultTaxonIdErrorComponent <- R6::R6Class(
           stop(paste("Error! Invalid data for `code`. Must be a string:", input_json$`code`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateResultTaxonIdErrorComponent: the required field `code` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent: the required field `code` is missing."))
       }
       # check the required field `detail`
       if (!is.null(input_json$`detail`)) {
@@ -183,14 +183,14 @@ IdentificationtasksReviewCreateResultTaxonIdErrorComponent <- R6::R6Class(
           stop(paste("Error! Invalid data for `detail`. Must be a string:", input_json$`detail`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateResultTaxonIdErrorComponent: the required field `detail` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent: the required field `detail` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of IdentificationtasksReviewCreateResultTaxonIdErrorComponent
+    #' @return String representation of IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent
     toString = function() {
       self$toJSONString()
     },
@@ -253,13 +253,13 @@ IdentificationtasksReviewCreateResultTaxonIdErrorComponent <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# IdentificationtasksReviewCreateResultTaxonIdErrorComponent$unlock()
+# IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent$unlock()
 #
 ## Below is an example to define the print function
-# IdentificationtasksReviewCreateResultTaxonIdErrorComponent$set("public", "print", function(...) {
+# IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# IdentificationtasksReviewCreateResultTaxonIdErrorComponent$lock()
+# IdentificationtasksReviewCreateCharacteristicsNonFieldErrorsErrorComponent$lock()
 

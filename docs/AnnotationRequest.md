@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **best_photo_uuid** | **character** |  | [optional] 
-**classification** | [**AnnotationClassificationRequest**](AnnotationClassificationRequest.md) |  | 
-**characteristics** | [**AnnotationCharacteristicsRequest**](AnnotationCharacteristicsRequest.md) |  | [optional] 
+**classification** | [**SpeciesClassificationRequest**](SpeciesClassificationRequest.md) |  | 
+**characteristics** | [**SpeciesCharacteristicsRequest**](SpeciesCharacteristicsRequest.md) |  | [optional] 
 **feedback** | [**AnnotationFeedbackRequest**](AnnotationFeedbackRequest.md) |  | [optional] 
 **is_flagged** | **character** |  | [optional] [default to FALSE] 
 **is_decisive** | **character** |  | [optional] [default to FALSE] 

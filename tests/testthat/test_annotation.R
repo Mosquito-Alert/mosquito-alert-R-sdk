@@ -34,10 +34,17 @@ test_that("best_photo", {
 })
 
 test_that("classification", {
-  # tests for the property `classification` (AnnotationClassification)
+  # tests for the property `classification` (SpeciesClassification)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`classification`, "EXPECTED_RESULT")
+})
+
+test_that("characteristics", {
+  # tests for the property `characteristics` (SpeciesCharacteristics)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`characteristics`, "EXPECTED_RESULT")
 })
 
 test_that("feedback", {

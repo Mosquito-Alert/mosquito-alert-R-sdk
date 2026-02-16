@@ -1,10 +1,10 @@
-# MosquitoAlert::IdentificationtasksReviewCreateResultNonFieldErrorsErrorComponent
+# MosquitoAlert::IdentificationtasksReviewCreateClassificationNonFieldErrorsErrorComponent
 
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attr** | **character** |  | [Enum: [result.non_field_errors]] 
+**attr** | **character** |  | [Enum: [classification.non_field_errors]] 
 **code** | **character** |  | [Enum: [invalid, required]] 
 **detail** | **character** |  | 
 

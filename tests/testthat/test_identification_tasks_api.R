@@ -20,6 +20,9 @@ test_that("annotations_list", {
   # tests for annotations_list
   # base path: https://api.mosquitoalert.com/v1
   # @param observation_uuid character UUID of the Observation
+  # @param characteristics_is_blood_fed character  (optional)
+  # @param characteristics_is_gravid character  (optional)
+  # @param characteristics_sex character  (optional)
   # @param classification_confidence_label character  (optional)
   # @param classification_confidence_max numeric  (optional)
   # @param classification_confidence_min numeric  (optional)
@@ -47,6 +50,9 @@ test_that("annotations_list_mine", {
   # tests for annotations_list_mine
   # base path: https://api.mosquitoalert.com/v1
   # Get my annotations
+  # @param characteristics_is_blood_fed character  (optional)
+  # @param characteristics_is_gravid character  (optional)
+  # @param characteristics_sex character  (optional)
   # @param classification_confidence_label character  (optional)
   # @param classification_confidence_max numeric  (optional)
   # @param classification_confidence_min numeric  (optional)
@@ -109,6 +115,9 @@ test_that("list", {
   # @param page_size integer Número de resultados a devolver por página. (optional)
   # @param result_agreement_max numeric  (optional)
   # @param result_agreement_min numeric  (optional)
+  # @param result_characteristics_is_blood_fed character  (optional)
+  # @param result_characteristics_is_gravid character  (optional)
+  # @param result_characteristics_sex character  (optional)
   # @param result_confidence_max numeric  (optional)
   # @param result_confidence_min numeric  (optional)
   # @param result_source array[character]  (optional)
@@ -145,6 +154,9 @@ test_that("list_mine", {
   # @param page_size integer Número de resultados a devolver por página. (optional)
   # @param result_agreement_max numeric  (optional)
   # @param result_agreement_min numeric  (optional)
+  # @param result_characteristics_is_blood_fed character  (optional)
+  # @param result_characteristics_is_gravid character  (optional)
+  # @param result_characteristics_sex character  (optional)
   # @param result_confidence_max numeric  (optional)
   # @param result_confidence_min numeric  (optional)
   # @param result_source array[character]  (optional)

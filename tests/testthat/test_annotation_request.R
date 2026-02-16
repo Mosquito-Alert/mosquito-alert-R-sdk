@@ -13,14 +13,14 @@ test_that("best_photo_uuid", {
 })
 
 test_that("classification", {
-  # tests for the property `classification` (AnnotationClassificationRequest)
+  # tests for the property `classification` (SpeciesClassificationRequest)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`classification`, "EXPECTED_RESULT")
 })
 
 test_that("characteristics", {
-  # tests for the property `characteristics` (AnnotationCharacteristicsRequest)
+  # tests for the property `characteristics` (SpeciesCharacteristicsRequest)
 
   # uncomment below to test the property
   #expect_equal(model.instance$`characteristics`, "EXPECTED_RESULT")
