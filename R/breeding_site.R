@@ -247,7 +247,7 @@ BreedingSite <- R6::R6Class(
       }
       if (!is.null(self$`location`)) {
         BreedingSiteObject[["location"]] <-
-          self$`location`$toSimpleType()
+          self$extractSimpleType(self$`location`)
       }
       if (!is.null(self$`note`)) {
         BreedingSiteObject[["note"]] <-
@@ -263,7 +263,7 @@ BreedingSite <- R6::R6Class(
       }
       if (!is.null(self$`photos`)) {
         BreedingSiteObject[["photos"]] <-
-          lapply(self$`photos`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`photos`)
       }
       if (!is.null(self$`site_type`)) {
         BreedingSiteObject[["site_type"]] <-
@@ -286,6 +286,29 @@ BreedingSite <- R6::R6Class(
           self$`has_larvae`
       }
       return(BreedingSiteObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

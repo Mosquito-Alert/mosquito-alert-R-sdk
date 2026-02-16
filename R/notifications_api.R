@@ -181,10 +181,11 @@ NotificationsApi <- R6::R6Class(
     #' @param meta_notification_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return array[CreateNotification]
-    create = function(meta_notification_request = NULL, data_file = NULL, ...) {
-      local_var_response <- self$create_with_http_info(meta_notification_request, data_file = data_file, ...)
+    create = function(meta_notification_request = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$create_with_http_info(meta_notification_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -202,9 +203,10 @@ NotificationsApi <- R6::R6Class(
     #' @param meta_notification_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (array[CreateNotification]) with additional information such as HTTP status code, headers
-    create_with_http_info = function(meta_notification_request = NULL, data_file = NULL, ...) {
+    create_with_http_info = function(meta_notification_request = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -259,6 +261,10 @@ NotificationsApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "array[CreateNotification]"),
@@ -296,10 +302,11 @@ NotificationsApi <- R6::R6Class(
     #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedNotificationList
-    list = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_with_http_info(is_read, order_by, page, page_size, data_file = data_file, ...)
+    list = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_with_http_info(is_read, order_by, page, page_size, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -320,9 +327,10 @@ NotificationsApi <- R6::R6Class(
     #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedNotificationList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -398,6 +406,10 @@ NotificationsApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedNotificationList"),
@@ -435,10 +447,11 @@ NotificationsApi <- R6::R6Class(
     #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedNotificationList
-    list_mine = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_mine_with_http_info(is_read, order_by, page, page_size, data_file = data_file, ...)
+    list_mine = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_mine_with_http_info(is_read, order_by, page, page_size, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -459,9 +472,10 @@ NotificationsApi <- R6::R6Class(
     #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedNotificationList) with additional information such as HTTP status code, headers
-    list_mine_with_http_info = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ...) {
+    list_mine_with_http_info = function(is_read = NULL, order_by = NULL, page = NULL, page_size = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -537,6 +551,10 @@ NotificationsApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedNotificationList"),
@@ -572,10 +590,11 @@ NotificationsApi <- R6::R6Class(
     #' @param patched_notification_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return Notification
-    partial_update = function(id, patched_notification_request = NULL, data_file = NULL, ...) {
-      local_var_response <- self$partial_update_with_http_info(id, patched_notification_request, data_file = data_file, ...)
+    partial_update = function(id, patched_notification_request = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$partial_update_with_http_info(id, patched_notification_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -594,9 +613,10 @@ NotificationsApi <- R6::R6Class(
     #' @param patched_notification_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (Notification) with additional information such as HTTP status code, headers
-    partial_update_with_http_info = function(id, patched_notification_request = NULL, data_file = NULL, ...) {
+    partial_update_with_http_info = function(id, patched_notification_request = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -663,6 +683,10 @@ NotificationsApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "Notification"),
@@ -697,10 +721,11 @@ NotificationsApi <- R6::R6Class(
     #' @param id Un valor de entero único que identifique este notification.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return Notification
-    retrieve = function(id, data_file = NULL, ...) {
-      local_var_response <- self$retrieve_with_http_info(id, data_file = data_file, ...)
+    retrieve = function(id, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$retrieve_with_http_info(id, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -718,9 +743,10 @@ NotificationsApi <- R6::R6Class(
     #' @param id Un valor de entero único que identifique este notification.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (Notification) with additional information such as HTTP status code, headers
-    retrieve_with_http_info = function(id, data_file = NULL, ...) {
+    retrieve_with_http_info = function(id, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -777,6 +803,10 @@ NotificationsApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "Notification"),
@@ -812,10 +842,11 @@ NotificationsApi <- R6::R6Class(
     #' @param notification_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return Notification
-    update = function(id, notification_request, data_file = NULL, ...) {
-      local_var_response <- self$update_with_http_info(id, notification_request, data_file = data_file, ...)
+    update = function(id, notification_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$update_with_http_info(id, notification_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -834,9 +865,10 @@ NotificationsApi <- R6::R6Class(
     #' @param notification_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (Notification) with additional information such as HTTP status code, headers
-    update_with_http_info = function(id, notification_request, data_file = NULL, ...) {
+    update_with_http_info = function(id, notification_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -906,6 +938,10 @@ NotificationsApi <- R6::R6Class(
         # save response in a file
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
         }
 
         deserialized_resp_obj <- tryCatch(

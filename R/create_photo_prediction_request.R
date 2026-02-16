@@ -132,7 +132,7 @@ CreatePhotoPredictionRequest <- R6::R6Class(
       }
       if (!is.null(self$`bbox`)) {
         CreatePhotoPredictionRequestObject[["bbox"]] <-
-          self$`bbox`$toSimpleType()
+          self$extractSimpleType(self$`bbox`)
       }
       if (!is.null(self$`insect_confidence`)) {
         CreatePhotoPredictionRequestObject[["insect_confidence"]] <-
@@ -152,13 +152,36 @@ CreatePhotoPredictionRequest <- R6::R6Class(
       }
       if (!is.null(self$`scores`)) {
         CreatePhotoPredictionRequestObject[["scores"]] <-
-          self$`scores`$toSimpleType()
+          self$extractSimpleType(self$`scores`)
       }
       if (!is.null(self$`classifier_version`)) {
         CreatePhotoPredictionRequestObject[["classifier_version"]] <-
           self$`classifier_version`
       }
       return(CreatePhotoPredictionRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

@@ -249,10 +249,11 @@ ObservationsApi <- R6::R6Class(
     #' @param mosquito_appearance (optional) User-provided description of the mosquito's appearance
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return Observation
-    create = function(created_at, sent_at, location, photos, note = NULL, tags = NULL, event_environment = NULL, event_moment = NULL, mosquito_appearance = NULL, data_file = NULL, ...) {
-      local_var_response <- self$create_with_http_info(created_at, sent_at, location, photos, note, tags, event_environment, event_moment, mosquito_appearance, data_file = data_file, ...)
+    create = function(created_at, sent_at, location, photos, note = NULL, tags = NULL, event_environment = NULL, event_moment = NULL, mosquito_appearance = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$create_with_http_info(created_at, sent_at, location, photos, note, tags, event_environment, event_moment, mosquito_appearance, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -278,9 +279,10 @@ ObservationsApi <- R6::R6Class(
     #' @param mosquito_appearance (optional) User-provided description of the mosquito's appearance
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (Observation) with additional information such as HTTP status code, headers
-    create_with_http_info = function(created_at, sent_at, location, photos, note = NULL, tags = NULL, event_environment = NULL, event_moment = NULL, mosquito_appearance = NULL, data_file = NULL, ...) {
+    create_with_http_info = function(created_at, sent_at, location, photos, note = NULL, tags = NULL, event_environment = NULL, event_moment = NULL, mosquito_appearance = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -376,6 +378,10 @@ ObservationsApi <- R6::R6Class(
         # save response in a file
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
         }
 
         deserialized_resp_obj <- tryCatch(
@@ -531,10 +537,11 @@ ObservationsApi <- R6::R6Class(
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return array[ObservationGeoModel]
-    geo_list = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$geo_list_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, geo_precision, has_photos, identification_taxon_ids, identification_taxon_ids_lookup, negate_identification_taxon_ids, order_by, point, received_at_after, received_at_before, search, short_id, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    geo_list = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$geo_list_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, geo_precision, has_photos, identification_taxon_ids, identification_taxon_ids_lookup, negate_identification_taxon_ids, order_by, point, received_at_after, received_at_before, search, short_id, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -571,9 +578,10 @@ ObservationsApi <- R6::R6Class(
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (array[ObservationGeoModel]) with additional information such as HTTP status code, headers
-    geo_list_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    geo_list_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -759,6 +767,10 @@ ObservationsApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "array[ObservationGeoModel]"),
@@ -815,10 +827,11 @@ ObservationsApi <- R6::R6Class(
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedObservationList
-    list = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, format, geo_precision, has_photos, identification_taxon_ids, identification_taxon_ids_lookup, negate_identification_taxon_ids, order_by, page, page_size, point, received_at_after, received_at_before, search, short_id, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    list = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, format, geo_precision, has_photos, identification_taxon_ids, identification_taxon_ids_lookup, negate_identification_taxon_ids, order_by, page, page_size, point, received_at_after, received_at_before, search, short_id, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -858,9 +871,10 @@ ObservationsApi <- R6::R6Class(
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedObservationList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1067,6 +1081,10 @@ ObservationsApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedObservationList"),
@@ -1123,10 +1141,11 @@ ObservationsApi <- R6::R6Class(
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedObservationList
-    list_mine = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_mine_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, format, geo_precision, has_photos, identification_taxon_ids, identification_taxon_ids_lookup, negate_identification_taxon_ids, order_by, page, page_size, point, received_at_after, received_at_before, search, short_id, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    list_mine = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_mine_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, format, geo_precision, has_photos, identification_taxon_ids, identification_taxon_ids_lookup, negate_identification_taxon_ids, order_by, page, page_size, point, received_at_after, received_at_before, search, short_id, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1166,9 +1185,10 @@ ObservationsApi <- R6::R6Class(
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedObservationList) with additional information such as HTTP status code, headers
-    list_mine_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    list_mine_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_photos = NULL, identification_taxon_ids = NULL, identification_taxon_ids_lookup = NULL, negate_identification_taxon_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1375,6 +1395,10 @@ ObservationsApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedObservationList"),
@@ -1409,10 +1433,11 @@ ObservationsApi <- R6::R6Class(
     #' @param uuid 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return Observation
-    retrieve = function(uuid, data_file = NULL, ...) {
-      local_var_response <- self$retrieve_with_http_info(uuid, data_file = data_file, ...)
+    retrieve = function(uuid, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$retrieve_with_http_info(uuid, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1430,9 +1455,10 @@ ObservationsApi <- R6::R6Class(
     #' @param uuid 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (Observation) with additional information such as HTTP status code, headers
-    retrieve_with_http_info = function(uuid, data_file = NULL, ...) {
+    retrieve_with_http_info = function(uuid, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1488,6 +1514,10 @@ ObservationsApi <- R6::R6Class(
         # save response in a file
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
         }
 
         deserialized_resp_obj <- tryCatch(

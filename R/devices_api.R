@@ -131,10 +131,11 @@ DevicesApi <- R6::R6Class(
     #' @param device_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return Device
-    create = function(device_request, data_file = NULL, ...) {
-      local_var_response <- self$create_with_http_info(device_request, data_file = data_file, ...)
+    create = function(device_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$create_with_http_info(device_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -152,9 +153,10 @@ DevicesApi <- R6::R6Class(
     #' @param device_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (Device) with additional information such as HTTP status code, headers
-    create_with_http_info = function(device_request, data_file = NULL, ...) {
+    create_with_http_info = function(device_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -213,6 +215,10 @@ DevicesApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "Device"),
@@ -248,10 +254,11 @@ DevicesApi <- R6::R6Class(
     #' @param patched_device_update_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return DeviceUpdate
-    partial_update = function(device_id, patched_device_update_request = NULL, data_file = NULL, ...) {
-      local_var_response <- self$partial_update_with_http_info(device_id, patched_device_update_request, data_file = data_file, ...)
+    partial_update = function(device_id, patched_device_update_request = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$partial_update_with_http_info(device_id, patched_device_update_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -270,9 +277,10 @@ DevicesApi <- R6::R6Class(
     #' @param patched_device_update_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (DeviceUpdate) with additional information such as HTTP status code, headers
-    partial_update_with_http_info = function(device_id, patched_device_update_request = NULL, data_file = NULL, ...) {
+    partial_update_with_http_info = function(device_id, patched_device_update_request = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -339,6 +347,10 @@ DevicesApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "DeviceUpdate"),
@@ -373,10 +385,11 @@ DevicesApi <- R6::R6Class(
     #' @param device_id 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return Device
-    retrieve = function(device_id, data_file = NULL, ...) {
-      local_var_response <- self$retrieve_with_http_info(device_id, data_file = data_file, ...)
+    retrieve = function(device_id, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$retrieve_with_http_info(device_id, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -394,9 +407,10 @@ DevicesApi <- R6::R6Class(
     #' @param device_id 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (Device) with additional information such as HTTP status code, headers
-    retrieve_with_http_info = function(device_id, data_file = NULL, ...) {
+    retrieve_with_http_info = function(device_id, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -453,6 +467,10 @@ DevicesApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "Device"),
@@ -488,10 +506,11 @@ DevicesApi <- R6::R6Class(
     #' @param device_update_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return DeviceUpdate
-    update = function(device_id, device_update_request, data_file = NULL, ...) {
-      local_var_response <- self$update_with_http_info(device_id, device_update_request, data_file = data_file, ...)
+    update = function(device_id, device_update_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$update_with_http_info(device_id, device_update_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -510,9 +529,10 @@ DevicesApi <- R6::R6Class(
     #' @param device_update_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (DeviceUpdate) with additional information such as HTTP status code, headers
-    update_with_http_info = function(device_id, device_update_request, data_file = NULL, ...) {
+    update_with_http_info = function(device_id, device_update_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -582,6 +602,10 @@ DevicesApi <- R6::R6Class(
         # save response in a file
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
         }
 
         deserialized_resp_obj <- tryCatch(

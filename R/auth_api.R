@@ -212,10 +212,11 @@ AuthApi <- R6::R6Class(
     #' @param app_user_token_obtain_pair_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return AppUserTokenObtainPair
-    obtain_token = function(app_user_token_obtain_pair_request, data_file = NULL, ...) {
-      local_var_response <- self$obtain_token_with_http_info(app_user_token_obtain_pair_request, data_file = data_file, ...)
+    obtain_token = function(app_user_token_obtain_pair_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$obtain_token_with_http_info(app_user_token_obtain_pair_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -233,9 +234,10 @@ AuthApi <- R6::R6Class(
     #' @param app_user_token_obtain_pair_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (AppUserTokenObtainPair) with additional information such as HTTP status code, headers
-    obtain_token_with_http_info = function(app_user_token_obtain_pair_request, data_file = NULL, ...) {
+    obtain_token_with_http_info = function(app_user_token_obtain_pair_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -285,6 +287,10 @@ AuthApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "AppUserTokenObtainPair"),
@@ -319,10 +325,11 @@ AuthApi <- R6::R6Class(
     #' @param token_refresh_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return TokenRefresh
-    refresh_token = function(token_refresh_request, data_file = NULL, ...) {
-      local_var_response <- self$refresh_token_with_http_info(token_refresh_request, data_file = data_file, ...)
+    refresh_token = function(token_refresh_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$refresh_token_with_http_info(token_refresh_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -340,9 +347,10 @@ AuthApi <- R6::R6Class(
     #' @param token_refresh_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (TokenRefresh) with additional information such as HTTP status code, headers
-    refresh_token_with_http_info = function(token_refresh_request, data_file = NULL, ...) {
+    refresh_token_with_http_info = function(token_refresh_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -392,6 +400,10 @@ AuthApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "TokenRefresh"),
@@ -426,10 +438,11 @@ AuthApi <- R6::R6Class(
     #' @param guest_registration_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return GuestRegistration
-    signup_guest = function(guest_registration_request, data_file = NULL, ...) {
-      local_var_response <- self$signup_guest_with_http_info(guest_registration_request, data_file = data_file, ...)
+    signup_guest = function(guest_registration_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$signup_guest_with_http_info(guest_registration_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -447,9 +460,10 @@ AuthApi <- R6::R6Class(
     #' @param guest_registration_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (GuestRegistration) with additional information such as HTTP status code, headers
-    signup_guest_with_http_info = function(guest_registration_request, data_file = NULL, ...) {
+    signup_guest_with_http_info = function(guest_registration_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -498,6 +512,10 @@ AuthApi <- R6::R6Class(
         # save response in a file
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
         }
 
         deserialized_resp_obj <- tryCatch(

@@ -109,13 +109,36 @@ FixRequest <- R6::R6Class(
       }
       if (!is.null(self$`point`)) {
         FixRequestObject[["point"]] <-
-          self$`point`$toSimpleType()
+          self$extractSimpleType(self$`point`)
       }
       if (!is.null(self$`power`)) {
         FixRequestObject[["power"]] <-
           self$`power`
       }
       return(FixRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

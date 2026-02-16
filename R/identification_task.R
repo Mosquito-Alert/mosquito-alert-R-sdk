@@ -156,15 +156,15 @@ IdentificationTask <- R6::R6Class(
       IdentificationTaskObject <- list()
       if (!is.null(self$`observation`)) {
         IdentificationTaskObject[["observation"]] <-
-          self$`observation`$toSimpleType()
+          self$extractSimpleType(self$`observation`)
       }
       if (!is.null(self$`public_photo`)) {
         IdentificationTaskObject[["public_photo"]] <-
-          self$`public_photo`$toSimpleType()
+          self$extractSimpleType(self$`public_photo`)
       }
       if (!is.null(self$`assignments`)) {
         IdentificationTaskObject[["assignments"]] <-
-          lapply(self$`assignments`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`assignments`)
       }
       if (!is.null(self$`status`)) {
         IdentificationTaskObject[["status"]] <-
@@ -188,11 +188,11 @@ IdentificationTask <- R6::R6Class(
       }
       if (!is.null(self$`review`)) {
         IdentificationTaskObject[["review"]] <-
-          self$`review`$toSimpleType()
+          self$extractSimpleType(self$`review`)
       }
       if (!is.null(self$`result`)) {
         IdentificationTaskObject[["result"]] <-
-          self$`result`$toSimpleType()
+          self$extractSimpleType(self$`result`)
       }
       if (!is.null(self$`created_at`)) {
         IdentificationTaskObject[["created_at"]] <-
@@ -203,6 +203,29 @@ IdentificationTask <- R6::R6Class(
           self$`updated_at`
       }
       return(IdentificationTaskObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

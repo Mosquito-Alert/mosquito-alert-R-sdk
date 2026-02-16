@@ -134,10 +134,11 @@ TaxaApi <- R6::R6Class(
     #' @param rank (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedTaxonList
-    list = function(is_relevant = NULL, page = NULL, page_size = NULL, rank = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_with_http_info(is_relevant, page, page_size, rank, data_file = data_file, ...)
+    list = function(is_relevant = NULL, page = NULL, page_size = NULL, rank = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_with_http_info(is_relevant, page, page_size, rank, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -158,9 +159,10 @@ TaxaApi <- R6::R6Class(
     #' @param rank (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedTaxonList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(is_relevant = NULL, page = NULL, page_size = NULL, rank = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(is_relevant = NULL, page = NULL, page_size = NULL, rank = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -236,6 +238,10 @@ TaxaApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedTaxonList"),
@@ -270,10 +276,11 @@ TaxaApi <- R6::R6Class(
     #' @param id Un valor de entero único que identifique este taxon.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return Taxon
-    retrieve = function(id, data_file = NULL, ...) {
-      local_var_response <- self$retrieve_with_http_info(id, data_file = data_file, ...)
+    retrieve = function(id, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$retrieve_with_http_info(id, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -291,9 +298,10 @@ TaxaApi <- R6::R6Class(
     #' @param id Un valor de entero único que identifique este taxon.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (Taxon) with additional information such as HTTP status code, headers
-    retrieve_with_http_info = function(id, data_file = NULL, ...) {
+    retrieve_with_http_info = function(id, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -350,6 +358,10 @@ TaxaApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "Taxon"),
@@ -383,10 +395,11 @@ TaxaApi <- R6::R6Class(
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return TaxonTreeNode
-    root_tree_retrieve = function(data_file = NULL, ...) {
-      local_var_response <- self$root_tree_retrieve_with_http_info(data_file = data_file, ...)
+    root_tree_retrieve = function(data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$root_tree_retrieve_with_http_info(data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -403,9 +416,10 @@ TaxaApi <- R6::R6Class(
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (TaxonTreeNode) with additional information such as HTTP status code, headers
-    root_tree_retrieve_with_http_info = function(data_file = NULL, ...) {
+    root_tree_retrieve_with_http_info = function(data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -450,6 +464,10 @@ TaxaApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "TaxonTreeNode"),
@@ -484,10 +502,11 @@ TaxaApi <- R6::R6Class(
     #' @param id Un valor de entero único que identifique este taxon.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return TaxonTreeNode
-    tree_retrieve = function(id, data_file = NULL, ...) {
-      local_var_response <- self$tree_retrieve_with_http_info(id, data_file = data_file, ...)
+    tree_retrieve = function(id, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$tree_retrieve_with_http_info(id, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -505,9 +524,10 @@ TaxaApi <- R6::R6Class(
     #' @param id Un valor de entero único que identifique este taxon.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (TaxonTreeNode) with additional information such as HTTP status code, headers
-    tree_retrieve_with_http_info = function(id, data_file = NULL, ...) {
+    tree_retrieve_with_http_info = function(id, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -563,6 +583,10 @@ TaxaApi <- R6::R6Class(
         # save response in a file
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
         }
 
         deserialized_resp_obj <- tryCatch(

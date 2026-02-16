@@ -256,10 +256,11 @@ BreedingSitesApi <- R6::R6Class(
     #' @param has_larvae (optional) Either if the user perceived larvaes the breeding site.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return BreedingSite
-    create = function(created_at, sent_at, location, photos, site_type, note = NULL, tags = NULL, has_water = NULL, in_public_area = NULL, has_near_mosquitoes = NULL, has_larvae = NULL, data_file = NULL, ...) {
-      local_var_response <- self$create_with_http_info(created_at, sent_at, location, photos, site_type, note, tags, has_water, in_public_area, has_near_mosquitoes, has_larvae, data_file = data_file, ...)
+    create = function(created_at, sent_at, location, photos, site_type, note = NULL, tags = NULL, has_water = NULL, in_public_area = NULL, has_near_mosquitoes = NULL, has_larvae = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$create_with_http_info(created_at, sent_at, location, photos, site_type, note, tags, has_water, in_public_area, has_near_mosquitoes, has_larvae, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -287,9 +288,10 @@ BreedingSitesApi <- R6::R6Class(
     #' @param has_larvae (optional) Either if the user perceived larvaes the breeding site.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (BreedingSite) with additional information such as HTTP status code, headers
-    create_with_http_info = function(created_at, sent_at, location, photos, site_type, note = NULL, tags = NULL, has_water = NULL, in_public_area = NULL, has_near_mosquitoes = NULL, has_larvae = NULL, data_file = NULL, ...) {
+    create_with_http_info = function(created_at, sent_at, location, photos, site_type, note = NULL, tags = NULL, has_water = NULL, in_public_area = NULL, has_near_mosquitoes = NULL, has_larvae = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -396,6 +398,10 @@ BreedingSitesApi <- R6::R6Class(
         # save response in a file
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
         }
 
         deserialized_resp_obj <- tryCatch(
@@ -552,10 +558,11 @@ BreedingSitesApi <- R6::R6Class(
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return array[BreedingSiteGeoModel]
-    geo_list = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, geo_precision = NULL, has_larvae = NULL, has_near_mosquitoes = NULL, has_photos = NULL, has_water = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, site_type = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$geo_list_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, geo_precision, has_larvae, has_near_mosquitoes, has_photos, has_water, order_by, point, received_at_after, received_at_before, search, short_id, site_type, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    geo_list = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, geo_precision = NULL, has_larvae = NULL, has_near_mosquitoes = NULL, has_photos = NULL, has_water = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, site_type = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$geo_list_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, geo_precision, has_larvae, has_near_mosquitoes, has_photos, has_water, order_by, point, received_at_after, received_at_before, search, short_id, site_type, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -593,9 +600,10 @@ BreedingSitesApi <- R6::R6Class(
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (array[BreedingSiteGeoModel]) with additional information such as HTTP status code, headers
-    geo_list_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, geo_precision = NULL, has_larvae = NULL, has_near_mosquitoes = NULL, has_photos = NULL, has_water = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, site_type = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    geo_list_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, geo_precision = NULL, has_larvae = NULL, has_near_mosquitoes = NULL, has_photos = NULL, has_water = NULL, order_by = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, site_type = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -788,6 +796,10 @@ BreedingSitesApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "array[BreedingSiteGeoModel]"),
@@ -845,10 +857,11 @@ BreedingSitesApi <- R6::R6Class(
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedBreedingSiteList
-    list = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_larvae = NULL, has_near_mosquitoes = NULL, has_photos = NULL, has_water = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, site_type = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, format, geo_precision, has_larvae, has_near_mosquitoes, has_photos, has_water, order_by, page, page_size, point, received_at_after, received_at_before, search, short_id, site_type, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    list = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_larvae = NULL, has_near_mosquitoes = NULL, has_photos = NULL, has_water = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, site_type = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, format, geo_precision, has_larvae, has_near_mosquitoes, has_photos, has_water, order_by, page, page_size, point, received_at_after, received_at_before, search, short_id, site_type, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -889,9 +902,10 @@ BreedingSitesApi <- R6::R6Class(
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedBreedingSiteList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_larvae = NULL, has_near_mosquitoes = NULL, has_photos = NULL, has_water = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, site_type = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_larvae = NULL, has_near_mosquitoes = NULL, has_photos = NULL, has_water = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, site_type = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1105,6 +1119,10 @@ BreedingSitesApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedBreedingSiteList"),
@@ -1162,10 +1180,11 @@ BreedingSitesApi <- R6::R6Class(
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedBreedingSiteList
-    list_mine = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_larvae = NULL, has_near_mosquitoes = NULL, has_photos = NULL, has_water = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, site_type = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_mine_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, format, geo_precision, has_larvae, has_near_mosquitoes, has_photos, has_water, order_by, page, page_size, point, received_at_after, received_at_before, search, short_id, site_type, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ...)
+    list_mine = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_larvae = NULL, has_near_mosquitoes = NULL, has_photos = NULL, has_water = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, site_type = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_mine_with_http_info(boundary_uuid, country_id, created_at_after, created_at_before, dist, format, geo_precision, has_larvae, has_near_mosquitoes, has_photos, has_water, order_by, page, page_size, point, received_at_after, received_at_before, search, short_id, site_type, tags, updated_at_after, updated_at_before, user_uuid, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1206,9 +1225,10 @@ BreedingSitesApi <- R6::R6Class(
     #' @param user_uuid (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedBreedingSiteList) with additional information such as HTTP status code, headers
-    list_mine_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_larvae = NULL, has_near_mosquitoes = NULL, has_photos = NULL, has_water = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, site_type = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ...) {
+    list_mine_with_http_info = function(boundary_uuid = NULL, country_id = NULL, created_at_after = NULL, created_at_before = NULL, dist = 1000, format = NULL, geo_precision = NULL, has_larvae = NULL, has_near_mosquitoes = NULL, has_photos = NULL, has_water = NULL, order_by = NULL, page = NULL, page_size = NULL, point = NULL, received_at_after = NULL, received_at_before = NULL, search = NULL, short_id = NULL, site_type = NULL, tags = NULL, updated_at_after = NULL, updated_at_before = NULL, user_uuid = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1422,6 +1442,10 @@ BreedingSitesApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedBreedingSiteList"),
@@ -1456,10 +1480,11 @@ BreedingSitesApi <- R6::R6Class(
     #' @param uuid 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return BreedingSite
-    retrieve = function(uuid, data_file = NULL, ...) {
-      local_var_response <- self$retrieve_with_http_info(uuid, data_file = data_file, ...)
+    retrieve = function(uuid, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$retrieve_with_http_info(uuid, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1477,9 +1502,10 @@ BreedingSitesApi <- R6::R6Class(
     #' @param uuid 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (BreedingSite) with additional information such as HTTP status code, headers
-    retrieve_with_http_info = function(uuid, data_file = NULL, ...) {
+    retrieve_with_http_info = function(uuid, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1535,6 +1561,10 @@ BreedingSitesApi <- R6::R6Class(
         # save response in a file
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
         }
 
         deserialized_resp_obj <- tryCatch(

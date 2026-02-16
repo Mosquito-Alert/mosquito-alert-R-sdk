@@ -237,7 +237,7 @@ Observation <- R6::R6Class(
       }
       if (!is.null(self$`location`)) {
         ObservationObject[["location"]] <-
-          self$`location`$toSimpleType()
+          self$extractSimpleType(self$`location`)
       }
       if (!is.null(self$`note`)) {
         ObservationObject[["note"]] <-
@@ -253,11 +253,11 @@ Observation <- R6::R6Class(
       }
       if (!is.null(self$`photos`)) {
         ObservationObject[["photos"]] <-
-          lapply(self$`photos`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`photos`)
       }
       if (!is.null(self$`identification`)) {
         ObservationObject[["identification"]] <-
-          self$`identification`$toSimpleType()
+          self$extractSimpleType(self$`identification`)
       }
       if (!is.null(self$`event_environment`)) {
         ObservationObject[["event_environment"]] <-
@@ -269,9 +269,32 @@ Observation <- R6::R6Class(
       }
       if (!is.null(self$`mosquito_appearance`)) {
         ObservationObject[["mosquito_appearance"]] <-
-          self$`mosquito_appearance`$toSimpleType()
+          self$extractSimpleType(self$`mosquito_appearance`)
       }
       return(ObservationObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

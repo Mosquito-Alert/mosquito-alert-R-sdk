@@ -94,13 +94,36 @@ DeviceUpdateRequest <- R6::R6Class(
       }
       if (!is.null(self$`os`)) {
         DeviceUpdateRequestObject[["os"]] <-
-          self$`os`$toSimpleType()
+          self$extractSimpleType(self$`os`)
       }
       if (!is.null(self$`mobile_app`)) {
         DeviceUpdateRequestObject[["mobile_app"]] <-
-          self$`mobile_app`$toSimpleType()
+          self$extractSimpleType(self$`mobile_app`)
       }
       return(DeviceUpdateRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

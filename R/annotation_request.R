@@ -121,15 +121,15 @@ AnnotationRequest <- R6::R6Class(
       }
       if (!is.null(self$`classification`)) {
         AnnotationRequestObject[["classification"]] <-
-          self$`classification`$toSimpleType()
+          self$extractSimpleType(self$`classification`)
       }
       if (!is.null(self$`characteristics`)) {
         AnnotationRequestObject[["characteristics"]] <-
-          self$`characteristics`$toSimpleType()
+          self$extractSimpleType(self$`characteristics`)
       }
       if (!is.null(self$`feedback`)) {
         AnnotationRequestObject[["feedback"]] <-
-          self$`feedback`$toSimpleType()
+          self$extractSimpleType(self$`feedback`)
       }
       if (!is.null(self$`is_flagged`)) {
         AnnotationRequestObject[["is_flagged"]] <-
@@ -141,13 +141,36 @@ AnnotationRequest <- R6::R6Class(
       }
       if (!is.null(self$`observation_flags`)) {
         AnnotationRequestObject[["observation_flags"]] <-
-          self$`observation_flags`$toSimpleType()
+          self$extractSimpleType(self$`observation_flags`)
       }
       if (!is.null(self$`tags`)) {
         AnnotationRequestObject[["tags"]] <-
           self$`tags`
       }
       return(AnnotationRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

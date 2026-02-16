@@ -84,13 +84,36 @@ CountryPermission <- R6::R6Class(
       }
       if (!is.null(self$`permissions`)) {
         CountryPermissionObject[["permissions"]] <-
-          self$`permissions`$toSimpleType()
+          self$extractSimpleType(self$`permissions`)
       }
       if (!is.null(self$`country`)) {
         CountryPermissionObject[["country"]] <-
-          self$`country`$toSimpleType()
+          self$extractSimpleType(self$`country`)
       }
       return(CountryPermissionObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

@@ -68,13 +68,36 @@ CreateNotificationMessageRequest <- R6::R6Class(
       CreateNotificationMessageRequestObject <- list()
       if (!is.null(self$`title`)) {
         CreateNotificationMessageRequestObject[["title"]] <-
-          self$`title`$toSimpleType()
+          self$extractSimpleType(self$`title`)
       }
       if (!is.null(self$`body`)) {
         CreateNotificationMessageRequestObject[["body"]] <-
-          self$`body`$toSimpleType()
+          self$extractSimpleType(self$`body`)
       }
       return(CreateNotificationMessageRequestObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

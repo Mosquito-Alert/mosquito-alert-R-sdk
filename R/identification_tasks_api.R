@@ -463,10 +463,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param annotation_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return Annotation
-    annotations_create = function(observation_uuid, annotation_request, data_file = NULL, ...) {
-      local_var_response <- self$annotations_create_with_http_info(observation_uuid, annotation_request, data_file = data_file, ...)
+    annotations_create = function(observation_uuid, annotation_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$annotations_create_with_http_info(observation_uuid, annotation_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -485,9 +486,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param annotation_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (Annotation) with additional information such as HTTP status code, headers
-    annotations_create_with_http_info = function(observation_uuid, annotation_request, data_file = NULL, ...) {
+    annotations_create_with_http_info = function(observation_uuid, annotation_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -558,6 +560,10 @@ IdentificationTasksApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "Annotation"),
@@ -609,10 +615,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param user_ids (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedAnnotationList
-    annotations_list = function(observation_uuid, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
-      local_var_response <- self$annotations_list_with_http_info(observation_uuid, classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, is_decisive, is_favourite, is_flagged, order_by, page, page_size, search, type, updated_at_after, updated_at_before, user_ids, data_file = data_file, ...)
+    annotations_list = function(observation_uuid, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$annotations_list_with_http_info(observation_uuid, classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, is_decisive, is_favourite, is_flagged, order_by, page, page_size, search, type, updated_at_after, updated_at_before, user_ids, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -647,9 +654,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param user_ids (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedAnnotationList) with additional information such as HTTP status code, headers
-    annotations_list_with_http_info = function(observation_uuid, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
+    annotations_list_with_http_info = function(observation_uuid, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -839,6 +847,10 @@ IdentificationTasksApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedAnnotationList"),
@@ -889,10 +901,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param user_ids (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedAnnotationList
-    annotations_list_mine = function(classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
-      local_var_response <- self$annotations_list_mine_with_http_info(classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, is_decisive, is_favourite, is_flagged, order_by, page, page_size, search, type, updated_at_after, updated_at_before, user_ids, data_file = data_file, ...)
+    annotations_list_mine = function(classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$annotations_list_mine_with_http_info(classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, is_decisive, is_favourite, is_flagged, order_by, page, page_size, search, type, updated_at_after, updated_at_before, user_ids, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -926,9 +939,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param user_ids (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedAnnotationList) with additional information such as HTTP status code, headers
-    annotations_list_mine_with_http_info = function(classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ...) {
+    annotations_list_mine_with_http_info = function(classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1106,6 +1120,10 @@ IdentificationTasksApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedAnnotationList"),
@@ -1141,10 +1159,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param observation_uuid UUID of the Observation
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return Annotation
-    annotations_retrieve = function(id, observation_uuid, data_file = NULL, ...) {
-      local_var_response <- self$annotations_retrieve_with_http_info(id, observation_uuid, data_file = data_file, ...)
+    annotations_retrieve = function(id, observation_uuid, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$annotations_retrieve_with_http_info(id, observation_uuid, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1163,9 +1182,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param observation_uuid UUID of the Observation
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (Annotation) with additional information such as HTTP status code, headers
-    annotations_retrieve_with_http_info = function(id, observation_uuid, data_file = NULL, ...) {
+    annotations_retrieve_with_http_info = function(id, observation_uuid, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1234,6 +1254,10 @@ IdentificationTasksApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "Annotation"),
@@ -1267,10 +1291,11 @@ IdentificationTasksApi <- R6::R6Class(
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return Assignment
-    assign_next = function(data_file = NULL, ...) {
-      local_var_response <- self$assign_next_with_http_info(data_file = data_file, ...)
+    assign_next = function(data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$assign_next_with_http_info(data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1287,9 +1312,10 @@ IdentificationTasksApi <- R6::R6Class(
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (Assignment) with additional information such as HTTP status code, headers
-    assign_next_with_http_info = function(data_file = NULL, ...) {
+    assign_next_with_http_info = function(data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1333,6 +1359,10 @@ IdentificationTasksApi <- R6::R6Class(
         # save response in a file
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
         }
 
         deserialized_resp_obj <- tryCatch(
@@ -1393,10 +1423,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param updated_at_before (optional) Update at
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedIdentificationTaskList
-    list = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_action = NULL, search = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_with_http_info(annotator_ids, assignee_ids, created_at_after, created_at_before, fully_predicted, is_flagged, is_safe, num_annotations_max, num_annotations_min, observation_country_ids, order_by, page, page_size, result_agreement_max, result_agreement_min, result_confidence_max, result_confidence_min, result_source, result_taxon_ids, result_uncertainty_max, result_uncertainty_min, review_action, search, status, updated_at_after, updated_at_before, data_file = data_file, ...)
+    list = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_action = NULL, search = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_with_http_info(annotator_ids, assignee_ids, created_at_after, created_at_before, fully_predicted, is_flagged, is_safe, num_annotations_max, num_annotations_min, observation_country_ids, order_by, page, page_size, result_agreement_max, result_agreement_min, result_confidence_max, result_confidence_min, result_source, result_taxon_ids, result_uncertainty_max, result_uncertainty_min, review_action, search, status, updated_at_after, updated_at_before, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1439,9 +1470,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param updated_at_before (optional) Update at
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedIdentificationTaskList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_action = NULL, search = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_action = NULL, search = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1681,6 +1713,10 @@ IdentificationTasksApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedIdentificationTaskList"),
@@ -1740,10 +1776,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param updated_at_before (optional) Update at
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedIdentificationTaskList
-    list_mine = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_action = NULL, search = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_mine_with_http_info(annotator_ids, assignee_ids, created_at_after, created_at_before, fully_predicted, is_flagged, is_safe, num_annotations_max, num_annotations_min, observation_country_ids, order_by, page, page_size, result_agreement_max, result_agreement_min, result_confidence_max, result_confidence_min, result_source, result_taxon_ids, result_uncertainty_max, result_uncertainty_min, review_action, search, status, updated_at_after, updated_at_before, data_file = data_file, ...)
+    list_mine = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_action = NULL, search = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_mine_with_http_info(annotator_ids, assignee_ids, created_at_after, created_at_before, fully_predicted, is_flagged, is_safe, num_annotations_max, num_annotations_min, observation_country_ids, order_by, page, page_size, result_agreement_max, result_agreement_min, result_confidence_max, result_confidence_min, result_source, result_taxon_ids, result_uncertainty_max, result_uncertainty_min, review_action, search, status, updated_at_after, updated_at_before, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1786,9 +1823,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param updated_at_before (optional) Update at
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedIdentificationTaskList) with additional information such as HTTP status code, headers
-    list_mine_with_http_info = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_action = NULL, search = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ...) {
+    list_mine_with_http_info = function(annotator_ids = NULL, assignee_ids = NULL, created_at_after = NULL, created_at_before = NULL, fully_predicted = NULL, is_flagged = NULL, is_safe = NULL, num_annotations_max = NULL, num_annotations_min = NULL, observation_country_ids = NULL, order_by = NULL, page = NULL, page_size = NULL, result_agreement_max = NULL, result_agreement_min = NULL, result_confidence_max = NULL, result_confidence_min = NULL, result_source = NULL, result_taxon_ids = NULL, result_uncertainty_max = NULL, result_uncertainty_min = NULL, review_action = NULL, search = NULL, status = NULL, updated_at_after = NULL, updated_at_before = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -2028,6 +2066,10 @@ IdentificationTasksApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedIdentificationTaskList"),
@@ -2063,10 +2105,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param create_photo_prediction_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return CreatePhotoPrediction
-    predictions_create = function(observation_uuid, create_photo_prediction_request, data_file = NULL, ...) {
-      local_var_response <- self$predictions_create_with_http_info(observation_uuid, create_photo_prediction_request, data_file = data_file, ...)
+    predictions_create = function(observation_uuid, create_photo_prediction_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$predictions_create_with_http_info(observation_uuid, create_photo_prediction_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -2085,9 +2128,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param create_photo_prediction_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (CreatePhotoPrediction) with additional information such as HTTP status code, headers
-    predictions_create_with_http_info = function(observation_uuid, create_photo_prediction_request, data_file = NULL, ...) {
+    predictions_create_with_http_info = function(observation_uuid, create_photo_prediction_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -2157,6 +2201,10 @@ IdentificationTasksApi <- R6::R6Class(
         # save response in a file
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
         }
 
         deserialized_resp_obj <- tryCatch(
@@ -2309,10 +2357,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedPhotoPredictionList
-    predictions_list = function(observation_uuid, page = NULL, page_size = NULL, data_file = NULL, ...) {
-      local_var_response <- self$predictions_list_with_http_info(observation_uuid, page, page_size, data_file = data_file, ...)
+    predictions_list = function(observation_uuid, page = NULL, page_size = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$predictions_list_with_http_info(observation_uuid, page, page_size, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -2332,9 +2381,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedPhotoPredictionList) with additional information such as HTTP status code, headers
-    predictions_list_with_http_info = function(observation_uuid, page = NULL, page_size = NULL, data_file = NULL, ...) {
+    predictions_list_with_http_info = function(observation_uuid, page = NULL, page_size = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -2403,6 +2453,10 @@ IdentificationTasksApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedPhotoPredictionList"),
@@ -2439,10 +2493,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param patched_photo_prediction_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PhotoPrediction
-    predictions_partial_update = function(observation_uuid, photo_uuid, patched_photo_prediction_request = NULL, data_file = NULL, ...) {
-      local_var_response <- self$predictions_partial_update_with_http_info(observation_uuid, photo_uuid, patched_photo_prediction_request, data_file = data_file, ...)
+    predictions_partial_update = function(observation_uuid, photo_uuid, patched_photo_prediction_request = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$predictions_partial_update_with_http_info(observation_uuid, photo_uuid, patched_photo_prediction_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -2462,9 +2517,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param patched_photo_prediction_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PhotoPrediction) with additional information such as HTTP status code, headers
-    predictions_partial_update_with_http_info = function(observation_uuid, photo_uuid, patched_photo_prediction_request = NULL, data_file = NULL, ...) {
+    predictions_partial_update_with_http_info = function(observation_uuid, photo_uuid, patched_photo_prediction_request = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -2543,6 +2599,10 @@ IdentificationTasksApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PhotoPrediction"),
@@ -2578,10 +2638,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param photo_uuid 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PhotoPrediction
-    predictions_retrieve = function(observation_uuid, photo_uuid, data_file = NULL, ...) {
-      local_var_response <- self$predictions_retrieve_with_http_info(observation_uuid, photo_uuid, data_file = data_file, ...)
+    predictions_retrieve = function(observation_uuid, photo_uuid, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$predictions_retrieve_with_http_info(observation_uuid, photo_uuid, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -2600,9 +2661,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param photo_uuid 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PhotoPrediction) with additional information such as HTTP status code, headers
-    predictions_retrieve_with_http_info = function(observation_uuid, photo_uuid, data_file = NULL, ...) {
+    predictions_retrieve_with_http_info = function(observation_uuid, photo_uuid, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -2671,6 +2733,10 @@ IdentificationTasksApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PhotoPrediction"),
@@ -2707,10 +2773,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param photo_prediction_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PhotoPrediction
-    predictions_update = function(observation_uuid, photo_uuid, photo_prediction_request, data_file = NULL, ...) {
-      local_var_response <- self$predictions_update_with_http_info(observation_uuid, photo_uuid, photo_prediction_request, data_file = data_file, ...)
+    predictions_update = function(observation_uuid, photo_uuid, photo_prediction_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$predictions_update_with_http_info(observation_uuid, photo_uuid, photo_prediction_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -2730,9 +2797,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param photo_prediction_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PhotoPrediction) with additional information such as HTTP status code, headers
-    predictions_update_with_http_info = function(observation_uuid, photo_uuid, photo_prediction_request, data_file = NULL, ...) {
+    predictions_update_with_http_info = function(observation_uuid, photo_uuid, photo_prediction_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -2815,6 +2883,10 @@ IdentificationTasksApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PhotoPrediction"),
@@ -2849,10 +2921,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param observation_uuid 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return IdentificationTask
-    retrieve = function(observation_uuid, data_file = NULL, ...) {
-      local_var_response <- self$retrieve_with_http_info(observation_uuid, data_file = data_file, ...)
+    retrieve = function(observation_uuid, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$retrieve_with_http_info(observation_uuid, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -2870,9 +2943,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param observation_uuid 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (IdentificationTask) with additional information such as HTTP status code, headers
-    retrieve_with_http_info = function(observation_uuid, data_file = NULL, ...) {
+    retrieve_with_http_info = function(observation_uuid, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -2929,6 +3003,10 @@ IdentificationTasksApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "IdentificationTask"),
@@ -2964,10 +3042,11 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param meta_create_identification_task_review_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return IdentificationTaskReview
-    review_create = function(observation_uuid, meta_create_identification_task_review_request = NULL, data_file = NULL, ...) {
-      local_var_response <- self$review_create_with_http_info(observation_uuid, meta_create_identification_task_review_request, data_file = data_file, ...)
+    review_create = function(observation_uuid, meta_create_identification_task_review_request = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$review_create_with_http_info(observation_uuid, meta_create_identification_task_review_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -2986,9 +3065,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param meta_create_identification_task_review_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (IdentificationTaskReview) with additional information such as HTTP status code, headers
-    review_create_with_http_info = function(observation_uuid, meta_create_identification_task_review_request = NULL, data_file = NULL, ...) {
+    review_create_with_http_info = function(observation_uuid, meta_create_identification_task_review_request = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -3054,6 +3134,10 @@ IdentificationTasksApi <- R6::R6Class(
         # save response in a file
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
         }
 
         deserialized_resp_obj <- tryCatch(

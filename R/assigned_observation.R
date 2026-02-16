@@ -150,7 +150,7 @@ AssignedObservation <- R6::R6Class(
       }
       if (!is.null(self$`location`)) {
         AssignedObservationObject[["location"]] <-
-          self$`location`$toSimpleType()
+          self$extractSimpleType(self$`location`)
       }
       if (!is.null(self$`note`)) {
         AssignedObservationObject[["note"]] <-
@@ -158,13 +158,36 @@ AssignedObservation <- R6::R6Class(
       }
       if (!is.null(self$`photos`)) {
         AssignedObservationObject[["photos"]] <-
-          lapply(self$`photos`, function(x) x$toSimpleType())
+          self$extractSimpleType(self$`photos`)
       }
       if (!is.null(self$`user`)) {
         AssignedObservationObject[["user"]] <-
-          self$`user`$toSimpleType()
+          self$extractSimpleType(self$`user`)
       }
       return(AssignedObservationObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

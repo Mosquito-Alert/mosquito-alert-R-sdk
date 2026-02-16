@@ -73,13 +73,36 @@ Assignment <- R6::R6Class(
       AssignmentObject <- list()
       if (!is.null(self$`observation`)) {
         AssignmentObject[["observation"]] <-
-          self$`observation`$toSimpleType()
+          self$extractSimpleType(self$`observation`)
       }
       if (!is.null(self$`annotation_type`)) {
         AssignmentObject[["annotation_type"]] <-
           self$`annotation_type`
       }
       return(AssignmentObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

@@ -86,13 +86,36 @@ GeneralPermission <- R6::R6Class(
       }
       if (!is.null(self$`permissions`)) {
         GeneralPermissionObject[["permissions"]] <-
-          self$`permissions`$toSimpleType()
+          self$extractSimpleType(self$`permissions`)
       }
       if (!is.null(self$`is_staff`)) {
         GeneralPermissionObject[["is_staff"]] <-
           self$`is_staff`
       }
       return(GeneralPermissionObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

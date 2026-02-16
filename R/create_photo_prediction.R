@@ -151,11 +151,11 @@ CreatePhotoPrediction <- R6::R6Class(
       CreatePhotoPredictionObject <- list()
       if (!is.null(self$`photo`)) {
         CreatePhotoPredictionObject[["photo"]] <-
-          self$`photo`$toSimpleType()
+          self$extractSimpleType(self$`photo`)
       }
       if (!is.null(self$`bbox`)) {
         CreatePhotoPredictionObject[["bbox"]] <-
-          self$`bbox`$toSimpleType()
+          self$extractSimpleType(self$`bbox`)
       }
       if (!is.null(self$`insect_confidence`)) {
         CreatePhotoPredictionObject[["insect_confidence"]] <-
@@ -167,7 +167,7 @@ CreatePhotoPrediction <- R6::R6Class(
       }
       if (!is.null(self$`taxon`)) {
         CreatePhotoPredictionObject[["taxon"]] <-
-          self$`taxon`$toSimpleType()
+          self$extractSimpleType(self$`taxon`)
       }
       if (!is.null(self$`threshold_deviation`)) {
         CreatePhotoPredictionObject[["threshold_deviation"]] <-
@@ -179,7 +179,7 @@ CreatePhotoPrediction <- R6::R6Class(
       }
       if (!is.null(self$`scores`)) {
         CreatePhotoPredictionObject[["scores"]] <-
-          self$`scores`$toSimpleType()
+          self$extractSimpleType(self$`scores`)
       }
       if (!is.null(self$`classifier_version`)) {
         CreatePhotoPredictionObject[["classifier_version"]] <-
@@ -194,6 +194,29 @@ CreatePhotoPrediction <- R6::R6Class(
           self$`updated_at`
       }
       return(CreatePhotoPredictionObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

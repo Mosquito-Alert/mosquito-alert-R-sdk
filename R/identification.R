@@ -86,7 +86,7 @@ Identification <- R6::R6Class(
       IdentificationObject <- list()
       if (!is.null(self$`photo`)) {
         IdentificationObject[["photo"]] <-
-          self$`photo`$toSimpleType()
+          self$extractSimpleType(self$`photo`)
       }
       if (!is.null(self$`num_annotations`)) {
         IdentificationObject[["num_annotations"]] <-
@@ -94,13 +94,36 @@ Identification <- R6::R6Class(
       }
       if (!is.null(self$`result`)) {
         IdentificationObject[["result"]] <-
-          self$`result`$toSimpleType()
+          self$extractSimpleType(self$`result`)
       }
       if (!is.null(self$`public_note`)) {
         IdentificationObject[["public_note"]] <-
           self$`public_note`
       }
       return(IdentificationObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

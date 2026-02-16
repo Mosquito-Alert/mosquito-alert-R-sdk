@@ -75,17 +75,40 @@ Permissions <- R6::R6Class(
       PermissionsObject <- list()
       if (!is.null(self$`annotation`)) {
         PermissionsObject[["annotation"]] <-
-          self$`annotation`$toSimpleType()
+          self$extractSimpleType(self$`annotation`)
       }
       if (!is.null(self$`identification_task`)) {
         PermissionsObject[["identification_task"]] <-
-          self$`identification_task`$toSimpleType()
+          self$extractSimpleType(self$`identification_task`)
       }
       if (!is.null(self$`review`)) {
         PermissionsObject[["review"]] <-
-          self$`review`$toSimpleType()
+          self$extractSimpleType(self$`review`)
       }
       return(PermissionsObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

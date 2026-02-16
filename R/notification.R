@@ -92,7 +92,7 @@ Notification <- R6::R6Class(
       }
       if (!is.null(self$`message`)) {
         NotificationObject[["message"]] <-
-          self$`message`$toSimpleType()
+          self$extractSimpleType(self$`message`)
       }
       if (!is.null(self$`is_read`)) {
         NotificationObject[["is_read"]] <-
@@ -103,6 +103,29 @@ Notification <- R6::R6Class(
           self$`created_at`
       }
       return(NotificationObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

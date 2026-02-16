@@ -91,7 +91,7 @@ AnnotationClassification <- R6::R6Class(
       AnnotationClassificationObject <- list()
       if (!is.null(self$`taxon`)) {
         AnnotationClassificationObject[["taxon"]] <-
-          self$`taxon`$toSimpleType()
+          self$extractSimpleType(self$`taxon`)
       }
       if (!is.null(self$`confidence`)) {
         AnnotationClassificationObject[["confidence"]] <-
@@ -106,6 +106,29 @@ AnnotationClassification <- R6::R6Class(
           self$`is_high_confidence`
       }
       return(AnnotationClassificationObject)
+    },
+
+    extractSimpleType = function(x) {
+      if (R6::is.R6(x)) {
+        return(x$toSimpleType())
+      } else if (!self$hasNestedR6(x)) {
+        return(x)
+      }
+      lapply(x, self$extractSimpleType)
+    },
+
+    hasNestedR6 = function(x) {
+      if (R6::is.R6(x)) {
+        return(TRUE)
+      }
+      if (is.list(x)) {
+        for (item in x) {
+          if (self$hasNestedR6(item)) {
+            return(TRUE)
+          }
+        }
+      }
+      FALSE
     },
 
     #' @description

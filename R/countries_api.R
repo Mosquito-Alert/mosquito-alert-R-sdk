@@ -87,10 +87,11 @@ CountriesApi <- R6::R6Class(
     #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedCountryList
-    list = function(page = NULL, page_size = NULL, data_file = NULL, ...) {
-      local_var_response <- self$list_with_http_info(page, page_size, data_file = data_file, ...)
+    list = function(page = NULL, page_size = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_with_http_info(page, page_size, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -109,9 +110,10 @@ CountriesApi <- R6::R6Class(
     #' @param page_size (optional) Número de resultados a devolver por página.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedCountryList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(page = NULL, page_size = NULL, data_file = NULL, ...) {
+    list_with_http_info = function(page = NULL, page_size = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -168,6 +170,10 @@ CountriesApi <- R6::R6Class(
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
         }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
 
         deserialized_resp_obj <- tryCatch(
           self$api_client$DeserializeResponse(local_var_resp, "PaginatedCountryList"),
@@ -202,10 +208,11 @@ CountriesApi <- R6::R6Class(
     #' @param id Un valor de entero único que identifique este europe country.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return Country
-    retrieve = function(id, data_file = NULL, ...) {
-      local_var_response <- self$retrieve_with_http_info(id, data_file = data_file, ...)
+    retrieve = function(id, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$retrieve_with_http_info(id, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -223,9 +230,10 @@ CountriesApi <- R6::R6Class(
     #' @param id Un valor de entero único que identifique este europe country.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (Country) with additional information such as HTTP status code, headers
-    retrieve_with_http_info = function(id, data_file = NULL, ...) {
+    retrieve_with_http_info = function(id, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -281,6 +289,10 @@ CountriesApi <- R6::R6Class(
         # save response in a file
         if (!is.null(data_file)) {
           self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
         }
 
         deserialized_resp_obj <- tryCatch(
