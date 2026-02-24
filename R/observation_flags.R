@@ -7,7 +7,7 @@
 #' @title ObservationFlags
 #' @description ObservationFlags Class
 #' @format An \code{R6Class} generator object
-#' @field is_favourite  character
+#' @field is_favourite  character [optional]
 #' @field is_visible  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -21,21 +21,21 @@ ObservationFlags <- R6::R6Class(
     #' @description
     #' Initialize a new ObservationFlags class.
     #'
-    #' @param is_favourite is_favourite
     #' @param is_visible is_visible
+    #' @param is_favourite is_favourite. Default to FALSE.
     #' @param ... Other optional arguments.
-    initialize = function(`is_favourite`, `is_visible`, ...) {
-      if (!missing(`is_favourite`)) {
-        if (!(is.logical(`is_favourite`) && length(`is_favourite`) == 1)) {
-          stop(paste("Error! Invalid data for `is_favourite`. Must be a boolean:", `is_favourite`))
-        }
-        self$`is_favourite` <- `is_favourite`
-      }
+    initialize = function(`is_visible`, `is_favourite` = FALSE, ...) {
       if (!missing(`is_visible`)) {
         if (!(is.logical(`is_visible`) && length(`is_visible`) == 1)) {
           stop(paste("Error! Invalid data for `is_visible`. Must be a boolean:", `is_visible`))
         }
         self$`is_visible` <- `is_visible`
+      }
+      if (!is.null(`is_favourite`)) {
+        if (!(is.logical(`is_favourite`) && length(`is_favourite`) == 1)) {
+          stop(paste("Error! Invalid data for `is_favourite`. Must be a boolean:", `is_favourite`))
+        }
+        self$`is_favourite` <- `is_favourite`
       }
     },
 
@@ -126,14 +126,6 @@ ObservationFlags <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `is_favourite`
-      if (!is.null(input_json$`is_favourite`)) {
-        if (!(is.logical(input_json$`is_favourite`) && length(input_json$`is_favourite`) == 1)) {
-          stop(paste("Error! Invalid data for `is_favourite`. Must be a boolean:", input_json$`is_favourite`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for ObservationFlags: the required field `is_favourite` is missing."))
-      }
       # check the required field `is_visible`
       if (!is.null(input_json$`is_visible`)) {
         if (!(is.logical(input_json$`is_visible`) && length(input_json$`is_visible`) == 1)) {
@@ -157,11 +149,6 @@ ObservationFlags <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `is_favourite` is null
-      if (is.null(self$`is_favourite`)) {
-        return(FALSE)
-      }
-
       # check if the required `is_visible` is null
       if (is.null(self$`is_visible`)) {
         return(FALSE)
@@ -176,11 +163,6 @@ ObservationFlags <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `is_favourite` is null
-      if (is.null(self$`is_favourite`)) {
-        invalid_fields["is_favourite"] <- "Non-nullable required field `is_favourite` cannot be null."
-      }
-
       # check if the required `is_visible` is null
       if (is.null(self$`is_visible`)) {
         invalid_fields["is_visible"] <- "Non-nullable required field `is_visible` cannot be null."

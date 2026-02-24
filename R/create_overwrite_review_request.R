@@ -7,10 +7,10 @@
 #' @title CreateOverwriteReviewRequest
 #' @description CreateOverwriteReviewRequest Class
 #' @format An \code{R6Class} generator object
-#' @field action  character [optional]
+#' @field action  character
 #' @field public_photo_uuid  character
-#' @field is_safe Indicates if the content is safe for publication. character
-#' @field public_note  character
+#' @field is_safe  character
+#' @field public_note Notes to display on public map character
 #' @field classification  \link{SpeciesClassificationRequest}
 #' @field characteristics  \link{SpeciesCharacteristicsRequest} [optional]
 #' @importFrom R6 R6Class
@@ -29,14 +29,23 @@ CreateOverwriteReviewRequest <- R6::R6Class(
     #' @description
     #' Initialize a new CreateOverwriteReviewRequest class.
     #'
+    #' @param action action
     #' @param public_photo_uuid public_photo_uuid
-    #' @param is_safe Indicates if the content is safe for publication.
-    #' @param public_note public_note
+    #' @param is_safe is_safe
+    #' @param public_note Notes to display on public map
     #' @param classification classification
-    #' @param action action. Default to "overwrite".
     #' @param characteristics characteristics
     #' @param ... Other optional arguments.
-    initialize = function(`public_photo_uuid`, `is_safe`, `public_note`, `classification`, `action` = "overwrite", `characteristics` = NULL, ...) {
+    initialize = function(`action`, `public_photo_uuid`, `is_safe`, `public_note`, `classification`, `characteristics` = NULL, ...) {
+      if (!missing(`action`)) {
+        if (!(`action` %in% c("overwrite"))) {
+          stop(paste("Error! \"", `action`, "\" cannot be assigned to `action`. Must be \"overwrite\".", sep = ""))
+        }
+        if (!(is.character(`action`) && length(`action`) == 1)) {
+          stop(paste("Error! Invalid data for `action`. Must be a string:", `action`))
+        }
+        self$`action` <- `action`
+      }
       if (!missing(`public_photo_uuid`)) {
         if (!(is.character(`public_photo_uuid`) && length(`public_photo_uuid`) == 1)) {
           stop(paste("Error! Invalid data for `public_photo_uuid`. Must be a string:", `public_photo_uuid`))
@@ -58,15 +67,6 @@ CreateOverwriteReviewRequest <- R6::R6Class(
       if (!missing(`classification`)) {
         stopifnot(R6::is.R6(`classification`))
         self$`classification` <- `classification`
-      }
-      if (!is.null(`action`)) {
-        if (!(`action` %in% c("overwrite"))) {
-          stop(paste("Error! \"", `action`, "\" cannot be assigned to `action`. Must be \"overwrite\".", sep = ""))
-        }
-        if (!(is.character(`action`) && length(`action`) == 1)) {
-          stop(paste("Error! Invalid data for `action`. Must be a string:", `action`))
-        }
-        self$`action` <- `action`
       }
       if (!is.null(`characteristics`)) {
         stopifnot(R6::is.R6(`characteristics`))
@@ -226,6 +226,14 @@ CreateOverwriteReviewRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `action`
+      if (!is.null(input_json$`action`)) {
+        if (!(is.character(input_json$`action`) && length(input_json$`action`) == 1)) {
+          stop(paste("Error! Invalid data for `action`. Must be a string:", input_json$`action`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CreateOverwriteReviewRequest: the required field `action` is missing."))
+      }
       # check the required field `public_photo_uuid`
       if (!is.null(input_json$`public_photo_uuid`)) {
         if (!(is.character(input_json$`public_photo_uuid`) && length(input_json$`public_photo_uuid`) == 1)) {
@@ -271,6 +279,11 @@ CreateOverwriteReviewRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `action` is null
+      if (is.null(self$`action`)) {
+        return(FALSE)
+      }
+
       # check if the required `public_photo_uuid` is null
       if (is.null(self$`public_photo_uuid`)) {
         return(FALSE)
@@ -294,6 +307,11 @@ CreateOverwriteReviewRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `action` is null
+      if (is.null(self$`action`)) {
+        invalid_fields["action"] <- "Non-nullable required field `action` cannot be null."
+      }
+
       # check if the required `public_photo_uuid` is null
       if (is.null(self$`public_photo_uuid`)) {
         invalid_fields["public_photo_uuid"] <- "Non-nullable required field `public_photo_uuid` cannot be null."

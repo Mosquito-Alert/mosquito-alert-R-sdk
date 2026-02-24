@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attr** | **character** |  | [Enum: [action]] 
-**code** | **character** |  | [Enum: [invalid_choice, null]] 
+**code** | **character** |  | [Enum: [invalid_choice, null, required]] 
 **detail** | **character** |  | 
 
 

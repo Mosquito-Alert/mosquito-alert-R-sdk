@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attr** | **character** |  | [Enum: [observation_flags.is_favourite]] 
-**code** | **character** |  | [Enum: [null]] 
+**code** | **character** |  | [Enum: [invalid, null]] 
 **detail** | **character** |  | 
 
 

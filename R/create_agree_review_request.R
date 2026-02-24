@@ -7,7 +7,7 @@
 #' @title CreateAgreeReviewRequest
 #' @description CreateAgreeReviewRequest Class
 #' @format An \code{R6Class} generator object
-#' @field action  character [optional]
+#' @field action  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,10 +19,10 @@ CreateAgreeReviewRequest <- R6::R6Class(
     #' @description
     #' Initialize a new CreateAgreeReviewRequest class.
     #'
-    #' @param action action. Default to "agree".
+    #' @param action action
     #' @param ... Other optional arguments.
-    initialize = function(`action` = "agree", ...) {
-      if (!is.null(`action`)) {
+    initialize = function(`action`, ...) {
+      if (!missing(`action`)) {
         if (!(`action` %in% c("agree"))) {
           stop(paste("Error! \"", `action`, "\" cannot be assigned to `action`. Must be \"agree\".", sep = ""))
         }
@@ -118,6 +118,14 @@ CreateAgreeReviewRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `action`
+      if (!is.null(input_json$`action`)) {
+        if (!(is.character(input_json$`action`) && length(input_json$`action`) == 1)) {
+          stop(paste("Error! Invalid data for `action`. Must be a string:", input_json$`action`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CreateAgreeReviewRequest: the required field `action` is missing."))
+      }
     },
 
     #' @description
@@ -133,6 +141,11 @@ CreateAgreeReviewRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `action` is null
+      if (is.null(self$`action`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -142,6 +155,11 @@ CreateAgreeReviewRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `action` is null
+      if (is.null(self$`action`)) {
+        invalid_fields["action"] <- "Non-nullable required field `action` cannot be null."
+      }
+
       invalid_fields
     },
 

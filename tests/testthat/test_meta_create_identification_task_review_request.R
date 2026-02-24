@@ -21,7 +21,6 @@ test_that("public_photo_uuid", {
 
 test_that("is_safe", {
   # tests for the property `is_safe` (character)
-  # Indicates if the content is safe for publication.
 
   # uncomment below to test the property
   #expect_equal(model.instance$`is_safe`, "EXPECTED_RESULT")
@@ -29,6 +28,7 @@ test_that("is_safe", {
 
 test_that("public_note", {
   # tests for the property `public_note` (character)
+  # Notes to display on public map
 
   # uncomment below to test the property
   #expect_equal(model.instance$`public_note`, "EXPECTED_RESULT")
