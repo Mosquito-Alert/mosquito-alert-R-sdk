@@ -38,8 +38,8 @@ IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent <- R6
         self$`attr` <- `attr`
       }
       if (!missing(`code`)) {
-        if (!(`code` %in% c("invalid_choice", "null", "required"))) {
-          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\", \"null\", \"required\".", sep = ""))
+        if (!(`code` %in% c("null", "required"))) {
+          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"null\", \"required\".", sep = ""))
         }
         if (!(is.character(`code`) && length(`code`) == 1)) {
           stop(paste("Error! Invalid data for `code`. Must be a string:", `code`))
@@ -114,8 +114,8 @@ IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent <- R6
         self$`attr` <- this_object$`attr`
       }
       if (!is.null(this_object$`code`)) {
-        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice", "null", "required"))) {
-          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\", \"null\", \"required\".", sep = ""))
+        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("null", "required"))) {
+          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"null\", \"required\".", sep = ""))
         }
         self$`code` <- this_object$`code`
       }
@@ -147,8 +147,8 @@ IdentificationtasksReviewCreateClassificationConfidenceLabelErrorComponent <- R6
         stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"classification.confidence_label\".", sep = ""))
       }
       self$`attr` <- this_object$`attr`
-      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice", "null", "required"))) {
-        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\", \"null\", \"required\".", sep = ""))
+      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("null", "required"))) {
+        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"null\", \"required\".", sep = ""))
       }
       self$`code` <- this_object$`code`
       self$`detail` <- this_object$`detail`

@@ -706,8 +706,8 @@ ObservationsApi <- R6::R6Class(
       # no explore
       # validate enum values
       for (query_item in `order_by`) {
-        if (!is.null(query_item) && !(query_item %in% c("-created_at", "-received_at", "created_at", "received_at"))) {
-          stop("Invalid value for order_by when calling ObservationsApi$geo_list. Must be [-created_at, -received_at, created_at, received_at].")
+        if (!is.null(query_item) && !(query_item %in% c("-created_at", "-distance", "-received_at", "created_at", "distance", "received_at"))) {
+          stop("Invalid value for order_by when calling ObservationsApi$geo_list. Must be [-created_at, -distance, -received_at, created_at, distance, received_at].")
         }
       }
       query_params[["order_by"]] <- I(paste(lapply(`order_by`, URLencode, reserved = TRUE), collapse = ","))
@@ -1016,8 +1016,8 @@ ObservationsApi <- R6::R6Class(
       # no explore
       # validate enum values
       for (query_item in `order_by`) {
-        if (!is.null(query_item) && !(query_item %in% c("-created_at", "-received_at", "created_at", "received_at"))) {
-          stop("Invalid value for order_by when calling ObservationsApi$list. Must be [-created_at, -received_at, created_at, received_at].")
+        if (!is.null(query_item) && !(query_item %in% c("-created_at", "-distance", "-received_at", "created_at", "distance", "received_at"))) {
+          stop("Invalid value for order_by when calling ObservationsApi$list. Must be [-created_at, -distance, -received_at, created_at, distance, received_at].")
         }
       }
       query_params[["order_by"]] <- I(paste(lapply(`order_by`, URLencode, reserved = TRUE), collapse = ","))
@@ -1330,8 +1330,8 @@ ObservationsApi <- R6::R6Class(
       # no explore
       # validate enum values
       for (query_item in `order_by`) {
-        if (!is.null(query_item) && !(query_item %in% c("-created_at", "-received_at", "created_at", "received_at"))) {
-          stop("Invalid value for order_by when calling ObservationsApi$list_mine. Must be [-created_at, -received_at, created_at, received_at].")
+        if (!is.null(query_item) && !(query_item %in% c("-created_at", "-distance", "-received_at", "created_at", "distance", "received_at"))) {
+          stop("Invalid value for order_by when calling ObservationsApi$list_mine. Must be [-created_at, -distance, -received_at, created_at, distance, received_at].")
         }
       }
       query_params[["order_by"]] <- I(paste(lapply(`order_by`, URLencode, reserved = TRUE), collapse = ","))

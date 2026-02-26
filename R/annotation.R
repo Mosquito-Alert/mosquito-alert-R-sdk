@@ -16,7 +16,7 @@
 #' @field feedback  \link{AnnotationFeedback} [optional]
 #' @field type  character
 #' @field is_flagged  character
-#' @field is_decisive  character
+#' @field decision_level  character
 #' @field observation_flags  \link{ObservationFlags} [optional]
 #' @field tags  list(character) [optional]
 #' @field created_at  character
@@ -36,7 +36,7 @@ Annotation <- R6::R6Class(
     `feedback` = NULL,
     `type` = NULL,
     `is_flagged` = NULL,
-    `is_decisive` = NULL,
+    `decision_level` = NULL,
     `observation_flags` = NULL,
     `tags` = NULL,
     `created_at` = NULL,
@@ -52,7 +52,7 @@ Annotation <- R6::R6Class(
     #' @param classification classification
     #' @param type type
     #' @param is_flagged is_flagged
-    #' @param is_decisive is_decisive
+    #' @param decision_level decision_level
     #' @param created_at created_at
     #' @param updated_at updated_at
     #' @param characteristics characteristics
@@ -60,7 +60,7 @@ Annotation <- R6::R6Class(
     #' @param observation_flags observation_flags
     #' @param tags tags
     #' @param ... Other optional arguments.
-    initialize = function(`id`, `observation_uuid`, `user`, `best_photo`, `classification`, `type`, `is_flagged`, `is_decisive`, `created_at`, `updated_at`, `characteristics` = NULL, `feedback` = NULL, `observation_flags` = NULL, `tags` = NULL, ...) {
+    initialize = function(`id`, `observation_uuid`, `user`, `best_photo`, `classification`, `type`, `is_flagged`, `decision_level`, `created_at`, `updated_at`, `characteristics` = NULL, `feedback` = NULL, `observation_flags` = NULL, `tags` = NULL, ...) {
       if (!missing(`id`)) {
         if (!(is.numeric(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be an integer:", `id`))
@@ -100,11 +100,14 @@ Annotation <- R6::R6Class(
         }
         self$`is_flagged` <- `is_flagged`
       }
-      if (!missing(`is_decisive`)) {
-        if (!(is.logical(`is_decisive`) && length(`is_decisive`) == 1)) {
-          stop(paste("Error! Invalid data for `is_decisive`. Must be a boolean:", `is_decisive`))
+      if (!missing(`decision_level`)) {
+        if (!(`decision_level` %in% c("normal", "executive", "final"))) {
+          stop(paste("Error! \"", `decision_level`, "\" cannot be assigned to `decision_level`. Must be \"normal\", \"executive\", \"final\".", sep = ""))
         }
-        self$`is_decisive` <- `is_decisive`
+        if (!(is.character(`decision_level`) && length(`decision_level`) == 1)) {
+          stop(paste("Error! Invalid data for `decision_level`. Must be a string:", `decision_level`))
+        }
+        self$`decision_level` <- `decision_level`
       }
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
@@ -204,9 +207,9 @@ Annotation <- R6::R6Class(
         AnnotationObject[["is_flagged"]] <-
           self$`is_flagged`
       }
-      if (!is.null(self$`is_decisive`)) {
-        AnnotationObject[["is_decisive"]] <-
-          self$`is_decisive`
+      if (!is.null(self$`decision_level`)) {
+        AnnotationObject[["decision_level"]] <-
+          self$`decision_level`
       }
       if (!is.null(self$`observation_flags`)) {
         AnnotationObject[["observation_flags"]] <-
@@ -297,8 +300,11 @@ Annotation <- R6::R6Class(
       if (!is.null(this_object$`is_flagged`)) {
         self$`is_flagged` <- this_object$`is_flagged`
       }
-      if (!is.null(this_object$`is_decisive`)) {
-        self$`is_decisive` <- this_object$`is_decisive`
+      if (!is.null(this_object$`decision_level`)) {
+        if (!is.null(this_object$`decision_level`) && !(this_object$`decision_level` %in% c("normal", "executive", "final"))) {
+          stop(paste("Error! \"", this_object$`decision_level`, "\" cannot be assigned to `decision_level`. Must be \"normal\", \"executive\", \"final\".", sep = ""))
+        }
+        self$`decision_level` <- this_object$`decision_level`
       }
       if (!is.null(this_object$`observation_flags`)) {
         `observation_flags_object` <- ObservationFlags$new()
@@ -347,7 +353,10 @@ Annotation <- R6::R6Class(
       }
       self$`type` <- this_object$`type`
       self$`is_flagged` <- this_object$`is_flagged`
-      self$`is_decisive` <- this_object$`is_decisive`
+      if (!is.null(this_object$`decision_level`) && !(this_object$`decision_level` %in% c("normal", "executive", "final"))) {
+        stop(paste("Error! \"", this_object$`decision_level`, "\" cannot be assigned to `decision_level`. Must be \"normal\", \"executive\", \"final\".", sep = ""))
+      }
+      self$`decision_level` <- this_object$`decision_level`
       self$`observation_flags` <- ObservationFlags$new()$fromJSON(jsonlite::toJSON(this_object$`observation_flags`, auto_unbox = TRUE, digits = NA))
       self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
       self$`created_at` <- this_object$`created_at`
@@ -411,13 +420,13 @@ Annotation <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Annotation: the required field `is_flagged` is missing."))
       }
-      # check the required field `is_decisive`
-      if (!is.null(input_json$`is_decisive`)) {
-        if (!(is.logical(input_json$`is_decisive`) && length(input_json$`is_decisive`) == 1)) {
-          stop(paste("Error! Invalid data for `is_decisive`. Must be a boolean:", input_json$`is_decisive`))
+      # check the required field `decision_level`
+      if (!is.null(input_json$`decision_level`)) {
+        if (!(is.character(input_json$`decision_level`) && length(input_json$`decision_level`) == 1)) {
+          stop(paste("Error! Invalid data for `decision_level`. Must be a string:", input_json$`decision_level`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for Annotation: the required field `is_decisive` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for Annotation: the required field `decision_level` is missing."))
       }
       # check the required field `created_at`
       if (!is.null(input_json$`created_at`)) {
@@ -475,8 +484,8 @@ Annotation <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `is_decisive` is null
-      if (is.null(self$`is_decisive`)) {
+      # check if the required `decision_level` is null
+      if (is.null(self$`decision_level`)) {
         return(FALSE)
       }
 
@@ -524,9 +533,9 @@ Annotation <- R6::R6Class(
         invalid_fields["is_flagged"] <- "Non-nullable required field `is_flagged` cannot be null."
       }
 
-      # check if the required `is_decisive` is null
-      if (is.null(self$`is_decisive`)) {
-        invalid_fields["is_decisive"] <- "Non-nullable required field `is_decisive` cannot be null."
+      # check if the required `decision_level` is null
+      if (is.null(self$`decision_level`)) {
+        invalid_fields["decision_level"] <- "Non-nullable required field `decision_level` cannot be null."
       }
 
       # check if the required `created_at` is null

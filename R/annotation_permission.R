@@ -11,7 +11,7 @@
 #' @field change  character
 #' @field view  character
 #' @field delete  character
-#' @field mark_as_decisive  character
+#' @field mark_as_executive  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,7 +22,7 @@ AnnotationPermission <- R6::R6Class(
     `change` = NULL,
     `view` = NULL,
     `delete` = NULL,
-    `mark_as_decisive` = NULL,
+    `mark_as_executive` = NULL,
 
     #' @description
     #' Initialize a new AnnotationPermission class.
@@ -31,9 +31,9 @@ AnnotationPermission <- R6::R6Class(
     #' @param change change
     #' @param view view
     #' @param delete delete
-    #' @param mark_as_decisive mark_as_decisive
+    #' @param mark_as_executive mark_as_executive
     #' @param ... Other optional arguments.
-    initialize = function(`add`, `change`, `view`, `delete`, `mark_as_decisive`, ...) {
+    initialize = function(`add`, `change`, `view`, `delete`, `mark_as_executive`, ...) {
       if (!missing(`add`)) {
         if (!(is.logical(`add`) && length(`add`) == 1)) {
           stop(paste("Error! Invalid data for `add`. Must be a boolean:", `add`))
@@ -58,11 +58,11 @@ AnnotationPermission <- R6::R6Class(
         }
         self$`delete` <- `delete`
       }
-      if (!missing(`mark_as_decisive`)) {
-        if (!(is.logical(`mark_as_decisive`) && length(`mark_as_decisive`) == 1)) {
-          stop(paste("Error! Invalid data for `mark_as_decisive`. Must be a boolean:", `mark_as_decisive`))
+      if (!missing(`mark_as_executive`)) {
+        if (!(is.logical(`mark_as_executive`) && length(`mark_as_executive`) == 1)) {
+          stop(paste("Error! Invalid data for `mark_as_executive`. Must be a boolean:", `mark_as_executive`))
         }
-        self$`mark_as_decisive` <- `mark_as_decisive`
+        self$`mark_as_executive` <- `mark_as_executive`
       }
     },
 
@@ -113,9 +113,9 @@ AnnotationPermission <- R6::R6Class(
         AnnotationPermissionObject[["delete"]] <-
           self$`delete`
       }
-      if (!is.null(self$`mark_as_decisive`)) {
-        AnnotationPermissionObject[["mark_as_decisive"]] <-
-          self$`mark_as_decisive`
+      if (!is.null(self$`mark_as_executive`)) {
+        AnnotationPermissionObject[["mark_as_executive"]] <-
+          self$`mark_as_executive`
       }
       return(AnnotationPermissionObject)
     },
@@ -139,8 +139,8 @@ AnnotationPermission <- R6::R6Class(
       if (!is.null(this_object$`delete`)) {
         self$`delete` <- this_object$`delete`
       }
-      if (!is.null(this_object$`mark_as_decisive`)) {
-        self$`mark_as_decisive` <- this_object$`mark_as_decisive`
+      if (!is.null(this_object$`mark_as_executive`)) {
+        self$`mark_as_executive` <- this_object$`mark_as_executive`
       }
       self
     },
@@ -167,7 +167,7 @@ AnnotationPermission <- R6::R6Class(
       self$`change` <- this_object$`change`
       self$`view` <- this_object$`view`
       self$`delete` <- this_object$`delete`
-      self$`mark_as_decisive` <- this_object$`mark_as_decisive`
+      self$`mark_as_executive` <- this_object$`mark_as_executive`
       self
     },
 
@@ -209,13 +209,13 @@ AnnotationPermission <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for AnnotationPermission: the required field `delete` is missing."))
       }
-      # check the required field `mark_as_decisive`
-      if (!is.null(input_json$`mark_as_decisive`)) {
-        if (!(is.logical(input_json$`mark_as_decisive`) && length(input_json$`mark_as_decisive`) == 1)) {
-          stop(paste("Error! Invalid data for `mark_as_decisive`. Must be a boolean:", input_json$`mark_as_decisive`))
+      # check the required field `mark_as_executive`
+      if (!is.null(input_json$`mark_as_executive`)) {
+        if (!(is.logical(input_json$`mark_as_executive`) && length(input_json$`mark_as_executive`) == 1)) {
+          stop(paste("Error! Invalid data for `mark_as_executive`. Must be a boolean:", input_json$`mark_as_executive`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for AnnotationPermission: the required field `mark_as_decisive` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for AnnotationPermission: the required field `mark_as_executive` is missing."))
       }
     },
 
@@ -252,8 +252,8 @@ AnnotationPermission <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `mark_as_decisive` is null
-      if (is.null(self$`mark_as_decisive`)) {
+      # check if the required `mark_as_executive` is null
+      if (is.null(self$`mark_as_executive`)) {
         return(FALSE)
       }
 
@@ -286,9 +286,9 @@ AnnotationPermission <- R6::R6Class(
         invalid_fields["delete"] <- "Non-nullable required field `delete` cannot be null."
       }
 
-      # check if the required `mark_as_decisive` is null
-      if (is.null(self$`mark_as_decisive`)) {
-        invalid_fields["mark_as_decisive"] <- "Non-nullable required field `mark_as_decisive` cannot be null."
+      # check if the required `mark_as_executive` is null
+      if (is.null(self$`mark_as_executive`)) {
+        invalid_fields["mark_as_executive"] <- "Non-nullable required field `mark_as_executive` cannot be null."
       }
 
       invalid_fields

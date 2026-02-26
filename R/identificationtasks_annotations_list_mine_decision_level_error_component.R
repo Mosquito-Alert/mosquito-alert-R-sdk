@@ -1,11 +1,11 @@
-#' Create a new IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent
+#' Create a new IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent
 #'
 #' @description
-#' IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent Class
+#' IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent Class
 #'
 #' @docType class
-#' @title IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent
-#' @description IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent Class
+#' @title IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent
+#' @description IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent Class
 #' @format An \code{R6Class} generator object
 #' @field attr  character
 #' @field code  character
@@ -13,15 +13,15 @@
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent <- R6::R6Class(
-  "IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent",
+IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent <- R6::R6Class(
+  "IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent",
   public = list(
     `attr` = NULL,
     `code` = NULL,
     `detail` = NULL,
 
     #' @description
-    #' Initialize a new IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent class.
+    #' Initialize a new IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent class.
     #'
     #' @param attr attr
     #' @param code code
@@ -29,8 +29,8 @@ IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent <- R6::R6Class(
     #' @param ... Other optional arguments.
     initialize = function(`attr`, `code`, `detail`, ...) {
       if (!missing(`attr`)) {
-        if (!(`attr` %in% c("is_decisive"))) {
-          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"is_decisive\".", sep = ""))
+        if (!(`attr` %in% c("decision_level"))) {
+          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"decision_level\".", sep = ""))
         }
         if (!(is.character(`attr`) && length(`attr`) == 1)) {
           stop(paste("Error! Invalid data for `attr`. Must be a string:", `attr`))
@@ -38,8 +38,8 @@ IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent <- R6::R6Class(
         self$`attr` <- `attr`
       }
       if (!missing(`code`)) {
-        if (!(`code` %in% c("null"))) {
-          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"null\".", sep = ""))
+        if (!(`code` %in% c("invalid_choice", "invalid_list"))) {
+          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\", \"invalid_list\".", sep = ""))
         }
         if (!(is.character(`code`) && length(`code`) == 1)) {
           stop(paste("Error! Invalid data for `code`. Must be a string:", `code`))
@@ -66,9 +66,9 @@ IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent <- R6::R6Class(
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent as a base R list.
+    #' @return IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent as a base R list.
     #' @examples
-    #' # convert array of IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent (x) to a data frame
+    #' # convert array of IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -80,42 +80,42 @@ IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent <- R6::R6Class(
     },
 
     #' @description
-    #' Convert IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent to a base R type
+    #' Convert IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      IdentificationtasksAnnotationsCreateIsDecisiveErrorComponentObject <- list()
+      IdentificationtasksAnnotationsListMineDecisionLevelErrorComponentObject <- list()
       if (!is.null(self$`attr`)) {
-        IdentificationtasksAnnotationsCreateIsDecisiveErrorComponentObject[["attr"]] <-
+        IdentificationtasksAnnotationsListMineDecisionLevelErrorComponentObject[["attr"]] <-
           self$`attr`
       }
       if (!is.null(self$`code`)) {
-        IdentificationtasksAnnotationsCreateIsDecisiveErrorComponentObject[["code"]] <-
+        IdentificationtasksAnnotationsListMineDecisionLevelErrorComponentObject[["code"]] <-
           self$`code`
       }
       if (!is.null(self$`detail`)) {
-        IdentificationtasksAnnotationsCreateIsDecisiveErrorComponentObject[["detail"]] <-
+        IdentificationtasksAnnotationsListMineDecisionLevelErrorComponentObject[["detail"]] <-
           self$`detail`
       }
-      return(IdentificationtasksAnnotationsCreateIsDecisiveErrorComponentObject)
+      return(IdentificationtasksAnnotationsListMineDecisionLevelErrorComponentObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent
+    #' @return the instance of IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`attr`)) {
-        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("is_decisive"))) {
-          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"is_decisive\".", sep = ""))
+        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("decision_level"))) {
+          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"decision_level\".", sep = ""))
         }
         self$`attr` <- this_object$`attr`
       }
       if (!is.null(this_object$`code`)) {
-        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("null"))) {
-          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"null\".", sep = ""))
+        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice", "invalid_list"))) {
+          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\", \"invalid_list\".", sep = ""))
         }
         self$`code` <- this_object$`code`
       }
@@ -129,7 +129,7 @@ IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent <- R6::R6Class(
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent in JSON format
+    #' @return IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -137,18 +137,18 @@ IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent <- R6::R6Class(
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent
+    #' @return the instance of IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("is_decisive"))) {
-        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"is_decisive\".", sep = ""))
+      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("decision_level"))) {
+        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"decision_level\".", sep = ""))
       }
       self$`attr` <- this_object$`attr`
-      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("null"))) {
-        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"null\".", sep = ""))
+      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid_choice", "invalid_list"))) {
+        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid_choice\", \"invalid_list\".", sep = ""))
       }
       self$`code` <- this_object$`code`
       self$`detail` <- this_object$`detail`
@@ -156,7 +156,7 @@ IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent <- R6::R6Class(
     },
 
     #' @description
-    #' Validate JSON input with respect to IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent and throw an exception if invalid
+    #' Validate JSON input with respect to IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -167,7 +167,7 @@ IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent <- R6::R6Class(
           stop(paste("Error! Invalid data for `attr`. Must be a string:", input_json$`attr`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent: the required field `attr` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent: the required field `attr` is missing."))
       }
       # check the required field `code`
       if (!is.null(input_json$`code`)) {
@@ -175,7 +175,7 @@ IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent <- R6::R6Class(
           stop(paste("Error! Invalid data for `code`. Must be a string:", input_json$`code`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent: the required field `code` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent: the required field `code` is missing."))
       }
       # check the required field `detail`
       if (!is.null(input_json$`detail`)) {
@@ -183,14 +183,14 @@ IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent <- R6::R6Class(
           stop(paste("Error! Invalid data for `detail`. Must be a string:", input_json$`detail`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent: the required field `detail` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent: the required field `detail` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent
+    #' @return String representation of IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent
     toString = function() {
       self$toJSONString()
     },
@@ -253,13 +253,13 @@ IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent <- R6::R6Class(
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent$unlock()
+# IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent$unlock()
 #
 ## Below is an example to define the print function
-# IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent$set("public", "print", function(...) {
+# IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# IdentificationtasksAnnotationsCreateIsDecisiveErrorComponent$lock()
+# IdentificationtasksAnnotationsListMineDecisionLevelErrorComponent$lock()
 

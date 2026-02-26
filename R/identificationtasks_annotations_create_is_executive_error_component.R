@@ -1,11 +1,11 @@
-#' Create a new IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent
+#' Create a new IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent
 #'
 #' @description
-#' IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent Class
+#' IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent Class
 #'
 #' @docType class
-#' @title IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent
-#' @description IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent Class
+#' @title IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent
+#' @description IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent Class
 #' @format An \code{R6Class} generator object
 #' @field attr  character
 #' @field code  character
@@ -13,15 +13,15 @@
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
-IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent <- R6::R6Class(
-  "IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent",
+IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent <- R6::R6Class(
+  "IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent",
   public = list(
     `attr` = NULL,
     `code` = NULL,
     `detail` = NULL,
 
     #' @description
-    #' Initialize a new IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent class.
+    #' Initialize a new IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent class.
     #'
     #' @param attr attr
     #' @param code code
@@ -29,8 +29,8 @@ IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent 
     #' @param ... Other optional arguments.
     initialize = function(`attr`, `code`, `detail`, ...) {
       if (!missing(`attr`)) {
-        if (!(`attr` %in% c("classification.confidence_label"))) {
-          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"classification.confidence_label\".", sep = ""))
+        if (!(`attr` %in% c("is_executive"))) {
+          stop(paste("Error! \"", `attr`, "\" cannot be assigned to `attr`. Must be \"is_executive\".", sep = ""))
         }
         if (!(is.character(`attr`) && length(`attr`) == 1)) {
           stop(paste("Error! Invalid data for `attr`. Must be a string:", `attr`))
@@ -38,8 +38,8 @@ IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent 
         self$`attr` <- `attr`
       }
       if (!missing(`code`)) {
-        if (!(`code` %in% c("null", "required"))) {
-          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"null\", \"required\".", sep = ""))
+        if (!(`code` %in% c("invalid", "null"))) {
+          stop(paste("Error! \"", `code`, "\" cannot be assigned to `code`. Must be \"invalid\", \"null\".", sep = ""))
         }
         if (!(is.character(`code`) && length(`code`) == 1)) {
           stop(paste("Error! Invalid data for `code`. Must be a string:", `code`))
@@ -66,9 +66,9 @@ IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent 
     #'
     #' Convert the R6 object to a list to work more easily with other tooling.
     #'
-    #' @return IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent as a base R list.
+    #' @return IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent as a base R list.
     #' @examples
-    #' # convert array of IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent (x) to a data frame
+    #' # convert array of IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent (x) to a data frame
     #' \dontrun{
     #' library(purrr)
     #' library(tibble)
@@ -80,42 +80,42 @@ IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent 
     },
 
     #' @description
-    #' Convert IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent to a base R type
+    #' Convert IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent to a base R type
     #'
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
-      IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponentObject <- list()
+      IdentificationtasksAnnotationsCreateIsExecutiveErrorComponentObject <- list()
       if (!is.null(self$`attr`)) {
-        IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponentObject[["attr"]] <-
+        IdentificationtasksAnnotationsCreateIsExecutiveErrorComponentObject[["attr"]] <-
           self$`attr`
       }
       if (!is.null(self$`code`)) {
-        IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponentObject[["code"]] <-
+        IdentificationtasksAnnotationsCreateIsExecutiveErrorComponentObject[["code"]] <-
           self$`code`
       }
       if (!is.null(self$`detail`)) {
-        IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponentObject[["detail"]] <-
+        IdentificationtasksAnnotationsCreateIsExecutiveErrorComponentObject[["detail"]] <-
           self$`detail`
       }
-      return(IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponentObject)
+      return(IdentificationtasksAnnotationsCreateIsExecutiveErrorComponentObject)
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent
+    #' @return the instance of IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`attr`)) {
-        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("classification.confidence_label"))) {
-          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"classification.confidence_label\".", sep = ""))
+        if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("is_executive"))) {
+          stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"is_executive\".", sep = ""))
         }
         self$`attr` <- this_object$`attr`
       }
       if (!is.null(this_object$`code`)) {
-        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("null", "required"))) {
-          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"null\", \"required\".", sep = ""))
+        if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid", "null"))) {
+          stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid\", \"null\".", sep = ""))
         }
         self$`code` <- this_object$`code`
       }
@@ -129,7 +129,7 @@ IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent 
     #' To JSON String
     #' 
     #' @param ... Parameters passed to `jsonlite::toJSON`
-    #' @return IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent in JSON format
+    #' @return IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent in JSON format
     toJSONString = function(...) {
       simple <- self$toSimpleType()
       json <- jsonlite::toJSON(simple, auto_unbox = TRUE, digits = NA, ...)
@@ -137,18 +137,18 @@ IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent 
     },
 
     #' @description
-    #' Deserialize JSON string into an instance of IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent
+    #' Deserialize JSON string into an instance of IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent
     #'
     #' @param input_json the JSON input
-    #' @return the instance of IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent
+    #' @return the instance of IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("classification.confidence_label"))) {
-        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"classification.confidence_label\".", sep = ""))
+      if (!is.null(this_object$`attr`) && !(this_object$`attr` %in% c("is_executive"))) {
+        stop(paste("Error! \"", this_object$`attr`, "\" cannot be assigned to `attr`. Must be \"is_executive\".", sep = ""))
       }
       self$`attr` <- this_object$`attr`
-      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("null", "required"))) {
-        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"null\", \"required\".", sep = ""))
+      if (!is.null(this_object$`code`) && !(this_object$`code` %in% c("invalid", "null"))) {
+        stop(paste("Error! \"", this_object$`code`, "\" cannot be assigned to `code`. Must be \"invalid\", \"null\".", sep = ""))
       }
       self$`code` <- this_object$`code`
       self$`detail` <- this_object$`detail`
@@ -156,7 +156,7 @@ IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent 
     },
 
     #' @description
-    #' Validate JSON input with respect to IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent and throw an exception if invalid
+    #' Validate JSON input with respect to IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent and throw an exception if invalid
     #'
     #' @param input the JSON input
     validateJSON = function(input) {
@@ -167,7 +167,7 @@ IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent 
           stop(paste("Error! Invalid data for `attr`. Must be a string:", input_json$`attr`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent: the required field `attr` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent: the required field `attr` is missing."))
       }
       # check the required field `code`
       if (!is.null(input_json$`code`)) {
@@ -175,7 +175,7 @@ IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent 
           stop(paste("Error! Invalid data for `code`. Must be a string:", input_json$`code`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent: the required field `code` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent: the required field `code` is missing."))
       }
       # check the required field `detail`
       if (!is.null(input_json$`detail`)) {
@@ -183,14 +183,14 @@ IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent 
           stop(paste("Error! Invalid data for `detail`. Must be a string:", input_json$`detail`))
         }
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent: the required field `detail` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent: the required field `detail` is missing."))
       }
     },
 
     #' @description
     #' To string (JSON format)
     #'
-    #' @return String representation of IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent
+    #' @return String representation of IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent
     toString = function() {
       self$toJSONString()
     },
@@ -253,13 +253,13 @@ IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent 
   lock_class = TRUE
 )
 ## Uncomment below to unlock the class to allow modifications of the method or field
-# IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent$unlock()
+# IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent$unlock()
 #
 ## Below is an example to define the print function
-# IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent$set("public", "print", function(...) {
+# IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent$set("public", "print", function(...) {
 #   print(jsonlite::prettify(self$toJSONString()))
 #   invisible(self)
 # })
 ## Uncomment below to lock the class to prevent modifications to the method or field
-# IdentificationtasksAnnotationsCreateClassificationConfidenceLabelErrorComponent$lock()
+# IdentificationtasksAnnotationsCreateIsExecutiveErrorComponent$lock()
 

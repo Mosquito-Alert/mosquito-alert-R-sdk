@@ -68,11 +68,11 @@ test_that("is_flagged", {
   #expect_equal(model.instance$`is_flagged`, "EXPECTED_RESULT")
 })
 
-test_that("is_decisive", {
-  # tests for the property `is_decisive` (character)
+test_that("decision_level", {
+  # tests for the property `decision_level` (character)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`is_decisive`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`decision_level`, "EXPECTED_RESULT")
 })
 
 test_that("observation_flags", {

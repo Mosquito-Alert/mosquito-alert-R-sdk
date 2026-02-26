@@ -18,7 +18,7 @@
 #'
 #' library(MosquitoAlert)
 #' var_observation_uuid <- "observation_uuid_example" # character | UUID of the Observation
-#' var_annotation_request <- AnnotationRequest$new(SpeciesClassificationRequest$new(123, "definitely"), "best_photo_uuid_example", SpeciesCharacteristicsRequest$new("male", "is_blood_fed_example", "is_gravid_example"), AnnotationFeedbackRequest$new("public_note_example", "internal_note_example", "user_note_example"), "is_flagged_example", "is_decisive_example", ObservationFlagsRequest$new("is_favourite_example", "is_visible_example"), c("tags_example")) # AnnotationRequest | 
+#' var_annotation_request <- AnnotationRequest$new(SpeciesClassificationRequest$new(123, "definitely"), "best_photo_uuid_example", SpeciesCharacteristicsRequest$new("male", "is_blood_fed_example", "is_gravid_example"), AnnotationFeedbackRequest$new("public_note_example", "internal_note_example", "user_note_example"), "is_flagged_example", "is_executive_example", ObservationFlagsRequest$new("is_favourite_example", "is_visible_example"), c("tags_example")) # AnnotationRequest | 
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -50,7 +50,7 @@
 #' var_classification_taxon_ids <- c(123) # array[integer] |  (Optional)
 #' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 #' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
-#' var_is_decisive <- "is_decisive_example" # character |  (Optional)
+#' var_decision_level <- c("executive") # array[character] |  (Optional)
 #' var_is_favourite <- "is_favourite_example" # character |  (Optional)
 #' var_is_flagged <- "is_flagged_example" # character |  (Optional)
 #' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
@@ -74,8 +74,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$annotations_list(var_observation_uuid, characteristics_is_blood_fed = var_characteristics_is_blood_fed, characteristics_is_gravid = var_characteristics_is_gravid, characteristics_sex = var_characteristics_sex, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, search = var_search, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
-#' result <- api_instance$identification_tasks_api$annotations_list(var_observation_uuid, characteristics_is_blood_fed = var_characteristics_is_blood_fed, characteristics_is_gravid = var_characteristics_is_gravid, characteristics_sex = var_characteristics_sex, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, search = var_search, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
+#' # result <- api_instance$annotations_list(var_observation_uuid, characteristics_is_blood_fed = var_characteristics_is_blood_fed, characteristics_is_gravid = var_characteristics_is_gravid, characteristics_sex = var_characteristics_sex, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, decision_level = var_decision_level, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, search = var_search, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
+#' result <- api_instance$identification_tasks_api$annotations_list(var_observation_uuid, characteristics_is_blood_fed = var_characteristics_is_blood_fed, characteristics_is_gravid = var_characteristics_is_gravid, characteristics_sex = var_characteristics_sex, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, decision_level = var_decision_level, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, search = var_search, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
 #' dput(result)
 #'
 #'
@@ -91,7 +91,7 @@
 #' var_classification_taxon_ids <- c(123) # array[integer] |  (Optional)
 #' var_created_at_after <- "created_at_after_example" # character | Created at (Optional)
 #' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
-#' var_is_decisive <- "is_decisive_example" # character |  (Optional)
+#' var_decision_level <- c("executive") # array[character] |  (Optional)
 #' var_is_favourite <- "is_favourite_example" # character |  (Optional)
 #' var_is_flagged <- "is_flagged_example" # character |  (Optional)
 #' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
@@ -115,8 +115,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$annotations_list_mine(characteristics_is_blood_fed = var_characteristics_is_blood_fed, characteristics_is_gravid = var_characteristics_is_gravid, characteristics_sex = var_characteristics_sex, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, search = var_search, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
-#' result <- api_instance$identification_tasks_api$annotations_list_mine(characteristics_is_blood_fed = var_characteristics_is_blood_fed, characteristics_is_gravid = var_characteristics_is_gravid, characteristics_sex = var_characteristics_sex, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, is_decisive = var_is_decisive, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, search = var_search, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
+#' # result <- api_instance$annotations_list_mine(characteristics_is_blood_fed = var_characteristics_is_blood_fed, characteristics_is_gravid = var_characteristics_is_gravid, characteristics_sex = var_characteristics_sex, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, decision_level = var_decision_level, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, search = var_search, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_idsdata_file = "result.txt")
+#' result <- api_instance$identification_tasks_api$annotations_list_mine(characteristics_is_blood_fed = var_characteristics_is_blood_fed, characteristics_is_gravid = var_characteristics_is_gravid, characteristics_sex = var_characteristics_sex, classification_confidence_label = var_classification_confidence_label, classification_confidence_max = var_classification_confidence_max, classification_confidence_min = var_classification_confidence_min, classification_taxon_ids = var_classification_taxon_ids, created_at_after = var_created_at_after, created_at_before = var_created_at_before, decision_level = var_decision_level, is_favourite = var_is_favourite, is_flagged = var_is_flagged, order_by = var_order_by, page = var_page, page_size = var_page_size, search = var_search, type = var_type, updated_at_after = var_updated_at_after, updated_at_before = var_updated_at_before, user_ids = var_user_ids)
 #' dput(result)
 #'
 #'
@@ -617,7 +617,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param classification_taxon_ids (optional) No description
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
-    #' @param is_decisive (optional) No description
+    #' @param decision_level (optional) No description
     #' @param is_favourite (optional) No description
     #' @param is_flagged (optional) No description
     #' @param order_by (optional) Ordenamiento  
@@ -633,8 +633,8 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedAnnotationList
-    annotations_list = function(observation_uuid, characteristics_is_blood_fed = NULL, characteristics_is_gravid = NULL, characteristics_sex = NULL, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$annotations_list_with_http_info(observation_uuid, characteristics_is_blood_fed, characteristics_is_gravid, characteristics_sex, classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, is_decisive, is_favourite, is_flagged, order_by, page, page_size, search, type, updated_at_after, updated_at_before, user_ids, data_file = data_file, ..., .parse = .parse)
+    annotations_list = function(observation_uuid, characteristics_is_blood_fed = NULL, characteristics_is_gravid = NULL, characteristics_sex = NULL, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, decision_level = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$annotations_list_with_http_info(observation_uuid, characteristics_is_blood_fed, characteristics_is_gravid, characteristics_sex, classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, decision_level, is_favourite, is_flagged, order_by, page, page_size, search, type, updated_at_after, updated_at_before, user_ids, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -659,7 +659,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param classification_taxon_ids (optional) No description
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
-    #' @param is_decisive (optional) No description
+    #' @param decision_level (optional) No description
     #' @param is_favourite (optional) No description
     #' @param is_flagged (optional) No description
     #' @param order_by (optional) Ordenamiento  
@@ -675,7 +675,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedAnnotationList) with additional information such as HTTP status code, headers
-    annotations_list_with_http_info = function(observation_uuid, characteristics_is_blood_fed = NULL, characteristics_is_gravid = NULL, characteristics_sex = NULL, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ..., .parse = TRUE) {
+    annotations_list_with_http_info = function(observation_uuid, characteristics_is_blood_fed = NULL, characteristics_is_gravid = NULL, characteristics_sex = NULL, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, decision_level = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -738,8 +738,8 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Invalid value for `created_at_before` when calling IdentificationTasksApi$annotations_list, `created_at_before` is not nullable")
       }
 
-      if (!missing(`is_decisive`) && is.null(`is_decisive`)) {
-        stop("Invalid value for `is_decisive` when calling IdentificationTasksApi$annotations_list, `is_decisive` is not nullable")
+      if (!missing(`decision_level`) && is.null(`decision_level`)) {
+        stop("Invalid value for `decision_level` when calling IdentificationTasksApi$annotations_list, `decision_level` is not nullable")
       }
 
       if (!missing(`is_favourite`) && is.null(`is_favourite`)) {
@@ -809,7 +809,14 @@ IdentificationTasksApi <- R6::R6Class(
 
       query_params[["created_at_before"]] <- `created_at_before`
 
-      query_params[["is_decisive"]] <- `is_decisive`
+      # explore
+      for (query_item in `decision_level`) {
+        # validate enum values
+        if (!is.null(query_item) && !(query_item %in% c("executive", "final", "normal"))) {
+          stop("Invalid value for decision_level when calling IdentificationTasksApi$annotations_list. Must be [executive, final, normal].")
+        }
+        query_params[["decision_level"]] <- c(query_params[["decision_level"]], list(`decision_level` = query_item))
+      }
 
       query_params[["is_favourite"]] <- `is_favourite`
 
@@ -927,7 +934,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param classification_taxon_ids (optional) No description
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
-    #' @param is_decisive (optional) No description
+    #' @param decision_level (optional) No description
     #' @param is_favourite (optional) No description
     #' @param is_flagged (optional) No description
     #' @param order_by (optional) Ordenamiento  
@@ -943,8 +950,8 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return PaginatedAnnotationList
-    annotations_list_mine = function(characteristics_is_blood_fed = NULL, characteristics_is_gravid = NULL, characteristics_sex = NULL, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$annotations_list_mine_with_http_info(characteristics_is_blood_fed, characteristics_is_gravid, characteristics_sex, classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, is_decisive, is_favourite, is_flagged, order_by, page, page_size, search, type, updated_at_after, updated_at_before, user_ids, data_file = data_file, ..., .parse = .parse)
+    annotations_list_mine = function(characteristics_is_blood_fed = NULL, characteristics_is_gravid = NULL, characteristics_sex = NULL, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, decision_level = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$annotations_list_mine_with_http_info(characteristics_is_blood_fed, characteristics_is_gravid, characteristics_sex, classification_confidence_label, classification_confidence_max, classification_confidence_min, classification_taxon_ids, created_at_after, created_at_before, decision_level, is_favourite, is_flagged, order_by, page, page_size, search, type, updated_at_after, updated_at_before, user_ids, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -968,7 +975,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param classification_taxon_ids (optional) No description
     #' @param created_at_after (optional) Created at
     #' @param created_at_before (optional) Created at
-    #' @param is_decisive (optional) No description
+    #' @param decision_level (optional) No description
     #' @param is_favourite (optional) No description
     #' @param is_flagged (optional) No description
     #' @param order_by (optional) Ordenamiento  
@@ -984,7 +991,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (PaginatedAnnotationList) with additional information such as HTTP status code, headers
-    annotations_list_mine_with_http_info = function(characteristics_is_blood_fed = NULL, characteristics_is_gravid = NULL, characteristics_sex = NULL, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, is_decisive = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ..., .parse = TRUE) {
+    annotations_list_mine_with_http_info = function(characteristics_is_blood_fed = NULL, characteristics_is_gravid = NULL, characteristics_sex = NULL, classification_confidence_label = NULL, classification_confidence_max = NULL, classification_confidence_min = NULL, classification_taxon_ids = NULL, created_at_after = NULL, created_at_before = NULL, decision_level = NULL, is_favourite = NULL, is_flagged = NULL, order_by = NULL, page = NULL, page_size = NULL, search = NULL, type = NULL, updated_at_after = NULL, updated_at_before = NULL, user_ids = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1039,8 +1046,8 @@ IdentificationTasksApi <- R6::R6Class(
         stop("Invalid value for `created_at_before` when calling IdentificationTasksApi$annotations_list_mine, `created_at_before` is not nullable")
       }
 
-      if (!missing(`is_decisive`) && is.null(`is_decisive`)) {
-        stop("Invalid value for `is_decisive` when calling IdentificationTasksApi$annotations_list_mine, `is_decisive` is not nullable")
+      if (!missing(`decision_level`) && is.null(`decision_level`)) {
+        stop("Invalid value for `decision_level` when calling IdentificationTasksApi$annotations_list_mine, `decision_level` is not nullable")
       }
 
       if (!missing(`is_favourite`) && is.null(`is_favourite`)) {
@@ -1110,7 +1117,14 @@ IdentificationTasksApi <- R6::R6Class(
 
       query_params[["created_at_before"]] <- `created_at_before`
 
-      query_params[["is_decisive"]] <- `is_decisive`
+      # explore
+      for (query_item in `decision_level`) {
+        # validate enum values
+        if (!is.null(query_item) && !(query_item %in% c("executive", "final", "normal"))) {
+          stop("Invalid value for decision_level when calling IdentificationTasksApi$annotations_list_mine. Must be [executive, final, normal].")
+        }
+        query_params[["decision_level"]] <- c(query_params[["decision_level"]], list(`decision_level` = query_item))
+      }
 
       query_params[["is_favourite"]] <- `is_favourite`
 

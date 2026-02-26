@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **change** | **character** |  | 
 **view** | **character** |  | 
 **delete** | **character** |  | 
-**mark_as_decisive** | **character** |  | 
+**mark_as_executive** | **character** |  | 
 
 

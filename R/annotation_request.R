@@ -12,7 +12,7 @@
 #' @field characteristics  \link{SpeciesCharacteristicsRequest} [optional]
 #' @field feedback  \link{AnnotationFeedbackRequest} [optional]
 #' @field is_flagged  character [optional]
-#' @field is_decisive  character [optional]
+#' @field is_executive  character [optional]
 #' @field observation_flags  \link{ObservationFlagsRequest} [optional]
 #' @field tags  list(character) [optional]
 #' @importFrom R6 R6Class
@@ -26,7 +26,7 @@ AnnotationRequest <- R6::R6Class(
     `characteristics` = NULL,
     `feedback` = NULL,
     `is_flagged` = NULL,
-    `is_decisive` = NULL,
+    `is_executive` = NULL,
     `observation_flags` = NULL,
     `tags` = NULL,
 
@@ -38,11 +38,11 @@ AnnotationRequest <- R6::R6Class(
     #' @param characteristics characteristics
     #' @param feedback feedback
     #' @param is_flagged is_flagged. Default to FALSE.
-    #' @param is_decisive is_decisive. Default to FALSE.
+    #' @param is_executive is_executive. Default to FALSE.
     #' @param observation_flags observation_flags
     #' @param tags tags
     #' @param ... Other optional arguments.
-    initialize = function(`classification`, `best_photo_uuid` = NULL, `characteristics` = NULL, `feedback` = NULL, `is_flagged` = FALSE, `is_decisive` = FALSE, `observation_flags` = NULL, `tags` = NULL, ...) {
+    initialize = function(`classification`, `best_photo_uuid` = NULL, `characteristics` = NULL, `feedback` = NULL, `is_flagged` = FALSE, `is_executive` = FALSE, `observation_flags` = NULL, `tags` = NULL, ...) {
       if (!missing(`classification`)) {
         stopifnot(R6::is.R6(`classification`))
         self$`classification` <- `classification`
@@ -67,11 +67,11 @@ AnnotationRequest <- R6::R6Class(
         }
         self$`is_flagged` <- `is_flagged`
       }
-      if (!is.null(`is_decisive`)) {
-        if (!(is.logical(`is_decisive`) && length(`is_decisive`) == 1)) {
-          stop(paste("Error! Invalid data for `is_decisive`. Must be a boolean:", `is_decisive`))
+      if (!is.null(`is_executive`)) {
+        if (!(is.logical(`is_executive`) && length(`is_executive`) == 1)) {
+          stop(paste("Error! Invalid data for `is_executive`. Must be a boolean:", `is_executive`))
         }
-        self$`is_decisive` <- `is_decisive`
+        self$`is_executive` <- `is_executive`
       }
       if (!is.null(`observation_flags`)) {
         stopifnot(R6::is.R6(`observation_flags`))
@@ -135,9 +135,9 @@ AnnotationRequest <- R6::R6Class(
         AnnotationRequestObject[["is_flagged"]] <-
           self$`is_flagged`
       }
-      if (!is.null(self$`is_decisive`)) {
-        AnnotationRequestObject[["is_decisive"]] <-
-          self$`is_decisive`
+      if (!is.null(self$`is_executive`)) {
+        AnnotationRequestObject[["is_executive"]] <-
+          self$`is_executive`
       }
       if (!is.null(self$`observation_flags`)) {
         AnnotationRequestObject[["observation_flags"]] <-
@@ -201,8 +201,8 @@ AnnotationRequest <- R6::R6Class(
       if (!is.null(this_object$`is_flagged`)) {
         self$`is_flagged` <- this_object$`is_flagged`
       }
-      if (!is.null(this_object$`is_decisive`)) {
-        self$`is_decisive` <- this_object$`is_decisive`
+      if (!is.null(this_object$`is_executive`)) {
+        self$`is_executive` <- this_object$`is_executive`
       }
       if (!is.null(this_object$`observation_flags`)) {
         `observation_flags_object` <- ObservationFlagsRequest$new()
@@ -238,7 +238,7 @@ AnnotationRequest <- R6::R6Class(
       self$`characteristics` <- SpeciesCharacteristicsRequest$new()$fromJSON(jsonlite::toJSON(this_object$`characteristics`, auto_unbox = TRUE, digits = NA))
       self$`feedback` <- AnnotationFeedbackRequest$new()$fromJSON(jsonlite::toJSON(this_object$`feedback`, auto_unbox = TRUE, digits = NA))
       self$`is_flagged` <- this_object$`is_flagged`
-      self$`is_decisive` <- this_object$`is_decisive`
+      self$`is_executive` <- this_object$`is_executive`
       self$`observation_flags` <- ObservationFlagsRequest$new()$fromJSON(jsonlite::toJSON(this_object$`observation_flags`, auto_unbox = TRUE, digits = NA))
       self$`tags` <- ApiClient$new()$deserializeObj(this_object$`tags`, "array[character]", loadNamespace("MosquitoAlert"))
       self
