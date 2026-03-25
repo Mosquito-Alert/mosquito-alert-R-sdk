@@ -99,10 +99,10 @@ var_created_at_before <- "created_at_before_example" # character | Created at (O
 var_decision_level <- c("executive") # array[character] |  (Optional)
 var_is_favourite <- "is_favourite_example" # character |  (Optional)
 var_is_flagged <- "is_flagged_example" # character |  (Optional)
-var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
-var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+var_search <- "search_example" # character | A search term. (Optional)
 var_type <- "type_example" # character |  (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Updated at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Updated at (Optional)
@@ -138,10 +138,10 @@ Name | Type | Description  | Notes
  **decision_level** | Enum [executive, final, normal] |  | [optional] 
  **is_favourite** | **character**|  | [optional] 
  **is_flagged** | **character**|  | [optional] 
- **order_by** | Enum [-created_at, -updated_at, created_at, updated_at] | Ordenamiento   | [optional] 
- **page** | **integer**| Un número de página dentro del conjunto de resultados paginado. | [optional] 
- **page_size** | **integer**| Número de resultados a devolver por página. | [optional] 
- **search** | **character**| Un término de búsqueda. | [optional] 
+ **order_by** | Enum [-created_at, -updated_at, created_at, updated_at] | Ordering   | [optional] 
+ **page** | **integer**| A page number within the paginated result set. | [optional] 
+ **page_size** | **integer**| Number of results to return per page. | [optional] 
+ **search** | **character**| A search term. | [optional] 
  **type** | Enum [long, short] |  | [optional] 
  **updated_at_after** | **character**| Updated at | [optional] 
  **updated_at_before** | **character**| Updated at | [optional] 
@@ -193,10 +193,10 @@ var_created_at_before <- "created_at_before_example" # character | Created at (O
 var_decision_level <- c("executive") # array[character] |  (Optional)
 var_is_favourite <- "is_favourite_example" # character |  (Optional)
 var_is_flagged <- "is_flagged_example" # character |  (Optional)
-var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
-var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+var_search <- "search_example" # character | A search term. (Optional)
 var_type <- "type_example" # character |  (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Updated at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Updated at (Optional)
@@ -231,10 +231,10 @@ Name | Type | Description  | Notes
  **decision_level** | Enum [executive, final, normal] |  | [optional] 
  **is_favourite** | **character**|  | [optional] 
  **is_flagged** | **character**|  | [optional] 
- **order_by** | Enum [-created_at, -updated_at, created_at, updated_at] | Ordenamiento   | [optional] 
- **page** | **integer**| Un número de página dentro del conjunto de resultados paginado. | [optional] 
- **page_size** | **integer**| Número de resultados a devolver por página. | [optional] 
- **search** | **character**| Un término de búsqueda. | [optional] 
+ **order_by** | Enum [-created_at, -updated_at, created_at, updated_at] | Ordering   | [optional] 
+ **page** | **integer**| A page number within the paginated result set. | [optional] 
+ **page_size** | **integer**| Number of results to return per page. | [optional] 
+ **search** | **character**| A search term. | [optional] 
  **type** | Enum [long, short] |  | [optional] 
  **updated_at_after** | **character**| Updated at | [optional] 
  **updated_at_before** | **character**| Updated at | [optional] 
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_id <- 56 # integer | Un valor de entero único que identifique este expert report annotation.
+var_id <- 56 # integer | A unique integer value identifying this expert report annotation.
 var_observation_uuid <- "observation_uuid_example" # character | UUID of the Observation
 
 api_instance <- mosquitoalert_api$new()
@@ -292,7 +292,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **integer**| Un valor de entero único que identifique este expert report annotation. | 
+ **id** | **integer**| A unique integer value identifying this expert report annotation. | 
  **observation_uuid** | **character**| UUID of the Observation | 
 
 ### Return type
@@ -386,9 +386,9 @@ var_is_safe <- "is_safe_example" # character |  (Optional)
 var_num_annotations_max <- 56 # integer |  (Optional)
 var_num_annotations_min <- 56 # integer |  (Optional)
 var_observation_country_ids <- c(123) # array[integer] |  (Optional)
-var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 var_result_agreement_max <- 3.4 # numeric |  (Optional)
 var_result_agreement_min <- 3.4 # numeric |  (Optional)
 var_result_characteristics_is_blood_fed <- "result_characteristics_is_blood_fed_example" # character |  (Optional)
@@ -401,7 +401,7 @@ var_result_taxon_ids <- c(123) # array[integer] |  (Optional)
 var_result_uncertainty_max <- 3.4 # numeric |  (Optional)
 var_result_uncertainty_min <- 3.4 # numeric |  (Optional)
 var_review_action <- "review_action_example" # character |  (Optional)
-var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+var_search <- "search_example" # character | A search term. (Optional)
 var_status <- c("archived") # array[character] |  (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -433,9 +433,9 @@ Name | Type | Description  | Notes
  **num_annotations_max** | **integer**|  | [optional] 
  **num_annotations_min** | **integer**|  | [optional] 
  **observation_country_ids** | list( **integer** )|  | [optional] 
- **order_by** | Enum [-created_at, -updated_at, created_at, updated_at] | Ordenamiento   | [optional] 
- **page** | **integer**| Un número de página dentro del conjunto de resultados paginado. | [optional] 
- **page_size** | **integer**| Número de resultados a devolver por página. | [optional] 
+ **order_by** | Enum [-created_at, -updated_at, created_at, updated_at] | Ordering   | [optional] 
+ **page** | **integer**| A page number within the paginated result set. | [optional] 
+ **page_size** | **integer**| Number of results to return per page. | [optional] 
  **result_agreement_max** | **numeric**|  | [optional] 
  **result_agreement_min** | **numeric**|  | [optional] 
  **result_characteristics_is_blood_fed** | **character**|  | [optional] 
@@ -448,7 +448,7 @@ Name | Type | Description  | Notes
  **result_uncertainty_max** | **numeric**|  | [optional] 
  **result_uncertainty_min** | **numeric**|  | [optional] 
  **review_action** | Enum [agree, null, overwrite] |  | [optional] 
- **search** | **character**| Un término de búsqueda. | [optional] 
+ **search** | **character**| A search term. | [optional] 
  **status** | Enum [archived, conflict, done, open, review] |  | [optional] 
  **updated_at_after** | **character**| Update at | [optional] 
  **updated_at_before** | **character**| Update at | [optional] 
@@ -497,9 +497,9 @@ var_is_safe <- "is_safe_example" # character |  (Optional)
 var_num_annotations_max <- 56 # integer |  (Optional)
 var_num_annotations_min <- 56 # integer |  (Optional)
 var_observation_country_ids <- c(123) # array[integer] |  (Optional)
-var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 var_result_agreement_max <- 3.4 # numeric |  (Optional)
 var_result_agreement_min <- 3.4 # numeric |  (Optional)
 var_result_characteristics_is_blood_fed <- "result_characteristics_is_blood_fed_example" # character |  (Optional)
@@ -512,7 +512,7 @@ var_result_taxon_ids <- c(123) # array[integer] |  (Optional)
 var_result_uncertainty_max <- 3.4 # numeric |  (Optional)
 var_result_uncertainty_min <- 3.4 # numeric |  (Optional)
 var_review_action <- "review_action_example" # character |  (Optional)
-var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+var_search <- "search_example" # character | A search term. (Optional)
 var_status <- c("archived") # array[character] |  (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -544,9 +544,9 @@ Name | Type | Description  | Notes
  **num_annotations_max** | **integer**|  | [optional] 
  **num_annotations_min** | **integer**|  | [optional] 
  **observation_country_ids** | list( **integer** )|  | [optional] 
- **order_by** | Enum [-created_at, -updated_at, created_at, updated_at] | Ordenamiento   | [optional] 
- **page** | **integer**| Un número de página dentro del conjunto de resultados paginado. | [optional] 
- **page_size** | **integer**| Número de resultados a devolver por página. | [optional] 
+ **order_by** | Enum [-created_at, -updated_at, created_at, updated_at] | Ordering   | [optional] 
+ **page** | **integer**| A page number within the paginated result set. | [optional] 
+ **page_size** | **integer**| Number of results to return per page. | [optional] 
  **result_agreement_max** | **numeric**|  | [optional] 
  **result_agreement_min** | **numeric**|  | [optional] 
  **result_characteristics_is_blood_fed** | **character**|  | [optional] 
@@ -559,7 +559,7 @@ Name | Type | Description  | Notes
  **result_uncertainty_max** | **numeric**|  | [optional] 
  **result_uncertainty_min** | **numeric**|  | [optional] 
  **review_action** | Enum [agree, null, overwrite] |  | [optional] 
- **search** | **character**| Un término de búsqueda. | [optional] 
+ **search** | **character**| A search term. | [optional] 
  **status** | Enum [archived, conflict, done, open, review] |  | [optional] 
  **updated_at_after** | **character**| Update at | [optional] 
  **updated_at_before** | **character**| Update at | [optional] 
@@ -703,8 +703,8 @@ library(MosquitoAlert)
 
 # prepare function argument(s)
 var_observation_uuid <- "observation_uuid_example" # character | UUID of the Observation
-var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -724,8 +724,8 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **observation_uuid** | **character**| UUID of the Observation | 
- **page** | **integer**| Un número de página dentro del conjunto de resultados paginado. | [optional] 
- **page_size** | **integer**| Número de resultados a devolver por página. | [optional] 
+ **page** | **integer**| A page number within the paginated result set. | [optional] 
+ **page_size** | **integer**| Number of results to return per page. | [optional] 
 
 ### Return type
 

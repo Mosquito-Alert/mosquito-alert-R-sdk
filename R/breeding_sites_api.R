@@ -78,14 +78,14 @@
 #' var_has_near_mosquitoes <- "has_near_mosquitoes_example" # character |  (Optional)
 #' var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
 #' var_has_water <- "has_water_example" # character |  (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
 #' var_point <- c(123) # array[numeric] | Point represented in **x,y** format. Represents **point** in **Distance to point filter** (Optional)
 #' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 #' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+#' var_search <- "search_example" # character | A search term. (Optional)
 #' var_short_id <- "short_id_example" # character | Short ID (Optional)
 #' var_site_type <- c("basin") # array[character] | Breeding site type.   (Optional)
-#' var_tags <- c("inner_example") # array[character] | Múltiples valores separados por comas. (Optional)
+#' var_tags <- c("inner_example") # array[character] | Multiple values may be separated by commas. (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
 #' var_user_uuid <- "user_uuid_example" # character |  (Optional)
@@ -121,16 +121,16 @@
 #' var_has_near_mosquitoes <- "has_near_mosquitoes_example" # character |  (Optional)
 #' var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
 #' var_has_water <- "has_water_example" # character |  (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_point <- c(123) # array[numeric] | Point represented in **x,y** format. Represents **point** in **Distance to point filter** (Optional)
 #' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 #' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+#' var_search <- "search_example" # character | A search term. (Optional)
 #' var_short_id <- "short_id_example" # character | Short ID (Optional)
 #' var_site_type <- c("basin") # array[character] | Breeding site type.   (Optional)
-#' var_tags <- c("inner_example") # array[character] | Múltiples valores separados por comas. (Optional)
+#' var_tags <- c("inner_example") # array[character] | Multiple values may be separated by commas. (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
 #' var_user_uuid <- "user_uuid_example" # character |  (Optional)
@@ -166,16 +166,16 @@
 #' var_has_near_mosquitoes <- "has_near_mosquitoes_example" # character |  (Optional)
 #' var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
 #' var_has_water <- "has_water_example" # character |  (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_point <- c(123) # array[numeric] | Point represented in **x,y** format. Represents **point** in **Distance to point filter** (Optional)
 #' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 #' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+#' var_search <- "search_example" # character | A search term. (Optional)
 #' var_short_id <- "short_id_example" # character | Short ID (Optional)
 #' var_site_type <- c("basin") # array[character] | Breeding site type.   (Optional)
-#' var_tags <- c("inner_example") # array[character] | Múltiples valores separados por comas. (Optional)
+#' var_tags <- c("inner_example") # array[character] | Multiple values may be separated by commas. (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
 #' var_user_uuid <- "user_uuid_example" # character |  (Optional)
@@ -545,14 +545,14 @@ BreedingSitesApi <- R6::R6Class(
     #' @param has_near_mosquitoes (optional) No description
     #' @param has_photos (optional) Has any photo
     #' @param has_water (optional) No description
-    #' @param order_by (optional) Ordenamiento  
+    #' @param order_by (optional) Ordering  
     #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
     #' @param site_type (optional) Breeding site type.  
-    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param tags (optional) Multiple values may be separated by commas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
@@ -587,14 +587,14 @@ BreedingSitesApi <- R6::R6Class(
     #' @param has_near_mosquitoes (optional) No description
     #' @param has_photos (optional) Has any photo
     #' @param has_water (optional) No description
-    #' @param order_by (optional) Ordenamiento  
+    #' @param order_by (optional) Ordering  
     #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
     #' @param site_type (optional) Breeding site type.  
-    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param tags (optional) Multiple values may be separated by commas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
@@ -842,16 +842,16 @@ BreedingSitesApi <- R6::R6Class(
     #' @param has_near_mosquitoes (optional) No description
     #' @param has_photos (optional) Has any photo
     #' @param has_water (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
     #' @param site_type (optional) Breeding site type.  
-    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param tags (optional) Multiple values may be separated by commas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
@@ -887,16 +887,16 @@ BreedingSitesApi <- R6::R6Class(
     #' @param has_near_mosquitoes (optional) No description
     #' @param has_photos (optional) Has any photo
     #' @param has_water (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
     #' @param site_type (optional) Breeding site type.  
-    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param tags (optional) Multiple values may be separated by commas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
@@ -1165,16 +1165,16 @@ BreedingSitesApi <- R6::R6Class(
     #' @param has_near_mosquitoes (optional) No description
     #' @param has_photos (optional) Has any photo
     #' @param has_water (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
     #' @param site_type (optional) Breeding site type.  
-    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param tags (optional) Multiple values may be separated by commas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
@@ -1210,16 +1210,16 @@ BreedingSitesApi <- R6::R6Class(
     #' @param has_near_mosquitoes (optional) No description
     #' @param has_photos (optional) Has any photo
     #' @param has_water (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
     #' @param site_type (optional) Breeding site type.  
-    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param tags (optional) Multiple values may be separated by commas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description

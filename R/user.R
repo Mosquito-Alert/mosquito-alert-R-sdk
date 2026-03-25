@@ -102,8 +102,8 @@ User <- R6::R6Class(
         self$`score` <- `score`
       }
       if (!is.null(`locale`)) {
-        if (!(`locale` %in% c("es", "ca", "eu", "bn", "sv", "en", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
-          stop(paste("Error! \"", `locale`, "\" cannot be assigned to `locale`. Must be \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"en\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
+        if (!(`locale` %in% c("en", "es", "ca", "eu", "bn", "sv", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
+          stop(paste("Error! \"", `locale`, "\" cannot be assigned to `locale`. Must be \"en\", \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
         }
         if (!(is.character(`locale`) && length(`locale`) == 1)) {
           stop(paste("Error! Invalid data for `locale`. Must be a string:", `locale`))
@@ -235,8 +235,8 @@ User <- R6::R6Class(
         self$`registration_time` <- this_object$`registration_time`
       }
       if (!is.null(this_object$`locale`)) {
-        if (!is.null(this_object$`locale`) && !(this_object$`locale` %in% c("es", "ca", "eu", "bn", "sv", "en", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
-          stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"en\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
+        if (!is.null(this_object$`locale`) && !(this_object$`locale` %in% c("en", "es", "ca", "eu", "bn", "sv", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
+          stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"en\", \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
         }
         self$`locale` <- this_object$`locale`
       }
@@ -278,8 +278,8 @@ User <- R6::R6Class(
       self$`last_name` <- this_object$`last_name`
       self$`full_name` <- this_object$`full_name`
       self$`registration_time` <- this_object$`registration_time`
-      if (!is.null(this_object$`locale`) && !(this_object$`locale` %in% c("es", "ca", "eu", "bn", "sv", "en", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
-        stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"en\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
+      if (!is.null(this_object$`locale`) && !(this_object$`locale` %in% c("en", "es", "ca", "eu", "bn", "sv", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
+        stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"en\", \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
       }
       self$`locale` <- this_object$`locale`
       self$`language_iso` <- this_object$`language_iso`

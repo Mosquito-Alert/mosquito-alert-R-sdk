@@ -18,8 +18,8 @@
 #'
 #' library(MosquitoAlert)
 #' var_is_relevant <- "is_relevant_example" # character |  (Optional)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_rank <- c(123) # array[integer] |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
@@ -42,7 +42,7 @@
 #' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
-#' var_id <- 56 # integer | Un valor de entero único que identifique este taxon.
+#' var_id <- 56 # integer | A unique integer value identifying this taxon.
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -85,7 +85,7 @@
 #' ####################  tree_retrieve  ####################
 #'
 #' library(MosquitoAlert)
-#' var_id <- 56 # integer | Un valor de entero único que identifique este taxon.
+#' var_id <- 56 # integer | A unique integer value identifying this taxon.
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -129,8 +129,8 @@ TaxaApi <- R6::R6Class(
     #' 
     #'
     #' @param is_relevant (optional) No description
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param rank (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -154,8 +154,8 @@ TaxaApi <- R6::R6Class(
     #' 
     #'
     #' @param is_relevant (optional) No description
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param rank (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -273,7 +273,7 @@ TaxaApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este taxon.
+    #' @param id A unique integer value identifying this taxon.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -295,7 +295,7 @@ TaxaApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este taxon.
+    #' @param id A unique integer value identifying this taxon.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -499,7 +499,7 @@ TaxaApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este taxon.
+    #' @param id A unique integer value identifying this taxon.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -521,7 +521,7 @@ TaxaApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este taxon.
+    #' @param id A unique integer value identifying this taxon.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.

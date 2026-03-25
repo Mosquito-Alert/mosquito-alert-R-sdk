@@ -18,7 +18,7 @@
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
-#' var_patched_user_request <- PatchedUserRequest$new("es") # PatchedUserRequest |  (Optional)
+#' var_patched_user_request <- PatchedUserRequest$new("en") # PatchedUserRequest |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -84,7 +84,7 @@
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
-#' var_user_request <- UserRequest$new("es") # UserRequest |  (Optional)
+#' var_user_request <- UserRequest$new("en") # UserRequest |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'

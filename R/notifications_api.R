@@ -40,9 +40,9 @@
 #'
 #' library(MosquitoAlert)
 #' var_is_read <- "is_read_example" # character |  (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -65,9 +65,9 @@
 #'
 #' library(MosquitoAlert)
 #' var_is_read <- "is_read_example" # character |  (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -89,7 +89,7 @@
 #' ####################  partial_update  ####################
 #'
 #' library(MosquitoAlert)
-#' var_id <- 56 # integer | Un valor de entero único que identifique este notification.
+#' var_id <- 56 # integer | A unique integer value identifying this notification.
 #' var_patched_notification_request <- PatchedNotificationRequest$new("is_read_example") # PatchedNotificationRequest |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
@@ -112,7 +112,7 @@
 #' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
-#' var_id <- 56 # integer | Un valor de entero único que identifique este notification.
+#' var_id <- 56 # integer | A unique integer value identifying this notification.
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -134,7 +134,7 @@
 #' ####################  update  ####################
 #'
 #' library(MosquitoAlert)
-#' var_id <- 56 # integer | Un valor de entero único que identifique este notification.
+#' var_id <- 56 # integer | A unique integer value identifying this notification.
 #' var_notification_request <- NotificationRequest$new("is_read_example") # NotificationRequest | 
 #'
 #' api_instance <- mosquitoalert_api$new()
@@ -297,9 +297,9 @@ NotificationsApi <- R6::R6Class(
     #' 
     #'
     #' @param is_read (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -322,9 +322,9 @@ NotificationsApi <- R6::R6Class(
     #' 
     #'
     #' @param is_read (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -442,9 +442,9 @@ NotificationsApi <- R6::R6Class(
     #' 
     #'
     #' @param is_read (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -467,9 +467,9 @@ NotificationsApi <- R6::R6Class(
     #' 
     #'
     #' @param is_read (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -586,7 +586,7 @@ NotificationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este notification.
+    #' @param id A unique integer value identifying this notification.
     #' @param patched_notification_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -609,7 +609,7 @@ NotificationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este notification.
+    #' @param id A unique integer value identifying this notification.
     #' @param patched_notification_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -718,7 +718,7 @@ NotificationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este notification.
+    #' @param id A unique integer value identifying this notification.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -740,7 +740,7 @@ NotificationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este notification.
+    #' @param id A unique integer value identifying this notification.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -838,7 +838,7 @@ NotificationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este notification.
+    #' @param id A unique integer value identifying this notification.
     #' @param notification_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -861,7 +861,7 @@ NotificationsApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este notification.
+    #' @param id A unique integer value identifying this notification.
     #' @param notification_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments

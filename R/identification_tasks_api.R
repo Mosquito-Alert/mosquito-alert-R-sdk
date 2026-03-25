@@ -53,10 +53,10 @@
 #' var_decision_level <- c("executive") # array[character] |  (Optional)
 #' var_is_favourite <- "is_favourite_example" # character |  (Optional)
 #' var_is_flagged <- "is_flagged_example" # character |  (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
-#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#' var_search <- "search_example" # character | A search term. (Optional)
 #' var_type <- "type_example" # character |  (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Updated at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Updated at (Optional)
@@ -94,10 +94,10 @@
 #' var_decision_level <- c("executive") # array[character] |  (Optional)
 #' var_is_favourite <- "is_favourite_example" # character |  (Optional)
 #' var_is_flagged <- "is_flagged_example" # character |  (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
-#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#' var_search <- "search_example" # character | A search term. (Optional)
 #' var_type <- "type_example" # character |  (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Updated at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Updated at (Optional)
@@ -123,7 +123,7 @@
 #' ####################  annotations_retrieve  ####################
 #'
 #' library(MosquitoAlert)
-#' var_id <- 56 # integer | Un valor de entero único que identifique este expert report annotation.
+#' var_id <- 56 # integer | A unique integer value identifying this expert report annotation.
 #' var_observation_uuid <- "observation_uuid_example" # character | UUID of the Observation
 #'
 #' api_instance <- mosquitoalert_api$new()
@@ -177,9 +177,9 @@
 #' var_num_annotations_max <- 56 # integer |  (Optional)
 #' var_num_annotations_min <- 56 # integer |  (Optional)
 #' var_observation_country_ids <- c(123) # array[integer] |  (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_result_agreement_max <- 3.4 # numeric |  (Optional)
 #' var_result_agreement_min <- 3.4 # numeric |  (Optional)
 #' var_result_characteristics_is_blood_fed <- "result_characteristics_is_blood_fed_example" # character |  (Optional)
@@ -192,7 +192,7 @@
 #' var_result_uncertainty_max <- 3.4 # numeric |  (Optional)
 #' var_result_uncertainty_min <- 3.4 # numeric |  (Optional)
 #' var_review_action <- "review_action_example" # character |  (Optional)
-#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+#' var_search <- "search_example" # character | A search term. (Optional)
 #' var_status <- c("archived") # array[character] |  (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -227,9 +227,9 @@
 #' var_num_annotations_max <- 56 # integer |  (Optional)
 #' var_num_annotations_min <- 56 # integer |  (Optional)
 #' var_observation_country_ids <- c(123) # array[integer] |  (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_result_agreement_max <- 3.4 # numeric |  (Optional)
 #' var_result_agreement_min <- 3.4 # numeric |  (Optional)
 #' var_result_characteristics_is_blood_fed <- "result_characteristics_is_blood_fed_example" # character |  (Optional)
@@ -242,7 +242,7 @@
 #' var_result_uncertainty_max <- 3.4 # numeric |  (Optional)
 #' var_result_uncertainty_min <- 3.4 # numeric |  (Optional)
 #' var_review_action <- "review_action_example" # character |  (Optional)
-#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+#' var_search <- "search_example" # character | A search term. (Optional)
 #' var_status <- c("archived") # array[character] |  (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
@@ -311,8 +311,8 @@
 #'
 #' library(MosquitoAlert)
 #' var_observation_uuid <- "observation_uuid_example" # character | UUID of the Observation
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -620,10 +620,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param decision_level (optional) No description
     #' @param is_favourite (optional) No description
     #' @param is_flagged (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
-    #' @param search (optional) Un término de búsqueda.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
+    #' @param search (optional) A search term.
     #' @param type (optional) No description
     #' @param updated_at_after (optional) Updated at
     #' @param updated_at_before (optional) Updated at
@@ -662,10 +662,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param decision_level (optional) No description
     #' @param is_favourite (optional) No description
     #' @param is_flagged (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
-    #' @param search (optional) Un término de búsqueda.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
+    #' @param search (optional) A search term.
     #' @param type (optional) No description
     #' @param updated_at_after (optional) Updated at
     #' @param updated_at_before (optional) Updated at
@@ -937,10 +937,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param decision_level (optional) No description
     #' @param is_favourite (optional) No description
     #' @param is_flagged (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
-    #' @param search (optional) Un término de búsqueda.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
+    #' @param search (optional) A search term.
     #' @param type (optional) No description
     #' @param updated_at_after (optional) Updated at
     #' @param updated_at_before (optional) Updated at
@@ -978,10 +978,10 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param decision_level (optional) No description
     #' @param is_favourite (optional) No description
     #' @param is_flagged (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
-    #' @param search (optional) Un término de búsqueda.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
+    #' @param search (optional) A search term.
     #' @param type (optional) No description
     #' @param updated_at_after (optional) Updated at
     #' @param updated_at_before (optional) Updated at
@@ -1229,7 +1229,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este expert report annotation.
+    #' @param id A unique integer value identifying this expert report annotation.
     #' @param observation_uuid UUID of the Observation
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1252,7 +1252,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este expert report annotation.
+    #' @param id A unique integer value identifying this expert report annotation.
     #' @param observation_uuid UUID of the Observation
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1479,9 +1479,9 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param num_annotations_max (optional) No description
     #' @param num_annotations_min (optional) No description
     #' @param observation_country_ids (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param result_agreement_max (optional) No description
     #' @param result_agreement_min (optional) No description
     #' @param result_characteristics_is_blood_fed (optional) No description
@@ -1494,7 +1494,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param result_uncertainty_max (optional) No description
     #' @param result_uncertainty_min (optional) No description
     #' @param review_action (optional) No description
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param status (optional) No description
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -1529,9 +1529,9 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param num_annotations_max (optional) No description
     #' @param num_annotations_min (optional) No description
     #' @param observation_country_ids (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param result_agreement_max (optional) No description
     #' @param result_agreement_min (optional) No description
     #' @param result_characteristics_is_blood_fed (optional) No description
@@ -1544,7 +1544,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param result_uncertainty_max (optional) No description
     #' @param result_uncertainty_min (optional) No description
     #' @param review_action (optional) No description
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param status (optional) No description
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -1856,9 +1856,9 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param num_annotations_max (optional) No description
     #' @param num_annotations_min (optional) No description
     #' @param observation_country_ids (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param result_agreement_max (optional) No description
     #' @param result_agreement_min (optional) No description
     #' @param result_characteristics_is_blood_fed (optional) No description
@@ -1871,7 +1871,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param result_uncertainty_max (optional) No description
     #' @param result_uncertainty_min (optional) No description
     #' @param review_action (optional) No description
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param status (optional) No description
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -1906,9 +1906,9 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param num_annotations_max (optional) No description
     #' @param num_annotations_min (optional) No description
     #' @param observation_country_ids (optional) No description
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param result_agreement_max (optional) No description
     #' @param result_agreement_min (optional) No description
     #' @param result_characteristics_is_blood_fed (optional) No description
@@ -1921,7 +1921,7 @@ IdentificationTasksApi <- R6::R6Class(
     #' @param result_uncertainty_max (optional) No description
     #' @param result_uncertainty_min (optional) No description
     #' @param review_action (optional) No description
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param status (optional) No description
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
@@ -2475,8 +2475,8 @@ IdentificationTasksApi <- R6::R6Class(
     #' 
     #'
     #' @param observation_uuid UUID of the Observation
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -2499,8 +2499,8 @@ IdentificationTasksApi <- R6::R6Class(
     #' 
     #'
     #' @param observation_uuid UUID of the Observation
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.

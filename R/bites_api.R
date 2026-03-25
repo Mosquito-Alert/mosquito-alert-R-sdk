@@ -64,13 +64,13 @@
 #' var_created_at_before <- "created_at_before_example" # character | Created at (Optional)
 #' var_dist <- 1000 # numeric | Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (Optional)
 #' var_geo_precision <- 3.4 # numeric | Latitude/Longitude precision (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
 #' var_point <- c(123) # array[numeric] | Point represented in **x,y** format. Represents **point** in **Distance to point filter** (Optional)
 #' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 #' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+#' var_search <- "search_example" # character | A search term. (Optional)
 #' var_short_id <- "short_id_example" # character | Short ID (Optional)
-#' var_tags <- c("inner_example") # array[character] | Múltiples valores separados por comas. (Optional)
+#' var_tags <- c("inner_example") # array[character] | Multiple values may be separated by commas. (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
 #' var_user_uuid <- "user_uuid_example" # character |  (Optional)
@@ -102,15 +102,15 @@
 #' var_dist <- 1000 # numeric | Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (Optional)
 #' var_format <- "format_example" # character |  (Optional)
 #' var_geo_precision <- 3.4 # numeric | Latitude/Longitude precision (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_point <- c(123) # array[numeric] | Point represented in **x,y** format. Represents **point** in **Distance to point filter** (Optional)
 #' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 #' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+#' var_search <- "search_example" # character | A search term. (Optional)
 #' var_short_id <- "short_id_example" # character | Short ID (Optional)
-#' var_tags <- c("inner_example") # array[character] | Múltiples valores separados por comas. (Optional)
+#' var_tags <- c("inner_example") # array[character] | Multiple values may be separated by commas. (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
 #' var_user_uuid <- "user_uuid_example" # character |  (Optional)
@@ -142,15 +142,15 @@
 #' var_dist <- 1000 # numeric | Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (Optional)
 #' var_format <- "format_example" # character |  (Optional)
 #' var_geo_precision <- 3.4 # numeric | Latitude/Longitude precision (Optional)
-#' var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_point <- c(123) # array[numeric] | Point represented in **x,y** format. Represents **point** in **Distance to point filter** (Optional)
 #' var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 #' var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-#' var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+#' var_search <- "search_example" # character | A search term. (Optional)
 #' var_short_id <- "short_id_example" # character | Short ID (Optional)
-#' var_tags <- c("inner_example") # array[character] | Múltiples valores separados por comas. (Optional)
+#' var_tags <- c("inner_example") # array[character] | Multiple values may be separated by commas. (Optional)
 #' var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 #' var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
 #' var_user_uuid <- "user_uuid_example" # character |  (Optional)
@@ -447,13 +447,13 @@ BitesApi <- R6::R6Class(
     #' @param created_at_before (optional) Created at
     #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
     #' @param geo_precision (optional) Latitude/Longitude precision
-    #' @param order_by (optional) Ordenamiento  
+    #' @param order_by (optional) Ordering  
     #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
-    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param tags (optional) Multiple values may be separated by commas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
@@ -484,13 +484,13 @@ BitesApi <- R6::R6Class(
     #' @param created_at_before (optional) Created at
     #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
     #' @param geo_precision (optional) Latitude/Longitude precision
-    #' @param order_by (optional) Ordenamiento  
+    #' @param order_by (optional) Ordering  
     #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
-    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param tags (optional) Multiple values may be separated by commas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
@@ -697,15 +697,15 @@ BitesApi <- R6::R6Class(
     #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
     #' @param format (optional) No description
     #' @param geo_precision (optional) Latitude/Longitude precision
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
-    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param tags (optional) Multiple values may be separated by commas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
@@ -737,15 +737,15 @@ BitesApi <- R6::R6Class(
     #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
     #' @param format (optional) No description
     #' @param geo_precision (optional) Latitude/Longitude precision
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
-    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param tags (optional) Multiple values may be separated by commas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
@@ -973,15 +973,15 @@ BitesApi <- R6::R6Class(
     #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
     #' @param format (optional) No description
     #' @param geo_precision (optional) Latitude/Longitude precision
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
-    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param tags (optional) Multiple values may be separated by commas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description
@@ -1013,15 +1013,15 @@ BitesApi <- R6::R6Class(
     #' @param dist (optional) Represents **Distance** in **Distance to point** filter. Default value is used only if ***point*** is passed. (default value: 1000)
     #' @param format (optional) No description
     #' @param geo_precision (optional) Latitude/Longitude precision
-    #' @param order_by (optional) Ordenamiento  
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param order_by (optional) Ordering  
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param point (optional) Point represented in **x,y** format. Represents **point** in **Distance to point filter**
     #' @param received_at_after (optional) Received at
     #' @param received_at_before (optional) Received at
-    #' @param search (optional) Un término de búsqueda.
+    #' @param search (optional) A search term.
     #' @param short_id (optional) Short ID
-    #' @param tags (optional) Múltiples valores separados por comas.
+    #' @param tags (optional) Multiple values may be separated by commas.
     #' @param updated_at_after (optional) Update at
     #' @param updated_at_before (optional) Update at
     #' @param user_uuid (optional) No description

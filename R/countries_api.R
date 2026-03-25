@@ -17,8 +17,8 @@
 #' ####################  list  ####################
 #'
 #' library(MosquitoAlert)
-#' var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-#' var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -40,7 +40,7 @@
 #' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
-#' var_id <- 56 # integer | Un valor de entero único que identifique este europe country.
+#' var_id <- 56 # integer | A unique integer value identifying this europe country.
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -83,8 +83,8 @@ CountriesApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -106,8 +106,8 @@ CountriesApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param page (optional) Un número de página dentro del conjunto de resultados paginado.
-    #' @param page_size (optional) Número de resultados a devolver por página.
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -205,7 +205,7 @@ CountriesApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este europe country.
+    #' @param id A unique integer value identifying this europe country.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -227,7 +227,7 @@ CountriesApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id Un valor de entero único que identifique este europe country.
+    #' @param id A unique integer value identifying this europe country.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.

@@ -150,13 +150,13 @@ var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
 var_identification_taxon_ids <- c("inner_example") # array[character] |  (Optional)
 var_identification_taxon_ids_lookup <- "identification_taxon_ids_lookup_example" # character |  (Optional)
 var_negate_identification_taxon_ids <- "negate_identification_taxon_ids_example" # character | Negate identification_taxon_ids filter (Optional)
-var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
 var_point <- c(123) # array[numeric] | Point represented in **x,y** format. Represents **point** in **Distance to point filter** (Optional)
 var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+var_search <- "search_example" # character | A search term. (Optional)
 var_short_id <- "short_id_example" # character | Short ID (Optional)
-var_tags <- c("inner_example") # array[character] | Múltiples valores separados por comas. (Optional)
+var_tags <- c("inner_example") # array[character] | Multiple values may be separated by commas. (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
 var_user_uuid <- "user_uuid_example" # character |  (Optional)
@@ -188,13 +188,13 @@ Name | Type | Description  | Notes
  **identification_taxon_ids** | list( **character** )|  | [optional] 
  **identification_taxon_ids_lookup** | Enum [is_child_of, is_descendant_of, is_tree_of] |  | [optional] 
  **negate_identification_taxon_ids** | **character**| Negate identification_taxon_ids filter | [optional] 
- **order_by** | Enum [-created_at, -distance, -received_at, created_at, distance, received_at] | Ordenamiento   | [optional] 
+ **order_by** | Enum [-created_at, -distance, -received_at, created_at, distance, received_at] | Ordering   | [optional] 
  **point** | list( **numeric** )| Point represented in **x,y** format. Represents **point** in **Distance to point filter** | [optional] 
  **received_at_after** | **character**| Received at | [optional] 
  **received_at_before** | **character**| Received at | [optional] 
- **search** | **character**| Un término de búsqueda. | [optional] 
+ **search** | **character**| A search term. | [optional] 
  **short_id** | **character**| Short ID | [optional] 
- **tags** | list( **character** )| Múltiples valores separados por comas. | [optional] 
+ **tags** | list( **character** )| Multiple values may be separated by commas. | [optional] 
  **updated_at_after** | **character**| Update at | [optional] 
  **updated_at_before** | **character**| Update at | [optional] 
  **user_uuid** | **character**|  | [optional] 
@@ -241,15 +241,15 @@ var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
 var_identification_taxon_ids <- c("inner_example") # array[character] |  (Optional)
 var_identification_taxon_ids_lookup <- "identification_taxon_ids_lookup_example" # character |  (Optional)
 var_negate_identification_taxon_ids <- "negate_identification_taxon_ids_example" # character | Negate identification_taxon_ids filter (Optional)
-var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 var_point <- c(123) # array[numeric] | Point represented in **x,y** format. Represents **point** in **Distance to point filter** (Optional)
 var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+var_search <- "search_example" # character | A search term. (Optional)
 var_short_id <- "short_id_example" # character | Short ID (Optional)
-var_tags <- c("inner_example") # array[character] | Múltiples valores separados por comas. (Optional)
+var_tags <- c("inner_example") # array[character] | Multiple values may be separated by commas. (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
 var_user_uuid <- "user_uuid_example" # character |  (Optional)
@@ -282,15 +282,15 @@ Name | Type | Description  | Notes
  **identification_taxon_ids** | list( **character** )|  | [optional] 
  **identification_taxon_ids_lookup** | Enum [is_child_of, is_descendant_of, is_tree_of] |  | [optional] 
  **negate_identification_taxon_ids** | **character**| Negate identification_taxon_ids filter | [optional] 
- **order_by** | Enum [-created_at, -distance, -received_at, created_at, distance, received_at] | Ordenamiento   | [optional] 
- **page** | **integer**| Un número de página dentro del conjunto de resultados paginado. | [optional] 
- **page_size** | **integer**| Número de resultados a devolver por página. | [optional] 
+ **order_by** | Enum [-created_at, -distance, -received_at, created_at, distance, received_at] | Ordering   | [optional] 
+ **page** | **integer**| A page number within the paginated result set. | [optional] 
+ **page_size** | **integer**| Number of results to return per page. | [optional] 
  **point** | list( **numeric** )| Point represented in **x,y** format. Represents **point** in **Distance to point filter** | [optional] 
  **received_at_after** | **character**| Received at | [optional] 
  **received_at_before** | **character**| Received at | [optional] 
- **search** | **character**| Un término de búsqueda. | [optional] 
+ **search** | **character**| A search term. | [optional] 
  **short_id** | **character**| Short ID | [optional] 
- **tags** | list( **character** )| Múltiples valores separados por comas. | [optional] 
+ **tags** | list( **character** )| Multiple values may be separated by commas. | [optional] 
  **updated_at_after** | **character**| Update at | [optional] 
  **updated_at_before** | **character**| Update at | [optional] 
  **user_uuid** | **character**|  | [optional] 
@@ -339,15 +339,15 @@ var_has_photos <- "has_photos_example" # character | Has any photo (Optional)
 var_identification_taxon_ids <- c("inner_example") # array[character] |  (Optional)
 var_identification_taxon_ids_lookup <- "identification_taxon_ids_lookup_example" # character |  (Optional)
 var_negate_identification_taxon_ids <- "negate_identification_taxon_ids_example" # character | Negate identification_taxon_ids filter (Optional)
-var_order_by <- c("-created_at") # array[character] | Ordenamiento   (Optional)
-var_page <- 56 # integer | Un número de página dentro del conjunto de resultados paginado. (Optional)
-var_page_size <- 56 # integer | Número de resultados a devolver por página. (Optional)
+var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
+var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 var_point <- c(123) # array[numeric] | Point represented in **x,y** format. Represents **point** in **Distance to point filter** (Optional)
 var_received_at_after <- "received_at_after_example" # character | Received at (Optional)
 var_received_at_before <- "received_at_before_example" # character | Received at (Optional)
-var_search <- "search_example" # character | Un término de búsqueda. (Optional)
+var_search <- "search_example" # character | A search term. (Optional)
 var_short_id <- "short_id_example" # character | Short ID (Optional)
-var_tags <- c("inner_example") # array[character] | Múltiples valores separados por comas. (Optional)
+var_tags <- c("inner_example") # array[character] | Multiple values may be separated by commas. (Optional)
 var_updated_at_after <- "updated_at_after_example" # character | Update at (Optional)
 var_updated_at_before <- "updated_at_before_example" # character | Update at (Optional)
 var_user_uuid <- "user_uuid_example" # character |  (Optional)
@@ -380,15 +380,15 @@ Name | Type | Description  | Notes
  **identification_taxon_ids** | list( **character** )|  | [optional] 
  **identification_taxon_ids_lookup** | Enum [is_child_of, is_descendant_of, is_tree_of] |  | [optional] 
  **negate_identification_taxon_ids** | **character**| Negate identification_taxon_ids filter | [optional] 
- **order_by** | Enum [-created_at, -distance, -received_at, created_at, distance, received_at] | Ordenamiento   | [optional] 
- **page** | **integer**| Un número de página dentro del conjunto de resultados paginado. | [optional] 
- **page_size** | **integer**| Número de resultados a devolver por página. | [optional] 
+ **order_by** | Enum [-created_at, -distance, -received_at, created_at, distance, received_at] | Ordering   | [optional] 
+ **page** | **integer**| A page number within the paginated result set. | [optional] 
+ **page_size** | **integer**| Number of results to return per page. | [optional] 
  **point** | list( **numeric** )| Point represented in **x,y** format. Represents **point** in **Distance to point filter** | [optional] 
  **received_at_after** | **character**| Received at | [optional] 
  **received_at_before** | **character**| Received at | [optional] 
- **search** | **character**| Un término de búsqueda. | [optional] 
+ **search** | **character**| A search term. | [optional] 
  **short_id** | **character**| Short ID | [optional] 
- **tags** | list( **character** )| Múltiples valores separados por comas. | [optional] 
+ **tags** | list( **character** )| Multiple values may be separated by commas. | [optional] 
  **updated_at_after** | **character**| Update at | [optional] 
  **updated_at_before** | **character**| Update at | [optional] 
  **user_uuid** | **character**|  | [optional] 
