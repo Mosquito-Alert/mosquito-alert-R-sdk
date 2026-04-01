@@ -25,3 +25,10 @@ test_that("review", {
   # uncomment below to test the property
   #expect_equal(model.instance$`review`, "EXPECTED_RESULT")
 })
+
+test_that("message", {
+  # tests for the property `message` (MessagePermission)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
+})

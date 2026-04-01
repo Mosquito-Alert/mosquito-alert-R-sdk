@@ -12,7 +12,7 @@
 #' @field ca Català character [optional]
 #' @field de Deutsch character [optional]
 #' @field el Ελληνικά character [optional]
-#' @field en English character
+#' @field en English character [optional]
 #' @field es Español character [optional]
 #' @field eu Euskara character [optional]
 #' @field fr Français character [optional]
@@ -65,12 +65,12 @@ LocalizedMessageBody <- R6::R6Class(
     #' @description
     #' Initialize a new LocalizedMessageBody class.
     #'
-    #' @param en English
     #' @param bg Български
     #' @param bn বাংলা
     #' @param ca Català
     #' @param de Deutsch
     #' @param el Ελληνικά
+    #' @param en English
     #' @param es Español
     #' @param eu Euskara
     #' @param fr Français
@@ -90,13 +90,7 @@ LocalizedMessageBody <- R6::R6Class(
     #' @param tr Türkçe
     #' @param zh-CN 中文（中国）
     #' @param ... Other optional arguments.
-    initialize = function(`en`, `bg` = NULL, `bn` = NULL, `ca` = NULL, `de` = NULL, `el` = NULL, `es` = NULL, `eu` = NULL, `fr` = NULL, `gl` = NULL, `hr` = NULL, `hu` = NULL, `it` = NULL, `lb` = NULL, `mk` = NULL, `nl` = NULL, `pt` = NULL, `ro` = NULL, `sl` = NULL, `sq` = NULL, `sr` = NULL, `sv` = NULL, `tr` = NULL, `zh-CN` = NULL, ...) {
-      if (!missing(`en`)) {
-        if (!(is.character(`en`) && length(`en`) == 1)) {
-          stop(paste("Error! Invalid data for `en`. Must be a string:", `en`))
-        }
-        self$`en` <- `en`
-      }
+    initialize = function(`bg` = NULL, `bn` = NULL, `ca` = NULL, `de` = NULL, `el` = NULL, `en` = NULL, `es` = NULL, `eu` = NULL, `fr` = NULL, `gl` = NULL, `hr` = NULL, `hu` = NULL, `it` = NULL, `lb` = NULL, `mk` = NULL, `nl` = NULL, `pt` = NULL, `ro` = NULL, `sl` = NULL, `sq` = NULL, `sr` = NULL, `sv` = NULL, `tr` = NULL, `zh-CN` = NULL, ...) {
       if (!is.null(`bg`)) {
         if (!(is.character(`bg`) && length(`bg`) == 1)) {
           stop(paste("Error! Invalid data for `bg`. Must be a string:", `bg`))
@@ -126,6 +120,12 @@ LocalizedMessageBody <- R6::R6Class(
           stop(paste("Error! Invalid data for `el`. Must be a string:", `el`))
         }
         self$`el` <- `el`
+      }
+      if (!is.null(`en`)) {
+        if (!(is.character(`en`) && length(`en`) == 1)) {
+          stop(paste("Error! Invalid data for `en`. Must be a string:", `en`))
+        }
+        self$`en` <- `en`
       }
       if (!is.null(`es`)) {
         if (!(is.character(`es`) && length(`es`) == 1)) {
@@ -500,14 +500,6 @@ LocalizedMessageBody <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
-      # check the required field `en`
-      if (!is.null(input_json$`en`)) {
-        if (!(is.character(input_json$`en`) && length(input_json$`en`) == 1)) {
-          stop(paste("Error! Invalid data for `en`. Must be a string:", input_json$`en`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for LocalizedMessageBody: the required field `en` is missing."))
-      }
     },
 
     #' @description
@@ -523,11 +515,6 @@ LocalizedMessageBody <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
-      # check if the required `en` is null
-      if (is.null(self$`en`)) {
-        return(FALSE)
-      }
-
       TRUE
     },
 
@@ -537,11 +524,6 @@ LocalizedMessageBody <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
-      # check if the required `en` is null
-      if (is.null(self$`en`)) {
-        invalid_fields["en"] <- "Non-nullable required field `en` cannot be null."
-      }
-
       invalid_fields
     },
 

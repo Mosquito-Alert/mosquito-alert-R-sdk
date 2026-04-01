@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ca** | **character** | Català | [optional] 
 **de** | **character** | Deutsch | [optional] 
 **el** | **character** | Ελληνικά | [optional] 
-**en** | **character** | English | 
+**en** | **character** | English | [optional] 
 **es** | **character** | Español | [optional] 
 **eu** | **character** | Euskara | [optional] 
 **fr** | **character** | Français | [optional] 

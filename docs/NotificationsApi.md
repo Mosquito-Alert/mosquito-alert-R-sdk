@@ -4,66 +4,12 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](NotificationsApi.md#create) | **POST** /notifications/ | 
 [**list**](NotificationsApi.md#list) | **GET** /notifications/ | 
 [**list_mine**](NotificationsApi.md#list_mine) | **GET** /me/notifications/ | 
 [**partial_update**](NotificationsApi.md#partial_update) | **PATCH** /notifications/{id}/ | 
 [**retrieve**](NotificationsApi.md#retrieve) | **GET** /notifications/{id}/ | 
 [**update**](NotificationsApi.md#update) | **PUT** /notifications/{id}/ | 
 
-
-# **create**
-> array[CreateNotification] create(meta_notification_request = var.meta_notification_request)
-
-
-
-### Example
-```R
-library(MosquitoAlert)
-
-# prepare function argument(s)
-var_meta_notification_request <- MetaNotificationRequest$new(CreateNotificationMessageRequest$new(LocalizedMessageTitleRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-CN_example"), LocalizedMessageBodyRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-CN_example")), c("user_uuids_example"), c("topic_codes_example"), "topic") # MetaNotificationRequest |  (Optional)
-
-api_instance <- mosquitoalert_api$new()
-# Configure API key authorization: tokenAuth
-api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-# Configure API key authorization: cookieAuth
-# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-# Configure HTTP bearer authorization: jwtAuth
-# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
-# to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$create(meta_notification_request = var_meta_notification_requestdata_file = "result.txt")
-result <- api_instance$notifications_api$create(meta_notification_request = var_meta_notification_request)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **meta_notification_request** | [**MetaNotificationRequest**](MetaNotificationRequest.md)|  | [optional] 
-
-### Return type
-
-[**array[CreateNotification]**](CreateNotification.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **400** |  |  -  |
-| **401** |  |  -  |
-| **403** |  |  -  |
-| **404** |  |  -  |
-| **201** |  |  -  |
 
 # **list**
 > PaginatedNotificationList list(is_read = var.is_read, order_by = var.order_by, page = var.page, page_size = var.page_size)

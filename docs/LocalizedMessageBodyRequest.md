@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ca** | **character** | Català | [optional] [Min. length: 1] 
 **de** | **character** | Deutsch | [optional] [Min. length: 1] 
 **el** | **character** | Ελληνικά | [optional] [Min. length: 1] 
-**en** | **character** | English | [Min. length: 1] 
+**en** | **character** | English | [optional] [Min. length: 1] 
 **es** | **character** | Español | [optional] [Min. length: 1] 
 **eu** | **character** | Euskara | [optional] [Min. length: 1] 
 **fr** | **character** | Français | [optional] [Min. length: 1] 

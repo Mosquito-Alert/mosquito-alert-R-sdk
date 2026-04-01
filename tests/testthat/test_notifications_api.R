@@ -5,16 +5,6 @@ context("Test NotificationsApi")
 
 api_instance <- NotificationsApi$new()
 
-test_that("create", {
-  # tests for create
-  # base path: https://api.mosquitoalert.com/v1
-  # @param meta_notification_request MetaNotificationRequest  (optional)
-  # @return [array[CreateNotification]]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
 test_that("list", {
   # tests for list
   # base path: https://api.mosquitoalert.com/v1

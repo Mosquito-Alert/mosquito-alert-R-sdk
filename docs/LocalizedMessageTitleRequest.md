@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ca** | **character** | Català | [optional] [Max. length: 255] [Min. length: 1] 
 **de** | **character** | Deutsch | [optional] [Max. length: 255] [Min. length: 1] 
 **el** | **character** | Ελληνικά | [optional] [Max. length: 255] [Min. length: 1] 
-**en** | **character** | English | [Max. length: 255] [Min. length: 1] 
+**en** | **character** | English | [optional] [Max. length: 255] [Min. length: 1] 
 **es** | **character** | Español | [optional] [Max. length: 255] [Min. length: 1] 
 **eu** | **character** | Euskara | [optional] [Max. length: 255] [Min. length: 1] 
 **fr** | **character** | Français | [optional] [Max. length: 255] [Min. length: 1] 

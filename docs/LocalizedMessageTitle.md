@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ca** | **character** | Català | [optional] [Max. length: 255] 
 **de** | **character** | Deutsch | [optional] [Max. length: 255] 
 **el** | **character** | Ελληνικά | [optional] [Max. length: 255] 
-**en** | **character** | English | [Max. length: 255] 
+**en** | **character** | English | [optional] [Max. length: 255] 
 **es** | **character** | Español | [optional] [Max. length: 255] 
 **eu** | **character** | Euskara | [optional] [Max. length: 255] 
 **fr** | **character** | Français | [optional] [Max. length: 255] 

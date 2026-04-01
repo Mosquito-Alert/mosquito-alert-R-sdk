@@ -5,6 +5,18 @@ context("Test UsersApi")
 
 api_instance <- UsersApi$new()
 
+test_that("list", {
+  # tests for list
+  # base path: https://api.mosquitoalert.com/v1
+  # @param page integer A page number within the paginated result set. (optional)
+  # @param page_size integer Number of results to return per page. (optional)
+  # @param search character A search term. (optional)
+  # @return [PaginatedUserList]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
 test_that("partial_update", {
   # tests for partial_update
   # base path: https://api.mosquitoalert.com/v1

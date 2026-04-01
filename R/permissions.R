@@ -10,6 +10,7 @@
 #' @field annotation  \link{AnnotationPermission}
 #' @field identification_task  \link{IdentificationTaskPermission}
 #' @field review  \link{ReviewPermission}
+#' @field message  \link{MessagePermission}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -19,6 +20,7 @@ Permissions <- R6::R6Class(
     `annotation` = NULL,
     `identification_task` = NULL,
     `review` = NULL,
+    `message` = NULL,
 
     #' @description
     #' Initialize a new Permissions class.
@@ -26,8 +28,9 @@ Permissions <- R6::R6Class(
     #' @param annotation annotation
     #' @param identification_task identification_task
     #' @param review review
+    #' @param message message
     #' @param ... Other optional arguments.
-    initialize = function(`annotation`, `identification_task`, `review`, ...) {
+    initialize = function(`annotation`, `identification_task`, `review`, `message`, ...) {
       if (!missing(`annotation`)) {
         stopifnot(R6::is.R6(`annotation`))
         self$`annotation` <- `annotation`
@@ -39,6 +42,10 @@ Permissions <- R6::R6Class(
       if (!missing(`review`)) {
         stopifnot(R6::is.R6(`review`))
         self$`review` <- `review`
+      }
+      if (!missing(`message`)) {
+        stopifnot(R6::is.R6(`message`))
+        self$`message` <- `message`
       }
     },
 
@@ -84,6 +91,10 @@ Permissions <- R6::R6Class(
       if (!is.null(self$`review`)) {
         PermissionsObject[["review"]] <-
           self$extractSimpleType(self$`review`)
+      }
+      if (!is.null(self$`message`)) {
+        PermissionsObject[["message"]] <-
+          self$extractSimpleType(self$`message`)
       }
       return(PermissionsObject)
     },
@@ -133,6 +144,11 @@ Permissions <- R6::R6Class(
         `review_object`$fromJSON(jsonlite::toJSON(this_object$`review`, auto_unbox = TRUE, digits = NA))
         self$`review` <- `review_object`
       }
+      if (!is.null(this_object$`message`)) {
+        `message_object` <- MessagePermission$new()
+        `message_object`$fromJSON(jsonlite::toJSON(this_object$`message`, auto_unbox = TRUE, digits = NA))
+        self$`message` <- `message_object`
+      }
       self
     },
 
@@ -157,6 +173,7 @@ Permissions <- R6::R6Class(
       self$`annotation` <- AnnotationPermission$new()$fromJSON(jsonlite::toJSON(this_object$`annotation`, auto_unbox = TRUE, digits = NA))
       self$`identification_task` <- IdentificationTaskPermission$new()$fromJSON(jsonlite::toJSON(this_object$`identification_task`, auto_unbox = TRUE, digits = NA))
       self$`review` <- ReviewPermission$new()$fromJSON(jsonlite::toJSON(this_object$`review`, auto_unbox = TRUE, digits = NA))
+      self$`message` <- MessagePermission$new()$fromJSON(jsonlite::toJSON(this_object$`message`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -183,6 +200,12 @@ Permissions <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`review`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Permissions: the required field `review` is missing."))
+      }
+      # check the required field `message`
+      if (!is.null(input_json$`message`)) {
+        stopifnot(R6::is.R6(input_json$`message`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Permissions: the required field `message` is missing."))
       }
     },
 
@@ -214,6 +237,11 @@ Permissions <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `message` is null
+      if (is.null(self$`message`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -236,6 +264,11 @@ Permissions <- R6::R6Class(
       # check if the required `review` is null
       if (is.null(self$`review`)) {
         invalid_fields["review"] <- "Non-nullable required field `review` cannot be null."
+      }
+
+      # check if the required `message` is null
+      if (is.null(self$`message`)) {
+        invalid_fields["message"] <- "Non-nullable required field `message` cannot be null."
       }
 
       invalid_fields
