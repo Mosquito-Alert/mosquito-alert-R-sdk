@@ -63,7 +63,7 @@ test_that("es", {
 
 test_that("eu", {
   # tests for the property `eu` (character)
-  # Euskara
+  # Basque
 
   # uncomment below to test the property
   #expect_equal(model.instance$`eu`, "EXPECTED_RESULT")
@@ -189,10 +189,10 @@ test_that("tr", {
   #expect_equal(model.instance$`tr`, "EXPECTED_RESULT")
 })
 
-test_that("zh-CN", {
-  # tests for the property `zh-CN` (character)
-  # 中文（中国）
+test_that("zh-cn", {
+  # tests for the property `zh-cn` (character)
+  # 简体中文
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`zh-CN`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`zh-cn`, "EXPECTED_RESULT")
 })

@@ -5,19 +5,6 @@ context("Test NotificationsApi")
 
 api_instance <- NotificationsApi$new()
 
-test_that("list", {
-  # tests for list
-  # base path: https://api.mosquitoalert.com/v1
-  # @param is_read character  (optional)
-  # @param order_by array[character] Ordering   (optional)
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
-  # @return [PaginatedNotificationList]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
 test_that("list_mine", {
   # tests for list_mine
   # base path: https://api.mosquitoalert.com/v1
@@ -35,7 +22,7 @@ test_that("list_mine", {
 test_that("partial_update", {
   # tests for partial_update
   # base path: https://api.mosquitoalert.com/v1
-  # @param id integer A unique integer value identifying this notification.
+  # @param id integer 
   # @param patched_notification_request PatchedNotificationRequest  (optional)
   # @return [Notification]
 
@@ -46,7 +33,7 @@ test_that("partial_update", {
 test_that("retrieve", {
   # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
-  # @param id integer A unique integer value identifying this notification.
+  # @param id integer 
   # @return [Notification]
 
   # uncomment below to test the operation
@@ -56,7 +43,7 @@ test_that("retrieve", {
 test_that("update", {
   # tests for update
   # base path: https://api.mosquitoalert.com/v1
-  # @param id integer A unique integer value identifying this notification.
+  # @param id integer 
   # @param notification_request NotificationRequest 
   # @return [Notification]
 

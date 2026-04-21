@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **el** | **character** | Ελληνικά | [optional] [Min. length: 1] 
 **en** | **character** | English | [Min. length: 1] 
 **es** | **character** | Español | [optional] [Min. length: 1] 
-**eu** | **character** | Euskara | [optional] [Min. length: 1] 
+**eu** | **character** | Basque | [optional] [Min. length: 1] 
 **fr** | **character** | Français | [optional] [Min. length: 1] 
 **gl** | **character** | Galego | [optional] [Min. length: 1] 
 **hr** | **character** | Hrvatski | [optional] [Min. length: 1] 
@@ -28,6 +28,6 @@ Name | Type | Description | Notes
 **sr** | **character** | Српски | [optional] [Min. length: 1] 
 **sv** | **character** | Svenska | [optional] [Min. length: 1] 
 **tr** | **character** | Türkçe | [optional] [Min. length: 1] 
-**zh-CN** | **character** | 中文（中国） | [optional] [Min. length: 1] 
+**zh-cn** | **character** | 简体中文 | [optional] [Min. length: 1] 
 
 

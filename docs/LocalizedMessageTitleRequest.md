@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **el** | **character** | Ελληνικά | [optional] [Max. length: 255] [Min. length: 1] 
 **en** | **character** | English | [optional] [Max. length: 255] [Min. length: 1] 
 **es** | **character** | Español | [optional] [Max. length: 255] [Min. length: 1] 
-**eu** | **character** | Euskara | [optional] [Max. length: 255] [Min. length: 1] 
+**eu** | **character** | Basque | [optional] [Max. length: 255] [Min. length: 1] 
 **fr** | **character** | Français | [optional] [Max. length: 255] [Min. length: 1] 
 **gl** | **character** | Galego | [optional] [Max. length: 255] [Min. length: 1] 
 **hr** | **character** | Hrvatski | [optional] [Max. length: 255] [Min. length: 1] 
@@ -28,6 +28,6 @@ Name | Type | Description | Notes
 **sr** | **character** | Српски | [optional] [Max. length: 255] [Min. length: 1] 
 **sv** | **character** | Svenska | [optional] [Max. length: 255] [Min. length: 1] 
 **tr** | **character** | Türkçe | [optional] [Max. length: 255] [Min. length: 1] 
-**zh-CN** | **character** | 中文（中国） | [optional] [Max. length: 255] [Min. length: 1] 
+**zh-cn** | **character** | 简体中文 | [optional] [Max. length: 255] [Min. length: 1] 
 
 

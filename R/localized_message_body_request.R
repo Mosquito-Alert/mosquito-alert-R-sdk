@@ -14,7 +14,7 @@
 #' @field el Ελληνικά character [optional]
 #' @field en English character [optional]
 #' @field es Español character [optional]
-#' @field eu Euskara character [optional]
+#' @field eu Basque character [optional]
 #' @field fr Français character [optional]
 #' @field gl Galego character [optional]
 #' @field hr Hrvatski character [optional]
@@ -30,7 +30,7 @@
 #' @field sr Српски character [optional]
 #' @field sv Svenska character [optional]
 #' @field tr Türkçe character [optional]
-#' @field zh-CN 中文（中国） character [optional]
+#' @field zh-cn 简体中文 character [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -60,7 +60,7 @@ LocalizedMessageBodyRequest <- R6::R6Class(
     `sr` = NULL,
     `sv` = NULL,
     `tr` = NULL,
-    `zh-CN` = NULL,
+    `zh-cn` = NULL,
 
     #' @description
     #' Initialize a new LocalizedMessageBodyRequest class.
@@ -72,7 +72,7 @@ LocalizedMessageBodyRequest <- R6::R6Class(
     #' @param el Ελληνικά
     #' @param en English
     #' @param es Español
-    #' @param eu Euskara
+    #' @param eu Basque
     #' @param fr Français
     #' @param gl Galego
     #' @param hr Hrvatski
@@ -88,9 +88,9 @@ LocalizedMessageBodyRequest <- R6::R6Class(
     #' @param sr Српски
     #' @param sv Svenska
     #' @param tr Türkçe
-    #' @param zh-CN 中文（中国）
+    #' @param zh-cn 简体中文
     #' @param ... Other optional arguments.
-    initialize = function(`bg` = NULL, `bn` = NULL, `ca` = NULL, `de` = NULL, `el` = NULL, `en` = NULL, `es` = NULL, `eu` = NULL, `fr` = NULL, `gl` = NULL, `hr` = NULL, `hu` = NULL, `it` = NULL, `lb` = NULL, `mk` = NULL, `nl` = NULL, `pt` = NULL, `ro` = NULL, `sl` = NULL, `sq` = NULL, `sr` = NULL, `sv` = NULL, `tr` = NULL, `zh-CN` = NULL, ...) {
+    initialize = function(`bg` = NULL, `bn` = NULL, `ca` = NULL, `de` = NULL, `el` = NULL, `en` = NULL, `es` = NULL, `eu` = NULL, `fr` = NULL, `gl` = NULL, `hr` = NULL, `hu` = NULL, `it` = NULL, `lb` = NULL, `mk` = NULL, `nl` = NULL, `pt` = NULL, `ro` = NULL, `sl` = NULL, `sq` = NULL, `sr` = NULL, `sv` = NULL, `tr` = NULL, `zh-cn` = NULL, ...) {
       if (!is.null(`bg`)) {
         if (!(is.character(`bg`) && length(`bg`) == 1)) {
           stop(paste("Error! Invalid data for `bg`. Must be a string:", `bg`))
@@ -229,11 +229,11 @@ LocalizedMessageBodyRequest <- R6::R6Class(
         }
         self$`tr` <- `tr`
       }
-      if (!is.null(`zh-CN`)) {
-        if (!(is.character(`zh-CN`) && length(`zh-CN`) == 1)) {
-          stop(paste("Error! Invalid data for `zh-CN`. Must be a string:", `zh-CN`))
+      if (!is.null(`zh-cn`)) {
+        if (!(is.character(`zh-cn`) && length(`zh-cn`) == 1)) {
+          stop(paste("Error! Invalid data for `zh-cn`. Must be a string:", `zh-cn`))
         }
-        self$`zh-CN` <- `zh-CN`
+        self$`zh-cn` <- `zh-cn`
       }
     },
 
@@ -360,9 +360,9 @@ LocalizedMessageBodyRequest <- R6::R6Class(
         LocalizedMessageBodyRequestObject[["tr"]] <-
           self$`tr`
       }
-      if (!is.null(self$`zh-CN`)) {
-        LocalizedMessageBodyRequestObject[["zh-CN"]] <-
-          self$`zh-CN`
+      if (!is.null(self$`zh-cn`)) {
+        LocalizedMessageBodyRequestObject[["zh-cn"]] <-
+          self$`zh-cn`
       }
       return(LocalizedMessageBodyRequestObject)
     },
@@ -443,8 +443,8 @@ LocalizedMessageBodyRequest <- R6::R6Class(
       if (!is.null(this_object$`tr`)) {
         self$`tr` <- this_object$`tr`
       }
-      if (!is.null(this_object$`zh-CN`)) {
-        self$`zh-CN` <- this_object$`zh-CN`
+      if (!is.null(this_object$`zh-cn`)) {
+        self$`zh-cn` <- this_object$`zh-cn`
       }
       self
     },
@@ -490,7 +490,7 @@ LocalizedMessageBodyRequest <- R6::R6Class(
       self$`sr` <- this_object$`sr`
       self$`sv` <- this_object$`sv`
       self$`tr` <- this_object$`tr`
-      self$`zh-CN` <- this_object$`zh-CN`
+      self$`zh-cn` <- this_object$`zh-cn`
       self
     },
 
@@ -607,7 +607,7 @@ LocalizedMessageBodyRequest <- R6::R6Class(
         return(FALSE)
       }
 
-      if (nchar(self$`zh-CN`) < 1) {
+      if (nchar(self$`zh-cn`) < 1) {
         return(FALSE)
       }
 
@@ -712,8 +712,8 @@ LocalizedMessageBodyRequest <- R6::R6Class(
         invalid_fields["tr"] <- "Invalid length for `tr`, must be bigger than or equal to 1."
       }
 
-      if (nchar(self$`zh-CN`) < 1) {
-        invalid_fields["zh-CN"] <- "Invalid length for `zh-CN`, must be bigger than or equal to 1."
+      if (nchar(self$`zh-cn`) < 1) {
+        invalid_fields["zh-cn"] <- "Invalid length for `zh-cn`, must be bigger than or equal to 1."
       }
 
       invalid_fields

@@ -9,7 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field id  integer
 #' @field sender_user  \link{SimpleUser}
-#' @field content The content of the message for the topic \link{MessageContent}
+#' @field content The content of the message for the topic \link{CreateTopicMessageContent}
 #' @field created_at  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -142,7 +142,7 @@ CreateTopicMessage <- R6::R6Class(
         self$`sender_user` <- `sender_user_object`
       }
       if (!is.null(this_object$`content`)) {
-        `content_object` <- MessageContent$new()
+        `content_object` <- CreateTopicMessageContent$new()
         `content_object`$fromJSON(jsonlite::toJSON(this_object$`content`, auto_unbox = TRUE, digits = NA))
         self$`content` <- `content_object`
       }
@@ -172,7 +172,7 @@ CreateTopicMessage <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
       self$`sender_user` <- SimpleUser$new()$fromJSON(jsonlite::toJSON(this_object$`sender_user`, auto_unbox = TRUE, digits = NA))
-      self$`content` <- MessageContent$new()$fromJSON(jsonlite::toJSON(this_object$`content`, auto_unbox = TRUE, digits = NA))
+      self$`content` <- CreateTopicMessageContent$new()$fromJSON(jsonlite::toJSON(this_object$`content`, auto_unbox = TRUE, digits = NA))
       self$`created_at` <- this_object$`created_at`
       self
     },

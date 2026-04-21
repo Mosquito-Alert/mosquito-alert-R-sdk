@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **el** | **character** | Ελληνικά | [optional] 
 **en** | **character** | English | [optional] 
 **es** | **character** | Español | [optional] 
-**eu** | **character** | Euskara | [optional] 
+**eu** | **character** | Basque | [optional] 
 **fr** | **character** | Français | [optional] 
 **gl** | **character** | Galego | [optional] 
 **hr** | **character** | Hrvatski | [optional] 
@@ -28,6 +28,6 @@ Name | Type | Description | Notes
 **sr** | **character** | Српски | [optional] 
 **sv** | **character** | Svenska | [optional] 
 **tr** | **character** | Türkçe | [optional] 
-**zh-CN** | **character** | 中文（中国） | [optional] 
+**zh-cn** | **character** | 简体中文 | [optional] 
 
 

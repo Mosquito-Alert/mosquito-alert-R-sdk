@@ -20,7 +20,7 @@ test_that("sender_user", {
 })
 
 test_that("content", {
-  # tests for the property `content` (MessageContent)
+  # tests for the property `content` (CreateTopicMessageContent)
   # The content of the message for the topic
 
   # uncomment below to test the property

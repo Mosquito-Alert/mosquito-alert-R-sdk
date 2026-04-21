@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attr** | **character** |  | [Enum: [is_read]] 
-**code** | **character** |  | [Enum: [null, required]] 
+**code** | **character** |  | [Enum: [invalid, null, required]] 
 **detail** | **character** |  | 
 
 
