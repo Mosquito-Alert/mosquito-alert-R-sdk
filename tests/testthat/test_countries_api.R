@@ -19,7 +19,7 @@ test_that("list", {
 test_that("retrieve", {
   # tests for retrieve
   # base path: https://api.mosquitoalert.com/v1
-  # @param id integer A unique integer value identifying this europe country.
+  # @param id integer A unique integer value identifying this country.
   # @return [Country]
 
   # uncomment below to test the operation

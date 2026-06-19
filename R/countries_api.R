@@ -40,7 +40,7 @@
 #' ####################  retrieve  ####################
 #'
 #' library(MosquitoAlert)
-#' var_id <- 56 # integer | A unique integer value identifying this europe country.
+#' var_id <- 56 # integer | A unique integer value identifying this country.
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -205,7 +205,7 @@ CountriesApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id A unique integer value identifying this europe country.
+    #' @param id A unique integer value identifying this country.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -227,7 +227,7 @@ CountriesApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param id A unique integer value identifying this europe country.
+    #' @param id A unique integer value identifying this country.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.

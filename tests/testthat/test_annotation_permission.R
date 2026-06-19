@@ -32,10 +32,3 @@ test_that("delete", {
   # uncomment below to test the property
   #expect_equal(model.instance$`delete`, "EXPECTED_RESULT")
 })
-
-test_that("mark_as_executive", {
-  # tests for the property `mark_as_executive` (character)
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`mark_as_executive`, "EXPECTED_RESULT")
-})

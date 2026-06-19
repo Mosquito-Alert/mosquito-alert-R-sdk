@@ -187,7 +187,6 @@ R/campaigns_list_order_by_error_component.R
 R/campaigns_list_validation_error.R
 R/countries_api.R
 R/country.R
-R/country_permission.R
 R/country_request.R
 R/create_agree_review_request.R
 R/create_overwrite_review_request.R
@@ -267,11 +266,11 @@ R/fixes_create_point_non_field_errors_error_component.R
 R/fixes_create_power_error_component.R
 R/fixes_create_sent_at_error_component.R
 R/fixes_create_validation_error.R
-R/general_permission.R
 R/guest_registration.R
 R/guest_registration_request.R
 R/identification.R
 R/identification_task.R
+R/identification_task_capabilities.R
 R/identification_task_permission.R
 R/identification_task_result.R
 R/identification_task_review.R
@@ -681,6 +680,8 @@ R/paginated_partner_list.R
 R/paginated_photo_prediction_list.R
 R/paginated_taxon_list.R
 R/paginated_user_list.R
+R/paginated_workspace_collaboration_group_list.R
+R/paginated_workspace_list.R
 R/partner.R
 R/partner_point.R
 R/partners_api.R
@@ -752,6 +753,7 @@ R/simple_photo.R
 R/simple_taxon.R
 R/simple_taxon_request.R
 R/simple_user.R
+R/simple_workspace.R
 R/simplified_location.R
 R/simplified_observation_with_photos.R
 R/species_characteristics.R
@@ -770,7 +772,6 @@ R/token_refresh_request.R
 R/token_verify_request.R
 R/user.R
 R/user_assignment.R
-R/user_permission.R
 R/user_request.R
 R/user_score.R
 R/users_api.R
@@ -782,6 +783,10 @@ R/users_update_error.R
 R/users_update_locale_error_component.R
 R/users_update_non_field_errors_error_component.R
 R/users_update_validation_error.R
+R/workspace.R
+R/workspace_collaboration_group.R
+R/workspace_membership.R
+R/workspaces_api.R
 README.md
 docs/AdmBoundary.md
 docs/AdmBoundaryRequest.md
@@ -963,7 +968,6 @@ docs/CampaignsListOrderByErrorComponent.md
 docs/CampaignsListValidationError.md
 docs/CountriesApi.md
 docs/Country.md
-docs/CountryPermission.md
 docs/CountryRequest.md
 docs/CreateAgreeReviewRequest.md
 docs/CreateOverwriteReviewRequest.md
@@ -1043,11 +1047,11 @@ docs/FixesCreatePointNonFieldErrorsErrorComponent.md
 docs/FixesCreatePowerErrorComponent.md
 docs/FixesCreateSentAtErrorComponent.md
 docs/FixesCreateValidationError.md
-docs/GeneralPermission.md
 docs/GuestRegistration.md
 docs/GuestRegistrationRequest.md
 docs/Identification.md
 docs/IdentificationTask.md
+docs/IdentificationTaskCapabilities.md
 docs/IdentificationTaskPermission.md
 docs/IdentificationTaskResult.md
 docs/IdentificationTaskReview.md
@@ -1456,6 +1460,8 @@ docs/PaginatedPartnerList.md
 docs/PaginatedPhotoPredictionList.md
 docs/PaginatedTaxonList.md
 docs/PaginatedUserList.md
+docs/PaginatedWorkspaceCollaborationGroupList.md
+docs/PaginatedWorkspaceList.md
 docs/Partner.md
 docs/PartnerPoint.md
 docs/PartnersApi.md
@@ -1527,6 +1533,7 @@ docs/SimplePhoto.md
 docs/SimpleTaxon.md
 docs/SimpleTaxonRequest.md
 docs/SimpleUser.md
+docs/SimpleWorkspace.md
 docs/SimplifiedLocation.md
 docs/SimplifiedObservationWithPhotos.md
 docs/SpeciesCharacteristics.md
@@ -1545,7 +1552,6 @@ docs/TokenRefreshRequest.md
 docs/TokenVerifyRequest.md
 docs/User.md
 docs/UserAssignment.md
-docs/UserPermission.md
 docs/UserRequest.md
 docs/UserScore.md
 docs/UsersApi.md
@@ -1557,6 +1563,10 @@ docs/UsersUpdateError.md
 docs/UsersUpdateLocaleErrorComponent.md
 docs/UsersUpdateNonFieldErrorsErrorComponent.md
 docs/UsersUpdateValidationError.md
+docs/Workspace.md
+docs/WorkspaceCollaborationGroup.md
+docs/WorkspaceMembership.md
+docs/WorkspacesApi.md
 git_push.sh
 tests/testthat.R
 tests/testthat/test_adm_boundary.R
@@ -1739,7 +1749,6 @@ tests/testthat/test_campaigns_list_order_by_error_component.R
 tests/testthat/test_campaigns_list_validation_error.R
 tests/testthat/test_countries_api.R
 tests/testthat/test_country.R
-tests/testthat/test_country_permission.R
 tests/testthat/test_country_request.R
 tests/testthat/test_create_agree_review_request.R
 tests/testthat/test_create_overwrite_review_request.R
@@ -1819,11 +1828,11 @@ tests/testthat/test_fixes_create_point_non_field_errors_error_component.R
 tests/testthat/test_fixes_create_power_error_component.R
 tests/testthat/test_fixes_create_sent_at_error_component.R
 tests/testthat/test_fixes_create_validation_error.R
-tests/testthat/test_general_permission.R
 tests/testthat/test_guest_registration.R
 tests/testthat/test_guest_registration_request.R
 tests/testthat/test_identification.R
 tests/testthat/test_identification_task.R
+tests/testthat/test_identification_task_capabilities.R
 tests/testthat/test_identification_task_permission.R
 tests/testthat/test_identification_task_result.R
 tests/testthat/test_identification_task_review.R
@@ -2232,6 +2241,8 @@ tests/testthat/test_paginated_partner_list.R
 tests/testthat/test_paginated_photo_prediction_list.R
 tests/testthat/test_paginated_taxon_list.R
 tests/testthat/test_paginated_user_list.R
+tests/testthat/test_paginated_workspace_collaboration_group_list.R
+tests/testthat/test_paginated_workspace_list.R
 tests/testthat/test_partner.R
 tests/testthat/test_partner_point.R
 tests/testthat/test_partners_api.R
@@ -2303,6 +2314,7 @@ tests/testthat/test_simple_photo.R
 tests/testthat/test_simple_taxon.R
 tests/testthat/test_simple_taxon_request.R
 tests/testthat/test_simple_user.R
+tests/testthat/test_simple_workspace.R
 tests/testthat/test_simplified_location.R
 tests/testthat/test_simplified_observation_with_photos.R
 tests/testthat/test_species_characteristics.R
@@ -2321,7 +2333,6 @@ tests/testthat/test_token_refresh_request.R
 tests/testthat/test_token_verify_request.R
 tests/testthat/test_user.R
 tests/testthat/test_user_assignment.R
-tests/testthat/test_user_permission.R
 tests/testthat/test_user_request.R
 tests/testthat/test_user_score.R
 tests/testthat/test_users_api.R
@@ -2333,3 +2344,7 @@ tests/testthat/test_users_update_error.R
 tests/testthat/test_users_update_locale_error_component.R
 tests/testthat/test_users_update_non_field_errors_error_component.R
 tests/testthat/test_users_update_validation_error.R
+tests/testthat/test_workspace.R
+tests/testthat/test_workspace_collaboration_group.R
+tests/testthat/test_workspace_membership.R
+tests/testthat/test_workspaces_api.R

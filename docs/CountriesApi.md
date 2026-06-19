@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_id <- 56 # integer | A unique integer value identifying this europe country.
+var_id <- 56 # integer | A unique integer value identifying this country.
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -91,7 +91,7 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **integer**| A unique integer value identifying this europe country. | 
+ **id** | **integer**| A unique integer value identifying this country. | 
 
 ### Return type
 

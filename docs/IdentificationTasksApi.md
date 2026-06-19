@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**annotations_list_mine**](IdentificationTasksApi.md#annotations_list_mine) | **GET** /me/identification-tasks/annotations/ | 
 [**annotations_retrieve**](IdentificationTasksApi.md#annotations_retrieve) | **GET** /identification-tasks/{observation_uuid}/annotations/{id}/ | 
 [**assign_next**](IdentificationTasksApi.md#assign_next) | **POST** /identification-tasks/assignments/next/ | 
+[**capabilities_retrieve**](IdentificationTasksApi.md#capabilities_retrieve) | **GET** /identification-tasks/{observation_uuid}/capabilities/ | 
 [**list**](IdentificationTasksApi.md#list) | **GET** /identification-tasks/ | 
 [**list_mine**](IdentificationTasksApi.md#list_mine) | **GET** /me/identification-tasks/ | 
 [**predictions_create**](IdentificationTasksApi.md#predictions_create) | **POST** /identification-tasks/{observation_uuid}/predictions/ | 
@@ -365,6 +366,58 @@ This endpoint does not need any parameter.
 | **404** |  |  -  |
 | **201** |  |  -  |
 | **204** | No available tasks pending to assign |  -  |
+
+# **capabilities_retrieve**
+> IdentificationTaskCapabilities capabilities_retrieve(observation_uuid)
+
+
+
+### Example
+```R
+library(MosquitoAlert)
+
+# prepare function argument(s)
+var_observation_uuid <- "observation_uuid_example" # character | 
+
+api_instance <- mosquitoalert_api$new()
+# Configure API key authorization: tokenAuth
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: jwtAuth
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$capabilities_retrieve(var_observation_uuiddata_file = "result.txt")
+result <- api_instance$identification_tasks_api$capabilities_retrieve(var_observation_uuid)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **observation_uuid** | **character**|  | 
+
+### Return type
+
+[**IdentificationTaskCapabilities**](IdentificationTaskCapabilities.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **200** |  |  -  |
 
 # **list**
 > PaginatedIdentificationTaskList list(annotator_ids = var.annotator_ids, assignee_ids = var.assignee_ids, created_at_after = var.created_at_after, created_at_before = var.created_at_before, fully_predicted = var.fully_predicted, is_flagged = var.is_flagged, is_safe = var.is_safe, num_annotations_max = var.num_annotations_max, num_annotations_min = var.num_annotations_min, observation_country_ids = var.observation_country_ids, order_by = var.order_by, page = var.page, page_size = var.page_size, result_agreement_max = var.result_agreement_max, result_agreement_min = var.result_agreement_min, result_characteristics_is_blood_fed = var.result_characteristics_is_blood_fed, result_characteristics_is_gravid = var.result_characteristics_is_gravid, result_characteristics_sex = var.result_characteristics_sex, result_confidence_max = var.result_confidence_max, result_confidence_min = var.result_confidence_min, result_source = var.result_source, result_taxon_ids = var.result_taxon_ids, result_uncertainty_max = var.result_uncertainty_max, result_uncertainty_min = var.result_uncertainty_min, review_action = var.review_action, search = var.search, status = var.status, updated_at_after = var.updated_at_after, updated_at_before = var.updated_at_before)

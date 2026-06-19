@@ -97,6 +97,16 @@ test_that("assign_next", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
+test_that("capabilities_retrieve", {
+  # tests for capabilities_retrieve
+  # base path: https://api.mosquitoalert.com/v1
+  # @param observation_uuid character 
+  # @return [IdentificationTaskCapabilities]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
 test_that("list", {
   # tests for list
   # base path: https://api.mosquitoalert.com/v1

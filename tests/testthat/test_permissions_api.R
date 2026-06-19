@@ -9,7 +9,7 @@ test_that("retrieve_mine", {
   # tests for retrieve_mine
   # base path: https://api.mosquitoalert.com/v1
   # Get Current User&#39;s Permissions
-  # @return [UserPermission]
+  # @return [Permissions]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

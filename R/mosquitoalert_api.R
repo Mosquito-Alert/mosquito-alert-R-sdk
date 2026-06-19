@@ -37,6 +37,7 @@
 #' @field ping_api an instance of PingApi
 #' @field taxa_api an instance of TaxaApi
 #' @field users_api an instance of UsersApi
+#' @field workspaces_api an instance of WorkspacesApi
 #' @export
 mosquitoalert_api <- R6::R6Class(
   "mosquitoalert_api",
@@ -60,6 +61,7 @@ mosquitoalert_api <- R6::R6Class(
     ping_api = NULL,
     taxa_api = NULL,
     users_api = NULL,
+    workspaces_api = NULL,
     #' Initialize a new MosquitoAlert API Class.
     #'
     #' @description
@@ -109,6 +111,8 @@ mosquitoalert_api <- R6::R6Class(
       self$taxa_api <- TaxaApi$new(self$api_client)
 
       self$users_api <- UsersApi$new(self$api_client)
+
+      self$workspaces_api <- WorkspacesApi$new(self$api_client)
 
     }
   )
