@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**observation** | [**AssignedObservation**](AssignedObservation.md) |  | [readonly] 
+**observation** | [**SimplifiedObservationWithPhotos**](SimplifiedObservationWithPhotos.md) |  | [readonly] 
 **annotation_type** | **character** |  | [readonly] [Enum: [short, long]] 
 
 

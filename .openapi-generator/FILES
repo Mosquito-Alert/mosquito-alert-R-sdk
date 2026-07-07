@@ -16,7 +16,6 @@ R/api_client.R
 R/api_response.R
 R/app_user_token_obtain_pair.R
 R/app_user_token_obtain_pair_request.R
-R/assigned_observation.R
 R/assignment.R
 R/auth_api.R
 R/auth_change_password_error.R
@@ -797,7 +796,6 @@ docs/AnnotationPermission.md
 docs/AnnotationRequest.md
 docs/AppUserTokenObtainPair.md
 docs/AppUserTokenObtainPairRequest.md
-docs/AssignedObservation.md
 docs/Assignment.md
 docs/AuthApi.md
 docs/AuthChangePasswordError.md
@@ -1578,7 +1576,6 @@ tests/testthat/test_annotation_permission.R
 tests/testthat/test_annotation_request.R
 tests/testthat/test_app_user_token_obtain_pair.R
 tests/testthat/test_app_user_token_obtain_pair_request.R
-tests/testthat/test_assigned_observation.R
 tests/testthat/test_assignment.R
 tests/testthat/test_auth_api.R
 tests/testthat/test_auth_change_password_error.R

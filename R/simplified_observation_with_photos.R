@@ -9,7 +9,7 @@
 #' @format An \code{R6Class} generator object
 #' @field uuid  character
 #' @field short_id  character
-#' @field user_uuid  character
+#' @field user  \link{MinimalUser}
 #' @field created_at  character
 #' @field created_at_local The date and time when the record was created, displayed without timezone field. character
 #' @field received_at  character
@@ -24,7 +24,7 @@ SimplifiedObservationWithPhotos <- R6::R6Class(
   public = list(
     `uuid` = NULL,
     `short_id` = NULL,
-    `user_uuid` = NULL,
+    `user` = NULL,
     `created_at` = NULL,
     `created_at_local` = NULL,
     `received_at` = NULL,
@@ -37,7 +37,7 @@ SimplifiedObservationWithPhotos <- R6::R6Class(
     #'
     #' @param uuid uuid
     #' @param short_id short_id
-    #' @param user_uuid user_uuid
+    #' @param user user
     #' @param created_at created_at
     #' @param created_at_local The date and time when the record was created, displayed without timezone field.
     #' @param received_at received_at
@@ -45,7 +45,7 @@ SimplifiedObservationWithPhotos <- R6::R6Class(
     #' @param note note
     #' @param photos photos
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `short_id`, `user_uuid`, `created_at`, `created_at_local`, `received_at`, `location`, `note`, `photos`, ...) {
+    initialize = function(`uuid`, `short_id`, `user`, `created_at`, `created_at_local`, `received_at`, `location`, `note`, `photos`, ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
@@ -58,11 +58,9 @@ SimplifiedObservationWithPhotos <- R6::R6Class(
         }
         self$`short_id` <- `short_id`
       }
-      if (!missing(`user_uuid`)) {
-        if (!(is.character(`user_uuid`) && length(`user_uuid`) == 1)) {
-          stop(paste("Error! Invalid data for `user_uuid`. Must be a string:", `user_uuid`))
-        }
-        self$`user_uuid` <- `user_uuid`
+      if (!missing(`user`)) {
+        stopifnot(R6::is.R6(`user`))
+        self$`user` <- `user`
       }
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
@@ -138,9 +136,9 @@ SimplifiedObservationWithPhotos <- R6::R6Class(
         SimplifiedObservationWithPhotosObject[["short_id"]] <-
           self$`short_id`
       }
-      if (!is.null(self$`user_uuid`)) {
-        SimplifiedObservationWithPhotosObject[["user_uuid"]] <-
-          self$`user_uuid`
+      if (!is.null(self$`user`)) {
+        SimplifiedObservationWithPhotosObject[["user"]] <-
+          self$extractSimpleType(self$`user`)
       }
       if (!is.null(self$`created_at`)) {
         SimplifiedObservationWithPhotosObject[["created_at"]] <-
@@ -205,8 +203,10 @@ SimplifiedObservationWithPhotos <- R6::R6Class(
       if (!is.null(this_object$`short_id`)) {
         self$`short_id` <- this_object$`short_id`
       }
-      if (!is.null(this_object$`user_uuid`)) {
-        self$`user_uuid` <- this_object$`user_uuid`
+      if (!is.null(this_object$`user`)) {
+        `user_object` <- MinimalUser$new()
+        `user_object`$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
+        self$`user` <- `user_object`
       }
       if (!is.null(this_object$`created_at`)) {
         self$`created_at` <- this_object$`created_at`
@@ -251,7 +251,7 @@ SimplifiedObservationWithPhotos <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`uuid` <- this_object$`uuid`
       self$`short_id` <- this_object$`short_id`
-      self$`user_uuid` <- this_object$`user_uuid`
+      self$`user` <- MinimalUser$new()$fromJSON(jsonlite::toJSON(this_object$`user`, auto_unbox = TRUE, digits = NA))
       self$`created_at` <- this_object$`created_at`
       self$`created_at_local` <- this_object$`created_at_local`
       self$`received_at` <- this_object$`received_at`
@@ -283,13 +283,11 @@ SimplifiedObservationWithPhotos <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for SimplifiedObservationWithPhotos: the required field `short_id` is missing."))
       }
-      # check the required field `user_uuid`
-      if (!is.null(input_json$`user_uuid`)) {
-        if (!(is.character(input_json$`user_uuid`) && length(input_json$`user_uuid`) == 1)) {
-          stop(paste("Error! Invalid data for `user_uuid`. Must be a string:", input_json$`user_uuid`))
-        }
+      # check the required field `user`
+      if (!is.null(input_json$`user`)) {
+        stopifnot(R6::is.R6(input_json$`user`))
       } else {
-        stop(paste("The JSON input `", input, "` is invalid for SimplifiedObservationWithPhotos: the required field `user_uuid` is missing."))
+        stop(paste("The JSON input `", input, "` is invalid for SimplifiedObservationWithPhotos: the required field `user` is missing."))
       }
       # check the required field `created_at`
       if (!is.null(input_json$`created_at`)) {
@@ -361,8 +359,8 @@ SimplifiedObservationWithPhotos <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `user_uuid` is null
-      if (is.null(self$`user_uuid`)) {
+      # check if the required `user` is null
+      if (is.null(self$`user`)) {
         return(FALSE)
       }
 
@@ -410,9 +408,9 @@ SimplifiedObservationWithPhotos <- R6::R6Class(
         invalid_fields["short_id"] <- "Non-nullable required field `short_id` cannot be null."
       }
 
-      # check if the required `user_uuid` is null
-      if (is.null(self$`user_uuid`)) {
-        invalid_fields["user_uuid"] <- "Non-nullable required field `user_uuid` cannot be null."
+      # check if the required `user` is null
+      if (is.null(self$`user`)) {
+        invalid_fields["user"] <- "Non-nullable required field `user` cannot be null."
       }
 
       # check if the required `created_at` is null

@@ -19,11 +19,11 @@ test_that("short_id", {
   #expect_equal(model.instance$`short_id`, "EXPECTED_RESULT")
 })
 
-test_that("user_uuid", {
-  # tests for the property `user_uuid` (character)
+test_that("user", {
+  # tests for the property `user` (MinimalUser)
 
   # uncomment below to test the property
-  #expect_equal(model.instance$`user_uuid`, "EXPECTED_RESULT")
+  #expect_equal(model.instance$`user`, "EXPECTED_RESULT")
 })
 
 test_that("created_at", {
