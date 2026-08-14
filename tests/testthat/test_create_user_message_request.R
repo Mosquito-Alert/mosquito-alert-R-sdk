@@ -5,17 +5,24 @@ context("Test CreateUserMessageRequest")
 
 model_instance <- CreateUserMessageRequest$new()
 
-test_that("user_uuids", {
-  # tests for the property `user_uuids` (array[character])
-
-  # uncomment below to test the property
-  #expect_equal(model.instance$`user_uuids`, "EXPECTED_RESULT")
-})
-
 test_that("content", {
   # tests for the property `content` (MessageContentRequest)
   # The content of the message
 
   # uncomment below to test the property
   #expect_equal(model.instance$`content`, "EXPECTED_RESULT")
+})
+
+test_that("target", {
+  # tests for the property `target` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`target`, "EXPECTED_RESULT")
+})
+
+test_that("user_uuids", {
+  # tests for the property `user_uuids` (array[character])
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`user_uuids`, "EXPECTED_RESULT")
 })

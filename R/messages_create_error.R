@@ -16,15 +16,30 @@ MessagesCreateError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("MessagesCreateContentBodyBgErrorComponent", "MessagesCreateContentBodyBnErrorComponent", "MessagesCreateContentBodyCaErrorComponent", "MessagesCreateContentBodyDeErrorComponent", "MessagesCreateContentBodyElErrorComponent", "MessagesCreateContentBodyEnErrorComponent", "MessagesCreateContentBodyEsErrorComponent", "MessagesCreateContentBodyEuErrorComponent", "MessagesCreateContentBodyFrErrorComponent", "MessagesCreateContentBodyGlErrorComponent", "MessagesCreateContentBodyHrErrorComponent", "MessagesCreateContentBodyHuErrorComponent", "MessagesCreateContentBodyItErrorComponent", "MessagesCreateContentBodyLbErrorComponent", "MessagesCreateContentBodyMkErrorComponent", "MessagesCreateContentBodyNlErrorComponent", "MessagesCreateContentBodyNonFieldErrorsErrorComponent", "MessagesCreateContentBodyPtErrorComponent", "MessagesCreateContentBodyRoErrorComponent", "MessagesCreateContentBodySlErrorComponent", "MessagesCreateContentBodySqErrorComponent", "MessagesCreateContentBodySrErrorComponent", "MessagesCreateContentBodySvErrorComponent", "MessagesCreateContentBodyTrErrorComponent", "MessagesCreateContentBodyZhCnErrorComponent", "MessagesCreateContentNonFieldErrorsErrorComponent", "MessagesCreateContentTitleBgErrorComponent", "MessagesCreateContentTitleBnErrorComponent", "MessagesCreateContentTitleCaErrorComponent", "MessagesCreateContentTitleDeErrorComponent", "MessagesCreateContentTitleElErrorComponent", "MessagesCreateContentTitleEnErrorComponent", "MessagesCreateContentTitleEsErrorComponent", "MessagesCreateContentTitleEuErrorComponent", "MessagesCreateContentTitleFrErrorComponent", "MessagesCreateContentTitleGlErrorComponent", "MessagesCreateContentTitleHrErrorComponent", "MessagesCreateContentTitleHuErrorComponent", "MessagesCreateContentTitleItErrorComponent", "MessagesCreateContentTitleLbErrorComponent", "MessagesCreateContentTitleMkErrorComponent", "MessagesCreateContentTitleNlErrorComponent", "MessagesCreateContentTitleNonFieldErrorsErrorComponent", "MessagesCreateContentTitlePtErrorComponent", "MessagesCreateContentTitleRoErrorComponent", "MessagesCreateContentTitleSlErrorComponent", "MessagesCreateContentTitleSqErrorComponent", "MessagesCreateContentTitleSrErrorComponent", "MessagesCreateContentTitleSvErrorComponent", "MessagesCreateContentTitleTrErrorComponent", "MessagesCreateContentTitleZhCnErrorComponent", "MessagesCreateNonFieldErrorsErrorComponent", "MessagesCreateUserUuidsErrorComponent", "MessagesCreateUserUuidsINDEXErrorComponent"),
+    one_of = list("MessagesCreateAudienceInAreaErrorComponent", "MessagesCreateAudienceLastLoginAfterErrorComponent", "MessagesCreateAudienceLastLoginBeforeErrorComponent", "MessagesCreateAudienceLocaleErrorComponent", "MessagesCreateAudienceNonFieldErrorsErrorComponent", "MessagesCreateContentBodyBgErrorComponent", "MessagesCreateContentBodyBnErrorComponent", "MessagesCreateContentBodyCaErrorComponent", "MessagesCreateContentBodyDeErrorComponent", "MessagesCreateContentBodyElErrorComponent", "MessagesCreateContentBodyEnErrorComponent", "MessagesCreateContentBodyEsErrorComponent", "MessagesCreateContentBodyEuErrorComponent", "MessagesCreateContentBodyFrErrorComponent", "MessagesCreateContentBodyGlErrorComponent", "MessagesCreateContentBodyHrErrorComponent", "MessagesCreateContentBodyHuErrorComponent", "MessagesCreateContentBodyItErrorComponent", "MessagesCreateContentBodyLbErrorComponent", "MessagesCreateContentBodyMkErrorComponent", "MessagesCreateContentBodyNlErrorComponent", "MessagesCreateContentBodyNonFieldErrorsErrorComponent", "MessagesCreateContentBodyPtErrorComponent", "MessagesCreateContentBodyRoErrorComponent", "MessagesCreateContentBodySlErrorComponent", "MessagesCreateContentBodySqErrorComponent", "MessagesCreateContentBodySrErrorComponent", "MessagesCreateContentBodySvErrorComponent", "MessagesCreateContentBodyTrErrorComponent", "MessagesCreateContentBodyZhCnErrorComponent", "MessagesCreateContentNonFieldErrorsErrorComponent", "MessagesCreateContentTitleBgErrorComponent", "MessagesCreateContentTitleBnErrorComponent", "MessagesCreateContentTitleCaErrorComponent", "MessagesCreateContentTitleDeErrorComponent", "MessagesCreateContentTitleElErrorComponent", "MessagesCreateContentTitleEnErrorComponent", "MessagesCreateContentTitleEsErrorComponent", "MessagesCreateContentTitleEuErrorComponent", "MessagesCreateContentTitleFrErrorComponent", "MessagesCreateContentTitleGlErrorComponent", "MessagesCreateContentTitleHrErrorComponent", "MessagesCreateContentTitleHuErrorComponent", "MessagesCreateContentTitleItErrorComponent", "MessagesCreateContentTitleLbErrorComponent", "MessagesCreateContentTitleMkErrorComponent", "MessagesCreateContentTitleNlErrorComponent", "MessagesCreateContentTitleNonFieldErrorsErrorComponent", "MessagesCreateContentTitlePtErrorComponent", "MessagesCreateContentTitleRoErrorComponent", "MessagesCreateContentTitleSlErrorComponent", "MessagesCreateContentTitleSqErrorComponent", "MessagesCreateContentTitleSrErrorComponent", "MessagesCreateContentTitleSvErrorComponent", "MessagesCreateContentTitleTrErrorComponent", "MessagesCreateContentTitleZhCnErrorComponent", "MessagesCreateNonFieldErrorsErrorComponent", "MessagesCreateTargetErrorComponent", "MessagesCreateUserUuidsErrorComponent", "MessagesCreateUserUuidsINDEXErrorComponent"),
 
     #' @description
     #' Initialize a new MessagesCreateError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "MessagesCreateContentBodyBgErrorComponent", "MessagesCreateContentBodyBnErrorComponent", "MessagesCreateContentBodyCaErrorComponent", "MessagesCreateContentBodyDeErrorComponent", "MessagesCreateContentBodyElErrorComponent", "MessagesCreateContentBodyEnErrorComponent", "MessagesCreateContentBodyEsErrorComponent", "MessagesCreateContentBodyEuErrorComponent", "MessagesCreateContentBodyFrErrorComponent", "MessagesCreateContentBodyGlErrorComponent", "MessagesCreateContentBodyHrErrorComponent", "MessagesCreateContentBodyHuErrorComponent", "MessagesCreateContentBodyItErrorComponent", "MessagesCreateContentBodyLbErrorComponent", "MessagesCreateContentBodyMkErrorComponent", "MessagesCreateContentBodyNlErrorComponent", "MessagesCreateContentBodyNonFieldErrorsErrorComponent", "MessagesCreateContentBodyPtErrorComponent", "MessagesCreateContentBodyRoErrorComponent", "MessagesCreateContentBodySlErrorComponent", "MessagesCreateContentBodySqErrorComponent", "MessagesCreateContentBodySrErrorComponent", "MessagesCreateContentBodySvErrorComponent", "MessagesCreateContentBodyTrErrorComponent", "MessagesCreateContentBodyZhCnErrorComponent", "MessagesCreateContentNonFieldErrorsErrorComponent", "MessagesCreateContentTitleBgErrorComponent", "MessagesCreateContentTitleBnErrorComponent", "MessagesCreateContentTitleCaErrorComponent", "MessagesCreateContentTitleDeErrorComponent", "MessagesCreateContentTitleElErrorComponent", "MessagesCreateContentTitleEnErrorComponent", "MessagesCreateContentTitleEsErrorComponent", "MessagesCreateContentTitleEuErrorComponent", "MessagesCreateContentTitleFrErrorComponent", "MessagesCreateContentTitleGlErrorComponent", "MessagesCreateContentTitleHrErrorComponent", "MessagesCreateContentTitleHuErrorComponent", "MessagesCreateContentTitleItErrorComponent", "MessagesCreateContentTitleLbErrorComponent", "MessagesCreateContentTitleMkErrorComponent", "MessagesCreateContentTitleNlErrorComponent", "MessagesCreateContentTitleNonFieldErrorsErrorComponent", "MessagesCreateContentTitlePtErrorComponent", "MessagesCreateContentTitleRoErrorComponent", "MessagesCreateContentTitleSlErrorComponent", "MessagesCreateContentTitleSqErrorComponent", "MessagesCreateContentTitleSrErrorComponent", "MessagesCreateContentTitleSvErrorComponent", "MessagesCreateContentTitleTrErrorComponent", "MessagesCreateContentTitleZhCnErrorComponent", "MessagesCreateNonFieldErrorsErrorComponent", "MessagesCreateUserUuidsErrorComponent", "MessagesCreateUserUuidsINDEXErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "MessagesCreateAudienceInAreaErrorComponent", "MessagesCreateAudienceLastLoginAfterErrorComponent", "MessagesCreateAudienceLastLoginBeforeErrorComponent", "MessagesCreateAudienceLocaleErrorComponent", "MessagesCreateAudienceNonFieldErrorsErrorComponent", "MessagesCreateContentBodyBgErrorComponent", "MessagesCreateContentBodyBnErrorComponent", "MessagesCreateContentBodyCaErrorComponent", "MessagesCreateContentBodyDeErrorComponent", "MessagesCreateContentBodyElErrorComponent", "MessagesCreateContentBodyEnErrorComponent", "MessagesCreateContentBodyEsErrorComponent", "MessagesCreateContentBodyEuErrorComponent", "MessagesCreateContentBodyFrErrorComponent", "MessagesCreateContentBodyGlErrorComponent", "MessagesCreateContentBodyHrErrorComponent", "MessagesCreateContentBodyHuErrorComponent", "MessagesCreateContentBodyItErrorComponent", "MessagesCreateContentBodyLbErrorComponent", "MessagesCreateContentBodyMkErrorComponent", "MessagesCreateContentBodyNlErrorComponent", "MessagesCreateContentBodyNonFieldErrorsErrorComponent", "MessagesCreateContentBodyPtErrorComponent", "MessagesCreateContentBodyRoErrorComponent", "MessagesCreateContentBodySlErrorComponent", "MessagesCreateContentBodySqErrorComponent", "MessagesCreateContentBodySrErrorComponent", "MessagesCreateContentBodySvErrorComponent", "MessagesCreateContentBodyTrErrorComponent", "MessagesCreateContentBodyZhCnErrorComponent", "MessagesCreateContentNonFieldErrorsErrorComponent", "MessagesCreateContentTitleBgErrorComponent", "MessagesCreateContentTitleBnErrorComponent", "MessagesCreateContentTitleCaErrorComponent", "MessagesCreateContentTitleDeErrorComponent", "MessagesCreateContentTitleElErrorComponent", "MessagesCreateContentTitleEnErrorComponent", "MessagesCreateContentTitleEsErrorComponent", "MessagesCreateContentTitleEuErrorComponent", "MessagesCreateContentTitleFrErrorComponent", "MessagesCreateContentTitleGlErrorComponent", "MessagesCreateContentTitleHrErrorComponent", "MessagesCreateContentTitleHuErrorComponent", "MessagesCreateContentTitleItErrorComponent", "MessagesCreateContentTitleLbErrorComponent", "MessagesCreateContentTitleMkErrorComponent", "MessagesCreateContentTitleNlErrorComponent", "MessagesCreateContentTitleNonFieldErrorsErrorComponent", "MessagesCreateContentTitlePtErrorComponent", "MessagesCreateContentTitleRoErrorComponent", "MessagesCreateContentTitleSlErrorComponent", "MessagesCreateContentTitleSqErrorComponent", "MessagesCreateContentTitleSrErrorComponent", "MessagesCreateContentTitleSvErrorComponent", "MessagesCreateContentTitleTrErrorComponent", "MessagesCreateContentTitleZhCnErrorComponent", "MessagesCreateNonFieldErrorsErrorComponent", "MessagesCreateTargetErrorComponent", "MessagesCreateUserUuidsErrorComponent", "MessagesCreateUserUuidsINDEXErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesCreateAudienceInAreaErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "MessagesCreateAudienceInAreaErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesCreateAudienceLastLoginAfterErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "MessagesCreateAudienceLastLoginAfterErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesCreateAudienceLastLoginBeforeErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "MessagesCreateAudienceLastLoginBeforeErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesCreateAudienceLocaleErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "MessagesCreateAudienceLocaleErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesCreateAudienceNonFieldErrorsErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "MessagesCreateAudienceNonFieldErrorsErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesCreateContentBodyBgErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "MessagesCreateContentBodyBgErrorComponent"
@@ -181,6 +196,9 @@ MessagesCreateError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesCreateNonFieldErrorsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "MessagesCreateNonFieldErrorsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesCreateTargetErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "MessagesCreateTargetErrorComponent"
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesCreateUserUuidsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "MessagesCreateUserUuidsErrorComponent"
@@ -188,7 +206,7 @@ MessagesCreateError <- R6::R6Class(
         self$actual_instance <- instance
         self$actual_type <- "MessagesCreateUserUuidsINDEXErrorComponent"
       } else {
-        stop(paste("Failed to initialize MessagesCreateError with oneOf schemas MessagesCreateContentBodyBgErrorComponent, MessagesCreateContentBodyBnErrorComponent, MessagesCreateContentBodyCaErrorComponent, MessagesCreateContentBodyDeErrorComponent, MessagesCreateContentBodyElErrorComponent, MessagesCreateContentBodyEnErrorComponent, MessagesCreateContentBodyEsErrorComponent, MessagesCreateContentBodyEuErrorComponent, MessagesCreateContentBodyFrErrorComponent, MessagesCreateContentBodyGlErrorComponent, MessagesCreateContentBodyHrErrorComponent, MessagesCreateContentBodyHuErrorComponent, MessagesCreateContentBodyItErrorComponent, MessagesCreateContentBodyLbErrorComponent, MessagesCreateContentBodyMkErrorComponent, MessagesCreateContentBodyNlErrorComponent, MessagesCreateContentBodyNonFieldErrorsErrorComponent, MessagesCreateContentBodyPtErrorComponent, MessagesCreateContentBodyRoErrorComponent, MessagesCreateContentBodySlErrorComponent, MessagesCreateContentBodySqErrorComponent, MessagesCreateContentBodySrErrorComponent, MessagesCreateContentBodySvErrorComponent, MessagesCreateContentBodyTrErrorComponent, MessagesCreateContentBodyZhCnErrorComponent, MessagesCreateContentNonFieldErrorsErrorComponent, MessagesCreateContentTitleBgErrorComponent, MessagesCreateContentTitleBnErrorComponent, MessagesCreateContentTitleCaErrorComponent, MessagesCreateContentTitleDeErrorComponent, MessagesCreateContentTitleElErrorComponent, MessagesCreateContentTitleEnErrorComponent, MessagesCreateContentTitleEsErrorComponent, MessagesCreateContentTitleEuErrorComponent, MessagesCreateContentTitleFrErrorComponent, MessagesCreateContentTitleGlErrorComponent, MessagesCreateContentTitleHrErrorComponent, MessagesCreateContentTitleHuErrorComponent, MessagesCreateContentTitleItErrorComponent, MessagesCreateContentTitleLbErrorComponent, MessagesCreateContentTitleMkErrorComponent, MessagesCreateContentTitleNlErrorComponent, MessagesCreateContentTitleNonFieldErrorsErrorComponent, MessagesCreateContentTitlePtErrorComponent, MessagesCreateContentTitleRoErrorComponent, MessagesCreateContentTitleSlErrorComponent, MessagesCreateContentTitleSqErrorComponent, MessagesCreateContentTitleSrErrorComponent, MessagesCreateContentTitleSvErrorComponent, MessagesCreateContentTitleTrErrorComponent, MessagesCreateContentTitleZhCnErrorComponent, MessagesCreateNonFieldErrorsErrorComponent, MessagesCreateUserUuidsErrorComponent, MessagesCreateUserUuidsINDEXErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize MessagesCreateError with oneOf schemas MessagesCreateAudienceInAreaErrorComponent, MessagesCreateAudienceLastLoginAfterErrorComponent, MessagesCreateAudienceLastLoginBeforeErrorComponent, MessagesCreateAudienceLocaleErrorComponent, MessagesCreateAudienceNonFieldErrorsErrorComponent, MessagesCreateContentBodyBgErrorComponent, MessagesCreateContentBodyBnErrorComponent, MessagesCreateContentBodyCaErrorComponent, MessagesCreateContentBodyDeErrorComponent, MessagesCreateContentBodyElErrorComponent, MessagesCreateContentBodyEnErrorComponent, MessagesCreateContentBodyEsErrorComponent, MessagesCreateContentBodyEuErrorComponent, MessagesCreateContentBodyFrErrorComponent, MessagesCreateContentBodyGlErrorComponent, MessagesCreateContentBodyHrErrorComponent, MessagesCreateContentBodyHuErrorComponent, MessagesCreateContentBodyItErrorComponent, MessagesCreateContentBodyLbErrorComponent, MessagesCreateContentBodyMkErrorComponent, MessagesCreateContentBodyNlErrorComponent, MessagesCreateContentBodyNonFieldErrorsErrorComponent, MessagesCreateContentBodyPtErrorComponent, MessagesCreateContentBodyRoErrorComponent, MessagesCreateContentBodySlErrorComponent, MessagesCreateContentBodySqErrorComponent, MessagesCreateContentBodySrErrorComponent, MessagesCreateContentBodySvErrorComponent, MessagesCreateContentBodyTrErrorComponent, MessagesCreateContentBodyZhCnErrorComponent, MessagesCreateContentNonFieldErrorsErrorComponent, MessagesCreateContentTitleBgErrorComponent, MessagesCreateContentTitleBnErrorComponent, MessagesCreateContentTitleCaErrorComponent, MessagesCreateContentTitleDeErrorComponent, MessagesCreateContentTitleElErrorComponent, MessagesCreateContentTitleEnErrorComponent, MessagesCreateContentTitleEsErrorComponent, MessagesCreateContentTitleEuErrorComponent, MessagesCreateContentTitleFrErrorComponent, MessagesCreateContentTitleGlErrorComponent, MessagesCreateContentTitleHrErrorComponent, MessagesCreateContentTitleHuErrorComponent, MessagesCreateContentTitleItErrorComponent, MessagesCreateContentTitleLbErrorComponent, MessagesCreateContentTitleMkErrorComponent, MessagesCreateContentTitleNlErrorComponent, MessagesCreateContentTitleNonFieldErrorsErrorComponent, MessagesCreateContentTitlePtErrorComponent, MessagesCreateContentTitleRoErrorComponent, MessagesCreateContentTitleSlErrorComponent, MessagesCreateContentTitleSqErrorComponent, MessagesCreateContentTitleSrErrorComponent, MessagesCreateContentTitleSvErrorComponent, MessagesCreateContentTitleTrErrorComponent, MessagesCreateContentTitleZhCnErrorComponent, MessagesCreateNonFieldErrorsErrorComponent, MessagesCreateTargetErrorComponent, MessagesCreateUserUuidsErrorComponent, MessagesCreateUserUuidsINDEXErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -229,36 +247,6 @@ MessagesCreateError <- R6::R6Class(
 
       if (!is.null(`MessagesCreateNonFieldErrorsErrorComponent_result`["error"])) {
         error_messages <- append(error_messages, `MessagesCreateNonFieldErrorsErrorComponent_result`["message"])
-      }
-
-      `MessagesCreateUserUuidsErrorComponent_result` <- tryCatch({
-          `MessagesCreateUserUuidsErrorComponent`$public_methods$validateJSON(input)
-          `MessagesCreateUserUuidsErrorComponent_instance` <- `MessagesCreateUserUuidsErrorComponent`$new()
-          instance <- `MessagesCreateUserUuidsErrorComponent_instance`$fromJSON(input)
-          instance_type <- "MessagesCreateUserUuidsErrorComponent"
-          matched_schemas <- append(matched_schemas, "MessagesCreateUserUuidsErrorComponent")
-          matched <- matched + 1
-        },
-        error = function(err) err
-      )
-
-      if (!is.null(`MessagesCreateUserUuidsErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `MessagesCreateUserUuidsErrorComponent_result`["message"])
-      }
-
-      `MessagesCreateUserUuidsINDEXErrorComponent_result` <- tryCatch({
-          `MessagesCreateUserUuidsINDEXErrorComponent`$public_methods$validateJSON(input)
-          `MessagesCreateUserUuidsINDEXErrorComponent_instance` <- `MessagesCreateUserUuidsINDEXErrorComponent`$new()
-          instance <- `MessagesCreateUserUuidsINDEXErrorComponent_instance`$fromJSON(input)
-          instance_type <- "MessagesCreateUserUuidsINDEXErrorComponent"
-          matched_schemas <- append(matched_schemas, "MessagesCreateUserUuidsINDEXErrorComponent")
-          matched <- matched + 1
-        },
-        error = function(err) err
-      )
-
-      if (!is.null(`MessagesCreateUserUuidsINDEXErrorComponent_result`["error"])) {
-        error_messages <- append(error_messages, `MessagesCreateUserUuidsINDEXErrorComponent_result`["message"])
       }
 
       `MessagesCreateContentNonFieldErrorsErrorComponent_result` <- tryCatch({
@@ -1026,17 +1014,137 @@ MessagesCreateError <- R6::R6Class(
         error_messages <- append(error_messages, `MessagesCreateContentBodyZhCnErrorComponent_result`["message"])
       }
 
+      `MessagesCreateTargetErrorComponent_result` <- tryCatch({
+          `MessagesCreateTargetErrorComponent`$public_methods$validateJSON(input)
+          `MessagesCreateTargetErrorComponent_instance` <- `MessagesCreateTargetErrorComponent`$new()
+          instance <- `MessagesCreateTargetErrorComponent_instance`$fromJSON(input)
+          instance_type <- "MessagesCreateTargetErrorComponent"
+          matched_schemas <- append(matched_schemas, "MessagesCreateTargetErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`MessagesCreateTargetErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `MessagesCreateTargetErrorComponent_result`["message"])
+      }
+
+      `MessagesCreateUserUuidsErrorComponent_result` <- tryCatch({
+          `MessagesCreateUserUuidsErrorComponent`$public_methods$validateJSON(input)
+          `MessagesCreateUserUuidsErrorComponent_instance` <- `MessagesCreateUserUuidsErrorComponent`$new()
+          instance <- `MessagesCreateUserUuidsErrorComponent_instance`$fromJSON(input)
+          instance_type <- "MessagesCreateUserUuidsErrorComponent"
+          matched_schemas <- append(matched_schemas, "MessagesCreateUserUuidsErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`MessagesCreateUserUuidsErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `MessagesCreateUserUuidsErrorComponent_result`["message"])
+      }
+
+      `MessagesCreateUserUuidsINDEXErrorComponent_result` <- tryCatch({
+          `MessagesCreateUserUuidsINDEXErrorComponent`$public_methods$validateJSON(input)
+          `MessagesCreateUserUuidsINDEXErrorComponent_instance` <- `MessagesCreateUserUuidsINDEXErrorComponent`$new()
+          instance <- `MessagesCreateUserUuidsINDEXErrorComponent_instance`$fromJSON(input)
+          instance_type <- "MessagesCreateUserUuidsINDEXErrorComponent"
+          matched_schemas <- append(matched_schemas, "MessagesCreateUserUuidsINDEXErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`MessagesCreateUserUuidsINDEXErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `MessagesCreateUserUuidsINDEXErrorComponent_result`["message"])
+      }
+
+      `MessagesCreateAudienceNonFieldErrorsErrorComponent_result` <- tryCatch({
+          `MessagesCreateAudienceNonFieldErrorsErrorComponent`$public_methods$validateJSON(input)
+          `MessagesCreateAudienceNonFieldErrorsErrorComponent_instance` <- `MessagesCreateAudienceNonFieldErrorsErrorComponent`$new()
+          instance <- `MessagesCreateAudienceNonFieldErrorsErrorComponent_instance`$fromJSON(input)
+          instance_type <- "MessagesCreateAudienceNonFieldErrorsErrorComponent"
+          matched_schemas <- append(matched_schemas, "MessagesCreateAudienceNonFieldErrorsErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`MessagesCreateAudienceNonFieldErrorsErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `MessagesCreateAudienceNonFieldErrorsErrorComponent_result`["message"])
+      }
+
+      `MessagesCreateAudienceLastLoginBeforeErrorComponent_result` <- tryCatch({
+          `MessagesCreateAudienceLastLoginBeforeErrorComponent`$public_methods$validateJSON(input)
+          `MessagesCreateAudienceLastLoginBeforeErrorComponent_instance` <- `MessagesCreateAudienceLastLoginBeforeErrorComponent`$new()
+          instance <- `MessagesCreateAudienceLastLoginBeforeErrorComponent_instance`$fromJSON(input)
+          instance_type <- "MessagesCreateAudienceLastLoginBeforeErrorComponent"
+          matched_schemas <- append(matched_schemas, "MessagesCreateAudienceLastLoginBeforeErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`MessagesCreateAudienceLastLoginBeforeErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `MessagesCreateAudienceLastLoginBeforeErrorComponent_result`["message"])
+      }
+
+      `MessagesCreateAudienceLastLoginAfterErrorComponent_result` <- tryCatch({
+          `MessagesCreateAudienceLastLoginAfterErrorComponent`$public_methods$validateJSON(input)
+          `MessagesCreateAudienceLastLoginAfterErrorComponent_instance` <- `MessagesCreateAudienceLastLoginAfterErrorComponent`$new()
+          instance <- `MessagesCreateAudienceLastLoginAfterErrorComponent_instance`$fromJSON(input)
+          instance_type <- "MessagesCreateAudienceLastLoginAfterErrorComponent"
+          matched_schemas <- append(matched_schemas, "MessagesCreateAudienceLastLoginAfterErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`MessagesCreateAudienceLastLoginAfterErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `MessagesCreateAudienceLastLoginAfterErrorComponent_result`["message"])
+      }
+
+      `MessagesCreateAudienceInAreaErrorComponent_result` <- tryCatch({
+          `MessagesCreateAudienceInAreaErrorComponent`$public_methods$validateJSON(input)
+          `MessagesCreateAudienceInAreaErrorComponent_instance` <- `MessagesCreateAudienceInAreaErrorComponent`$new()
+          instance <- `MessagesCreateAudienceInAreaErrorComponent_instance`$fromJSON(input)
+          instance_type <- "MessagesCreateAudienceInAreaErrorComponent"
+          matched_schemas <- append(matched_schemas, "MessagesCreateAudienceInAreaErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`MessagesCreateAudienceInAreaErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `MessagesCreateAudienceInAreaErrorComponent_result`["message"])
+      }
+
+      `MessagesCreateAudienceLocaleErrorComponent_result` <- tryCatch({
+          `MessagesCreateAudienceLocaleErrorComponent`$public_methods$validateJSON(input)
+          `MessagesCreateAudienceLocaleErrorComponent_instance` <- `MessagesCreateAudienceLocaleErrorComponent`$new()
+          instance <- `MessagesCreateAudienceLocaleErrorComponent_instance`$fromJSON(input)
+          instance_type <- "MessagesCreateAudienceLocaleErrorComponent"
+          matched_schemas <- append(matched_schemas, "MessagesCreateAudienceLocaleErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`MessagesCreateAudienceLocaleErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `MessagesCreateAudienceLocaleErrorComponent_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into MessagesCreateError with oneOf schemas MessagesCreateContentBodyBgErrorComponent, MessagesCreateContentBodyBnErrorComponent, MessagesCreateContentBodyCaErrorComponent, MessagesCreateContentBodyDeErrorComponent, MessagesCreateContentBodyElErrorComponent, MessagesCreateContentBodyEnErrorComponent, MessagesCreateContentBodyEsErrorComponent, MessagesCreateContentBodyEuErrorComponent, MessagesCreateContentBodyFrErrorComponent, MessagesCreateContentBodyGlErrorComponent, MessagesCreateContentBodyHrErrorComponent, MessagesCreateContentBodyHuErrorComponent, MessagesCreateContentBodyItErrorComponent, MessagesCreateContentBodyLbErrorComponent, MessagesCreateContentBodyMkErrorComponent, MessagesCreateContentBodyNlErrorComponent, MessagesCreateContentBodyNonFieldErrorsErrorComponent, MessagesCreateContentBodyPtErrorComponent, MessagesCreateContentBodyRoErrorComponent, MessagesCreateContentBodySlErrorComponent, MessagesCreateContentBodySqErrorComponent, MessagesCreateContentBodySrErrorComponent, MessagesCreateContentBodySvErrorComponent, MessagesCreateContentBodyTrErrorComponent, MessagesCreateContentBodyZhCnErrorComponent, MessagesCreateContentNonFieldErrorsErrorComponent, MessagesCreateContentTitleBgErrorComponent, MessagesCreateContentTitleBnErrorComponent, MessagesCreateContentTitleCaErrorComponent, MessagesCreateContentTitleDeErrorComponent, MessagesCreateContentTitleElErrorComponent, MessagesCreateContentTitleEnErrorComponent, MessagesCreateContentTitleEsErrorComponent, MessagesCreateContentTitleEuErrorComponent, MessagesCreateContentTitleFrErrorComponent, MessagesCreateContentTitleGlErrorComponent, MessagesCreateContentTitleHrErrorComponent, MessagesCreateContentTitleHuErrorComponent, MessagesCreateContentTitleItErrorComponent, MessagesCreateContentTitleLbErrorComponent, MessagesCreateContentTitleMkErrorComponent, MessagesCreateContentTitleNlErrorComponent, MessagesCreateContentTitleNonFieldErrorsErrorComponent, MessagesCreateContentTitlePtErrorComponent, MessagesCreateContentTitleRoErrorComponent, MessagesCreateContentTitleSlErrorComponent, MessagesCreateContentTitleSqErrorComponent, MessagesCreateContentTitleSrErrorComponent, MessagesCreateContentTitleSvErrorComponent, MessagesCreateContentTitleTrErrorComponent, MessagesCreateContentTitleZhCnErrorComponent, MessagesCreateNonFieldErrorsErrorComponent, MessagesCreateUserUuidsErrorComponent, MessagesCreateUserUuidsINDEXErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into MessagesCreateError with oneOf schemas MessagesCreateAudienceInAreaErrorComponent, MessagesCreateAudienceLastLoginAfterErrorComponent, MessagesCreateAudienceLastLoginBeforeErrorComponent, MessagesCreateAudienceLocaleErrorComponent, MessagesCreateAudienceNonFieldErrorsErrorComponent, MessagesCreateContentBodyBgErrorComponent, MessagesCreateContentBodyBnErrorComponent, MessagesCreateContentBodyCaErrorComponent, MessagesCreateContentBodyDeErrorComponent, MessagesCreateContentBodyElErrorComponent, MessagesCreateContentBodyEnErrorComponent, MessagesCreateContentBodyEsErrorComponent, MessagesCreateContentBodyEuErrorComponent, MessagesCreateContentBodyFrErrorComponent, MessagesCreateContentBodyGlErrorComponent, MessagesCreateContentBodyHrErrorComponent, MessagesCreateContentBodyHuErrorComponent, MessagesCreateContentBodyItErrorComponent, MessagesCreateContentBodyLbErrorComponent, MessagesCreateContentBodyMkErrorComponent, MessagesCreateContentBodyNlErrorComponent, MessagesCreateContentBodyNonFieldErrorsErrorComponent, MessagesCreateContentBodyPtErrorComponent, MessagesCreateContentBodyRoErrorComponent, MessagesCreateContentBodySlErrorComponent, MessagesCreateContentBodySqErrorComponent, MessagesCreateContentBodySrErrorComponent, MessagesCreateContentBodySvErrorComponent, MessagesCreateContentBodyTrErrorComponent, MessagesCreateContentBodyZhCnErrorComponent, MessagesCreateContentNonFieldErrorsErrorComponent, MessagesCreateContentTitleBgErrorComponent, MessagesCreateContentTitleBnErrorComponent, MessagesCreateContentTitleCaErrorComponent, MessagesCreateContentTitleDeErrorComponent, MessagesCreateContentTitleElErrorComponent, MessagesCreateContentTitleEnErrorComponent, MessagesCreateContentTitleEsErrorComponent, MessagesCreateContentTitleEuErrorComponent, MessagesCreateContentTitleFrErrorComponent, MessagesCreateContentTitleGlErrorComponent, MessagesCreateContentTitleHrErrorComponent, MessagesCreateContentTitleHuErrorComponent, MessagesCreateContentTitleItErrorComponent, MessagesCreateContentTitleLbErrorComponent, MessagesCreateContentTitleMkErrorComponent, MessagesCreateContentTitleNlErrorComponent, MessagesCreateContentTitleNonFieldErrorsErrorComponent, MessagesCreateContentTitlePtErrorComponent, MessagesCreateContentTitleRoErrorComponent, MessagesCreateContentTitleSlErrorComponent, MessagesCreateContentTitleSqErrorComponent, MessagesCreateContentTitleSrErrorComponent, MessagesCreateContentTitleSvErrorComponent, MessagesCreateContentTitleTrErrorComponent, MessagesCreateContentTitleZhCnErrorComponent, MessagesCreateNonFieldErrorsErrorComponent, MessagesCreateTargetErrorComponent, MessagesCreateUserUuidsErrorComponent, MessagesCreateUserUuidsINDEXErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into MessagesCreateError with oneOf schemas MessagesCreateContentBodyBgErrorComponent, MessagesCreateContentBodyBnErrorComponent, MessagesCreateContentBodyCaErrorComponent, MessagesCreateContentBodyDeErrorComponent, MessagesCreateContentBodyElErrorComponent, MessagesCreateContentBodyEnErrorComponent, MessagesCreateContentBodyEsErrorComponent, MessagesCreateContentBodyEuErrorComponent, MessagesCreateContentBodyFrErrorComponent, MessagesCreateContentBodyGlErrorComponent, MessagesCreateContentBodyHrErrorComponent, MessagesCreateContentBodyHuErrorComponent, MessagesCreateContentBodyItErrorComponent, MessagesCreateContentBodyLbErrorComponent, MessagesCreateContentBodyMkErrorComponent, MessagesCreateContentBodyNlErrorComponent, MessagesCreateContentBodyNonFieldErrorsErrorComponent, MessagesCreateContentBodyPtErrorComponent, MessagesCreateContentBodyRoErrorComponent, MessagesCreateContentBodySlErrorComponent, MessagesCreateContentBodySqErrorComponent, MessagesCreateContentBodySrErrorComponent, MessagesCreateContentBodySvErrorComponent, MessagesCreateContentBodyTrErrorComponent, MessagesCreateContentBodyZhCnErrorComponent, MessagesCreateContentNonFieldErrorsErrorComponent, MessagesCreateContentTitleBgErrorComponent, MessagesCreateContentTitleBnErrorComponent, MessagesCreateContentTitleCaErrorComponent, MessagesCreateContentTitleDeErrorComponent, MessagesCreateContentTitleElErrorComponent, MessagesCreateContentTitleEnErrorComponent, MessagesCreateContentTitleEsErrorComponent, MessagesCreateContentTitleEuErrorComponent, MessagesCreateContentTitleFrErrorComponent, MessagesCreateContentTitleGlErrorComponent, MessagesCreateContentTitleHrErrorComponent, MessagesCreateContentTitleHuErrorComponent, MessagesCreateContentTitleItErrorComponent, MessagesCreateContentTitleLbErrorComponent, MessagesCreateContentTitleMkErrorComponent, MessagesCreateContentTitleNlErrorComponent, MessagesCreateContentTitleNonFieldErrorsErrorComponent, MessagesCreateContentTitlePtErrorComponent, MessagesCreateContentTitleRoErrorComponent, MessagesCreateContentTitleSlErrorComponent, MessagesCreateContentTitleSqErrorComponent, MessagesCreateContentTitleSrErrorComponent, MessagesCreateContentTitleSvErrorComponent, MessagesCreateContentTitleTrErrorComponent, MessagesCreateContentTitleZhCnErrorComponent, MessagesCreateNonFieldErrorsErrorComponent, MessagesCreateUserUuidsErrorComponent, MessagesCreateUserUuidsINDEXErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into MessagesCreateError with oneOf schemas MessagesCreateAudienceInAreaErrorComponent, MessagesCreateAudienceLastLoginAfterErrorComponent, MessagesCreateAudienceLastLoginBeforeErrorComponent, MessagesCreateAudienceLocaleErrorComponent, MessagesCreateAudienceNonFieldErrorsErrorComponent, MessagesCreateContentBodyBgErrorComponent, MessagesCreateContentBodyBnErrorComponent, MessagesCreateContentBodyCaErrorComponent, MessagesCreateContentBodyDeErrorComponent, MessagesCreateContentBodyElErrorComponent, MessagesCreateContentBodyEnErrorComponent, MessagesCreateContentBodyEsErrorComponent, MessagesCreateContentBodyEuErrorComponent, MessagesCreateContentBodyFrErrorComponent, MessagesCreateContentBodyGlErrorComponent, MessagesCreateContentBodyHrErrorComponent, MessagesCreateContentBodyHuErrorComponent, MessagesCreateContentBodyItErrorComponent, MessagesCreateContentBodyLbErrorComponent, MessagesCreateContentBodyMkErrorComponent, MessagesCreateContentBodyNlErrorComponent, MessagesCreateContentBodyNonFieldErrorsErrorComponent, MessagesCreateContentBodyPtErrorComponent, MessagesCreateContentBodyRoErrorComponent, MessagesCreateContentBodySlErrorComponent, MessagesCreateContentBodySqErrorComponent, MessagesCreateContentBodySrErrorComponent, MessagesCreateContentBodySvErrorComponent, MessagesCreateContentBodyTrErrorComponent, MessagesCreateContentBodyZhCnErrorComponent, MessagesCreateContentNonFieldErrorsErrorComponent, MessagesCreateContentTitleBgErrorComponent, MessagesCreateContentTitleBnErrorComponent, MessagesCreateContentTitleCaErrorComponent, MessagesCreateContentTitleDeErrorComponent, MessagesCreateContentTitleElErrorComponent, MessagesCreateContentTitleEnErrorComponent, MessagesCreateContentTitleEsErrorComponent, MessagesCreateContentTitleEuErrorComponent, MessagesCreateContentTitleFrErrorComponent, MessagesCreateContentTitleGlErrorComponent, MessagesCreateContentTitleHrErrorComponent, MessagesCreateContentTitleHuErrorComponent, MessagesCreateContentTitleItErrorComponent, MessagesCreateContentTitleLbErrorComponent, MessagesCreateContentTitleMkErrorComponent, MessagesCreateContentTitleNlErrorComponent, MessagesCreateContentTitleNonFieldErrorsErrorComponent, MessagesCreateContentTitlePtErrorComponent, MessagesCreateContentTitleRoErrorComponent, MessagesCreateContentTitleSlErrorComponent, MessagesCreateContentTitleSqErrorComponent, MessagesCreateContentTitleSrErrorComponent, MessagesCreateContentTitleSvErrorComponent, MessagesCreateContentTitleTrErrorComponent, MessagesCreateContentTitleZhCnErrorComponent, MessagesCreateNonFieldErrorsErrorComponent, MessagesCreateTargetErrorComponent, MessagesCreateUserUuidsErrorComponent, MessagesCreateUserUuidsINDEXErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

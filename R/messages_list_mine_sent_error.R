@@ -16,12 +16,12 @@ MessagesListMineSentError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("MessagesListMineSentOrderByErrorComponent", "MessagesListMineSentRecipientUuidsErrorComponent"),
+    one_of = list("MessagesListMineSentOrderByErrorComponent", "MessagesListMineSentRecipientUuidsErrorComponent", "MessagesListMineSentTargetErrorComponent"),
 
     #' @description
     #' Initialize a new MessagesListMineSentError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "MessagesListMineSentOrderByErrorComponent", "MessagesListMineSentRecipientUuidsErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "MessagesListMineSentOrderByErrorComponent", "MessagesListMineSentRecipientUuidsErrorComponent", "MessagesListMineSentTargetErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -31,8 +31,11 @@ MessagesListMineSentError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesListMineSentRecipientUuidsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "MessagesListMineSentRecipientUuidsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesListMineSentTargetErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "MessagesListMineSentTargetErrorComponent"
       } else {
-        stop(paste("Failed to initialize MessagesListMineSentError with oneOf schemas MessagesListMineSentOrderByErrorComponent, MessagesListMineSentRecipientUuidsErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize MessagesListMineSentError with oneOf schemas MessagesListMineSentOrderByErrorComponent, MessagesListMineSentRecipientUuidsErrorComponent, MessagesListMineSentTargetErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -90,17 +93,32 @@ MessagesListMineSentError <- R6::R6Class(
         error_messages <- append(error_messages, `MessagesListMineSentRecipientUuidsErrorComponent_result`["message"])
       }
 
+      `MessagesListMineSentTargetErrorComponent_result` <- tryCatch({
+          `MessagesListMineSentTargetErrorComponent`$public_methods$validateJSON(input)
+          `MessagesListMineSentTargetErrorComponent_instance` <- `MessagesListMineSentTargetErrorComponent`$new()
+          instance <- `MessagesListMineSentTargetErrorComponent_instance`$fromJSON(input)
+          instance_type <- "MessagesListMineSentTargetErrorComponent"
+          matched_schemas <- append(matched_schemas, "MessagesListMineSentTargetErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`MessagesListMineSentTargetErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `MessagesListMineSentTargetErrorComponent_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into MessagesListMineSentError with oneOf schemas MessagesListMineSentOrderByErrorComponent, MessagesListMineSentRecipientUuidsErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into MessagesListMineSentError with oneOf schemas MessagesListMineSentOrderByErrorComponent, MessagesListMineSentRecipientUuidsErrorComponent, MessagesListMineSentTargetErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into MessagesListMineSentError with oneOf schemas MessagesListMineSentOrderByErrorComponent, MessagesListMineSentRecipientUuidsErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into MessagesListMineSentError with oneOf schemas MessagesListMineSentOrderByErrorComponent, MessagesListMineSentRecipientUuidsErrorComponent, MessagesListMineSentTargetErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

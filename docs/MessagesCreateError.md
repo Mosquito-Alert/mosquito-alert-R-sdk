@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attr** | **character** |  | [Enum: [content.body.zh-cn]] 
-**code** | **character** |  | [Enum: [blank, invalid, null_characters_not_allowed, surrogate_characters_not_allowed]] 
+**attr** | **character** |  | [Enum: [audience.locale]] 
+**code** | **character** |  | [Enum: [invalid_choice, null]] 
 **detail** | **character** |  | 
 
 

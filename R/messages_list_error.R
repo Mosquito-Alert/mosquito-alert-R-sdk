@@ -16,12 +16,12 @@ MessagesListError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("MessagesListOrderByErrorComponent", "MessagesListRecipientUuidsErrorComponent"),
+    one_of = list("MessagesListOrderByErrorComponent", "MessagesListRecipientUuidsErrorComponent", "MessagesListTargetErrorComponent"),
 
     #' @description
     #' Initialize a new MessagesListError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "MessagesListOrderByErrorComponent", "MessagesListRecipientUuidsErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "MessagesListOrderByErrorComponent", "MessagesListRecipientUuidsErrorComponent", "MessagesListTargetErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -31,8 +31,11 @@ MessagesListError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesListRecipientUuidsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "MessagesListRecipientUuidsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "MessagesListTargetErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "MessagesListTargetErrorComponent"
       } else {
-        stop(paste("Failed to initialize MessagesListError with oneOf schemas MessagesListOrderByErrorComponent, MessagesListRecipientUuidsErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize MessagesListError with oneOf schemas MessagesListOrderByErrorComponent, MessagesListRecipientUuidsErrorComponent, MessagesListTargetErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -90,17 +93,32 @@ MessagesListError <- R6::R6Class(
         error_messages <- append(error_messages, `MessagesListRecipientUuidsErrorComponent_result`["message"])
       }
 
+      `MessagesListTargetErrorComponent_result` <- tryCatch({
+          `MessagesListTargetErrorComponent`$public_methods$validateJSON(input)
+          `MessagesListTargetErrorComponent_instance` <- `MessagesListTargetErrorComponent`$new()
+          instance <- `MessagesListTargetErrorComponent_instance`$fromJSON(input)
+          instance_type <- "MessagesListTargetErrorComponent"
+          matched_schemas <- append(matched_schemas, "MessagesListTargetErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`MessagesListTargetErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `MessagesListTargetErrorComponent_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into MessagesListError with oneOf schemas MessagesListOrderByErrorComponent, MessagesListRecipientUuidsErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into MessagesListError with oneOf schemas MessagesListOrderByErrorComponent, MessagesListRecipientUuidsErrorComponent, MessagesListTargetErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into MessagesListError with oneOf schemas MessagesListOrderByErrorComponent, MessagesListRecipientUuidsErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into MessagesListError with oneOf schemas MessagesListOrderByErrorComponent, MessagesListRecipientUuidsErrorComponent, MessagesListTargetErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

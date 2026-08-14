@@ -5,6 +5,19 @@ context("Test UsersApi")
 
 api_instance <- UsersApi$new()
 
+test_that("audience_filter", {
+  # tests for audience_filter
+  # base path: https://api.mosquitoalert.com/v1
+  # Returns the users matching the provided audience criteria.
+  # @param page integer A page number within the paginated result set. (optional)
+  # @param page_size integer Number of results to return per page. (optional)
+  # @param audience_filter_request AudienceFilterRequest  (optional)
+  # @return [PaginatedUserList]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
 test_that("list", {
   # tests for list
   # base path: https://api.mosquitoalert.com/v1

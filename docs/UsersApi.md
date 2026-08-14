@@ -4,12 +4,72 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**audience_filter**](UsersApi.md#audience_filter) | **POST** /users/audience/ | 
 [**list**](UsersApi.md#list) | **GET** /users/ | 
 [**partial_update**](UsersApi.md#partial_update) | **PATCH** /users/{uuid}/ | 
 [**retrieve**](UsersApi.md#retrieve) | **GET** /users/{uuid}/ | 
 [**retrieve_mine**](UsersApi.md#retrieve_mine) | **GET** /me/ | 
 [**update**](UsersApi.md#update) | **PUT** /users/{uuid}/ | 
 
+
+# **audience_filter**
+> PaginatedUserList audience_filter(page = var.page, page_size = var.page_size, audience_filter_request = var.audience_filter_request)
+
+
+
+Returns the users matching the provided audience criteria.
+
+### Example
+```R
+library(MosquitoAlert)
+
+# prepare function argument(s)
+var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+var_audience_filter_request <- AudienceFilterRequest$new("last_login_before_example", "last_login_after_example", TODO, "en") # AudienceFilterRequest |  (Optional)
+
+api_instance <- mosquitoalert_api$new()
+# Configure API key authorization: tokenAuth
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: jwtAuth
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$audience_filter(page = var_page, page_size = var_page_size, audience_filter_request = var_audience_filter_requestdata_file = "result.txt")
+result <- api_instance$users_api$audience_filter(page = var_page, page_size = var_page_size, audience_filter_request = var_audience_filter_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **integer**| A page number within the paginated result set. | [optional] 
+ **page_size** | **integer**| Number of results to return per page. | [optional] 
+ **audience_filter_request** | [**AudienceFilterRequest**](AudienceFilterRequest.md)|  | [optional] 
+
+### Return type
+
+[**PaginatedUserList**](PaginatedUserList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **200** |  |  -  |
 
 # **list**
 > PaginatedUserList list(page = var.page, page_size = var.page_size, search = var.search)

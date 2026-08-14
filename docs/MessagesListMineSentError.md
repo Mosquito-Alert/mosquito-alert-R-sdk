@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attr** | **character** |  | [Enum: [recipient_uuids]] 
-**code** | **character** |  | [Enum: [invalid_choice, invalid_list, invalid_pk_value]] 
+**attr** | **character** |  | [Enum: [target]] 
+**code** | **character** |  | [Enum: [invalid_choice]] 
 **detail** | **character** |  | 
 
 

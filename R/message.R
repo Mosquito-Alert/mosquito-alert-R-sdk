@@ -10,6 +10,7 @@
 #' @field id  integer
 #' @field sender_user  \link{SimpleUser}
 #' @field content The content of the message \link{MessageContent}
+#' @field target  character
 #' @field created_at  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,6 +21,7 @@ Message <- R6::R6Class(
     `id` = NULL,
     `sender_user` = NULL,
     `content` = NULL,
+    `target` = NULL,
     `created_at` = NULL,
 
     #' @description
@@ -28,9 +30,10 @@ Message <- R6::R6Class(
     #' @param id id
     #' @param sender_user sender_user
     #' @param content The content of the message
+    #' @param target target
     #' @param created_at created_at
     #' @param ... Other optional arguments.
-    initialize = function(`id`, `sender_user`, `content`, `created_at`, ...) {
+    initialize = function(`id`, `sender_user`, `content`, `target`, `created_at`, ...) {
       if (!missing(`id`)) {
         if (!(is.numeric(`id`) && length(`id`) == 1)) {
           stop(paste("Error! Invalid data for `id`. Must be an integer:", `id`))
@@ -44,6 +47,15 @@ Message <- R6::R6Class(
       if (!missing(`content`)) {
         stopifnot(R6::is.R6(`content`))
         self$`content` <- `content`
+      }
+      if (!missing(`target`)) {
+        if (!(`target` %in% c("users", "audience"))) {
+          stop(paste("Error! \"", `target`, "\" cannot be assigned to `target`. Must be \"users\", \"audience\".", sep = ""))
+        }
+        if (!(is.character(`target`) && length(`target`) == 1)) {
+          stop(paste("Error! Invalid data for `target`. Must be a string:", `target`))
+        }
+        self$`target` <- `target`
       }
       if (!missing(`created_at`)) {
         if (!(is.character(`created_at`) && length(`created_at`) == 1)) {
@@ -96,6 +108,10 @@ Message <- R6::R6Class(
         MessageObject[["content"]] <-
           self$extractSimpleType(self$`content`)
       }
+      if (!is.null(self$`target`)) {
+        MessageObject[["target"]] <-
+          self$`target`
+      }
       if (!is.null(self$`created_at`)) {
         MessageObject[["created_at"]] <-
           self$`created_at`
@@ -146,6 +162,12 @@ Message <- R6::R6Class(
         `content_object`$fromJSON(jsonlite::toJSON(this_object$`content`, auto_unbox = TRUE, digits = NA))
         self$`content` <- `content_object`
       }
+      if (!is.null(this_object$`target`)) {
+        if (!is.null(this_object$`target`) && !(this_object$`target` %in% c("users", "audience"))) {
+          stop(paste("Error! \"", this_object$`target`, "\" cannot be assigned to `target`. Must be \"users\", \"audience\".", sep = ""))
+        }
+        self$`target` <- this_object$`target`
+      }
       if (!is.null(this_object$`created_at`)) {
         self$`created_at` <- this_object$`created_at`
       }
@@ -173,6 +195,10 @@ Message <- R6::R6Class(
       self$`id` <- this_object$`id`
       self$`sender_user` <- SimpleUser$new()$fromJSON(jsonlite::toJSON(this_object$`sender_user`, auto_unbox = TRUE, digits = NA))
       self$`content` <- MessageContent$new()$fromJSON(jsonlite::toJSON(this_object$`content`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`target`) && !(this_object$`target` %in% c("users", "audience"))) {
+        stop(paste("Error! \"", this_object$`target`, "\" cannot be assigned to `target`. Must be \"users\", \"audience\".", sep = ""))
+      }
+      self$`target` <- this_object$`target`
       self$`created_at` <- this_object$`created_at`
       self
     },
@@ -202,6 +228,14 @@ Message <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`content`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Message: the required field `content` is missing."))
+      }
+      # check the required field `target`
+      if (!is.null(input_json$`target`)) {
+        if (!(is.character(input_json$`target`) && length(input_json$`target`) == 1)) {
+          stop(paste("Error! Invalid data for `target`. Must be a string:", input_json$`target`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Message: the required field `target` is missing."))
       }
       # check the required field `created_at`
       if (!is.null(input_json$`created_at`)) {
@@ -241,6 +275,11 @@ Message <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `target` is null
+      if (is.null(self$`target`)) {
+        return(FALSE)
+      }
+
       # check if the required `created_at` is null
       if (is.null(self$`created_at`)) {
         return(FALSE)
@@ -268,6 +307,11 @@ Message <- R6::R6Class(
       # check if the required `content` is null
       if (is.null(self$`content`)) {
         invalid_fields["content"] <- "Non-nullable required field `content` cannot be null."
+      }
+
+      # check if the required `target` is null
+      if (is.null(self$`target`)) {
+        invalid_fields["target"] <- "Non-nullable required field `target` cannot be null."
       }
 
       # check if the required `created_at` is null

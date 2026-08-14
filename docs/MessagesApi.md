@@ -8,14 +8,13 @@ Method | HTTP request | Description
 [**list**](MessagesApi.md#list) | **GET** /messages/ | 
 [**list_mine_sent**](MessagesApi.md#list_mine_sent) | **GET** /me/messages/sent/ | 
 [**recipients_list**](MessagesApi.md#recipients_list) | **GET** /messages/{id}/recipients/ | 
+[**recipients_stats_retrieve**](MessagesApi.md#recipients_stats_retrieve) | **GET** /messages/{id}/recipients/stats/ | 
 [**retrieve**](MessagesApi.md#retrieve) | **GET** /messages/{id}/ | 
-[**topics_list**](MessagesApi.md#topics_list) | **GET** /messages/topics/ | 
-[**topics_retrieve**](MessagesApi.md#topics_retrieve) | **GET** /messages/topics/{code}/ | 
-[**topics_send**](MessagesApi.md#topics_send) | **POST** /messages/topics/{code}/send/ | 
+[**targeting_retrieve**](MessagesApi.md#targeting_retrieve) | **GET** /messages/{id}/targeting/ | 
 
 
 # **create**
-> CreateUserMessage create(create_user_message_request)
+> Message create(meta_create_message_request = var.meta_create_message_request)
 
 
 
@@ -24,7 +23,7 @@ Method | HTTP request | Description
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_create_user_message_request <- CreateUserMessageRequest$new(c("user_uuids_example"), MessageContentRequest$new(LocalizedMessageTitleRequest$new("bg_example", "bn_example", "ca_example", "de_example", "el_example", "en_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-cn_example"), LocalizedMessageBodyRequest$new("bg_example", "bn_example", "ca_example", "de_example", "el_example", "en_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-cn_example"))) # CreateUserMessageRequest | 
+var_meta_create_message_request <- MetaCreateMessageRequest$new(CreateAudienceMessageContentRequest$new(LocalizedAudienceMessageTitleRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-cn_example"), LocalizedAudienceMessageBodyRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-cn_example")), "audience", c("user_uuids_example"), AudienceFilterRequest$new("last_login_before_example", "last_login_after_example", TODO, "en")) # MetaCreateMessageRequest |  (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -34,8 +33,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$create(var_create_user_message_requestdata_file = "result.txt")
-result <- api_instance$messages_api$create(var_create_user_message_request)
+# result <- api_instance$create(meta_create_message_request = var_meta_create_message_requestdata_file = "result.txt")
+result <- api_instance$messages_api$create(meta_create_message_request = var_meta_create_message_request)
 dput(result)
 ```
 
@@ -43,11 +42,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_user_message_request** | [**CreateUserMessageRequest**](CreateUserMessageRequest.md)|  | 
+ **meta_create_message_request** | [**MetaCreateMessageRequest**](MetaCreateMessageRequest.md)|  | [optional] 
 
 ### Return type
 
-[**CreateUserMessage**](CreateUserMessage.md)
+[**Message**](Message.md)
 
 ### Authorization
 
@@ -68,9 +67,11 @@ Name | Type | Description  | Notes
 | **201** |  |  -  |
 
 # **list**
-> PaginatedMessageList list(order_by = var.order_by, page = var.page, page_size = var.page_size, recipient_uuids = var.recipient_uuids)
+> PaginatedMessageListList list(order_by = var.order_by, page = var.page, page_size = var.page_size, recipient_uuids = var.recipient_uuids, target = var.target)
 
 
+
+Get all messages sent by the current user. The content of the message is truncated to 100 words and the body is returned as plain text, without images or HTML tags. To retrieve the full content of a message, use the GET /messages/{id}/ endpoint.
 
 ### Example
 ```R
@@ -81,6 +82,7 @@ var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
 var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 var_recipient_uuids <- c("inner_example") # array[character] | UUID randomly generated on phone to identify each unique user. Must be exactly 36 characters (32 hex digits plus 4 hyphens). (Optional)
+var_target <- "target_example" # character | Filter messages by target audience. Use 'users' to filter messages sent to specific users, and 'audience' to filter messages sent to a broader audience.   (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -90,8 +92,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$list(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuidsdata_file = "result.txt")
-result <- api_instance$messages_api$list(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuids)
+# result <- api_instance$list(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuids, target = var_targetdata_file = "result.txt")
+result <- api_instance$messages_api$list(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuids, target = var_target)
 dput(result)
 ```
 
@@ -103,10 +105,11 @@ Name | Type | Description  | Notes
  **page** | **integer**| A page number within the paginated result set. | [optional] 
  **page_size** | **integer**| Number of results to return per page. | [optional] 
  **recipient_uuids** | list( **character** )| UUID randomly generated on phone to identify each unique user. Must be exactly 36 characters (32 hex digits plus 4 hyphens). | [optional] 
+ **target** | Enum [audience, users] | Filter messages by target audience. Use &#39;users&#39; to filter messages sent to specific users, and &#39;audience&#39; to filter messages sent to a broader audience.   | [optional] 
 
 ### Return type
 
-[**PaginatedMessageList**](PaginatedMessageList.md)
+[**PaginatedMessageListList**](PaginatedMessageListList.md)
 
 ### Authorization
 
@@ -127,7 +130,7 @@ Name | Type | Description  | Notes
 | **200** |  |  -  |
 
 # **list_mine_sent**
-> PaginatedMessageList list_mine_sent(order_by = var.order_by, page = var.page, page_size = var.page_size, recipient_uuids = var.recipient_uuids)
+> PaginatedMessageListList list_mine_sent(order_by = var.order_by, page = var.page, page_size = var.page_size, recipient_uuids = var.recipient_uuids, target = var.target)
 
 
 
@@ -142,6 +145,7 @@ var_order_by <- c("-created_at") # array[character] | Ordering   (Optional)
 var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 var_recipient_uuids <- c("inner_example") # array[character] | UUID randomly generated on phone to identify each unique user. Must be exactly 36 characters (32 hex digits plus 4 hyphens). (Optional)
+var_target <- "target_example" # character | Filter messages by target audience. Use 'users' to filter messages sent to specific users, and 'audience' to filter messages sent to a broader audience.   (Optional)
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -151,8 +155,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$list_mine_sent(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuidsdata_file = "result.txt")
-result <- api_instance$messages_api$list_mine_sent(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuids)
+# result <- api_instance$list_mine_sent(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuids, target = var_targetdata_file = "result.txt")
+result <- api_instance$messages_api$list_mine_sent(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuids, target = var_target)
 dput(result)
 ```
 
@@ -164,10 +168,11 @@ Name | Type | Description  | Notes
  **page** | **integer**| A page number within the paginated result set. | [optional] 
  **page_size** | **integer**| Number of results to return per page. | [optional] 
  **recipient_uuids** | list( **character** )| UUID randomly generated on phone to identify each unique user. Must be exactly 36 characters (32 hex digits plus 4 hyphens). | [optional] 
+ **target** | Enum [audience, users] | Filter messages by target audience. Use &#39;users&#39; to filter messages sent to specific users, and &#39;audience&#39; to filter messages sent to a broader audience.   | [optional] 
 
 ### Return type
 
-[**PaginatedMessageList**](PaginatedMessageList.md)
+[**PaginatedMessageListList**](PaginatedMessageListList.md)
 
 ### Authorization
 
@@ -188,7 +193,63 @@ Name | Type | Description  | Notes
 | **200** |  |  -  |
 
 # **recipients_list**
-> array[MessageRecipient] recipients_list(id)
+> PaginatedMessageRecipientList recipients_list(id, page = var.page, page_size = var.page_size)
+
+
+
+### Example
+```R
+library(MosquitoAlert)
+
+# prepare function argument(s)
+var_id <- 56 # integer | A unique integer value identifying this notification.
+var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+
+api_instance <- mosquitoalert_api$new()
+# Configure API key authorization: tokenAuth
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: jwtAuth
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$recipients_list(var_id, page = var_page, page_size = var_page_sizedata_file = "result.txt")
+result <- api_instance$messages_api$recipients_list(var_id, page = var_page, page_size = var_page_size)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **integer**| A unique integer value identifying this notification. | 
+ **page** | **integer**| A page number within the paginated result set. | [optional] 
+ **page_size** | **integer**| Number of results to return per page. | [optional] 
+
+### Return type
+
+[**PaginatedMessageRecipientList**](PaginatedMessageRecipientList.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **200** |  |  -  |
+
+# **recipients_stats_retrieve**
+> MessageRecipientStats recipients_stats_retrieve(id)
 
 
 
@@ -207,8 +268,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$recipients_list(var_iddata_file = "result.txt")
-result <- api_instance$messages_api$recipients_list(var_id)
+# result <- api_instance$recipients_stats_retrieve(var_iddata_file = "result.txt")
+result <- api_instance$messages_api$recipients_stats_retrieve(var_id)
 dput(result)
 ```
 
@@ -220,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**array[MessageRecipient]**](MessageRecipient.md)
+[**MessageRecipientStats**](MessageRecipientStats.md)
 
 ### Authorization
 
@@ -291,8 +352,8 @@ Name | Type | Description  | Notes
 | **404** |  |  -  |
 | **200** |  |  -  |
 
-# **topics_list**
-> PaginatedMessageTopicList topics_list(page = var.page, page_size = var.page_size, search = var.search)
+# **targeting_retrieve**
+> MessageTargeting targeting_retrieve(id)
 
 
 
@@ -301,9 +362,7 @@ Name | Type | Description  | Notes
 library(MosquitoAlert)
 
 # prepare function argument(s)
-var_page <- 56 # integer | A page number within the paginated result set. (Optional)
-var_page_size <- 56 # integer | Number of results to return per page. (Optional)
-var_search <- "search_example" # character | A search term. (Optional)
+var_id <- 56 # integer | A unique integer value identifying this notification.
 
 api_instance <- mosquitoalert_api$new()
 # Configure API key authorization: tokenAuth
@@ -313,8 +372,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$topics_list(page = var_page, page_size = var_page_size, search = var_searchdata_file = "result.txt")
-result <- api_instance$messages_api$topics_list(page = var_page, page_size = var_page_size, search = var_search)
+# result <- api_instance$targeting_retrieve(var_iddata_file = "result.txt")
+result <- api_instance$messages_api$targeting_retrieve(var_id)
 dput(result)
 ```
 
@@ -322,13 +381,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **integer**| A page number within the paginated result set. | [optional] 
- **page_size** | **integer**| Number of results to return per page. | [optional] 
- **search** | **character**| A search term. | [optional] 
+ **id** | **integer**| A unique integer value identifying this notification. | 
 
 ### Return type
 
-[**PaginatedMessageTopicList**](PaginatedMessageTopicList.md)
+[**MessageTargeting**](MessageTargeting.md)
 
 ### Authorization
 
@@ -342,115 +399,6 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **401** |  |  -  |
-| **403** |  |  -  |
-| **404** |  |  -  |
-| **200** |  |  -  |
-
-# **topics_retrieve**
-> MessageTopic topics_retrieve(code)
-
-
-
-### Example
-```R
-library(MosquitoAlert)
-
-# prepare function argument(s)
-var_code <- "code_example" # character | 
-
-api_instance <- mosquitoalert_api$new()
-# Configure API key authorization: tokenAuth
-api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-# Configure API key authorization: cookieAuth
-# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-# Configure HTTP bearer authorization: jwtAuth
-# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
-# to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$topics_retrieve(var_codedata_file = "result.txt")
-result <- api_instance$messages_api$topics_retrieve(var_code)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **character**|  | 
-
-### Return type
-
-[**MessageTopic**](MessageTopic.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **401** |  |  -  |
-| **403** |  |  -  |
-| **404** |  |  -  |
-| **200** |  |  -  |
-
-# **topics_send**
-> CreateTopicMessage topics_send(code, create_topic_message_request)
-
-
-
-Send a message to a specific topic
-
-### Example
-```R
-library(MosquitoAlert)
-
-# prepare function argument(s)
-var_code <- "code_example" # character | 
-var_create_topic_message_request <- CreateTopicMessageRequest$new(CreateTopicMessageContentRequest$new(LocalizedTopicMessageTitleRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-cn_example"), LocalizedTopicMessageBodyRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-cn_example"))) # CreateTopicMessageRequest | 
-
-api_instance <- mosquitoalert_api$new()
-# Configure API key authorization: tokenAuth
-api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-# Configure API key authorization: cookieAuth
-# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-# Configure HTTP bearer authorization: jwtAuth
-# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
-# to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$topics_send(var_code, var_create_topic_message_requestdata_file = "result.txt")
-result <- api_instance$messages_api$topics_send(var_code, var_create_topic_message_request)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **character**|  | 
- **create_topic_message_request** | [**CreateTopicMessageRequest**](CreateTopicMessageRequest.md)|  | 
-
-### Return type
-
-[**CreateTopicMessage**](CreateTopicMessage.md)
-
-### Authorization
-
-[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **400** |  |  -  |
 | **401** |  |  -  |
 | **403** |  |  -  |
 | **404** |  |  -  |

@@ -27,6 +27,13 @@ test_that("content", {
   #expect_equal(model.instance$`content`, "EXPECTED_RESULT")
 })
 
+test_that("target", {
+  # tests for the property `target` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`target`, "EXPECTED_RESULT")
+})
+
 test_that("created_at", {
   # tests for the property `created_at` (character)
 

@@ -7,32 +7,44 @@
 #' @title CreateUserMessageRequest
 #' @description CreateUserMessageRequest Class
 #' @format An \code{R6Class} generator object
-#' @field user_uuids  list(character)
 #' @field content The content of the message \link{MessageContentRequest}
+#' @field target  character
+#' @field user_uuids  list(character)
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 CreateUserMessageRequest <- R6::R6Class(
   "CreateUserMessageRequest",
   public = list(
-    `user_uuids` = NULL,
     `content` = NULL,
+    `target` = NULL,
+    `user_uuids` = NULL,
 
     #' @description
     #' Initialize a new CreateUserMessageRequest class.
     #'
-    #' @param user_uuids user_uuids
     #' @param content The content of the message
+    #' @param target target
+    #' @param user_uuids user_uuids
     #' @param ... Other optional arguments.
-    initialize = function(`user_uuids`, `content`, ...) {
+    initialize = function(`content`, `target`, `user_uuids`, ...) {
+      if (!missing(`content`)) {
+        stopifnot(R6::is.R6(`content`))
+        self$`content` <- `content`
+      }
+      if (!missing(`target`)) {
+        if (!(`target` %in% c("users"))) {
+          stop(paste("Error! \"", `target`, "\" cannot be assigned to `target`. Must be \"users\".", sep = ""))
+        }
+        if (!(is.character(`target`) && length(`target`) == 1)) {
+          stop(paste("Error! Invalid data for `target`. Must be a string:", `target`))
+        }
+        self$`target` <- `target`
+      }
       if (!missing(`user_uuids`)) {
         stopifnot(is.vector(`user_uuids`), length(`user_uuids`) != 0)
         sapply(`user_uuids`, function(x) stopifnot(is.character(x)))
         self$`user_uuids` <- `user_uuids`
-      }
-      if (!missing(`content`)) {
-        stopifnot(R6::is.R6(`content`))
-        self$`content` <- `content`
       }
     },
 
@@ -67,13 +79,17 @@ CreateUserMessageRequest <- R6::R6Class(
     #' @return A base R type, e.g. a list or numeric/character array.
     toSimpleType = function() {
       CreateUserMessageRequestObject <- list()
-      if (!is.null(self$`user_uuids`)) {
-        CreateUserMessageRequestObject[["user_uuids"]] <-
-          self$`user_uuids`
-      }
       if (!is.null(self$`content`)) {
         CreateUserMessageRequestObject[["content"]] <-
           self$extractSimpleType(self$`content`)
+      }
+      if (!is.null(self$`target`)) {
+        CreateUserMessageRequestObject[["target"]] <-
+          self$`target`
+      }
+      if (!is.null(self$`user_uuids`)) {
+        CreateUserMessageRequestObject[["user_uuids"]] <-
+          self$`user_uuids`
       }
       return(CreateUserMessageRequestObject)
     },
@@ -108,13 +124,19 @@ CreateUserMessageRequest <- R6::R6Class(
     #' @return the instance of CreateUserMessageRequest
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      if (!is.null(this_object$`user_uuids`)) {
-        self$`user_uuids` <- ApiClient$new()$deserializeObj(this_object$`user_uuids`, "array[character]", loadNamespace("MosquitoAlert"))
-      }
       if (!is.null(this_object$`content`)) {
         `content_object` <- MessageContentRequest$new()
         `content_object`$fromJSON(jsonlite::toJSON(this_object$`content`, auto_unbox = TRUE, digits = NA))
         self$`content` <- `content_object`
+      }
+      if (!is.null(this_object$`target`)) {
+        if (!is.null(this_object$`target`) && !(this_object$`target` %in% c("users"))) {
+          stop(paste("Error! \"", this_object$`target`, "\" cannot be assigned to `target`. Must be \"users\".", sep = ""))
+        }
+        self$`target` <- this_object$`target`
+      }
+      if (!is.null(this_object$`user_uuids`)) {
+        self$`user_uuids` <- ApiClient$new()$deserializeObj(this_object$`user_uuids`, "array[character]", loadNamespace("MosquitoAlert"))
       }
       self
     },
@@ -137,8 +159,12 @@ CreateUserMessageRequest <- R6::R6Class(
     #' @return the instance of CreateUserMessageRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`user_uuids` <- ApiClient$new()$deserializeObj(this_object$`user_uuids`, "array[character]", loadNamespace("MosquitoAlert"))
       self$`content` <- MessageContentRequest$new()$fromJSON(jsonlite::toJSON(this_object$`content`, auto_unbox = TRUE, digits = NA))
+      if (!is.null(this_object$`target`) && !(this_object$`target` %in% c("users"))) {
+        stop(paste("Error! \"", this_object$`target`, "\" cannot be assigned to `target`. Must be \"users\".", sep = ""))
+      }
+      self$`target` <- this_object$`target`
+      self$`user_uuids` <- ApiClient$new()$deserializeObj(this_object$`user_uuids`, "array[character]", loadNamespace("MosquitoAlert"))
       self
     },
 
@@ -148,18 +174,26 @@ CreateUserMessageRequest <- R6::R6Class(
     #' @param input the JSON input
     validateJSON = function(input) {
       input_json <- jsonlite::fromJSON(input)
+      # check the required field `content`
+      if (!is.null(input_json$`content`)) {
+        stopifnot(R6::is.R6(input_json$`content`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CreateUserMessageRequest: the required field `content` is missing."))
+      }
+      # check the required field `target`
+      if (!is.null(input_json$`target`)) {
+        if (!(is.character(input_json$`target`) && length(input_json$`target`) == 1)) {
+          stop(paste("Error! Invalid data for `target`. Must be a string:", input_json$`target`))
+        }
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for CreateUserMessageRequest: the required field `target` is missing."))
+      }
       # check the required field `user_uuids`
       if (!is.null(input_json$`user_uuids`)) {
         stopifnot(is.vector(input_json$`user_uuids`), length(input_json$`user_uuids`) != 0)
         tmp <- sapply(input_json$`user_uuids`, function(x) stopifnot(is.character(x)))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for CreateUserMessageRequest: the required field `user_uuids` is missing."))
-      }
-      # check the required field `content`
-      if (!is.null(input_json$`content`)) {
-        stopifnot(R6::is.R6(input_json$`content`))
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for CreateUserMessageRequest: the required field `content` is missing."))
       }
     },
 
@@ -176,17 +210,22 @@ CreateUserMessageRequest <- R6::R6Class(
     #'
     #' @return true if the values in all fields are valid.
     isValid = function() {
+      # check if the required `content` is null
+      if (is.null(self$`content`)) {
+        return(FALSE)
+      }
+
+      # check if the required `target` is null
+      if (is.null(self$`target`)) {
+        return(FALSE)
+      }
+
       # check if the required `user_uuids` is null
       if (is.null(self$`user_uuids`)) {
         return(FALSE)
       }
 
       if (length(self$`user_uuids`) < 1) {
-        return(FALSE)
-      }
-
-      # check if the required `content` is null
-      if (is.null(self$`content`)) {
         return(FALSE)
       }
 
@@ -199,6 +238,16 @@ CreateUserMessageRequest <- R6::R6Class(
     #' @return A list of invalid fields (if any).
     getInvalidFields = function() {
       invalid_fields <- list()
+      # check if the required `content` is null
+      if (is.null(self$`content`)) {
+        invalid_fields["content"] <- "Non-nullable required field `content` cannot be null."
+      }
+
+      # check if the required `target` is null
+      if (is.null(self$`target`)) {
+        invalid_fields["target"] <- "Non-nullable required field `target` cannot be null."
+      }
+
       # check if the required `user_uuids` is null
       if (is.null(self$`user_uuids`)) {
         invalid_fields["user_uuids"] <- "Non-nullable required field `user_uuids` cannot be null."
@@ -206,11 +255,6 @@ CreateUserMessageRequest <- R6::R6Class(
 
       if (length(self$`user_uuids`) < 1) {
         invalid_fields["user_uuids"] <- "Invalid length for ``, number of items must be greater than or equal to 1."
-      }
-
-      # check if the required `content` is null
-      if (is.null(self$`content`)) {
-        invalid_fields["content"] <- "Non-nullable required field `content` cannot be null."
       }
 
       invalid_fields

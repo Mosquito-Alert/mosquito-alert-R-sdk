@@ -17,7 +17,7 @@
 #' ####################  create  ####################
 #'
 #' library(MosquitoAlert)
-#' var_create_user_message_request <- CreateUserMessageRequest$new(c("user_uuids_example"), MessageContentRequest$new(LocalizedMessageTitleRequest$new("bg_example", "bn_example", "ca_example", "de_example", "el_example", "en_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-cn_example"), LocalizedMessageBodyRequest$new("bg_example", "bn_example", "ca_example", "de_example", "el_example", "en_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-cn_example"))) # CreateUserMessageRequest | 
+#' var_meta_create_message_request <- MetaCreateMessageRequest$new(CreateAudienceMessageContentRequest$new(LocalizedAudienceMessageTitleRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-cn_example"), LocalizedAudienceMessageBodyRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-cn_example")), "audience", c("user_uuids_example"), AudienceFilterRequest$new("last_login_before_example", "last_login_after_example", TODO, "en")) # MetaCreateMessageRequest |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -31,8 +31,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$create(var_create_user_message_requestdata_file = "result.txt")
-#' result <- api_instance$messages_api$create(var_create_user_message_request)
+#' # result <- api_instance$create(meta_create_message_request = var_meta_create_message_requestdata_file = "result.txt")
+#' result <- api_instance$messages_api$create(meta_create_message_request = var_meta_create_message_request)
 #' dput(result)
 #'
 #'
@@ -43,6 +43,7 @@
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_recipient_uuids <- c("inner_example") # array[character] | UUID randomly generated on phone to identify each unique user. Must be exactly 36 characters (32 hex digits plus 4 hyphens). (Optional)
+#' var_target <- "target_example" # character | Filter messages by target audience. Use 'users' to filter messages sent to specific users, and 'audience' to filter messages sent to a broader audience.   (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -56,8 +57,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuidsdata_file = "result.txt")
-#' result <- api_instance$messages_api$list(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuids)
+#' # result <- api_instance$list(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuids, target = var_targetdata_file = "result.txt")
+#' result <- api_instance$messages_api$list(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuids, target = var_target)
 #' dput(result)
 #'
 #'
@@ -68,6 +69,7 @@
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_recipient_uuids <- c("inner_example") # array[character] | UUID randomly generated on phone to identify each unique user. Must be exactly 36 characters (32 hex digits plus 4 hyphens). (Optional)
+#' var_target <- "target_example" # character | Filter messages by target audience. Use 'users' to filter messages sent to specific users, and 'audience' to filter messages sent to a broader audience.   (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -81,12 +83,36 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list_mine_sent(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuidsdata_file = "result.txt")
-#' result <- api_instance$messages_api$list_mine_sent(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuids)
+#' # result <- api_instance$list_mine_sent(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuids, target = var_targetdata_file = "result.txt")
+#' result <- api_instance$messages_api$list_mine_sent(order_by = var_order_by, page = var_page, page_size = var_page_size, recipient_uuids = var_recipient_uuids, target = var_target)
 #' dput(result)
 #'
 #'
 #' ####################  recipients_list  ####################
+#'
+#' library(MosquitoAlert)
+#' var_id <- 56 # integer | A unique integer value identifying this notification.
+#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
+#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
+#'
+#' api_instance <- mosquitoalert_api$new()
+#'
+#' # Configure API key authorization: tokenAuth
+#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: cookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure HTTP bearer authorization: jwtAuth
+#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$recipients_list(var_id, page = var_page, page_size = var_page_sizedata_file = "result.txt")
+#' result <- api_instance$messages_api$recipients_list(var_id, page = var_page, page_size = var_page_size)
+#' dput(result)
+#'
+#'
+#' ####################  recipients_stats_retrieve  ####################
 #'
 #' library(MosquitoAlert)
 #' var_id <- 56 # integer | A unique integer value identifying this notification.
@@ -103,8 +129,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$recipients_list(var_iddata_file = "result.txt")
-#' result <- api_instance$messages_api$recipients_list(var_id)
+#' # result <- api_instance$recipients_stats_retrieve(var_iddata_file = "result.txt")
+#' result <- api_instance$messages_api$recipients_stats_retrieve(var_id)
 #' dput(result)
 #'
 #'
@@ -130,12 +156,10 @@
 #' dput(result)
 #'
 #'
-#' ####################  topics_list  ####################
+#' ####################  targeting_retrieve  ####################
 #'
 #' library(MosquitoAlert)
-#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
-#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
-#' var_search <- "search_example" # character | A search term. (Optional)
+#' var_id <- 56 # integer | A unique integer value identifying this notification.
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -149,53 +173,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$topics_list(page = var_page, page_size = var_page_size, search = var_searchdata_file = "result.txt")
-#' result <- api_instance$messages_api$topics_list(page = var_page, page_size = var_page_size, search = var_search)
-#' dput(result)
-#'
-#'
-#' ####################  topics_retrieve  ####################
-#'
-#' library(MosquitoAlert)
-#' var_code <- "code_example" # character | 
-#'
-#' api_instance <- mosquitoalert_api$new()
-#'
-#' # Configure API key authorization: tokenAuth
-#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: cookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure HTTP bearer authorization: jwtAuth
-#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$topics_retrieve(var_codedata_file = "result.txt")
-#' result <- api_instance$messages_api$topics_retrieve(var_code)
-#' dput(result)
-#'
-#'
-#' ####################  topics_send  ####################
-#'
-#' library(MosquitoAlert)
-#' var_code <- "code_example" # character | 
-#' var_create_topic_message_request <- CreateTopicMessageRequest$new(CreateTopicMessageContentRequest$new(LocalizedTopicMessageTitleRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-cn_example"), LocalizedTopicMessageBodyRequest$new("en_example", "bg_example", "bn_example", "ca_example", "de_example", "el_example", "es_example", "eu_example", "fr_example", "gl_example", "hr_example", "hu_example", "it_example", "lb_example", "mk_example", "nl_example", "pt_example", "ro_example", "sl_example", "sq_example", "sr_example", "sv_example", "tr_example", "zh-cn_example"))) # CreateTopicMessageRequest | 
-#'
-#' api_instance <- mosquitoalert_api$new()
-#'
-#' # Configure API key authorization: tokenAuth
-#' api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: cookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure HTTP bearer authorization: jwtAuth
-#' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$topics_send(var_code, var_create_topic_message_requestdata_file = "result.txt")
-#' result <- api_instance$messages_api$topics_send(var_code, var_create_topic_message_request)
+#' # result <- api_instance$targeting_retrieve(var_iddata_file = "result.txt")
+#' result <- api_instance$messages_api$targeting_retrieve(var_id)
 #' dput(result)
 #'
 #'
@@ -223,14 +202,14 @@ MessagesApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param create_user_message_request 
+    #' @param meta_create_message_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return CreateUserMessage
-    create = function(create_user_message_request, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$create_with_http_info(create_user_message_request, data_file = data_file, ..., .parse = .parse)
+    #' @return Message
+    create = function(meta_create_message_request = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$create_with_http_info(meta_create_message_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -245,13 +224,13 @@ MessagesApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param create_user_message_request 
+    #' @param meta_create_message_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return API response (CreateUserMessage) with additional information such as HTTP status code, headers
-    create_with_http_info = function(create_user_message_request, data_file = NULL, ..., .parse = TRUE) {
+    #' @return API response (Message) with additional information such as HTTP status code, headers
+    create_with_http_info = function(meta_create_message_request = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -261,16 +240,12 @@ MessagesApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
-      if (missing(`create_user_message_request`)) {
-        stop("Missing required parameter `create_user_message_request`.")
+      if (!missing(`meta_create_message_request`) && is.null(`meta_create_message_request`)) {
+        stop("Invalid value for `meta_create_message_request` when calling MessagesApi$create, `meta_create_message_request` is not nullable")
       }
 
-      if (!missing(`create_user_message_request`) && is.null(`create_user_message_request`)) {
-        stop("Invalid value for `create_user_message_request` when calling MessagesApi$create, `create_user_message_request` is not nullable")
-      }
-
-      if (!is.null(`create_user_message_request`)) {
-        local_var_body <- `create_user_message_request`$toJSONString()
+      if (!is.null(`meta_create_message_request`)) {
+        local_var_body <- `meta_create_message_request`$toJSONString()
       } else {
         local_var_body <- NULL
       }
@@ -316,7 +291,7 @@ MessagesApi <- R6::R6Class(
         }
 
         deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "CreateUserMessage"),
+          self$api_client$DeserializeResponse(local_var_resp, "Message"),
           error = function(e) {
             stop("Failed to deserialize response")
           }
@@ -349,13 +324,14 @@ MessagesApi <- R6::R6Class(
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
     #' @param recipient_uuids (optional) UUID randomly generated on phone to identify each unique user. Must be exactly 36 characters (32 hex digits plus 4 hyphens).
+    #' @param target (optional) Filter messages by target audience. Use 'users' to filter messages sent to specific users, and 'audience' to filter messages sent to a broader audience.  
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return PaginatedMessageList
-    list = function(order_by = NULL, page = NULL, page_size = NULL, recipient_uuids = NULL, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$list_with_http_info(order_by, page, page_size, recipient_uuids, data_file = data_file, ..., .parse = .parse)
+    #' @return PaginatedMessageListList
+    list = function(order_by = NULL, page = NULL, page_size = NULL, recipient_uuids = NULL, target = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_with_http_info(order_by, page, page_size, recipient_uuids, target, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -374,12 +350,13 @@ MessagesApi <- R6::R6Class(
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
     #' @param recipient_uuids (optional) UUID randomly generated on phone to identify each unique user. Must be exactly 36 characters (32 hex digits plus 4 hyphens).
+    #' @param target (optional) Filter messages by target audience. Use 'users' to filter messages sent to specific users, and 'audience' to filter messages sent to a broader audience.  
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return API response (PaginatedMessageList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(order_by = NULL, page = NULL, page_size = NULL, recipient_uuids = NULL, data_file = NULL, ..., .parse = TRUE) {
+    #' @return API response (PaginatedMessageListList) with additional information such as HTTP status code, headers
+    list_with_http_info = function(order_by = NULL, page = NULL, page_size = NULL, recipient_uuids = NULL, target = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -405,6 +382,10 @@ MessagesApi <- R6::R6Class(
         stop("Invalid value for `recipient_uuids` when calling MessagesApi$list, `recipient_uuids` is not nullable")
       }
 
+      if (!missing(`target`) && is.null(`target`)) {
+        stop("Invalid value for `target` when calling MessagesApi$list, `target` is not nullable")
+      }
+
       # no explore
       # validate enum values
       for (query_item in `order_by`) {
@@ -422,6 +403,11 @@ MessagesApi <- R6::R6Class(
       for (query_item in `recipient_uuids`) {
         query_params[["recipient_uuids"]] <- c(query_params[["recipient_uuids"]], list(`recipient_uuids` = query_item))
       }
+
+      if (!is.null(`target`) && !(`target` %in% c("audience", "users"))) {
+        stop("Invalid value for target when calling MessagesApi$list. Must be [audience, users].")
+      }
+      query_params[["target"]] <- `target`
 
       local_var_url_path <- "/messages/"
       # API key authentication
@@ -464,7 +450,7 @@ MessagesApi <- R6::R6Class(
         }
 
         deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "PaginatedMessageList"),
+          self$api_client$DeserializeResponse(local_var_resp, "PaginatedMessageListList"),
           error = function(e) {
             stop("Failed to deserialize response")
           }
@@ -497,13 +483,14 @@ MessagesApi <- R6::R6Class(
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
     #' @param recipient_uuids (optional) UUID randomly generated on phone to identify each unique user. Must be exactly 36 characters (32 hex digits plus 4 hyphens).
+    #' @param target (optional) Filter messages by target audience. Use 'users' to filter messages sent to specific users, and 'audience' to filter messages sent to a broader audience.  
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return PaginatedMessageList
-    list_mine_sent = function(order_by = NULL, page = NULL, page_size = NULL, recipient_uuids = NULL, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$list_mine_sent_with_http_info(order_by, page, page_size, recipient_uuids, data_file = data_file, ..., .parse = .parse)
+    #' @return PaginatedMessageListList
+    list_mine_sent = function(order_by = NULL, page = NULL, page_size = NULL, recipient_uuids = NULL, target = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_mine_sent_with_http_info(order_by, page, page_size, recipient_uuids, target, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -522,12 +509,13 @@ MessagesApi <- R6::R6Class(
     #' @param page (optional) A page number within the paginated result set.
     #' @param page_size (optional) Number of results to return per page.
     #' @param recipient_uuids (optional) UUID randomly generated on phone to identify each unique user. Must be exactly 36 characters (32 hex digits plus 4 hyphens).
+    #' @param target (optional) Filter messages by target audience. Use 'users' to filter messages sent to specific users, and 'audience' to filter messages sent to a broader audience.  
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return API response (PaginatedMessageList) with additional information such as HTTP status code, headers
-    list_mine_sent_with_http_info = function(order_by = NULL, page = NULL, page_size = NULL, recipient_uuids = NULL, data_file = NULL, ..., .parse = TRUE) {
+    #' @return API response (PaginatedMessageListList) with additional information such as HTTP status code, headers
+    list_mine_sent_with_http_info = function(order_by = NULL, page = NULL, page_size = NULL, recipient_uuids = NULL, target = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -553,6 +541,10 @@ MessagesApi <- R6::R6Class(
         stop("Invalid value for `recipient_uuids` when calling MessagesApi$list_mine_sent, `recipient_uuids` is not nullable")
       }
 
+      if (!missing(`target`) && is.null(`target`)) {
+        stop("Invalid value for `target` when calling MessagesApi$list_mine_sent, `target` is not nullable")
+      }
+
       # no explore
       # validate enum values
       for (query_item in `order_by`) {
@@ -570,6 +562,11 @@ MessagesApi <- R6::R6Class(
       for (query_item in `recipient_uuids`) {
         query_params[["recipient_uuids"]] <- c(query_params[["recipient_uuids"]], list(`recipient_uuids` = query_item))
       }
+
+      if (!is.null(`target`) && !(`target` %in% c("audience", "users"))) {
+        stop("Invalid value for target when calling MessagesApi$list_mine_sent. Must be [audience, users].")
+      }
+      query_params[["target"]] <- `target`
 
       local_var_url_path <- "/me/messages/sent/"
       # API key authentication
@@ -612,7 +609,7 @@ MessagesApi <- R6::R6Class(
         }
 
         deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "PaginatedMessageList"),
+          self$api_client$DeserializeResponse(local_var_resp, "PaginatedMessageListList"),
           error = function(e) {
             stop("Failed to deserialize response")
           }
@@ -642,13 +639,15 @@ MessagesApi <- R6::R6Class(
     #' 
     #'
     #' @param id A unique integer value identifying this notification.
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return array[MessageRecipient]
-    recipients_list = function(id, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$recipients_list_with_http_info(id, data_file = data_file, ..., .parse = .parse)
+    #' @return PaginatedMessageRecipientList
+    recipients_list = function(id, page = NULL, page_size = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$recipients_list_with_http_info(id, page, page_size, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -664,12 +663,14 @@ MessagesApi <- R6::R6Class(
     #' 
     #'
     #' @param id A unique integer value identifying this notification.
+    #' @param page (optional) A page number within the paginated result set.
+    #' @param page_size (optional) Number of results to return per page.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return API response (array[MessageRecipient]) with additional information such as HTTP status code, headers
-    recipients_list_with_http_info = function(id, data_file = NULL, ..., .parse = TRUE) {
+    #' @return API response (PaginatedMessageRecipientList) with additional information such as HTTP status code, headers
+    recipients_list_with_http_info = function(id, page = NULL, page_size = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -686,6 +687,18 @@ MessagesApi <- R6::R6Class(
       if (!missing(`id`) && is.null(`id`)) {
         stop("Invalid value for `id` when calling MessagesApi$recipients_list, `id` is not nullable")
       }
+
+      if (!missing(`page`) && is.null(`page`)) {
+        stop("Invalid value for `page` when calling MessagesApi$recipients_list, `page` is not nullable")
+      }
+
+      if (!missing(`page_size`) && is.null(`page_size`)) {
+        stop("Invalid value for `page_size` when calling MessagesApi$recipients_list, `page_size` is not nullable")
+      }
+
+      query_params[["page"]] <- `page`
+
+      query_params[["page_size"]] <- `page_size`
 
       local_var_url_path <- "/messages/{id}/recipients/"
       if (!missing(`id`)) {
@@ -732,7 +745,127 @@ MessagesApi <- R6::R6Class(
         }
 
         deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "array[MessageRecipient]"),
+          self$api_client$DeserializeResponse(local_var_resp, "PaginatedMessageRecipientList"),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' 
+    #'
+    #' @param id A unique integer value identifying this notification.
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return MessageRecipientStats
+    recipients_stats_retrieve = function(id, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$recipients_stats_retrieve_with_http_info(id, data_file = data_file, ..., .parse = .parse)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' 
+    #'
+    #' @param id A unique integer value identifying this notification.
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return API response (MessageRecipientStats) with additional information such as HTTP status code, headers
+    recipients_stats_retrieve_with_http_info = function(id, data_file = NULL, ..., .parse = TRUE) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling MessagesApi$recipients_stats_retrieve, `id` is not nullable")
+      }
+
+      local_var_url_path <- "/messages/{id}/recipients/stats/"
+      if (!missing(`id`)) {
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
+        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
+      }
+      # API key authentication
+      # Bearer token
+      if (!is.null(self$api_client$bearer_token)) {
+        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$DeserializeResponse(local_var_resp, "MessageRecipientStats"),
           error = function(e) {
             stop("Failed to deserialize response")
           }
@@ -881,16 +1014,14 @@ MessagesApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param page (optional) A page number within the paginated result set.
-    #' @param page_size (optional) Number of results to return per page.
-    #' @param search (optional) A search term.
+    #' @param id A unique integer value identifying this notification.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return PaginatedMessageTopicList
-    topics_list = function(page = NULL, page_size = NULL, search = NULL, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$topics_list_with_http_info(page, page_size, search, data_file = data_file, ..., .parse = .parse)
+    #' @return MessageTargeting
+    targeting_retrieve = function(id, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$targeting_retrieve_with_http_info(id, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -905,15 +1036,13 @@ MessagesApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param page (optional) A page number within the paginated result set.
-    #' @param page_size (optional) Number of results to return per page.
-    #' @param search (optional) A search term.
+    #' @param id A unique integer value identifying this notification.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return API response (PaginatedMessageTopicList) with additional information such as HTTP status code, headers
-    topics_list_with_http_info = function(page = NULL, page_size = NULL, search = NULL, data_file = NULL, ..., .parse = TRUE) {
+    #' @return API response (MessageTargeting) with additional information such as HTTP status code, headers
+    targeting_retrieve_with_http_info = function(id, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -923,143 +1052,17 @@ MessagesApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
-      if (!missing(`page`) && is.null(`page`)) {
-        stop("Invalid value for `page` when calling MessagesApi$topics_list, `page` is not nullable")
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
       }
 
-      if (!missing(`page_size`) && is.null(`page_size`)) {
-        stop("Invalid value for `page_size` when calling MessagesApi$topics_list, `page_size` is not nullable")
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling MessagesApi$targeting_retrieve, `id` is not nullable")
       }
 
-      if (!missing(`search`) && is.null(`search`)) {
-        stop("Invalid value for `search` when calling MessagesApi$topics_list, `search` is not nullable")
-      }
-
-      query_params[["page"]] <- `page`
-
-      query_params[["page_size"]] <- `page_size`
-
-      query_params[["search"]] <- `search`
-
-      local_var_url_path <- "/messages/topics/"
-      # API key authentication
-      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
-        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
-      }
-      # API key authentication
-      # Bearer token
-      if (!is.null(self$api_client$bearer_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list()
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          self$api_client$WriteFile(local_var_resp, data_file)
-        }
-        if (!.parse) {
-          local_var_resp$content <- local_var_resp$response_as_text()
-          return(local_var_resp)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "PaginatedMessageTopicList"),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' 
-    #'
-    #' @param code 
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return MessageTopic
-    topics_retrieve = function(code, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$topics_retrieve_with_http_info(code, data_file = data_file, ..., .parse = .parse)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' 
-    #'
-    #' @param code 
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return API response (MessageTopic) with additional information such as HTTP status code, headers
-    topics_retrieve_with_http_info = function(code, data_file = NULL, ..., .parse = TRUE) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (missing(`code`)) {
-        stop("Missing required parameter `code`.")
-      }
-
-      if (!missing(`code`) && is.null(`code`)) {
-        stop("Invalid value for `code` when calling MessagesApi$topics_retrieve, `code` is not nullable")
-      }
-
-      local_var_url_path <- "/messages/topics/{code}/"
-      if (!missing(`code`)) {
-        local_var_url_path <- gsub("\\{code\\}", URLencode(as.character(`code`), reserved = TRUE), local_var_url_path)
+      local_var_url_path <- "/messages/{id}/targeting/"
+      if (!missing(`id`)) {
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
       }
 
       # API key authentication
@@ -1102,143 +1105,7 @@ MessagesApi <- R6::R6Class(
         }
 
         deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "MessageTopic"),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' 
-    #'
-    #' @param code 
-    #' @param create_topic_message_request 
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return CreateTopicMessage
-    topics_send = function(code, create_topic_message_request, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$topics_send_with_http_info(code, create_topic_message_request, data_file = data_file, ..., .parse = .parse)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' 
-    #'
-    #' @param code 
-    #' @param create_topic_message_request 
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return API response (CreateTopicMessage) with additional information such as HTTP status code, headers
-    topics_send_with_http_info = function(code, create_topic_message_request, data_file = NULL, ..., .parse = TRUE) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (missing(`code`)) {
-        stop("Missing required parameter `code`.")
-      }
-
-      if (missing(`create_topic_message_request`)) {
-        stop("Missing required parameter `create_topic_message_request`.")
-      }
-
-      if (!missing(`code`) && is.null(`code`)) {
-        stop("Invalid value for `code` when calling MessagesApi$topics_send, `code` is not nullable")
-      }
-
-      if (!missing(`create_topic_message_request`) && is.null(`create_topic_message_request`)) {
-        stop("Invalid value for `create_topic_message_request` when calling MessagesApi$topics_send, `create_topic_message_request` is not nullable")
-      }
-
-      if (!is.null(`create_topic_message_request`)) {
-        local_var_body <- `create_topic_message_request`$toJSONString()
-      } else {
-        local_var_body <- NULL
-      }
-
-      local_var_url_path <- "/messages/topics/{code}/send/"
-      if (!missing(`code`)) {
-        local_var_url_path <- gsub("\\{code\\}", URLencode(as.character(`code`), reserved = TRUE), local_var_url_path)
-      }
-
-      # API key authentication
-      if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
-        header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")
-      }
-      # API key authentication
-      # Bearer token
-      if (!is.null(self$api_client$bearer_token)) {
-        header_params["Authorization"] <- paste("Bearer", self$api_client$bearer_token, sep = " ")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list("application/json", "application/x-www-form-urlencoded", "multipart/form-data")
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          self$api_client$WriteFile(local_var_resp, data_file)
-        }
-        if (!.parse) {
-          local_var_resp$content <- local_var_resp$response_as_text()
-          return(local_var_resp)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "CreateTopicMessage"),
+          self$api_client$DeserializeResponse(local_var_resp, "MessageTargeting"),
           error = function(e) {
             stop("Failed to deserialize response")
           }

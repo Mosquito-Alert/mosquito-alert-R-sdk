@@ -8,8 +8,8 @@ api_instance <- MessagesApi$new()
 test_that("create", {
   # tests for create
   # base path: https://api.mosquitoalert.com/v1
-  # @param create_user_message_request CreateUserMessageRequest 
-  # @return [CreateUserMessage]
+  # @param meta_create_message_request MetaCreateMessageRequest  (optional)
+  # @return [Message]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -18,11 +18,13 @@ test_that("create", {
 test_that("list", {
   # tests for list
   # base path: https://api.mosquitoalert.com/v1
+  # Get all messages sent by the current user. The content of the message is truncated to 100 words and the body is returned as plain text, without images or HTML tags. To retrieve the full content of a message, use the GET /messages/{id}/ endpoint.
   # @param order_by array[character] Ordering   (optional)
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)
   # @param recipient_uuids array[character] UUID randomly generated on phone to identify each unique user. Must be exactly 36 characters (32 hex digits plus 4 hyphens). (optional)
-  # @return [PaginatedMessageList]
+  # @param target character Filter messages by target audience. Use 'users' to filter messages sent to specific users, and 'audience' to filter messages sent to a broader audience.   (optional)
+  # @return [PaginatedMessageListList]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -36,7 +38,8 @@ test_that("list_mine_sent", {
   # @param page integer A page number within the paginated result set. (optional)
   # @param page_size integer Number of results to return per page. (optional)
   # @param recipient_uuids array[character] UUID randomly generated on phone to identify each unique user. Must be exactly 36 characters (32 hex digits plus 4 hyphens). (optional)
-  # @return [PaginatedMessageList]
+  # @param target character Filter messages by target audience. Use 'users' to filter messages sent to specific users, and 'audience' to filter messages sent to a broader audience.   (optional)
+  # @return [PaginatedMessageListList]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -46,7 +49,19 @@ test_that("recipients_list", {
   # tests for recipients_list
   # base path: https://api.mosquitoalert.com/v1
   # @param id integer A unique integer value identifying this notification.
-  # @return [array[MessageRecipient]]
+  # @param page integer A page number within the paginated result set. (optional)
+  # @param page_size integer Number of results to return per page. (optional)
+  # @return [PaginatedMessageRecipientList]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("recipients_stats_retrieve", {
+  # tests for recipients_stats_retrieve
+  # base path: https://api.mosquitoalert.com/v1
+  # @param id integer A unique integer value identifying this notification.
+  # @return [MessageRecipientStats]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -62,35 +77,11 @@ test_that("retrieve", {
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("topics_list", {
-  # tests for topics_list
+test_that("targeting_retrieve", {
+  # tests for targeting_retrieve
   # base path: https://api.mosquitoalert.com/v1
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
-  # @param search character A search term. (optional)
-  # @return [PaginatedMessageTopicList]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("topics_retrieve", {
-  # tests for topics_retrieve
-  # base path: https://api.mosquitoalert.com/v1
-  # @param code character 
-  # @return [MessageTopic]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("topics_send", {
-  # tests for topics_send
-  # base path: https://api.mosquitoalert.com/v1
-  # Send a message to a specific topic
-  # @param code character 
-  # @param create_topic_message_request CreateTopicMessageRequest 
-  # @return [CreateTopicMessage]
+  # @param id integer A unique integer value identifying this notification.
+  # @return [MessageTargeting]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
