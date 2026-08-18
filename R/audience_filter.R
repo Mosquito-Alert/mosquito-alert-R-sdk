@@ -11,6 +11,7 @@
 #' @field last_login_after  character [optional]
 #' @field in_area Filter users whose last known location is within the specified area. The area should be provided as a GeoJSON geometry object. \link{AnyType} [optional]
 #' @field locale  character [optional]
+#' @field notification_topics Filter users subscribed to any of the provided notification topics. list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ AudienceFilter <- R6::R6Class(
     `last_login_after` = NULL,
     `in_area` = NULL,
     `locale` = NULL,
+    `notification_topics` = NULL,
 
     #' @description
     #' Initialize a new AudienceFilter class.
@@ -29,8 +31,9 @@ AudienceFilter <- R6::R6Class(
     #' @param last_login_after last_login_after
     #' @param in_area Filter users whose last known location is within the specified area. The area should be provided as a GeoJSON geometry object.
     #' @param locale locale
+    #' @param notification_topics Filter users subscribed to any of the provided notification topics.
     #' @param ... Other optional arguments.
-    initialize = function(`last_login_before` = NULL, `last_login_after` = NULL, `in_area` = NULL, `locale` = NULL, ...) {
+    initialize = function(`last_login_before` = NULL, `last_login_after` = NULL, `in_area` = NULL, `locale` = NULL, `notification_topics` = NULL, ...) {
       if (!is.null(`last_login_before`)) {
         if (!is.character(`last_login_before`)) {
           stop(paste("Error! Invalid data for `last_login_before`. Must be a string:", `last_login_before`))
@@ -55,6 +58,11 @@ AudienceFilter <- R6::R6Class(
           stop(paste("Error! Invalid data for `locale`. Must be a string:", `locale`))
         }
         self$`locale` <- `locale`
+      }
+      if (!is.null(`notification_topics`)) {
+        stopifnot(is.vector(`notification_topics`), length(`notification_topics`) != 0)
+        sapply(`notification_topics`, function(x) stopifnot(is.character(x)))
+        self$`notification_topics` <- `notification_topics`
       }
     },
 
@@ -104,6 +112,10 @@ AudienceFilter <- R6::R6Class(
       if (!is.null(self$`locale`)) {
         AudienceFilterObject[["locale"]] <-
           self$`locale`
+      }
+      if (!is.null(self$`notification_topics`)) {
+        AudienceFilterObject[["notification_topics"]] <-
+          self$`notification_topics`
       }
       return(AudienceFilterObject)
     },
@@ -155,6 +167,9 @@ AudienceFilter <- R6::R6Class(
         }
         self$`locale` <- this_object$`locale`
       }
+      if (!is.null(this_object$`notification_topics`)) {
+        self$`notification_topics` <- ApiClient$new()$deserializeObj(this_object$`notification_topics`, "array[character]", loadNamespace("MosquitoAlert"))
+      }
       self
     },
 
@@ -183,6 +198,7 @@ AudienceFilter <- R6::R6Class(
         stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"en\", \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
       }
       self$`locale` <- this_object$`locale`
+      self$`notification_topics` <- ApiClient$new()$deserializeObj(this_object$`notification_topics`, "array[character]", loadNamespace("MosquitoAlert"))
       self
     },
 

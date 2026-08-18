@@ -8,6 +8,7 @@
 #' @description UserRequest Class
 #' @format An \code{R6Class} generator object
 #' @field locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code. character [optional]
+#' @field notification_topics  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -15,13 +16,15 @@ UserRequest <- R6::R6Class(
   "UserRequest",
   public = list(
     `locale` = NULL,
+    `notification_topics` = NULL,
 
     #' @description
     #' Initialize a new UserRequest class.
     #'
     #' @param locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code.. Default to "en".
+    #' @param notification_topics notification_topics
     #' @param ... Other optional arguments.
-    initialize = function(`locale` = "en", ...) {
+    initialize = function(`locale` = "en", `notification_topics` = NULL, ...) {
       if (!is.null(`locale`)) {
         if (!(`locale` %in% c("en", "es", "ca", "eu", "bn", "sv", "de", "sq", "el", "gl", "hu", "pt", "sl", "it", "fr", "bg", "ro", "hr", "mk", "sr", "lb", "nl", "tr", "zh-CN"))) {
           stop(paste("Error! \"", `locale`, "\" cannot be assigned to `locale`. Must be \"en\", \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
@@ -30,6 +33,11 @@ UserRequest <- R6::R6Class(
           stop(paste("Error! Invalid data for `locale`. Must be a string:", `locale`))
         }
         self$`locale` <- `locale`
+      }
+      if (!is.null(`notification_topics`)) {
+        stopifnot(is.vector(`notification_topics`), length(`notification_topics`) != 0)
+        sapply(`notification_topics`, function(x) stopifnot(is.character(x)))
+        self$`notification_topics` <- `notification_topics`
       }
     },
 
@@ -68,6 +76,10 @@ UserRequest <- R6::R6Class(
         UserRequestObject[["locale"]] <-
           self$`locale`
       }
+      if (!is.null(self$`notification_topics`)) {
+        UserRequestObject[["notification_topics"]] <-
+          self$`notification_topics`
+      }
       return(UserRequestObject)
     },
 
@@ -83,6 +95,9 @@ UserRequest <- R6::R6Class(
           stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"en\", \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
         }
         self$`locale` <- this_object$`locale`
+      }
+      if (!is.null(this_object$`notification_topics`)) {
+        self$`notification_topics` <- ApiClient$new()$deserializeObj(this_object$`notification_topics`, "array[character]", loadNamespace("MosquitoAlert"))
       }
       self
     },
@@ -109,6 +124,7 @@ UserRequest <- R6::R6Class(
         stop(paste("Error! \"", this_object$`locale`, "\" cannot be assigned to `locale`. Must be \"en\", \"es\", \"ca\", \"eu\", \"bn\", \"sv\", \"de\", \"sq\", \"el\", \"gl\", \"hu\", \"pt\", \"sl\", \"it\", \"fr\", \"bg\", \"ro\", \"hr\", \"mk\", \"sr\", \"lb\", \"nl\", \"tr\", \"zh-CN\".", sep = ""))
       }
       self$`locale` <- this_object$`locale`
+      self$`notification_topics` <- ApiClient$new()$deserializeObj(this_object$`notification_topics`, "array[character]", loadNamespace("MosquitoAlert"))
       self
     },
 

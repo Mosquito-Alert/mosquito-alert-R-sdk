@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **language_iso** | **character** | ISO 639-1 code | [readonly] [default to &quot;en&quot;] 
 **is_guest** | **character** |  | [readonly] 
 **score** | [**UserScore**](UserScore.md) |  | [readonly] 
+**notification_topics** | **array[character]** |  | [optional] 
 
 

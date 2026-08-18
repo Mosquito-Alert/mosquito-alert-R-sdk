@@ -16,12 +16,12 @@ UsersPartialUpdateError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("UsersPartialUpdateLocaleErrorComponent", "UsersPartialUpdateNonFieldErrorsErrorComponent"),
+    one_of = list("UsersPartialUpdateLocaleErrorComponent", "UsersPartialUpdateNonFieldErrorsErrorComponent", "UsersPartialUpdateNotificationTopicsErrorComponent", "UsersPartialUpdateNotificationTopicsINDEXErrorComponent"),
 
     #' @description
     #' Initialize a new UsersPartialUpdateError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "UsersPartialUpdateLocaleErrorComponent", "UsersPartialUpdateNonFieldErrorsErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "UsersPartialUpdateLocaleErrorComponent", "UsersPartialUpdateNonFieldErrorsErrorComponent", "UsersPartialUpdateNotificationTopicsErrorComponent", "UsersPartialUpdateNotificationTopicsINDEXErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -31,8 +31,14 @@ UsersPartialUpdateError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UsersPartialUpdateNonFieldErrorsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "UsersPartialUpdateNonFieldErrorsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UsersPartialUpdateNotificationTopicsErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "UsersPartialUpdateNotificationTopicsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UsersPartialUpdateNotificationTopicsINDEXErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "UsersPartialUpdateNotificationTopicsINDEXErrorComponent"
       } else {
-        stop(paste("Failed to initialize UsersPartialUpdateError with oneOf schemas UsersPartialUpdateLocaleErrorComponent, UsersPartialUpdateNonFieldErrorsErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize UsersPartialUpdateError with oneOf schemas UsersPartialUpdateLocaleErrorComponent, UsersPartialUpdateNonFieldErrorsErrorComponent, UsersPartialUpdateNotificationTopicsErrorComponent, UsersPartialUpdateNotificationTopicsINDEXErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -90,17 +96,47 @@ UsersPartialUpdateError <- R6::R6Class(
         error_messages <- append(error_messages, `UsersPartialUpdateLocaleErrorComponent_result`["message"])
       }
 
+      `UsersPartialUpdateNotificationTopicsErrorComponent_result` <- tryCatch({
+          `UsersPartialUpdateNotificationTopicsErrorComponent`$public_methods$validateJSON(input)
+          `UsersPartialUpdateNotificationTopicsErrorComponent_instance` <- `UsersPartialUpdateNotificationTopicsErrorComponent`$new()
+          instance <- `UsersPartialUpdateNotificationTopicsErrorComponent_instance`$fromJSON(input)
+          instance_type <- "UsersPartialUpdateNotificationTopicsErrorComponent"
+          matched_schemas <- append(matched_schemas, "UsersPartialUpdateNotificationTopicsErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`UsersPartialUpdateNotificationTopicsErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `UsersPartialUpdateNotificationTopicsErrorComponent_result`["message"])
+      }
+
+      `UsersPartialUpdateNotificationTopicsINDEXErrorComponent_result` <- tryCatch({
+          `UsersPartialUpdateNotificationTopicsINDEXErrorComponent`$public_methods$validateJSON(input)
+          `UsersPartialUpdateNotificationTopicsINDEXErrorComponent_instance` <- `UsersPartialUpdateNotificationTopicsINDEXErrorComponent`$new()
+          instance <- `UsersPartialUpdateNotificationTopicsINDEXErrorComponent_instance`$fromJSON(input)
+          instance_type <- "UsersPartialUpdateNotificationTopicsINDEXErrorComponent"
+          matched_schemas <- append(matched_schemas, "UsersPartialUpdateNotificationTopicsINDEXErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`UsersPartialUpdateNotificationTopicsINDEXErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `UsersPartialUpdateNotificationTopicsINDEXErrorComponent_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into UsersPartialUpdateError with oneOf schemas UsersPartialUpdateLocaleErrorComponent, UsersPartialUpdateNonFieldErrorsErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into UsersPartialUpdateError with oneOf schemas UsersPartialUpdateLocaleErrorComponent, UsersPartialUpdateNonFieldErrorsErrorComponent, UsersPartialUpdateNotificationTopicsErrorComponent, UsersPartialUpdateNotificationTopicsINDEXErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into UsersPartialUpdateError with oneOf schemas UsersPartialUpdateLocaleErrorComponent, UsersPartialUpdateNonFieldErrorsErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into UsersPartialUpdateError with oneOf schemas UsersPartialUpdateLocaleErrorComponent, UsersPartialUpdateNonFieldErrorsErrorComponent, UsersPartialUpdateNotificationTopicsErrorComponent, UsersPartialUpdateNotificationTopicsINDEXErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

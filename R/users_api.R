@@ -19,7 +19,7 @@
 #' library(MosquitoAlert)
 #' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
 #' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
-#' var_audience_filter_request <- AudienceFilterRequest$new("last_login_before_example", "last_login_after_example", TODO, "en") # AudienceFilterRequest |  (Optional)
+#' var_audience_filter_request <- AudienceFilterRequest$new("last_login_before_example", "last_login_after_example", TODO, "en", c("notification_topics_example")) # AudienceFilterRequest |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -66,7 +66,7 @@
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
-#' var_patched_user_request <- PatchedUserRequest$new("en") # PatchedUserRequest |  (Optional)
+#' var_patched_user_request <- PatchedUserRequest$new("en", c("notification_topics_example")) # PatchedUserRequest |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'
@@ -132,7 +132,7 @@
 #'
 #' library(MosquitoAlert)
 #' var_uuid <- "uuid_example" # character | 
-#' var_user_request <- UserRequest$new("en") # UserRequest |  (Optional)
+#' var_user_request <- UserRequest$new("en", c("notification_topics_example")) # UserRequest |  (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
 #'

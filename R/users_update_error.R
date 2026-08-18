@@ -16,12 +16,12 @@ UsersUpdateError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("UsersUpdateLocaleErrorComponent", "UsersUpdateNonFieldErrorsErrorComponent"),
+    one_of = list("UsersUpdateLocaleErrorComponent", "UsersUpdateNonFieldErrorsErrorComponent", "UsersUpdateNotificationTopicsErrorComponent", "UsersUpdateNotificationTopicsINDEXErrorComponent"),
 
     #' @description
     #' Initialize a new UsersUpdateError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "UsersUpdateLocaleErrorComponent", "UsersUpdateNonFieldErrorsErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "UsersUpdateLocaleErrorComponent", "UsersUpdateNonFieldErrorsErrorComponent", "UsersUpdateNotificationTopicsErrorComponent", "UsersUpdateNotificationTopicsINDEXErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -31,8 +31,14 @@ UsersUpdateError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UsersUpdateNonFieldErrorsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "UsersUpdateNonFieldErrorsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UsersUpdateNotificationTopicsErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "UsersUpdateNotificationTopicsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UsersUpdateNotificationTopicsINDEXErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "UsersUpdateNotificationTopicsINDEXErrorComponent"
       } else {
-        stop(paste("Failed to initialize UsersUpdateError with oneOf schemas UsersUpdateLocaleErrorComponent, UsersUpdateNonFieldErrorsErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize UsersUpdateError with oneOf schemas UsersUpdateLocaleErrorComponent, UsersUpdateNonFieldErrorsErrorComponent, UsersUpdateNotificationTopicsErrorComponent, UsersUpdateNotificationTopicsINDEXErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -90,17 +96,47 @@ UsersUpdateError <- R6::R6Class(
         error_messages <- append(error_messages, `UsersUpdateLocaleErrorComponent_result`["message"])
       }
 
+      `UsersUpdateNotificationTopicsErrorComponent_result` <- tryCatch({
+          `UsersUpdateNotificationTopicsErrorComponent`$public_methods$validateJSON(input)
+          `UsersUpdateNotificationTopicsErrorComponent_instance` <- `UsersUpdateNotificationTopicsErrorComponent`$new()
+          instance <- `UsersUpdateNotificationTopicsErrorComponent_instance`$fromJSON(input)
+          instance_type <- "UsersUpdateNotificationTopicsErrorComponent"
+          matched_schemas <- append(matched_schemas, "UsersUpdateNotificationTopicsErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`UsersUpdateNotificationTopicsErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `UsersUpdateNotificationTopicsErrorComponent_result`["message"])
+      }
+
+      `UsersUpdateNotificationTopicsINDEXErrorComponent_result` <- tryCatch({
+          `UsersUpdateNotificationTopicsINDEXErrorComponent`$public_methods$validateJSON(input)
+          `UsersUpdateNotificationTopicsINDEXErrorComponent_instance` <- `UsersUpdateNotificationTopicsINDEXErrorComponent`$new()
+          instance <- `UsersUpdateNotificationTopicsINDEXErrorComponent_instance`$fromJSON(input)
+          instance_type <- "UsersUpdateNotificationTopicsINDEXErrorComponent"
+          matched_schemas <- append(matched_schemas, "UsersUpdateNotificationTopicsINDEXErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`UsersUpdateNotificationTopicsINDEXErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `UsersUpdateNotificationTopicsINDEXErrorComponent_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into UsersUpdateError with oneOf schemas UsersUpdateLocaleErrorComponent, UsersUpdateNonFieldErrorsErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into UsersUpdateError with oneOf schemas UsersUpdateLocaleErrorComponent, UsersUpdateNonFieldErrorsErrorComponent, UsersUpdateNotificationTopicsErrorComponent, UsersUpdateNotificationTopicsINDEXErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into UsersUpdateError with oneOf schemas UsersUpdateLocaleErrorComponent, UsersUpdateNonFieldErrorsErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into UsersUpdateError with oneOf schemas UsersUpdateLocaleErrorComponent, UsersUpdateNonFieldErrorsErrorComponent, UsersUpdateNotificationTopicsErrorComponent, UsersUpdateNotificationTopicsINDEXErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 

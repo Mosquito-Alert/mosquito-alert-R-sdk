@@ -77,3 +77,10 @@ test_that("score", {
   # uncomment below to test the property
   #expect_equal(model.instance$`score`, "EXPECTED_RESULT")
 })
+
+test_that("notification_topics", {
+  # tests for the property `notification_topics` (array[character])
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`notification_topics`, "EXPECTED_RESULT")
+})

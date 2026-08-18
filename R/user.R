@@ -17,6 +17,7 @@
 #' @field language_iso ISO 639-1 code character
 #' @field is_guest  character
 #' @field score  \link{UserScore}
+#' @field notification_topics  list(character) [optional]
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -33,6 +34,7 @@ User <- R6::R6Class(
     `language_iso` = NULL,
     `is_guest` = NULL,
     `score` = NULL,
+    `notification_topics` = NULL,
 
     #' @description
     #' Initialize a new User class.
@@ -47,8 +49,9 @@ User <- R6::R6Class(
     #' @param is_guest is_guest
     #' @param score score
     #' @param locale The locale code representing the language preference selected by the user for displaying the interface text. Enter the locale following the BCP 47 standard in 'language' or 'language-region' format (e.g., 'en' for English, 'en-US' for English (United States), 'fr' for French). The language is a two-letter ISO 639-1 code, and the region is an optional two-letter ISO 3166-1 alpha-2 code.. Default to "en".
+    #' @param notification_topics notification_topics
     #' @param ... Other optional arguments.
-    initialize = function(`uuid`, `username`, `first_name`, `last_name`, `full_name`, `registration_time`, `language_iso`, `is_guest`, `score`, `locale` = "en", ...) {
+    initialize = function(`uuid`, `username`, `first_name`, `last_name`, `full_name`, `registration_time`, `language_iso`, `is_guest`, `score`, `locale` = "en", `notification_topics` = NULL, ...) {
       if (!missing(`uuid`)) {
         if (!(is.character(`uuid`) && length(`uuid`) == 1)) {
           stop(paste("Error! Invalid data for `uuid`. Must be a string:", `uuid`))
@@ -109,6 +112,11 @@ User <- R6::R6Class(
           stop(paste("Error! Invalid data for `locale`. Must be a string:", `locale`))
         }
         self$`locale` <- `locale`
+      }
+      if (!is.null(`notification_topics`)) {
+        stopifnot(is.vector(`notification_topics`), length(`notification_topics`) != 0)
+        sapply(`notification_topics`, function(x) stopifnot(is.character(x)))
+        self$`notification_topics` <- `notification_topics`
       }
     },
 
@@ -183,6 +191,10 @@ User <- R6::R6Class(
         UserObject[["score"]] <-
           self$extractSimpleType(self$`score`)
       }
+      if (!is.null(self$`notification_topics`)) {
+        UserObject[["notification_topics"]] <-
+          self$`notification_topics`
+      }
       return(UserObject)
     },
 
@@ -251,6 +263,9 @@ User <- R6::R6Class(
         `score_object`$fromJSON(jsonlite::toJSON(this_object$`score`, auto_unbox = TRUE, digits = NA))
         self$`score` <- `score_object`
       }
+      if (!is.null(this_object$`notification_topics`)) {
+        self$`notification_topics` <- ApiClient$new()$deserializeObj(this_object$`notification_topics`, "array[character]", loadNamespace("MosquitoAlert"))
+      }
       self
     },
 
@@ -285,6 +300,7 @@ User <- R6::R6Class(
       self$`language_iso` <- this_object$`language_iso`
       self$`is_guest` <- this_object$`is_guest`
       self$`score` <- UserScore$new()$fromJSON(jsonlite::toJSON(this_object$`score`, auto_unbox = TRUE, digits = NA))
+      self$`notification_topics` <- ApiClient$new()$deserializeObj(this_object$`notification_topics`, "array[character]", loadNamespace("MosquitoAlert"))
       self
     },
 

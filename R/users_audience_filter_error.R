@@ -16,12 +16,12 @@ UsersAudienceFilterError <- R6::R6Class(
     #' @field actual_type the type of the object stored in this instance.
     actual_type = NULL,
     #' @field one_of  a list of types defined in the oneOf schema.
-    one_of = list("UsersAudienceFilterInAreaErrorComponent", "UsersAudienceFilterLastLoginAfterErrorComponent", "UsersAudienceFilterLastLoginBeforeErrorComponent", "UsersAudienceFilterLocaleErrorComponent", "UsersAudienceFilterNonFieldErrorsErrorComponent"),
+    one_of = list("UsersAudienceFilterInAreaErrorComponent", "UsersAudienceFilterLastLoginAfterErrorComponent", "UsersAudienceFilterLastLoginBeforeErrorComponent", "UsersAudienceFilterLocaleErrorComponent", "UsersAudienceFilterNonFieldErrorsErrorComponent", "UsersAudienceFilterNotificationTopicsErrorComponent", "UsersAudienceFilterNotificationTopicsINDEXErrorComponent"),
 
     #' @description
     #' Initialize a new UsersAudienceFilterError.
     #'
-    #' @param instance an instance of the object defined in the oneOf schemas: "UsersAudienceFilterInAreaErrorComponent", "UsersAudienceFilterLastLoginAfterErrorComponent", "UsersAudienceFilterLastLoginBeforeErrorComponent", "UsersAudienceFilterLocaleErrorComponent", "UsersAudienceFilterNonFieldErrorsErrorComponent"
+    #' @param instance an instance of the object defined in the oneOf schemas: "UsersAudienceFilterInAreaErrorComponent", "UsersAudienceFilterLastLoginAfterErrorComponent", "UsersAudienceFilterLastLoginBeforeErrorComponent", "UsersAudienceFilterLocaleErrorComponent", "UsersAudienceFilterNonFieldErrorsErrorComponent", "UsersAudienceFilterNotificationTopicsErrorComponent", "UsersAudienceFilterNotificationTopicsINDEXErrorComponent"
     initialize = function(instance = NULL) {
       if (is.null(instance)) {
         # do nothing
@@ -40,8 +40,14 @@ UsersAudienceFilterError <- R6::R6Class(
       } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UsersAudienceFilterNonFieldErrorsErrorComponent") {
         self$actual_instance <- instance
         self$actual_type <- "UsersAudienceFilterNonFieldErrorsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UsersAudienceFilterNotificationTopicsErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "UsersAudienceFilterNotificationTopicsErrorComponent"
+      } else if (get(class(instance)[[1]], pos = -1)$classname ==  "UsersAudienceFilterNotificationTopicsINDEXErrorComponent") {
+        self$actual_instance <- instance
+        self$actual_type <- "UsersAudienceFilterNotificationTopicsINDEXErrorComponent"
       } else {
-        stop(paste("Failed to initialize UsersAudienceFilterError with oneOf schemas UsersAudienceFilterInAreaErrorComponent, UsersAudienceFilterLastLoginAfterErrorComponent, UsersAudienceFilterLastLoginBeforeErrorComponent, UsersAudienceFilterLocaleErrorComponent, UsersAudienceFilterNonFieldErrorsErrorComponent. Provided class name: ",
+        stop(paste("Failed to initialize UsersAudienceFilterError with oneOf schemas UsersAudienceFilterInAreaErrorComponent, UsersAudienceFilterLastLoginAfterErrorComponent, UsersAudienceFilterLastLoginBeforeErrorComponent, UsersAudienceFilterLocaleErrorComponent, UsersAudienceFilterNonFieldErrorsErrorComponent, UsersAudienceFilterNotificationTopicsErrorComponent, UsersAudienceFilterNotificationTopicsINDEXErrorComponent. Provided class name: ",
                    get(class(instance)[[1]], pos = -1)$classname))
       }
     },
@@ -144,17 +150,47 @@ UsersAudienceFilterError <- R6::R6Class(
         error_messages <- append(error_messages, `UsersAudienceFilterLocaleErrorComponent_result`["message"])
       }
 
+      `UsersAudienceFilterNotificationTopicsErrorComponent_result` <- tryCatch({
+          `UsersAudienceFilterNotificationTopicsErrorComponent`$public_methods$validateJSON(input)
+          `UsersAudienceFilterNotificationTopicsErrorComponent_instance` <- `UsersAudienceFilterNotificationTopicsErrorComponent`$new()
+          instance <- `UsersAudienceFilterNotificationTopicsErrorComponent_instance`$fromJSON(input)
+          instance_type <- "UsersAudienceFilterNotificationTopicsErrorComponent"
+          matched_schemas <- append(matched_schemas, "UsersAudienceFilterNotificationTopicsErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`UsersAudienceFilterNotificationTopicsErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `UsersAudienceFilterNotificationTopicsErrorComponent_result`["message"])
+      }
+
+      `UsersAudienceFilterNotificationTopicsINDEXErrorComponent_result` <- tryCatch({
+          `UsersAudienceFilterNotificationTopicsINDEXErrorComponent`$public_methods$validateJSON(input)
+          `UsersAudienceFilterNotificationTopicsINDEXErrorComponent_instance` <- `UsersAudienceFilterNotificationTopicsINDEXErrorComponent`$new()
+          instance <- `UsersAudienceFilterNotificationTopicsINDEXErrorComponent_instance`$fromJSON(input)
+          instance_type <- "UsersAudienceFilterNotificationTopicsINDEXErrorComponent"
+          matched_schemas <- append(matched_schemas, "UsersAudienceFilterNotificationTopicsINDEXErrorComponent")
+          matched <- matched + 1
+        },
+        error = function(err) err
+      )
+
+      if (!is.null(`UsersAudienceFilterNotificationTopicsINDEXErrorComponent_result`["error"])) {
+        error_messages <- append(error_messages, `UsersAudienceFilterNotificationTopicsINDEXErrorComponent_result`["message"])
+      }
+
       if (matched == 1) {
         # successfully match exactly 1 schema specified in oneOf
         self$actual_instance <- instance
         self$actual_type <- instance_type
       } else if (matched > 1) {
         # more than 1 match
-        stop(paste("Multiple matches found when deserializing the input into UsersAudienceFilterError with oneOf schemas UsersAudienceFilterInAreaErrorComponent, UsersAudienceFilterLastLoginAfterErrorComponent, UsersAudienceFilterLastLoginBeforeErrorComponent, UsersAudienceFilterLocaleErrorComponent, UsersAudienceFilterNonFieldErrorsErrorComponent. Matched schemas: ",
+        stop(paste("Multiple matches found when deserializing the input into UsersAudienceFilterError with oneOf schemas UsersAudienceFilterInAreaErrorComponent, UsersAudienceFilterLastLoginAfterErrorComponent, UsersAudienceFilterLastLoginBeforeErrorComponent, UsersAudienceFilterLocaleErrorComponent, UsersAudienceFilterNonFieldErrorsErrorComponent, UsersAudienceFilterNotificationTopicsErrorComponent, UsersAudienceFilterNotificationTopicsINDEXErrorComponent. Matched schemas: ",
                    paste(matched_schemas, collapse = ", ")))
       } else {
         # no match
-        stop(paste("No match found when deserializing the input into UsersAudienceFilterError with oneOf schemas UsersAudienceFilterInAreaErrorComponent, UsersAudienceFilterLastLoginAfterErrorComponent, UsersAudienceFilterLastLoginBeforeErrorComponent, UsersAudienceFilterLocaleErrorComponent, UsersAudienceFilterNonFieldErrorsErrorComponent. Details: >>",
+        stop(paste("No match found when deserializing the input into UsersAudienceFilterError with oneOf schemas UsersAudienceFilterInAreaErrorComponent, UsersAudienceFilterLastLoginAfterErrorComponent, UsersAudienceFilterLastLoginBeforeErrorComponent, UsersAudienceFilterLocaleErrorComponent, UsersAudienceFilterNonFieldErrorsErrorComponent, UsersAudienceFilterNotificationTopicsErrorComponent, UsersAudienceFilterNotificationTopicsINDEXErrorComponent. Details: >>",
                    paste(error_messages, collapse = " >> ")))
       }
 
