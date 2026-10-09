@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **threshold_deviation** | **numeric** |  | [Max: 1.0] [Min: -1.0] 
 **is_decisive** | **character** | Indicates if this prediction can close the identification task. | [optional] 
 **scores** | [**PredictionScoreRequest**](PredictionScoreRequest.md) |  | 
-**classifier_version** | **character** |  | [Enum: [v2023.1, v2024.1, v2025.1, v2025.2, v2025.3, v2025.4]] 
+**classifier_version** | **character** |  | [Enum: [v2023.1, v2024.1, v2025.1, v2025.2, v2025.3, v2025.4, v2026.1]] 
 
 

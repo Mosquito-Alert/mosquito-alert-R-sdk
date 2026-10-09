@@ -90,8 +90,8 @@ CreatePhotoPrediction <- R6::R6Class(
         self$`scores` <- `scores`
       }
       if (!missing(`classifier_version`)) {
-        if (!(`classifier_version` %in% c("v2023.1", "v2024.1", "v2025.1", "v2025.2", "v2025.3", "v2025.4"))) {
-          stop(paste("Error! \"", `classifier_version`, "\" cannot be assigned to `classifier_version`. Must be \"v2023.1\", \"v2024.1\", \"v2025.1\", \"v2025.2\", \"v2025.3\", \"v2025.4\".", sep = ""))
+        if (!(`classifier_version` %in% c("v2023.1", "v2024.1", "v2025.1", "v2025.2", "v2025.3", "v2025.4", "v2026.1"))) {
+          stop(paste("Error! \"", `classifier_version`, "\" cannot be assigned to `classifier_version`. Must be \"v2023.1\", \"v2024.1\", \"v2025.1\", \"v2025.2\", \"v2025.3\", \"v2025.4\", \"v2026.1\".", sep = ""))
         }
         if (!(is.character(`classifier_version`) && length(`classifier_version`) == 1)) {
           stop(paste("Error! Invalid data for `classifier_version`. Must be a string:", `classifier_version`))
@@ -262,8 +262,8 @@ CreatePhotoPrediction <- R6::R6Class(
         self$`scores` <- `scores_object`
       }
       if (!is.null(this_object$`classifier_version`)) {
-        if (!is.null(this_object$`classifier_version`) && !(this_object$`classifier_version` %in% c("v2023.1", "v2024.1", "v2025.1", "v2025.2", "v2025.3", "v2025.4"))) {
-          stop(paste("Error! \"", this_object$`classifier_version`, "\" cannot be assigned to `classifier_version`. Must be \"v2023.1\", \"v2024.1\", \"v2025.1\", \"v2025.2\", \"v2025.3\", \"v2025.4\".", sep = ""))
+        if (!is.null(this_object$`classifier_version`) && !(this_object$`classifier_version` %in% c("v2023.1", "v2024.1", "v2025.1", "v2025.2", "v2025.3", "v2025.4", "v2026.1"))) {
+          stop(paste("Error! \"", this_object$`classifier_version`, "\" cannot be assigned to `classifier_version`. Must be \"v2023.1\", \"v2024.1\", \"v2025.1\", \"v2025.2\", \"v2025.3\", \"v2025.4\", \"v2026.1\".", sep = ""))
         }
         self$`classifier_version` <- this_object$`classifier_version`
       }
@@ -305,8 +305,8 @@ CreatePhotoPrediction <- R6::R6Class(
       self$`threshold_deviation` <- this_object$`threshold_deviation`
       self$`is_decisive` <- this_object$`is_decisive`
       self$`scores` <- PredictionScore$new()$fromJSON(jsonlite::toJSON(this_object$`scores`, auto_unbox = TRUE, digits = NA))
-      if (!is.null(this_object$`classifier_version`) && !(this_object$`classifier_version` %in% c("v2023.1", "v2024.1", "v2025.1", "v2025.2", "v2025.3", "v2025.4"))) {
-        stop(paste("Error! \"", this_object$`classifier_version`, "\" cannot be assigned to `classifier_version`. Must be \"v2023.1\", \"v2024.1\", \"v2025.1\", \"v2025.2\", \"v2025.3\", \"v2025.4\".", sep = ""))
+      if (!is.null(this_object$`classifier_version`) && !(this_object$`classifier_version` %in% c("v2023.1", "v2024.1", "v2025.1", "v2025.2", "v2025.3", "v2025.4", "v2026.1"))) {
+        stop(paste("Error! \"", this_object$`classifier_version`, "\" cannot be assigned to `classifier_version`. Must be \"v2023.1\", \"v2024.1\", \"v2025.1\", \"v2025.2\", \"v2025.3\", \"v2025.4\", \"v2026.1\".", sep = ""))
       }
       self$`classifier_version` <- this_object$`classifier_version`
       self$`created_at` <- this_object$`created_at`
