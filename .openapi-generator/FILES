@@ -16,6 +16,7 @@ R/api_client.R
 R/api_response.R
 R/app_user_token_obtain_pair.R
 R/app_user_token_obtain_pair_request.R
+R/area_meta.R
 R/assignment.R
 R/audience_filter.R
 R/audience_filter_request.R
@@ -635,6 +636,7 @@ R/paginated_notification_list.R
 R/paginated_observation_list.R
 R/paginated_partner_list.R
 R/paginated_photo_prediction_list.R
+R/paginated_report_stats_response_list.R
 R/paginated_taxon_list.R
 R/paginated_user_list.R
 R/paginated_workspace_collaboration_group_list.R
@@ -704,6 +706,9 @@ R/point.R
 R/point_request.R
 R/prediction_score.R
 R/prediction_score_request.R
+R/report_stats_meta.R
+R/report_stats_response.R
+R/report_stats_row.R
 R/review_permission.R
 R/simple_annotator_user.R
 R/simple_photo.R
@@ -717,6 +722,8 @@ R/species_characteristics.R
 R/species_characteristics_request.R
 R/species_classification.R
 R/species_classification_request.R
+R/statistics_permission.R
+R/stats_api.R
 R/taxa_api.R
 R/taxa_list_rank_error_component.R
 R/taxa_list_validation_error.R
@@ -767,6 +774,7 @@ docs/AnnotationPermission.md
 docs/AnnotationRequest.md
 docs/AppUserTokenObtainPair.md
 docs/AppUserTokenObtainPairRequest.md
+docs/AreaMeta.md
 docs/Assignment.md
 docs/AudienceFilter.md
 docs/AudienceFilterRequest.md
@@ -1385,6 +1393,7 @@ docs/PaginatedNotificationList.md
 docs/PaginatedObservationList.md
 docs/PaginatedPartnerList.md
 docs/PaginatedPhotoPredictionList.md
+docs/PaginatedReportStatsResponseList.md
 docs/PaginatedTaxonList.md
 docs/PaginatedUserList.md
 docs/PaginatedWorkspaceCollaborationGroupList.md
@@ -1454,6 +1463,9 @@ docs/Point.md
 docs/PointRequest.md
 docs/PredictionScore.md
 docs/PredictionScoreRequest.md
+docs/ReportStatsMeta.md
+docs/ReportStatsResponse.md
+docs/ReportStatsRow.md
 docs/ReviewPermission.md
 docs/SimpleAnnotatorUser.md
 docs/SimplePhoto.md
@@ -1467,6 +1479,8 @@ docs/SpeciesCharacteristics.md
 docs/SpeciesCharacteristicsRequest.md
 docs/SpeciesClassification.md
 docs/SpeciesClassificationRequest.md
+docs/StatisticsPermission.md
+docs/StatsApi.md
 docs/TaxaApi.md
 docs/TaxaListRankErrorComponent.md
 docs/TaxaListValidationError.md
@@ -1518,6 +1532,7 @@ tests/testthat/test_annotation_permission.R
 tests/testthat/test_annotation_request.R
 tests/testthat/test_app_user_token_obtain_pair.R
 tests/testthat/test_app_user_token_obtain_pair_request.R
+tests/testthat/test_area_meta.R
 tests/testthat/test_assignment.R
 tests/testthat/test_audience_filter.R
 tests/testthat/test_audience_filter_request.R
@@ -2136,6 +2151,7 @@ tests/testthat/test_paginated_notification_list.R
 tests/testthat/test_paginated_observation_list.R
 tests/testthat/test_paginated_partner_list.R
 tests/testthat/test_paginated_photo_prediction_list.R
+tests/testthat/test_paginated_report_stats_response_list.R
 tests/testthat/test_paginated_taxon_list.R
 tests/testthat/test_paginated_user_list.R
 tests/testthat/test_paginated_workspace_collaboration_group_list.R
@@ -2205,6 +2221,9 @@ tests/testthat/test_point.R
 tests/testthat/test_point_request.R
 tests/testthat/test_prediction_score.R
 tests/testthat/test_prediction_score_request.R
+tests/testthat/test_report_stats_meta.R
+tests/testthat/test_report_stats_response.R
+tests/testthat/test_report_stats_row.R
 tests/testthat/test_review_permission.R
 tests/testthat/test_simple_annotator_user.R
 tests/testthat/test_simple_photo.R
@@ -2218,6 +2237,8 @@ tests/testthat/test_species_characteristics.R
 tests/testthat/test_species_characteristics_request.R
 tests/testthat/test_species_classification.R
 tests/testthat/test_species_classification_request.R
+tests/testthat/test_statistics_permission.R
+tests/testthat/test_stats_api.R
 tests/testthat/test_taxa_api.R
 tests/testthat/test_taxa_list_rank_error_component.R
 tests/testthat/test_taxa_list_validation_error.R

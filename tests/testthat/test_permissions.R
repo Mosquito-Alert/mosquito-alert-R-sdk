@@ -32,3 +32,10 @@ test_that("message", {
   # uncomment below to test the property
   #expect_equal(model.instance$`message`, "EXPECTED_RESULT")
 })
+
+test_that("statistics", {
+  # tests for the property `statistics` (StatisticsPermission)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`statistics`, "EXPECTED_RESULT")
+})

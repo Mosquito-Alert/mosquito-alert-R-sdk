@@ -11,6 +11,7 @@
 #' @field identification_task  \link{IdentificationTaskPermission}
 #' @field review  \link{ReviewPermission}
 #' @field message  \link{MessagePermission}
+#' @field statistics  \link{StatisticsPermission}
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -21,6 +22,7 @@ Permissions <- R6::R6Class(
     `identification_task` = NULL,
     `review` = NULL,
     `message` = NULL,
+    `statistics` = NULL,
 
     #' @description
     #' Initialize a new Permissions class.
@@ -29,8 +31,9 @@ Permissions <- R6::R6Class(
     #' @param identification_task identification_task
     #' @param review review
     #' @param message message
+    #' @param statistics statistics
     #' @param ... Other optional arguments.
-    initialize = function(`annotation`, `identification_task`, `review`, `message`, ...) {
+    initialize = function(`annotation`, `identification_task`, `review`, `message`, `statistics`, ...) {
       if (!missing(`annotation`)) {
         stopifnot(R6::is.R6(`annotation`))
         self$`annotation` <- `annotation`
@@ -46,6 +49,10 @@ Permissions <- R6::R6Class(
       if (!missing(`message`)) {
         stopifnot(R6::is.R6(`message`))
         self$`message` <- `message`
+      }
+      if (!missing(`statistics`)) {
+        stopifnot(R6::is.R6(`statistics`))
+        self$`statistics` <- `statistics`
       }
     },
 
@@ -95,6 +102,10 @@ Permissions <- R6::R6Class(
       if (!is.null(self$`message`)) {
         PermissionsObject[["message"]] <-
           self$extractSimpleType(self$`message`)
+      }
+      if (!is.null(self$`statistics`)) {
+        PermissionsObject[["statistics"]] <-
+          self$extractSimpleType(self$`statistics`)
       }
       return(PermissionsObject)
     },
@@ -149,6 +160,11 @@ Permissions <- R6::R6Class(
         `message_object`$fromJSON(jsonlite::toJSON(this_object$`message`, auto_unbox = TRUE, digits = NA))
         self$`message` <- `message_object`
       }
+      if (!is.null(this_object$`statistics`)) {
+        `statistics_object` <- StatisticsPermission$new()
+        `statistics_object`$fromJSON(jsonlite::toJSON(this_object$`statistics`, auto_unbox = TRUE, digits = NA))
+        self$`statistics` <- `statistics_object`
+      }
       self
     },
 
@@ -174,6 +190,7 @@ Permissions <- R6::R6Class(
       self$`identification_task` <- IdentificationTaskPermission$new()$fromJSON(jsonlite::toJSON(this_object$`identification_task`, auto_unbox = TRUE, digits = NA))
       self$`review` <- ReviewPermission$new()$fromJSON(jsonlite::toJSON(this_object$`review`, auto_unbox = TRUE, digits = NA))
       self$`message` <- MessagePermission$new()$fromJSON(jsonlite::toJSON(this_object$`message`, auto_unbox = TRUE, digits = NA))
+      self$`statistics` <- StatisticsPermission$new()$fromJSON(jsonlite::toJSON(this_object$`statistics`, auto_unbox = TRUE, digits = NA))
       self
     },
 
@@ -206,6 +223,12 @@ Permissions <- R6::R6Class(
         stopifnot(R6::is.R6(input_json$`message`))
       } else {
         stop(paste("The JSON input `", input, "` is invalid for Permissions: the required field `message` is missing."))
+      }
+      # check the required field `statistics`
+      if (!is.null(input_json$`statistics`)) {
+        stopifnot(R6::is.R6(input_json$`statistics`))
+      } else {
+        stop(paste("The JSON input `", input, "` is invalid for Permissions: the required field `statistics` is missing."))
       }
     },
 
@@ -242,6 +265,11 @@ Permissions <- R6::R6Class(
         return(FALSE)
       }
 
+      # check if the required `statistics` is null
+      if (is.null(self$`statistics`)) {
+        return(FALSE)
+      }
+
       TRUE
     },
 
@@ -269,6 +297,11 @@ Permissions <- R6::R6Class(
       # check if the required `message` is null
       if (is.null(self$`message`)) {
         invalid_fields["message"] <- "Non-nullable required field `message` cannot be null."
+      }
+
+      # check if the required `statistics` is null
+      if (is.null(self$`statistics`)) {
+        invalid_fields["statistics"] <- "Non-nullable required field `statistics` cannot be null."
       }
 
       invalid_fields

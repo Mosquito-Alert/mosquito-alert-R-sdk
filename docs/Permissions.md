@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **identification_task** | [**IdentificationTaskPermission**](IdentificationTaskPermission.md) |  | 
 **review** | [**ReviewPermission**](ReviewPermission.md) |  | 
 **message** | [**MessagePermission**](MessagePermission.md) |  | 
+**statistics** | [**StatisticsPermission**](StatisticsPermission.md) |  | 
 
 

@@ -35,6 +35,7 @@
 #' @field permissions_api an instance of PermissionsApi
 #' @field photos_api an instance of PhotosApi
 #' @field ping_api an instance of PingApi
+#' @field stats_api an instance of StatsApi
 #' @field taxa_api an instance of TaxaApi
 #' @field users_api an instance of UsersApi
 #' @field workspaces_api an instance of WorkspacesApi
@@ -59,6 +60,7 @@ mosquitoalert_api <- R6::R6Class(
     permissions_api = NULL,
     photos_api = NULL,
     ping_api = NULL,
+    stats_api = NULL,
     taxa_api = NULL,
     users_api = NULL,
     workspaces_api = NULL,
@@ -107,6 +109,8 @@ mosquitoalert_api <- R6::R6Class(
       self$photos_api <- PhotosApi$new(self$api_client)
 
       self$ping_api <- PingApi$new(self$api_client)
+
+      self$stats_api <- StatsApi$new(self$api_client)
 
       self$taxa_api <- TaxaApi$new(self$api_client)
 

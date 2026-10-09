@@ -142,6 +142,7 @@ Class | Method | HTTP request | Description
 *PhotosApi* | [**prediction_update**](docs/PhotosApi.md#prediction_update) | **PUT** /photos/{uuid}/prediction/ | 
 *PhotosApi* | [**retrieve**](docs/PhotosApi.md#retrieve) | **GET** /photos/{uuid}/ | 
 *PingApi* | [**retrieve**](docs/PingApi.md#retrieve) | **GET** /ping/ | 
+*StatsApi* | [**list**](docs/StatsApi.md#list) | **GET** /stats/ | 
 *TaxaApi* | [**list**](docs/TaxaApi.md#list) | **GET** /taxa/ | 
 *TaxaApi* | [**retrieve**](docs/TaxaApi.md#retrieve) | **GET** /taxa/{id}/ | 
 *TaxaApi* | [**root_tree_retrieve**](docs/TaxaApi.md#root_tree_retrieve) | **GET** /taxa/tree/ | 
@@ -171,6 +172,7 @@ Class | Method | HTTP request | Description
  - [AnnotationRequest](docs/AnnotationRequest.md)
  - [AppUserTokenObtainPair](docs/AppUserTokenObtainPair.md)
  - [AppUserTokenObtainPairRequest](docs/AppUserTokenObtainPairRequest.md)
+ - [AreaMeta](docs/AreaMeta.md)
  - [Assignment](docs/Assignment.md)
  - [AudienceFilter](docs/AudienceFilter.md)
  - [AudienceFilterRequest](docs/AudienceFilterRequest.md)
@@ -777,6 +779,7 @@ Class | Method | HTTP request | Description
  - [PaginatedObservationList](docs/PaginatedObservationList.md)
  - [PaginatedPartnerList](docs/PaginatedPartnerList.md)
  - [PaginatedPhotoPredictionList](docs/PaginatedPhotoPredictionList.md)
+ - [PaginatedReportStatsResponseList](docs/PaginatedReportStatsResponseList.md)
  - [PaginatedTaxonList](docs/PaginatedTaxonList.md)
  - [PaginatedUserList](docs/PaginatedUserList.md)
  - [PaginatedWorkspaceCollaborationGroupList](docs/PaginatedWorkspaceCollaborationGroupList.md)
@@ -842,6 +845,9 @@ Class | Method | HTTP request | Description
  - [PointRequest](docs/PointRequest.md)
  - [PredictionScore](docs/PredictionScore.md)
  - [PredictionScoreRequest](docs/PredictionScoreRequest.md)
+ - [ReportStatsMeta](docs/ReportStatsMeta.md)
+ - [ReportStatsResponse](docs/ReportStatsResponse.md)
+ - [ReportStatsRow](docs/ReportStatsRow.md)
  - [ReviewPermission](docs/ReviewPermission.md)
  - [SimpleAnnotatorUser](docs/SimpleAnnotatorUser.md)
  - [SimplePhoto](docs/SimplePhoto.md)
@@ -855,6 +861,7 @@ Class | Method | HTTP request | Description
  - [SpeciesCharacteristicsRequest](docs/SpeciesCharacteristicsRequest.md)
  - [SpeciesClassification](docs/SpeciesClassification.md)
  - [SpeciesClassificationRequest](docs/SpeciesClassificationRequest.md)
+ - [StatisticsPermission](docs/StatisticsPermission.md)
  - [TaxaListRankErrorComponent](docs/TaxaListRankErrorComponent.md)
  - [TaxaListValidationError](docs/TaxaListValidationError.md)
  - [Taxon](docs/Taxon.md)
