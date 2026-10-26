@@ -178,11 +178,6 @@ SimplePhoto <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `url` is null
-      if (is.null(self$`url`)) {
-        return(FALSE)
-      }
-
       TRUE
     },
 
@@ -195,11 +190,6 @@ SimplePhoto <- R6::R6Class(
       # check if the required `uuid` is null
       if (is.null(self$`uuid`)) {
         invalid_fields["uuid"] <- "Non-nullable required field `uuid` cannot be null."
-      }
-
-      # check if the required `url` is null
-      if (is.null(self$`url`)) {
-        invalid_fields["url"] <- "Non-nullable required field `url` cannot be null."
       }
 
       invalid_fields

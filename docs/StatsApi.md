@@ -4,8 +4,58 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**areas_list**](StatsApi.md#areas_list) | **GET** /stats/areas/ | 
 [**list**](StatsApi.md#list) | **GET** /stats/ | 
 
+
+# **areas_list**
+> array[StatsArea] areas_list()
+
+
+
+Tree of areas (and their subdivisions) the current user can request statistics for. Each node's `key` is the value to send as `?area=`.
+
+### Example
+```R
+library(MosquitoAlert)
+
+
+api_instance <- mosquitoalert_api$new()
+# Configure API key authorization: tokenAuth
+api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
+# Configure API key authorization: cookieAuth
+# api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+# Configure HTTP bearer authorization: jwtAuth
+# api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$areas_list(data_file = "result.txt")
+result <- api_instance$stats_api$areas_list()
+dput(result)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**array[StatsArea]**](StatsArea.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth), [cookieAuth](../README.md#cookieAuth), [jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **200** |  |  -  |
 
 # **list**
 > PaginatedReportStatsResponseList list(area = var.area, cumulative = var.cumulative, date_from = var.date_from, date_to = var.date_to, group_by = var.group_by, interval = var.interval, level = var.level, page = var.page, page_size = var.page_size, type = var.type)

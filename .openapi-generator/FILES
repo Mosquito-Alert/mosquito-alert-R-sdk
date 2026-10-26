@@ -724,6 +724,7 @@ R/species_classification.R
 R/species_classification_request.R
 R/statistics_permission.R
 R/stats_api.R
+R/stats_area.R
 R/taxa_api.R
 R/taxa_list_rank_error_component.R
 R/taxa_list_validation_error.R
@@ -1481,6 +1482,7 @@ docs/SpeciesClassification.md
 docs/SpeciesClassificationRequest.md
 docs/StatisticsPermission.md
 docs/StatsApi.md
+docs/StatsArea.md
 docs/TaxaApi.md
 docs/TaxaListRankErrorComponent.md
 docs/TaxaListValidationError.md
@@ -2239,6 +2241,7 @@ tests/testthat/test_species_classification.R
 tests/testthat/test_species_classification_request.R
 tests/testthat/test_statistics_permission.R
 tests/testthat/test_stats_api.R
+tests/testthat/test_stats_area.R
 tests/testthat/test_taxa_api.R
 tests/testthat/test_taxa_list_rank_error_component.R
 tests/testthat/test_taxa_list_validation_error.R
