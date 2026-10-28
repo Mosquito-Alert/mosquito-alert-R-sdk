@@ -35,7 +35,7 @@
 #' dput(result)
 #'
 #'
-#' ####################  list  ####################
+#' ####################  reports_list  ####################
 #'
 #' library(MosquitoAlert)
 #' var_area <- "area_example" # character | \"\\<level\\>:\\<id\\>\", e.g. \"country:ES\" or \"nuts2:34\". (Optional)
@@ -59,8 +59,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list(area = var_area, cumulative = var_cumulative, date_from = var_date_from, date_to = var_date_to, group_by = var_group_by, interval = var_interval, level = var_level, type = var_typedata_file = "result.txt")
-#' result <- api_instance$stats_api$list(area = var_area, cumulative = var_cumulative, date_from = var_date_from, date_to = var_date_to, group_by = var_group_by, interval = var_interval, level = var_level, type = var_type)
+#' # result <- api_instance$reports_list(area = var_area, cumulative = var_cumulative, date_from = var_date_from, date_to = var_date_to, group_by = var_group_by, interval = var_interval, level = var_level, type = var_typedata_file = "result.txt")
+#' result <- api_instance$stats_api$reports_list(area = var_area, cumulative = var_cumulative, date_from = var_date_from, date_to = var_date_to, group_by = var_group_by, interval = var_interval, level = var_level, type = var_type)
 #' dput(result)
 #'
 #'
@@ -207,8 +207,8 @@ StatsApi <- R6::R6Class(
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return array[ReportStatsResponse]
-    list = function(area = NULL, cumulative = NULL, date_from = NULL, date_to = NULL, group_by = NULL, interval = NULL, level = NULL, type = NULL, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$list_with_http_info(area, cumulative, date_from, date_to, group_by, interval, level, type, data_file = data_file, ..., .parse = .parse)
+    reports_list = function(area = NULL, cumulative = NULL, date_from = NULL, date_to = NULL, group_by = NULL, interval = NULL, level = NULL, type = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$reports_list_with_http_info(area, cumulative, date_from, date_to, group_by, interval, level, type, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -236,7 +236,7 @@ StatsApi <- R6::R6Class(
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (array[ReportStatsResponse]) with additional information such as HTTP status code, headers
-    list_with_http_info = function(area = NULL, cumulative = NULL, date_from = NULL, date_to = NULL, group_by = NULL, interval = NULL, level = NULL, type = NULL, data_file = NULL, ..., .parse = TRUE) {
+    reports_list_with_http_info = function(area = NULL, cumulative = NULL, date_from = NULL, date_to = NULL, group_by = NULL, interval = NULL, level = NULL, type = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -247,35 +247,35 @@ StatsApi <- R6::R6Class(
       is_oauth <- FALSE
 
       if (!missing(`area`) && is.null(`area`)) {
-        stop("Invalid value for `area` when calling StatsApi$list, `area` is not nullable")
+        stop("Invalid value for `area` when calling StatsApi$reports_list, `area` is not nullable")
       }
 
       if (!missing(`cumulative`) && is.null(`cumulative`)) {
-        stop("Invalid value for `cumulative` when calling StatsApi$list, `cumulative` is not nullable")
+        stop("Invalid value for `cumulative` when calling StatsApi$reports_list, `cumulative` is not nullable")
       }
 
       if (!missing(`date_from`) && is.null(`date_from`)) {
-        stop("Invalid value for `date_from` when calling StatsApi$list, `date_from` is not nullable")
+        stop("Invalid value for `date_from` when calling StatsApi$reports_list, `date_from` is not nullable")
       }
 
       if (!missing(`date_to`) && is.null(`date_to`)) {
-        stop("Invalid value for `date_to` when calling StatsApi$list, `date_to` is not nullable")
+        stop("Invalid value for `date_to` when calling StatsApi$reports_list, `date_to` is not nullable")
       }
 
       if (!missing(`group_by`) && is.null(`group_by`)) {
-        stop("Invalid value for `group_by` when calling StatsApi$list, `group_by` is not nullable")
+        stop("Invalid value for `group_by` when calling StatsApi$reports_list, `group_by` is not nullable")
       }
 
       if (!missing(`interval`) && is.null(`interval`)) {
-        stop("Invalid value for `interval` when calling StatsApi$list, `interval` is not nullable")
+        stop("Invalid value for `interval` when calling StatsApi$reports_list, `interval` is not nullable")
       }
 
       if (!missing(`level`) && is.null(`level`)) {
-        stop("Invalid value for `level` when calling StatsApi$list, `level` is not nullable")
+        stop("Invalid value for `level` when calling StatsApi$reports_list, `level` is not nullable")
       }
 
       if (!missing(`type`) && is.null(`type`)) {
-        stop("Invalid value for `type` when calling StatsApi$list, `type` is not nullable")
+        stop("Invalid value for `type` when calling StatsApi$reports_list, `type` is not nullable")
       }
 
       query_params[["area"]] <- `area`
@@ -290,18 +290,18 @@ StatsApi <- R6::R6Class(
       # validate enum values
       for (query_item in `group_by`) {
         if (!is.null(query_item) && !(query_item %in% c("date", "type", "region"))) {
-          stop("Invalid value for group_by when calling StatsApi$list. Must be [date, type, region].")
+          stop("Invalid value for group_by when calling StatsApi$reports_list. Must be [date, type, region].")
         }
       }
       query_params[["group_by"]] <- I(paste(lapply(`group_by`, URLencode, reserved = TRUE), collapse = ","))
 
       if (!is.null(`interval`) && !(`interval` %in% c("day", "month", "week"))) {
-        stop("Invalid value for interval when calling StatsApi$list. Must be [day, month, week].")
+        stop("Invalid value for interval when calling StatsApi$reports_list. Must be [day, month, week].")
       }
       query_params[["interval"]] <- `interval`
 
       if (!is.null(`level`) && !(`level` %in% c("2", "3"))) {
-        stop("Invalid value for level when calling StatsApi$list. Must be [2, 3].")
+        stop("Invalid value for level when calling StatsApi$reports_list. Must be [2, 3].")
       }
       query_params[["level"]] <- `level`
 
@@ -309,12 +309,12 @@ StatsApi <- R6::R6Class(
       # validate enum values
       for (query_item in `type`) {
         if (!is.null(query_item) && !(query_item %in% c("bite", "adult", "site"))) {
-          stop("Invalid value for type when calling StatsApi$list. Must be [bite, adult, site].")
+          stop("Invalid value for type when calling StatsApi$reports_list. Must be [bite, adult, site].")
         }
       }
       query_params[["type"]] <- I(paste(lapply(`type`, URLencode, reserved = TRUE), collapse = ","))
 
-      local_var_url_path <- "/stats/"
+      local_var_url_path <- "/stats/reports/"
       # API key authentication
       if ("Authorization" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["Authorization"]) > 0) {
         header_params["Authorization"] <- paste(unlist(self$api_client$api_keys["Authorization"]), collapse = "")

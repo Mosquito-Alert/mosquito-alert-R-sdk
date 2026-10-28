@@ -5,7 +5,7 @@ All URIs are relative to *https://api.mosquitoalert.com/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**areas_list**](StatsApi.md#areas_list) | **GET** /stats/areas/ | 
-[**list**](StatsApi.md#list) | **GET** /stats/ | 
+[**reports_list**](StatsApi.md#reports_list) | **GET** /stats/reports/ | 
 
 
 # **areas_list**
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 
-Tree of areas (and their subdivisions) the current user can request statistics for. Each node's `key` is the value to send as `?area=`.
+Tree of areas (and their subdivisions) the current user can request statistics for. Each node's `key` is the value to send as `?area=` .
 
 ### Example
 ```R
@@ -57,8 +57,8 @@ This endpoint does not need any parameter.
 | **404** |  |  -  |
 | **200** |  |  -  |
 
-# **list**
-> array[ReportStatsResponse] list(area = var.area, cumulative = var.cumulative, date_from = var.date_from, date_to = var.date_to, group_by = var.group_by, interval = var.interval, level = var.level, type = var.type)
+# **reports_list**
+> array[ReportStatsResponse] reports_list(area = var.area, cumulative = var.cumulative, date_from = var.date_from, date_to = var.date_to, group_by = var.group_by, interval = var.interval, level = var.level, type = var.type)
 
 
 
@@ -86,8 +86,8 @@ api_instance$api_client$api_keys["Authorization"] <- Sys.getenv("API_KEY")
 # Configure HTTP bearer authorization: jwtAuth
 # api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-# result <- api_instance$list(area = var_area, cumulative = var_cumulative, date_from = var_date_from, date_to = var_date_to, group_by = var_group_by, interval = var_interval, level = var_level, type = var_typedata_file = "result.txt")
-result <- api_instance$stats_api$list(area = var_area, cumulative = var_cumulative, date_from = var_date_from, date_to = var_date_to, group_by = var_group_by, interval = var_interval, level = var_level, type = var_type)
+# result <- api_instance$reports_list(area = var_area, cumulative = var_cumulative, date_from = var_date_from, date_to = var_date_to, group_by = var_group_by, interval = var_interval, level = var_level, type = var_typedata_file = "result.txt")
+result <- api_instance$stats_api$reports_list(area = var_area, cumulative = var_cumulative, date_from = var_date_from, date_to = var_date_to, group_by = var_group_by, interval = var_interval, level = var_level, type = var_type)
 dput(result)
 ```
 
