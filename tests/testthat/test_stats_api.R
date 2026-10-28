@@ -26,10 +26,8 @@ test_that("list", {
   # @param group_by array[character] Comma-separated subset of: date, type, region. (optional)
   # @param interval character The interval at which to aggregate data when grouping by date. Defaults to week. (optional)
   # @param level integer The NUTS level to aggregate by when grouping by region. Defaults to NUTS 2. (optional)
-  # @param page integer A page number within the paginated result set. (optional)
-  # @param page_size integer Number of results to return per page. (optional)
   # @param type array[character] Comma-separated subset of: bite, adult, site. (optional)
-  # @return [PaginatedReportStatsResponseList]
+  # @return [array[ReportStatsResponse]]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

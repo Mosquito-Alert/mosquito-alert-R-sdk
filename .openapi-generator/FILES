@@ -636,7 +636,6 @@ R/paginated_notification_list.R
 R/paginated_observation_list.R
 R/paginated_partner_list.R
 R/paginated_photo_prediction_list.R
-R/paginated_report_stats_response_list.R
 R/paginated_taxon_list.R
 R/paginated_user_list.R
 R/paginated_workspace_collaboration_group_list.R
@@ -1394,7 +1393,6 @@ docs/PaginatedNotificationList.md
 docs/PaginatedObservationList.md
 docs/PaginatedPartnerList.md
 docs/PaginatedPhotoPredictionList.md
-docs/PaginatedReportStatsResponseList.md
 docs/PaginatedTaxonList.md
 docs/PaginatedUserList.md
 docs/PaginatedWorkspaceCollaborationGroupList.md
@@ -2153,7 +2151,6 @@ tests/testthat/test_paginated_notification_list.R
 tests/testthat/test_paginated_observation_list.R
 tests/testthat/test_paginated_partner_list.R
 tests/testthat/test_paginated_photo_prediction_list.R
-tests/testthat/test_paginated_report_stats_response_list.R
 tests/testthat/test_paginated_taxon_list.R
 tests/testthat/test_paginated_user_list.R
 tests/testthat/test_paginated_workspace_collaboration_group_list.R

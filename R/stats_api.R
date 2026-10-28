@@ -45,8 +45,6 @@
 #' var_group_by <- c("date") # array[character] | Comma-separated subset of: date, type, region. (Optional)
 #' var_interval <- "interval_example" # character | The interval at which to aggregate data when grouping by date. Defaults to week. (Optional)
 #' var_level <- 56 # integer | The NUTS level to aggregate by when grouping by region. Defaults to NUTS 2. (Optional)
-#' var_page <- 56 # integer | A page number within the paginated result set. (Optional)
-#' var_page_size <- 56 # integer | Number of results to return per page. (Optional)
 #' var_type <- c("bite") # array[character] | Comma-separated subset of: bite, adult, site. (Optional)
 #'
 #' api_instance <- mosquitoalert_api$new()
@@ -61,8 +59,8 @@
 #' api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$list(area = var_area, cumulative = var_cumulative, date_from = var_date_from, date_to = var_date_to, group_by = var_group_by, interval = var_interval, level = var_level, page = var_page, page_size = var_page_size, type = var_typedata_file = "result.txt")
-#' result <- api_instance$stats_api$list(area = var_area, cumulative = var_cumulative, date_from = var_date_from, date_to = var_date_to, group_by = var_group_by, interval = var_interval, level = var_level, page = var_page, page_size = var_page_size, type = var_type)
+#' # result <- api_instance$list(area = var_area, cumulative = var_cumulative, date_from = var_date_from, date_to = var_date_to, group_by = var_group_by, interval = var_interval, level = var_level, type = var_typedata_file = "result.txt")
+#' result <- api_instance$stats_api$list(area = var_area, cumulative = var_cumulative, date_from = var_date_from, date_to = var_date_to, group_by = var_group_by, interval = var_interval, level = var_level, type = var_type)
 #' dput(result)
 #'
 #'
@@ -203,16 +201,14 @@ StatsApi <- R6::R6Class(
     #' @param group_by (optional) Comma-separated subset of: date, type, region.
     #' @param interval (optional) The interval at which to aggregate data when grouping by date. Defaults to week.
     #' @param level (optional) The NUTS level to aggregate by when grouping by region. Defaults to NUTS 2.
-    #' @param page (optional) A page number within the paginated result set.
-    #' @param page_size (optional) Number of results to return per page.
     #' @param type (optional) Comma-separated subset of: bite, adult, site.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return PaginatedReportStatsResponseList
-    list = function(area = NULL, cumulative = NULL, date_from = NULL, date_to = NULL, group_by = NULL, interval = NULL, level = NULL, page = NULL, page_size = NULL, type = NULL, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$list_with_http_info(area, cumulative, date_from, date_to, group_by, interval, level, page, page_size, type, data_file = data_file, ..., .parse = .parse)
+    #' @return array[ReportStatsResponse]
+    list = function(area = NULL, cumulative = NULL, date_from = NULL, date_to = NULL, group_by = NULL, interval = NULL, level = NULL, type = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$list_with_http_info(area, cumulative, date_from, date_to, group_by, interval, level, type, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -234,15 +230,13 @@ StatsApi <- R6::R6Class(
     #' @param group_by (optional) Comma-separated subset of: date, type, region.
     #' @param interval (optional) The interval at which to aggregate data when grouping by date. Defaults to week.
     #' @param level (optional) The NUTS level to aggregate by when grouping by region. Defaults to NUTS 2.
-    #' @param page (optional) A page number within the paginated result set.
-    #' @param page_size (optional) Number of results to return per page.
     #' @param type (optional) Comma-separated subset of: bite, adult, site.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return API response (PaginatedReportStatsResponseList) with additional information such as HTTP status code, headers
-    list_with_http_info = function(area = NULL, cumulative = NULL, date_from = NULL, date_to = NULL, group_by = NULL, interval = NULL, level = NULL, page = NULL, page_size = NULL, type = NULL, data_file = NULL, ..., .parse = TRUE) {
+    #' @return API response (array[ReportStatsResponse]) with additional information such as HTTP status code, headers
+    list_with_http_info = function(area = NULL, cumulative = NULL, date_from = NULL, date_to = NULL, group_by = NULL, interval = NULL, level = NULL, type = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -280,14 +274,6 @@ StatsApi <- R6::R6Class(
         stop("Invalid value for `level` when calling StatsApi$list, `level` is not nullable")
       }
 
-      if (!missing(`page`) && is.null(`page`)) {
-        stop("Invalid value for `page` when calling StatsApi$list, `page` is not nullable")
-      }
-
-      if (!missing(`page_size`) && is.null(`page_size`)) {
-        stop("Invalid value for `page_size` when calling StatsApi$list, `page_size` is not nullable")
-      }
-
       if (!missing(`type`) && is.null(`type`)) {
         stop("Invalid value for `type` when calling StatsApi$list, `type` is not nullable")
       }
@@ -318,10 +304,6 @@ StatsApi <- R6::R6Class(
         stop("Invalid value for level when calling StatsApi$list. Must be [2, 3].")
       }
       query_params[["level"]] <- `level`
-
-      query_params[["page"]] <- `page`
-
-      query_params[["page_size"]] <- `page_size`
 
       # no explore
       # validate enum values
@@ -373,7 +355,7 @@ StatsApi <- R6::R6Class(
         }
 
         deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "PaginatedReportStatsResponseList"),
+          self$api_client$DeserializeResponse(local_var_resp, "array[ReportStatsResponse]"),
           error = function(e) {
             stop("Failed to deserialize response")
           }
