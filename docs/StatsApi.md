@@ -58,7 +58,7 @@ This endpoint does not need any parameter.
 | **200** |  |  -  |
 
 # **reports_list**
-> array[ReportStatsResponse] reports_list(area = var.area, cumulative = var.cumulative, date_from = var.date_from, date_to = var.date_to, group_by = var.group_by, interval = var.interval, level = var.level, type = var.type)
+> ReportStatsResponse reports_list(area = var.area, cumulative = var.cumulative, date_from = var.date_from, date_to = var.date_to, group_by = var.group_by, interval = var.interval, level = var.level, type = var.type)
 
 
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**array[ReportStatsResponse]**](ReportStatsResponse.md)
+[**ReportStatsResponse**](ReportStatsResponse.md)
 
 ### Authorization
 

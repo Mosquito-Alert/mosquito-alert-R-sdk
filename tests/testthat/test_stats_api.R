@@ -27,7 +27,7 @@ test_that("reports_list", {
   # @param interval character The interval at which to aggregate data when grouping by date. Defaults to week. (optional)
   # @param level integer The NUTS level to aggregate by when grouping by region. Defaults to NUTS 2. (optional)
   # @param type array[character] Comma-separated subset of: bite, adult, site. (optional)
-  # @return [array[ReportStatsResponse]]
+  # @return [ReportStatsResponse]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

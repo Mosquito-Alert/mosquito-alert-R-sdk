@@ -206,7 +206,7 @@ StatsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return array[ReportStatsResponse]
+    #' @return ReportStatsResponse
     reports_list = function(area = NULL, cumulative = NULL, date_from = NULL, date_to = NULL, group_by = NULL, interval = NULL, level = NULL, type = NULL, data_file = NULL, ..., .parse = TRUE) {
       local_var_response <- self$reports_list_with_http_info(area, cumulative, date_from, date_to, group_by, interval, level, type, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
@@ -235,7 +235,7 @@ StatsApi <- R6::R6Class(
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return API response (array[ReportStatsResponse]) with additional information such as HTTP status code, headers
+    #' @return API response (ReportStatsResponse) with additional information such as HTTP status code, headers
     reports_list_with_http_info = function(area = NULL, cumulative = NULL, date_from = NULL, date_to = NULL, group_by = NULL, interval = NULL, level = NULL, type = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
@@ -355,7 +355,7 @@ StatsApi <- R6::R6Class(
         }
 
         deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "array[ReportStatsResponse]"),
+          self$api_client$DeserializeResponse(local_var_resp, "ReportStatsResponse"),
           error = function(e) {
             stop("Failed to deserialize response")
           }
