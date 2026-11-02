@@ -32,3 +32,10 @@ test_that("delete", {
   # uncomment below to test the property
   #expect_equal(model.instance$`delete`, "EXPECTED_RESULT")
 })
+
+test_that("view_world", {
+  # tests for the property `view_world` (character)
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`view_world`, "EXPECTED_RESULT")
+})
