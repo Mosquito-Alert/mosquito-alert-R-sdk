@@ -23,7 +23,7 @@ test_that("reports_list", {
   # @param cumulative character Whether to return cumulative counts over time. It only applies when grouping by date. Defaults to False. (optional)
   # @param date_from character  (optional)
   # @param date_to character  (optional)
-  # @param group_by array[character] Comma-separated subset of: date, type, region. (optional)
+  # @param group_by array[character] Comma-separated subset of: date, type, region, country. (optional)
   # @param interval character The interval at which to aggregate data when grouping by date. Defaults to week. (optional)
   # @param level integer The NUTS level to aggregate by when grouping by region. Defaults to NUTS 2. (optional)
   # @param type array[character] Comma-separated subset of: bite, adult, site. (optional)

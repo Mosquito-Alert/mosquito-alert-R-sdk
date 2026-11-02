@@ -73,7 +73,7 @@ var_area <- "area_example" # character | \"\\<level\\>:\\<id\\>\", e.g. \"countr
 var_cumulative <- "cumulative_example" # character | Whether to return cumulative counts over time. It only applies when grouping by date. Defaults to False. (Optional)
 var_date_from <- "date_from_example" # character |  (Optional)
 var_date_to <- "date_to_example" # character |  (Optional)
-var_group_by <- c("date") # array[character] | Comma-separated subset of: date, type, region. (Optional)
+var_group_by <- c("date") # array[character] | Comma-separated subset of: date, type, region, country. (Optional)
 var_interval <- "interval_example" # character | The interval at which to aggregate data when grouping by date. Defaults to week. (Optional)
 var_level <- 56 # integer | The NUTS level to aggregate by when grouping by region. Defaults to NUTS 2. (Optional)
 var_type <- c("bite") # array[character] | Comma-separated subset of: bite, adult, site. (Optional)
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
  **cumulative** | **character**| Whether to return cumulative counts over time. It only applies when grouping by date. Defaults to False. | [optional] 
  **date_from** | **character**|  | [optional] 
  **date_to** | **character**|  | [optional] 
- **group_by** | Enum [date, type, region] | Comma-separated subset of: date, type, region. | [optional] 
+ **group_by** | Enum [date, type, region, country] | Comma-separated subset of: date, type, region, country. | [optional] 
  **interval** | Enum [day, month, week] | The interval at which to aggregate data when grouping by date. Defaults to week. | [optional] 
  **level** | Enum [2, 3] | The NUTS level to aggregate by when grouping by region. Defaults to NUTS 2. | [optional] 
  **type** | Enum [bite, adult, site] | Comma-separated subset of: bite, adult, site. | [optional] 

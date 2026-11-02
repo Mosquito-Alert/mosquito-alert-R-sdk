@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **change** | **character** |  | 
 **view** | **character** |  | 
 **delete** | **character** |  | 
+**view_world** | **character** |  | [readonly] 
 
 
