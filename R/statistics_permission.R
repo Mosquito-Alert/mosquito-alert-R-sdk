@@ -11,7 +11,6 @@
 #' @field change  character
 #' @field view  character
 #' @field delete  character
-#' @field view_world  character
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -22,7 +21,6 @@ StatisticsPermission <- R6::R6Class(
     `change` = NULL,
     `view` = NULL,
     `delete` = NULL,
-    `view_world` = NULL,
 
     #' @description
     #' Initialize a new StatisticsPermission class.
@@ -31,9 +29,8 @@ StatisticsPermission <- R6::R6Class(
     #' @param change change
     #' @param view view
     #' @param delete delete
-    #' @param view_world view_world
     #' @param ... Other optional arguments.
-    initialize = function(`add`, `change`, `view`, `delete`, `view_world`, ...) {
+    initialize = function(`add`, `change`, `view`, `delete`, ...) {
       if (!missing(`add`)) {
         if (!(is.logical(`add`) && length(`add`) == 1)) {
           stop(paste("Error! Invalid data for `add`. Must be a boolean:", `add`))
@@ -57,12 +54,6 @@ StatisticsPermission <- R6::R6Class(
           stop(paste("Error! Invalid data for `delete`. Must be a boolean:", `delete`))
         }
         self$`delete` <- `delete`
-      }
-      if (!missing(`view_world`)) {
-        if (!(is.logical(`view_world`) && length(`view_world`) == 1)) {
-          stop(paste("Error! Invalid data for `view_world`. Must be a boolean:", `view_world`))
-        }
-        self$`view_world` <- `view_world`
       }
     },
 
@@ -113,10 +104,6 @@ StatisticsPermission <- R6::R6Class(
         StatisticsPermissionObject[["delete"]] <-
           self$`delete`
       }
-      if (!is.null(self$`view_world`)) {
-        StatisticsPermissionObject[["view_world"]] <-
-          self$`view_world`
-      }
       return(StatisticsPermissionObject)
     },
 
@@ -138,9 +125,6 @@ StatisticsPermission <- R6::R6Class(
       }
       if (!is.null(this_object$`delete`)) {
         self$`delete` <- this_object$`delete`
-      }
-      if (!is.null(this_object$`view_world`)) {
-        self$`view_world` <- this_object$`view_world`
       }
       self
     },
@@ -167,7 +151,6 @@ StatisticsPermission <- R6::R6Class(
       self$`change` <- this_object$`change`
       self$`view` <- this_object$`view`
       self$`delete` <- this_object$`delete`
-      self$`view_world` <- this_object$`view_world`
       self
     },
 
@@ -209,14 +192,6 @@ StatisticsPermission <- R6::R6Class(
       } else {
         stop(paste("The JSON input `", input, "` is invalid for StatisticsPermission: the required field `delete` is missing."))
       }
-      # check the required field `view_world`
-      if (!is.null(input_json$`view_world`)) {
-        if (!(is.logical(input_json$`view_world`) && length(input_json$`view_world`) == 1)) {
-          stop(paste("Error! Invalid data for `view_world`. Must be a boolean:", input_json$`view_world`))
-        }
-      } else {
-        stop(paste("The JSON input `", input, "` is invalid for StatisticsPermission: the required field `view_world` is missing."))
-      }
     },
 
     #' @description
@@ -252,11 +227,6 @@ StatisticsPermission <- R6::R6Class(
         return(FALSE)
       }
 
-      # check if the required `view_world` is null
-      if (is.null(self$`view_world`)) {
-        return(FALSE)
-      }
-
       TRUE
     },
 
@@ -284,11 +254,6 @@ StatisticsPermission <- R6::R6Class(
       # check if the required `delete` is null
       if (is.null(self$`delete`)) {
         invalid_fields["delete"] <- "Non-nullable required field `delete` cannot be null."
-      }
-
-      # check if the required `view_world` is null
-      if (is.null(self$`view_world`)) {
-        invalid_fields["view_world"] <- "Non-nullable required field `view_world` cannot be null."
       }
 
       invalid_fields

@@ -38,11 +38,11 @@
 #' ####################  reports_list  ####################
 #'
 #' library(MosquitoAlert)
-#' var_area <- "area_example" # character | \"\\<level\\>:\\<id\\>\", e.g. \"country:ES\" or \"nuts2:34\". (Optional)
+#' var_area <- "area_example" # character | \"\\<level\\>:\\<id\\>\", e.g. \"country:ES\" or \"nuts2:34\". If omitted, the request applies to the whole world. (Optional)
 #' var_cumulative <- "cumulative_example" # character | Whether to return cumulative counts over time. It only applies when grouping by date. Defaults to False. (Optional)
 #' var_date_from <- "date_from_example" # character |  (Optional)
 #' var_date_to <- "date_to_example" # character |  (Optional)
-#' var_group_by <- c("date") # array[character] | Comma-separated subset of: date, type, region, country. (Optional)
+#' var_group_by <- c("date") # array[character] | Comma-separated subset of: date, type, region. (Optional)
 #' var_interval <- "interval_example" # character | The interval at which to aggregate data when grouping by date. Defaults to week. (Optional)
 #' var_level <- 56 # integer | The NUTS level to aggregate by when grouping by region. Defaults to NUTS 2. (Optional)
 #' var_type <- c("bite") # array[character] | Comma-separated subset of: bite, adult, site. (Optional)
@@ -194,11 +194,11 @@ StatsApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param area (optional) \"\\<level\\>:\\<id\\>\", e.g. \"country:ES\" or \"nuts2:34\".
+    #' @param area (optional) \"\\<level\\>:\\<id\\>\", e.g. \"country:ES\" or \"nuts2:34\". If omitted, the request applies to the whole world.
     #' @param cumulative (optional) Whether to return cumulative counts over time. It only applies when grouping by date. Defaults to False.
     #' @param date_from (optional) No description
     #' @param date_to (optional) No description
-    #' @param group_by (optional) Comma-separated subset of: date, type, region, country.
+    #' @param group_by (optional) Comma-separated subset of: date, type, region.
     #' @param interval (optional) The interval at which to aggregate data when grouping by date. Defaults to week.
     #' @param level (optional) The NUTS level to aggregate by when grouping by region. Defaults to NUTS 2.
     #' @param type (optional) Comma-separated subset of: bite, adult, site.
@@ -223,11 +223,11 @@ StatsApi <- R6::R6Class(
     #' @description
     #' 
     #'
-    #' @param area (optional) \"\\<level\\>:\\<id\\>\", e.g. \"country:ES\" or \"nuts2:34\".
+    #' @param area (optional) \"\\<level\\>:\\<id\\>\", e.g. \"country:ES\" or \"nuts2:34\". If omitted, the request applies to the whole world.
     #' @param cumulative (optional) Whether to return cumulative counts over time. It only applies when grouping by date. Defaults to False.
     #' @param date_from (optional) No description
     #' @param date_to (optional) No description
-    #' @param group_by (optional) Comma-separated subset of: date, type, region, country.
+    #' @param group_by (optional) Comma-separated subset of: date, type, region.
     #' @param interval (optional) The interval at which to aggregate data when grouping by date. Defaults to week.
     #' @param level (optional) The NUTS level to aggregate by when grouping by region. Defaults to NUTS 2.
     #' @param type (optional) Comma-separated subset of: bite, adult, site.
@@ -289,8 +289,8 @@ StatsApi <- R6::R6Class(
       # no explore
       # validate enum values
       for (query_item in `group_by`) {
-        if (!is.null(query_item) && !(query_item %in% c("date", "type", "region", "country"))) {
-          stop("Invalid value for group_by when calling StatsApi$reports_list. Must be [date, type, region, country].")
+        if (!is.null(query_item) && !(query_item %in% c("date", "type", "region"))) {
+          stop("Invalid value for group_by when calling StatsApi$reports_list. Must be [date, type, region].")
         }
       }
       query_params[["group_by"]] <- I(paste(lapply(`group_by`, URLencode, reserved = TRUE), collapse = ","))

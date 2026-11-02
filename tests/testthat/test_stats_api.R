@@ -19,11 +19,11 @@ test_that("reports_list", {
   # tests for reports_list
   # base path: https://api.mosquitoalert.com/v1
   # Aggregated report counts (for displaying data tables or charts, for example). The keys present on each row of &#x60;data&#x60; depend on &#x60;group_by&#x60; (always includes &#x60;count&#x60;, plus &#x60;date&#x60; if grouped by date, &#x60;region_id&#x60;/&#x60;region_code&#x60;/&#x60;region_name&#x60; if grouped by region, and &#x60;type&#x60; if grouped by type).
-  # @param area character \"\\<level\\>:\\<id\\>\", e.g. \"country:ES\" or \"nuts2:34\". (optional)
+  # @param area character \"\\<level\\>:\\<id\\>\", e.g. \"country:ES\" or \"nuts2:34\". If omitted, the request applies to the whole world. (optional)
   # @param cumulative character Whether to return cumulative counts over time. It only applies when grouping by date. Defaults to False. (optional)
   # @param date_from character  (optional)
   # @param date_to character  (optional)
-  # @param group_by array[character] Comma-separated subset of: date, type, region, country. (optional)
+  # @param group_by array[character] Comma-separated subset of: date, type, region. (optional)
   # @param interval character The interval at which to aggregate data when grouping by date. Defaults to week. (optional)
   # @param level integer The NUTS level to aggregate by when grouping by region. Defaults to NUTS 2. (optional)
   # @param type array[character] Comma-separated subset of: bite, adult, site. (optional)
